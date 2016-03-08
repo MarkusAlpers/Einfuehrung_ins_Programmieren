@@ -1,0 +1,2 @@
+# Einfuehrung_ins_Programmieren
+Hier finden Sie den aktuellsten Stand meines Buches. Die Rohdateien liegen im Format der Textverarbeitung LaTeX vor. Bitte beachten Sie, dass einige Dateien noch nicht an die Formatierung angepasst wurden, weshalb mathematische Ausdrücke, Fußnoten und Programmbeispiele in diesen Kapiteln noch fehlerhaft angezeigt werden. Die hier bereitgestellten Dokumente befinden sich unter der Lizenz CC BY-SA. (Mir ist unklar, warum GitHub diese Lizenz nicht bekannt ist...)
