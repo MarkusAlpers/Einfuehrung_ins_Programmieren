@@ -4,38 +4,47 @@ Dass Sie in diesem Kapitel die Grundlagen der Programmierung in HTML5 erlernen i
 
 Wenn Sie mit Dateien arbeiten, sind Sie es in aller Regel gewöhnt, die Datei mit einem Programm zu öffnen. Die meisten von Ihnen kennen also nur die verschiedenen Ansichten, die einzelne Programme erzeugen, wenn Sie mit einem dieser Programme eine Datei öffnen. Bei einer Webanwendung sehen Sie beispielsweise verschiedene Elemente wie Bilder, Videos, Texte usw. Sie sehen dann aber in aller Regel nicht, wie diese Datei selbst aussieht. Doch genau darum geht es in diesem Kurs.\\
 
-In HTML kümmern wir uns jedoch nicht darum, wie eine Webanwendung aussehen soll, sondern ausschließlich darum, was wir auf der Webanwendung anzeigen lassen wollen. Wenn Sie das erste Kapitel gelesen haben, dann wissen Sie auch, womit wir die Darstellung der Webanwendung programmieren. \\
+Wenn Sie das jetzt irritiert, dann machen Sie sich bitte folgendes klar: Wenn Sie eine pdf-Datei öffnen, dann generiert der pdf-Reader eine Ansicht. Das was Sie sehen ist also nicht die Datei selbst, sondern nur eine aus dieser Datei erzeugte Ansicht. Und alles, was Sie irgendwo von einem Computer angezeigt bekommen ist eine Interpretation einer oder mehrerer Dateien. Wenn Sie also lernen wollen, wie Sie Computer programmieren können, dann müssen Sie als erstes verstehen, dass Sie bislang immer nur eine Interpretation dessen gesehen (oder gehört) haben, was tatsächlich \glqq{}auf dem\grqq{} Computer gespeichert ist.\\
 
-In anderen Worten: In diesem ganzen Kapitel wird es nicht ein einziges Mal darum gehen, wie die Elemente Ihrer Webanwendung später aussehen werden. Wenn Sie hier also an irgend einer Stelle versuchen, die Darstellung zu programmieren, dann machen Sie einen Fehler.\\
+In HTML kümmern wir uns dagegen nicht darum, wie eine Webanwendung aussehen soll, sondern ausschließlich darum, aus welchen Bestandteilen die Webanwendung bestehen soll. In anderen Worten: In diesem ganzen Kapitel wird es nicht ein einziges Mal darum gehen, wie die Elemente Ihrer Webanwendung später aussehen werden. Wenn Sie hier also an irgend einer Stelle versuchen, die Darstellung zu programmieren, dann machen Sie einen Fehler.\\
 
-Nachdem wir jetzt weitestgehend geklärt haben, wie wir den Webserver in Betrieb setzen und kontrollieren können, kommen wir nun zum zweiten Teil dieser Einführung: die Einführung in die Markup Language HTML. Am Ende dieses Abschnittes können Sie also statische Webanwendung erstellen. Hier werden wir auch über CSS sprechen: Cascading Style Sheets sind eine Möglichkeit, um auf unterschiedlichen Webanwendung gleiche Strukturen und Formate für Inhalte zu realisieren.\\
+Nachdem wir zuvor weitgehend geklärt haben, wie wir eine Webserver auf unserem Rechner in Betrieb setzen und kontrollieren können, kommen wir nun zum zweiten Teil dieser Einführung: Die Einführung in die Markup Language HTML. Am Ende dieses Abschnittes können Sie also statische Webanwendung erstellen. Danach werden wir über \textbf{CSS}\index{Programmiersprache!CSS}\index{CSS} sprechen: Cascading Style Sheets sind eine Möglichkeit, um auf unterschiedlichen Webanwendung gleiche Strukturen und Formate für Inhalte zu realisieren. Danach kommen wir zur Programmierung in PHP, womit Sie die Elemente Ihrer Webanwendung dynamisch und interaktiv programmieren können.\\
 
-Aufgabe: Unabhängig von dem, was in den einzelnen Abschnitten steht, programmieren Sie bitte für jedes Element, dass Sie auf Ihrer Webanwendung einbinden wollen einen eigenen HTML-Container, ohne sich über das Design Gedanken zu machen. Das ist der erste Schritt hin zu professionellen Anwendungen: So lange Sie es nicht schaffen, zuerst die Inhalte bzw. Inhaltsstruktur festzulegen und erst dann ein passendes Design auszusuchen sind Sie weit davon entfernt, professionelle/r InformatikerIn zu sein. Das bedeutet nicht, dass Design unwichtig wäre, sondern es geht darum, dass Sie sich auf Ihre zukünftige Aufgabe in Teams konzentrieren. Und so lange Sie nicht Design (z.B. Medien- und Kommunikationsdesign) studieren, bereiten Sie sich eben auch nicht darauf vor, als DesignerIn zu arbeiten. So lange Sie das nicht akzeptieren werden Sie ein Don Quichote der Medieninformatik bzw. der Medientechnik sein.\\
+\textbf{Aufgabe}:\\
+
+Unabhängig von dem, was in den einzelnen Abschnitten steht, programmieren Sie bitte für jedes Element, dass Sie auf Ihrer Webanwendung einbinden wollen einen eigenen HTML-Container, ohne sich über das Design Gedanken zu machen. Das ist der erste Schritt hin zu professionellen Anwendungen: So lange Sie es nicht schaffen, zuerst die Inhalte bzw. Inhaltsstruktur festzulegen und erst dann ein passendes Design auszusuchen sind Sie weit davon entfernt, professionelle/r InformatikerIn zu sein. Das bedeutet nicht, dass Design unwichtig wäre, sondern es geht darum, dass Sie sich auf Ihre zukünftige Aufgabe in Teams konzentrieren. Und so lange Sie nicht Design (z.B. Medien- und Kommunikationsdesign) studieren, bereiten Sie sich eben auch nicht darauf vor, als DesignerIn zu arbeiten. So lange Sie das nicht akzeptieren werden Sie ein Don Quichote der Medieninformatik bzw. der Medientechnik sein.\\
 
 Ignorieren Sie also Aspekte wie Design, die Positionierung eines Elements auf der Seite, Hyperlinks, usw. usf. Auch für die einzusetzenden Text, Bilder usw. verwenden Sie bitte vorerst Platzhalter: Die Qualität Ihrer Arbeit als MedieninformatikerIn wird sich nicht in umfangreichen Texten und Bildergallerien zeigen, sondern in gut durchdachten und ausgearbeiteten Strukturen. Das Einfügen von Texten und Bildern sowie das Ausarbeiten eines guten Designs ist dann die Aufgabe anderer Mitarbeiter im Team.
 
 \subsection{Das ist HTML}
 
-HTML, kurz für Hyper Text Markup Language ist, wie es aus dem Namen hervorgeht eine Markup Language. Teilweise wird auch von einer statischen Skriptsprache gesprochen. Sie ermöglicht es deshalb nicht, Inhalte nachträglich zu ändern, ohne gleiche die gesamte Seite zu ändern, bzw. eine zusätzliche Seite zu programmieren. In der Anfangszeit des WWW genügte das auch, weil es schon eine großartige Bereicherung darstellte, Texte und Bilder direkt über eine Datenleitung in wenigen Sekunden oder Minuten empfangen zu können, die sonst per Post erst nach einigen Tagen oder Wochen im Haus gewesen wären. \\
+\textbf{HTML}\index{HTML}\index{Programmiersprache!HTML}, kurz für Hyper Text Markup Language ist, wie es aus dem Namen hervorgeht eine \textbf{Markup Language}\index{Markup Language}. Teilweise wird auch von einer statischen Skriptsprache gesprochen. Statisch bedeutet hier, dass es mit HTML nicht möglich ist, Inhalte während der Nutzung zu ändern. In der Anfangszeit des \textbf{WWW}\index{WWW} genügte das auch, weil es schon eine großartige Bereicherung darstellte, Texte und Bilder direkt über eine Datenleitung in wenigen Sekunden oder Minuten empfangen zu können, die sonst per Post erst nach einigen Tagen oder Wochen im Haus gewesen wären. \\
 
-Heute dagegen, wo selbst das Format von Displays kaum noch standardisiert ist, benötigen wir weitergehende Möglichkeiten. Diese werden unter dem Begriff Responsive Design zusammengefasst: Das Design einer Webanwendung passt sich automatisch dem Gerät an, auf dem es angezeigt wird. Wir reden wir hier also über etwas, das in den Bereich der Informatik bzw. der Softwareentwicklung fällt und nicht in den Bereich dessen, was üblicherweise unter Design im Sinne von kreativer Gestaltung verstanden wird.\\
+Heute dagegen, wo selbst das Format von Displays kaum noch standardisiert ist, benötigen wir weitergehende Möglichkeiten. Diese werden unter dem Begriff \textbf{Responsive Design}\index{Responsive Design} zusammengefasst: Das Design einer Webanwendung passt sich automatisch dem Gerät an, auf dem es angezeigt wird. Wir reden wir hier also über etwas, das in den Bereich der Informatik bzw. der Softwareentwicklung fällt und nicht in den Bereich dessen, was üblicherweise unter Design im Sinne von kreativer Gestaltung verstanden wird.\\
 
-Doch auch hier beginnen wir bei den Grundlagen. Für responsive Design können Sie später gerne auf ein Framework namens Bootstrap zurückgreifen. Diese nimmt Ihnen eine Vielzahl an Programmieraufgaben ab, die Sie sonst in HTML selbst programmieren müssen. Zurzeit ist Bootstrap unter der Lizenz CC 3.0 veröffentlicht, das bedeutet unter anderem, dass Sie es kostenlos auch für professionelle Anwendungen verwenden dürfen. Aber da Lizenzen geändert werden können, müssen Sie im Stande sein, auch ohne Bootstrap eine Webanwendung aufzusetzen.\\
+Deshalb muss es hier nochmal betont werden: Wenn Sie HTML programmieren und festlegen, wie ein Element aussieht oder wo es angeordnet werden soll, dann erzeugen Sie damit in den meisten Fällen eine Webanwendung, die auf einer Vielzahl von Nutzergeräten grausig aussehen wird, egal wie gut Ihr Webdesign sonst sein mag. Also lassen Sie das.\\
+
+Dieser Kurs behandelt jedoch nicht die Feinheiten der Usability, zu denen Responsive Design gehört. Vielmehr ist das eine der Spezialisierungen, die MedieninformatikerInnen im Masterstudium wählen können.
 
 \subsection{Erster HTML-Quellcode}
 
-Das wichtigste an einer Webanwendung ist die Antwort auf die Frage, welche Funktion sie übernehmen soll. Erst danach überlegen Sie sich idealerweise unterstützt durch Designer, mittels welches Designs sie diese Funktion erfüllen soll. Ein typischer Einsteigerfehler besteht darin, sich zunächst über das Design Gedanken zu machen und dann mit dem Programmieren anzufangen. Das ist deshalb ein Fehler, weil dabei in aller Regel wichtige Funktionalitäten vergessen werden. Wird dann entdeckt, dass eine Funktionalität fehlt, die wichtig ist, dann muss häufig das Design komplett verworfen und neu entwickelt werden. Oder es herrscht die Überzeugung vor, dass der Kunde schon blöd genug sein wird, sich nicht daran zu stören. Und glauben Sie mir: Bei der Prüfung für Ihre Leistungsnachweise  haben Sie keinen naiven Kunden vor sich.\\
+Das wichtigste bei der Programmierung einer Webanwendung ist die Antwort auf die Frage, aus welchen Einheiten sie bestehen soll und welche Funktion jede dieser Einheiten übernehmen soll. Erst danach überlegen Sie sich idealerweise unterstützt durch Designer, mittels welches Designs diese Funktion erkennbar sein soll. Ein typischer Einsteigerfehler besteht darin, sich zunächst über das Design Gedanken zu machen und dann mit dem Programmieren anzufangen. Das ist deshalb ein Fehler, weil dabei in aller Regel wichtige Funktionalitäten vergessen werden oder (noch schlimmer) es für Nutzer nicht erkennbar ist, wie eine Funktionalität genutzt werden kann. Wird dann entdeckt, dass eine Funktionalität fehlt, die wichtig ist, dann muss häufig das Design komplett verworfen und neu entwickelt werden. Oder es herrscht die Überzeugung vor, dass der Kunde schon blöd genug sein wird, sich nicht daran zu stören. Und glauben Sie mir: Bei der Prüfung für Ihre Leistungsnachweise haben Sie keinen naiven Kunden vor sich.\\
 
 Deshalb nun die Frage: Welche Funktion soll unsere erste Webanwendung erfüllen?\\
 
+\textbf{Hinweis}:\\
+
+Diese Webanwendung ist ausschließlich für diejenigen gedacht, die zu Hause dieses Buch durcharbeiten wollen. Das gleiche gilt für \emph{Hausaufgaben} und andere Übungen, die Sie hier finden. Es handelt sich hier nicht um Aufgaben, die Sie für einen Leistungsnachweis in Studienveranstaltungen von mir bearbeiten müssen. Vielmehr können Sie sich so unabhängig von meinen Studienveranstaltungen in das Thema einarbeiten.\\
+
 Beginnen wir mit einer einfachen Seite, mit der wir einfach nur prüfen wollen, ob ein Text so angezeigt wird, dass wir mit der Darstellung zufrieden sind: Er sollte groß genug angezeigt werden, damit wir ihn lesen können. Außerdem sollte er an einer Position angezeigt werden, an der er von einem Nutzer unserer Seite bemerkt wird.\\
 
-Das ist ziemlich viel Text, um daraus eine Prüfung abzuleiten, ob die Funktionalität erfüllt ist. Deshalb gibt es das Planungswerkzeug Use Case. Ein Use Case ist eine kurze Beschreibung, wer was auf der Webanwendung tut und was dann passieren soll. Machen wir das doch gleich für unseren Fall:\\
+Das ist ziemlich viel Text, um daraus eine Prüfung abzuleiten, ob die Funktionalität erfüllt ist. Deshalb gibt es das Planungswerkzeug \textbf{Use Case}\index{Use Case}. Ein Use Case ist eine kurze Beschreibung, wer was mit einer Webanwendung tut und was dann passieren soll. Machen wir das doch gleich für unseren Fall:\\
 
 Use Case 1: Der Nutzer liest einen Begrüßungstext. (Keine Interaktion.)\\
 
-Sicher, das ist kein spannender Use Case, weil er gerade keine Interaktion enthält. Aber damit können wir arbeiten und nach der Programmierung prüfen, ob die Funktion erfüllt ist. Also, denken Sie sich eine nette Begrüßung aus und setzen Sie sie dann an der passenden Stelle in den folgenden Quellcode ein. Speichern Sie Ihre Seite dann unter dem Namen seite01.html im bekannten Verzeichnis Ihres Webservers.\\
+Sicher, das ist kein spannender Use Case, weil er keine Interaktion enthält. Vor allem können wir auch gar nicht prüfen, ob einzelne NutzerInnen tatsächlich lesen, was da angezeigt wird. Aber damit können wir arbeiten und nach der Programmierung prüfen, ob die Funktionalität erfüllt ist. Geben Sie den folgenden Quellcode in einen einfachen Editor (z.B. den kostenlosen notepad++) ein und speichern ihn unter dem Namen \verb|seite01.html| im bekannten Verzeichnis Ihres Webservers.
 
+\begin{verbatim}
 <html>
 <head>
 <title>Die erste HTML-Webanwendung</title>
@@ -44,244 +53,248 @@ Sicher, das ist kein spannender Use Case, weil er gerade keine Interaktion enth�
 Einführung in die Programmierung, Teil 1
 </body>
 </html>
+\end{verbatim}
 
 Gleich vorweg: Willkommensgrüße oder ähnliches haben auf einer Webanwendung nichts verloren. Entweder der Nutzer kann auf Anhieb erkennen, was hier angeboten wird oder wir haben als Entwickler etwas falsch gemacht.\\
 
-Wenn Sie jetzt die Webanwendung aktualisieren (oder bei gestopptem Webserver zunächst den Webserver neustarten und anschließend wieder die Webanwendung localhost aufrufen), sehen Sie, dass das neue HTML-Skript als Datei angezeigt wird. Wählen Sie doch einfach den „Link“ an und öffnen Sie damit die Webanwendung, die Sie gerade programmiert haben.\\
+Wenn Sie jetzt die Webanwendung aktualisieren (oder bei gestopptem Webserver zunächst den Webserver neustarten und anschließend wieder die Webanwendung localhost aufrufen), sehen Sie, dass das neue HTML-Skript als Datei angezeigt wird. Wählen Sie doch einfach den \glqq{}Link\grqq{} an und öffnen Sie damit die Webanwendung, die Sie gerade programmiert haben.\\
 
 Es gibt zwei Dinge, die Ihnen auffallen, wenn Sie das Ergebnis im Browser genau prüfen (zumindest wenn Sie keinen Tippfehler im Quellcode haben): \\
 
-•	Zum einen steht da nicht das Wort Einführung im Text, sondern so etwas wie EinfÄ3/4rung.
-•	Und dann steht auf der Registerlasche der Webanwendung der Schriftzug „Die erste HTML-Webanwendung“.
-Wenn Sie die einleitenden Kapitel aufmerksam gelesen haben, dann haben Sie sicher schon eine Idee, warum hier kein ü in Einführung steht. Aber dazu gleich mehr. Zunächst müssen wir uns ansehen, welche Bestandteile unser Quellcode enthält.
+\begin{itemize}
+	\item Zum einen steht da nicht das Wort Einführung im Text, sondern so etwas wie EinfÄ3/4rung.
+	\item Und dann steht auf der Registerlasche der Webanwendung der Schriftzug \verb|Die erste HTML-Webanwendung|.
+\end{itemize}
+
+Wenn Sie die einleitenden Kapitel aufmerksam gelesen haben, dann haben Sie sicher schon eine Idee, warum hier kein \verb|ü| in Einführung steht. Aber dazu gleich mehr. Zuvor schauen wir uns zwei Dinge an. Da wäre einmal die Frage, wie wir möglichst effizient programmieren könenn und dann steht die Frage an, welche Bestandteile unser Quellcode enthält.
 
 \subsubsection{Tags und Container}
 
-Der Schriftzug „Die erste HTML-Webanwendung“, der als Titel der Seite im Webbrowser angezeigt wird, steht zwischen den „Befehlen“ <title> und </title>. Solche „Befehle“ nennt man bei Skriptsprachen Tags, spricht sie wie tägs und nicht wie tags (im Sinne von mittags) aus.\\
+Der Schriftzug \verb|Die erste HTML-Webanwendung|, der als Titel der Seite im Webbrowser angezeigt wird, steht zwischen den \glqq{}Befehlen\grqq{} \verb|<title>| und \verb|</title>|. Solche \glqq{}Befehle\grqq{} werden in Markup Languages als Tags bezeichnet. (Aussprache wie tägs und nicht wie tags (im Sinne von mittags).)\\
 
-Mit HTML-Skripten definieren Sie, wie die Bestandteile eine Webanwendung angezeigt werden. Am einfachsten ist das mit Texten, denn die Tippen Sie (nur) größtenteils (siehe ü in Einführung) so ein, wie sie angezeigt werden sollen. Doch fast alles, was auf einer Webanwendung erscheinen soll muss in sogenannte Container eingebettet werden, damit der Webbrowser weiß, was er damit tun soll. Einzig Text, der fließend eingefügt werden soll braucht keinen expliziten Container.\\
+Wenn wir wie bei \verb|<title>| und \verb|</title>| zwei Tags haben, von denen das eine den Anfang und das andere das Ende von einem Teil unserer Webanwendung definiert, dann bezeichnen wir die beiden als \textbf{öffnendes} bzw. \textbf{schließendes} Tag und beide gemeinsam mit allem, was zwischen ihnen steht als einen \textbf{Containter}\index{HTML!Container}\index{Container}.\\
 
-Einen Bereich, der im Quellcode von einem öffnenden und einem schließenden Tag umgeben wird, nennt man bei HTML einen Container. Bei vielen Programmiersprachen gibt es den Begriff des Rumpfes oder des Scope. Genau wie bei Rümpfen müssen Sie bei Containern darauf achten, dass alle neuen Container, die innerhalb eines Containers geöffnet wurden, auch wieder geschlossen wurden, bevor der äußere Containter geschlossen wird. Vermutlich wird bei HTML von Containern (und nicht von Rümpfen) gesprochen, weil es sich hier tatsächlich um abgeschlossene Bereiche handelt, für die individuell definiert werden kann, an welcher Position einer Webanwendung sie sich befinden sollen. Im Gegensatz dazu definiert ein Rumpf bei einer imperativen Programmiersprache welche Bedeutung in welchem Bereich ein Bezeichner hat.
+Wir haben aber auch Container, die zwischen dem öffnenden und dem schließenden Tag keinen eigentlichen Inhalt haben. Um zu verdeutlichen, dass ein Container keinen solchen Inhalt hat, können wir ein öffnendes Tag auch direkt wieder schließen und brauchen kein schließendes Tag zu programmieren. Dazu schreiben wir als letztes Zeichen in einen öffnenden Tag das \verb|\|-Symbol.\\
 
-\subsection{Struktur eines HTML-Skripts}
+\textbf{Kontrolle}:
 
-Sehen wir uns das mal für unser kleines Programm im Detail an: Zu Beginn sehen Sie dort den öffnenden Container <html>. Dieser darf also erst geschlossen werden, wenn alle nachfolgenden Containter geschlossen werden. Und genauso ist es auch: Erst in der letzten Zeile finden Sie den Container </html>.\\
+\begin{itemize}
+	\item Wie gesagt programmieren Sie in einer Markup Language ausschließlich die Struktur von Anwendungen und weder ihre Funktionalität noch ihre Gestaltung. In sofern war HTML4.01 keine reine Markup Language, sondern eine Mischung aus Markup und Design Sprache.
+	\item Sie wissen jetzt, dass die Elemente, aus denen Sie eine Struktur in HTML programmieren Container heißen und das jeder Container aus einem in sich abgeschlossenen Tag oder aus einem öffnenden und einem schließenden Tag besteht.
+\end{itemize}
 
-Danach folgt der head-Container. Wie Sie sehen befindet sich innerhalb dieses Containers der title-Container, der definiert, unter welchem Titel die Webanwendung angezeigt wird. Hier werden Sie später auch allgemeine Formatierungen für eine einzelne Webanwendung programmieren.\\
+\subsubsection{Dokumentteile auslagern}
 
-Danach folgt der body-Container. Dieser beinhaltet all das, was auf der Webanwendung angezeigt wird.\\
+Mit HTML-Dokumenten definieren Sie, aus welchen Bestandteilen eine Webanwendung besteht. Sie besteht dagegen nicht aus den konkreten Inhalten. Texte, Bilder, Sound und Videos sind nicht Teil von HTML. Allerdings können wir Texte durchaus direkt ins HTML einfügen, so wie wir das oben getan haben. Das ist allerdings eine Vorgehensweise, die bei größeren Projekten nicht empfehlenswert ist. Vielmehr sollten Sie auch Texte in eigenständigen Dateien speichern und sie durch den Webserver ins HTML einfügen lassen. Die einfachste Möglichkeit dafür ist eine PHP-Funktion, die Sie in das HTML-Dokument einfügen.\\
 
-Anmerkung: Bei HTML benutze ich die Bezeichnung HTML-Skript, weil es sich ja um kein Programm im dem Sinne handelt, dass hier ein Algorithmus umgesetzt wird. Das ist aber keine allgemeingültige Definition; Sie können also ruhig von einem HTML-Programm oder einer HTML-Seite sprechen, wenn Sie sich damit wohler fühlen. Der von mir angesprochene Unterschied zwischen Skript und Programm wird Ihnen spätestens dann deutlich, wenn Sie mit der imperativen Programmierung in PHP beginnen.\\
+\begin{enumerate}
+	\item Erstellen Sie dafür eine Datei mit dem Namen \verb|test_title_001.txt|, in der Sie die folgende Zeile eintragen und die Sie dann im gleichen Verzeichnis wie \verb|seite01.html| abspeichern:
+	\begin{verbatim}
+		echo("Die erste HTML-Webanwendung");
+	\end{verbatim}
+	\item Erstellen Sie jetzt eine Datei mit dem Namen \verb|test_begruessung_001.txt| mit dem Inhalt \verb|echo("Einführung in die Programmierung, Teil 1");|.
+	\item Ändern Sie die Datei \verb|seite01.html| wie folgte ab und speichern Sie sie unter dem Namen \verb|seite01.php|:
+	\begin{verbatim}
+	<html>
+	<head>
+	<title><?php include(test_title_001.txt); ?></title>
+	</head>
+	<body>
+	<?php include(test_begruessung_001.txt); ?>
+	</body>
+	</html>
+	\end{verbatim}
+	\item Rufen Sie jetzt im Browser \verb|localhost| auf und wählen Sie dort \verb|seite01.php| an.
+\end{enumerate}
 
-Kontrolle\\
+Wie Sie sehen sieht die Webpage genauso aus, als wenn Sie \verb|seite01.html| geöffnet hätten. Schauen wir uns die Änderungen und Ihre Auswirkungen einmal im Detail an:
+
+\begin{itemize}
+	\item Die Funktion \verb|echo()| ist eine Funktion der Programmiersprache PHP.
+	\item Alles, was Sie zwischen zwei Anführungszeichen in die Klammer von echo() schreiben wird ausgegeben.
+	\item Eine Programmzeile in PHP wird durch ein Semikolon beendet.
+	\item Die PHP-Funktion \verb|include()| lädt den Inhalt einer anderen Datei und fügt ihn an der Stelle ein, wo die include()-Funktion steht.
+	\begin{itemize}
+		\item Sie können also mit include() beliebige Teile eines PHP-Programms in eigenen Dateien speichern.
+		\item Das besondere dabei ist, dass Sie somit jeden Teil eines PHP-Programms, der mehrfach genutzt werden soll nur einmal programmieren müssen. (Wenn Sie die objektorientierte Programmierung kennen lernen werden Sie dafür eine andere Möglichkeit kennen lernen.)
+	\end{itemize}
+	\item Um PHP-Programme oder Programmteile in ein HTML-Dokument einzufügen müssen Sie es in ein Tag eintragen, das mit \verb|<?php| beginnt und mit \verb|?>| endet.
+	\item Das Großartige dabei ist, dass Sie auf diese Weise gleich zwei Fliegen mit einer Klappe schlagen:
+	\begin{enumerate}
+		\item Sie können beliebigen PHP-Code ohne weitere Vorbereitung direkt in HTML einfügen.
+		\item Sie können über den oben gezeigten Weg beliebigen HTML-Code aus anderen Dateien an beliebigen Stellen in verschiedene HTML-Dokumente einfügen.
+	\end{enumerate}
+\end{itemize}
+
+Ausblick \textbf{für Fortgeschrittene}: 
+
+\begin{itemize}
+	\item Um Programme oder Programmteile in ein HTML-Dokument zu integrieren, die in JavaScript programmiert wurden, nutzen Sie das \verb|script|-Tag. Wenn Sie beispielsweise die JavaScript-Datei \verb|intro.js| an einer Stelle Ihres HTML-Dokuments einzufügen, lautet das HTML-Tag \verb|<script src=intro.js>|. In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
+	\item Wollen Sie dagegen JavaScript direkt in HTML programmieren, dann sieht das so aus: \verb|<script> ... Hier steht der JavaScript-Code ... </script>|. Auch hier gilt wieder: In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
+	\item \textbf{Hinweis}: Diejenigen von Ihnen, die bei mir den Leistungsnachweis \glqq{}Projekt 1 (MS)\grqq{} erwerben wollen sollten sich das genau merken: Ich brauche in aller Regel nur zwei Sekunden, um zu erkennen, ob Sie HTML4.01 oder HTML5 programmieren. Für den Leistungsnachweis gilt: Die Nutzung von HTML4.01 bedeutet automatisch, dass Sie (noch) nicht bestanden haben.
+\end{itemize}
+
+\subsection{Struktur eines HTML-Dokuments}
+
+Damit bleibt die Frage, was die HTML-Tags eigentlich bewirken oder besser gesagt, wie sie von einem Browser interpretiert werden, um daraus die Ansicht zu generieren, die wir als NutzerInnen angezeigt bekommen.\\
+
+\begin{itemize}
+	\item Zu Beginn sehen Sie dort den öffnenden Container \verb|<html>|.\\
+	Dieser gibt an, dass alles nachfolgende HTML-Code ist. In der letzten Zeile finden Sie dann das schließende Tag \verb|</html>|. Dieses besagt also schlicht, dass jetzt kein HTML-Code mehr folgt.
+	\item Danach folgt der \verb|head|-Container.\\
+	Wie Sie sehen befindet sich innerhalb dieses Containers der \verb|title|-Container, der definiert, unter welchem Titel die Webanwendung angezeigt wird. Hier werden Sie später auch allgemeine Formatierungen für eine einzelne Webanwendung programmieren.\\
+	Grundsätzlich gilt, dass wir nicht unbedingt einen <head>-Container programmieren müssen. Aber es macht nur selten Sinn, ihn vollständig wegzulassen.
+	\item Danach folgt der \verb|body|-Container.\\
+	Dieser beinhaltet all das, was einer Ansicht der Webanwendung angezeigt wird.
+\end{itemize}
+
+\textbf{Anmerkung}:\\
+
+Bei HTML wird häufig der Begriff HTML-Skript verwendet, weil es sich ja um kein Programm im dem Sinne handelt, dass hier ein Algorithmus umgesetzt wird. Das ist aber keine allgemeingültige Definition; Sie können also ruhig von einem HTML-Programm oder einer HTML-Seite sprechen, wenn Sie sich damit wohler fühlen. Der von mir angesprochene Unterschied zwischen Skript und Programm wird Ihnen spätestens dann deutlich, wenn Sie mit der imperativen Programmierung in PHP beginnen.\\
+
+\textbf{Kontrolle}:\\
 
 Sie wissen jetzt, dass jedes HTML-Skript drei Container beinhalten sollte, den html-, den head- und den body-Container. Sie haben richtig gelesen: Es sollte diese Container beinhalten, muss es aber nicht. Das HTML-Skript ließe sich also auch mit den folgenden Zeilen programmieren:\\
 
-<title>Die erste HTML-Webanwendung</title>
-Willkommen zur Einführung in die Programmierung.\\
+\begin{verbatim}
+	<title>Die erste HTML-Webanwendung</title>
+	Willkommen zur Einführung in die Programmierung.
+\end{verbatim}
 
-Aus Gründen der Lesbarkeit sollten Sie dennoch immer die etwas umfangreichere Skriptstruktur mit html-, head- und body-Container verwenden. Leider ist hier die sonst recht gute HTML-Referenz selfhtml nicht eindeutig: So wird dort mal angegeben, dass der head-Container optional ist, mal soll er verpflichtend sein.
+Aus Gründen der Lesbarkeit sollten Sie dennoch immer die etwas umfangreichere Struktur mit html-, head- und body-Container verwenden.
 
 \subsubsection{HTML-Referenz: W3Schools}
 
-Bis Anfang 2015 galt SelfHTML als die Standardreferenz für HTML. Leider kann ich hiervon mittlerweile nur noch abraten: SelfHTML ignoriert wie die meisten HTML 4.01-Veteranen alles, was HTML 5 zu einer echten nächsten Version von HTML macht. Wenn Sie sich an SelfHTML orientieren, dann können Sie auch gleich bei HTML 4.01 bleiben.\\
+Bis Anfang 2015 galt \textbf{SelfHTML}\index{SelfHTML} als die Standardreferenz für HTML. Leider kann ich hiervon mittlerweile nur noch abraten: SelfHTML ignoriert wie die meisten HTML 4.01-Veteranen alles, was HTML 5 zu einer echten nächsten Version von HTML macht. Wenn Sie sich an SelfHTML orientieren, dann können Sie auch gleich bei HTML 4.01 bleiben.\\
 
-Die einzige Webpräsenz, bei der eine klare Trennung zwischen HTML 4.01 und 5 durchgeführt wird ist zum Jahreswechsel 2015/16 (neben dem W3 Consortium, das die Standards festlegt) die Seite W3Schools.
+Die einzige mir bekannte Webpage, bei der eine klare Trennung zwischen HTML 4.01 und 5 durchgeführt wird ist zum Jahreswechsel 2015/16 (neben dem W3 Consortium, das die Standards festlegt) die Seite \textbf{W3Schools}\index{W3Schools}(\url{http://www.w3schools.com/default.asp}).
 
-\subsubsection{Aktuelles zu XHTML und HTML5}
+\paragraph{Übersicht über alle Tags}
 
-Ein erster Versuch, um semantische Webanwendungen zu entwickeln wurde unter der Bezeichnung XML veröffentlicht. Eine Kombination aus XML und HTML wird als XHTML bezeichnet.\\
-
-Validierung: Unabhängig davon, ob Sie nun ein HTML-Skript, ein XHTML-Skript oder ein HTML5-Skript programmieren, sollten Sie stets den Doctype angeben, denn nur so können Sie Ihren Code durch Software prüfen lassen. Neben der Arbeitserleichterung folgt hieraus auch, dass Sie sich rechtlich etwas absichern: Indem Sie eine validierbare Webanwendung programmieren zeigen Sie, dass Sie nach den aktuellen technischen Standards arbeiten. Und das kann sich im Falle eines Gerichtsverfahrens zu Ihren Gunsten auswirken.\\
-
-Den W3C-Validator finden Sie unter http://validator.w3.org. Hier geben Sie den Link auf die zu prüfende Seite ein und erhalten dann eine Ausgabe über die Validität Ihrer Seite.\\
-
-HTML5 steht kurz für HTML, Version 5. Hier geht es um wesentlich mehr als nur einige neue Funktionalitäten, mit denen die Inhalte einer Webanwendung angenehmer oder effizienter programmiert werden können.\\
-
-Alles was Sie tun müssen, um ein HTML-Skript als HTML5-Skript zu markieren ist das Hinzufügen einer kurzen Zeile am Anfang des Skripts (noch vor dem html-Container):\\
-
-<!doctype html>\\
-
-Und das ist alles. Wenn Sie sich nicht sicher sind, ob Sie wirklich HTML5 programmieren wollen, brauchen Sie sich keine Sorgen zu machen: HTML5-Skripte können Passagen enthalten, die wie bei einer früheren HTML-Version programmiert sind. Diese werden dann wie bei den früheren Versionen ausgeführt.\\
-
-Bei längeren HTML-Skripten oder bei Skriptbefehlen, die nicht selbstredend sind, sollten Sie außerdem Kommentare einpflegen. Kommentare sind Codezeilen, die nicht ausgeführt werden, sondern ausschließlich dazu dienen, um anzuzeigen, was in einem Teil einer Programms oder Skripts passiert. Im Gegensatz zu anderen Containern sieht ein Kommentar wie folgt aus\\
-
-<! - - Anfang des Kommentars>\\
-
-und endet so:\\
-
-<Ende des Kommentars - - >\\
-
-Das bedeutet, dass es möglich ist, einen Kommentar zu verfassen, der Teile des HTML-Skripts umgibt, auf den er sich bezieht. So etwas werden Sie in den meisten Programmiersprachen nicht finden, weil dort ausführbarer Code nicht innerhalb eines Kommentars programmiert werden kann.\\
-
-Möchten Sie einen Kommentar innerhalb einer Zeile abschließen, sieht das so aus:\\
-
-<! - - Gesamter Kommentar - - >\\
-
-Bei Kommentar-Containern gibt es also keinen Abschluss durch den Slash, wie das bei anderen Tags der Fall ist.\\
-
-In der Vergangenheit wurden spezielle Befehle, die nur für den Internet Explorer zugeschnitten waren in Form von Kommentaren einprogrammiert; sollten Sie also in fremdem HTML-Skripten Kommentare der Form if IE … treffen, dann wissen Sie jetzt, worum es dabei geht.\\
-
-\section{Grundaufbau einer Webanwendung}
-
-Jede HTML-Datei beinhaltet eine Doctype Definition und einen HTML-Container, in dem sich ein head- und ein body-Container befindet. In diesem Abschnitt erfahren Sie, wie das in der Praxis aussieht und was es bedeutet.\\
-
-\subsection{Aufgaben}
-
-1.	Öffnen Sie bitte zunächst einen Texteditor wie notepad++. Dieser ist kostenlos und genügt für unseren Kurs vollkommen.
-
-2.	Wenn sie den Editor gestartet haben, öffnet sich in aller Regel beim ersten Mal ein Dokument, in dem Sie verschiedenes über das Programm erfahren. Öffnen Sie in diesem Fall einfach ein neues Dokument. Wechseln Sie nun in Ihr Netzlaufwerk (das hat jeder Studierende im Department Medientechnik) und erstellen Sie dort ein Verzeichnis mit dem Titel PRG. Dann speichern Sie die neue Datei unter dem namen first.html im Verzeichnis PRG im Netzlaufwerk.
-
-3.	Wechseln Sie nun in das Verzeichnis PRG und starten Sie die Datei first.html. Wie Sie sehen öffnet sich ein Webbrowser, aber er zeigt lediglich eine leere Seite an. Aber das ist nur ein Teil der Wahrheit, denn der Browser zeigt ebenfalls den Standort der Datei an: Werfen Sie einen Blick in die Adresszeile und Sie sehen dort die Angabe:
-
-file:///C:/...
-
-4.	Und jetzt sehen Sie etwas, das Sie im ersten Kapitel lesen konnten: Das World Wide Web ist nichts anderes als eine Ansammlung von Dateien, die sich auf Rechnern irgendwo auf der Welt befinden. Und da, wo Sie sonst bei Webanwendung dieses kryptische http://www. ... sehen, steht jetzt eben file: ... 
-
-Außerdem können Sie auf der Registerlasche des Browsers die selbe Angabe (file:...) sehen. Vielleicht ist es Ihnen bei anderen Seiten aufgefallen: Dort steht sonst immer, auf was für einer Seite Sie sich befinden. Aber da Sie in Ihrer Datei noch nicht einprogrammiert haben, wie Ihre Webanwendung heißen soll, kann das hier auch noch nicht stehen.
-
-Nichts desto trotz haben Sie jetzt bereits Ihre erste Webanwendung programmiert: Eine Seite, die in einem Browser angezeigt wird.\\
-
-\subsection{Die Doctype Definition}
-
-Die erste Programmzeile innerhalb eines HTML-Dokuments gibt zwei Dinge an, die gemeinsam als Doctype Definition (kurz DTD) bezeichnet werden:\\
-
-a)	Dies ist ein HTML-Dokument.
-b)	Die HTML-Version, in der das Dokument erstellt wurde.
-
-Bei HTML 4.01 war diese Zeile recht lang und es gab mehr als nur eine Variante. In HTML5 ist sie dagegen recht kurz:\\
-
-<!doctype html>\\
-
-Erst mit dieser Zeile teilen Sie dem Browser mit, dass es sich bei dieser Datei um eine HTML5-Datei handelt. In HTML4.01 konnte die DTD so aussehen: \\
-
-<!DOCTYPE HTML PUBLIC ``-//W3C//DTD HTML 4.01 Transitional//EN``> \\
-
-Da ist die Variante von HTML5 doch deutlich angenehmer, nicht zuletzt weil es nur genau eine Variante gibt.
-
-\subsubsection{Aufgabe}
-
--	Fügen Sie jetzt diese Zeile an den Anfang Ihres HTML-Dokuments in notepad++, speichern Sie und laden Sie dann die Seite im Webbrowser erneut. (Beim Mozilla Firefox genügt dafür ein Druck auf die Taste F5.)
-
-Wie Sie sehen hat sich an der Darstellung der Seite im Browser nichts geändert. Deshalb hier nochmals der Hinweis: Diese Programmzeile teilt dem Webbrowser lediglich mit, dass es sich hier um eine HTML5-Seite handelt. Da es für den Besucher einer Webanwendung üblicherweise belanglos ist, wie diese Seite programmiert wurde, wird diese Information auch nicht angezeigt. Der Webbrowser hat damit aber eine wichtige Information erhalten, denn bei der Darstellung einer Seite richten sich Webbrowser unter anderem nach den Sprachen und Versionen, in denen Dokumente verfasst sind.
-Übrigens können Sie eine Webanwendung vollständig in HTML4.01 programmieren und dennoch die DTD von HTML5 verwenden, denn HTML5 ist abwärtskompatibel.
-
-\subsection{Die drei Container jedes HTML-Dokuments}
-
-Jetzt kommen wir zu dem Teil, in dem Sie tatsächlich etwas programmieren, das auf der Seite angezeigt wird. Jede Webanwendung hat eine Struktur, die sich aus einen sogenannten Wurzel-Element, einem <head>- und einem <body>-Container zusammensetzt.\\
-
-Lassen Sie sich bitte nicht davon verwirren, dass hier teilweise die Rede von Elementen und teilweise die Rede von Containern ist. Bei der Programmierung in HTML werden beide als Synonyme verwendet, auch wenn die Bedeutung streng genommen nicht die gleiche ist.\\
-
-Bevor ich Sie mit weiteren Erklärungen langweile sehen Sie hier ein einfaches Beispiel für den „Programm“code einer Webanwendung: \\
-
-<!doctype html> 
-
-<html> 
-
-<head> 
-</head> 
-
-<body> 
-</body> 
-
-</html>
-Quellcode 2.1: Eine leere HTML5-Seite.
-
-Wenn Sie das so in Ihren Editor kopieren, speichern und im Browser laden, werden Sie feststellen, dass sich immer noch nichts geändert hat. Das ist kein Wunder, denn damit haben Sie lediglich eine Struktur angelegt und noch keine Inhalte eingefügt.\\
-
-Wie der Name schon sagt ist ein Container etwas, das etwas anderes enthält. Und in HTML programmieren Sie grundsätzlich nach diesem Muster: Sie programmieren Container, in die Sie Container und Inhalte einprogrammieren. Jeder Container kann wiederum beliebig viele Container und Inhalte enthalten usw. usf.\\
-
-Ein Container besteht aus drei Dingen:\\
-
-a)	Einem öffnenden Tag, das definiert, um was für einen Container es sich handelt. Genaue Definitionen werden über die sogenannten Attribute programmiert.
-b)	Dem Inhalt des Containers.
-c)	Einem sich schließenden Tag, bei dem einfach nur ein / vor dem Bezeichner steht, der im öffnenden Tag verwendet wurde. 
-
-Beispiel: \\
-
-Oben im Quellcodebeispiel sehen Sie das Wurzelelement Ihrer Seite. Das ist der html-Container, der zwei weitere Container enthält: Den head-Container und den body-Container. Das öffnende Tag dieses Containers ist <html> und das schließende Tag ist </html>. Dieses Prinzip gilt für alle Elemente eines HTML-Dokuments. Sie werden dennoch Container kennen lernen, die nur aus einem öffnenden Tag zu bestehen scheinen. Der Grund für diese Ausnahmen ist simpel: Es handelt sich dabei um Container, die keinen Inhalt haben.\\
-
-\subsection{Attribute}
-
-Später werden Sie in öffnende Tags noch Attribute einfügen. Diese programmieren Sie ausschließlich ins öffnende Tag. Das schließende Tag beinhaltet nur die Bezeichnung eines Containers. Wenn Sie zum Beispiel das lang-Attribut benutzen und ihm den Wert de zuordnen, sieht das öffnende html-Tag so aus: <html lang=de>. Das schließende html-Tag wäre dann aber immer noch </html>. Der Grund ist einfach: Attribute legen Einschränkungen oder Erweiterungen für alles fest, das sich innerhalb eines Container befindet. Also wäre es unsinnig, wenn Sie am Ende des Containers nochmals programmieren müssten, dass diese Attribute nun nicht mehr gelten.\\
-
-\subsection{Tags}
-
-Ein Tag besteht aus drei Dingen:\\
-
-a)	Einer öffnenden spitzen Klammer	<
-b)	Einem Bezeichner und ggf. einem oder mehreren Attributen, denen jeweils keiner, einer oder mehrere Werte zugeordnet werden.
-c)	Einer schließenden spitzen Klammer	>
-
-\subsubsection{Aufgabe}
-
--	Dann lassen Sie uns doch ein wenig Inhalt auf unsere Seite bringen. Kopieren Sie einfach den folgenden Quellcode in Ihre Datei, bzw. ergänzen Sie die neuen Zeilen. Dann speichern Sie die Datei und laden Sie mit einem Webbrowser.
-
--	Wie Sie im Browser sehen, hat sich ein Fehler eingeschlichen, der im Quellcode nicht enthalten ist: Anstelle der Wörter ``Einführung`` bzw. ``hätte`` stehen da ein paar seltsame Zeichen. Was da passiert ist und wie wir das in Ordnung bringen ist Teil des nächsten Abschnitts.
-
--	Im Quellcode haben Sie im head-Container einen title-Container programmiert. In diesem Container steht first.html. Suchen Sie im Browser nach der Stelle, wo first.html erscheint. Ändern Sie dann zur Kontrolle den Text im title-Container, speichern Sie das Dokument, laden die Seite im Browser neu und prüfen Sie, ob sie wirklich die richtige Stelle gefunden haben.
-
-<!doctype html> 
-<html> 
-<head> 
-<title>first.html</title> 
-</head> 
-
-<body> 
-<h1>Einführung in die Programmierung von verteilten Anwendungen</h1>
-<p>Dies ist ein Absatz... Wer hätte das gedacht?</p> 
-</body> 
-</html>
-Quellcode 2.2: Eine HTML5-Seite ohne Internationalisierung
-
-Kontrolle\\
-
--	Sie wissen, dass jedes HTML-Dokument aus einer Doctype Declaration sowie den drei Containern html, head und body besteht.
-
--	Sie haben eine erste Vorstellung davon, was Sie im <head> und was Sie im <body> programmieren.
-
--	Sie wissen, dass Sie Text im Webbrowser anzeigen können, indem Sie ihn innerhalb des <body>-Containers eingeben.
-
--	Sie wissen aber noch nicht, wie Sie Webbrowser dazu bewegen können, Umlaute anzuzeigen.
-
--	Sie verstehen noch nicht genau, wie Sie mit Hilfe von Attributen einzelne Container ändern können.
-
-\subsection{Übersicht über alle Tags}
-
-Wir werden in diesem Kurs nur einen kleinen Teil aller Tags besprechen, die es gibt. Und wir werden hier auch jeweils nur einige wenige Anwendungen besprechen können. Damit Sie aber sinnvolle Webanwendung und Webanwendungen entwickeln können, müssen Sie wissen, wo Sie nachschlagen können, wenn Sie mehr Informationen zu einzelnen Tags suchen. Öffnen Sie dazu die folgende Webanwendung:\\
-
-\url{http://www.w3schools.com/tags/}\\
+Wir werden in diesem Kurs nur einen kleinen Teil aller Tags besprechen, die es gibt. Und wir werden hier auch jeweils nur einige wenige Anwendungen besprechen können. Damit Sie aber sinnvolle Webanwendung und Webanwendungen entwickeln können, müssen Sie wissen, wo Sie nachschlagen können, wenn Sie mehr Informationen zu einzelnen Tags suchen. Bei den W3Schools nutzen Sie dazu die folgende Unterseite: \url{http://www.w3schools.com/tags/}\\
 
 Hier finden Sie eine vollständige Übersicht über die Tags in HTML. Außerdem finden Sie hier Hinweise darauf, was sich zwischen HTML4.01 und HTML5 geändert hat. Erfahrene HTML-Programmierer werden hier überrascht: Zwar sind alle Bereiche aus HTML entfallen, die mit dem Layout bzw. der Gestaltung zusammen hängen, aber dafür gibt es zum Teil Elemente aus HTML3, die in HTML4 entfernt und in HTML5 wieder hinzugefügt wurden.\\
 
-Wichtige Hinweise:\\
+\textbf{Wichtige Hinweise}:
 
--	Auf www.w3schools.com finden Sie zu jedem Tag Hinweise darauf, welcher Browser das jeweilige Tag unterstützt. Die Angaben dort werden jedoch nicht aktualisiert, sodass der Eindruck entstehen könnte, dass Sie HTML5 praktisch kaum einsetzen können. Das trifft aber nicht zu. Welche Tags tatsächlich von welchem Browser nicht automatisch unterstützt werden und wie Sie dafür sorgen können, dass ein Tag dennoch richtig angezeigt wird, erfahren Sie im Abschnitt zu den sogenannten Polyfills.
+\begin{itemize}
+	\item Auf \url{www.w3schools.com} finden Sie zu jedem Tag Hinweise darauf, welcher Browser das jeweilige Tag unterstützt. Die Angaben dort werden jedoch nicht aktualisiert, sodass der Eindruck entstehen könnte, dass Sie HTML5 praktisch kaum einsetzen können. Das trifft aber nicht zu. Welche Tags tatsächlich von welchem Browser nicht automatisch unterstützt werden und wie Sie dafür sorgen können, dass ein Tag dennoch richtig angezeigt wird, erfahren Sie im Abschnitt zu den sogenannten Polyfills.
+	\item Für diejenigen, die bereits in HTML4.01 programmiert haben hier noch ein essentieller Hinweis: Einige Container wie z.B. \verb|<div>|, die bislang sehr oft verwendet wurden, gibt es weiterhin, aber sie sind nur noch in den seltenen Spezialfällen einzusetzen, die mit den neuen Tags in HTML5 nicht abgedeckt sind.
+	\item Leider wird an dieser Stelle häufig auf selfhtml verwiesen. Das ist eine Webpage, die sehr detailliert ist, wenn es um HTML4.01 geht. Bezüglich HTML5 ist die Seite leider zurzeit nicht nutzbar. Zu oft werden Sie dort nach dem Lesen eines Abschnitts vor der Frage stehen: Gilt das jetzt immer noch? Deshalb lautet die klare Empfehlung: Nutzen Sie die Seite der W3Schools.
+\end{itemize}
 
--	Leider wird an dieser Stelle häufig auf selfhtml verwiesen. Das ist eine Webanwendung, die sehr detailliert ist, wenn es um HTML4.01 geht. Bezüglich HTML5 ist die Seite leider zurzeit nicht nutzbar. Zu oft werden Sie dort nach dem Lesen eines Abschnitts vor der Frage stehen: Gilt das jetzt immer noch? Deshalb lautet die klare Empfehlung: Nutzen Sie die oben angegebene Seite der W3Schools.
+\subsubsection{Was haben XML und XHTML mit Webanwendungen zu tun?}
 
-\subsection{Zusammenfassung zu den drei Containern}
+Einer der ersten Versuche, um semantische Webanwendungen zu entwickeln wurde unter der Bezeichnung \textbf{XML}\index{Programmiersprache!XML} (kurz für extended markup language) veröffentlicht. Eine Kombination aus XML und HTML wird als \textbf{XHTML}\index{XHTML}\index{Programmiersprache!XHTML} bezeichnet.
 
-Theoretisch wissen Sie jetzt alles, was Sie benötigen, um eine einfache Webanwendung zu erstellen, die ausschließlich Text beinhalten soll. Denn mehr als die DTD und die drei Container brauchen Sie dafür nicht. Aber da wir keine Webanwendung für Zweitklässler entwickeln wollen, machen wir direkt weiter.
+\subsubsection{Validierung - Prüfung auf Fehler}
 
-\subsubsection{Aufgabe}
+Bei der Eingabe von Programmcode machen wir unvermeidlich Fehler. Sie haben im vorigen Kapitel den Unterschied zwischen Syntax und Semantik kennen gelernt und wissen deshalb, dass es für einen Computer möglich ist, syntaktische Fehler zu erkennen, aber unmöglich semantische Fehler zu erkennen. Eine weitere Art von Fehlern, die ein Computer nicht erkennen kann hat etwas mit der Logik eines Programms zu tun: Wenn wir in einem Programm etwas einprogrammiert haben, dass der Computer ausführen kann, das aber nicht zu dem Ziel führt, zu dem wir gelangen wollen, dann kann der Computer das mit den bekannten Sprachen nicht erkennen.\\
 
--	Erstellen Sie jetzt die folgenden sechs HTML-Dokumente, programmieren Sie jeweils DTD und die drei Container und speichern Sie sie in Ihrem Netzlaufwerk im Verzeichnis PRG ab:
+Vor diesem Hintergrund ist die Behauptung, dass nur \textbf{streng typisierte Sprachen}\index{Typisierung!streng}\index{statisch} sicher seien kompletter Humbug: Sie bieten eine minimale Art von Sicherheit, die aber häufig irrelevant ist. Wer das nicht glauben mag, dem möchte ich einmal empfehlen, sich anzusehen, warum der erste Start der \verb|Ariane V| ein Totalausfall war. Was hat all die ach so großartige Typsicherheit beim Start dieser Rakete gebracht? Gar nichts! Ist Typsicherheit deshalb irrelevant? Nein. Sorgt sie dafür, dass Entwickler ein ungerechtigtes Gefühl von Sicherheit haben? Definitiv. Ist sie somit selbst ein Sicherheitsrisiko? Das können Sie sich selbst beantworten.\\
 
-•	arbeitsweg.html
-•	meinCampus.html
-•	meineHobbies.html
-•	meineZiele.html
-•	meinBlog.html
-•	index.html
+Kommen wir nun wieder zurück zur Programmierung von HTML-Dokumenten. Bislang kennen Sie keine Möglichkeit, um Ihr HTML-Dokument auf Fehlerfreiheit zu prüfen. Der Begriff der Fehlerfreiheit ist aber ungenau. Syntaktische Fehler können Sie ja recht leicht durch die Syntaxhervorhebung von notepad++ erkennen. Bei Markup Languages geht es uns aber um die Struktur einer Anwendung, also wäre es schön, eine Möglichkeit zu haben, um zu prüfen, ob die Struktur zumindest grundsätzlich den Vorgaben für HTML5 entspricht. Und das wird als \textbf{Validierung}\index{Validierung} bezeichnet.\\
+
+Damit aber ein Browser oder Validator (Programm, das die Validität eines Dokuments prüft) erkennen kann, dass wir ein HTML5-Dokument erstellt haben, müssen wir noch eine Zeile an den Anfang des Dokuments einfügen. Diese Zeile gibt den sogenannten \textbf{Doctype}\index{Doctype}\index{HTML!Doctype} an. Neben der Arbeitserleichterung folgt hieraus auch, dass Sie sich rechtlich etwas absichern: Indem Sie eine validierbare Webanwendung programmieren zeigen Sie, dass Sie nach den aktuellen technischen Standards arbeiten. Und das kann sich im Falle eines Gerichtsverfahrens zu Ihren Gunsten auswirken.\\
+
+Den \textbf{W3C-Validator}\index{Validator!W3C} finden Sie unter \url{http://validator.w3.org}. Hier geben Sie den Link auf die zu prüfende Seite ein und erhalten dann eine Ausgabe über die Validität Ihrer Seite. Alles was Sie tun müssen, um ein HTML-Skript als HTML5-Skript zu markieren ist das Hinzufügen einer kurzen Zeile am Anfang des Skripts (noch vor dem html-Container):\\
+
+\begin{verbatim}
+	<!doctype html>
+\end{verbatim}
+
+Und das ist alles. Wenn Sie sich nicht sicher sind, ob Sie wirklich HTML5 programmieren wollen, brauchen Sie sich keine Sorgen zu machen: HTML5-Skripte können Passagen enthalten, die wie bei einer früheren HTML-Version programmiert sind. Diese werden dann wie bei den früheren Versionen ausgeführt.\\
+
+Wenn wir also unseren bisherigen Code (als HTML5-Code) validierbar machen wollen, dann sieht er so aus:
+
+\begin{verbatim}
+	<!doctype html>
+	<html>
+	<head>
+	<title><?php include(test_title_001.txt); ?></title>
+	</head>
+	<body>
+	<?php include(test_begruessung_001.txt); ?>
+	</body>
+	</html>
+\end{verbatim}
+
+Die erste Programmzeile innerhalb eines HTML-Dokuments gibt somit zwei Dinge an, die gemeinsam als \textbf{Doctype Definition}\index{Doctype Definition}\index{HTML!Doctype Definition} (kurz DTD) bezeichnet werden:
+
+\begin{itemize}
+	\item Dies ist ein HTML-Dokument.
+	\item Die HTML-Version, in der das Dokument erstellt wurde.
+\end{itemize}
+
+Bei HTML 4.01 war diese Zeile recht lang und es gab mehr als nur eine Variante. Hier ein Beispiel für eine DTD in HTML4.01:\\
+
+\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">|\\
+
+Da ist die Variante von HTML5 doch deutlich angenehmer, nicht zuletzt weil es nur genau eine Variante gibt.\\
+
+Wenn Sie Ihr HTML-Dokument mit der DTD gespeichert und den Browser aktualisiert haben, werden Sie feststellen, dass sich die Anzeige nicht geändert hat. Deshalb hier nochmals der Hinweis: Diese Programmzeile teilt dem Webbrowser lediglich mit, dass es sich hier um eine HTML5-Seite handelt. Da es für NutzerInnen einer Webanwendung üblicherweise belanglos ist, wie diese Seite programmiert wurde, wird diese Information auch nicht angezeigt. Der Webbrowser hat damit aber eine wichtige Information erhalten, denn bei der Darstellung einer Seite richten sich Webbrowser unter anderem nach den Sprachen und Versionen, in denen Dokumente verfasst sind.
+
+\subsubsection{Absätze}
+
+Wenn Sie in Ihrer Webanwendung mehrere Absätze Text einfügen wollen, dann machen Sie das mit dem p-Container. Nutzen Sie bitte keinesfalls leere Container oder den \verb|<br \>|-Container, um leere Zeilen einzufügen. Wenn Sie solche Kniffe anwenden, dann programmieren Sie die Ansicht der Webanwendung. Das ist aber Mediendesign und hat in der Programmierung von HTML5 nichts zu suchen.
+
+\begin{verbatim}
+	<p> ... Erster Absatz ... </p>
+	<p> ... Zweiter Absatz ... </p>
+	usw.
+\end{verbatim}
+
+Pflegen wir das doch gleich in unsere \verb|.txt|-Dateien ein: Erweitern Sie den Inhalt der \verb|echo()|-Funktion um einige Absätze, die Sie genauso programmieren, als wenn sie direkt im HTML-Dokument stehen würden. (Wenn die Ausgabe nicht ganz so aussieht, wie Sie es erwarten, dann gedulden Sie sich noch ein wenig: Neben einem einfachen Syntaxfehler gibt es noch die Möglichkeit, dass Sie das HTML-Dokument nicht lokalisiert haben, oder dass Sie Sonderzeichen wie \grqq{} verwendet haben, die von der \verb|echo()|-Funktion nicht übernommen werden. Aber keine Sorge, um beide Fälle kümmern wir uns bald.
+
+\subsubsection{Kommentare}
+
+Bei längeren HTML-Dokumenten oder Containern, die nicht selbstredend sind, sollten Sie außerdem Kommentare einpflegen. Kommentare sind Codezeilen, die nicht ausgeführt werden, sondern ausschließlich dazu dienen, um anzuzeigen, was in einem Teil einer Programms oder Skripts passiert. Im Gegensatz zu anderen Containern sieht ein Kommentar wie folgt aus:\\
+
+\verb|<!--| Kommentar, auch über mehrere Zeilen \verb|-->|\\
+
+Bei Kommentar-Containern gibt es also keinen Abschluss durch den Slash, wie das bei anderen Tags der Fall ist.\\
+
+In der Vergangenheit wurden spezielle Befehle, die nur für den Internet Explorer zugeschnitten waren in Form von Kommentaren einprogrammiert; sollten Sie also in fremdem HTML-Skripten Kommentare der Form \verb|if IE ...|treffen, dann wissen Sie jetzt, worum es dabei geht.
+
+\subsubsection{Attribute}
+
+Später werden Sie in öffnende Tags noch Attribute einfügen. Attribute legen Einschränkungen oder Erweiterungen fest, die für einen Container gilt und für alles, was sich darin befindet. Diese programmieren Sie ausschließlich ins öffnende Tag. Das schließende Tag beinhaltet weiterhin nur die Bezeichnung eines Containers, um dem Browser anzuzeigen, dass der Container hier \glqq{}zuende\grqq{} ist.\\
+
+Wenn Sie zum Beispiel für den \verb|html|-Container: Wenn Sie hier das \verb|lang|-Attribut festlegen wollen, über das wir noch nicht gesprochen haben und diesem Attribut den Wert \verb|de| zuordnen, sieht das öffnende html-Tag so aus: \verb|<html lang=de>|. Das schließende html-Tag wäre dann aber immer noch \verb|</html>|. Also wäre es unsinnig, hier die Attribute zu programmieren: Attribute gelten immer für einen Container und gelten damit nicht mehr, sobald der Container geschlossen ist.\\
+
+Übrigens legen Sie mit dem \verb|lang|-Attribut die sogenannte Internationalisierung fest. Was das im Detail bedeutet besprechen wir später.\\
+
+\textbf{Für diejenigen, die bereits mit HTML4.01 programmiert haben}: Dort war es üblich, über Attribute die Gestaltung von Containern direkt über das \verb|style|-Attribut zu programmieren. Das passiert unter HTML5 nur noch indirekt über die beiden Attribute \verb|class| und \verb|id|. Bei diesen funktioniert es aber noch genauso wie unter HTML4.01.
+
+\subsubsection{Aufgaben}
+
+\begin{enumerate}
+	\item Erstellen Sie jetzt die folgenden sechs HTML-Dokumente, programmieren Sie jeweils DTD und die drei Container:
+	\begin{itemize}
+		\item arbeitsweg.php
+		\item meinCampus.php
+		\item meineHobbies.php
+		\item meineZiele.php
+		\item meinBlog.php
+		\item index.php
+	\end{itemize}
+	\item Erklären Sie in eigenen Worten, warum es für die Ansicht im Browser keinen Unterschied macht, ob die Dateiendung .html oder .php lautet.
+	\item (Für Fortgeschrittene, benötigt Recherche im Netz) Erklären Sie in eigenen Worten, warum es für die Ansicht im Browser einen großen Unterschied macht, ob Sie HTML-Dokumente, in denen PHP-Code enthalten ist direkt vom Browser geöffnet oder von einem Webserver (also per localhost) an den Browser übertragen werden.
+\end{enumerate}
+
+\subsubsection{Zusammenfassung}
+
+Sie kennen jetzt alles, was Sie benötigen, um eine einzelne Seite mit Text ins Netz zu stellen.
 
 \section{Barrierefreiheit, Internationalisierung und Lokalisierung}
 
-Dieser Abschnitt vermittelt Ihnen ein paar grundlegende Informationen dazu, wie Sie sicherstellen können, dass Ihre Webanwendung auf den verschiedensten Endgeräten und von den verschiedensten Nutzern genutzt werden kann.\\
+Die meisten Kurse zu HTML4.01 kommen (wenn überhaupt) erst ganz zum Schluss zu diesem Thema, dabei ist es für Webanwendungen essentiell: Dieser Abschnitt vermittelt Ihnen ein paar grundlegende Informationen dazu, wie Sie sicherstellen können, dass Ihre Webanwendung auf den verschiedensten Endgeräten und von den verschiedensten Nutzern genutzt werden kann. Dazu gehört aber vor allem etwas, das bereits mehrfach betont wurde: Programmieren Sie in HTML5 nur dann Design, wenn es anders unmöglich ist.\\
 
-Denn viele Entwickler vergessen schlicht, dass eine Webanwendung auf einem Smartphone anders dargestellt wird als auf einem Rechner mit einem 2k-Display, das horizontal ausgerichtet ist. Außerdem nutzen nicht nur hörbehinderte Personen Software, die Ihnen Webanwendung vorliest. Und zu guter Letzt bieten mehr und mehr Browser eine automatische Übersetzung von Webanwendung an.\\
+Der Grund für die Bedeutung dieses Kapitels ist so simpel wie ärgerlich:\\
 
-Damit Ihre Webanwendung unter all diesen Bedingungen immer noch gut aussieht, mussten Sie unter HTML4.01 eine ganze Menge Arbeit leisten, die bei HTML5 mit wenigen Befehlen erledigt werden kann.
+Viele Entwickler vergessen schlicht, dass eine Webanwendung auf einem Smartphone anders dargestellt wird als auf einem Rechner mit einem 2k-Display, das horizontal ausgerichtet ist. Außerdem nutzen nicht nur hörbehinderte Personen Software, die Ihnen Webanwendung vorliest. Und zu guter Letzt bieten mehr und mehr Browser eine automatische Übersetzung von Texten an.\\
+
+Damit Ihre Webanwendung unter all diesen Bedingungen immer noch gut aussieht, mussten Sie unter HTML4.01 eine ganze Menge Arbeit leisten, die bei HTML5 mit wenigen Befehlen erledigt werden kann. Wobei all die guten Vorsätze nichts Wert sind, wenn Sie im Team jemanden haben, der in HTML Design programmiert.
 
 \subsection{Barrierefreiheit}
 
@@ -289,129 +302,182 @@ Hier geht es darum, eine Webanwendung so zu programmieren, dass Sie auch dann no
 
 \subsubsection{Aufgabe}
 
--	Öffnen Sie die Webanwendung der HAW mit Ihrem Smartphone und versuchen Sie nun, über die Links auf der Startseite auf die Seite des Departments Medientechnik zu gelangen.
+Öffnen Sie die Webpage der HAW mit Ihrem Smartphone und versuchen Sie nun, über die Links auf der Startseite auf die Seite des Departments Medientechnik zu gelangen.\\
 
-Jetzt sollte Ihnen klar sein, dass Barrierefreiheit kein belangloses Thema für Randgruppen ist, sondern dass die Missachtung der Barrierefreiheit ein Problem ist, das Nutzer davon abschreckt eine Webanwendung zu nutzen.\\
+Selbst wenn Sie gute Augen haben, werden Sie merken, dass diese Aufgabe sehr anstrengend ist. Und das liegt eben nicht daran, dass es allzu schwer ist, die passenden Links zu finden; vielmehr wurde bei der Webpage der HAW die Barrierefreiheit zum Teil ignoriert. Damit sollte Ihnen klar sein, dass Barrierefreiheit kein belangloses Thema für Randgruppen ist, sondern dass die Missachtung der Barrierefreiheit ein Problem ist, das Nutzer davon abschreckt eine Webanwendung zu nutzen.\\
 
-Es gibt drei einfache erste Prüfungen, um die grundsätzliche Einhaltung der Barrierefreiheit zu prüfen. \\
+Es gibt drei einfache erste Prüfungen, um die grundsätzliche Einhaltung der Barrierefreiheit zu prüfen:
 
-1.	Es gibt einen kurzen Seitentitel, der kurz und zutreffend ist und die Seite von anderen Seiten unterscheidet.
+\begin{enumerate}
+	\item Es gibt einen Seitentitel, der kurz und zutreffend ist und die Seite von anderen Seiten unterscheidet.
+	\item Jeder Inhalt in einem Container bekommt eine Überschrift. (Ausnahmen sind z.B. \verb|<p>|-Conatainer.)
+	\item Für jedes multimediale Element gibt es eine alternative Bezeichnung, die Sie mit Hilfe des \verb|alt|-Attributs festlegen können. 
+\end{enumerate}
 
-2.	Jeder Inhalt in einem Container bekommt eine Überschrift. (Ausnahme: Container wie <p>, <div> und ähnliche, die lediglich einen Absatz umfassen sind davon ausgenommen.)
+Den ersten Punkt können Sie jetzt schon umsetzen, zum zweiten und dritten Punkt kommen wir, sobald wir die entsprechenden Container behandeln.\\
 
-3.	Für jedes multimediale Element gibt es eine alternative Bezeichnung, die Sie mit Hilfe des alt-Attributs festlegen können. 
+\textbf{Kontrolle}:
 
-Den ersten Punkt können Sie jetzt schon umsetzen, zum zweiten und dritten Punkt kommen wir später.\\
-
-Kontrolle\\
-
--	Sie verstehen, dass es bei Barrierefreiheit nicht nur um die Unterstützung von Menschen geht, die körperlich oder geistig beeinträchtigt sind.
-
--	Sie wissen vielmehr, dass die Beachtung der Barrierefreiheit wichtig ist, um Nutzer nicht von der eigenen Webanwendung zu vertreiben.
-
--	Ihnen ist klar, dass dazu wesentlich mehr nötig ist, als die drei Prüfungen, die Sie gerade kennen gelernt haben. (Für diesen Kurs soll das aber als kleine Einführung genügen.)
+\begin{itemize}
+	\item Sie verstehen, dass es bei Barrierefreiheit nicht nur um die Unterstützung von Menschen geht, die körperlich oder geistig beeinträchtigt sind.
+	\item Sie wissen vielmehr, dass die Beachtung der Barrierefreiheit wichtig ist, um Nutzer nicht von der eigenen Webanwendung zu vertreiben.
+	\item Ihnen ist klar, dass dazu wesentlich mehr nötig ist, als die drei Prüfungen, die Sie gerade kennen gelernt haben. (Für diesen Kurs soll das aber als kleine Einführung genügen.)
+\end{itemize}
 
 \subsection{Internationalisierung (kurz i18n) und Lokalisierung (kurz l10n)}
 
 Wenn Sie sich fragen, warum die Abkürzung i18n lautet, hier ist die Antwort: Das englische Wort internationaliziation beginnt mit einem i, hat 18 Buchstaben und endet mit einem n. Auf ganz ähnliche Weise kommen sie von localization zu l10n.\\
 
-Nach der Barrierefreiheit kümmern wir uns nun darum, dass der Browser mit den deutschen Umlauten zurechtkommt. Dazu müssen wir zwei Dinge erledigen. Zum einen müssen wir unsere Seite internationalisieren. Das bedeutet schlicht, dass wir dem Browser mitteilen, dass unsere Seite auf Deutsch verfasst wurde.\\
+Nach der Barrierefreiheit kümmern wir uns nun darum, dass der Browser mit den deutschen Umlauten zurechtkommt. Dazu müssen wir zwei Dinge erledigen:
 
-Danach müssen wir noch die Codierung festlegen, damit der Browser weiß, dass wir z.B. deutsche Umlaute verwenden. Diesen Schritt nennt man Lokalisierung. Im Gegensatz zur Internationalisierung werden Sie die Auswirkung der Lokalisierung direkt auf der Webanwendung sehen.\\
+\begin{enumerate}
+	\item Zum einen müssen wir unsere Seite \textbf{internationalisieren}\index{Internationalisierung}. Das bedeutet schlicht, dass wir dem Browser mitteilen, dass unsere Seite auf Deutsch (bzw. in einer anderen Sprache) verfasst wurde. Dieser Schritt dient Browsern mit Übersetzungsalgorithmen, um unsere Seite automatisch \glqq{}richtig\grqq{} zu übersetzen. Sie werden später erfahren, wie wir einzelne Passagen unserer Webanwendung zu programmieren können, dass sie von der automatischen Übersetzung ausgenommen werden.
+	\item Danach müssen wir noch die \textbf{Codierung}\index{Codierung} festlegen, damit der Browser weiß, dass wir z.B. deutsche Umlaute verwenden. Dieser Schritt wird als \textbf{Lokalisierung}\index{Lokalisierung} bezeichnet. Im Gegensatz zur Internationalisierung werden Sie die Auswirkung der Lokalisierung direkt auf der Webanwendung sehen.	
+\end{enumerate}
 
 Wie Sie Ihre Webanwendung internationalisieren und lokalisieren erfahren Sie direkt im nächsten Abschnitt.
 
 \section{Der head-Container, Meta-Daten und Attribute}
 
-Sie wissen, dass unser html-Container (das Wurzelelement) die beiden Container head und body enthält. Wenn Sie sich nun die Webanwendung ansehen, dann können Sie sich schon denken, was die beiden unterscheidet: Im head steht alles, was nicht auf der Webanwendung selbst angezeigt wird. Hier finden sich zusätzliche Informationen und allgemeine Definitionen, die für die gesamte Webanwendung gelten. Beispielsweise wird hier die Lokalisierung festgelegt. Solche allgemeinen Definitionen, die für eine ganze Webanwendung gelten, werden auch als Meta-Daten bezeichnet. Hier der entsprechende Container:\\
+Sie wissen, dass unser html-Container (der auch als \textbf{Wurzelelement} eines HTML-Dokuments bezeichnet wird) die beiden Container head und body enthält. Wenn Sie sich nun die Webanwendung ansehen, dann können Sie sich schon denken, was die beiden unterscheidet: Im head steht alles, was nicht im Fenster des Browsers angezeigt wird. Hier finden sich zusätzliche Informationen und allgemeine Definitionen, die für die gesamte Webanwendung gelten. Wenn es also eine Einstellung gibt, die für alle Container im \verb|<body>| gelten soll, dann werden Sie sie in aller Regel im \verb|<head>| programmieren. Beispielsweise wird hier die Lokalisierung festgelegt. Solche allgemeinen Definitionen, die für eine ganze Webanwendung gelten, werden auch als \textbf{Meta-Daten}\index{Meta-Daten} bezeichnet. Hier der entsprechende Container:
 
-<meta charset=utf-8 />\\
+\begin{verbatim}
+	<meta charset=utf-8 />
+\end{verbatim}
 
-Dieser meta-Container legt fest, dass als Codierung für unsere Webanwendung UTF-8 verwendet werden soll. Was das ist lernen Sie in der Veranstaltung Informatik für Medientechnik bzw. Informatik 1 für Media Systems.\\
 
-Außerdem sehen Sie, dass der Container am Ende einen / enthält. Dafür gibt es einen einfachen Grund: Wenn ein Container keinen Inhalt hat, dann können Sie ihn so abschließen und brauchen kein eigenständiges schließendes Tag programmieren. In HTML5 ist das nur dann nötig, wenn ein Container im Regelfall einen Inhalt hat. Hier können Sie also genauso gut die folgende Zeile programmieren:\\
+Dieser meta-Container legt fest, dass als Codierung für unsere Webanwendung UTF-8 verwendet werden soll. Codierung ist Teil der Nachrichten- und Kommunikationstechnik, wird aber auch in einführenden Veranstaltungen der Technischen Informatik besprochen.\\
 
-<meta charset=utf-8>\\
+Außerdem sehen Sie, dass der Container am Ende einen / enthält. Wie Sie bereits wissen, gibt es dafür gibt es einen einfachen Grund: Wenn ein Container keinen Inhalt hat, dann können Sie ihn so abschließen und brauchen kein eigenständiges schließendes Tag programmieren. In HTML5 ist das nur dann nötig, wenn ein Container im Regelfall einen Inhalt hat. Hier können Sie also genauso gut die folgende Zeile programmieren:
 
-Ein Attribut ist eine Einschränkung oder Erweiterung, die für alles gelten soll, das Teil eines Containers ist. Es handelt sich hier entweder um einzelne Bezeichner oder um Bezeichner, zu denen noch eine genaue Festlegung hinzugefügt wird.\\
+\begin{verbatim}
+	<meta charset=utf-8>
+\end{verbatim}
 
-Nun wollen wir unsere Webanwendung internationalisieren. Das Attribut für Sprache lautet lang.\\
+Damit haben Sie auch Ihr erstes Attribut mit einer Wertzuweisung kennen gelernt: \verb|charset| ist das Attribut, \verb|utf-8| der Wert, der diesem Attribut zugeordnet wird.\\
 
-Da wir aber nicht nur allgemein festlegen wollen, dass eine Sprache verwendet wird (das wäre ja sinnlos), müssen wir noch festlegen, dass die Sprache Deutsch sein soll. Und das tun wir, indem wir lang=de als Attribut festlegen.\\
+Nun wollen wir unsere Webanwendung internationalisieren. Das Attribut für Sprache lautet \verb|lang|. Da wir aber nicht nur allgemein festlegen wollen, dass eine Sprache verwendet wird (das wäre ja sinnlos), müssen wir noch festlegen, dass die Sprache Deutsch sein soll. Und das tun wir, indem wir mit \verb|lang=de| de als Wert des Attributs festlegen. Im Gegensatz zur Lokalisierung ist lang ein Attribut des html-Containers.\\
 
-Im Gegensatz zur Lokalisierung müssen wir die Internationalisierung durch ein Attribut durchführen. Damit ist es kein eigener Container, sondern es legt einen Container genauer fest. Deshalb wird Sie auch nicht im als Container im head-Container abgelegt, sondern es handelt sich um ein Attribut des html-Containers.\\
+Wenn Sie die nötigen Änderungen an Ihren HTML-Dokumenten durchgeführt haben, sieht das also so aus:
 
-Wenn Sie die nötigen Änderungen an Ihren HTML-Dokumenten durchgeführt haben, sieht das also so aus:\\
-
-<!doctype html> 
-<html lang=de> 
-<head> 
+\begin{verbatim}
+<!doctype html>
+<html lang=de>
+<head>
 <meta charset=utf-8>
-<title>first.html</title> 
-</head> 
-
-<body> 
-<h1>Einführung in die Programmierung von verteilten Anwendungen</h1>
-<p>Dies ist ein Absatz... Wer hätte das gedacht?</p> 
-</body> 
+<title><?php include(test_title_001.txt); ?></title>
+</head>
+<body>
+<?php include(test_begruessung_001.txt); ?>
+</body>
 </html>
-Quellcode 2.3: HTML5-Dokument mit i18n und l10n
+\end{verbatim}
 
-Sie wollen wissen, welche Codierung Sie für Sprachen wie Farsi (Afghanistan) oder Chinesisch brauchen? Genau dieselbe wie für Deutsch. Eine weitere Anpassung im Rahmen der Lokalisierung ist also nicht nötig. Aber Sie müssen die Internationalisierung in diesen Fällen über das lang-Attribut anpassen.
+Sie wollen wissen, welche Codierung Sie für Sprachen wie Farsi (Afghanistan) oder Chinesisch brauchen? Genau dieselbe wie für Deutsch. Eine weitere Anpassung im Rahmen der Lokalisierung ist also nicht nötig. Aber Sie müssen die Internationalisierung in diesen Fällen über das lang-Attribut anpassen.\\
+
+\textbf{Aufgabe}:\\
+
+Nachdem Sie Ihr Dokument um Internationalisierung und Lokalisierung erweitert haben, laden Sie es erneut. Jetzt wird endlich das \verb|ü| im Browser als ein ü angezeigt.
+
+\section{Mehr Grundlagen in HTML}
+
+\subsection{Mehr Auslagerung von Code}
+
+\textbf{Aufgabe}:\\
+
+Oben haben Sie gelernt, wie Sie Texte aus Dateien mit Hilfe von PHP in eine HTML-Dokument einfügen können. Stellen Sie sich vor, Sie müssten 95 HTML-Dokumente programmieren und bei allen würde in den ersten drei Zeilen der folgende Code stehen: \verb|<html lang=de><head><meta charset=utf-8>|.\\
+
+Programmieren Sie die Auslagerung dieses Code-Fragments in eine Datei, die per PHP ausgelesen und in ein HTML-Dokument eingefügt wird.\\
+
+\textbf{Hinweis}:\\
+
+Eine Auslagerung von so wenig Code ist meist nicht sinnvoll, weil es Ihnen den Überblick über den Code erschwert. Aber wenn wir zur Programmierung von PHP kommen werden Sie feststellen, dass Sie sich mit dieser Methode viel Tipparbeit ersparen können. Und das bedeutet sehr oft eine deutlich reduzierte Fehleranfälligkeit. Außerdem stellen Sie damit sicher, dass Code-Fragmente, die in mehreren HTML-Dokumenten identisch sein sollen auch dauerhaft identisch sind. Stellen Sie sich umgekehrt den Aufwand und die Fehlerwahrscheinlichkeit vor, wenn Sie in 95 HTML-Dokumenten eine kleine Änderung durchführen müssen.
+
+\textbf{Kontrolle}
+
+\begin{itemize}
+	\item Sie wissen, dass jedes HTML-Dokument aus einer Doctype Declaration sowie den drei Containern html, head und body besteht.
+	\item Sie haben eine erste Vorstellung davon, was Sie im <head> und was Sie im <body> programmieren.
+	\item Sie wissen, dass Sie Text im Webbrowser anzeigen können, indem Sie ihn innerhalb des <body>-Containers eingeben.
+	\item Sie verstehen noch nicht genau, wie Sie mit Hilfe von Attributen einzelne Container ändern können.
+\end{itemize}
 
 \subsection{Verwendung von Escape-Sequenzen}
 
 Vor HTML5 galt die Aussage, dass Sie grundsätzlich davon ausgehen mussten, dass Sie Sonderzeichen einer Sprache mit sogenannten Escape-Sequenzen programmieren mussten. Diese werden Ihnen auch weiter in HTML-Quellcode begegnen, weil Sie ja beispielsweise eine spitze Klammer nicht als Text in HTML einfügen dürfen.\\
 
-Standardmäßig beherrschen Webbrowser ausschließlich die Zeichen, die in der sogenannten ASCII-Tabelle aufgeführt sind. Für HTML4.01 bedeutet das: Nur Zeichen, die im englischen Alphabet vorkommen können direkt auf einer Webanwendung angezeigt werden. Alle anderen müssen mit einer sogenannten Escape-Sequenz ausgedrückt werden. Diese beginnt mit einem \&-Zeichen und endet mit einem Semikolon. Das deutsche ß mussten Sie unter HTML4.01 mit der Escape-Sequenz \&szlig; programmieren.\\
+Standardmäßig beherrschen Webbrowser ausschließlich die Zeichen, die in der sogenannten ASCII-Tabelle aufgeführt sind. Für HTML4.01 bedeutet das: Nur Zeichen, die im englischen Alphabet vorkommen können direkt auf einer Webanwendung angezeigt werden. Alle anderen müssen mit einer sogenannten Escape-Sequenz ausgedrückt werden. Diese beginnt mit einem \verb|&|-Zeichen und endet mit einem Semikolon. Das deutsche ß mussten Sie unter HTML4.01 mit der Escape-Sequenz \verb|&szlig;| programmieren.\\
 
-Weiterhin gab es noch die Möglichkeiten, Escape-Sequenzen mit der Nummer der Unicode-Tabelle zu programmieren. Beispielsweise steht \&\#x9fb9; für ein chinesisches Schriftzeichen. Stellen Sie sich einmal vor, Sie müssten auf diese Weise eine Webanwendung Zeichen für Zeichen programmieren...\\
+Weiterhin gab es noch die Möglichkeiten, Escape-Sequenzen mit der Nummer der Unicode-Tabelle zu programmieren. Beispielsweise steht \verb|&#x9fb9;| für ein chinesisches Schriftzeichen. Stellen Sie sich einmal vor, Sie müssten auf diese Weise eine Webanwendung Zeichen für Zeichen programmieren...\\
 
 Auch hier zeigt sich, dass die Entwickler beim W3C mit HTML5 einen Standard veröffentlicht haben, der wirklich sinnvolle Änderungen einführt, die auch das Programmieren von Webanwendung deutlich vereinfacht, ohne dabei die Funktionalität oder das Layout von Seiten zu beschränken. Vielmehr ist das Gegenteil der Fall.\\
 
 Es folgen einige Escape-Sequenzen, die Sie auch weiterhin benötigen werden:\\
 
+\begin{verbatim}
+	&amp;	& (kaufmännisches Und)
+	&quot;	`` (quotation mark)
+	&lt;	< (less than)
+	&gt;	> (greater than)
+\end{verbatim}
 
-\&amp;	\& (kaufmännisches Und)
-\&quot;	`` (quotation mark)
-\&lt;	< (less than)
-\&gt;	> (greater than)
-Tabelle 2.1: Wichtige Escape-Sequenzen\\
+Nehmen wir dazu an, dass Sie innerhalb eines HTML-Dokuments den folgenden Satz angeben wollen:\\
 
-Wenn Sie also innerhalb innerhalb einer HTML-Seite den folgenden Satz angeben wollen:\\
- 
-„Die Zeichenfolge <p> öffnet einen Absatz-Container in HTML“, 
+\verb|Die Zeichenfolge <p> öffnet einen Absatz-Container in HTML|, \\
+
 dann müssen Sie das so einprogrammieren:\\
-Die Zeichenfolge \&lt;p\&gt; öffnet einen Absatz-Container in HTML.
-Unter HTML4.01 hätten Sie zusätzlich für das ö von öffnet die Escape-Sequenz \&ouml; eingeben müssen. Aber das ist wie beschrieben in HTML5 dank Internationalisierung und Lokalisierung nicht mehr nötig.
 
-\section{HTML5: Anführungszeichen sind weitestgehend optional}
+\verb|Die Zeichenfolge &lt;p&gt; öffnet einen Absatz-Container in HTML.|\\
 
-Wenn Sie sich ältere HTML-Kurse ansehen, werden Sie feststellen, dass bei Wertzuordnungen wie lang=de der zugeordnete Wert immer in Anführungszeichen steht: <html lang=``de``> Das ist bei HTML5 nicht mehr zwingend vorgeschrieben. \\
+Unter HTML4.01 hätten Sie zusätzlich für das ö von öffnet die Escape-Sequenz \verb|&ouml;| eingeben müssen:\\
+
+\verb|Die Zeichenfolge &lt;p&gt; &ouml;ffnet einen Absatz-Container in HTML.|
+
+\subsection{HTML5: Anführungszeichen sind weitestgehend optional}
+
+Wenn Sie sich ältere HTML-Kurse ansehen, werden Sie feststellen, dass bei Wertzuordnungen wie lang=de der zugeordnete Wert immer in Anführungszeichen steht: \verb|<html lang="de">| Das ist bei HTML5 nicht mehr zwingend vorgeschrieben. \\
 
 Wenn Sie allerdings Werte zuordnen, die Leerzeichen beinhalten oder eine Webanwendung für veraltete Browser entwickeln wollen, dann sollten Sie in jedem Fall Anführungszeichen verwenden.
+
+\subsection{Zusammenfassung}
+
+Für den Rest dieses Kapitels werden wir nicht wieder über die Container \verb|<html>| und \verb|<head>| sprechen.
 
 \section{Strukturen von HTML5-Dokumenten}
 
 Auch wenn das offensichtlich sein sollte, sei hier betont: Alle Container, die in diesem Abschnitt besprochen werden können ausschließlich im body-Container eingesetzt werden.\\
 
-All diese Elemente haben in HTML5 eine feste Bedeutung, die insbesondere im Rahmen der Barrierefreiheit von Belang ist. Bei HTML4.01 mussten Webentwickler sich noch mit div-Containern behelfen, denen Sie nicht-standardisierte Attribute zuordneten. Die Folge bestand darin, das Browser die vom Entwickler vorgesehene Struktur häufig ignorierten.
+All diese Elemente haben in HTML5 eine feste Bedeutung, die insbesondere im Rahmen der Barrierefreiheit von Belang ist. Bei HTML4.01 mussten Webentwickler sich noch mit div-Containern behelfen, denen Sie nicht-standardisierte Attribute zuordneten. Die Folge bestand darin, das Browser die in HTML-Dokumenten vorgegebenen Strukturen nicht erkennen konnten und somit weitgehend willkürlich die Ansicht generierten.\\
+
+Das wiederum brachte viele \glqq{}professionelle\grqq{} EntwicklerInnen dazu, Unmengen an Zeit damit zu verschwenden, HTML-Dokumente mit tausenden Zeilen Code zu erweitern, die letztlich nur dafür sorgen sollten, dass die Ansicht wie gewünscht in jedem denkbaren Browser angezeigt wurde.\\
+
+Deshalb werden Sie heute eine Vielzahl an Frameworks finden, die Ihnen diese Arbeit abnehmen, die aber gleichzeitig garantieren, dass Ihre Webanwendung auf bestimmten Endgeräten oder für bestimmte NutzerInnen grausig aussehen werden, weil z.B. die Barrierefreiheit ignoriert wird. Die Seite der HAW ist da nur ein Beispiel. Schauen Sie sich beispielsweise Seiten auf einem Rechner an, deren Design für Smartphones entwickelt wurde: Zum Teil füllen deren Überschriften ein Viertel des Bildschirms: Das ist mangelhaftes Webdesign! Nehmen Sie bento (einen Ableger von Spiegel online), um einen Eindruck zu bekommen, was hier gemeint ist: \url{http://www.bento.de/}\\
+
+Also nochmal: Ignorieren Sie bitte das Design Ihrer Anwendung, denn so lange Sie nicht über jahrelange Erfahrung in diesem Bereich verfügen werden Sie sonst nur Anwendungen entwickeln, die auf einer Art von Endgerät gut aussehen, auf allen anderen dagegen grausig. Und das ist das Vorgehen von Amateuren.
 
 \subsection{header, footer, main und aside}
 
-Mit diesen vier Containern können Sie eine grobe Struktur vorgeben: \\
+Mit diesen vier Containern können Sie eine grobe Struktur Ihrer Webanwendung vorgeben.
 
--	Im <header> (nicht zu verwechseln mit dem <head>) können Sie beispielsweise ein Unternehmenslogo oder ähnliches unterbringen.
+\begin{itemize}
+	\item Im \verb|<main>| sollen sich alle Inhalte befinden, die auf der Webanwendung zentral angezeigt werden sollen.
+	\item Der \verb|<aside>|-Container ist dann für ergänzende Inhalte zu den Inhalten im <main> gedacht.
+	\item Im \verb|<header>| (nicht zu verwechseln mit dem <head>) können Sie beispielsweise ein Unternehmenslogo oder ähnliches unterbringen.
+	\item Der \verb|<footer>| dient dann dazu, um beispielsweise einen Verweis auf das Kontaktformular, das Impressum und ähnliches aufzunehmen.
+	\begin{itemize}
+		\item Der \verb|<nav>|-Container kann in jedem der anderen vier Container untergebracht werden. Er ist vorrangig dafür gedacht, um eine Navigationsleiste zu realisieren. (Wir haben noch nicht darüber gesprochen, wie Sie einen Link auf eine andere Seite programmieren, aber auch dazu kommen wir bald.)
+	\end{itemize}
+\end{itemize}
 
--	Der <footer> dient dann dazu, um beispielsweise einen Verweis auf das Kontaktformular, das Impressum und ähnliches aufzunehmen.
+Wenn also ein Browser diese Container unterstützt, dann könnte das bedeuten, dass Header und Footer automatisch am oberen bzw. unteren Rand des Bildschirms eingeblendet werden, während NutzerInnern durch die Seite scrollen. Der Main-Bereich würde dann rund zwei Drittel der Breite und der Aside-Bereich ein Drittel des Bildschirms einehmen.\\
 
--	Im <main> sollen sich alle Inhalte befinden, die auf der Webanwendung zentral angezeigt werden sollen.
+Bei Smartphones mit kleinen Displays würden dagegen Header und Footer wahrscheinlich automatisch minimiert werden und Main sowie Aside untereinander angezeigt werden, damit die Ansicht auf dem Gerät im Sinne der NutzerInnen aufgebaut wäre.\\
 
--	Der <aside>-Container ist dann für ergänzende Inhalte zu den Inhalten im <main> gedacht.
+Es wären auch noch viele weitere Möglichkeiten denkbar, aber letztlich würden gut programmierte Browser diese Entscheidung anhand der Bauweise des Gerätes selbst durchführen. Als HTML-EntwicklerInnen könnten uns dann vollständig darauf konzentrieren, gut strukturierte semantische Webpages zu entwerfen, anstatt den Großteil unserer Zeit damit zu verschwenden jeden denkbaren Fall manuell zu programmieren.
 
 \subsection{article und section}
 
-Diese beiden Container kommen vorrangig im <main> und <aside> zum Einsatz. Das Konzept sieht wie folgt aus: Wenn Sie wie bei einem Buch die Inhalte Ihrer Webanwendung in Kapitel und Unterkapitel unterteilen wollen, dann beginnen Sie mit einem <article>. Sobald ein Unterkapitel beginnt, fügen Sie innerhalb dieses Containers einen <section>-Container ein. Wenn Sie dann noch weiter unterteilen wollen, fügen Sie an der entsprechenden Stelle des <section> einen <article> ein usw. usf. Wichtig  ist nur, dass Sie zum einen mit <article> beginnen, und dass Sie die beiden Container-Typen im Wechsel verwenden, wenn Sie jeweils eine weitere unter-Struktur (Unter-Unter-Kapitel zum Unter-Kapitel) beginnen wollen.
+Diese beiden Container kommen vorrangig im <main> und <aside> zum Einsatz. Das Konzept sieht wie folgt aus: Wenn Sie wie bei einem Buch die Inhalte Ihrer Webanwendung in Kapitel und Unterkapitel unterteilen wollen, dann beginnen Sie mit einem \verb|<article>|. Sobald ein Unterkapitel beginnt, fügen Sie innerhalb dieses Containers einen \verb|<section>|-Container ein. Wenn Sie dann noch weiter unterteilen wollen, fügen Sie an der entsprechenden Stelle des <section> einen <article> ein usw. usf. Wichtig  ist nur, dass Sie zum einen mit <article> beginnen, und dass Sie die beiden Container-Typen im Wechsel verwenden, wenn Sie jeweils eine weitere unter-Struktur (Unter-Unter-Kapitel zum Unter-Kapitel) beginnen wollen.
 
 \subsection{h1 bis h5}
 
@@ -425,11 +491,15 @@ Wenn Sie einen article oder eine section in mehrere Absätze unterteilen wollen,
 
 Der <div> ist der einzige Container, für den keine semantischen Merkmale festgelegt werden können. Alleine deshalb sollten Sie im Regelfall <p> verwenden. Bitte missverstehen Sie das nicht: Der Inhalt eines div-Containers kann selbstverständlich auch semantische Informationen enthalten, der Container selbst dagegen nicht.\\
 
-<h1> bis <h5>, <div> und <p> gab es bereits in HTML4.01. In HTML5 haben Sie aber zusätzlich die beschriebenen Funktionen im Rahmen des semantic web.
+\textbf{Für diejenigen, die bereits HTML4.01 programmiert haben}:\\
 
-\subsection{nav}
+Wenn Sie Container wie \verb|<div class="main"> <div class="section">| usw. verwenden, ist klar, dass Sie nichts von dem verstanden haben, was hier wir bislang über HTML5 besprochen haben.\\
 
-Dieser Container ist dafür gedacht, die Navigation (also eine Sammlung der wichtigsten Links einer einzelnen Seite) zu bündeln. Im Rahmen dieses Kurses werden wir uns damit nicht auseinander setzen.
+<h1> bis <h5>, <div> und <p> gab es bereits in HTML4.01. In HTML5 haben Sie aber zusätzlich die eine Vielzahl an Containern, die für die standardisierte Strukturierung einer Webanwendung genutzt werden sollen.
+
+\subsection{Aufgabe}
+
+Integrieren Sie die neuen Container in die bisherigen Dateien, auch wenn sie damit leer sind. Vergessen Sie dabei nicht, ggf. über PHP identische Teile unterschiedlicher HTML-Dokumente auszulagern.
 
 \section{Polyfills}
 
