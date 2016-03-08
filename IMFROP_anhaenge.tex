@@ -1,0 +1,144 @@
+\chapter{Anhänge}
+\section{Anhang A – (Mathematische) Grundlagen für die Programmierung}
+\subsection{Modulare Arithmetik}
+\subsection{Computerspeicher und Zahlenbereiche}
+\paragraph{Programmierung ohne signed Integer}
+\paragraph{Programmierung mit signed Integer}
+\paragraph{Overflow und Carry}
+\paragraph{Übersicht: Signed und unsigned Integer für 3-Bit-Computer}
+Wenn Sie Computer programmieren müssen sie verschiedene mathematische Grundlagen beachten, da Sie die Grundlage für die Funktionsweise von Computern darstellen. Dieser Anhang kann eine vollwertige Mathematikvorlesung nicht ersetzen, aber darum geht es hier auch gar nicht; vielmehr soll Ihnen dieser Abschnitt dazu dienen, den Übergang von der häufig rein abstrakten Mathematik hin zur etwas konkreteren Anwendung beim Programmieren zu erleichtern.
+A.1. Modulare Arithmetik
+Modulare Arithmetik spielt bei der Programmierung von Computern immer dann eine zentrale Rolle, wenn Sie direkt auf Speicher zugreifen können. (Deshalb wird dieses Thema auch in der Veranstaltung Mathematik 2 für Media Systems behandelt.) Daraus resultiert, dass es ein essentieller Aspekt im Bereich der IT-Sicherheit ist, sowohl bei Angriffsszenarien (z.B. Viren) als auch Verteidigungstechniken.
+Die Modulare Arithmetik kennen Sie seit der Kindheit, auch wenn Sie vielleicht heute zum ersten Mal den Begriff hören bzw. lesen. Ein einfaches Beispiel ist die Uhrzeit: Nehmen wir an, es ist gerade 18 Uhr. Wenn Sie berechnen, wie spät es in 80 Stunden sein wird, dann wenden Sie das an, was in der Mathematik Modulare Arithmetik genannt wird:
+Zunächst teilen Sie die 80 durch 24 (oder 12) und addieren dann den Rest zur aktuellen Uhrzeit und teilen diesen dann ggf. wieder durch 24 und behalten nur den Rest: 
+80 : 24 = 3, Rest 8
+18 + 8 = 26
+26 : 24 = 1, Rest 2
+Lösung: Wenn es jetzt 18 Uhr ist, dann wird es in 80 Stunden 2 Uhr sein.
+Wie Sie sehen ist Modulare Arithmetik im Grunde etwas ganz einfaches. Wenn Sie in der Mathematikvorlesung gefehlt haben sollten, kommt hier noch eine kurze Wiederholung der Grundlagen, die Sie im Bereich der Programmierung benötigen:
+Die modulare Arithmetik gehört zu den Teilgebieten der Algebra und der Zahlentheorie. Wenn Sie sich intensiv in die zugehörigen mathematischen Grundlagen einarbeiten möchten, dann müssen sie sich mit Begriffen wie Ringen beschäftigen. Im Rahmen der Programmierung werden Sie mit modularer Arithmetik mit ganzen Zahlen zu tun haben.
+Wie Sie oben gesehen haben, ist bei der modularen Arithmetik im Regelfall der Rest einer Division der interessante Teil. Dieser Rest wird als Modulo bezeichnet. Um das Modulo zu berechnen können sie in vielen aber längst nicht allen Sprachen das Prozentzeichen % als Operation genauso verwenden, wie Sie sonst das Divisionszeichen für die entsprechende Operation verwenden würden. Als Ergebnis erhalten Sie dann das Modulo.
+Warnung: Aus alter Gewohnheit passiert es leicht, dass Sie anstelle Modulo mit Division rechnen. Vergessen Sie nicht: 42 Modulo 7 ist 0. Oft genug passiert es Studierenden, dass sie hier 6 als Ergebnis notieren, weil Sie an 42 durch 7 denken.
+Für den Rest gibt es noch den Fachbegriff des Residuums. Sollten Sie also in Fachbüchern darüber stolpern, wissen Sie jetzt, was gemeint ist.
+Sie werden in diesem Bereich auch auf den Begriff der Restklasse treffen. Wie so oft in der Mathematik kann eine Restklasse nicht für sich stehen, sondern sie macht erst dann Sinn, wenn sie gemeinsam mit einem Modulo verwendet wird. Es gibt für jedes Modulo genauso viele Restklassen, wie das Modulo groß ist. Eine einzelne Restklasse beinhaltet alle Werte, die nach Anwendung der Modulo-Operation mit einem Modulo dasselbe Ergebnis ergeben. 
+Beispiel: Beim Modulo 4 erhalten wir vier Restklassen:
+•	R0 enthält all die Werte, die Modulo 4 eine 0 ergeben: { …, -8, -4, 0, 4, 8, 12, … } Das ist also diejenige Restklasse, die diejenigen Zahlen beinhaltet, die bei Division keinen Rest ergeben.
+•	R1 enthält all die Werte, die Modulo 4 eine 1 ergeben: { …, -9, -5, -1, 1, 5, 9, 13, … }
+•	usw.
+Wenn Sie genau hinsehen, werden Sie merken, dass nur bei der R0 der Abstand zwischen allen Elementen der Restklasse gleich vier ist. Das mag eine triviale Feststellung sein, aber sie ist nicht unwichtig, denn auch hier unterläuft einigen Studierenden der Fehler, mit der modularen Arithmetik wie mit der Division umzugehen.
+Auch wenn Sie bei der Uhrzeit davon umgangssprachlich sagen, dass 13 Uhr gleich 1 Uhr ist, gilt hier natürlich nicht Gleicheit im mathematischen Sinne. Um diesen Unterschied hervorzuheben gibt es den Begriff der Kongruenz: Formal korrekt wäre es zu sagen: 13 ist kongruent zu 1 Modulo 12.
+Kongruenz wird durch ein „Gleichzeichen“ mit drei Linien dargestellt: 
+13 ≡ 1 ( mod 12 )
+Eigenschaften der Modulo Arithmetik: Wenn Sie mit Modulo rechnen, gelten Kommutativität, Assoziativität und Distributivität. Das bedeutet u.a., dass Sie jeden einzelnen Wert durch das Modulo kürzen dürfen und nicht zuerst die Multiplikationen und Additionen berechnen müssen.
+Beispiel: 
+27 * ( 39 + 15 ) ist kongruent Modulo 16 zu 
+11 * ( 7 – 1 ) ist kongruent Modulo 16 zu
+11 * 6 ist gleich 66 ist kongruent Modulo 16 zu
+4.
+Wie Sie sehen können Sie sich bei modularer Arithmetik also viel Arbeit (und insbesondere einen Taschenrechner) sparen, wenn Sie schlicht sauber kürzen, bzw. die Restklassen im Kopf behalten. Beispiel: 15 ≡ -1 mod 16
+Bevor wir uns nun ansehen können, was das bei der Programmierung bedeutet, müssen wir uns mit Zahlenbereichen auseinander setzen
+A.2. Computerspeicher und Zahlenbereiche
+Wie Sie wissen, ist der Arbeitsspeicher jedes Computers beschränkt. Vielleicht wenden Sie jetzt ein, dass doch jeder Speicher beschränkt ist. Dazu lässt sich allerdings sagen, dass Sie durchaus einen Bandspeicher nutzen können, der kontinuierlich mit Speicherbändern gefüttert werden kann und von daher quasi einen Endlosspeicher darstellt. Aber das nur am Rande.
+Aber da Sie in der Schule gelernt haben, dass bereits die ganzen Zahlen endlos sind, sind Ihnen die Konsequenzen bereits bei einfachsten Computerprogrammen gar nicht bewusst: Eine Zahl wie 0,3 kann ein Computer nicht richtig speichern oder verarbeiten. Und eine Zahl wie 5 Millionen kann ein 32-Bit-Computer im Grunde auch nicht speichern. Ein Computer hat auch keine Methode, um eine Zahl wie -7 zu speichern, denn er kennt keine negativen Zahlen.
+Formulieren wir es einmal anders:
+•	8-Bit-Computer kennen nur die Zahlen von 0 bis 256.
+•	16-Bit-Computer kennen nur die Zahlen von 0 bis 65536.
+•	32-Bit-Computer kennen nur die Zahlen von 0 bis 4294967296.
+•	Usw.
+Alle Zahlen, die außerhalb dieses Bereichs liegen müssen in einer anderen Form repräsentiert werden.
+Wenn wir nun einen Computer programmieren, dann gibt es zwei Standardmethoden, um Zahlen zu speichern, ohne dass wir uns aus dem Bereich bewegen, den der Computer kennt: Signed und Unsigned Integers. Signed bezeichnet hierbei die Tatsache, dass wir mit Vorzeichen rechnen. Wir bekommen so also negative Zahlen, obwohl der Computer sie nicht kennt. Es ist deshalb wichtig, dass Sie sich vergegenwärtigen, dass diese Unterscheidung eine willkürliche Festlegung durch uns als Programmierer ist, von der der Computer nichts weiß und auf die er dementsprechend auch nicht reagieren kann. Dementsprechend müssen wir alle möglichen Konsequenzen selbst abgreifen und können uns nicht auf eine Unterstützung durch den Rechner verlassen. (Auf die Konsequenzen gehen wir gleich ein.)
+Um Rechenbeispiele zu bekommen, werden wir in diesem Abschnitt voraussetzen, dass wir es mit einem 3-Bit-Computer zu tun haben. Damit ergibt sich, dass dieser die folgenden acht Zahlen kennt bzw. darstellen kann. Die Prinzipien, die Sie gleich kennen lernen gelten in dieser Form für alle binär-basierten Computer.
+000
+001
+010
+011
+100
+101
+110
+111
+A.2.1. Programmierung ohne signed Integer
+Nun können wir als Entwickler diesen Zahlen Werte zuordnen. Bleiben wir dazu bei dem Fall, in dem wir ohne signed Integer arbeiten. Und hier gibt es gleich die erste Schwierigkeit: Beginnen wir bei 0 oder bei 1? Die Konsequenz daraus können Sie aus folgender Tabelle entnehmen: (Jedes Mal, wenn Sie es mit Arrays zu tun haben, werden Sie genau deshalb konzentriert sein müssen.)
+Die 1. Zahl lautet:	000	und heißt 0
+Die 2. Zahl lautet:	001	und heißt 1
+Die 3. Zahl lautet:	010	und heißt 2
+Die 4. Zahl lautet:	011	und heißt 3
+Die 5. Zahl lautet:	100 	und heißt 4
+Die 6. Zahl lautet:	101 	und heißt 5
+Die 7. Zahl lautet:	110 	und heißt 6
+Die 8. Zahl lautet:	111 	und heißt 7
+Wie Sie sehen, haben wir es mit den 8 Zahlen von 0 bis 7 zu tun. Das kann bereits zu Fehlern führen, so zum Beispiel, wenn Sie bei einem Array mit acht Einträgen programmieren, dass der Rechner bis zum Eintrag Nr. 8 etwas durchführen soll: Das führt zu einem Fehler, weil der 8. Eintrag die Nr. 7 hat. Dagegen kennt er keinen Eintrag mit der Nummer 8!
+Bei der maschinennahen Programmierung kommt noch eine andere Fehlerquelle hinzu: Dort müssen Sie des Öfteren einzelne Bits (auf 1) setzen oder (auf 0) resetten. Es ergeben sich dann folgenden Szenarien:
+•	Sie müssen das Bit Nummer 3 setzen: Dann müssen Sie den binären Wert 1000, also die Zahl 8 programmieren.
+•	Sie müssen das 3. Bit setzen: Dann müssen Sie den binären Wert 100, also die Zahl 4 programmieren.
+•	Sie müssen die Zahl 3 programmieren: Dann müssen Sie den binären Wert 11 programmieren.
+•	Sie müssen das 3. Element von etwas programmieren. Und hier kann Ihnen ausschließlich die Dokumentation des zu programmierenden Systems weiterhelfen, um zu entscheiden, welcher der drei Fälle zutrifft. Mit der Methode try and error werden Sie hier im Regelfall gnadenlos scheitern.
+Diese Aufstellung sollte Ihnen also verdeutlichen, dass Sie hier hoch konzentriert an die Arbeit gehen müssen. Im Gegensatz zu höheren Programmiersprachen können Sie diese Fälle in aller Regel nicht über logische Schlussfolgerungen, sondern ausschließlich über genaues Wissen lösen.
+Wichtig: So lange Sie sich im Bereich der bitweisen Programmierung befinden, werden die Begriffe set und reset als Synonyme für das Setzen auf 1 (set) bzw. 0 (reset) verwendet. Bei der Programmierung von Mikroprozessoren müssen Sie an dieser Stelle aufpassen, denn dort wird auch das Neustarten eines Programms als Reset bezeichnet. Und das hat in aller Regel nichts mit dem setzen eines einzelnen Bit auf den Wert 1 zu tun.
+A.2.2. Programmierung mit signed Integer
+Nun wollen wir aber häufig mit negativen Zahlen arbeiten. Wenn Sie sich die binäre Darstellung der Zahlen (also die einzige Form, die der der Rechner wirklich kennt) ansehen, könnten Sie auf die Idee kommen, dass Sie einfach das höchstwertige Bit für ganze Zahlen auf 0 und für negative Zahlen auf 1 setzen. Probieren wir es also aus:
+000	ist 0.
+001	ist 1.
+010	ist 2.
+011	ist 3.
+111	ist -3.
+110	ist -2.
+101	ist -1.
+100	ist dann negativ 0 und was soll das sein?
+Also müssen wir uns ein anderes System überlegen. Es gibt mehrere Ansätze, für uns ist aber das sogenannte 2er Komplement die Standardlösung dieses Problems. Das 2er-Komplement berechnen Sie, indem Sie sämtliche Bits eines Wertes invertieren, das MSB (kurz für Most Significant Bit bzw. Höchstwertigstes Bit) in eine 1 umwandeln und dann eine 1 addieren.
+Beispiel: Sie wollen das 2er Komplement zu 11 berechnen:
+11 ist 1011 in binärer Schreibweise.
+Wenn Sie jedes Bit invertieren, ergibt das 0100.
+Wenn Sie das MSB als 1 setzen, ergibt das 10100.
+Wenn Sie eine 1 addieren, ergibt das 10101 und damit haben Sie die Darstellung von -11 in Form des 2er Komplements.
+Wichtig: Sie müssen noch darauf achten, dass Sie das Ergebnis entsprechend der Bittigkeit des Rechners angeben. Nehmen wir an, Sie wollen auf einem 8-Bit-Rechner die -11 darstellen, dann müssen Sie darauf achten, dass die Zahl eben 8 Stellen hat. In diesem Fall wären die -11 also nicht 10101, sondern 10000101.
+Und? Ist es Ihnen aufgefallen? Da oben steht, dass 11 gleich 1011 ist. Damit Sie in solchen Fällen wissen, welche Zahl in Binärdarstellung und welche in Dezimaldarstellung notiert ist, wird manchmal (aus Faulheit aber nur selten) über einen Index die Basis der Zahlen angegeben. Formal korrekt wäre es also 1110 = 10112 zu schreiben.
+Hexadezimale Zahlen werden häufig durch das voranstellen der Kombination 0x markiert. 10112 = 0xb
+Wenn wir nun in unserem 3-Bit-Rechner negative Zahlen per 2er Komplement darstellen oder besser gesagt die Zahlen mit führender 1 als negative Zahlen im Sinne des 2er Komplements interpretieren wollen, dann ergibt sich folgende Aufstellung:
+000	ist 0.
+001	ist 1.
+010	ist 2.
+011	ist 3.
+100	ist -4.
+101	ist -3.
+110	ist -2.
+111	ist -1.
+Kontrolle
+Wie Sie sehen haben wir jetzt eine negative Zahl mehr als positive Zahlen.
+Außerdem scheint die Reihenfolgen im negativen Bereich falsch zu sein: Die 100 ist eine größere negative Zahl als die 101. Aber wenn Sie die Zahlen in Form eines Kreises (also entsprechende der Modularen Arithmetik) anordnen, dann werden Sie sehen, dass das nur eine „optische“ Täuschung ist.
+A.2.3. Overflow und Carry
+Wie weiter oben erläutert weiß der Rechner (genauer gesagt der Mikroprozessor des Rechners) nichts über signed und unsigned; für ihn besteht die Welt nur aus dem, was wir als unsigned Integer nennen und im Grunde kennt er nicht einmal das. Im Kern kann er außerdem nur addieren, aber das macht er mit einer für uns nicht mehr nachvollziehbaren Geschwindigkeit: Innerhalb einer Sekunde führen aktuelle Intel- und AMD-Prozessoren zwischen 2 und 4 Milliarden Operation aus. Und wenn es sich um Mehrkernprozessoren handelt, dann sind es dementsprechende Vielfache von 2 bis 4 Milliarden Operationen.
+Denken Sie an die Grundlagen der modularen Arithmetik: Dort wird ja, wenn das Modulo erreicht wird, das Ergebnis wieder auf 0 zurück gesetzt. Und das passiert natürlich auch bei Prozessoren, denn deren Speicher haben ja ein Modulo: Das ist der größte unsigned Integer, der entsprechend der Bittigkeit des Rechners darstellbar ist.
+Wenn sie die modulare Arithmetik verstanden haben, dann wissen Sie, dass dieses Modulo sich nicht ändert, wenn wir mit signed Integers rechnen. Dieser Satz irritiert Sie? Am Ende dieses Unterabschnitts sollte das klar werden.
+Aufgabe:
+Nehmen wir wieder unseren 3-Bit-Rechner: Welche größte Zahl kennt dieser?
+Sie sollten erst dann weiter lesen, wenn Ihnen klar ist, warum diese Frage falsch gestellt ist. Wenn Ihnen nicht klar ist, dass sie falsch gestellt ist, dann haben Sie eine ganz essentielle Aussage ignoriert, die in diesem Buch und diesem Kapitel immer wieder formuliert wurde: Der Rechner arbeitet mit Hilfe von Zahlenkolonnen, die wir als Einsen und Nullen interpretieren. Und wie Sie gerade eben erst lesen konnten, kennt der Rechner nur diese Einsen und Nullen, aber er führt keinerlei Interpretation davon durch. Das tun nur wir als Nutzer eines Computers. Weiterhin legen wir dann willkürlich Gruppen von Einsen und Nullen zusammen und interpretieren auch diese Gruppen wieder vollkommen willkürlich. Auch davon „weiß“ der Computer nicht das Geringste. Dementsprechend gibt es gar keine größte Zahl, die der 3-Bit-Computer kennt.
+Jetzt aber zurück zu den zentralen Begriffen des Overflow und des Carry.
+Nehmen wir an, Sie arbeiten mit unsigned Integer, interpretieren die Zahlenfolgen des Rechners ausschließlich als positive Zahlen, die genauso geordnet sind wie die natürlichen Zahlen (inkl. der Null). Und Sie lassen den Rechnern mit diesen Zahlen das tun, was er kann: Sie lassen ihn addieren. 
+Aufgabe:
+Was ist dann das Ergebnis von 7 + 1?
+Wenn Sie jetzt acht antworten: Schämen Sie sich! Wie groß war doch noch die größte unsigned Zahl, die dieser Computer darstellen kann? Genau: Das war die Zahl sieben. Anders ausgedrückt: Unser Rechner rechnet modulo acht. Und wenn Sie jetzt an die modulare Arithmetik denken, was ist dann sieben plus eins modulo acht? Genau: Null. Immer, wenn so etwas passiert, also wenn der Prozessor eine Operation durchführen soll, bei der er als Ergebnis einer unsigned Operation eine Zahl darstellen soll, die zu groß für seinen Zahlenbereich ist, dann nennt man das einen Overflow.
+Wenn Sie ein Programm in einer maschinennahen Sprache oder einer Sprache wie C bzw. C++ entwickeln, müssen Sie beachten, ob ein Overflow auftreten kann und ggf. das Programm entsprechend anpassen. Overflows spielen im Bereich der IT-Sicherheit eine wichtige Rolle.
+Aufgabe:
+Wenn er die Möglichkeit dazu hat, wird ein Computer immer einen Overflow anzeigen. In welchem Fall ist ein Overflow kein Problem, auf das Sie in Ihrem Programm eingehen müssen?
+Es gibt einen zweiten Fall, um den Sie sich programmiertechnisch in bestimmten Fällen kümmern müssen. Nach der Überschrift haben Sie es sich wohl schon gedacht: Man redet hier vom Carry. Ein Carry ist im Falle der Rechnung mit signed Zahlen das gleiche, was ein Overflow für unsigned Zahlen ist.
+Aufgaben:
+Beim Übergang zwischen welchen zwei Zahlen tritt bei unserem 3-Bit-Computer ein Carry auf?
+Und wann ist ein Carry kein Problem?
+A.2.4. Übersicht: Signed und unsigned Integer für 3-Bit-Computer
+Abschließend fürs spätere Nachschlagen nochmal alle Zahlen für signed und unsigned in einer Übersicht. Eventuell hilft Ihnen diese Tabelle, wenn Sie bestimmte Zusammenhänge noch nicht vollständig verstanden haben.
+Binärfolge	interpretiert als
+unsigned	signed
+Die 1. Zahl lautet:	000		0
+Die 2. Zahl lautet:	001		1
+Die 3. Zahl lautet:	010		2
+Die 4. Zahl lautet:	011		3
+Die 5. Zahl lautet:	100 		4		-4
+Die 6. Zahl lautet:	101 		5		-3
+Die 7. Zahl lautet:	110 		6		-2
+Die 8. Zahl lautet:	111 		7		-1
+000				  0
+001				  1
+010				  2
+011				  3
+
+

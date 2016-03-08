@@ -1,0 +1,1077 @@
+\chapter{Einführung in die Objektorientierung mit Java}
+\section{11.	GUIs – Programmierung grafischer Nutzeroberflächen}
+\subsection{11.1.	Möglichkeiten, um GUIs in Java zu programmieren}
+\subsection{11.2.	Bestandteile einer GUI in Java}
+\subsection{11.3.	Programmierung einer „inhaltsleeren“ GUI}
+\subsection{11.4.	Struktur von Top-Level Containern}
+\paragraph{11.4.1.	Die Containment Hierarchy}
+\paragraph{11.4.2.	Die Root Pane}
+\paragraph{11.4.3.	Die Layered Pane}
+\paragraph{11.4.4.	Die Content Pane}
+\paragraph{11.4.5.	Die Glass Pane}
+\subsection{11.5.	Nachtrag zur leeren GUI}
+\section{11.6.	Einfügen von Komponenten}
+\subsection{11.6.1.	Textkomponenten}
+\paragraph{11.6.1.1.	JTextField}
+\paragraph{11.6.1.2.	JPasswordField}
+\paragraph{11.6.1.3.	JTextArea}
+\paragraph{11.6.1.4.	JLabel}
+\section{11.7.	Einschub zu Layouts}
+\section{11.8.	Mehr Komponenten}
+\subsection{11.8.1.	Auswahlmöglichkeiten}
+\paragraph{11.8.1.1.	Ausgewählte Methoden für Auswahlmöglichkeiten}
+\paragraph{11.8.1.2.	Entweder-Oder – Der JToggleButton}
+\paragraph{11.8.1.3.	Entweder-Oder, jetzt als Quadrat mit Häkchen – JCheckBox}
+\paragraph{11.8.1.4.	Entweder-Oder, jetzt als Kreis mit Füllung – JRadioButton}
+\paragraph{11.8.1.5.	Wähle eines aus vielen – JRadioButton-Gruppe und JList}
+\paragraph{11.8.1.6.	Drop-Down-Menu – JComboBox}
+\paragraph{11.8.1.7.	Anzeige und Interaktion mit umfangreichen Daten}
+\paragraph{11.8.1.8.	Schieberegler – JSlider}
+\paragraph{11.8.1.9.	JButton}
+\section{11.9.	Der erste nicht-Top-Level Container – Die JScrollPane}
+\section{11.10.	Wahrnehmung versus Realität}
+\section{11.11.	Layout Manager}
+\subsection{11.11.1.	Gruppierung, Orientierung und Ausrichtung}
+\subsection{11.11.2.	Standard-Layouts}
+\subsection{11.11.3.	Das Border Layout: 5 Bereiche}
+\subsection{11.11.4.	Nachtrag zum FlowLayout}
+\subsection{11.11.5.	GridLayout – Tabellarischer Aufbau mit gleichgroßen Zellen}
+\subsection{11.11.6.	GridBagLayout – Tabellarischer Aufbau mit Zellen individueller Größe}
+\section{11.12.	JPanel – „Zwischen“-Container für Komponenten}
+\section{11.13.	Menüleiste, Quellcodebeispiele und weitere Aufgaben}
+\section{15.3.	JDialog}
+\section{15.4.	JOptionPane}
+
+\chapter{Event-driven Development}
+\section{12.1.	Events in Java}
+\section{12.2.	Listener in Java}
+\section{12.3.	Ein einfacher Listener für eine Schaltfläche}
+\subsection{12.3.1.	Einschub: Strings-Objekte und Sonderzeichen}
+\section{12.4.	Das ActionEvent – Unser erstes Event}
+\subsection{12.4.1.	Ein oder mehrere Listener, viele Quellen}
+\section{12.5.	Innere Klassen}
+\section{12.6.	Zwischenstand}
+\section{12.7.	Listener-Typen nach Komponenten}
+\section{12.8.	Listener-Methoden generell}
+\subsection{12.8.1.	Methoden für eine Vielzahl von Events}
+\subsection{12.8.2.	Methoden, die direkt mit der Verwendung der GUI durch Nutzer zu tun haben}
+\subsection{12.8.3.	Methoden, um Änderungen an der GUI zu verfolgen}
+\subsection{12.8.4.	Sonstige Methoden}
+\section{12.9.	Die 17 Java-Events und 18 Listener}
+\subsection{12.9.1.	MouseEvent – Alles rund um die Maus}
+\subsection{12.9.2.	ItemEvent – Wenn Nutzer etwas anwählen, um es zu aktivieren}
+\subsection{12.9.3.	FocusEvent – Wenn Nutzer etwas anwählen, ohne dabei Eingaben durchzuführen}
+\subsection{12.9.4.	Sonstige Events}
+\section{12.10.	Zusammenfassung}
+\section{Noch einarbeiten.. Nachtrag zu Kapitel 9 – Errata und häufig gestellte Fragen}
+\subsection{Klassenvariablen, Instanzvariablen und mehr zur Variablendeklaration}
+\subsection{Unerwartete Fehlermeldungen}
+\section{13.	Mausereignisse}
+\subsection{13.1.	Die abstrakte Klasse MouseAdapter}
+\subsection{13.2.	Wenn eine Maustaste von Nutzern genutzt wurde}
+\paragraph{13.2.1.	Aufgabe}
+\subsection{13.3.	Wenn Nutzer die Maus bewegen}
+\paragraph{13.3.1.	Aufgabe}
+\subsection{13.4.	Interaktionen mit dem Mausrad}
+\subsection{13.5.	Event-Methoden bei Ereignissen mit der Maus}
+\section{14.	Timer}
+\subsection{14.1.	Zeitabhängige Ausführung von Aufgaben in Java}
+\subsection{14.2.	TimerTask}
+\paragraph{14.2.1.	Aufgabe (klausurrelevant)}
+\subsection{14.3.	Timer}
+\paragraph{14.3.1.	Instanziierung eines Timers}
+\paragraph{14.3.2.	Übergabe von TimerTasks an Timer}
+\paragraph{14.3.3.	Einmaliger Aufruf eines TimerTask zu einem bestimmten Zeitpunkt}
+\paragraph{14.3.4.	Wiederholte Aufrufe eines TimerTask nach festen Intervallen}
+\subparagraph{14.3.4.1.	Aufgabe (Klausurrelevant)}
+
+\chapter{15.5.	Datenströme und Dateien}
+\section{15.5.1.	Event versus Datenstrom}
+\subsection{15.5.2.	Besonderheit aller Datenströme}
+\subsection{15.5.3.	Pufferung}
+\section{18.	Java und Datenübertragungen}
+\subsection{18.1.	Sockets – Klassen für den Datenaustausch über Netzwerke}
+\subsection{18.2.	Instanziieren der Sockets für Client und Server}
+\paragraph{18.2.1.	Mehrere Clients und die Verbindung zum Server}
+\subsection{18.3.	Schließen der Verbindung}
+\section{18.4.	Zugriff auf den Datenstrom}
+\section{18.5.	Riding the data stream}
+\subsection{18.6.	Spülen wir die Rest in der Toilette runter.}
+\section{18.7.	Zusammenfassung}
+
+\chapter{16.	Nebenläufige Programmierung}
+\section{16.1.	Von der prozeduralen zur nebenläufigen Programmierung}
+\section{16.2.	Beschränkung nebenläufiger Programmierung}
+\section{16.3.	Zustände eines Thread}
+\subsection{16.3.1.	Lebensdauer bzw. Gültigkeitsbereich}
+\subsection{16.3.2.	Wartet auf den Startbefehl}
+\subsection{16.3.3.	Nicht arbeitsfähig}
+\section{16.4.	Thread und Runnable}
+\section{16.5.	Daemon – Ein hilfreicher Geist}
+\section{16.6.	Zeitweilige Freigabe des Prozessorkerns}
+\section{16.7.	Vorzeitiges Beenden von sleep() und anderer Methoden}
+\section{16.8.	Synchronisation und Monitore – Verhinderung von Inkonsistenzen}
+\section{17. - Hier die entsprechenden Inhalte aus dem Kapitel zu Exceptions einbauen.}
+\section{16.9.	Das Grauen? – Nebenläufigkeit und SWING}
+Bislang haben Sie gelernt, wie Sie Programme entwickeln können, die eine oder mehrere Aufgaben lösen. Sie haben dabei einige Grundlagen der prozeduralen und der strukturierten Programmierung kennen gelernt und diese genutzt, um einfache Programme zu entwickeln, die aus Klassen zusammengesetzt waren.
+Damit haben Sie gelernt, wie Sie die Logik eines Programms entwickeln können. Jetzt wird es Zeit, dass Sie lernen, wie Sie „Fenster“ programmieren können, über die Nutzer ihr Programms komfortabel bedienen können. Dabei gehen wir zwar nicht weiter auf Fragen der Usability  ein, aber Sie lernen die ersten Grundlagen dafür kennen. In Ihrem Studium gibt es keine Veranstaltung, die sich explizit der Usability widmet. Wenn Sie Ihre Kenntnisse in diesem Bereich vertiefen wollen, dann sprechen Sie bitte Ihre Dozenten in den Veranstaltungen des Mediendesigns darauf an.
+Zunächst aber zu zentralen Begriffen, mit denen wir uns hier beschäftigen werden:
+Immer wenn Nutzer eines Programms den Programmablauf verfolgen oder ändern wollen, muss ein User Interface (kurz UI) vorhanden sein. Ironischerweise ist eines der größten Probleme für Programmierneulinge, dass ein UI zum Programmieren gar nicht nötig ist und deshalb auch zunächst nicht angezeigt wird. Der Vollständigkeit halber sei hier betont, dass ein UI keinerlei Unterstützung für die Nutzung per Maus anzubieten braucht.
+Um das Ganze komfortabler zu gestalten werden seit den 90er Jahren vorrangig grafische UI’s (kurz GUI) entwickelt. Hier können Nutzer mit der Maus viele Optionen ohne Einsatz der Tastatur anwählen. Außerdem ermöglichen es GUIs einstellbare Komponenten in logische Gruppen aufzuteilen und diese entsprechend darzustellen. Als Nutzer kennen Sie das bereits, weil Sie ständig über GUIs mit Computern interagieren. Diese Erklärung ist dennoch wichtig: Als Softwareentwickler müssen Sie sich bei der Entwicklung einer GUI  stets vor Augen halten, dass es hier irrelevant ist, was Sie sich bei den Strukturen Ihres Programms gedacht haben. Für eine GUI ist einzig relevant, dass Nutzer eine visuell erkennbare Logik vorfinden, die sie bei der Bedienung des Programms unterstützt.
+Wichtig: Obwohl Sie eine GUI also mit den gleichen Mitteln entwickeln wie andere Teile eines Programms, spielen effiziente Algorithmen hier keine Rolle. Wichtig ist hier, dass Nutzer das, was sie zu sehen bekommen möglichst intuitiv bedienen können. Ob das der Fall ist hat nichts damit zu tun, wie gut Sie im Sinne der Informatik Software entwickeln können.
+11.1.	Möglichkeiten, um GUIs in Java zu programmieren
+Zur Zeit gibt es drei Bibliotheken, die Java für die Entwicklung von GUIs anbietet:
+-	AWT (kurz für Abstract Window Toolkit) ist die älteste dieser Bibliotheken und bietet im Grunde nur rudimentäre Möglichkeiten: java.awt
+
+-	Swing ist der Arbeitstitel von JFC (kurz für Java Foundation Classes), der bis heute für die JFC verwendet wird. Swing ist im Grunde nicht mehr für aktuelle GUIs ausreichend, u.a. da es für die Entwicklung von GUIs für Rechner mit horizontalem Display, Maus und Tastatur entwickelt wurde. Es bietet aber umfangreiche Möglichkeiten, um Formulare und Oberflächen für die Bild- und Soundbearbeitung zu entwickeln. Zum Teil werden hier auch Klassen des AWT verwendet. Name der Klassenbibliothek: javax.swing
+
+-	JavaFX ist die neueste Bibliothek, um GUIs zu entwickeln. Wirklich neu ist es nicht mehr, wurde aber mit der Version 8 von Java erweitert.
+Wir werden in diesem Kurs mit Swing arbeiten, weil wir uns hier nur grundsätzlich mit der Entwicklung von grafischen Nutzeroberflächen in Java beschäftigen wollen und JFC im Gegensatz zu AWT viele Elemente von GUIs so anzeigt, wie Nutzer das beim jeweiligen Betriebssystem gewohnt sind. (In der Java-API finden Sie hierfür den Begriff des look \& feel.) Zum Einstieg in die GUI-Entwicklung bietet es also mehr als ausreichende Möglichkeiten.
+Beachten Sie bitte, dass HTML5 in Kombination mit CSS3 deutlich weitergehende Möglichkeiten bietet, um eine Nutzeroberfläche zu gestalten. Die Programmlogik können Sie dort mit Java, JavaScript, PHP, Python und vielen anderen Sprachen entwickeln, wobei JavaScript hier immer wichtiger wird. (Ein Grund, aus dem sich das in den Statistiken nicht niederschlägt besteht darin, dass bei der der Suche nach JavaScript häufig nicht nach Begriff JavaScript sondern z.B. nach Polyfill oder HTML5 gesucht wird.)
+Anm. bezüglich java. vs. javax.
+Hier wie an anderen Stellen fragen Sie sich vielleicht, was der Unterschied zwischen Klassenbibliotheken mit dem Präfix java. und denen mit dem Präfix javax. ist. Eine eindeutige Antwort ist nicht zu finden. Letztlich scheint es sich um ein Überbleibsel aus der Anfangszeit von Java zu handeln. Demnach wären Bibliotheken unter java. Teil des eigentlichen Kerns der Sprache und Bibliotheken unter javax. Erweiterungen dazu. Aber ob das tatsächlich zutrifft können wir leider nicht beantworten, denn selbst die ansonsten sehr gute Dokumentation (die „Java API“) gibt hierzu keine Auskunft.
+11.2.	Bestandteile einer GUI in Java
+Wie in HTML konstruieren Sie in den JFC Ansichten aus Elementen, die Containern genannt werden.
+-	Top-Level-Container sind die Grundlage jeder Ansicht in Java: Alles, was gemeinsam angezeigt werden soll muss als Teil eines solchen Containers einprogrammiert werden. Top-Level-Container werden u.a. mit der Klasse javax.swing.JFrame bereitgestellt, die Sie deshalb für GUI-Klassen importieren können: Die meisten GUIs in Java sind eine Erweiterung der Klasse JFrame.
+
+Zwei Top-Level-Container, mit denen wir uns nicht beschäftigen werden sind JApplet und JWindow. Instanzen von JApplet sind dafür gedacht, in Browsern genutzt zu werden, die ein Java-Plug-in nutzen. Und das ist eher selten der Fall, also macht es wenig Sinn, wenn wir hier darüber reden. Instanzen von JWindow unterscheiden Sich von JFrame-Instanzen dadurch, dass Sie keinen Rahmen bzw. keine Menüleiste haben. Somit brauchen wir sie hier nicht explizit besprechen.
+
+-	Wenn Sie später ergänzende Fenster öffnen wollen, z.B. um Nutzer zu fragen, ob die Eingaben wirklich übernommen werden sollen, nutzen Sie dazu eine Instanz des Top-Level-Containers JDialog, der ebenfalls Teil des Package javax.swing ist. Beide (JFrame und JDialog) werden größtenteils identisch programmiert.
+
+Es gibt einen entscheidenden Unterschied, den Sie sich merken müssen: JFrames können unabhängig von anderen Top-Level-Containern gestartet werden, ein JDialog ist dagegen immer abhängig von einem anderen Top-Level-Container: Wird dieser geschlossen, dann werden automatisch alle JDialog-Instanzen geschlossen, die „zu ihm gehören“. Und um die Verwirrung zu maximieren ist es möglich, eine GUI direkt als JDialog ohne eine zugehörige JFrame-Instanz zu programmieren.
+
+-	Daneben gibt es noch nicht-Top-Level-Container, die wir erst später besprechen, weil sie vorrangig der Strukturierung von GUIs dienen.
+
+-	Komponenten sind in Java Elemente, die innerhalb eines Containers genutzt werden können, um den Inhalt und das Aussehen einer GUI festzulegen. 
+
+o	Komponenten erzeugen Sie, indem Sie eine Instanz einer der Klassen des Package java.swing erzeugen und es dann als Argument mit der Funktion add() an einen Top-Level-Container übergeben.
+
+o	Jeder Top-Level-Container verfügt über die sogenannten Panes. Wenn Sie einem Top-Level-Container ein Objekt per add() hinzufügen, dann wird dieses tatsächlich nicht als Attribut der Instanz, sondern in einer seiner Panes abgelegt. Auf die Panes können Sie über getter- und setter-Methoden (z.B. von JFrame) zugreifen. Im Regelfall nutzen Sie Panes als anonyme Objekte und rufen, nachdem Sie auf sie per get...Pane() zugreifen, direkt eine Setter-Methode auf, um die Eigenschaften dieser Pane zu ändern. 
+
+Hier ein Beispiel:
+
+	Die ContentPane ist der Teil jedes Top-Level-Containers, der z.B. die Hintergrundfarbe einer GUI festlegt. Wenn Sie die Farbe des Hintergrunds einer GUI in Weiß ändern wollen, tun Sie das schlicht per getContentPane().setBackground(Color.white); wobei sie zuvor die Klasse java.awt.Color importieren müssen.
+
+o	In diesem Kurs werden wir nur selten auf die Panes zugreifen. Dennoch sollten Sie wissen, dass sie existieren, weil Sie erst so verstehen, wie genau eine GUI in Java strukturiert ist. Und nur so können Sie sich später intensiv mit dem Thema beschäftigen.
+
+-	Child und Parent sind Begriffe, die die Beziehung zwischen zwei Objekten einer GUI anzeigen. Ein Parent ist der Container, in dem das Child enthalten ist.
+Anm.: Da in der Java-API im Package java.awt zwei abstrakte Superklassen mit den Namen Container und Component existieren und Component die Superklasse von Container ist, wird in Programmierbüchern zu Java häufig allgemein über beide als Komponenten gesprochen. Im Rahmen dieses Skripts vermeide ich diese Verallgemeinerung, um jeweils deutlich zu machen, ob wir gerade über Strukturlemente einer GUI (Container) oder über die bedienbaren Elemente (Komponenten) reden oder über etwas, das für beide gilt.
+Ein zweites Konzept, das Sie bei der Entwicklung von GUIs verstehen müssen sind Events. Wir werden uns später ausführlich damit beschäftigen, aber zum Verständnis ist es gut, wenn Sie den Begriff schon jetzt kennen lernen.
+Ein Event ist so etwas wie eine Nachricht, die kurz an einem schwarzen Brett aufgehängt wird. Ob jemand diese Nachricht liest und darauf reagiert ist unabhängig davon, dass es sie gibt. Das gleiche gilt für Events und das kennen Sie auch schon: Denken Sie an das letzte Mal, als Sie die linke Maustaste gedrückt haben und nichts passiert ist: Der Druck auf die Maustaste hat im Rechner ein Event erzeugt, aber in diesem Moment gab es keine Programmkomponente, die auf das Event reagiert hat. Events werden aus Sicht der Javaprogrammierung vom Betriebssystem erzeugt.
+Ein Event kann beispielsweise die Informationen enthalten, dass die linke Maustaste gedrückt wird. Ein anderes Event ist die Information, dass der Mauspfeil sich an Position 250 x 910 des Displays befindet.
+Das führt direkt zum Gegenstück von Events, den sogenannten Listenern. Ein Listener ist (um beim obigen Beispiel zu bleiben) jemand, der die ganze Zeit auf das Schwarze Brett starrt und bei einer ganz bestimmten Notiz reagiert. Um das kleine Beispiel mit dem MausEvent zu nehmen: Ein Listener könnte so programmiert sein, dass er dann reagiert, wenn die linke Maustaste losgelassen wird, während sich der Mauszeiger im Bereich einer Schaltfläche befindet. 
+Bitte machen Sie sich das folgende klar: Es gibt wenigstens zwei Gründe, aus denen ein Programm nicht auf eine Nutzereingabe reagiert: Entweder wurde es gar nicht darauf programmiert oder das Betriebssystem ist gerade so ausgelastet, dass die Erzeugung des Events nicht stattfindet. Wenn Sie später Programme entwickeln, die über ein Netzwerk (wie das Internet) Daten austauschen, kommt damit eine dritte Störquelle hinzu. Denn wie Sie in der Veranstaltung Netzwerke und Internetsicherheit lernen, fallen ständig Teile von Datenübertragungen über Netzwerke aus, auch wenn Normaluser davon nichts merken.
+Details zu Events und Listenern besprechen wir in einer Woche, vorerst sehen wir uns an, was Sie tun müssen, um eine GUI zu erzeugen.
+11.3.	Programmierung einer „inhaltsleeren“ GUI
+(Inhaltsleer steht hier in Anführungszeichen, weil jeder Top-Level-Container wie besprochen bereits die Panes beinhaltet.)
+Um eine GUI in Java zu erzeugen, müssen Sie die folgenden Schritte durführen, die sie in einer eigenen Klasse programmieren:
+-	Importieren Sie javax.swing.* und java.awt.*.
+
+-	Programmieren Sie Ihre Klasse als Erweiterung von JFrame. 
+
+Sie können natürlich auch innerhalb eines anderen Programms einfach ein JFrame-Objekt instanzieren, das Sie dann nutzen, um so ein anschaulicheres Beispiel zu haben. Beachten Sie aber bitte, dass dann die folgenden Beschreibungen nicht vollständig mit dem übereinstimmen, was Sie sehen werden.
+
+-	Ihr Konstruktor beginnt mit super(String title), wobei title ein beliebiges String-Objekt ist, das als Titel der GUI verwendet werden wird.
+
+-	In der main()-Methode erzeugen Sie eine Instanz Ihrer von JFrame abgeleiteten Klasse.
+
+-	Dann legen Sie mittels der Methoden setSize(int x, int y) und setLocation(int x, int y) fest, wie groß das Fenster ist und an welcher Position des Bildschirms es erzeugt (aber noch nicht angezeigt) wird.
+
+-	Das Fenster wird erst dann angezeigt, wenn Sie es mit dem Methodenaufruf setVisible(true) sichtbar machen.
+Aufgaben:
+-	Programmieren Sie eine solche inhaltsleere GUI und prüfen Sie, was passiert, wenn Sie einzelne Methodenaufrufe auskommentieren.
+
+-	Starten Sie Ihr Programm aus der Kommandozeile. Beenden Sie es dann, indem Sie die entsprechende Schaltfläche der GUI anwählen. (Unter Windows das weiße X auf rotem Grund) Wenn Sie jetzt einen Blick in das Fenster mit der Kommandozeile werfen, werden Sie sehen, dass der GUI-Prozess immer noch läuft, denn dort können Sie keine neuen Anweisungen eingeben. Was meinen Sie ist der Grund dafür? 
+
+Keine Sorge: Wenn Sie keine Veranstaltung zu Betriebssystemen oder zur Programmierung von Nebenläufigkeit besucht haben, dann werden Sie es nicht wissen. Aber eine Vermutung können Sie ja anstellen.
+11.4.	Struktur von Top-Level Containern
+Bislang haben Sie im Regelfall Programme in Java entwickelt, bei denen Sie wussten, wie und wo Instanzen von Objekten erzeugt wurden. Bei einer GUI gibt es jedoch eine Struktur, die vieles für Sie reguliert. Wenn Sie diese Struktur nicht kennen, dann können Sie nicht nachvollziehen, warum bestimmte Dinge so passieren, wie das der Fall ist. Dann ist Ihnen beispielsweise nicht klar, warum Sie mal etwas mit add() hinzufügen können und mal mit Gettern und Settern wie bei getContentPane().setColor() arbeiten müssen. Deshalb gehen wir in den folgenden Abschnitten auf genau diese Struktur ein.
+Hier sei nochmal betont, dass alle in diesen Abschnitten beschriebenen Panes (stellen Sie sich darunter so etwas wie Container vor) erzeugt werden, wenn Sie einen Top-Level Container wie JFrame erzeugen. Wenn Sie also versuchen, eine dieser Panes selbst zu erzeugen, dann wird dann schlicht daran scheitern, dass sie bereits existieren. Fortgeschrittene Java-Entwickler tun das dagegen gelegentlich, wenn sie eine Pane ersetzen wollen. Dazu gehören allerdings Kenntnisse, die wir hier nicht besprechen.
+11.4.1.	Die Containment Hierarchy
+Mit diesem Begriff wird die grundlegende Abhängigkeit von Elementen einer GUI bezeichnet. In einfachen Worten: Es geht darum, welcher Container/welche Komponente in welchem anderen Container steckt.
+Und hier müssen Sie sich eines merken: Jede Komponente und jeder Container kann nur Teil genau eines Containers sein. Wenn Sie also eine Schaltfläche oder eine andere Komponente erzeugen, dann können Sie diese nicht mehrfach verwenden. Sollten Sie also einen Bestätigen-Button programmieren und ihn im Quellcode an mehreren Stellen hinzufügen , dann wird die Schaltfläche tatsächlich nur an der Stelle eingefügt, an der Sie im Quellcode zuerst oder zuletzt hinzugefügt wurde.
+Weiter oben wurde bereits darauf hingewiesen: Jede JFrame-Instanz verfügt über eine sogenannte Content-Pane, die z.B. die Hintergrundfarbe der GUI festlegt. Schauen wir uns einmal die Panes an, die jeder Top-Level-Container beinhaltet:
+11.4.2.	Die Root Pane
+Sie ist die strukturelle Grundlage jedes JFrame-Objekts. Innerhalb dieser Veranstaltung greifen wir nicht darauf zurück, da wir Ihnen vorrangig erklären wollen, wie Sie eine benutzbare GUI entwickeln können. Dazu widerum fügen Sie Komponenten und Container zu den übrigen Panes hinzu oder legen deren Layout fest. 
+Die RootPane-Methoden sind dagegen getter und setter mit denen Sie jeweils auf die Eigenschaften der übrigen Panes zugreifen. Wenn Sie also später detailliert das Look-and-Feel Ihrer GUIs programmieren wollen, weil Sie beispielsweise der Meinung sind, ein einfaches x auf rotem Grund sei kein gutes Symbol für eine Schaltfläche zum Schließen eines Fensters, dann müssen Sie sich mit der RootPane auseinander setzen.
+11.4.3.	Die Layered Pane
+Diese Pane bietet spannende Möglichkeiten, um die Anordnung von Komponenten einer GUI individueller zu gestalten. Während Sie in diesem Kurs lernen, wie Sie sichtbare Komponenten auf einer Fläche nebeneinander anordnen können, bietet die JLayeredPane Ihnen Möglichkeiten, um sie vor- und hintereinander anzuordnen. Die JLayeredPane ist bereits vorkonfiguriert und sorgt z.B. dafür, dass ein Menü, das geöffnet wird vor anderen Komponenten einer GUI angezeigt wird. 
+Gerade wenn Sie neue Möglichkeiten der GUI-Gestaltung untersuchen wollen, könnte diese Pane für Sie spannend werden.
+11.4.4.	Die Content Pane
+Im Rahmen dieses Kurses werden wir uns lediglich mit dieser Pane und der MenuBar beschäftigen. Alle Elemente, die in einem Top-Level-Container angezeigt werden, werden in einen dieser beiden Container eingefügt.
+Beide werden im Layered Pane auf der default Ebene abgelegt. Das bedeutet, dass Änderungen an der Content Pane sich NICHT auf die Menu Bar auswirken (und umgekehrt).
+11.4.5.	Die Glass Pane
+Während Sie mit der Layered Pane die Anordnung von Komponenten in der Tiefe ändern können, können Sie mit der Glass Pane Bereiche der GUI abdecken und Events beeinflussen. Damit bietet die Glass Pane Ihnen sehr weitreichende Möglichkeiten. Ein veränderter Mauszeiger im Bereich einer Schaltfläche wäre da nur ein einfaches Beispiel.
+Wie in Bezug auf die Layered Pane gilt auch in Bezug auf die Glass Pane, dass Sie sich hiermit auseinander setzen sollten, wenn Sie die Entwicklung von Java-GUIs vertiefen wollen. In diesem Kurs lassen wir sie außen vor.
+11.5.	Nachtrag zur leeren GUI
+Nachdem Sie nun wissen, woraus eine GUI besteht, lassen Sie uns noch zwei Konfigurationsschritte durchführen.
+Da wäre zum einen die ausstehende Antwort auf die Frage, warum die Kommandozeile nicht wieder erscheint, nachdem wir das Fenster geschlossen haben. Diese Antwort hat etwas mit Nebenläufigkeit zu tun: Wenn wir ein Java-Programm starten, das ein Fenster öffnet, dann wird dafür im Betriebssystem ein Prozess gestartet. Damit dieser Prozess aber wieder beendet wird, müssen wir bei der Instanzierung des Top-Level-Containers (hier war das das JFrame-Objekt) einstellen, dass mit dem Schließen des Fensters auch der Prozess beendet werden soll. 
+Aufgabe:
+-	Dazu müssen wir noch die folgende Zeile ergänzen:
+
+o	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+-	Zum anderen möchten Sie vielleicht die Hintergrundfarbe anpassen. Dazu ergänzen Sie einfach die folgenden Zeilen an der jeweils passenden Stelle:
+
+o	import java.awt.Color;
+o	getContentPane().setBackground(Color.WHITE);
+Jetzt haben Sie eine GUI, die Sie nach Lust und Laune mit Bedienelementen und Inhalten füllen können.
+Aufgabe:
+-	Warum macht es Sinn, den Prozess der GUI nicht zu beenden, wenn das Fenster geschlossen ist?
+11.6.	Einfügen von Komponenten
+Wie besprochen erzeugen Sie Komponenten, indem Sie eine Instanz der entsprechenden Klasse aus der Klassenbibliothek von javax.swing erzeugen, konfigurieren und sie der GUI hinzufügen. Dafür nutzen Sie schlicht die Methode add() des Top-Level-Containers, auch wenn Sie dafür genauso den Aufruf getContentPane().add() verwenden können.
+Sollte das nötig werden, dann können Sie eine Komponente mit der Methode remove() wieder entfernen.
+Bevor wir uns eine Auswahl von Komponenten ansehen werden, sollten Sie zunächst einige Methoden kennen lernen, die alle Komponenten von Ihrer Superklasse erben:
+-	void setBorder(Border) und Border getBorder() können genutzt werden, um den Rahmen einer Komponente festzulegen bzw. das entsprechende Border-Objekt abzufragen. Genau wie mit der Color-Klasse werden wir uns nicht weiter mit der Border-Klasse beschäftigen. Recherchieren Sie im Bedarfsfall, welche Möglichkeiten sie Ihnen bietet.
+
+-	void setForeground(Color) und void setBackground(Color) sind nur scheinbar eindeutig; während setBackground() den Hintergrund färbt, legt setForeground() im Regelfall die Schriftfarbe fest. Color getForeground() und Color getBackground() sind dagegen selbsterklärend.
+
+-	void setOpaque(boolean) und boolean isOpaque() legen fest, ob der Hintergrund der Komponente verdeckt oder transparent sein soll, bzw. geben an, ob das der Fall ist. (false entspricht einem transparenten Hintergrund) Alternativ können sie auch void setOpacity(float) verwenden. Der Wert muss zwischen 0.0 und 1.0 liegen. Dabei steht 0.0 für vollständige transparenz.
+
+Ausblick: Weiterhin gibt es noch Getter und Setter für Font und Cursor sowie eine Reihe Methoden, die für Events und Listener wichtig sind. Dann wären da noch Methoden fürs Painting, die wichtig werden, wenn Sie graphische Elemente einer GUI individuell darstellen oder aktualisieren wollen. Aber auch das ist noch längst nicht alles. Für den Anfang soll es aber genügen.
+11.6.1.	Textkomponenten
+Die Klassenbibliothek javax.swing.text.* bietet mehrere Klassen an, die wir nutzen können, um verschiedenen Komponenten zu nutzen, mit denen längere Texte angezeigt und/oder geändert werden können. Wie gewohnt stellen wir hier nur eine Auswahl vor.
+11.6.1.1.	JTextField
+kann verwendet werden, wenn Nutzer nur kurze Texte wie einen Benutzernamen eingeben sollen. Wenn Sie bei der Instanzierung einen int-Wert übergeben, legen Sie damit die Länge des Feldes fest.
+11.6.1.2.	JPasswordField
+ist eine Unterklasse von JTextField. Im Gegensatz zu diesem maskiert es die Eingabe. Bitte beachten Sie, dass das nur Schutz gegen neugierige Kollegen bietet; handelsübliche Angriffssoftware kann weiterhin Tastatureingaben auslesen, da sie nicht die Anzeige, sondern die Tastaturanschläge ausliest.
+11.6.1.3.	JTextArea
+ist geeignet, wenn Nutzer längere Texte eingeben sollen.
+Diese drei Felder sind für die Fälle einsetzbar, in denen ein Nutzer keine Vorgaben bekommen soll, mit denen seine Eingabe beschränkt wird. Auswahlmöglichkeiten folgen nach einem kurzen Einschub.
+Aufgabe:
+-	Erweitern Sie Ihre GUI um eine JTextArea mit rotem Hintergrund und gelber Schriftfarbe.
+
+-	Probieren Sie aus, welche Möglichkeiten Sie bei der Nutzung dieses Feldes neben der reinen Texteingabe und –löschung Sie haben. (Copy, Paste usw.)
+11.6.1.4.	JLabel
+Neben den genannten Textfeldern gibt es die Klasse JLabel, die direkt von swing erbt und dafür gedacht ist, Beschriftungen zu ermöglichen. Ein Label kann sowohl Text als auch eine Grafikdatei sein.
+Ein JLabel muss mit einem Argument instanziiert werden. Das kann ein String oder eine Grafikdatei sein, die als Instanz vom Typ Icon erzeugt wurde.
+JLabel kennt die folgenden Methoden:
+-	void setIcon(Icon) und void setText(String) sind selbsterklärend.
+
+-	Mit setHorizontalAlignment(SwingConstant) können Sie festlegen, wie das Label ausgerichtet wird, wenn der Layout Manager des Parent-Containers das unterstützt: 
+o	SwingConstant.LEFT
+o	SwingConstant.RIGHT
+o	SwingConstant.CENTER
+
+-	Mit setHorizontalAlignment(SwingConstant) können Sie außerdem festlegen, in welcher Reihenfolge Grafik und Text innerhalb des Labels angeordnet werden:
+o	SwingConstant.LEADING bewirkt, dass der Text links vom Bild angeordnet wird.
+o	SwingConstant.TRAILING bewirkt das Gegenteil.
+Nun wäre es naheliegend, nach Methoden wie setVerticalAlignment(SwingConstant) zu suchen und die existiert auch. Hier heißen die zusätzlichen Konstanten TOP und BOTTOM.
+Hinweis: Es gibt weitere Komponenten, die diese Methoden unterstützen. Wir werden jeweils nicht darauf eingehen, schlagen Sie ggf. in der Java-API nach, ob es der Fall ist oder nicht.
+Aufgabe:
+-	Probieren wir das gleich aus. Erzeugen Sie ein JLabel, dem Sie bei der Instanzierung den String „Textfeld“ übergeben.
+
+-	Fügen Sie dann dieses Objekt Ihrer GUI hinzu.
+
+-	Macht es einen Unterschied, in welcher Reihenfolge Sie die Komponenten Ihrem Quellcode hinzufügen? Wenn ja, welcher Unterschied ist das und was können Sie daraus schlussfolgern.
+Wenn Sie sehr testfreudig sind, werden Sie feststellen, dass die Textarea keine Scrollbalken besitzt. Scrollbalken gehören in den Bereich der Container. Die werden wir erst dann besprechen, wenn Sie eine Sammlung von Komponenten kennen gelernt haben, mit denen Sie die meisten Nutzerinteraktionen programmieren können.
+11.7.	Einschub zu Layouts
+Sie haben jetzt gelernt , dass wir nicht einfach beliebige Komponenten in eine GUI einfügen können, denn im schlimmsten Fall bewirkt das, dass einzelne dieser Komponenten gar nicht angezeigt werden. Das ist ein erster wichtiger Unterschied gegenüber HTML in Verbindung mit CSS: Wir müssen von vorneherein ein Layout festlegen.
+Das Layout legen wir mit der JFrame-Methode void setLayout(Layout) fest. Als Argument übergeben wir hier einen Layout-Manager. Layout-Manager sind Klassen, die die Anordnung von Elementen in der GUI kontrollieren.
+Layout-Manager sehen wir uns in Kürze im Detail an.
+Aufgabe:
+-	Legen Sie eine Instanz von FlowLayout als Layout-Manager für Ihre GUI fest.
+
+-	Probieren Sie aus, was jetzt passiert, wenn Sie einen Text eingeben, der länger ist als es die Breite des Fensters zulässt.
+
+-	Wie wirkt sich jetzt eine Änderung der Reihenfolge der beiden add()-Methodenaufrufe aus?
+
+-	Legen Sie jetzt schwarz als neue Hintergrundfarbe für Ihre GUI fest und probieren Sie dann aus, ob und wenn ja wie es sich auswirkt, wenn Sie mittels setBackground() und setOpaque() für Ihre Komponenten unterschiedliche Hintergrundfarben transparent und nicht-transparent einstellen.
+Sie sehen jetzt, dass die GUI wirklich nicht besonders gut aussieht, aber zumindest alle Komponenten enthält, die wir bislang programmiert haben. Damit können wir weitermachen.
+11.8.	Mehr Komponenten
+Wichtig: Bevor wir uns im Detail einige Komponenten ansehen, hier ein Hinweis, damit Ihre GUI-Klassen übersichtlich bleiben: 
+Gehen Sie systematisch vor und kommentieren Sie! 
+GUI-Klassen bestehen aus einer Vielzahl an Objekten, deren Zusammenhang meist nur schwer erkennbar ist. Sehen Sie sich dazu einmal die Beispiele an, die in den offiziellen Tutorien zu finden sind; selbst einfache GUIs haben schnell mehrere hundert Zeilen Code; ohne Kommentare ist es da nur schwer, sich zurecht zu finden.
+-	Instanzieren Sie wenn möglich alle Top-Level-Container zuerst, dann alle Container und dann alle Komponenten. 
+
+-	Kommentieren Sie alle Bereiche, sobald Sie sie programmieren, damit es für einen anderen Entwickler leicht ist zu erkennen, welche Teile Ihres Quellcodes für welche Teile der GUI verantwortlich sind.
+
+-	Führen Sie dann die Konfiguration jeder einzelnen Instanz durch.
+
+-	Kombinieren Sie erst danach die GUI aus den konfigurierten Objekten zusammen.
+
+-	Die letzte Zeile enthält setVisible(true).
+An dieser Stelle sei nochmal darauf hingewiesen, dass wir uns für den Augenblick nur damit beschäftigen, welche Elemente Teil unserer GUI werden. Das Aussehen dieser Elemente und ihre Funktionalität klären wir später.
+Im Sinne der objektorientierten Softwareentwicklung entspricht dieses Vorgehen dem sogenannten Model-View-Controller Pattern (kurz MVC): 
+-	Das Modell umfasst lediglich die Programmierung dessen, was angezeigt werden soll. 
+
+-	Der View (Ansicht) umfasst ausschließlich das Aussehen dieser Elemente.
+
+-	Und der Controller umfasst die eigentliche Programmlogik.
+Bei der Entwicklung einer GUI müssen wir den Controller nochmal unterteilen: Zum einen wäre da die Programmlogik, die wir auch ohne eine GUI entwickeln. Hier geht es also um das, was das eigentliche Programm tut. Zum anderen wäre da die Logik, die wir als Event-Handling bezeichnen können. Hiermit meinen wir im Rahmen dieses Kurses das Abfragen von Events durch Listener, die dann Änderungen in der Ansicht oder Methodenaufrufe des eigentlichen Programms durchführen.
+Fürs erste erfahren Sie hier also nicht, wie Sie eine Schaltfläche so programmieren können, dass dadurch etwas passiert; Sie erfahren vorerst nur, was Sie tun müssen, um eine Schaltfläche in der GUI anzeigen zu lassen.
+11.8.1.	Auswahlmöglichkeiten
+Es gibt eine Reihe an Möglichkeiten, Nutzer aus einer Menge an Möglichkeiten wählen zu lassen:
+-	Es muss genau eine Zahl oder ein Begriff aus einer Menge ausgewählt werden.
+
+-	Es darf eine beliebige Menge an Einträgen (also auch keiner) aus einer vorgegebenen Menge ausgewählt werden.
+
+Anm.: In Java wird leider bei Menüs zwischen zwei Arten unterschieden, die im Grunde den gleichen Aufbau haben: Menüs, die innerhalb der GUI-„Fläche“ angezeigt werden, sind z.B. Instanzen von JList und Menüs, die als Teil der Menüleiste angezeigt werden, sind Instanzen von JMenu.
+11.8.1.1.	Ausgewählte Methoden für Auswahlmöglichkeiten
+Zusätzlich zu den Methoden, die Sie für Instanzen von JLabel kennen, können Sie die Anzeige von Auswahlmöglichkeiten noch durch die folgenden Methoden anpassen:
+-	void doClick() simuliert, dass eine Komponente per Klick auf die linke Maustaste angewählt wurde.
+
+-	boolean isSelected() gibt zurück, ob eine Komponente aktiviert ist. void setSelected(boolean) aktiviert oder deaktiviert sie.
+
+-	setEnabled(boolean) stellt ein, ob eine Komponente angewählt werden kann oder nicht.
+
+-	Zusätzlich zu den beiden set...Alignment()-Methoden kommen nun noch setHorizontalTextPosition(SwingConstant) und setVerticalTextPosition(SwingConstant) hinzu, die den Text im Verhältnis zum Icon anordnen.
+Wichtig: Wenn Sie sich jetzt Sorgen machen, Sie müssten all diese Methodenaufrufe auswendig können, dann seien Sie beruhigt; bei der objektorientieren Softwareentwicklung ändern sich Bezeichnungen ständig. Wichtig ist, dass Sie die Methodik verstehen und umsetzen können, nicht dass Sie auswendig lernen. Investieren Sie also Ihre Zeit vorrangig darin, zu programmieren und nicht darin, Methoden- und Konstantennamen auswendig zu lernen.
+11.8.1.2.	Entweder-Oder – Der JToggleButton
+Wenn ein Nutzer sich zwischen zwei gegenteiligen Optionen entscheiden soll, ist ein JToggleButton die einfachste Lösung: Entweder der Schalter ist aktiviert oder deaktiviert, andere Möglichkeiten gibt es nicht.
+11.8.1.3.	Entweder-Oder, jetzt als Quadrat mit Häkchen – JCheckBox
+Die zweite Möglichkeit für diese Fälle ist eine JCheckBox. Programmiertechnisch funktioniert Sie genau wie ein JToggleButton (nicht zuletzt, weil dieser die Superklasse von JCheckBox ist), nur die Darstellung ist anders: Anstelle einer Schaltfläche erscheint ein Quadrat. Ist die JCheckBox aktiviert, dann erscheint in diesem Quadrat ein Häkchen.
+11.8.1.4.	Entweder-Oder, jetzt als Kreis mit Füllung – JRadioButton
+Als dritte Möglichkeit für Entweder-Oder-Entscheidungen hätten wir die JRadioButtons. 
+11.8.1.5.	Wähle eines aus vielen – JRadioButton-Gruppe und JList
+Allerdings gibt es einen Unterschied zwischen JCheckBox und JRadioButton: Wenn Sie (was wir noch nicht besprochen haben) mehrere JCheckBoxen gruppieren, dann können Nutzer beliebig viele davon aktivieren und deaktivieren. Bei JRadioButtons dagegen bewirkt die Gruppierung, dass nur genau eine Option aktiviert werden kann.
+Eine solche Gruppe erhalten wir, indem wir eine Instanz von ButtonGroup erzeugen und dann alle Instanzen von JRadioButton mittels der Methode add() zu der Instanz von ButtonGroup hinzufügen.
+Aufgabe:
+-	Was denken Sie: Müssen wir nur die Instanz von ButtonGroup zu unserer GUI hinzufügen oder nur die einzelnen JRadioButtons oder alle?
+
+-	Was wäre die logische Konsequenz jeder der drei Varianten basierend auf dem, was Sie bislang hier gelernt haben? Erörtern Sie das für und wider aller drei Varianten. Finden Sie die Lösung, die in Java angewendet wird logisch, nachvollziehbar oder unsinnig?
+
+-	Warum macht diese Übung Sinn?
+Kommen wir zur zweiten Variante, um Nutzer eine Option aus mehreren wählen zu lassen: Die JList<C> ist, wie Sie sich denken können eine generische Klasse. Im Gegensatz zu eine JRadioButton-Gruppe erfordert es wesentlich weniger Programmieraufwand, sie zu erzeugen: Anstelle für jeden Eintrag eine Instanz zu erzeugen, genügen die folgenden drei Zeilen:
+C[] elem = { ... };    // Hier wird ein Array der Elemente erzeugt, die in der JList 
+// angezeigt werden sollen.
+JList<C> list = new JList<C>(elem);     // Hier wird die JList-Instanz mit den Einträgen erzeugt.
+Beispiel: Erzeugung einer JList<C>
+Anschließend muss die JList wie gewohnt zur GUI hinzugefügt werden.
+Lassen Sie sich hier nicht davon irritieren, wenn nur ein Teil der Einträge angezeigt werden und andere scheinbar nicht erreichbar sind. Das liegt wieder daran, dass wir uns momentan zwar die Komponenten einer GUI ansehen, ihre Darstellung aber auf später verschieben.
+Für Fortgeschrittene: Es ist ebenfalls möglich, eine JList zu implementieren, deren Einträge während der Laufzeit dynamisch geändert werden können. Dazu müssen Sie ein Objekt als Argument an den Konstruktor von JList übergeben, das ListModel<E> implementiert. Im Rahmen dieses Kurses werden wir darauf nicht eingehen.
+11.8.1.6.	Drop-Down-Menu – JComboBox
+Eine weitere Möglichkeit, Nutzer eines von mehreren Elementen auswählen zu lassen ist die sogenannten Kombinationsbox. Diese zeigt jeweils nur den aktuell ausgewählten Eintrag der Liste sowie eine Schaltfläche, um die übrigen Menüeinträge anzeigen zu lassen.
+Bis auf die Bezeichnung der Klasse ist die Instanziierung einer JComboBox und das Hinzufügen zur GUI mit der einer JList identisch. Allerdings können Sie über die Methode void addItem(C) jederzeit Einträge hinzufügen oder sie mittels void removeItem(C) entfernen.
+Aufgabe:
+Stellen Sie eine Tabelle auf, in der Sie die Vor- und Nachteile von JToggleButton, JCheckBox, JRadioButton, JList und JComboBox im Verhältnis zueinander notieren.
+11.8.1.7.	Anzeige und Interaktion mit umfangreichen Daten
+An dieser Stelle sei noch kurz auf zwei Komponenten verwiesen, die Sie bei der Darstellung umfangreicher Datenmengen nutzen können: Wenn Sie eine Baumstruktur wie ein Dateiverzeichnis anzeigen wollen, sehen Sie sich die Klasse JTree an und für Tabellen ist JTable nützlich.
+11.8.1.8.	Schieberegler – JSlider
+Anstelle der Eingabe einer frei wählbaren Zahl können Sie auch einen Schieberegler programmieren, mit dem Sie Nutzern die Möglichkeit anbieten, einen Wert aus einem Intervall auszuwählen. Dabei können Sie auch festlegen, ob der Wert innerhalb des Intervalls in festen Schritten (z.B. nur ganze Zahlen, nur Zahlen, die durch ½ teilbar sind, usw.) oder frei wählbar sein soll.
+Einen Slider initialisieren Sie mit JSlider(int min, int max, int value), wobei min und max die Grenzen des Intervalls darstellen und value der Wert ist, der am Anfang gewählt werden soll. Diesen können Sie weglassen. Wenn Sie einen JSlider ohne Intervallgrenzen instanziieren, so erhält er die Grenzen von 0 bis 100.
+Mit der Methode int getValue() erhalten Sie den aktuellen Wert des Sliders.
+11.8.1.9.	JButton
+Abschließend sei noch auf die Klasse JButton verwiesen, mit der Sie eine Schaltfläche auf der GUI einblenden können, die einen Text und oder eine Grafik beinhalten kann. Da sie inzwischen die Erzeugung und Einbindung von Komponenten kennen, sei an dieser Stelle einfach allgemein auf die Java-API verwiesen.
+11.9.	Der erste nicht-Top-Level Container – Die JScrollPane
+Kommen wir jetzt zum ersten Container, den Sie nutzen können, um Komponenten anders darzustellen. Sie haben bereits einige Komponenten, die derart groß werden können, dass sie nicht mehr innerhalb des Top-Level Containers vollständig dargestellt werden können. Die Lösung dazu kennen Sie aus der täglichen Nutzung von Rechnern: Scrollbalken dienen dazu, einen Ausschnitt eines Bereichs zu verschieben, der nicht vollständig abgebildet werden kann.
+In Java gibt es dafür den Container JScrollPane.
+Nachdem Sie eine Komponente (im folgenden Codebeispiel einfach comp genannt) erzeugt haben, für die Sie Scrollbalken anzeigen lassen möchten, fügen Sie diese wie folgt einer JScrollPane hinzu: (comp steht hier für die Komponente, der Sie Scrollbalken hinzufügen wollen.)
+JScrollPane scrollpane = new JScrollPane(comp, constantVertical, constantHorizontal);
+Beispiel: Quellcode für das Einfügen von Scrollbalken
+Anstelle der Variablen constantVertical und constantHorizontal müssen Sie nun noch jeweils eine Konstante der Klasse ScrollPaneConstants einfügen:
+-	ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED
+
+-	ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS
+
+-	ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER
+Die Bedeutung der drei Konstanten sollte klar sein; für den horizontalen Bildlauf gibt es die gleichen Konstanten. Dort beginnen sie mit HORIZONTAL statt VERTICAL.
+Aufgabe:
+-	Fügen Sie der TextArea einen senkrechten Scrollbalken hinzu.
+Wichtig: Wenn Sie sich hier schwer tun, dann beachten Sie bitte, dass Sie bei der GUI-Programmierung die JTextArea der JScrollPane hinzufügen müssen, um Scrollbalken zum Textbereich in der GUI hinzuzufügen. In anderen Worten: Die Programmierlogik ist genau umgekehrt gegenüber der Gestaltungslogik oder der Wahrnehmung von Nutzern. Oder nochmal anders: Die Wahrnehmung ist hier das Gegenteil der Realität.
+11.10.	Wahrnehmung versus Realität
+Das ist ein guter Moment um etwas zum Thema Wahrnehmung zu sagen. Es gibt unterschiedliche Interpretationen dieses Begriffs. Hier verstehen wir Wahrnehmung als die Interpretation dessen, was ein Mensch mit seinen Sinnen perzipiert. Im Gegensatz dazu wird beispielsweise in der Veranstaltung „Wahrnehmung“ besprochen, wie Filme unterschwellige Botschaften übermitteln können, wobei Kameraperspektive, Schattenfall, Gruppierung von Personen im Bild und viele andere audiovisuelle Aspekte genutzt werden.
+Zurück zur Wahrnehmung, wie Sie hier verstanden werden sollte. Dazu zunächst der eindeutige Begriff der Perzeption: Unter Perzeption wird beispielsweise die Fähigkeit des Auges verstanden, bestimmte Farben als Reize an das Gehirn weiterzuleiten. Im Gehirn spielen sich dann verschiedene Prozesse ab, die letztlich dafür sorgen, dass jeder von uns einen individuellen Eindruck davon hat, wie die Umgebung aussieht. Das ist hier mit Wahrnehmung gemeint. Dabei spielen fast ausschließlich Dinge eine Rolle wie zum Beispiel unsere individuelle Einstellung gegenüber verschiedenen Farben. Diese Einstellung ist für jeden von uns im Regelfall so umfassend, dass wir gar nicht begreifen, dass es sich um unsere individuelle Interpretation handelt. Deshalb sagen wir auch praktisch nie: „Ich finde das Wetter schön.“ Stattdessen sagen wir in aller Regel: „Es ist ein schöner Morgen.“
+Das Problem mit Wahrnehmung in diesem Sinne ist, dass wissenschaftliche Forschung in diesem Bereich kaum möglich ist. So ist es zwar möglich, durch Forschungsgruppen empirisch zu klären, ob eine gewisse Farbzusammenstellung Betrachter eher anzieht als abstößt, aber die eigentlichen Prozesse, die sich dabei im Gehirn abspielen können leider nicht eindeutig gemessen werden. Deshalb sind die Ergebnisse von Studien auch häufig nur beschränkt, aber dafür innerhalb dieses beschränkten Bereichs aussagekräftig. 
+Unabhängig davon müssen Sie sich bewusst sein, dass Sie einen Fehler machen, wenn Sie betonen, dass Ihre GUI doch genau richtig programmiert ist; Sie werten dann Ihre GUI entsprechend Ihrer individuellen Wahrnehmung und ignorieren damit, dass es keine eindeutig richtige oder falsche Wahrnehmung gibt. Und das gilt auch dann noch, wenn Sie sich bei einigen Leuten ein Feedback zu Ihrer GUI einholen, denn: Wahrnehmung ist immer individuell.
+Wichtig: Wenn Sie denken, dass dieser Abschnitt irrelevant für die Programmierung von GUIs ist, dann wechseln Sie bitte in eine Ausbildung zum Fachinformatiker/zur Fachinformatikerin; Sie sind an einer Hochschule falsch. Allerdings ist die Auseinandersetzung mit diesem Bereich ein zentraler Bereich eines Designstudiums, somit müssen Sie sich zwar der Bedeutung von Wahrnehmung bewusst sein, aber die Einbeziehung der Wahrnehmung in die Gestaltung einer nutzerfreundlichen GUI ist Aufgabe von Designern. (Daraus resultiert auch das Motto Form Follows Function.)
+11.11.	Layout Manager
+Um überhaupt alle Elemente einer GUI anzeigen zu lassen haben wir oben das FlowLayout genutzt. Das ordnet alle Komponenten schlicht in Form einer endlosen Zeile an und fügt bei Bedarf Zeilenumbrüche ein. In der Einleitung haben Sie aber gelesen, dass die Qualität einer GUI davon abhängt, wie gut Sie von Nutzern bedient werden kann, die keine Schulung und kein Handbuch über die Bedienung haben. Also ist das FlowLayout nur eine Notlösung. In diesem Abschnitt lernen Sie deshalb Layout-Manager kennen, die mehr leisten als nur bei Bedarf Zeilenumbrüche zu integrieren.
+11.11.1.	Gruppierung, Orientierung und Ausrichtung
+Bevor wir hier auf die Vor- und Nachteile eingehen müssen wir drei Begriffe klären, die bei allen Layouts eine Rolle spielen:
+Wie schon weiter oben angesprochen ist es wichtig, dass logisch zusammengehörige Komponenten auch in der GUI zusammen angezeigt werden. Das wird mit dem Begriff Gruppierung bezeichnet. Hier wird in gestalterischer Hinsicht noch zwischen impliziter und expliziter Gruppierung unterschieden. Explizit meint hier alles, was sichtbar ist, wie ein Rahmen oder einer Hintergrundfarbe für eine einzelne Gruppe. Implizit meint dagegen alle Varianten, bei denen eine Gruppe eher subtil erkennbar ist. Eine tabellarische Anordnung ohne sichtbaren Rahmen wäre ein Beispiel.
+Bei der Orientierung geht es darum, wie das Display bei Nutzern ausgerichtet ist: Vertikal oder Horizontal. Leider werden Nutzeroberflächen meist nur für eine Orientierung entwickelt. Das ist deshalb von Nachteil, weil so entweder bei Nutzern von Rechnern oder bei Nutzern von Smartphones unschöne Balken zu sehen sind. Noch unschöner ist es dagegen, wenn die Orientierung bei der Entwicklung gänzlich ignoriert wird. Das Ergebnis sind dann beispielsweise GUIs, die Texte auf der kompletten Breite eines 20“-Displays anzeigen. Und die sind nur schlecht lesbar. Die beiden Orientierungen werden häufig als Landscape (horizontal) und Portrait (vertikal) bezeichnet.
+Die Orientierung ist nicht mit der Ausrichtung zu verwechseln, denn wenn es um die Ausrichtung geht (engl. alignment), dann reden wir darüber, wie Elemente innerhalb von Containern angeordnet sind. Wie Sie schon gesehen haben müssen für die vertikale und die horizontale Ausrichtung teilweise unterschiedliche Methoden verwendet werden. Die Bezeichnungen hier sind in aller Regel top, bottom, left, right und center. Aber auch hier müssen Sie in aller Regel (auch das haben Sie schon gesehen) auf Konstanten einer Superklasse zugreifen, sodass Sie je nach Komponente unterschiedliche Konstanten für die gleiche Ausrichtung verwenden müssen. einheitliche Alignment-Konstanten (also so etwas wie Alignment.LEFT) gibt es dagegen nicht.
+11.11.2.	Standard-Layouts
+Leider gibt es kein Standard-Layout für alle Container, sondern jeder Container hat ein eigenes Standard-Layout. Natürlich können Sie diese Layouts auswendig lernen, aber hier empfehle ich Ihnen eher, einfach für jede GUI ein Layout festzulegen. Wenn das dann das Standard-Layout war, haben Sie zwar eine zusätzliche Programmzeile, aber Fehler können Sie dadurch nicht machen. Und außerdem ist so leichter erkennbar, welches Layout Sie verwenden.
+Wichtig: Wenn Ihnen ein einzelnes Layout nicht genügt, dann können Sie über Container-Klassen weitere Layouts in Teilbereichen einer GUI realisieren. Dafür können Sie beispielsweise eine Instanz von JPanel (besprechen wir noch) nutzen. Fühlen Sie sich deshalb bitte nicht zu beschränkt durch die Möglichkeiten der folgenden Layouts.
+In anderen Worten: Sie können Container beliebig in Containern verschachteln. Denken Sie dazu vielleicht an die Matroshka-Puppen, aber denken sie deshalb nicht, dass ein Container innerhalb eines anderen Containers genauso aufgebaut sein muss wie derjenige, in dem er steckt. Für Freunde der großartigen britischen Serie Dr. Who dazu ein Zitat, dass sie sicher kennen: „Es ist innen größer als außen.“
+11.11.3.	Das Border Layout: 5 Bereiche
+Das BorderLayout teilt die GUI in fünf Bereiche auf: Mitte, links, rechts, oben und unten. Sie fügen zwar eine Komponente wie gewohnt mit add() hinzu, aber die Konstanten haben größtenteils die Namen von Himmelsrichtungen:
+-	BorderLayout.CENTER sollte selbsterklärend sein.
+
+-	BorderLayout.WEST entspricht der Konstante LEFT bei anderen Alignments.
+
+-	BorderLayout.EAST entspricht der Konstante RIGHT bei anderen Alignments.
+
+-	BorderLayout.NORTH entspricht der Konstante TOP bei anderen Alignments.
+
+-	BorderLayout.SOUTH entspricht der Konstante BOTTOM bei anderen Alignments.
+11.11.4.	Nachtrag zum FlowLayout
+Bei der Instanziierung des FlowLayouts können Sie eine Ausrichtung als Argument übergeben:
+-	FlowLayout.LEFT, .RIGHT und .CENTER geben jeweils an, von wo aus die Komponenten in jeder Zeile angeordnet werden.
+11.11.5.	GridLayout – Tabellarischer Aufbau mit gleichgroßen Zellen
+Das GridLayout entspricht vom Aufbau her einer Tabelle: Instanziierung per GridLayout(int rows, int columns). Wenn nun Elemente hinzugefügt werden, dann werden sie bis zum Ende jeder Zeile Spalte für Spalte in der Reihenfolge eingeordnet, in der Sie mittels add() im Quellcode hinzugefügt werden. Anschließend geht es in der jeweils nächsten Zeile weiter. 
+Die einzelnen Zellen der „Tabelle“ (die ohne Rahmen angezeigt wird) sind so groß wie die größte Komponente, die im GridLayout angezeigt wird. Werden mehr Elemente hinzugefügt, als das Grid Zellen hat, dann werden automatisch Spalten hinzugefügt.
+11.11.6.	GridBagLayout – Tabellarischer Aufbau mit Zellen individueller Größe
+Das GridBagLayout verspricht, dass Größe der Zellen im Gegensatz zu den Zellen des GridLayouts jeweils individuell konfiguriert werden können. Bei genauem Hinsehen wird aber schnell deutlich, dass das so nicht zutreffen kann, sondern dass lediglich jede Spalte und jede Zeile eine individuelle Größe haben kann. Das ist im Regelfall sinnvoller als der Einsatz des GridLayout. Dafür ist die Konfiguration eines GridBagLayouts komplexer als die eines GridLayouts. Werfen Sie bei Interesse einen Blick in die Java-API und die offiziellen Java-Tutorials.
+11.12.	JPanel – „Zwischen“-Container für Komponenten
+Um einen nutzbare GUI zu entwickeln genügt es im Grunde, wenn Sie einen Top-Level-Container mit einem Layout-Manager konfigurieren und diesem verschiedene Komponenten zuordnen. Doch gerade wenn Sie in Abhängigkeit vom Log-In von Nutzern ggf. verschiedene Komponenten ein- oder ausblenden wollen, ohne dass sich die Darstellung der GUI ansonsten ändert, dann macht es Sinn, wenn Sie Komponenten zunächst in Instanzen von JPanel einordnen und erst diese Instanzen zur GUI hinzufügen. Betrachten Sie Instanzen der Klasse JPanel einfach als unsichtbare Flächen, dann sollten Sie sie problemlos nutzen können.
+An dieser Stelle sei noch auf die Methode setSize(int width, int height) verwiesen, mit der Sie jeder Komponente (und damit auch ein JPanel) eine feste Größe zuordnen können.
+11.13.	Menüleiste, Quellcodebeispiele und weitere Aufgaben
+In diesem Kapitel haben wir uns nicht mit Menüleisten auseinander gesetzt. Hierfür, sowie für umfangreiche Beispiele mit Quellcode sowie Aufgaben zum Thema möchte ich Sie auf die Folien von Prof. Plaß verweisen.
+12.	Events – Wenn Unerwartetes passiert
+Im letzten Kapitel dieses Skripts haben Sie gelernt, was eine GUI ist und wie Sie mit Containern und Komponenten eine GUI aufbauen können. Damit eine GUI aber Ihren Zweck erfüllt, der schlicht darin besteht, Nutzer auf komfortable Art und Weise bei der Bedienung einer Software zu unterstützen, muss sie auf Änderungen der Programmvariablen und auf Nutzereigaben reagieren.
+Das wird mit Events und Listenern realisiert. In Java gibt es dazu entsprechende Klassen. Im Gegensatz zu dem, was Sie bislang gelernt haben programmieren Sie dafür aber keine Event-Klasse, sondern nutzen Event-Objekte, die scheinbar aus dem Nichts entstehen. Jedes Event-Objekt zeigt an, dass eine bestimmte Nutzerinteraktion stattgefunden hat.
+Auch wenn wir das momentan nicht weiter ausnutzen werden sollten Sie sich merken, dass Events nicht nur die Position des Mauspfeils oder das Drücken einer Taste auf der Tastatur sein können. Auch Signale, die über ein Netzwerk an einen Rechner übermittelt werden, werden als Events bezeichnet. Wenn Sie das Eventhandling (Verarbeitung von Events durch ein Programm) beherrschen, können Sie also noch ganz andere Dinge programmieren als „nur“ die Verarbeitung von Nutzereingaben. Und wenn Sie Eventhandling umfassend verstanden haben, dann verstehen Sie damit eines der zentralen Konzepte von Betriebssystemen. 
+In der Veranstaltung Informatik 3 werden Sie dieses Konzept unter einem anderen Namen kennen lernen. Was Ihnen dort als Interrupt begegnen wird ist genau das, was auf technischer Ebene Events auslöst. Sie werden dort auch lernen, wie Sie Interrupts programmieren. Doch lassen wir das für den Moment, schließlich sollen Sie ja erst einmal lernen, wie Sie mit Events umgehen können.
+Was Sie programmieren müssen, um Events zu verarbeiten, sind die sogenannten Listener, die allesamt Interfaces sind. Sie werden in diesem Kapitel lernen, wie Sie solche Listener programmieren und in Ihre GUI-Klassen integrieren müssen, um dafür zu sorgen, dass Nutzereingaben verarbeitet werden.
+12.1.	Events in Java
+Sie wollen wissen, wie Sie ein Event in Java programmieren sollen? 
+Kurze Antwort: Gar nicht. 
+Lange Antwort: Da Events aus der Sicht eines Java-Programms vom Betriebssystem erzeugt werden, also quasi aus dem Nichts auftauchen, brauchen wir uns um ihre Erzeugung keine Gedanken zu machen: Wir programmieren einfach für jedes Event, das uns wichtig ist einen Listener und das wars.
+Antwort für Fortgeschrittene: Wenn Sie bereits mit Testfällen bzw. den sogenannten Unit-Tests gearbeitet haben, dann können Sie mithilfe der Event-Klassen eine Nutzerinteraktion simulieren.
+12.2.	Listener in Java
+Um einen Listener zu programmieren , müssen wir für jedes Event, auf das unsere GUI reagieren soll drei Dinge tun:
+-	Implementierung eines Listener-Interfaces. (Dazu müssen Sie java.awt.event.* importieren.)
+
+-	Hinzufügen dieses Listeners mit der entsprechenden add...Listener(...Listener)-Methode, die für alle Komponenten definiert ist.
+Diese zwei Schritte sind sehr einfach und mit einer Ausnahme haben Sie im Grunde jetzt alles verstanden, was Sie für die Programmierung einer GUI wissen müssen. Dieser Spezialfall, wird über die sogenannten inneren Klassen abgewickelt, mit denen wir uns in diesem Kapitel etwas später im Detail beschäftigen. Für den Moment merken Sie sich bitte einfach, dass eine innere Klasse eine Klasse ist, die genau wie die Methoden einer Klasse innerhalb des Klassenrumpfes einer anderen Klasse steht.
+12.3.	Ein einfacher Listener für eine Schaltfläche
+Stellen Sie sich vor, Sie wollen die GUI für einen Getränkeautomaten programmieren. Wenn die Schaltfläche für den Auswurf von Nutzern angewählt wird, soll ein Kaffee ausgeschenkt werden. Banale Kontrollstrukturen wie „Wurde Geld eingeworfen?“ lassen wir hier außen vor. Nun dauert es bei solchen Automaten in aller Regel einige Sekunde, bis die tatsächliche Ausgabe des Getränks beginnt. Sicherheitshalber sollte die Taste nach einmaligem Druck also für einige Sekunden deaktiviert werden.
+Um diese Aufgabe zu lösen müssen Sie tatsächlich zwei Listener programmieren: Einen, der den Tastendruck registriert, um dann die Schaltfläche zu deaktivieren und einen, der in Abhängigkeit von einem Timer die Schaltfläche wieder reaktiviert.
+Das zweite Event können wir erst dann programmieren, wenn wir uns mit Timern beschäftigt haben, was in vier Wochen passiert. Das erste Event dagegen ist recht einfach umzusetzen:
+Aufgabe:
+-	Erweitern Sie eine Ihrer GUIs um den JButton schalter, der mit „Drück schon!“ beschriftet ist.
+
+-	Importieren Sie java.awt.event.* in Ihre GUI.
+
+-	Rufen Sie die Methode addActionListener(ActionListener) von schalter auf.
+
+-	Anstelle einer Variablen vom Typ ActionListener übergeben Sie der Methode eine anonyme Instanz vom Typ ActionListener.
+
+-	Programmieren Sie in diese anonyme Klasse die Methode public void actionPerformed(ActionEvent e).
+
+-	Programmieren Sie den Aufruf schalter.setEnabled(false) in diese Methode ein. 
+
+-	Starten Sie Ihre GUI und sehen Sie sich an, wie der neue Schalter sich verhält.
+Wie gesagt können wir momentan noch keine Zeitsteuerung realisieren, weil wir uns noch nicht mit den Zeitklassen von Java beschäftigt haben. Nun soll aber die Schaltfläche wieder reaktiviert werden. Da ist die einfachste Variante einen zweiten Schalter zu programmieren und diesen an denselben Listener zu binden.
+12.3.1.	Einschub: Strings-Objekte und Sonderzeichen
+Da wir es hier mit Nutzeroberflächen zu tun haben ist es wichtig, dass Sonderzeichen richtig angezeigt werden. Im Gegensatz zu HTML5 können wir hier bei Java Probleme bekommen. Deshalb müssen wir uns ansehen, wie wir in Java-String-Objekten Sonderzeichen so programmieren müssen, damit sie in jedem Fall richtig angezeigt werden.
+In unserem Beispiel hatten wir das ü in „Drück mich!“, das für Probleme sorgen kann. Da die Websuche nach „unicode german characters“ leider nicht die Tabelle für deutsche Sonderzeichen herausspuckt, hier die sieben wichtigsten Unicode-Folgen, damit Sie deutsche Sonderzeichen in Texten nutzen können:
+-	Ä bzw. ä per \u00c4 bzw. \u00e4
+-	Ö bzw. ö per \u00d6 bzw. \u00f6
+-	Ü bzw. ü per \u00dc bzw. \u00fc
+-	ß per \u00df
+Diese Escape-Sequenzen sollten Sie also in Zukunft immer dann nutzen, wenn Sie deutsche Sonderzeichen in Textstrings verwenden wollen. Allerdings können Sie mit Unicode-Folgen auch jedes Zeichen Ihres Quellcodes eingeben, nur wäre das doch etwas seltsam und mehr Sicherheit bringt es auch nicht (beim Abspeichern werden die Zeichen ohnehin als Unicode-Sequenzen abgespeichert); nur der Quellcode ist schlechter lesbar.
+Aufgabe:
+-	Wenn noch nicht geschehen, ändern Sie jetzt bitte jedes ü in \u00fc um. Richtig gesehen: Damit steht da nicht mehr „Drück mich!“ sondern „Dr\u00fcck mich!“. 
+Und ja, das ist ausgesprochen schlecht lesbar. Deshalb werden die Aufgaben hier auch weiterhin nicht mit unicode-Sequenzen sondern in lesbarer Form mit Sonderzeichen formuliert. Beim Programmieren müssen Sie jedoch immer an die Übersetzung in Unicode-Folgen denken.
+Nach diesem Einschub wieder zurück zu unserer Aufgabe, einen zweiten Schalter zu programmieren, der die erste Schaltfläche wieder reaktiviert.
+12.4.	Das ActionEvent – Unser erstes Event
+Doch wie machen wir das? Der Listener kann ja nicht unterscheiden, woher das Event gekommen ist, oder? So ein Event kommt doch vom Betriebssystem, wie soll Java da etwas drüber wissen?
+Es gibt zwei Möglichkeiten, dieses Problem zu lösen. Hier die einfacher zu verstehende, aber dafür nur selten einsetzbare Version. (Die allgemeine Lösung lernen Sie im Abschnitt Innere Klassen kennen.)
+Ein Event wie das Anwählen einer Schaltfläche wird zwar vom Betriebssystem erzeugt und ist aus unserer Sicht als Java-Programmierer „einfach da“, aber tatsächlich handelt es sich um ein Objekt vom Typ ActionEvent. Dieser Event-Typ gibt zwar nur eine Information über das erzeugende Objekt preis, aber das genügt uns schon. (Daneben gibt es auch an, wann es erzeugt wurde, aber das soll uns hier nicht interessieren.)
+Oben haben wir einen Schalter mit der Beschriftung „Drück schon!“ programmiert. Und genau dieses „Drück schon!“ erhalten wir als Rückgabewert, wenn wir innerhalb des Rumpfes von actionPerformed(ActionEvent e) den Methodenaufruf e.getActionCommand() nutzen.
+Aufgabe:
+-	Erweitern Sie jetzt den Rumpf von actionPerformed() wie folgt:
+
+o	Alles, was bislang den Rumpf bildet lassen Sie dann ausführen, wenn e.getActionCommand() gleich „Drück schon!“ ist. In diesem Fall soll der Schalter den Schriftzug „ausgeschaltet“ anzeigen.
+
+o	In den else-Zweig fügen Sie bitte Methodenaufrufe ein, um den Schalter wieder aktivierbar zu machen. Außerdem ändern Sie hier die Beschriftung der Schaltfläche wieder in „Drück schon!“ um.
+
+-	Und nun starten Sie die GUI. Was passiert?
+
+-	Was passiert nicht? Und warum passiert es nicht? (Die Fortgeschrittenen unter Ihnen werden es schon vor dem Programmstart erkannt haben und sich gefragt haben, warum sie das einprogrammieren sollten.)
+Wenn Sie aufgepasst haben, dann wussten Sie, dass einfach deshalb nichts passiert, weil die Schaltfläche deaktiviert wurde. Somit kann der else-Zweig momentan nicht erreicht werden. Alle andern wissen es jetzt... hoffentlich.
+Wir müssen es also irgendwie schaffen, in den else-Zweig zu kommen. Aber das ist doch einfach: Wir müssen die Klasse nur so ändern, dass dieser Listener von irgendeiner anderen Schaltfläche genutzt werden kann. Natürlich darf es dann keine anonyme Instanz mehr sein, aber dazu kommen wir gleich.
+Aufgabe:
+-	Warum darf es dann keine anonyme Klasse mehr sein?
+12.4.1.	Ein oder mehrere Listener, viele Quellen
+Wenn ein Objekt ein Event erzeugt (wie in unserem Fall die Schaltfläche), dann wird dieses Objekt als Datenquelle bezeichnet. Ein „Empfänger“ wird dagegen als Datensenke bezeichnet. Der Einfachheit halber bleiben wir hier bei Quelle und Senke.
+Am Anfang dieses Kapitels haben Sie gelernt, dass eine Komponente nur einmal in eine GUI eingebunden werden darf. Wenn Sie sich das gemerkt haben, dann fragen Sie sich vielleicht, wie denn ein Listener an mehreren Stellen „zuhören“ soll. Aber das ist ganz einfach: Ein Listener ist keine Komponente und deshalb gilt diese Einschränkung hier nicht. Wir können also unseren ActionListener mittels addActionListener() an mehrere Komponenten binden. Wir können auch mehrere Listener an eine Komponente binden. Somit können wir für jedes Event einen Listener programmieren und binden diesen an alle Komponenten an, für die er relevant ist.
+Wenn Ihnen das zu schnell ging, hier einige möglichen Fälle:
+-	Wir können einen Listener an eine Quelle binden und der Listener wirkt sich auch nur auf diese Quelle aus.
+
+-	Wir können einen Listener an eine Quelle binden und der Listener wirkt sich auf eine andere Komponente aus.
+
+-	Wir können einen Listener an eine Quelle binden und der Listener wirkt sich auf mehrere Komponenten aus.
+
+-	Wir können einen Listener an eine Quelle binden und der Listener wirkt sich nicht nur auf Komponenten aus, sondern ändert durch entsprechende Methodenaufrufe etwas an unserem eigentlichen Programm. (Nicht vergessen: Eine GUI ist immer nur eine komfortable Oberfläche, mit der Nutzer auf das eigentliche Programm zugreifen.)
+
+-	Bis auf den ersten Fall ersetzen Sie jetzt bitte die Worte „an eine Quelle binden“ durch „an mehrere Quellen binden“. Damit hätten wir insgesamt sieben Möglichkeiten. 
+Aufgabe:
+-	Hier eine Kontrollfrage zum Verständnis von Eventhandling: Warum macht die Möglichkeit „Ein Methodenaufruf unseres Programms ändert eine Listener-Instanz“ keinen Sinn? (Das wäre die Umkehrung der vierten Möglichkeit.)
+Bis auf den ersten Fall darf (wie eben schon geschrieben) der Listener keine anonyme Instanz sein. Ändern wir also zunächst unseren Quellcode, sodass der Listener an mehrere Quellen gebunden werden kann. Das bringt uns direkt zum nächsten neuen Thema:
+12.5.	Innere Klassen
+Denn bislang haben wir nur Klassen programmiert, die unabhängig voneinander agieren. Jetzt haben wir aber die Situation, dass die Instanz einer Klasse (gemeint ist hier die Instanz von ActionListener) auf Variablen der Instanz einer anderen Klasse zugreifen soll (gemeint ist hier die Instanz von JButton).
+Wichtig: Sollten Sie bei den folgenden Aufgaben mit Fehlermeldungen auftauchen, bei denen Worte wie „... a static variable from a non-static context ...“ auftauchen, dann lesen Sie bitten den folgenden Absatz ganz genau durch. Es handelt sich hier zwar um eine Wiederholung von Inhalten, die wir schon in P1 behandelt haben, aber es ist leicht, diese Inhalte zu vergessen.
+Bei der Programmierung von GUIs mit inneren Klassen müssen Sie einen Ansatz hinter sich lassen, der bei der Programmierung mit Java sehr komfortabel ist. Es handelt sich um eines der zentralen Konzepte der Objektorientierung. Dabei können Sie Klassen programmieren, die Sie dann beliebig häufig instanziieren. Dazu haben Sie wahrscheinlich ausschließlich Instanzvariablen genutzt. Das sind Variablen, die für jedes Objekt derselben Klasse individuelle Werte annehmen können. Wenn wir mit inneren Klasen arbeiten, bedeutet das dagegen, dass wir vorrangig mit Klassenvariablen arbeiten. Das sind Variablen, die für alle Instanzen einer Klasse gleich sind. Die oben genannte Fehlermeldung kommt nun dadurch zustande, dass Sie im Programmcode (wenigstens) eine Klassenvariable individuell für ein einzelnes Objekt mit einem Wert belegen und das darf nicht funktionieren.
+Aufgabe:
+-	Formulieren Sie in eigenen Worten (ja! schriftlich!), warum es nicht funktionieren darf, dass eine Klassenvariable für ein Objekt dieser Klasse individuell geändert wird.
+Zurück zu unserem Thema der GUI-Programmierung mit inneren Klassen.
+Wie Sie wissen kann jede Methode einer Klasse auf die Variablen dieser Klasse bzw. der eigenen Instanz zugreifen. Also müssten wir es „nur“ schaffen, eine Klasse zu haben, die die Besonderheit aufweist, dass die Teil einer anderen Klasse ist. Denn so können die Instanzen dieser Klasse auch auf die Variablen der anderen Klasse zugreifen, die z.B. als private deklariert sind.
+Und das geht: Die sogenannten inneren Klassen werden innerhalb des Klassenrumpfes einer anderen Klasse programmiert, von dieser äußeren Klasse instanziiert und können dann auf die Variablen eben dieser äußeren Klasse zugreifen. Aber Sie erkennen es schon an der Betonung des Klassenbegriffs: Im Gegensatz zum letzten Beispiel arbeiten wir nun (fast) ausschließlich mit Klassenvariablen.
+Und bevor Sie grübeln, was Sie bei inneren Klassen anders programmieren müssen als bei „normalen“ Klassen: Der einzige Unterschied ist der, dass diese als private deklariert werden müssen. Alles andere bleibt gleich.
+Aufgabe:
+-	Kopieren Sie die anonyme Instanziierung von ActionListener vollständig aus dem Methodenaufruf addActionListener() heraus und fügen Sie sie als private final class dem Klassenrumpf Ihrer GUI-Klasse hinzu.
+
+-	Benennen Sie diese innere Klasse als Umschalter. (Wie gewohnt gilt: Natürlich können Sie hier eine beliebige Bezeichnung wählen, aber bleiben Sie für diese Aufgabenstellung dabei, damit Sie die folgenden Schritte so umsetze können, wie hier beschrieben.)
+
+-	Ändern Sie jetzt den Rest des Quellcodes so ab, dass alle Instanzvariablen zu Klassenvariablen werden. Am Ende befindet sich dann in der main()-Methode nur noch die Instanziierung der GUI.
+
+-	Vergessen Sie dabei nicht, dass Sie das Argument von addActionListener() noch ändern müssen. Schließlich soll hier eine Instanz von Umschalter verwendet werden.
+12.6.	Zwischenstand
+Sie haben jetzt zwei Varianten kennen gelernt, um Eventhandling, also die Verarbeitung von Nutzereingaben zu verarbeiten:
+-	Wenn ein Event nur durch eine einzelne Komponente erzeugt wird und „dort“ direkt verarbeitet werden soll, können Sie sie als anonyme Klasse instanziieren. Für die Fehlerkorrektur ist das allerdings unübersichtlich.
+
+-	Wenn wenigstens ein Event von mehr als einer Komponente erzeugt oder auf eine andere Komponente zugreifen kann, dann müssen wir den Listener als innere Klasse programmieren. Das bedeutet aber auch, dass wir die GUI effektiv über Klassenvariablen programmieren.
+Aufgabe:
+-	Beschreiben Sie erneut in eigenen Worten für beide eben genannten Fälle (ein Event und mehrere Komponenten / ein Event wird von anderer Komponente erzeugt als die auf die es sich auswirkt) individuell:
+o	Warum muss ein Listener dann als innere Klasse programmiert werden? 
+o	Und warum müssen dann die Instanzvariablen der GUI-Klasse zu Klassenvariablen „umgewandelt“ werden?
+Der Rest dieses Kapitels besteht aus einer Übersicht darüber, welchen Listener Sie für welche Komponenten verwenden müssen. Wie schon oben geschrieben fügen Sie sie mit Methoden hinzu, die alle mit dem Wort add gefolgt vom Klassennamen des Listeners beginne und wie alle Methoden mit den üblichen runden Klammern enden. Das Argument ist dann der Listener bzw. eine Instanz einer Klasse, die diesen Listener erweitert.
+Für die Programmierung beliebiger Listener stehen in Java 17 Event-Klassen und 18 Listener-Klassen zur Verfügung. In den folgenden Abschnitten können Sie jeweils aus unterschiedlichen Perspektiven nachsehen, welchen Listener bzw. welche Listener-Methode Sie am besten nutzen können.
+12.7.	Listener-Typen nach Komponenten
+In den meisten Fällen werden Sie das Eventhandling über eine der folgenden drei Methoden an eine Komponente anbinden:
+-	addActionListener(ActionListener l)
+dieser wird dann aufgerufen, wenn Nutzer irgendeine Interaktion mit der Komponente durchgeführt haben.
+
+-	addChangeListener(ChangeListener l)
+dieser wird dann aufgerufen, wenn sich der Wert einer Komponente geändert hat.
+
+-	addItemListener(ItemListener l)
+dieser wird dann aufgerufen, wenn eine Komponente aktiviert oder deaktiviert wird.
+12.8.	Listener-Methoden generell
+Wir kommen jetzt zu einer Vielzahl an Methoden, die Sie implementieren können, um die Reaktion der GUI auf Events zu steuern.
+Da Sie bei jeder dieser Methoden über das Argument erkennen können, in welchem Listener Sie sie implementieren müssen, sind diese nicht explizit aufgeführt. Und da aus dem Listener jeweils folgt, mit welcher add...Listener(...Listener)-Methode Sie ihn an eine Komponente binden müssen, gilt hier dasselbe. Es kann allerdings sein, dass aus der Beschreibung nicht eindeutig hervorgeht, für welche Komponenten dieser Listener definiert ist.
+Methoden, die nur intern verwendet werden (also nicht für die Programmierung einer GUI durch einen Softwareentwickler gedacht sind) sind hier aus naheliegenden Gründen nicht aufgeführt.
+12.8.1.	Methoden für eine Vielzahl von Events
+actionPerformed(ActionEvent e)
+kennen Sie bereits: Wenn Nutzer eine Interaktion z.B. mit einem JButton durchführt, wird actionPerformed() aufgerufen.
+12.8.2.	Methoden, die direkt mit der Verwendung der GUI durch Nutzer zu tun haben
+focusGained(FocusEvent e) und focusLost(FocusEvent e)
+werden dann aufgerufen, wenn Nutzer ein Element z.B. per Tabulatortaste oder Maus anwählen. Der Unterschied zu itemStateChanged() ist nur scheinbar subtil und muss beachtet werden.
+windowGainedFocus(WindowEvent e) und windowLostFocus(WindowEvent e)
+gelten wie die beiden focus...()-Methoden aber für Top-Level-Container anstelle von Komponenten.
+itemStateChanged(ItemEvent e) und stateChanged(ChangeEvent e)
+wird dann aufgerufen, wenn Nutzer ein Element einer Komponente bzw. eine Komponente aktivieren oder deaktivieren.
+stateChanged() tritt also in den Fällen auf, in denen z.B. ein JToggleButton, eine JCheckBox o.ä. aktiviert bzw. deaktiviert wird. itemStateChanged() tritt dagegen dann auf, wenn z.B. ein Element einer Liste wie der JList aktiviert oder deaktiviert wird.
+inputMethodTextChanged(InputMethodEvent e) und textValueChanged(TextEvent e)
+treten auf, wenn Nutzer eingegebenen Text geändert haben.
+keyPressed(KeyEvent e), keyReleased(KeyEvent e) und keyTyped(KeyEvent e)
+können genutzt werden, um zu erfassen, welche Taste(n) Nutzer gedrückt haben, bzw. wann sie getippt und wieder losgelassen werden, während der Fokus auf einer Komponente liegt.
+Fortgeschrittene Entwickler könnten keyTyped() z.B. nutzen, um Sonderzeichen bei der Eingabe zu erkennen und diese durch die entsprechend Unicode-Sequenz zu ersetzen, um so Fehler bei der Datenübertragung oder -anzeige zu vermeiden.
+mouseClicked(MouseEvent e), mousePressed(MouseEvent e) und mouseReleased(MouseEvent e)
+werden aufgerufen, wenn eine Maustaste gedrückt, noch immer gehalten oder wieder losgelassen wird. (Die erste und dritte Methode wird also einmalig, mousePressed() dagegen kontinuierlich ausgelöst. Behalten Sie das im Hinterkopf, damit Sie Ihre GUI nicht durch ausbremsen.) Welche Maustaste das ist, lässt sich über bestimmte Konstanten ermitteln. Werfen Sie im Bedarfsfall einen Blick in die Java API zu MouseEvents.
+mouseEntered(MouseEvent e) und mouseExited(MouseEvent e)
+geben an, ob der Mauspfeil in den Bereich der Komponente oder daraus heraus gesteuert wurde. 
+mouseDragged(MouseEvent e) und mouseMoved(MouseEvent e)
+(Sonderfall: Hier heißt der Listener MouseMotionListener und NICHT MouseListener)
+Zwar werden beide Methoden durch die Bewegung des Mauspfeils im Bereich einer Komponente ausgelöst, aber mouseDragged() nur dann, wenn gleichzeitig eine Maustaste gedrückt ist, mouseMoved() nur dann, wenn dabei KEINE Maustaste gedrückt ist.
+mouseWheelMoved(MouseWheelEvent e)
+wird naheliegender Weise aufgerufen, wenn Nutzer das Mausrad bewegen.
+12.8.3.	Methoden, um Änderungen an der GUI zu verfolgen
+adjustmentValueChanged(AdjustmentEvent e)
+wird aufgerufen, wenn z.B. die Größe einer GUI geändert wird.
+componentAdded(ContainerEvent e) und componentRemoved(ContainerEvent e)
+treten naheliegenderweise dann auf, wenn eine Komponente zur GUI hinzugefügt oder daraus entfernt wird.
+componentHidden(ComponentEvent e) sowie componentMoved(ComponentEvent e), componentResized(ComponentEvent e) und componentShown(ComponentEvent e)
+werden jeweils dann aufgerufen, wenn eine Komponente ein- oder ausgeblendet bzw. bewegt oder verformt wird.
+windowActivated(WindowEvent e), windowDeactivated(WindowEvent e) sowie windowOpened(WindowEvent e), windowClosing(WindowEvent e), windowClosed(WindowEvent e) und windowIconified(WindowEvent e), windowDeiconified(WindowEvent e)
+bzw. windowStateChanged(WindowEvent e)
+werden Sie im Regelfall nicht nutzen. Hier geht es um Methodenaufrufe, die z.B. dann durchgeführt werden, wenn Nutzer die drei Tasten zum Minimieren, Maximieren oder Schließen eines Fensters verwenden.
+12.8.4.	Sonstige Methoden
+eventDispatched(AWTEvent e)
+hat etwas mit nebenläufiger Programmierung zu tun.
+12.9.	Die 17 Java-Events und 18 Listener
+Zur Erinnerung: Alle Events und Listener sind Klassen bzw. Interfaces des Pakets java.awt.event. Diese Auflistung soll Ihnen nur als Nachschlagewerk dienen, verfallen Sie bitte nicht auf die Idee, hier etwas auswendig lernen zu wollen.
+12.9.1.	MouseEvent – Alles rund um die Maus
+MouseEvents fassen mehrere Fälle zusammen:
+-	Der Mauspfeil wird in eine Komponente bewegt oder aus dieser heraus.
+-	Der Mauspfeil befindet sich im Bereich einer Komponente.
+-	Eine Maustaste wird gedrückt oder losgelassen oder gedrückt und wieder losgelassen.
+Wie Sie sehen sind MouseEvents in JButtons also detaillierter als ActionEvents, mit denen lediglich signalisiert wird, dass eine Schaltfläche angewählt wird.
+Es gibt zu diesen Events zwei verschiedene Listener: MouseMotionListener müssen (!) Sie nutzen, wenn es um Events geht, die etwas mit der Bewegung der Maus zu tun haben. In allen anderen Fällen benötigen Sie die MouseListener.
+Tutorial: https://docs.oracle.com/javase/tutorial/uiswing/events/mouselistener.html 
+Tutorial: https://docs.oracle.com/javase/tutorial/uiswing/events/mousemotionlistener.html 
+12.9.2.	ItemEvent – Wenn Nutzer etwas anwählen, um es zu aktivieren
+Sie kennen z.B. mit Menüeinträgen Elemente einer GUI, die zwar von Nutzern ausgewählt werden, um Funktionen der GUI aufzurufen, die aber nicht dazu da sind, um tatsächliche Eingaben durchzuführen.
+Tutorial: https://docs.oracle.com/javase/tutorial/uiswing/events/itemlistener.html 
+12.9.3.	FocusEvent – Wenn Nutzer etwas anwählen, ohne dabei Eingaben durchzuführen
+FocusEvents zeigen an, dass Nutzer z.B. eine TextArea angewählt haben, ohne dort Text einzutragen. Hier geht es also nicht um die Frage, welche Elemente Nutzer gerade bedienen, um Eingaben durchzuführen, sondern welche Komponenten und Container der GUI sie verwenden.
+Tutorial: https://docs.oracle.com/javase/tutorial/uiswing/events/focuslistener.html
+12.9.4.	Sonstige Events
+-	ComponentEvent und ContainerEvent sind die Superklassen aller GUI-bezogenen Events. 
+-	InputEvents sind die Superklassen aller Events, die durch Nutzereingaben erzeugt werden. 
+-	HierarchyEvents werden intern verwendet, um anzuzeigen, wie einzelne Komponenten und Container voneinander abhängen. 
+-	PaintEvents werden ebenfalls intern verwendet, Sie sind die Ursache dafür, dass Nutzereingaben bei der Grafikbearbeitung so angezeigt werden, wie Nutzer das erwarten. 
+-	InvocationEvents stehen in Beziehung mit nebenläufiger Programmierung.
+-	InputMethodEvents haben leider eine missverständliche Bezeichnung, da sie Informationen darüber bereitstellen, welche Texte Nutzer z.B. in einer TextArea eingeben. Da für uns im Regelfall nur von Belang ist, welcher Text in einem Textfeld enthalten ist und wir dafür eine Methode haben, können wir InputMethodEvents ignorieren.
+-	Ähnliches gilt für TextEvent, das uns schlicht anzeigt, dass eine Änderung an einem Text stattgefunden hat.
+-	Ein KeyEvent tritt jedesmal auf, wenn Nutzer eine Taste drücken.
+-	MouseWheelEvents treten bei der Nutzung des Mausrades auf.
+-	WindowEvents zeigen an, dass ein Fenster sich geändert hat. Diese Events werden intern verarbeitet.
+12.10.	Zusammenfassung
+Bis zu diesem Kapitel haben Sie in Java Programmabläufe programmiert, indem Sie Instanzen von Klassen instanziiert haben und dann Methoden dieser Instanzen mit Argumenten aufgerufen haben.
+Sie haben jetzt gelernt, dass Sie eine interaktive GUI entwickeln, indem Sie Klassen programmieren, die als Listener bezeichnet werden. In diesen Klassen müssen Sie wie gewohnt Methoden implementiert, deren Namen jedoch fest vorgegeben sind. Der Methodenaufruf wird dann aber nicht wie gewohnt durchgeführt. Vielmehr werden Implementierungen dieser Listener mithilfe von add...Listener()-Methoden an die entsprechenden Komponenten der GUI gebunden. Der eigentliche Methodenaufruf wird dagegen nicht von Ihnen programmiert, sondern automatisch jedes Mal durchgeführt, wenn das entsprechende Event eintritt.
+Dazu müssen Sie
+-	die Container und Komponenten als Klassenvariablen programmieren,
+
+-	dann Listener als innere Klassen programmieren, die die verschiedenen Eingaben von Nutzern erfassen, die wichtig sein können, indem Sie die relevanten Methoden der Listener auf die entsprechenden Komponenten der GUI zugreifen lassen,
+
+-	und danach diese Listener mit der passenden add...Listener()-Methode an die Komponente binden, durch die Sie ausgelöst werden sollen.
+oder indem Sie für einzelne Komponenten Listenern als anonyme Klassen programmieren. Nur wenn es möglich ist, alle Listener als anonyme Klassen zu implementieren, macht es Sinn, das so zu tun.
+Hausaufgabe 1:
+-	Am Ende von Kapitel 2.3 ist die Rede von einer zweiten Schaltfläche, über die die Schaltfläche mit der Beschriftung „Drück schon!“ wieder aktiviert werden kann. Programmieren Sie diese zweite Schaltfläche in Ihre GUI.
+
+-	Diese Schaltfläche soll die erste Schaltfläche wieder aktiviert werden und dafür sorgen, dass sie die Beschriftung „Drück schon!“ anzeigt.
+
+-	Dazu darf kein zusätzlicher Listener implementiert werden; das Deaktivieren und Reaktivieren muss über den selben Listener realisiert werden.
+
+-	Wenn Sie gut mitgearbeitet haben, sind Sie mit der reinen Programmierung in zwei Minuten fertig. Also lassen Sie sich ruhig Zeit.
+Bitte bearbeiten Sie außerdem die Hausaufgaben 2 – 5.b von Prof. Plaß.
+Nachtrag zu Kapitel 9 – Errata und häufig gestellte Fragen
+In der letzten Veranstaltung gab es einige Punkte, zu denen ich noch ein paar Hinweise geben möchte, bzw. die häufig angesprochen wurden:
+Klassenvariablen, Instanzvariablen und mehr zur Variablendeklaration
+Hier hatte ich mich darauf konzentriert, Ihnen zu erklären, worin der Unterschied liegt und wann Sie ihn in Ihrem Quellcode ignoriert haben. Allerdings hatte ich dabei vergessen darauf hinzuweisen, dass Sie Klassenvariablen (genau wie Klassenmethoden) mit dem Schlüsselwort static deklarieren.
+Wenn Sie also Variablen im Klassenrumpf deklarieren, sind sie NICHT automatisch Klassenvariablen, sondern nur und ausschließlich dann, wenn Sie sie zusätzlich mit dem Schlüsselwort static deklarieren.
+Daneben war einigen unklar, was es mit dem Schlüsselwort final auf sich hat. Wenn Sie etwas in Java als final deklarieren, dann machen Sie es damit zu etwas, das einer Konstanten sehr ähnelt: Der Wert einer final Variable darf nur einmal festgelegt und dann nicht mehr geändert werden, eine final Methode darf nicht von einer erbenden Klasse überschrieben werden, usw.
+Wenn also eine Java-Fehlermeldung besagt, dass Sie eine Variable als final deklarieren müssen, dann bedeutet das, dass diese sich nicht ändern darf.
+Unerwartete Fehlermeldungen
+Zum Teil kam es zu Fehlermeldungen im Bezug auf ein JButton-Objekt, an das ein ActionListener „angebunden“ werden sollte. Die Ursache war in allen Fällen ein Konfigurationsfehler, durch den Ihre IDE auf ein „altes Java“ also eine JDK für Java 7 oder früher zugriff, um Ihren Quellcode zu kompilieren. Hier gibt es eine Vielzahl an Ursachen.
+Variante a: Wenn Sie Ihre alten Java-Programme weiter nutzen wollen, dann sollten Sie die alte JDK bzw. die alte IDE nicht deinstallieren. Stattdessen können Sie folgendes tun: Installieren Sie zusätzlich (wenn noch nicht geschehen) das JDK 8 (bzw. 1.8). Anschließend installieren Sie Eclipse in ein neues Verzeichnis, um die bestehende Installation nicht zu überschreiben. Achten Sie außerdem darauf, dass Sie ein neues workspace-Verzeichnis anlegen, um eine strikte Trennung zwischen bisheriger und neuer Installation zu erreichen. Wenn Sie eine andere IDE als Eclipse nutzen, ist nicht sicher, ob dieses Verfahren so funktioniert. Eclipse hat gegenüber vielen Programmen (zumindest unter Windows) den Vorteil, dass es in einem eigenständigen Verzeichnis installiert wird, in dem auch die gesamte Konfiguration gespeichert wird. Im Zweifelsfall können Sie also diverse Eclipse-Installationen auf Ihrem System jeweils in einem eigenen Verzeichnis betreiben, die allesamt vollständig unabhängig voneinander sind. Abgesehen von der Verschwendung von Speicherplatz hat das keinen Nachteil. Fortgeschrittene ändern je nach Bedarf die Konfiguration, aber es dauert natürlich ein wenig, um da alle Bereiche zu kennen.
+Variante b: Wenn es Ihnen nicht wichtig ist, dass Ihre alten Programme weiter laufen und Sie Eclipse für keine andere Programmiersprache nutzen, dann deinstallieren Sie zunächst Eclipse und dann sämtliche Java-Installationen. Starten Sie nun den Rechner neu und installieren Sie dann zuerst das JDK für Java 1.8 und danach eine IDE.
+Variante c (vorrangig für Linux): Es gibt für einige Programmiersprachen sogenannte Versionsmanager. Wenn Sie eine solche Software nutzen, dann können Sie darüber komfortabel zwischen den verschiedenen Versionen von Programmiersprachen wechseln. Alternativ dazu könnten Sie auch ein Skript erstellen, um den Wechsel zwischen den Versionen zu realisieren.
+
+
+13.	Mausereignisse
+Wir kommen hier nochmal zum Themengebiet Events und Listener. Wie im entsprechenden Kapitel beschrieben gibt es in Java für Events, die durch Mausinteraktionen von Nutzern erzeugt werden können drei Listener, den MouseListener, den MouseMotionListener und den MouseWheelListener. Doch obwohl sie unterschiedliche Namen haben, werden die beiden ersten mit der Methode addMouseListener() an ein Element der GUI gebunden, während es für den MouseWheelListener die Methode addMouseWheelListener() gibt. Um diese Details zu umschiffen werden wir uns dagegen die abstrakte Klasse MouseAdapter ansehen, die alle drei Listener zusammenfasst.
+Kurz gesagt: Obwohl Events durch Mausinteraktionen also genau nach dem gleichen Prinzip verarbeitet werden wie alle anderen Events, sind Sie nicht ganz so simpel zu programmieren: Wir können bzw. müssen drei verschiedene Listener dafür nutzen, wenn wir nicht den Umweg über die abstrakte Klasse MouseAdapter wählen.
+In anderen Kursen werden Sie zunächst die beiden konkreten Listener (MouseListener und MouseMotionListener) kennen lernen und dann erfahren, welche Methoden die jeweils enthalten. Da Sie in den meisten Fällen aber beide benötigen und der MouseWheelListener natürlich auch nicht zu verachten ist, überspringe ich das und stelle Ihnen eine Vorgehensweise vor, die immer funktioniert und das Ganze vereinfacht. Außerdem müssen Sie beim MouseAdapter nicht alle Methoden überschreiben, sondern nur diejenigen, die Ihnen wichtig sind. Damit sparen Sie sich Arbeit und vermeiden unnötige Fehlermöglichkeiten.
+13.1.	Die abstrakte Klasse MouseAdapter
+Wie Sie (hoffentlich) noch wissen, sind abstrakte Klassen Klassen, die Sie über extends in Form einer eigenständigen Klasse erweitern müssen, um nutzbare Klassen zu erhalten.
+Das bedeutet, dass Sie für den von mir vorgeschlagenen Weg eine Klasse z.B. mit MyMouseListener extends MouseAdapter programmieren müssen. Nennen Sie sie jedoch keinesfalls MouseWriter, da MouseAdapter bereits die Listener-Klasse MouseListener verwendet. Auch wenn es am Namen nicht zu erkennen ist, ist die abstrakte Klasse MouseAdapter tatsächlich eine abstrakte Listener-Klasse. Wir erhalten mit MyMouseListener also einen vollwertigen MouseListener, den wir mittels container.addMouseListener(new MyMouseListener()); an ein beliebiges Container-Objekt anbinden können.
+Beachten Sie bitte noch Folgendes: Es gibt keine unterschiedlichen Events für unterschiedliche Maustasten, dafür (wie auch z.B. fürs Zählen der Mausklicks) gibt es aber Methoden, die in der Klasse MouseEvent und MouseWheelEvent implementiert sind. Wir werden uns diese Fälle am Ende des Kapitels kurz ansehen.
+Wichtig: Denken Sie aber bitte in allen Fällen daran, dass Sie jeden Listener an genau einen Container binden. Wenn Nutzer die Maus aus dem Bereich eines Containers bewegen, in dessen Bereich sie die Maustaste gedrückt haben, dann wird das Loslassen der Maustaste im Regelfall nicht (!) an diesen Container übermittelt. Das ist ein Sonderfall, den Sie bei keinem Listener beachten mussten, mit dem Sie bislang zu tun hatten.
+13.2.	Wenn eine Maustaste von Nutzern genutzt wurde
+Hier müssen wir zwischen vier Fällen unterscheiden:
+-	Wenn eine Aktion erfolgen soll, nachdem Nutzer die Maustaste gedrückt und (!) wieder losgelassen haben, können wir das entsprechende Verhalten in 
+void mouseClicked(MouseEvent d) implementieren.
+
+Wichtig: mouseClicked() wird unter Umständen nicht aufgerufen, wenn Nutzer gleichzeitig die Maus bewegen.
+
+-	Im zweiten Fall geht es darum, dass Nutzer eine Maustaste gedrückt haben und sie dauerhaft halten, während der Mauspfeil sich im Bereich des Containers befindet. Wenn in diesem Fall eine Reaktion des Programms erfolgen soll, müssen wir sie in der Methode 
+void mousePressed(MouseEvent e) implementieren. 
+
+Wichtig: mousePressed() wird unter Umständen dann nicht aufgerufen, wenn Nutzer gleichzeitig die Maus bewegen.
+
+Ebenfalls wichtig: Im Gegensatz zu mouseClicked()wird die Methode im gesamten Zeitraum immer wieder aufgerufen, in dem Nutzer die Maustaste gedrückt halten. Sie sollten hier also keinesfalls etwas programmieren, das nur einmalig ausgeführt werden darf.
+
+-	Beim dritten Fall geht es darum, dass die Maus bewegt wird, während eine Maustaste gedrückt wird. In diesem Fall implementieren Sie das entsprechende Verhalten in 
+void mouseDragged(MouseEvent e).
+
+(Diese Methode ist ein Grund, warum ich Ihnen die Programmierung mittels MouseAdapter erkläre: Währen die anderen drei Fälle aus MouseListener stammen, stammt dieser aus MouseMotionListener. Wenn Sie also ohne MouseAdapter programmieren würden, müssten Sie diesen Fall mit einem getrennten Listener verarbeiten.)
+
+-	Der letzte Fall tritt dann ein, wenn Nutzer die Maustaste wieder loslassen. Hier kommt 
+void mouseReleased(MouseEvent e) zum Einsatz.
+
+Wichtig: Dabei dürfen Sie nicht voraussetzen, dass Nutzer die Maustaste über dem gleichen Container loslassen, über dem Sie sie gedrückt haben. Sie dürfen ebenfalls nicht voraussetzen, dass Nutzer die gleiche Maustaste loslassen, die sie zuletzt gedrückt haben. Es wird zwar nur selten vorkommen, dass Nutzer zuerst die linke Maustaste drücken und gedrückt halten, dann die rechte drücken und gedrückt halten und dann die linke Maustaste zuerst wieder loslassen, aber wenn Sie nur genug Nutzer haben, wird es solche Fälle früher oder später geben. Wie Sie sehen müssen Sie sich bei der professionellen Entwicklung von GUIs mit teilweise absurd erscheinenden Problemen beschäftigen.
+
+13.2.1.	Aufgabe
+Sie haben ein Bedienelement in Form eines nach oben zeigenden Pfeils in Ihrer GUI implementiert. So lange Nutzer dieses Element mit der Maus anwählen (also den Mauspfeil darüber „stehen“ lassen und eine Maustaste drücken), soll eine Variable des Programms kontinuierlich erhöht werden. Denken Sie dabei an so etwas wie die Steuerung einer Zapfsäule: So lange Nutzer die entsprechende Taste drücken, soll Benzin ins Motorrad gefüllt werden.
+-	Warum müssen Sie das mit mousePressed() realisieren und können nicht mouseClicked() verwenden?
+13.3.	Wenn Nutzer die Maus bewegen
+Auch hier haben wir es wieder mit vier Fällen zu tun, wobei Sie einen schon im vorigen Abschnitt kennen gelernt haben:
+-	Wenn etwas in genau dem Moment passieren soll, in dem Nutzer den Mauspfeil in den Bereich eines Containers bewegen, implementieren Sie dafür 
+void mouseEntered(MouseEvent e).
+
+Wichtig: Diese Methode wird genau einmal aufgerufen, nämlich dann, wenn der Mauszeiger in den Bereich des Containers bewegt wird. So lange er sich dort befindet, wird die Methode nicht nochmal aufgerufen.
+
+-	Im zweiten Fall wird die Maus bewegt, während sie sich über einem Container befindet. Hier implementieren Sie void mouseMoved(MouseEvent e).
+
+-	Den dritten Fall kennen Sie bereits. Dabei geht es um mouseDragged(), also die Methode, die so lange aufgerufen wird, wie die Maus sich über einem Container befindet, während sie bewegt wird Nutzer und wenigstens eine Maustaste drücken.
+
+-	Der vierte Fall tritt dann ein, wenn der Mauszeiger den Bereich eines Containers verlässt. Hier implementieren Sie void mouseExited(MouseEvent e).
+
+Wichtig: Es gibt also keine Methode, die dann aufgerufen wird, wenn der Mauszeiger sich im Bereich eines Containers befindet, aber dabei nicht bewegt wird. Sie müssen sich also in diesem Fall eine Lösung einfallen lassen, aber das sollte Ihnen mittlerweile nicht mehr schwerfallen.
+13.3.1.	Aufgabe
+Machen Sie sich klar, was Sie alles tun müssen, damit Nutzer ein Element Ihrer GUI tatsächlich verschieben können. Für Nutzer sieht es so aus, als wenn Sie solche Elemente in dem Moment an den Mauszeiger binden, in dem sie die linke Maustaste drücken, gedrückt halten und die Maus bewegen. Dabei kommt zwar mouseDragged() zum Einsatz, aber Sie müssen hier Ihre Kenntnisse aus den Bereichen Grafikprogrammierung und Bildbearbeitung zusammen mit der Programmierung von GUIs kombinieren, um dieses Verhalten einzuprogrammieren.
+Überlegen Sie weiterhin, was sie grundsätzlich tun müssten, wenn es möglich sein soll, dass Nutzer durch mittels drag-and-drop ein grafisches Element der GUI rotieren lassen können.
+Und stellen Sie sich jetzt noch den Fall vor, in dem der Mauszeiger in diesem Fall nicht mehr weiter bewegt werden soll, weil die Mausbewegung nur noch vorgeben soll, wie schnell das grafische Element rotiert. Wenn Sie das nicht programmieren, dann würde die Rotation in dem Moment enden, wenn der Mauszeiger den Bereich des Containers verlässt.
+13.4.	Interaktionen mit dem Mausrad
+Wenn Nutzer das Mausrad benutzen, dann gibt es nur eine Methode, um die Sie sich kümmern müssen: void mouseWheelMoved(MouseWheelEvent e)
+Wichtig: Beachten Sie bitte, dass im Gegensatz zu allen anderen Methoden beim MouseAdapter (bzw. beim MouseWheelListener) in diesem Fall kein MouseEvent, sondern ein MouseWheelEvent auftritt.
+13.5.	Event-Methoden bei Ereignissen mit der Maus
+Die einzelnen Methoden werde ich hier nicht im Detail erläutern, bitte schlagen Sie im Bedarfsfall in der Java API nach. An dieser Stelle werden Sie lediglich erfahren, welche Möglichkeiten Sie durch die Methoden erhalten:
+-	Mittels getButton() erhalten Sie eine Konstante des Eventobjekts, die angibt, welche Maustaste gedrückt wurde.
+-	Mittels getLocationOnScreen(), getPoint(), getX(), getY(), getXOnScreen(), getYOnSchreen() können Sie Informationen zu der Position erhalten, an der das Event aufgetreten ist.
+-	Mittels translatePoint(int x, int y) können Sie das Event verlagern.
+-	Mittels getModifiersEx() und getMouseModifiersText(int modifiers) können Sie Informationen dazu erhalten, welche Tasten beim Event gedrückt wurden. (Bsp.: Shift-Taste wurde zusammen mit einer Maustaste gedrückt.)
+-	Mittels isPopupTrigger() erhalten Sie einen Hinweis darauf, ob durch das Event auch ein PopUp Menü erzeugt wurde.
+-	Außerdem gibt es noch paramString(), der für die Identifikation des Events genutzt werden kann. (Für unsere Zwecke irrelevant.)
+Wichtig: Wenn eine Maus mehr als drei Tasten hat, dann gibt es für die zusätzlichen Tasten keine Konstanten in Java. Sie können also mit dem, was Java direkt anbietet nur die linke, rechte und mittlere Maustaste abfragen. Besonderheiten von Gamingmäusen und 3D-Mäusen behandeln wir hier nicht.
+Bei MouseWheelEvents gibt es die folgenden sechs Methoden. Beachten Sie bitte, dass die Rotation nicht in Grad oder Länge gemessen wird, sondern in ganzzahligen Klicks. Achten Sie bitte beim Blick in die Java API darauf, dass der Rückgabewert zwar häufig vom Typ int oder long ist, aber tatsächlich eine Konstante zurück gegeben wird, mit der Sie dann komfortabler weiter arbeiten können.
+-	Die Anzahl Klicks erhalten Sie mittels getWheelRotations() und getPrecisionWheelRotation(), die sich nur im Datentyp des Rückgabewerts unterscheiden.
+-	getScrollAmount() und getUnitsToScroll() gibt die Anzahl an „Einheiten“ an, um die ein Element wie eine Scrollpane pro Klick weiterbewegt werden soll.
+-	getScrollType() gibt mittels entsprechender Konstanten zurück, ob Zeilenweise oder Seitenweise gescrollt werden soll.
+-	Wie gewohnt haben wir auch hier wieder eine Methode, die für unsere Zwecke irrelevant ist, da sie sich auf die Identität des Eventobjekts bezieht: paramString()
+Wichtig: Beachten Sie bitte, dass die Maustaste, die sich unterhalb des Mausrades befindet über getButton() von MousEvent abgefragt werden kann. Sie hat sowohl technisch als auch programmiertechnisch nichts mit dem Mausrad bzw. dem MouseWheelEvent zu tun.
+14.	Timer
+Bei fast allem, was Sie bislang programmiert haben, haben Sie Software im Grunde genommen nach dem Prinzip entwickelt, dass aus dem Quellcode genau zu erkennen ist, wann welche Operationen und Methoden aufgerufen werden, bzw. in welcher Reihenfolge sie ausgeführt wurden. Einzige Ausnahme sind Events und Dateioperationen gewesen, denn dort hängt es ja beispielsweise von den Eingaben von Nutzern ab, wann welche Methoden aufgerufen werden.
+Ein weiterer Bereich, bei dem quasi ohne Ihr Zutun Methoden aufgerufen werden sind die sogenannten Timer. Timer-Instanzen sind Objekte, die in Abhängigkeit vom Systemtakt Methoden aufrufen. Leider vermittelt Ihnen die Bezeichnung Timer den Eindruck, dass diese Objekte in Abhängigkeit von der Zeit aktiv werden, aber das kann gar nicht der Fall sein. Die Gründe dafür verstehen Sie, wenn Sie Informatik 3 aufmerksam verfolgen. Für diejenigen von Ihnen, die Informatik 3 nicht belegen bzw. noch nicht belegt haben, hier eine kurze Zusammenfassung:
+Wie schnell ein Programm ausgeführt wird hängt vor allem davon ab, wie schnell der Prozessor des Systems arbeitet. Diese Geschwindigkeit wird in Arbeitsschritten pro Sekunde angegeben. Bei einem Prozessor mit 3 GHz können pro Sekunde 3 Mrd. Arbeitsschritte pro Sekunde, bzw. 3 Mio. Arbeitsschritte pro Millisekunde ausgeführt werden. Wenn wir also ignorieren, dass ein Prozessor nicht nur unser Programm ausführt, sondern noch eine Vielzahl weiterer Programme und wir außerdem ignorieren, dass in den meisten Programmzeilen mehr als eine Aufgabe zu bewältigen ist, dann gehen wir davon aus, dass ein Rechner mit einem solchen Prozessor für ein Programm mit bis zu 3 Mrd. Zeilen innerhalb einer Sekunde bearbeiten kann. 
+In Informatik 3 und in Theoretischer Informatik lernen Sie, wie Sie wesentlich genauer feststellen können, wie viele Aufgaben (in beiden Veranstaltungen Instruktionen oder Operationen genannt) der Rechner bewältigen muss, um ein Programm zu durchlaufen. Außerdem lernen Sie dort, dass wir im Regelfall nicht mit absoluten Zahlen sondern mit Größenordnungen arbeiten, um den Aufwand zu vergleichen, den zwei unterschiedliche Programme erzeugen.
+Aber wie gesagt würden wir dann immer noch außeracht lassen, dass neben unserem Programm noch eine Vielzahl weiterer Programme im Rechner aktiv sind, die ebenfalls alle vom Prozessor ausgeführt werden müssen. Darum ist es streng genommen unmöglich mit einem Computer präzise festzustellen, wie viel Zeit vergangen ist. Sie glauben mir nicht und denken, dass man doch nur ein Programm entwickeln müsste, das ständig misst, wie viele Programme wie viele Aufgaben vom Prozessor bearbeiten lassen? Auch das ist keine Lösung, weil wir dann noch ein Programm bräuchten, dass auch den Arbeitsaufwand dieses Kontrollprogramms messen würden. Und dieses Programm bräuchte dann wieder eine Kontrollprogramm und so weiter und so fort.
+Also können wir streng genommen in Java nichts programmieren, das unser Programm in Abhängigkeit von der Zeit steuert. In den meisten Fällen sind die Schwankungen durch unterschiedliche Auslastungen des Prozessors aber so marginal, dass es für menschliche Nutzer nicht möglich ist, den Unterschied zu bemerken. Also tun wir bei der Programmierung so, als wenn wir Methoden in festen zeitlichen Intervallen ausführen können. Sie müssen sich aber bewusst sein, dass es immer wieder dazu kommen wird, dass diese Intervalle nicht mit absoluter Präzision eingehalten werden.
+Wir werden später im Semester noch die sogenannte nebenläufige Programmierung behandeln. Dort werden Sie Fälle kennen lernen, in denen Sie gar keine zeitliche Sicherheit mehr haben: Sie werden dort selbst programmieren müssen, dass bestimmte Ereignisse nur dann ausgeführt werden dürfen, wenn andere Ereignisse schon stattgefunden haben. Die nebenläufige Programmierung ist nämlich die erste Methode, um Aufgaben auf mehrere Prozessorkerne eines Rechners zu verteilen. Das bringt neue Herausforderungen mit sich, aber darum kümmern wir uns wie gesagt später.
+14.1.	Zeitabhängige Ausführung von Aufgaben in Java
+Wenn wir in Java einen Programmteil in festen zeitlichen Abständen oder zu einem späteren Zeitpunkt ausführen lassen wollen, dann können wir dazu die Klasse Timer benutzen. Wir können dadurch zum ersten Mal Programme realisieren, in denen einzelnen Aufgaben unabhängig voneinander ausgeführt werden. Nehmen wir an, Sie wollen ein Spiel in Java entwickeln, bei dem Spieler aus einem Gefängnis ausbrechen müssen. In festen zeitlichen Abständen sollen nun bestimmte Bereiche der Spielfläche von Wächtern kontrolliert werden. Mit Zeitsteuerung können Sie also festlegen, welcher Wächter welchen Bereich zu welchem Zeitpunkt kontrolliert.
+Die Aufgabe, die wir zeitlich gesteuert ausführen lassen wollen müssen wir als eine Unterklasse von TimerTask programmieren.
+Beide Klassen sind im Paket java.util enthalten, wir müssen also java.util.Timer und java.util.TimerTask in jeder Klasse importieren, in der wir zeitabhängig Aufgaben ausführen wollen.
+Da die Klasse, die TimerTask erweitert programmiert werden muss, bevor Sie vom Timer verwendet werden kann, schauen wir sie uns auch zuerst an:
+14.2.	TimerTask
+Eine Klasse, die TimerTask erweitert muss die Methode public void run() implementieren. Später wird diese Methode von der Timer-Klasse aufgerufen. Um einen TimerTask zu programmieren, denken Sie nochmal an die Implementierung von Listenern zurück: Dort mussten Sie alles, was im Falle eines bestimmten Events passieren sollte in einer Methode programmieren. Aber während Sie bei den verschiedenen Events immer genau wissen (oder nachschlagen) mussten, wie diese Methoden hießen, haben Sie bei TimerTasks kaum Denkarbeit: Dort heißt diese Methode immer run().
+Außerdem gibt es noch zwei Methoden, die Sie bei TimerTasks nicht überschreiben oder aufrufen dürfen, da beide bestimmte Funktionen haben: Mit cancel() kann ein Timer einen TimerTask beenden. scheduledExcecutionTime() gibt dagegen den Zeitpunkt der letzten Ausführung des TimerTasks zurück. 
+Ansonsten programmieren Sie TimerTasks genau wie jede andere Klasse mit Feldern und Methoden. Denken Sie aber bitte daran, dass die von Ihnen programmierte Methodenaufrufe eines TimerTasks ausschließlich aus der Methode run() heraus aufgerufen werden können.
+14.2.1.	Aufgabe (klausurrelevant)
+Nehmen wir an, Sie haben eine Klasse Ausbruch, die die Logik unseres Spiels umsetzen soll. Das Spielfeld ist als ein zwei-dimensionales Array spielfeld[][] gespeichert, das als private deklariert ist. Denken Sie hier an eine simple Matrix, also an x/y-Koordinaten.
+Programmieren Sie jetzt die Klasse Waechter als TimerTask. Programmieren Sie sie so, dass ein Waechter bei jedem Aufruf von run() den gleichen Bereich kontrolliert, dass dieser Bereich aber beim ersten Aufruf von run() zufällig bestimmt wird. 
+Tipp: Waechter soll auf spielfeld[][] direkt zugreifen können. Dazu müssen Sie Waechter als eine besondere Art von Klasse bzw. in einem bestimmten Bereich des Programms programmieren. Wie heißt diese Art von Klassen?
+14.3.	Timer
+Im Gegensatz zum TimerTask werden Sie keine Klasse programmieren, die Timer erweitert. Sie erzeugen schlicht einen Timer und rufen eine von drei Methoden auf. Schauen wir uns das im Detail an:
+14.3.1.	Instanziierung eines Timers.
+Eine Instanz von Timer erzeugen Sie mit new Timer(). Sie können darüber hinaus noch true oder einen String oder einen String und true als Argumente beim Aufruf übergeben. Tatsächlich empfehle ich Ihnen die Instanziierung mit new Timer(true), weil das bewirkt, dass Ihr Timer und der TimerTask automatisch beendet werden, wenn die Instanz beendet wird, die den Timer instanziiert hat. Sonst haben sie den gleichen Effekt wie bei einer GUI, bei der Sie den Methodenaufruf setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); vergessen haben: Das aufrufende Programm existiert nicht mehr und die GUI wird auch nicht mehr angezeigt, aber sie läuft immer noch weiter. Instanziieren Sie einen Timer also mit dem Argument true, dann haben Sie die Sicherheit, dass er nur so lange als Aufgabe im Speicher des Rechners existiert, wie Ihr Programm existiert.
+Und seien Sie nicht verwundert: Der TimerTask wird nicht bei der Instanziierung an den Timer übergeben. Tatsächlich können Sie einem Timer mehrere TimerTasks übergeben.
+14.3.2.	Übergabe von TimerTasks an Timer
+Um einen TimerTask an einen Timer zu binden nutzen Sie eine der beiden Methoden schedule() und scheduleAtFixedRate(). Leider sind die Namen nicht gut gewählt, denn beide können genutzt werden, um einen TimerTask in regelmäßigen Abständen auszuführen. Der Unterschied ist folgender: Angenommen, ein TimerTask wurde nicht pünktlich ausgeführt (weil der Rechner zu viel zu tun hat). Dann bedeutet das, dass TimerTask, der per schedule() übergeben wurde übersprungen wird. Bei scheduleAtFixedRate() wird er dagegen so oft ausgeführt, wie er übersprungen wurde. Im Falle unseres Spiels Gefängnisausbruch wäre das also für den TimerTask Waechter sinnlos. In Fällen wo es dagegen wichtig ist, das ein Task auf jeden Fall jedes Mal ausgeführt wird, wenn er ausgeführt werden sollte, auch wenn das vielleicht deutlich verspätet passiert, ist scheduleAtFixedRate() die passende Methode. Werfen Sie ggf. einen Blick in die Java API, wenn Sie damit zu tun haben. Hier werden wir uns nur schedule() ansehen.
+14.3.3.	Einmaliger Aufruf eines TimerTask zu einem bestimmten Zeitpunkt
+Mit timer.schedule(TimerTask t, Date start) können Sie dem Timer timer einen TimerTask übergeben, der zum Zeitpunkt start einmalig ausgeführt wird. So könnten Sie beispielsweise für Ihre Silvesterparty automatisch ein Feuerwerk starten lassen, wenn Sie die Steuerung in Java programmieren. Schlagen Sie ggf. in der Java API näheres zur Klasse Date nach. (Leider wird dort der Zeitpunkt in Millisekunden nach dem 1.1.1970 programmiert.)
+Mit timer.schedule(TimerTask t, long delay) können Sie dagegen festlegen, wie lange es dauern soll, bis der TimerTask einmalig aufgerufen wird. Nehmen wir an, Sie wollen ein Programm entwickeln, mit dem Sie sich auf Klausuren vorbereiten. Dann müssen Sie nur noch berechnen, wie viele Millisekunden z.B. 90 Minuten sind, und könnten nach dem dem Start des Programms ein automatisches Ende für Eingaben einprogrammieren. Genauso würden Sie es auch programmieren, wenn der Spieler des Gefängnisausbruchs innerhalb einer vorgegebenen Zeit fertig werden muss.
+14.3.4.	Wiederholte Aufrufe eines TimerTask nach festen Intervallen
+Wenn Sie beim Aufruf zusätzlich noch eine weitere long-Variable programmieren (z.B. timer.schedule(TimerTask t, long delay, long n)), dann wird der TimerTask nach dem delay alle n Millisekunden aufgerufen.
+14.3.4.1.	Aufgabe (Klausurrelevant)
+Warum darf der Aufruf bei unserem Spiel nicht timer.schedule(new Waechter(), m, n); lauten?
+Tipp: Dabei sollen m und n beliebige Zahlen sein und timer eine Instanz von Timer und new Waechter() eine legale Instanziierung unserer TimerTask-Klasse, aber das ist für die Fragestellung irrelevant. Es geht hier also nicht um die die Syntax. 
+
+
+15.	Dateien und Dialoge
+Wichtig: Aus Zeitgründen ist dieses Kapitel nicht abgeschlossen. Sie erfahren hier die Hintergründe zum Dateizugriff und anderen Operationen, bei denen Sie auf Ressourcen zugreifen, die nicht Teil Ihres Quellcodes sind. Dieses Verständnis ist für die Programmierung (siehe Skript von Prof. Dr. Plaß) z.B. von Dateizugriffen wichtig. Deshalb sollten Sie es lesen, bevor Sie mit der eigentlichen Programmierung beginnen. Zurzeit kann nicht sichergestellt werden, dass dieses Kapitel abgeschlossen werden wird.
+
+Bevor wir uns die Themen Dateien und Dialoge ansehen, werfen wir einen Blick zurück auf das, was Sie bislang kennen gelernt haben, damit Sie verstehen, welchen Mehrwert dieses Kapitel Ihnen bietet.
+Im ersten Teil des Kurses haben Sie gelernt, einfache Programme in Java zu entwickeln, wobei dieselben Kenntnisse auch in wesentlich umfangreicheren Programmen genauso verwendet werden. Sie haben dabei zum einen die prozedurale und strukturierte Programmierung kennen gelernt, auch wenn Sie wahrscheinlich beide Begriffe nicht zuordnen können. Dazu haben Sie die klassenbasierte objektorientierte Programmierung in Java erlernt.
+Schauen wir uns diese drei Ansätze einmal etwas genauer an, damit Sie verstehen, was sie bedeuten, sodass Sie später erkennen können, ob Sie in einer anderen Programmiersprache einfach nur eine andere Syntax erlenen müssen (sprich, ob dort andere Zeichen und Befehle verwendet werden, aber letztlich das gleiche Konzept umgesetzt wird), oder ob Sie tatsächlich etwas komplett neues erlernen müssen.
+15.1.	Programmierparadigmen
+Zunächst zum Begriff der Überschrift: Ein Programmierparadigma beschreibt einen Ansatz bzw. eine Sammlung von Konzepten, nach denen Software entwickelt werden kann. Programmiersprachen sind dann immer eine Umsetzung von Teilen dieser Konzepte. Welche Konzepte das sind ist einzig die Entscheidung der Entwickler einer Programmiersprache. Häufig bezeichnen Entwickler von Programmiersprachen dann Dinge mit diesen Konzepten, die ihnen nicht vollständig entsprechen. So wird Java beispielsweise als objektorientierte Sprache bezeichnet. Tatsächlich handelt es sich um eine klassenbasierte objektorientierte Sprache. (Auf den Unterschied gehe ich gegen Ende dieses Abschnitts ein.) Teilweise werden auch Konzepte wie Datenstrukturen in Sprachen falsch bezeichnet. So gibt es in PHP die sogenannten Arrays, die aber mit tatsächlichen Arrays nicht viel gemein haben. Diese Konzepte können Sie in Veranstaltungen wie Algorithmen und Datenstrukturen oder Software Engineering kennen lernen.
+Die verschiedenen Ansätze, die Sie in diesem Abschnitt kennen lernen sind allesamt Programmierparadigmen:
+Wenn Sie prozedural programmieren, dann tun Sie nichts anderes als Variablen zu definieren (besser gesagt zu deklarieren), diesen Variablen Werte zuzuordnen und diese Werte mittels der sogenannten Operationen abzuändern. Dies ist einer der Programmieransätze, die als imperative Programmierung zusammengefasst werden. 
+Hier wie an anderer Stelle werden prozedurale Programmiersprachen unter anderem in statisch und dynamisch typisierte Sprachen unterteilt: Bei statisch typisierten Sprachen wie Java werden einer Variablen vom Entwickler feste Datentypen zugeordnet, die sich im Programmablauf nicht ändern können. Die Vor- und Nachteile haben Sie kennen gelernt.
+Im Gegensatz dazu werden die Datentypen bei dynamisch typisierten Sprachen von der Programmiersprache selbst (genauer gesagt von der jeweiligen Laufzeitumgebung) verwaltet und können sich jederzeit ändern. Es spielt nun keine Rolle, welche der beiden Arten Sie persönlich bevorzugen; wenn Sie eine der beiden Varianten ablehnen, mögen Sie in einzelnen Sprachen gute Software entwickeln können, aber mit guter Informatik haben Ihre Kenntnisse nichts zu tun.
+Bevor wir zur Erklärung der imperativen Programmierung kommen, hier noch kurz etwas dazu, was die strukturierte Programmierung ist. Es steckt schon im Namen und Sie werden sich wundern, warum es hierfür überhaupt eine eigene Bezeichnung gibt: Bei strukturierter Programmierung arbeiten wir mit Strukturen wie Schleifen.
+Wie Sie sehen kann also eine Sprache mehrere Konzepte umsetzen, es gibt also nicht etwa Programmiersprachen, die entweder prozedural oder strukturiert sind, sondern viele Sprachen, die wenigstens eines von beidem sind.
+Jetzt zur imperativen Programmierung: Imperative Programmierung beinhaltet stets, dass Sie in einem Programm festlegen, wie der Computer arbeiten soll. Somit sind prozedurale und strukturierte Programmiersprachen immer imperativ. Was hier fehlt und was Ihnen bei jeder Fehlersuche den Tag ruiniert, ist die Antwort darauf, wozu er arbeiten soll, bzw. welchen Sinn die einzelnen Teile eines Programms haben. Dennoch gehen fast alle Menschen davon aus, dass Programmierung und imperative Programmierung das gleiche wären. Und das ist falsch.
+Wenn Sie dagegen in einer Programmiersprache festlegen, was der Computer tun soll, ohne zu sagen, wie er diese Aufgabe im Detail erfüllen soll, dann wird das als deklarative Programmierung bezeichnet. Eine Art der deklarativen Programmierung wird zurzeit in mehreren  häufig verwendeten Programmiersprachen umgesetzt: Die funktionale Programmierung. Die Basis der funktionalen Programmierung ist das sogenannte Lambda-Kalkül. In Java wird es seit Version 8 unterstützt und in JavaScript schon deutlich länger.
+Dies wird keine Einführung ins Lamda-Kalkül, deshalb sei an dieser Stelle nur so viel gesagt: Weil wir nicht mehr im Detail programmieren, wie der Computer arbeiten soll, sind funktionale Programme wesentlich kürzer als imperative Programme. Das Verhältnis kann durchaus bei 1:5 liegen. Sprich: Was Sie in Java ohne funktionale Programmierung in 200 Zeilen ausdrücken, kann mit funktionaler Programmierung durchaus in 40 Zeilen passen.
+Leider setzt sich die funktionale Programmierung erst langsam im kommerziellen Bereich durch, sodass die meisten Einführungen für Einsteiger kaum geeignet sind. Dennoch sollten Sie sich hiermit auseinander setzen, da es wahrscheinlich ist, dass diese Programmierweise sich mehr und mehr durchsetzen wird: Sie mag schwer zu erlernen sein, ist dafür ausgesprochen außerordentlich effizient und hilft massiv bei der Vermeidung von Fehlern, sodass die Fehlerbehebung deutlich vereinfacht wird.
+Wichtig: Sollte das noch nicht deutlich geworden sein: Ohne eine Einführung ins Lamda-Kalkül bzw. die funktionale Programmierung können Sie Java 8 genau wie JavaScript nicht in vollem Umfang nutzen. Sie können dann schlicht nicht verstehen, warum bestimmte Dinge so zu programmieren sind, wie das der Fall ist.
+Jetzt noch ein Hinweis bezüglich dem, was Sie als Objektorientierung in Java kennen gelernt haben: Genau gesagt handelt es sich hier um die klassenbasierte Objektorientierung. Das ist aber NICHT „die“ objektorientierte Programmierung. So gibt es beispielweise in JavaScript die prototypbasierte Objektorientierung. Dabei erzeugen Sie Objekte nicht als Klassen, sondern direkt aus Funktionen.
+Und damit wären wir bei der zentralen Warnung dieses Abschnitts: Wenn Sie glauben, dass Sie ein Programmierkonzept kennen, weil Sie etwas mit dessen Namen in einer Programmiersprache kennen gelernt haben, dann liegen Sie im Regelfall falsch.
+15.2.	Übergang zum aktuellen Kapitel
+Nachdem Sie also in P1 die grundlegende Programmierung klassenbasierter objektorientierter Programme erlernt haben, haben Sie bei den beiden letzten Terminen gelernt, wie Sie zu einem solchen Programm eine grafische Nutzeroberfläche programmieren können.
+In dieser Veranstaltung werden Sie noch einige Themen rund um GUIs kennen lernen. Heute schauen wir uns Dateien und Dialoge an.
+Ein Dialog ist eine Sonderform von GUI, aber für die Programmierung und Nutzung gibt es hier kaum neues.
+Wenn wir dagegen über Dateien reden, dann verlassen wir den Bereich der GUI-Programmierung, denn hier beschäftigen wir zum zweiten Mal nach den Events mit etwas, das zum Teil außerhalb des eigentlichen Java-Programms liegt: Beim Eventhandling haben wir mit Objekten gearbeitet, die quasi aus dem Nichts entstanden sind. Zur Erinnerung: Wenn wir es etwas naiv betrachten, dann sind Events Objekte in Java, die vom Betriebssystem erzeugt werden.
+Wenn wir auf Dateien zugreifen, dann nutzen wir erneut etwas, das wir nicht selbst in Java programmieren, denn die Daten, die letztlich auf der Festplatte oder einem anderen Medium gespeichert oder von dort ausgelesen werden, sind ja nicht Teil unserer Programmierung. Diesen Teil müssen Sie grundsätzlich verstehen, weil es hier eben nicht nur darum geht, wie wir die Daten unseres Programms in einer Datei speichern oder von dort aus lesen. Vielmehr erfahren Sie hier alles darüber, die Daten zwischen einem Java-Programm und beliebigen anderen Programmen oder Computern ausgetauscht werden.
+Tatsächlich kommen wir hier in einen Bereich, der seinen Ursprung im Bereich der Nachrichtentechnik hat: Wir greifen auf Datenströme zurück. Was das ist und wie wir damit umgehen ist der zweite Teil der heutigen Veranstaltung. Das kann aber für die gesamte Thematik nur eine erste Einführung sein.
+Der Rest dieser Veranstaltung unterteilt sich in drei Bereiche: Zum einen wären da verschiedene Aspekte der GUI-Programmierung. Wir haben noch keine Menüs programmiert und die Bearbeitung von Computergrafiken oder Bildern mit der Maus werden Teil der nächsten Veranstaltungen sein. Zusätzlich kommen wir zur Timer-Klasse, mit der wir zeitabhängige Interaktionen programmieren können.
+Der zweite große Bereich der Veranstaltung behandelt das Themengebiet der Algorithmen und Datenstrukturen. Hier geht es um eine der zentralen Kompetenzen aller InformatikerInnen: Die Antwort auf die Frage, wie wir Daten möglichst effizient im Programm verwalten können. Nicht-InformatikerInnen verwenden hier in aller Regel eine von zwei Lösungen: Arrays und Datenbanken. Und das kann sehr schnell dazu führen, dass Programme sehr langsam werden.
+Der letzte Bereich greift zwei Punkte auf, die wir leider nicht in der nötigen Tiefe behandeln können. Zum einen wäre da die nebenläufige Programmierung, bei der Sie bewusst die vielen Prozessorkerne eines Rechners nutzen. Zum anderen kommen wir nochmal auf das Thema Datenaustausch zu sprechen: Dieses Mal geht es nicht um Dateien, sondern um den Datenaustausch mit anderen Rechnern.
+Fassen wir das zusammen: Nachdem Sie im ersten Semester gelernt haben, lauffähige Programme in Java zu erstellen, besprechen wir momentan verschiedenes, damit diese Programme auch von Nutzern genutzt werden können. Anschließend sehen wir uns einige Punkte an, deren Beherrschung InformatikerInnen von Programmierern unterscheiden.
+15.3.	JDialog
+Wie Sie schon den früheren Erläuterungen entnehmen konnten programmieren Sie einen Dialog mit der Klasse JDialog und gehen dabei fast genauso vor, als wenn Sie einen JFrame programmieren würden.
+Es gibt zwei Unterschiede: 
+-	Bei der Instanziierung mit new JDialog(parent, title, modal) übergeben Sie dem Konstruktor über das Argument parent den Top-Level-Container, an den dieser Dialog gebunden wird. Damit sorgen Sie dafür, dass der Dialog geschlossen wird, wenn das parent-Fenster geschlossen wird.
+
+-	Weiterhin ist modal eine boolean-Variable, die besagt, ob es sich um einen modalen oder nicht-modalen Dialog handelt. Modale Dialoge blockieren alle anderen Fenster; Nutzer müssen also zunächst den Dialog beenden, bevor sie mit den übrigen Fenster arbeiten können.
+15.4.	JOptionPane
+JOptionPanes sind im Grunde ebenfalls Dialoge, aber sie bieten ausschließlich vorgegebene Ansichten an, die durch statische Methoden aufgerufen werden. Obwohl sie also deutlich beschränkter als alle bisherigen GUIs sind, müssen Sie hier ein ganz anderes Kochrezept nutzen, als das bisher der Fall war. 
+Nach der Instanziierung erzeugen Sie keine Instanzen von Komponenten, sondern geben über die entsprechenden Methoden von JOptionPane an, welcher Text angezeigt werden soll, welche und wie viele Schaltflächen anzeigt werden sollen, usw.
+Mehr Details zu JDialog und JOptionPane finden Sie im Skript von Prof. Plaß.
+15.5.	Datenströme und Dateien
+Damit kommen wir zum zentralen Thema dieses Termins. Letzte Wochen haben Sie gelernt, dass Sie in Java mit Objekten arbeiten können, die Sie nicht selbst instanziiert haben, sondern die scheinbar aus dem Nichts kommen.
+Aus Sicht der Java-Programmierung erzeugen wir ja stets Objekte, die wir dann über Methodenaufrufe ändern oder nutzen. Und auch wenn wir bei Events diese Objekte nicht selbst erzeugt haben, blieb doch dieses Grundprinzip.
+Bei Datenströmen gibt es allerdings etwas neues, das außerdem recht anspruchsvoll ist. Deshalb müssen wir uns zunächst ansehen, was der Unterschied zwischen dem ist, wodurch ein Event erzeugt wird und dem, was wir als Datenstrom nutzen.
+15.5.1.	Event versus Datenstrom
+Bei einem Event tun wir so, als wenn es sich um eine einzelne klar abgegrenzte Nachricht handelt. Auf der Systemebene mögen es tatsächlich mehrere Signale sein, die über eine Datenleitung „wandern“, aber für uns ist das egal: Wir haben hier ein Event und das ist für sich abgeschlossen. Also brauchen wir die Sachen auch nicht genauer zu betrachten.
+Bei einem Datenstrom sieht das anders aus, so wie es aus dem Namen hervorgeht: Es handelt sich um einen Strom, also um eine Abfolge von Signalen, die nicht per se abgegrenzt sind. Das einzige was hier abgegrenzt ist (aber auch das wieder nur für uns als Java-Programmierer), sind die Datenpakete, aus denen sich der Strom zusammensetzt. Diese Datenpakete sind einzelne Bytes, also jeweils acht Bit am Stück.
+15.5.2.	Besonderheit aller Datenströme
+Daraus folgt, dass wir bei Datenströmen ebenfalls nicht voraussetzen dürfen, dass das Ende eines Stromes klar abgegrenzt ist; vielmehr gehen wir hier programmiertechnisch vor, als wenn wir ein Telefonat führen: Dort öffnen wir einen Kommunikationskanal, indem wir eine Leitung öffnen (Hörer abheben / grüne Hörertaste anwählen), dann einen Nummer eingeben und darauf warten, dass die Gegenseite abhebt. Und irgendwann, ohne dass der Zeitpunkt im Vorfeld klar wäre, trennen wir (oder die Gegenstelle) den Kommunikationskanal. (Hörer auflegen / rote Hörertaste drücken) Wie wir den Kommunikationskanal in der Zwischenzeit nutzen ist von diesem Ablauf komplett unabhängig. (Aktuelle Technologien wie LTE oder asynchrone Kommunikation wie E-Mail u.a. lassen wir hier mal außen vor.)
+Der Ablauf bei Datenströmen ist konzeptionell derselbe: Sie erzeugen eine Instanz einer Datenstromklasse und wenn der Datenaustausch beendet ist, „beenden“ Sie sie wieder.
+Hier wird in aller Regel zwischen Klassen für den Empfang von Daten und den Versand von Daten unterschieden. Im Gegensatz zu dem, was Sie bei einem Telefonat erleben, nutzen Sie hier zwei unterschiedliche Objekte: Eines, über das Sie „sprechen“ und ein anderes, über dass Sie zuhören. Obwohl: So abwegig ist das ja nicht: Sie sprechen schließlich mit dem Mund und hören mit den Ohren; ein gemeinsames Organ zum Sprechen und Hören haben Sie auch nicht.
+Der Datenaustausch besteht dann im Versenden oder Empfangen von Paketen, die die Größe eines Byte haben. Wenn Sie also eine Bilddatei in Ihr Javaprogramm laden wollen, finden also tatsächlich mehrere Tausend Leseoperationen statt, bei denen jeweils ein Byte der Bilddatei gelesen wird. Aber keine Sorge, wir arbeiten ja mit strukturierter Programmierung, also müssen Sie das nur einmal programmieren.
+Dieser Ablauf ist für alle Arten von Datenaustausch zwischen einem Java-Programm und „Dingen“ außerhalb von Java identisch. Die verwendeten Klassen sind es allerdings nicht unbedingt. Auch die Methodenaufrufe und Argumente unterscheiden sich zum Teil deutlich. Doch wenn Sie das Grundprinzip verstanden haben, wird Ihnen die Programmierung deutlich leichter fallen.
+Aufgabe:
+-	Bislang haben Sie String-Objekte immer als eine Einheit betrachtet. Tatsächlich handelt es sich dabei um Arrays von Character-Variablen. Erklären Sie in eigenen Worten wie ein String als Datenstrom strukturiert wäre.
+
+Tipp: Das hat noch nichts mit einer konkreten Programmieraufgabe zu tun; hier geht es um die Frage, ob Sie wirklich verstanden haben, was ein Datenstrom ist, was ein String-Objekt ist und warum daraus direkt folgt, wie ein String-Objekt direkt in einen Datenstrom übertragen werden kann.
+15.5.3.	Pufferung
+Neben dem Konzept des Datenstroms müssen wir uns nun das Konzept der Pufferung ansehen: So wie wir nicht wissen, wann ein Datenstrom als Ganzes beendet ist, können wir im Regelfall auch nicht mit absoluter Genauigkeit wissen, wann ein Datenpaket beginnt und wann es endet. Mehr über die Gründe erfahren Sie in Veranstaltungen wie KT und NWI. In dieser Hinsicht möchte ich Ihnen die Wahlpflichtkurse Nachrichtentechnik 1 und 2 bei Prof. Mores ans Herz legen: Diese sind zwar außerordentlich anspruchsvoll, aber wenn Sie hier bestehen, dann verstehen Sie wirklich, was eigentlich passiert, wenn Daten übertragen werden.
+Wenn Sie in wenigen Wochen mit Grafiken und Bildern in Java arbeiten, wird Ihnen das sogenannte dubble Buffering begegnen. Das ist eine Pufferung, bei der ein Bild, das aus einem Datenstrom erzeugt wird zunächst vollständig zwischengespeichert wird. Wenn es angezeigt werden soll, ist es also sofort vollständig zu sehen.
+Aufgabe:
+-	Wie wird es denn sonst angezeigt, wenn es direkt aus einem Datenstrom am Bildschirm angezeigt wird? Oder anders gefragt: Wenn in einer GUI ein Bild aus einem Datenstrom erzeugt wird, der über ein Netzwerk „einfließt“, was passiert dann unter Umständen beim Bildaufbau, das Nutzer stören würde.
+
+
+16.	Nebenläufige Programmierung
+Praktisch alle aktuellen Rechner (das schließt auch Smartphones mit ein) verfügen über Prozessoren, die mehrere Kerne besitzen. Wenn wir eine naive Perspektive einnehmen, dann gehen wir davon aus, dass unsere Programme mit jedem zusätzlichen Prozessorkern auch automatisch entsprechend schneller werden. Wenn das der Fall wäre, würde ein Programm auf einem Rechner mit zwei Kernen doppelt so schnell laufen, wie auf einem Rechner mit einem Kern, auf einem System mit vier Kernen würde es nochmal doppelt so schnell laufen usw. Aber wie gesagt: Das ist eine naive Perspektive, die mit der Realität nichts gemein hat.
+Tatsächlich müssen wir bei der Programmierung in Java bewusst steuern, dass Aufgaben auf verschiedene Kerne verteilt werden. Wir brauchen dabei zwar nichts darüber zu wissen, wie viele Kerne vorhanden sind, aber auch so haben wir es hier mit einigen Problemen zu tun, die Ihnen bislang bei der Programmierung in Java nicht begegnet sind.
+Wenn wir nun ein Programm entwickeln, bei dem wir bewusst die Aufgaben auf verschiedene Kerne verteilen, dann wird das als nebenläufige Programmierung bezeichnet. In diesem Zusammenhang wird Ihnen der Begriff des Thread begegnen: Jeder Teil eines Programms, der so programmiert wird, dass er unabhängig von anderen Teilen des Programms auf einem Prozessorkern ausgeführt werden kann, wird (u.a. in Java) als Thread bezeichnet. Wenn Sie also etwas über Multithreading hören, dann geht es um nichts anderes als um nebenläufige Programmierung: Ein Programm, in dem mehrere Threads unabhängig voneinander ausgeführt werden.
+Im Englischen spricht man übrigens von der concurrency, wenn man über nebenläufige Prozesse redet.
+Das offizielle Tutorial zu nebenläufiger Programmierung in Java finden Sie unter https://docs.oracle.com/javase/tutorial/essential/concurrency/ 
+16.1.	Von der prozeduralen zur nebenläufigen Programmierung
+Wenn Sie mit der nebenläufigen Programmierung beginnen, dann ist der einfachste Weg, dass Sie sich ein beliebiges Programm nehmen und es darauf untersuchen, welche Teile des Programms unabhängig ausgeführt werden können. Diese gliedern Sie dann bei Java in eine Klasse aus, die das Interface Runnable implementiert oder von der Klasse Thread erbt. 
+Wichtig:
+Im Folgenden werden wir den Begriff des Thread für beide Fälle verwenden. So lange hier also nicht explizit angegeben ist, dass etwas nur für Implementierungen von Runnable oder nur für Erweiterungen von Thread gilt, gilt es für beide Fälle gleichermaßen.
+Ohne es zu wissen haben Sie das schon getan, dann ein TimerTask implementiert Runnable. Alles, was Sie bei Timern über die Programmierung von TimerTasks kennen gelernt haben, können Sie also vollständig für die Programmierung von Threads übernehmen. Einziger Unterschied: Während ein TimerTask über einen Timer gescheduled wird, starten wir einen Thread auf etwas andere Art und Weise. Außerdem werden Sie noch einige zusätzliche Methoden kennen lernen, wie beispielsweise sleep(), mit der Sie einen Thread pausieren lassen können.
+Schauen wir uns einige Grundlagen im Detail an: Nehmen wir an, Sie sind als Softwareentwickler in einem multinationalen Konzern angestellt, der zum Teil Hunderte Filialen in einzelnen Ländern hat. Sie entwickeln den Teil einer Software, in dem es um die Warenverwaltung geht. Das bedeutet, dass Sie Methoden programmieren, die beispielsweise die Preise aller Waren in jeder Filiale eines Landes oder einer Region anpassen. Ein typischer Fall wäre so etwas wie die Änderung der Umsatzsteuer. Gehen wir einfach davon aus, dass die Umsatzsteuer in einem Land von 25% auf 27 % erhöht wird. Lassen wir einmal das Thema Datenbanken und Effizienz außen vor und tun so, als wenn die Preise alle Waren in einem Array gespeichert wären.
+Mit dem, was Sie bislang kennen würden Sie jetzt also eine Iteration programmieren, die den Preis ohne Umsatzsteuer mit 1,27 multipliziert und durch 1,25 dividiert und das Ergebnis wieder im Array abspeichert. Das sähe also ungefähr so aus:
+for (int i = 0; i < warenPreise.length; i++) { warenPreise[i] = warenPreise[i] * 1.27 / 1.25; }
+
+Stellen wir uns nun vor, wir hätten es mit insgesamt 300 Mio. Preisen zu tun und jeder Prozessorkern läuft mit drei GHz. Schauen wir uns nun an, wie lange es dauert, diese Iteration auszuführen:
+-	int i = 0;		
+// Eine Operation
+
+-	i < warenPreise.length 	
+// Pro Preis macht das zwei Operationen: Das Auslesen der Länge des Arrays und den Vergleich, also insgesamt 600 Mio. Operationen.
+
+-	i++			
+// Pro Preis eine Operation: 300 Mio. Operationen.
+
+-	warenPreise[i]		
+// Auslesen der 300 Mio. Werte aus dem Array macht 300 Mio. Operationen.
+
+-	* 1.27			
+// 300 Mio. Multiplikationen ergibt wieder 300 Mio. Operationen.
+
+-	/ 1.25			
+// 300 Mio. Divisionen ergibt wieder 300 Mio. Operationen.
+
+-	warenPreise[i] = ...	
+// 300 Mio. Speicherungen von Werten im Array macht 300 Mio. Operationen.
+Wenn wir das Summieren, kommen wir auf 2,1 Mrd. Operationen. Ein Prozessorkern mit 3 GHz, der sonst nichts zu tun hat, benötigt dafür also rund 0,7 Sekunden. Das klingt nach wenig. Nun müssen Sie aber davon ausgehen, dass in Ihrer Unternehmenssoftware viele Tausend von solchen Iterationsaufrufen wie unserem praktisch zur gleichen Zeit gestartet werden: Wenn die alle einen vergleichbaren Aufwand erzeugen und wir immer noch so tun, als wenn wir nur einen Prozessorkern zur Verfügung haben, dann müssen wir auf das Ende unserer Preisanpassung mehrere Minuten oder Stunden warten. Also müssen wir bewusst mit mehreren Prozessorkernen arbeiten, wann immer das möglich ist.
+Außerdem arbeitet Java ohnehin grundsätzlich mit mehreren Threads. Denken Sie hier schlicht an Events bzw. Listener bei einer umfangreichen GUI: Da nicht bekannt sein kann, wo Nutzer als nächstes mit der GUI interagieren, müssen alle Listener quasi gleichzeitig und ununterbrochen bereit sein, bei einem Event aktiv zu werden. Und da im Hintergrund ein Betriebssystem mit Hunderten Prozessen aktiv ist, von weiteren Programmen im Hintergrund ganz zu schweigen, wäre es ein nicht akzeptabler Fehler, wenn GUIs nicht nebenläufig implementiert wären. Nur haben wir uns das bislang noch nicht angesehen.
+Zusammenfassung:
+Wenn wir Programme so entwickeln, dass Sie alle Kerne eines Prozessors ausnutzen, dann wird das als nebenläufige Programmierung bezeichnet. Bei kleinen Programmen ist der Gewinn im Regelfall nicht zu bemerken, aber sobald wir es mit Hunderten Aufgaben zu tun haben, die gleichzeitig ausgeführt werden, ist es ein schwerer Mangel, Software nicht nebenläufig zu programmieren.
+Doch bevor wir uns das ansehen, sollten wir zunächst prüfen, in welchen Fällen wir Aufgaben nebenläufig ausführen lassen können.
+16.2.	Beschränkung nebenläufiger Programmierung
+Schauen wir uns dazu das Beispiel von oben an: Dort werden Einträge eines Array geändert. Wenn wir prüfen wollen, ob ein Programmteil nebenläufig gelöst werden kann, dann müssen wir nur prüfen, ob er sich in einzelne Schritte unterteilen lässt, die nicht voneinander abhängen. Bei unserem Beispiel ist das der Fall: Weil ja die Änderung des einzelnen Preises unabhängig davon durchgeführt wird, wie die Änderung der anderen Preise durchgeführt wird, können wir jede Änderung als eigenen Thread ausführen lassen.
+Hier zwei Beispiele, die zeigen, dass nicht alles bzw. nicht alles so leicht nebenläufig gelöst werden kann: 
+-	Bildkompression: Wenn wir ein Bild komprimieren, dann bedeutet das, dass wir nicht jeden Bildpunkt so speichern, wie er ursprünglich war, sondern dass wir ein Verfahren anwenden, bei dem das Bild noch eine ausreichende Qualität hat, aber deutlich weniger Speicher verbraucht. Wenn wir hierzu die JPEG-Kompression anwenden, dann hängt der Wert vieler Bildpunkte von einer Berechnung ab, bei der die benachbarten Bildpunkte einbezogen werden. Da aber auch deren Wert zum Großteil wiederum von Berechnungen abhängt, bei der ihre Nachbarn einbezogen werden, können wir die Kompression aller Bildpunkte nicht vollständig nebenläufig durchführen. Allerdings werden bei JPEG immer Gruppen von Bildpunkten gemeinsam berechnet, sodass wir zwar nicht für jeden einzelnen Bildpunkt, aber dafür eben für mehrere Bildpunkte gemeinsam einen Thread starten können.
+
+-	Rekursion: Vergegenwärtigen Sie sich, wie die Werte des Pascalschen Dreiecks berechnet werden. Da werden jeweils zwei bereits berechnete Werte verwendet, um einen neuen Wert zu berechnen. Also können wir hier keine nebenläufige Programmierung nutzen, denn alle berechneten Werte sind ja von der Berechnung anderer Werte abhängig. 
+
+(Hinweis bezüglich dieser Aufgabe, der nichts mit der nebenläufigen Programmierung zu tun hat: Sie können aber dennoch die Berechnung des Pascalschen Dreiecks sehr effizient programmieren. Dazu müssen Sie sich nur vergegenwärtigen, dass in jeder Zeile nur ein neuer Wert berechnet wird. So ist der erste und letzte Wert jeder Zeile immer die 1. Ab der dritten Zeile ist der zweite und der vorletzte Wert immer die 2. Ab der fünften Zeile ist der dritte und der drittletzte Werte immer die 3. Mit diesen Tipps, ein wenig Nachdenken und mit Hilfe eines Arrays für Zwischenergebnisse sollten Sie im Stande sein, eine effiziente Rekursion für das Pascalsche Dreieck zu programmieren. Aber wie gesagt: Das hat nichts mit nebenläufiger Programmierung zu tun, sondern es ist angewandte Informatik.)
+Zusammenfassung:
+Teile von Programmen können nur dann nebenläufig programmiert werden, wenn Sie vollkommen unabhängig voneinander ausgeführt werden können. Die Schwierigkeit besteht also darin, zu erkennen, welche Teile eines Programms nebenläufig programmiert werden können.
+An dieser Stelle noch ein Hinweis: Immer wenn in der Literatur von leichtgewichtigen Prozessen die Rede ist, sind damit Teile eines Programms gemeint, die nebenläufig ausgeführt werden.
+Nachdem wir jetzt eine grundlegende Vorstellung davon haben, warum nebenläufige Programmierung Sinn macht und wann wir Sie anwenden können, schauen wir uns an, welche Zustände ein Objekt vom Typ Thread haben kann.
+16.3.	Zustände eines Thread
+Auch das ist wieder etwas Neues: Bei nebenläufiger Programmierung haben die einzelnen Threads einen Zustand. Um das zu verstehen, stellen Sie sich bitte die Objekte eines objektorientieren Programms als Arbeitnehmer vor und Methodenaufrufe als Anweisungen an diese Menschen. Wenn Sie dieses Bild vor Augen haben, dann wird das Prinzip schnell klar: Ein Arbeitnehmer, der gerade eine Aufgabe ausführt, muss diese Aufgabe abbrechen, um eine andere Aufgabe auszuführen. Mit Zustand ist hier gemeint, ob und warum der Arbeitnehmer etwas tun kann oder eben nicht.
+Wenn Sie kein Problem mit dieser Vorstellung haben (lassen wir philosophische oder politische Aspekte einmal außen vor), dann haben Sie verstanden, was die Grundidee der Objektorientierung ist, auch wenn wir dort eher von Maschinen bzw. virtuellen Einheiten sprechen.
+Die folgenden Abschnitte behandeln zum Teil mehrere Zustände, die einfach deshalb gruppiert sind, weil die Auswirkung gleich, aber die Ursache für den Zustand unterschiedlich ist. Die Namen der Zustände, die in den einzelnen Abschnitten hervorgehoben sind, sind gleichzeitig Konstanten. Um zu prüfen, in welchem Zustand ein Thread sich befindet, können Sie die Methode getState() auf jedem Thread aufrufen.
+16.3.1.	Lebensdauer bzw. Gültigkeitsbereich
+Da wir hier über virtuelle Objekte reden, haben wir wie bei Variablen und Datenstrukturen einen Zeitraum, innerhalb dessen das virtuelle Objekt existiert. Wenn es erzeugt wurde, hat es den Zustand NEW, wenn es beendet wurde, hat es den Zustand TERMINATED.
+Diese Zustände sind für uns im Regelfall belanglos, sollten Sie allerdings von einem Thread die Rückmeldung erhalten, dass er in einem dieser Zustände ist, dann bedeutet das, dass er noch nicht bzw. nicht mehr ausgeführt wird und auch nicht ausgeführt werden kann.
+16.3.2.	Wartet auf den Startbefehl
+Wenn ein Thread erzeugt wurde und es nichts gibt, wegen dem er seine Aufgabe(n) noch nicht anfangen kann, befindet er sich im Zustand RUNNABLE. Dieser Zustand tritt nur bei Erweiterungen der Klasse Thread auf.
+16.3.3.	Nicht arbeitsfähig
+Jetzt gibt es noch drei Zustände, wegen denen ein Thread nicht aktiv werden kann:
+-	Zunächst gibt es die Situation, dass er auf eine Eingabe wartet, die noch nicht berechnet wurde. (Denken Sie an das Beispiel mit der Berechnung des Pascalschen Dreiecks.) In diesem Fall befindet er sich im Zustand BLOCKED. 
+
+Genauer gesagt gibt dieser Zustand an, dass der Thread auf einen synchronisierten Thread wartet. Kurz gesagt ist Synchronisation eine Abstimmung im Programmablauf, bei der wir zwei Aufgaben miteinander abstimmen, die voneinander abhängen. Stellen Sie sich beispielsweise einen Videostream vor: Der Audio- und Videoanteil des Streams sollen „gleichzeitig“ abgespielt werden. Töne sollen also genau zum richtigen Zeitpunkt abgespielt werden. Methoden, die dazu dienen werden als Synchronisation bezeichnet.
+
+-	Dann können wir einen Thread auch anweisen, dass er erst dann ausgeführt werden soll, wenn ein anderer Thread seine Aufgabe erfüllt hat, egal wie lange das dauert. Ein Thread, der aus diesem Grund wartet befindet sich im Zustand WAITING.
+
+-	Ähnlich wie WAITING ist der Zustand TIMED_WAITING. Hier wartet der Thread maximal eine bestimmte Zeit lang darauf, dass ein anderer Thread seine Aufgabe erfüllt.
+Zusammenfassung:
+Die Schwierigkeit bei der Programmierung von Threads besteht also darin, zu verhindern, dass Threads dauerhaft im Zustand BLOCKED oder WAITING sind. 
+Vorweg schon der Hinweis: Wenn ein Thread (das kann nur bei Erweiterungen der gleichnamigen Klasse passieren) nicht von NEW zu RUNNABLE wechseln, dann haben wir einen dummen Fehler gemacht. Allerdings können Sie den noch nicht kennen, weil wir uns dazu zunächst noch die Klasse Thread ansehen müssen.
+16.4.	Thread und Runnable
+Bevor wie zur Klasse Thread und dem Interface Runnable kommen, hier noch ein kurzer Hinweis: Threads können zwar nicht untereinander kommunizieren, aber in Java kann ein Objekt, das einen Thread erzeugt hat Methoden dieses Threads aufrufen. Diese Objekt kann also die einzelnen Threads koordinieren.
+Jede Klasse, die Runnable implementiert bzw. Thread erweitert muss eine Methode namens 
+public void run() enthalten, aber alles, was in diesem Bezug relevant ist, kennen Sie bereits aus TimerTask.
+Erweiterungen von Thread müssen zusätzlich über die Methode start() von NEW in RUNNABLE versetzt werden. Wenn Sie das vergessen, existiert der Thread zwar als virtuelles Objekt, aber er ist nicht ausführbar. Das bedeutet, dass Sie zunächst mehrere Threads als Erweiterung von Thread programmieren können und sie dann nahezu zeitgleich „aktivieren“ können. Wenn Ihnen das nicht sinnvoll erscheint, denken Sie an die GUI-Programmierung zurück: Dort konnten Sie zunächst alle Komponenten der GUI erzeugen, bevor Sie die GUI per setVisible(true) anzeigen lassen. Wenn Sie das nicht machen, könnten Nutzer auf einem langsamen System sehen, wie die GUI Stück für Stück aufgebaut wird, bzw. wie hinzugefügte Komponenten das Layout ändern.
+Wichtig: start() und run()können nicht von einem Thread selbst aufgerufen werden. Vielmehr muss das Objekt, das den Thread instanziiert hat diese Methoden aufrufen.
+16.5.	Daemon – Ein hilfreicher Geist
+Während in den monotheistischen Religionen Dämonen böse Geister sind, steht dieser Begriff in der griechischen Antike für hilfreiche Geister. Und was sollte ein Thread immer sein? Genau, ein Programmteil, der eine sinnvolle Aufgabe übernimmt, so lange es Sinn macht, dass er Sie ausführt.
+Sie werden sich noch erinnern, dass Sie Instanzen von Timer mit new Timer(true) erzeugen sollten. Wenn wir das tun, dann existieren sowohl der Timer als auch die bei ihm scheduleten TimerTasks höchstens so lange, wie das Objekt existiert, das den Timer instanziiert hat.
+Das gleiche haben Sie schon am Beginn des Semesters kennen gelernt, als es um die Konstante JFrame.EXIT_ON_CLOSE ging: Ein top-level-Container, der diese Konstante nicht (!) per setDefaultCloseOperation() erhalten hat, existiert als Prozess weiter im Systemspeicher, auch wenn das Fenster vom Nutzer geschlossen wurde.
+Threads kennen eine Methode public void setDaemon(boolean b), mit der wir einen Thread zu einem Daemon machen können. (Dazu muss das Argument true sein.)
+16.6.	Zeitweilige Freigabe des Prozessorkerns
+Sie haben oben Zustände kennen gelernt, bei denen ein Thread aktiv ist, aber nichts tut, z.B. weil er auf die Ergebnisse eines anderen Threads wartet. Was Sie dort nicht erfahren haben ist, dass Threads in diesen Zuständen dennoch einen Prozessorkern blockieren und das macht natürlich wenig Sinn.
+Wichtig: Das gilt nicht für einen Thread im Zustand BLOCKED. Ist ein Thread in diesem Zustand, dann steht der Prozessorkern, den er zuvor belegt hat für andere Threads zur Verfügung.
+Um einen wartenden Thread aus dem Prozessorkern zu „entfernen“ können wir die Methoden 
+public static void sleep(long milliseconds, int nanaseconds) nutzen.  
+Die Methode public static void yield() können wir ähnlich wie sleep() verwenden. Anstatt hier einen Zeitraum vorzugeben, nachdem der Thread wieder an der Reihe ist, wird er bei yield() quasi ans Ende der Reihe gestellt. Stellen Sie sich dazu vor, dass alle Threads in einer Reihe anstehen und von der Java Laufzeitumgebung auf die verfügbaren Prozessorkerne verteilt werden.
+16.7.	Vorzeitiges Beenden von sleep() und anderer Methoden
+Dieser Abschnitt wurde nur der Vollständigkeit halber eingefügt. Wenn Sie sich später intensiver mit der nebenläufigen Programmierung beschäftigen, sollten Sie ihn durcharbeiten, um einen ersten Einblick in fortgeschrittene Methoden der nebenläufigen Programmierung zu erhalten.
+Es kann natürlich auch sein, dass wir einen schlafenden oder anderweitig blockierten Thread wieder reaktivieren wollen. Dazu rufen wir public void interrupt() auf. Um diesen Fall zu beherrschen müssen Sie sich mit dem Exception Handling auskennen, das wir bislang noch nicht besprochen haben, was wir in diesem Kapitel auch nicht mehr tun werden. Die entsprechende Exception ist die InterruptedException.
+Wir können nun beispielsweise innerhalb der run()-Methode unseres Thread mit der isInterrupted()-Methode Fallunterscheidungen einfügen, um die Ausführung im Falle eines Interrupts anzupassen.
+Wir können obendrein dafür sorgen, dass der Interrupt nur vorübergehend ausgeführt wird. Der Thread befindet sich dann anschließend wieder im vorigen Zustand:
+-	Wenn ein Interrupt nur dazu führen soll, dass der Thread einmalig ausgeführt, aber dann bis zum Ende des ursprünglich festgelegten Zeitraums weiterschlafen soll, dann verwenden Sie die Methode public static boolean interrupted().
+
+Wichtig: Diese Methode müssen Sie sehr aufmerksam verwenden. Sie gibt zwar zurück, ob ein Thread interrupted wurde. Aber zusätzlich bewirkt sie, dass der Thread anschließend als nicht-interrupted gilt. Nehmen wir an, Sie rufen mehreren Methoden von run() auf und bei mehreren davon verwenden Sie interrupted() anstelle von isInterrupted(), um zu prüfen, ob sie im Falle eines Interrupt ausgeführt werden soll. Dann wird nur die erste dieser Methoden innerhalb des Interrupts tatsächlich ausgeführt: Da interrupted() bewirkt, dass der Thread anschließend nicht mehr als interrupted gilt, gibt interrupted() anschließend false aus.
+16.8.	Synchronisation und Monitore – Verhinderung von Inkonsistenzen
+Sie haben oben gelernt, dass nur solche Teile von Programmen nebenläufig programmiert werden können, die tatsächlich unabhängig voneinander ausgeführt werden können. Zur Erinnerung: Wenn Sie das ignorieren, erhalten Sie Threads die blockiert sind. Allerdings (und das lernen Sie gleich kennen) gibt es auch andere Fälle, in denen Threads blockiert sind.
+Jetzt kommen wir zu einem Fall, in dem mehr als ein Thread Variablen oder Datenstrukturen ändern und dadurch logische Fehler erzeugen. Diese Fälle sind wesentlich schlimmer als blockierende Threads, da es keine Programmiertechnik gibt, die das Auftreten eines solchen Falles zeigt. In anderen Worten: Wenn ein solcher Fehler auftritt, haben Sie einen Fehler im Programm, aber das Programm arbeitet weiter als wenn alles in Ordnung wäre.
+Ein Beispiel kennen Sie, wenn Sie schon Erfahrung mit Datenbanken gesammelt haben. Es gehört in den Bereich der sogenannten Inkonsistenz. Aber zur Erklärung können wir auch ein einfaches Programm nutzen. Stellen Sie sich dazu vor, dass Sie eine int-Variable haben, die von einem Thread gelesen wird. Der Thread stellt nun einige Berechnungen an und überschreibt dann die Variable.
+Wenn Sie verstanden haben, wie nebenläufige Programmierung funktioniert, dann erkennen Sie das Problem sofort. Für alle anderen zur Erinnerung: Nebenläufige Programmierung bedeutet, dass wir Programmteile unabhängig voneinander arbeiten lassen. Das bedeutet, dass wir mit den bislang besprochenen Mitteln keine Möglichkeit haben, zu verhindern, dass ein zweiter Thread unsere int-Variable überschreibt, während der erste Thread noch seine Berechnung durchführt. Hat der erst Thread dann seine Berechnung durchgeführt und überschreibt die Variable, dann ist damit die Variable inkonsistent, sprich ihr Wert stimmt nicht mehr. Der Grund ist simpel: Der zweite Thread hat zwar seine Berechnung durchgeführt, aber das Ergebnis wurde ohne weitere Prüfung vom ersten Thread überschrieben.
+Sie haben nun zwei Möglichkeiten, um solche Fälle zu vermeiden: 
+-	Sie können zum einen eine Methode mit dem Schlüsselwort synchronized gegen die gleichzeitige Ausführung durch mehrere Threads sperren.
+
+Bsp.: Die Methode aendereX() kann nur von einer Instanz der nachfolgenden Klasse Nebenlaeufig gleichzeitig ausgeführt werden. Man könnte also sagen, dass dieses Schlüsselwort nebenläufige Programme partiell in prozedurale Programme verwandelt.
+
+class Nebenlaeufig extends Thread {
+	...
+	private synchronized void aendereX(int y){
+		if (y > 0)
+		{x += y;}
+		else
+		{x -= <;}
+	}
+}
+
+-	Wenn Sie dagegen nur Teile von Methodenaufrufen synchronisieren wollen, geht auch das. Sie verwenden dann die Methode synchronized(Object o) { ... }, der Sie ein beliebiges Objekt übergeben. Dieses Objekt ist dann so etwas wie eine Semaphore oder ein Token. Beide Begriffe stehen für Objekte, die nur einmal existieren. Und nur der-/diejenige, der es hat darf etwas tun. Im Bereich der Netzwerke gibt es beispielsweise den sogenannten Token-Ring. Hier darf nur der Rechner eine Datenübertragung im Netz durchführen, der das Token hat. Oder denken Sie an Diskussionskreise, in denen immer nur ein Gesprächsteilnehmer zurzeit etwas sagen darf. Das ist die-/derjenige, die einen beliebigen Gegenstand in der Hand hält. Machen Sie sich also nicht zu viele Gedanken darüber: Diese Objekt hat mit der eigentlichen Ausführung des Rumpfes von synchronized() nichts zu tun. Definieren Sie einfach ein beliebiges Objekt, beispielsweise eine Variable oder nutzen Sie this und nutzen Sie es ausschließlich als Argument für synchronized().
+16.9.	Das Grauen? – Nebenläufigkeit und SWING
+Im Grunde würde dieses Kapitel mit dem vorigen Abschnitt enden, wenn die Entwickler von Java bei GUIs mit SWING keine Ausnahme gemacht hätten: Alle Elemente einer GUI in SWING werden durch den sogenannten event dispatching thread verwaltet. Einzig die Methoden repaint(), revalidate() und invalidate() sind davon ausgenommen.
+Die zentrale Auswirkung für uns besteht darin, dass wir bei Komponenten einer GUI keine Threads so nutzen dürfen, wie wir das gerade erst gelernt haben.
+Weiterhin dürfen wir bei GUIs ausschließlich Implementierungen von Runnable verwenden. Erweiterungen von Thread sind also verboten.
+Und außerdem müssen wir einen Thread jetzt z.B. mit 
+SwingUtilities.invokeLater(new Runnable() {...} ); zum event dispatching thread hinzufügen. Wenn wir das getan haben, wird der neue Thread quasi ans Ende der bereits vorhandenen Threads der GUI angefügt und dann dort verwaltet.
+Wollen wir eine Methode unseres Thread aufrufen, dann dürfen wir das ausschließlich dann tun, wenn der event dispatching thread uns dazu eine Möglichkeit bietet. Ein direktes Aufrufen wie wir das bislang getan haben ist verboten!
+
+17.	Fehler und nicht-prozedurale Abläufe
+Bei der Programmierung in einer beliebigen Sprache können vier Fälle auftreten, die Einsteiger als Fehler bezeichnen würden. Wenn wir genauer hinsehen, können wir noch wesentlich genauer differenzieren, aber für diesen Kurs soll die grobe Einteilung in vier Fälle genügen.
+17.1.	Syntax Error – Syntaktische Fehler
+Egal in welcher Programmiersprache Sie programmieren, diese Fehler werden Sie immer wieder machen, schlicht, weil es menschlich ist, sich zu vertippen. Mit dem Begriff des Syntax Fehlers bezeichnen wir alle Abweichungen von der Rechtschreibung einer Programmiersprache. (Das schließt auch solche Dinge ein wie das Vergessen eines Semikolons am Ende einer Programmzeile.)
+Syntaktische Fehler sind die Fehler, die im Grunde am leichtesten zu lösen sind, weil Sie dazu führen, dass der Compiler eine Fehlermeldung auswirft.
+17.2.	Semantische Fehler – „Warum macht der das denn nicht?“-Fehler
+Diese Fehler sind für uns als Softwareentwickler die schwierigsten Fehler, aber genau wie syntaktische Fehler liegt die Ursache für diese Situationen bei uns.
+Denn während wir bei einem syntaktischen Fehler etwas eingegeben haben, dass der Rechner bzw. die Programmiersprache nicht ausführen kann, haben wir bei einem semantischen Fehler etwas anderes programmiert, als das, was wir programmieren wollten.
+Die Ursache dafür liegt im zentralen Unterschied zwischen menschlicher Sprache, Mathematik und Programmiersprachen:
+In menschlichen Sprachen haben die meisten Sätze mehrere mögliche Bedeutungen, die sich aus dem Kontext ergeben, in dem der jeweilige Satz genannt wurde. Auch unterschiedliche Betonung der einzelnen Wörter kann sich eine andere Bedeutung ergeben.
+In der Mathematik dagegen ist die Betonung von Satzteilen irrelevant. Dafür hat ein Satz bzw. eine Zeile eines mathematischen Textes häufig eine wesentlich größere Anzahl an möglichen Bedeutungen. Nehmen wir die Zeile 3 + 7 = 10. Diese Zeile besagt schlicht: Wenn wir von einer Art von Objekten drei Stück nehmen, von der gleichen Art nochmals sieben, dann haben wir insgesamt zehn davon. Ob wir dabei über Trecker, Punkte in Flensburg oder Knochenbrüche reden ist für die Mathematik irrelevant. Diese annähernd unbegrenzte Möglichkeit der Interpretation eines Satzes in der Mathematik bereitet uns bereits große Probleme, weil Sie eben nicht direkt der Art entspricht, wie wir uns alltäglich unterhalten. Das liegt aber schlicht daran, dass wir uns im Alltag über mehr oder weniger konkrete Themen sprechen, während die Mathematik auch und insbesondere nach allgemeingültigen Gesetzmäßigkeiten sucht.
+Programmiersprachen stellen uns dagegen vor das genau umgekehrte Problem: Hier hat jeder Satz eine ganz präzise definierte Bedeutung. Deshalb führt jedes Programm genau die Aufgabe/n aus, mit denen es programmiert wurde. Aber da wir nicht daran gewöhnt sind, dass jeder Satz exakt eine Bedeutung hat, neigen wir dazu, uns mit einem ungefähren Verständnis von Teilen einer Programmiersprache abzufinden. Das führt dann dazu, dass wir in vielen Fällen Programme entwickeln, die ungefähr das tun, was wir wollen. Früher oder später tritt dann aber ein Fall auf, der aufgrund unserer Programmierung eben nicht so abgearbeitet wird, wie wir das wollen. Der Fehler kommt dann schlicht dadurch zustande, dass wir nicht genau genug gearbeitet haben. Der erste Fall semantischer Fehler, mit dem die meisten Einsteiger zu tun bekommen tritt bei der Iteration über ein Array auf.
+17.3.	Interrupts – Unterbrechungen des aktuellen Programmablaufs
+Wie Sie in Informatik 3 gelernt haben entsteht ein Interrupt durch die unterschiedlichsten Einwirkungen einer beliebigen Komponente des Rechners. Beispiele wären das Drücken einer Taste auf der Tastatur sein oder ein Signal, das die Netzwerkkarte empfängt.
+Nun gibt es zwei Möglichkeiten: Unser Programm soll auf einen Interrupt reagieren oder eben nicht. Wenn wir darauf reagieren, dann sprechen wir von der Behandlung eines Interrupts. In Java kennen Sie das als Events.
+Wenn wir also Interrupts behandeln, dann bedeutet das in den meisten Programmiersprachen, dass wir den Programmablauf an der aktuellen Stelle pausieren, einen anderen Programmbereich abarbeiten und später wieder an unsere aktuelle Position zurückkehren, damit das Programm hier fortgesetzt wird. Da Java keinen direkten Zugriff auf die Ressourcen des Rechners zulässt, haben wir es hier auch nicht mit Interrupts in diesem Sinne zu tun: Um auf die Eingaben von Nutzern zu reagieren nutzen wir Klassen, die solche Interrupts als Event-Objekt zur Verfügung stellen. Wie Sie das tun müssen haben Sie kurz nach Beginn des Semesters kennen gelernt.
+17.4.	Exceptions – Ausnahmen von der Regel
+(Noch Einbauen: Murphies Law als anschauliche Verallgemeinerung für Exceptions)
+In den vorigen Abschnitten ging es um Situationen, bei denen wir entweder einen Schreib- oder einen Denkfehler gemacht haben. Dann folgten Situationen, in denen wir unser Programm auf Einflüsse von außen reagieren ließen. Exceptions werden von Einsteigern für syntaktische Fehler gehalten, aber das ist falsch. Denn Exceptions sind ein Mittel, mit dem wir Abweichungen vom normalen Programmablauf in unser Programm integrieren können.
+Java gehört zu den Sprachen, die Exception Handling, also die Behandlung von Exceptions anbieten. Und hier ist auch gleich die Verwandtschaft zu den Interrupts: Es handelt sich nicht etwa um Fehler, die nicht auftreten dürfen, sondern es handeln sich um Fälle, in denen etwas passiert, das so zwar vorkommen kann, aber eben eine Ausnahme ist. Tritt eine solche Ausnahme bei einer Methode auf, dann sagen wir, dass die Methode eine Exception wirft. In diesem Fall haben wir also keinen Rückgabewert.
+Gleich vorweg: Wann immer eine Methode eine Exception wirft müssen wir mit try/catch arbeiten. Dabei schreiben wir den Programmteil, der eine Exception werfen kann in den try-Rumpft und ersten für jede mögliche Exception einen catch-Rumpft, wobei catch genau wie eine Methode von einem Klammernpaar gefolgt wird, das ein Argument enthält. In diesem Fall ist das Argument eben der Name der Exception und eine Variable, mit der wir das Exception-Objekt im catch-Rumpf ansprechen können.
+Exceptions sind also mehr als nur Kontrollstrukturen und sind wichtig, sobald wir mit Vererbung anfangen. Nehmen wir dazu ein Beispiel, das Sie in der letzten Hausaufgabe kennen gelernt haben. Dort hatten Sie mit einer Methode zu tun, die die sogenannte InterruptedException werfen konnte. Diese Exception tritt, um es in einfachen Worten zu beschreiben dann auf, wenn ein Thread gerade nicht ausgeführt werden darf.
+Da jeder Thread in Java nach dem Aufruf von start() eine solche Exception werfen kann, müssen wir bei Aufrufen von späteren Methoden immer mit try/catch arbeiten. Nehmen wir dazu das Beispiel der letzten Hausaufgabe. Dort sollte auf einen Thread die Methode stop() aufgerufen werden, um ihn zu beenden.
+Hier eine einfache Lösung:
+...
+try{
+	thread1.stop();
+}
+catch (InterruptException e){}
+...
+
+In diesem Fall haben wir effektiv programmiert, dass der Methodenaufruf stop() nicht ausgeführt wird, wenn er zu einer InterruptException führt. Ansonsten können Sie im catch-Rumpf wie gewohnt alles programmieren, was Sie wollen. Außerdem können Sie verschiedene Methoden auf Exception-Objekten aufrufen. Werfen Sie dazu bitte wie gewohnt einen Blick in die Java API.
+Einsteiger verwenden hier häufig die Methode getMessage(), mit der sie sich eine detaillierte Meldung zur Exception ausgeben lassen können. Das sollten Sie jedoch nur dann tun, wenn Sie nicht genau verstehen, warum die Exception geworfen wurde. Im fertigen Programm müssen Sie alle möglichen Exceptions durch das Programm lösen lassen.
+Aber wie schon eingangs beschrieben müssen Sie nicht unbedingt ein echtes Exception Handling durchführen: Wenn die Exception für den Programmablauf irrelevant ist, dann nehmen Sie einen try/catch wie oben gezeigt.
+
+18.	Java und Datenübertragungen
+Im Kapitel „Dateien und Dialoge“ haben Sie gelernt, was Datenströme sind. Wenn Sie hier nicht mehr ganz sicher sind, worum es sich dabei handelt oder nicht sofort erkennen, warum das für die Übertragung von Daten über das Internet wichtig ist, dann arbeiten Sie bitte nochmal die entsprechenden Seiten im Kapitel zu Dateien und Dialogen durch. Denn die gleichen Grundlagen, die für den Zugriff auf Dateien gelten sind auch in diesem Kapitel gültig.
+Allerdings ist die Nutzung eines Datenstroms im Falle der Datenübertragung über das Internet (bzw. Netzwerke im Allgemeinen) etwas komplexer als beim Zugriff auf Dateien. In der Veranstaltung NWI hören Sie gerade die Grundlagen der Datenübertragung in Netzwerken, weshalb an dieser Stelle nichts weiter über Themen wie Package Loss, Three-Way-Handshake und ähnliches erläutert wird. Aber auch diese Themen müssen Sie verinnerlicht haben. Sollten hier noch Unklarheiten bestehen, dann setzen Sie sich bitte nochmal an Ihre Unterlagen zu NWI.
+Die Begriffe Server und Client dagegen werden wir hier nochmal betrachten, weil Sie streng genommen nicht in den Bereich von NWI fallen: Beide nutzen Netzwerke, um darüber Daten auszutauschen und leider gibt es ein häufiges Missverständnis, wonach sowohl Server als auch Client Rechner in einem Netzwerk sind. Wie gesagt handelt es sich hier um ein Missverständnis: Es gibt zwar Rechner, die speziell als Server verkauft werden. Aber dabei handelt es sich um Geräte, die eine besondere Sicherheit bieten. Diese haben dann beispielsweise eine USV (unterbrechungsfreie Stromversorgung), also eine Komponente, die sicherstellt, dass der Server auch dann weiter aktiv bleibt, wenn ein Stromausfall für eine begrenzte Zeit auftritt. Wie gesagt ist die Absicherung gegen Stromausfälle nur eine Absicherung gegen Risiken, für die Rechner ausgelegt sein können, die als Server verkauft werden.
+Server und Clients sind tatsächlich Programme oder Programmteile, die auf Rechnern laufen. Ob sie ein Netzwerk nutzen, um Daten auszutauschen oder beide sich auf dem gleichen Rechner befinden ist dafür irrelevant. Was beide unterscheidet ist Ihre Arbeitsweise: Ein Client ist ein Programmteil, der Daten anfordert, wobei häufig auch von der Anforderung eines Dienstes gesprochen wird. Das ist jedoch aus Sicht der Softwareentwicklung falsch: Der Server führt zwar ein Programm aus, das als Dienst bezeichnet werden kann, aber er liefert eben nicht den Dienst an den Client aus, sondern er liefert die Daten aus, die durch die Durchführung des Dienstes entstanden sind. Es mag zwar trivial klingen, ist aber für uns als Softwareentwickler ein essentieller Unterschied. Nicht zu vergessen: Zusätzlich ist ein Client im Stande, vom Server Daten anzunehmen. Auch das mag trivial klingen, aber da wir sicherstellen müssen, dass der Client diese Funktion erfüllt, dürfen wir es nicht vergessen. Der Server dagegen ist ein Programmteil, der auf Anfragen von anderen Programmen wartet, diese Anfragen abarbeitet und als Antwort Daten an diese anderen Programme sendet.
+Ein Sonderfall wäre ein Server, der lediglich den Eingang von Nachrichten annimmt. Sollten Sie so etwas aus Sicherheitsgründen entwickeln wollen, dann beachten Sie bitte, dass das nicht bedeutet, dass gar keine Antwort an den Rechner übertragen wird, auf dem der Client betrieben wird. Die Grundlagen von TCP/IP gelten hier unverändert, denn Sockets basieren darauf.
+Wenn wir also in Java Programme entwickeln wollen, die Daten an andere Rechner übertragen sollen (z.B. für online Games, Bankensysteme, Fernsteuerungen usw.), dann müssen wir uns mit der Fragen beschäftigen, wie wir ein Programm in Java um einen Client bzw. um einen Server erweitern können. Über die Frage, wie wir die Sicherheitsprobleme lösen, die Sie in NWI grundsätzlich kennen lernen, werden wir hier nicht sprechen. Das bedeutet nicht, dass diese Probleme irrelevant wären, aber hier müssen Sie selbst aktiv werden, um sich die nötigen Kenntnisse anzueignen.
+18.1.	Sockets – Klassen für den Datenaustausch über Netzwerke
+Wie gewohnt nutzen wir in Java eine bzw. mehrere Instanzen von Klassen, um auf Datenströme über ein Netzwerk zuzugreifen. In diesem Kapitel sehen wir uns dazu verschiedene Socketklassen an. Das sind Klassen, die es uns ermöglichen, Daten per TCP/IP zu übertragen.
+Wichtig:
+Bitte überlesen Sie das nicht: Sockets zu nutzen bedeutet automatisch TCP/IP zu nutzen. Also gelten hier alle Vor- und Nachteile sowie alle weiteren Spezifikationen und Funktionalitäten, die auch für TCP/IP gelten. Wir haben also keine Möglichkeit, um die beispielsweise die zeitlichen Nachteile von TCP/IP auszugleichen. Wenn Sie also auf derartigen Humbug verfallen, wie die Behauptung, Sie könnten mit Sockets eine Echtzeitanwendung erstellen, dann ist das gleichbedeutend mit der Behauptung, Sie könnten in Java ein Programm erstellen, das schneller arbeitet als die Lichtgeschwindigkeit: Da TCP/IP aufgrund des ARQ für die Übertragung einzelner Pakete durchaus mehrere Sekunden benötigen kann, müssten Sie für eine Echtzeitanwendung ein Java-Programm mit Sockets verfassen, das die eingehenden Daten zu einem Zeitpunkt verarbeitet, der vor dem Empfang der Daten liegt. Da würden sowohl Einstein als auch Heisenberg den Kopf ob Ihrer Naivität schütteln.
+Bevor wir loslegen können brauchen wir zwei Angaben:
+-	Die IP-Adresse des Servers.
+-	Den Port, auf dem der Server auf eingehende Anfragen wartet.
+Zur Erinnerung:  Die Ports 0 bis 1024 sind für bestimmte Protokolle reserviert, wenn wir also eine eigene Anwendung mit Netzwerkanbindung entwickeln wollen, sollten wir prüfen, ob wir einen dieser Ports benutzen können (weil wir das entsprechende Protokoll nutzen werden) oder eben einen anderen Port (max. 65535) verwenden.
+Die beiden Klassen, die wir benötigen, um einen Client und einen Server zu programmieren sind Socket und ServerSocket. Wenn Sie eine sichere Datenübertragung realisieren möchten, dann besteht der erste Schritt darin, die Klassen SSLSocket und SSLServerSocket zu verwenden. In diesem Kapitel werden wir uns mit beiden nicht auseinander setzen, da es hier lediglich um die Grundlagen gehen soll, mit denen wir überhaupt eine Datenübertragung realisieren können. In der Praxis müssen Sie dagegen die SSL-Varianten nutzen. Beide erben von Socket bzw. ServerSocket, sodass Sie dort alles weiter nutzen können, was Sie hier lernen.
+Leider ist die klare Trennung in Client und Server bei Java nicht konsistent eingehalten worden. Hier benötigen wir zwar eine Instanz von Socket für jeden Client und eine Instanz von ServerSocket für den Server, aber serverseitig wird für jede Verbindung zu einem Client eine Instanz von Socket erzeugt. Der eigentliche Datenaustausch wird dann auf beiden Seiten mit einer Instanz von Socket realisiert.
+Das ist leider nicht die einzige Inkonsistenz, wenn wir über Datenübertragungen mit Sockets sprechen. Der Grund dürfte darin liegen, dass Sockets aus der Urzeit von Java stammen: Sie wurden bereits mit der Version 1.4 eingeführt. Wir müssen hier also damit zurechtkommen, dass die Programmierung nicht so konsistent erfolgen kann, wie wir uns das wünschen würden. Aber keine Sorge: Bei der Programmierung sind die Auswirkungen nicht so umfangreich, wie Sie das jetzt befürchten könnten.
+18.2.	Instanziieren der Sockets für Client und Server
+Da eine Instanz von Socket eine Exception wirft, wenn unter der angegebenen IP-Adresse kein Server erreichbar ist, müssen wir zunächst den Server implementieren. Das passiert in zwei Schritten: 
+-	Im ersten Schritt erzeugen wir als Server unseres Programms eine Instanz von ServerSocket, die zwei Argumente erhält: Den Port, auf dem der Server auf eingehende Anfragen wartet und die Anzahl Clients, für die der Server maximal gleichzeitig erreichbar sein soll. Bezüglich der Anzahl Clients machen Sie sich bitte das Problem des distributed denial of Service-Angriffs (kurz DDoS) bewusst, das Sie in NWI kennen lernen können.
+
+ServerSocket server = new ServerSocket(portNum, queueLength);
+
+-	Wir haben jetzt zwar eine Instanz von ServerSocket, aber so wie eine GUI erst dann bedienbar ist, wenn wir sie sichtbar gemacht haben, müssen wir unseren Server auch zunächst auffordern, tatsächlich auf eingehende Anfragen zu hören. Lassen Sie sich bitte nicht davon irritieren, dass wir dazu eine eigene Instanz von Socket im Serverteil des Programms erzeugen. Der Grund besteht wie oben beschrieben darin, dass eine ServerSocket-Instanz die Anfragen nicht im Sinne eines Servers selbst verarbeitet. Bei Java ist auch das die Aufgabe von Instanzen von Socket. Achten Sie deshalb darauf, Bezeichner für die Socket-Instanzen zu verwenden, die eindeutig sind.
+
+Socket serverSocket = server.accept();
+Da wir jetzt einen Server haben, dem Clients Anfragen stellen können, kommen wir als nächstes zur Instanziierung eines Clients. Für den benötigen wir wie besprochen die IP-Adresse des Servers und nochmal die Portnummer des Servers. Um IP-Adressen und URLs als Argument bei der Instanziierung unseres Socket-Objekts programmieren, müssen wir auf die Klasse InetAddress zurückgreifen. Und hier haben wir die zweite Inkonsistenz, mit der wir bei der Programmierung von Sockets zu tun bekommen: Es gibt keinen Konstruktor für InetAddress. Die Gründe liegen vermutlich im Versuch, das sogenannte Fabrik-Pattern aus dem Bereich der Software Architektur umzusetzen, aber da Software Architektur ein Spezialbereich des Software Engineering ist und Sie bislang noch keine grundlegende Einführung ins Software Engineering haben, lassen wir die Details an dieser Stelle außen vor.
+Um eine gültige InetAddress-Instanz zu erhalten, und einen Client-Socker zu instanziieren, können wir folgenden Weg nutzen, der für unsere aktuelle Anwendung vollkommen ausreicht: (Port 12345 ist hier rein willkürlich ausgewählt.)
+String host = „localhost“;
+int serverPort = 12345;
+InetAddress serverAddress = InetAddress.getByName(host);
+Socket clientSocket = new Socket(serverAddress, serverPort);
+oder kurz:
+Socket clientSocket = new Socket(InetAddress.getByName(„localhost“), 12345);
+Wenn Sie eine IP-Adresse verwenden wollen (nehmen wir hier als Beispiel die 127.0.0.1), dann programmieren Sie das genauso wie eine URL. In dem Fall wäre also String host = „127.0.0.1“; bzw.
+Socket clientSocket = new Socket(InetAddress.getByName(„127.0.0.1“), serverPort);
+Damit haben wir jetzt alles vorbereitet, um Anfragen vom Client an den Server und Antworten vom Server zu Client zu schicken.
+Anmerkung:
+-	Beachten Sie bitte, dass in diesem Kapitel keine Hinweise bezüglich des Exception Handlings auftauchen. Tatsächlich müssen Sie jedoch in diesem Bereich eine Vielzahl von Exceptions behandeln, was vorrangig mit den Problemen zusammenhängt, die Sie in NWI kennen lernen.
+18.2.1.	Mehrere Clients und die Verbindung zum Server
+Nun ist es allerdings weitestgehend sinnlos, nur eine Verbindung von einem Client zu einem Server aufzubauen. Wenn Sie es nicht selbst schaffen, mittels Multithreading mehrere Threads mit einem Server zu verbinden, dann werfen Sie einen Blick auf diese Diskussion: http://stackoverflow.com/questions/10131377/socket-programming-multiple-client-to-one-server Dort finden Sie mehrere Lösungen, die zum Teil sehr kurz ausfallen. Dadurch sollte es Ihnen leicht fallen, diese Lösungen in Ihre Programme zu übernehmen.
+18.3.	Schließen der Verbindung
+Dieser Abschnitt ist kurz aber sehr wichtig: Da wir durch die verschiedenen Sockets Prozesse gestartet haben, die im Hintergrund Systemressourcen belegen ist es extrem wichtig, die verschiedenen Sockets am Ende wieder zu schließen. Dazu nutzen wir wie schon bei der Dateiübertragung wieder die Methode close().
+18.4.	Zugriff auf den Datenstrom
+Die einfachste Anwendung von Datenübertragungen nutzen die meisten von Ihnen mehrfach jeden Tag: Instant Messenger sind Programme, über die Nutzer eine Textnachricht an einen oder mehrere Empfänger bzw. in einen Chatroom senden können. Weiterhin zeigen diese Programme Textnachrichten anderer Nutzer an. Sehen wir uns dazu an, wie wir unsere Sockets nutzen können, um über ein Netzwerk konkrete Texte zu übertragen.
+Wenn Sie sich an dieser Stelle fragen, wie Sie denn hier die Anzeige der Texte realisieren sollen, dann erinnern Sie sich bitte daran, wie Sie eine GUI mit einem Textfeld erzeugt haben. Denn genau so können Sie natürlich auch einen Instant Messenger programmieren: Sie erweitern schlicht Ihre GUI um einen Client und programmieren einen Server, der die Texte an andere Clients weiterleitet.
+An dieser Stelle kann es etwas unübersichtlich werden, weil wir hier nicht mehr zwischen Client und Server unterscheiden: Das folgende sind Abläufe, die bei beiden identisch programmiert werden, weil auf beiden Seiten eine Instanz von Socket aktiv ist.
+Wie Sie wissen erwarten sowohl der Server als auch der Client Eingaben und erzeugen Ausgaben. Die Ausgaben des Clients sind seine Anfragen und diese Anfragen sind die Eingaben des Servers. Umgekehrt sind die Antworten des Servers seine Ausgaben und gleichzeitig die Eingaben des Clients. Um das in den Codebeispielen zu verdeutlichen werden in diesem Kapitel die Variablenbezeichner clientRequest und serverReply verwendet. Um dann noch zu verdeutlichen, ob es sich um zu versendenden oder empfangene Daten handelt, wird jeweils noch ein In oder Out an den Bezeichner gehängt, sodass wir bei clientRequestIn und clientRequestOut sowie serverReplyIn und serverReplyOut landen. Bei den Datenströmen kommt dann noch die Endung Stream dazu usw.
+Wichtig:
+Sie müssen dabei daran denken, dass Client und Server jeweils Teil einer eigenen Klasse sein sollten. Die Instanzen dieser Klassen können später dank TCP/IP über beliebige Netzwerke Daten austauschen. In diesem Fall mag es zwar möglich sein, beide in einer Klasse zu programmieren, aber ich empfehle Ihnen ausdrücklich, für jeden eine individuelle Klasse zu programmieren, wovon die eine all das enthält, das auf der Clientseite wichtig ist und die andere all das, was auf der Serverseite wichtig ist. Wenn beide gemeinsame Eigenschaften und Methoden haben, dann lagern Sie diese wie gewohnt in eine gemeinsame Superklasse aus.
+Weiter im Thema:
+Bevor wir jedoch auf den Datenstrom zugreifen können, wie wir das bei der Programmierung von Zugriffen auf Dateien gemacht haben, müssen wir zunächst Datenstromobjekte erzeugen. Denn Sockets sind nur dazu da, um die Verbindung zwischen Server und Client aufzubauen bzw. zu verwalten. Auf den Datenstrom, der über diese Verbindung fließt greifen wir mit Objekten vom Typ InputStream und OutputStream zu.
+Instanzen erhalten wir über die Methodenaufrufe getInputStream() und getOutputStream(), die für Socket definiert sind. Setzen wir das in unserem Beispiel um:
+-	Beim Server:
+
+InputStream clientRequestInStream = serverSocket.getInputStream();
+OutputStream serverReplyOutStream = serverSocket.getOutputStream();
+
+-	Beim Client:
+
+InputStream serverReplyInStream = serverSocket.getInputStream();
+OutputStream clientRequestOutStream = serverSocket.getOutputStream();
+Diese Bezeichner erscheinen für den Praxiseinsatz etwas lang, aber dafür haben sie den Vorteil, dass kein Missverständnis möglich ist. Gerade wenn Sie bei der Entwicklung einer Client/Server-Anwendung zwischen beiden häufig hin- und herspringen, wird Ihnen das helfen, Fehler zu vermeiden. Am Ende wird es sich also auszahlen und ist eindeutig praxisrelevant.
+Damit haben wir bis jetzt die Verbindung zwischen Server und Client aufgebaut und außerdem eine Zugriffsmöglichkeit auf den Datenstrom geschaffen. Jetzt müssen wir nur noch Daten übertragen.
+18.5.	Riding the data stream
+Die Klasse, um Eingaben aus einem Datenstrom auszulesen kennen Sie schon: Scanner.
+Im Gegensatz dazu haben Sie Ausgaben für Nutzer bislang durch eine von zwei Varianten erzeugt:
+-	Variante 1: 
+Sie haben per System.out.println() eine Ausgabe direkt in der Konsole erzeugt.
+
+-	Variante 2:
+Sie haben eine Text-Komponente einer GUI geändert und dadurch indirekt die entsprechende Textausgabe erzeugt.
+Beides kommt für unseren Datenstrom nicht in Frage. Dort verwenden wir die Klasse PrintWriter.
+Jetzt zeigt sich auch der Vorteil der etwas langen Bezeichner für unsere Datenstromobjekte. Denn hier ist der Code, um Texte auf den Datenstrom zu schreiben bzw. von dort zu lesen:
+-	Hier für den Server:
+Scanner clientRequestIn = new Scanner(clientRequestInStream);
+PrintWriter serverReplyOut = new PrintWriter(serverReplyOutStream);
+
+-	Hier für den Client:
+Scanner serverReplyIn = new Scanner(serverReplyInStream);
+PrintWriter clientRequestOut = new PrintWriter(clientRequestOutStream);
+Alles weitere (für Textübertragungen) funktioniert genauso, wie Sie es bislang mit der Klasse Scanner bzw. System.out kennen gelernt haben. Es mag jetzt etwas ungewohnt sein, Texte als Datenströme zu übertragen und dabei die gleichen Methoden zu verwenden, die Sie vorher nur für die Ausgabe auf der Konsole verwendet haben, aber das wird sich bald geben.
+Viel besser ist, dass Sie mit einem PrintWriter, der auf einen Datenstrom zugreift nicht nur Texte, sondern auch vollständige Objekt per print() bzw. println() übertragen können. (Werfen Sie dazu einen Blick in die Java API.)
+Wichtig:
+Beachten Sie bitte, dass Sie die Ströme am Ende mit close() schließen müssen. Das muss insbesondere passieren, bevor Sie die zugehörige Instanz von Socket schließen.
+18.6.	Spülen wir die Rest in der Toilette runter.
+Gelegentlich wird es vorkommen, dass Sie die Reste einer Datenübertragung nicht mehr verarbeiten wollen. In diesem Fall müssen Sie sie mit dem Methodenaufruf flush() auf der jeweiligen Scanner-Instanz verwerfen, um Inkonsistenzen oder Exceptions zu vermeiden.
+18.7.	Zusammenfassung
+Um eine TCP/IP-Datenübertragung durchzuführen müssen Sie:
+-	Einen ServerSocket als Server-Teil des Programms
+und server- wie clientseitig je eine Socket-Instanz für die Kommunikation erzeugen.
+-	Der Socket auf der Serverseite muss per accept() Annahmen registrieren,
+bevor der Clientsocket instanziiert wird.
+-	Auf beiden Seiten benötigen wir dann je ein Datenstromobjekt für den Input und eines für den Output, die über einen Methodenaufruf auf dem jeweiligen Socket erzeugt werden.
+-	Um dann Daten zu senden bzw. empfangen nutzen wir Instanzen von Scanner bzw. PrintWriter.
+-	Manchmal müssen wir per flush() einen Datenstrom leeren.
+-	In jedem Fall müssen wir die Verbindung mit close() auf jeder dieser Instanzen schließen. Die Reihenfolge ist dabei wichtig: Sie ist genau umgekehrt wie beim Verbindungsaufbau.
+Alles Weitere sind Details, die vom Anwendungsfall abhängen und natürlich das Exceptionhandling.
+Sie beherrschen jetzt die Grundlagen, um jede denkbare vernetzte Anwendung zu entwickeln, die Ihnen in den Sinn kommt. Es gibt lediglich zwei Fälle, in denen Sie noch einmal zusätzliche Kenntnisse benötigen, die Sie sich jetzt allerdings recht schnell selbst aneignen dürften: Die Datenbankanbindung z.B. mit JSP oder JDBC und Audioverarbeitung. Ersteres ist Teil der Veranstaltung RDB, letzteres können Sie von Herrn Plaß aus den vorigen Semestern erhalten.
+Weiterhin gibt es noch Vorgehensweisen, die bei großen Softwareprojekten die Fehleranfälligkeit senken und die Entwicklungsdauer reduzieren. Damit beschäftigen Sie sich in der Veranstaltung Software Engineering. Hierzu gehören insbesondere die sogenannten Unit Tests, die zum Entwicklungsmuster des Test-Driven-Development (kurz TDD) gehören.

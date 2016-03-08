@@ -1,0 +1,966 @@
+\chapter[Dynamische Webentwicklung]{Dynamische Web(anwendungs)entwicklung mit PHP}
+
+Ab diesem Kapitel setzen wir uns mit der Programmierung des Controllers im Sinne des MVC-Patterns auseinander, also des Teils eines Projekts, der steuert, welche Inhalte wann angezeigt werden.\\
+
+
+An dieser Stelle muss der Unterschied zwischen serverseitig und clientseitig besprochen werden. Wie Sie wissen, beschäftigen wir uns in diesem Kurs mit den Grundlagen der Entwicklung von Webseiten bzw. Webanwendungen. Bei allen Anwendungen, die ein Netzwerk nutzen wird von Server und Client gesprochen: Der Server bietet einen Dienst an, der Client fordert die Ausführung dieses Dienstes an. Somit kann jedes Programm sowohl Client als auch Server sein.\\
+
+
+Bislang haben wir konzeptionell im Grunde nur über das MVC-Pattern gesprochen, also die Unterteilung der Programmierung eines Projektes in die Teile Modell, Ansicht und Controller. Das ist ein Ansatz, der aus der Erfahrung bei objektorientierten Projekten entstanden ist. Bei netzbasierten Projekten wird unabhängig davon von der Unterteilung in die serverseitige und die clientseitige Programmierung gesprochen.\\
+
+
+Im einfachsten Fall geht es also um die Unterscheidung der Programmteile, die die angebotenen Dienste darstellen von den Programmteilen, die diese Dienste anfordern. Hier kann aber auch danach unterteilt werden, welche Daten vom Server und welche vom Client erzeugt werden. Leider gibt es hier keine einfache entweder/oder-Entscheidung. Im Grunde können die meisten Komponenten sowohl auf dem Server als auch auf dem Client betrieben werden. Wie Sie hier erkennen können, werden die Begriffe Server und Client also sowohl für Programme als auch für vernetzte Computer benutzt.\\
+
+
+Nehmen wir dafür CSS als Beispiel: Wir haben hier mehrere HTML-Dokumenten und vielleicht auch mehrere CSS-Dateien. Ein Server könnte nun an allen nötigen Stellen den CSS-Code mittels des style-Attributs in die HTML-Dokumente integrieren und dann dieses Ergebnis an einen Client übertragen. Er könnte aber auch alle Dateien so wie sie sind an den Client übertragen. Für den Nutzer, der am Client sitzt macht das keinen Unterschied, denn er bekommt in beiden Fällen das gleiche angezeigt. Für den Entwickler der Webpage kann es dagegen einen Unterschied machen. Und für den Serveradministrator macht es in jedem Fall einen Unterschied. Keine Sorge, denn wie das im Detail abläuft ist für uns gänzlich irrelevant, damit dürfen sich Informatik-Studierende im Master-Studium beschäftigen.\\
+
+
+Es soll Ihnen lediglich deutlich machen, dass die Ausführung des programmierten Codes nicht immer auf dieselbe Art erfolgen muss. Das ist immer nur dann der Fall, wenn wir mit prozeduralen Programmiersprachen arbeiten. Wichtig für Sie ist, dass den Begriff der serverseitigen Programmierung kennen lernen, dann bei der Programmierung in PHP tun wir genau das: Wir programmieren ein Programm, dass auf dem Server laufen wird und das steuern wird, wie die Inhalte unserer HTML-Seiten geändert werden: Wenn ein Nutzer z.B. Eingaben in Formularen einträgt und dann über eine Schaltfläche, die Sie mit <input type=submit> programmiert haben, die Übertragung an das Programm startet, dann wird PHP (oder eine andere Programmiersprache) interessant.\\
+
+
+Im Rahmen dieses Kurses brauchen Sie sich allerdings über die Installation und Wartung eines Servers keine Gedanken zu machen. Alles, womit wir uns hier beschäftigen können Sie auf Ihrem Rechner betreiben. Ggf. nötige Programme, die einen Server auf Ihrem Rechner betreiben bekommen Sie kostenlos im Netz.\\
+
+
+Umgekehrt möchte ich Sie allerdings davor warnen, den Aufwand beim Betrieb eines Servers zu unterschätzen. Denn hier geht es nicht allein um das Anmieten bei einem Betreiber und um eine grundlegende Konfiguration. Vielmehr müssen Sie bei einem solchen Server sicherstellen, dass dieser so gut wie möglich gegen Angriffe geschützt ist. Denn wenn Sie hier nicht ausreichende Vorkehrungen treffen, können Sie sicher sein, dass Ihr Server von Angreifern missbraucht wird, um Angriffe gegen andere Nutzer zu starten. Im schlimmsten Fall kann das für Sie bedeuten, wegen Beihilfe zu einer Straftat verurteilt zu werden.\\
+
+\textbf{Wichtig:} Dieses Kapitel ist eine einfache Einführung in die imperative Programmierung mit PHP. Zum Teil werden Sie hier Anmerkungen finden, die klar aufzeigen, dass vieles hier vereinfacht dargestellt ist. Insbesonder werden hier viele Dinge, die in PHP nicht möglich sind außen vor gelassen, obwohl es sich dabei um Möglichkeiten aus dem Bereich der imperativen Programmierung handelt. Die Struktur dieses Kapitels ist aber ansonsten gleich derjenigen, die im zweiten Teil dieses Buches eingeführt wird. Wenn Sie also die Grundlagen der imperativen Programmierung erlernen wollen, dann blättern Sie gleich weiter in den zweiten Teil dieses Buches. Und immer, wenn Sie dort einen Abschnitt beendet haben, schlagen Sie in diesem Kapitel nach, wie der entsprechende Abschnitt in PHP umgesetzt wird. So haben Sie die Grundlagen der imperativen Programmierung und erlernen, wie diese in PHP umgesetzt werden, bzw. welche dieser Grundlagen in PHP nicht enthalten sind.\\
+
+\section{PHP 5}
+
+Bis auf die Zahl der Version haben PHP und HTML nichts gemein. Während HTML5 nach 14 Jahren eine vollständig überarbeitete Version der Markup Language ist, wurde PHP in der Version 5.0 vor 11 Jahren veröffentlicht und seitdem immer wieder erweitert. Die aktuelle Version trägt die Nummer 5.6. Die nächste Version wird nicht PHP6 sondern 7 sein und voraussichtlich im November 2015 erscheinen.\\
+
+
+Doch auch wenn es eine neue Version geben wird, werden wir bei diesem Kurs für die Medientechnik bis auf weiteres bei PHP 5.6 bleiben. Wobei alles, was Sie hier kennen lernen auch in den PHP-Versionen 5.0 – 5.5 nutzbar sein sollte.\\
+
+
+Doch was ist PHP eigentlich? Schauen wir uns dazu den Namen an: PHP steht für Hypertext Preprocessor. Was Hypertext ist wissen Sie, aber über Präprozessoren haben wir noch nicht gesprochen. Das sind Programme, deren Zweck darin besteht, Teile eines Programms vorzubereiten, die in einer (anderen) Programmiersprache entwickelt werden. Wenn Sie das zusammennehmen ist PHP schlicht eine Sprache, die HTML-Code erzeugen kann. Und genau das wollen wir: Eine Sprache, mit der wir (neue) Inhalte für unsere Webpage erzeugen können.\\
+
+
+Vielleicht fragen Sie jetzt, was denn mit CSS-Dateien ist. Und sie haben es richtig erkannt: Mit PHP können wir zwar CSS-Code über das style-Attribut in einen Container integrieren, aber an unseren CSS-Dateien können wir nichts direkt ändern. Andererseits ist das kein Problem, wenn Sie sauber zwischen Controller und View trennen: In PHP programmieren wir, welche Inhalte wann dargestellt werden. In CSS (und nur dort) programmieren wir, wie diese Inhalte dargestellt werden.\\
+
+
+Sehen wir uns nun an, was Thomas Theis in seinem Band „Einstieg in PHP 5.6 und MySQL 5.6“ über die Vorteile von PHP schreibt:\\
+
+
+-	Demnach ist PHP für Einsteiger leicht erlernbar, weil es nur all das beinhalten würde, was für die serverseitige Programmierung einer Webanwendung nötig ist.
+
+Die Vorstellung, dass es Einsteigern leichter fällt, eine Sprache zu erlernen, die weniger Möglichkeiten bietet, als das bei anderen Sprachen der Fall ist, ist absurd. Es mag sein, dass die vollständige Dokumentation einer solchen Sprache übersichtlicher ist, aber letztlich hängt die Leichtigkeit des Einstiegs davon ab, wie gut die Dokumentation zur Sprache auf Einsteiger ausgerichtet ist. Und in der professionellen Softwareentwicklung spielt ein leichter Einstieg in eine Sprache eher eine untergeordnete Rolle. Hier ist es vor allem wichtig, welche Möglichkeiten genutzt werden können. \\
+
+
+-	PHP sei nach Theis eine gute Wahl, weil es von einer Vielzahl von Servern unterstützt wird.
+
+Doch auch das ist eher ein schwaches Argument; letztlich ist der Preis relevant, den wir für den Betrieb aufwenden müssen. Hier ist beispielsweise JavaScript mit node.js aus Gründen im Nachteil, die daraus resultieren, dass es mehr Zugriffsrechte benötigt, was die Betreiber von Servern sich eben entsprechend bezahlen lassen.\\
+
+
+-	Weiter sei die Tatsache wichtig, dass PHP kostenlos ist.
+
+Das ist zwar eine sympathische Tatsache, aber kostenlos nutzbare Sprachen und sogar Frameworks sind heute keine Ausnahme mehr. Egal ob Java EE, Ruby on Rails, HTML5 mit CSS3 und JavaScript oder woran Sie noch denken: Alle können kostenlos genutzt werden und bieten einen vergleichbaren, wenn nicht sogar größeren Umfang.\\
+
+
+-	Dann sei es ein Vorteil, dass PHP ausschließlich serverseitig eingesetzt werden kann.
+
+Worin der Nachteil besteht, eine Sprache sowohl server- als auch clientseitig ausführen zu können, erschließt sich dem Autor dieses Skripts nicht. So bedeutet die Tatsache, dass eine Sprache auch clientseitig ausgeführt werden kann, eben nicht, dass sie vollständig dort ausgeführt wird. Und damit kann ein Nutzer eben auch nicht wie von Theis behauptet den gesamten Code einer Webanwendung einsehen. Im Gegenteil ist diese Beschränkung von PHP von Nachteil: Wenn bei der Entwicklung festgestellt wird, dass ein Programmteil effizienter vom Client ausgeführt werden kann, ohne dabei sicherheitsrelevante Daten preiszugeben, dann sollte ein Entwickler das tun. Genau das verhindert aber PHP mit seiner Fixierung auf die Serverseitigkeit.\\
+
+
+Aus meiner Sicht gibt es nur einen Grund, sich mit PHP zu beschäftigen: Es ist schlicht eine der häufigsten Sprachen, die bei der Entwicklung dynamischer Webanwendungen zum Einsatz kommen. Wenn Sie also in die Webentwicklung gehen wollen, haben Sie mit Kenntnissen in diesem Bereich mehr Auswahl unter potentiellen Arbeitgebern.\\
+
+
+Andererseits ist das der aktuelle Stand. Und der ändert sich in kaum einem Bereich so schnell wie in der Informatik. JavaScript hat aus Sicht dieses Autors zurzeit wesentlich mehr Potential, um zur meistverwendeten Sprache für die Entwicklung von Webanwendungen zu werden. PHP ist mit seinen Beschränkungen dagegen einfach nicht universell genug einsetzbar. Das könnte sich mit der Version 7 natürlich ändern. Aber aktuell (Anfang September 2015) weist nichts darauf hin.
+
+\subsection{Vorbereitung des Computers, um in PHP programmieren zu können.}
+
+Während Sie HTML- und CSS-Dateien einfach mit Hilfe eines Browsers ausführen konnten, ist das bei PHP leider nicht der Fall. Wie gerade beschrieben müssen Sie einen Server betreiben, der eine Laufzeitumgebung anbietet, die PHP ausführen kann.\\
+
+
+Hier gibt es zwei Standardlösungen, die Sie kostenlos im Netz herunterladen können und die Ihnen die gesamte Konfiguration abnehmen: XAMPP und EasyPHP. Letzteres ist aus meiner Sicht deutlich komfortabler, aber im Grunde ist nur wichtig, dass Sie eines der beiden installieren. Nach der Installation müssen Sie dann Ihre Webanwendungsdateien (also die HTML-, CSS- und PHP-Dateien) in dem Verzeichnis speichern, auf das der Server zugreift. Welches das ist, müssen Sie anhand der Dokumentation des Pakets prüfen, das Sie nutzen.
+
+\section{PHP-Programme in HTML-Dokumenten integrieren}
+
+Genau wie bei CSS und JavaScript können wir innerhalb eines HTML-Dokuments PHP-Code ausführen lassen. Allerdings gibt es hier einen wichtigen Unterschied: \\
+
+
+-	Der Dateiname eines HTML-Dokuments, das das tut, sollte in .php umbenannt werden. Richtig! Die Datei darf dann nicht mehr auf .htm oder .hmtl enden.
+
+Um PHP-Code direkt in HTML-Code zu programmieren, muss ein besonderer Container verwendet werden. Er zeichnet sich dadurch aus, dass der gesamte PHP-Code im öffnenden Tag steht und es kein schließendes Tag gibt. (Zur Erinnerung: Das war bei JavaScript anders. Dort wurde ein <script>-Container verwendet, dessen Inhalt der JavaScript-Code ist.)\\
+
+Der PHP-Container sieht so aus:
+<?php
+
+?>
+Quellcode 4.1: Ein HTML-Container, in dem PHP-Code programmiert werden kann.
+
+Wenn wir JavaScript- oder CSS-Dateien haben, dann können wir diese auch über den <head>-Container einbinden. Das ist bei PHP leider nicht der Fall. Dort gibt es zwei andere Möglichkeiten:\\
+
+
+-	Zum einen können wir PHP-Code, der im laufenden HTML-Code eingefügt werden soll in eine Datei speichern. Diese können wir dann innerhalb des <?php ... ?>-Containers durch den Befehl include() aufrufen:
+
+<?php
+include(phpdatei.php);
+?>
+Quellcode 4.2.: Einfügen von PHP-Code in ein HTML-Dokument
+
+-	Zum anderen müssen wir bei Formularen (wenn wir sie per PHP auswerten wollen) über das action-Attribut des <form>-Containers explizit den Dateinamen zuordnen. Das bewirkt, dass beim Anwählen des submit-Buttons durch einen Nutzer die Eingaben an das genannte PHP-Programm übergeben werden.
+
+In diesem Fall müssen wir noch die Übertragungsmethode festlegen. Dazu programmieren wir das method-Attribut des <form>-Containers. Es gibt zwar zwei Möglichkeiten, welchen Wert Sie method zuordnen, Sie sollten hier aber immer den Wert POST wählen. Die Alternative zu POST lautet GET.\\
+
+Aufgabe:\\
+
+-	Erstellen Sie jetzt für jedes Formular, das Sie in Ihrer Webpage programmiert haben eine Datei mit einem Namen, der zu dem Formular passt. Die Endung muss zwar nicht auf .php lauten, allerdings lässt sich so bei größeren Projekten leichter der Überblick bewahren.
+
+-	Ergänzen Sie Ihre Formulare so, dass bei jedem Formular die Nutzereingaben an das passende PHP-Programm übergeben werden.
+
+Anm.: Wenn Sie danach die Webpage neu starten (vorausgesetzt, Sie haben die Dateien zuvor in das Verzeichnis verschoben, in dem XAMPP bzw. EasyPHP darauf zugreifen können und jeweils den Server gestartet), und bei einem Formular den Submit-Button anwählen, werden Sie wahrscheinlich eine Fehlermeldung erhalten, denn bislang haben wir ja noch kein PHP-Programm erstellt. Aber das ist vollkommen in Ordnung.\\
+
+
+Wichtig: Dieser Abschnitts könnte von Ihnen in einer Hinsicht missverstanden werden: Streng genommen wird eben kein PHP-Programm in ein HTML-Dokument integriert, sondern es passiert folgendes: Wann immer der Server in einem HTML-Dokument auf ein PHP-Programm hingewiesen wird startet er einen Prozess, in dem dieses Programm laufen wird. Wann immer nun das PHP-Programm etwas tun soll, dann wird es auf dem Server ausgeführt. Wenn dann HTML-Code durch das PHP-Programm ausgegeben wird, wird dieser Code an der entsprechenden Stelle des HTML-Dokuments eingefügt. Danach wird das vollständige HTML-Dokument vom Server zum Client übertragen. Der Nutzer wird also nie erkennen können, dass bzw. wo die Webpage mit PHP erzeugt wurde. Im nächsten Abschnitt gibts dazu gleich ein Beispiel.
+
+\section{PHP-Code innerhalb von HTML – Erstes Beispiel}
+
+Rufen Sie eine Ihrer Seiten mit einem Webbrowser auf. Es sollte eine Seite mit mehreren Absätzen sein. Öffnen Sie nun das HTML-Dokument mit einem Editor. Gehen Sie hier zu einer beliebigen Zeile, in der sich lediglich Text befindet. Ändern Sie das Dokument dann so ab, wie im folgenden Beispiel und speichern Sie die Datei anschließend wieder. Vergessen Sie dabei bitte nicht die Änderung des Dateinamens. \\
+
+Achten Sie außerdem bei den entsprechenden Seiten darauf, Links in den statischen Webpages zu ändern, die auf Dateien mit der Endung .htm bzw. .html verweisen.\\
+
+<p>
+.... Ihr Text ....
+</p>
+
+Ändern Sie diesen Teil so ab:
+
+<p>
+<?php echo ``.... Ihr Text ....``; ?>
+</p>
+
+Quellcode 4.3: Textausgabe mit PHP\\
+
+Aktualisieren Sie jetzt die Seite im Browser, achten Sie dabei aber darauf, dass in der Adresszeile die Endung der Datei nicht mehr .htm bzw. .html heißt, sondern .php. Sehen Sie den Unterschied? Nein? Natürlich nicht, denn der PHP-Teil  tut ja nichts anderes, als genau den HTML-Code ins HTML-Dokument einzufügen, der da vorher schon stand. Das mag relativ sinnfrei wirken, aber Sie werden in den nächsten Abschnitten lernen, dass es Ihnen mit PHP möglich ist, eine von mehreren HTML-Code-Passagen auszuwählen und diese in ein HTML-Dokument einfügen zu lassen. So können Sie später entscheiden, ob ein bestimmter Nutzer Zugriff auf Inhalte bekommt, ob eine bestimmte Nutzerin bestimmte Auswahloptionen anwählen darf usw.\\
+
+Wenn Sie Sonderzeichen per echo() ausgeben wollen, also Zeichen, die eigentlich eine Funktion übernehmen, dann schreiben Sie schlich ein \ davor. (Nicht zu verwechseln mit /.) Wenn Sie also Anführungszeichen ausgeben lassen wollen, die ja sonst in echo() bewirken, dass die Ausgabe beendet wird, dann schreiben Sie anstelle von `` einfach \`` und schon wird `` im HTML-Dokument eingeblendet.\\
+
+Aufgaben: \\
+
+Prüfen Sie folgendes selbst aus:
+-	Wie siehts mit Umlauten aus, die Sie mit echo() durch PHP erzeugen lassen? Internationalisierung und Lokalisierung betreffen ja nur das HTML-Dokument und nicht das PHP-Programm.
+-	Und was ist mit HTML-Tags? Können Sie vollständige HTML-Container per echo() erzeugen und in ein HTML-Dokument einfügen?
+
+\subsection{Kommentare}
+
+Bislang haben Sie ausschließlich Zeilen programmiert (egal ob in HTML, CSS oder PHP), die dann vom Computer in irgend einer Form ausgeführt wurden und die für die Anzeige oder den Aufbau der Webanwendung wichtig waren. Kommentare sind etwas anderes: Sie dienen dazu, dass andere Entwickler erkennen können, welche Aufgabe ein Programmteil übernimmt.\\
+
+Deshalb werden Kommentare auch häufig entweder schlecht oder gar nicht verwendet: Während Sie etwas programmieren wissen Sie im Regelfall genau, was Sie tun, also brauchen Sie in diesem Moment keine Kommentare. Aber Sie können sich darauf verlassen, dass Sie früher oder später einzelne Passagen Ihres Projektes nochmal ändern müssen und dann werden Sie sie brauchen.\\
+
+Vielleicht fragen Sie sich, was das denn soll, da man doch bloß den Code lesen muss, um zu erkennen, was er tut. Wenn Ihnen diese Frage durch den Kopf geht, dann rufen Sie sich bitte in Erinnerung, was eigentlich der Sinn und Zweck des semantic web ist.\\
+
+Zur Erinnerung: Eine Programmzeile in einer imperativen Sprache weist den Rechner an, bestimmte Anweisungen auszuführen. Sie sagt dagegen nichts darüber aus, wofür diese Anweisungen dienen. Wenn Sie also keine Kommentare verfassen oder in Ihren Kommentaren nur steht, was der Quellcode tut, dann werden auch Sie bereits wenige Tage später nicht mehr wissen, welche Aufgabe damit erfüllt wird. Und wenn Sie dann eine Änderung durchführen, ist die Wahrscheinlichkeit sehr groß, dass Sie zwar eine neue Funktionalität realisieren, aber gleichzeitig eine alte Funktionalität entfernen.\\
+
+Hier ein einfacher Algorithmus, um das Problem zu veranschaulichen:
+Erzeuge eine Variable mit dem Namen a.
+Weise a die Adresse zu, an der der Anfang einer Liste mit elf Einträgen steht.
+Erzeuge eine Variable mit dem Namen b.
+Erzeuge eine Variable mit dem Namen c.
+Erzeuge eine Variable mit dem Namen d.
+Erzeuge eine Variable mit dem Namen e.
+Erzeuge eine Variable mit dem Namen m.
+Erzeuge eine Variable mit dem Namen n.
+Erzeuge eine Variable mit dem Namen q.
+Tu das folgende zehnmal, wobei du den Durchlauf in der Variable m speicherst.
+n bekommt jetzt den Wert 10-m.
+Tu das folgende n-mal, wobei du die Nummer des Durchlaufs in der Variable q speicherst.
+Lies den Wert aus der Speicherstelle mit der Nummer von a + q und speichere ihn in c.
+Lies den Wert aus der Speicherstelle mit der Nummer von a + q + 1 und speichere ihn in d.
+Wenn c größer als d ist, tue folgendes:
+Speichere c in e.
+Speichere d in c.
+Speichere e in d.
+Speichere den Wert von c in der Speicherstelle mit der Nummer a + q.
+Speichere den Wert von d in der Speicherstelle mit der Nummer a + q + 1.
+sonst mache einfach weiter. 
+Beispiel für schlechte Kommentare.\\
+
+Und? Was macht dieses Programm? Wenn Sie jetzt sagen, dass Sie das nicht erkennen können, dann ist das kein Wunder, denn Sie können zwar im Detail nachlesen, was der Computer in jeder Zeile tun soll, aber nirgends steht, welchen Zweck das ganze erfüllen soll. Dieser Zweck dagegen ist recht simpel:\\
+
+Dieses Programm sortiert die Zahlen einer Liste mit elf Einträgen nach der Größe der Zahlen.\\
+
+Beispiel für einen guten Kommentar.\\
+
+Das Beispiel oben zeigt, wie schlechte Kommentare aussehen: Es sind Unmengen an Zeilen, die nur in anderen Worten wiedergeben, was im Quellcode steht. Ein guter Kommentar fasst dagegen zusammen, warum das passiert und ggf. warum das so passiert. Letzteres ist dann wichtig, wenn Ihr Programmteil nicht nur einen einzelnen Zweck erfüllt, sondern zusätzlich noch bestimmte Sonderfälle abfangen muss.\\
+
+Jetzt wissen Sie auch, warum wir bei HTML nicht über Kommentare gesprochen haben: Wenn sie guten HTML5-Code entwickeln, ist für jeden HTML-Entwickler sofort erkennbar, warum Sie die einzelnen Container programmiert haben. Gerade mit den Möglichkeiten des semantic web bleiben hier kaum Fragen offen.\\
+
+Bei den meisten Programmiersprachen ist das anders: Dort müssen Sie Kommentare verwenden, um zu erklären, welchem Zweck einzelne Programmteile dienen. In der Praxis fehlen Kommentare aber häufig. Gerade wenn Sie ein Projekt in einem Unternehmen übernehmen sollen, sind Sie deshalb in einer üblichen aber dennoch unschönen Situation.\\
+
+Es gibt zwei Möglichkeiten, um Kommentare in PHP zu programmieren: Entweder als Ergänzung zu einer Programmzeile oder als einen mehrzeiligen Absatz.\\
+
+Alles, was in einer Programmzeile nach // steht, ist ein Kommentar. Die nächste Zeile ist dann wieder normaler Programmcode.\\
+
+Einen mehrzeiligen Kommentar beginnen Sie mit /* und beenden ihn nach beliebig vielen Zeilen und Zeichen mit */.\\
+
+Wichtig: Alles, was als Kommentar gilt wird nicht ausgeführt. Wenn Sie also einen mehrzeiligen Kommentar erstellen, achten Sie bitte darauf, keine auszuführenden Programmzeilen in diesen Kommentar einzufügen. Andererseits können Sie /* ... */ nutzen, um Teile des Quellcodes auszukommentieren. Sie können dadurch prüfen, wie der Code ausgeführt wird, wenn diese Zeilen entfallen.
+
+\section{Grundlagen der Programmierung in PHP}
+
+In den Kapiteln zu HTML und CSS haben Sie gelernt, wie Sie Bereiche einer Webanwendung programmieren können und wie Sie diese gestalten können. Jetzt kommen wir dazu, was wir mittels Programmierung in PHP tun müssen, um die Inhalte einer Webpage dynamisch (also zu beliebigen Zeitpunkten) ändern zu können.\\
+
+Hier werden wir uns mit sechs Bereichen auseinander setzen: Variablen, Operationen, Kontrollstrukturen, Funktionen, Datenstrukturen und Schleifen bzw. Rekursionen.\\
+
+-	Variablen sind die Teile eines imperativen Programms, in denen Daten gespeichert werden.
+-	Operationen sind einfache Anweisungen, mit denen die Inhalte von Variablen geändert werden können oder durch die neue Variablen erzeugt werden können. Wichtig: Im Gegensatz zur Mathematik und zu funktionalen Programmiersprachen dürfen Variablen bei prozeduralen Programmiersprachen wie PHP geändert werden.
+-	Kontrollstrukturen ermöglichen es Ihnen, zu kontrollieren, unter welchen Bedingungen welcher Teil eines Programms ausgeführt wird.
+-	Funktionen fassen mehrere Operationen zusammen, um komplexe Abläufe als eine Einheit nutzen zu können. So können Sie sie an verschiedenen Stellen ausführen lassen, ohne sie jedes Mal komplett neu programmieren zu müssen.
+-	Datenstrukturen fassen mehrere Variablen zusammen, die gleichartig sind. Und so, wie wir mit einer Funktion mehr Übersicht in unseren Programmablauf bekommen, helfen uns Datenstrukturen, wenn wir mit vielen Variablen arbeiten wollen oder müssen.
+-	Schleifen und Rekursionen können Sie dann für all die Fälle nutzen, in denen ein Programmteil wiederholt ausgeführt werden soll.\\
+
+Im nächsten Kapitel führen wir die sogenannten Datenbanken ein. Datenbanken sind dann sinnvoll, wenn wir nicht mehr nur Dutzende von Variablen haben, die wir in einer Datenstruktur gruppieren können, sondern wir über Tausende von Variablen in Dutzenden Datenstrukturen sprechen. Ein Beispiel wäre die Kundendatenbank eines Versandhändlers. Aber keine Sorge: Dafür sind Datenbanken zwar gedacht, aber wir können sie auch bei viel weniger Variablen nutzen, um uns die Nutzung anzusehen.\\
+
+Jetzt also zu den Variablen.
+
+\subsection{Variablen}
+
+Wie eingangs beschrieben sind Variablen die Teile von prozeduralen Programmen, in denen wir auf Daten zugreifen können. Sie kennen Variablen bislang aus dem Mathematikunterricht der Oberstufe, wo jede Variable im Regelfall für eine Zahl steht. Dabei haben sie gelernt, dass der Wert einer Variablen sich nicht ändern darf: Wenn x an mehreren Stellen einer Aufgabe auftaucht, dann hat es immer denselben Wert, auch wenn wir ihn noch nicht kennen.\\
+
+Wichtig: \\
+
+Variablen und insbesondere Variablen in der Form, wie Sie sie jetzt kennenlernen sind nur eine Spezialform von Daten mit denen Sie in bestimmten Programmiersprachen wie C, C++, Java, Ruby, Python und vielen anderen mehr arbeiten. Insbesondere, wenn Sie einen Informatikstudiengang besuchen ist es außerordentlich wichtig, dass Sie so bald als möglich das Studium von Teil 2 dieses Buches fortsetzen. Dort werden Sie eine wesentlich allgemeinere Form von Daten in Computern kennen lernen und nur wenn Sie diese wesentlich allgemeinere Form von Daten wirklich verstanden haben, haben Sie die Grundlage, um „echte/r“ InformatikerIn zu werden. So lange Sie dagegen auf die Programmierung fixiert bleiben, die Sie in diesem Teil des Buches kennen lernen, werden Sie zwar einen Computer dazu bringen können, Aufgaben für Sie zu erfüllen, aber Sie werden keinesfalls ernsthafte Informatik betreiben oder gar ein umfangreiches Verständnis dessen haben, was Programmierung alles ist. Beachten Sie jedoch auch, dass Sie nach Ende dieses Gesamtwerks lediglich die Programmierung mit Sprachen erlernt haben werden, die die diskrete Mathematik zur Grundlage haben. Die Programmierung kontinuierlicher Systeme wie Steuer- und Regelsysteme sind eine Kernkompetenz von Elektro- und Nachrichtentechnikern, auch wenn InformatikerInnen mit einer entsprechenden Vertiefung in diesem Bereich gleichwertige Fachkräfte werden können.
+
+\subsubsection{Erzeugung einer Variablen}
+
+Wie alles andere fallen auch Variablen nicht vom Himmel, sondern wir müssen dem Rechner mitteilen, dass wir eine Variable benötigen. Wir können dazu an einer beliebigen Stelle in unserem Programm einen Namen festlegen und diesem einen Wert zuordnen. Damit das Programm erkennt, dass es sich um eine Variable handelt, müssen wir lediglich ein \$-Zeichen an den Anfang des Variablennamens setzen. \\
+
+Das ist alles.\\
+
+Wenn wir außerdem einen Startwert vorgeben wollen, dann können wir das tun. Hier wie an jeder Stelle, an der wir den Wert einer Variablen festlegen bzw. ändern wollen, nutzen wir dazu ein einfaches Gleichzeichen.\\
+
+Wenn Sie eine Variable für einen Text (das kann auch HTML-Code sein) erzeugen wollen, dann schreiben Sie diesen „Wert“ der Variablen in Anführungszeichen.\\
+
+\$name;                         // Erzeugung einer Variablen mit der Bezeichnung name.
+\$pi = 3.14;                    // Erzeugung einer Variablen, der der Wert 3.14 zugeordnet wird.
+\$quellcode = ``<p>Wir brauchen die Vorratsdatenspeicherung, weil wir die Vorratsdatenspeicherung brauchen.</p>``;
+Quellcode 4.4: Erzeugung von Variablen in PHP\\
+
+Wenn Sie den Namen einer Variablen speichern und ihn dann später nutzen wollen, geht das auch:\\
+
+\$name = ``var``;
+\$var = 12;
+echo(\$\$name); \\
+
+
+Die letzten Zeile bewirkt, dass nicht etwa var sondern 12 ins HTML-Dokument eingefügt wird.
+
+\subsubsection{Statische und dynamische Variablen}
+
+Wir unterscheiden zunächst zwischen konstanten bzw. statischen Variablen, die Ihren Wert nicht ändern können und dynamischen Variablen, deren Wert sich jederzeit ändern kann. Konstante Variablen verwenden wir meist nur dann, wenn es wichtig ist, dass sich der Wert dieser Variablen nicht ändern darf oder es einfacher ist, einen Wert durch eine kurze Bezeichnung darzustellen. Letzteres reduziert die Wahrscheinlichkeit für Fehler im Programm.\\
+
+Deshalb gibt es auch keinen besonderen „Befehl“, mit dem wir dem Programm mitteilen, dass eine Variable dynamisch ist. Bei statischen Variablen, die in PHP als Konstanten bezeichnet werden, müssen wir dagegen das Schlüsselwort const verwenden, dafür lassen wir das \$-Zeichen am Anfang des Variablennamens weg:\\
+
+const pi=3.1415926535897932384626433832795028841971693993751058209749445923078164;
+Quellcode 4.5: Erzeugung einer Konstanten mit Zuordnung eines Wertes.
+
+\subsection{Datentypen}
+
+Im Gegensatz zu Sprachen wie C oder Java lässt PHP zu, dass sich der Datentyp einer Variablen jederzeit ändern kann. Jetzt fragen Sie sich vielleicht, was denn der Datentyp ist.\\
+
+Alle Daten haben einen Typ (eben den Datentyp). Denken Sie hier an Dinge wie Zahlen, Buchstaben, Symbole und ähnliche Arten von Zeichen, die Sie aus dem Alltag kennen. Es geht also um Kategorien von Dingen, die der Computer speichert. Im Gegensatz Dingen Ihres Alltags richten sich Datentypen aber danach, wie der Computer Daten intern speichert und wie er sie interpretieren soll.\\
+
+
+Im Kern speichern Computer alles in Form von Zahlen zwischen 0 und 255. Reicht dieser Zahlenbereich nicht, dann nimmt ein Computer eben mehrere dieser Zahlen und behandelt sie wie eine gemeinsame Zahl. Nichts anderes tun wir, wenn wir rechnen: Wir nehmen die Zahlen von 0 bis 9 und wenn die nicht reichen, nehmen wir eine zweite Zahl von 0 bis 9 usw. Nur haben wir für andere Zwecke noch andere Bereiche, mit denen wir arbeiten: Die Buchstaben von a bis z. Ein Computer kennt dagegen nur seine Zahlen von 0 bis 255. (Genaueres dazu lernen Sie in den Veranstaltungen zur technischen Informatik und der Kommunikations- bzw. Nachrichtentechnik.)\\
+
+Der Computer kann also im Grunde einen Buchstaben auch nur als Zahl speichern. Er kann auch keine Nachkommstellen als Nachkommastellen speichern. Nochmal: Alles was er hat sind Speichereinheiten, die jeweils eine Zahl von 0 bis 255 speichern können.\\
+
+
+Wenn wir also so etwas wie einen Buchstaben eingeben, dann speichert der Computer ihn als eine Zahl in einer Speicherstelle. Und damit er weiß, dass er diese Zahl in diesem Fall als Buchstaben interpretieren muss, braucht er noch einen weiteren Speicher, in dem er genau das speichert. Wir als Softwareentwickler bezeichnen das als Datentyp. Für uns ist es egal, wie der Computer den Datentyp realisiert, wichtig ist nur, dass er nicht plötzlich anfängt, unsere Buchstaben als Zahlen auszugeben und umgekehrt. In diesem Kurs werden wir uns mit dem Mechanismus, der hinter Datentypen steht nicht weiter auseinander setzen. Wichtig ist nur, dass Sie grundsätzlich verstehen, warum jede Variable einen Datentyp hat.
+
+\subsubsection{Statische und dynamische Datentypen: Typecasting}
+
+Sprachen wie PHP bieten nicht nur dynamische Variablen an, also Variablen deren Wert sich ändern kann. Zusätzlich kann sich auch der Datentyp einer Variablen ändern. Nehmen wir an, Sie dividieren eine ganze Zahl in einem PHP-Programm und als Ergebnis erhalten Sie eine Fließkommazahl. Während dieser Unterschied für Sie kein merklicher Unterschied ist, ändert sich in diesem Moment der Datentyp des Wertes, denn der Computer muss eine Fließkommazahl anders speichern, da er ja wie besprochen nur ganze Zahlen von 0 bis 255 nutzen kann, um alles zu speichern, dass er speichern soll.\\
+
+Sprachen, bei denen wie in PHP der Datentyp geändert werden kann werden auch als dynamisch typisierte Programmiersprachen bezeichnet.\\
+
+Bei statisch typisierten Sprachen wie C und Java müssten Sie nun eine neue Variable erzeugen, der Sie den neuen Wert zuordnen. Denn dort kann sich der Datentyp einer Variablen nicht ändern. Bei dynamisch typisierten Sprachen ist das anders: Dort ändert sich der Datentyp je nachdem, wie sich der Wert einer Variablen ändert.\\
+
+Das Ändern des Datentyps wird auch als Typecasting bezeichnet.\\
+
+Erfahrene Entwickler in statisch typisierten Sprachen sagen deshalb häufig, dass dynamisch typisierte Sprachen unsicher seien, weil man je nie wissen könne, welchen Datentyp eine Variable hat. Aber das ist Unsinn, jeder Softwareentwickler sollte wissen, wie in einer dynamisch und wie in einer statisch typisierten Sprache programmiert werden muss. Außer natürlich es ist jemand, der in nicht-imperative Programmiersprachen Software entwickelt oder die nur in einer Sprache programmiert. Denn dann ist dieser Unterschied irrelevant.\\
+
+In kurzen Worten: Wenn Sie es mit Programmierern zu tun haben, die darauf beharren, dass dynamisch typisierte Sprachen unsicher sind, weil diese keine Typsicherheit bieten, dann behandeln Sie diese Menschen am besten wie Geisteskranke: Immer nett zu ihnen sein und halten Sie sie von allem fern, was sie nicht verstehen. Genau wie manche Authisten können einige dieser Menschen in einem kleinen Spezialgebiet wirklich großartige Dinge leisten. Aber der Rest stellt für sie eine vollständige Überforderung dar. Das Problem besteht allerdings darin, dass es nur wenige Authisten gibt, während Menschen mit der beschriebenen beschränkten Auffassung von Programmierung die Norm darstellen. Wenn Sie nichts über Authismus wissen, sehen Sie den Oscar-prämierten Film ,,Rainman``. Dieser zeigt zwar ein sehr einseitiges Bild der Krankheit, aber für nicht-Psychologen und zum Verständnis des Vergleichs sollte das genügen.
+
+\subsection{Operationen}
+
+Operationen entsprechen weitestgehend dem, was Sie in der Oberstufenmathematik kennen gelernt haben, gehen aber darüber hinaus: Sie nehmen zwei Operanden, verknüpfen diese mithilfe eines Operatoren und bekommen ein Ergebnis, indem Sie den gebildeten Ausdruck auswerten. Komplexe Operationen (also Operationen mit mehreren Operanden) bilden Sie, indem Sie Klammern verwenden.
+
+\subsubsection{Arithmetische Operatoren}
+
+Die vier Operatoren +, -, * und / entsprechen der Addition, Subtraktion, Multiplikation und Division. Der Doppelstern ** entspricht der Potenzierung.\\
+
+Zusätzlich gibt es noch die Modulo-Operation, die in PHP durch das \%-Zeichen ausgedrückt wird. Wenn Sie den entsprechenden Teil des Mathematikunterrichts inzwischen erfolgreich verdrängt haben, sollten Sie die alten Kenntnisse wieder aufwärmen; insbesondere im Bereich der IT-Sicherheit ist die modulare Arithmetik essentiell.
+
+\subsection{Anonyme Variablen}
+
+Oben haben Sie erfahren, wie Sie Variablen erzeugen. Dort haben Sie gelesen, dass jede Variable einen Namen hat. Aber was ist dann eine anonyme Variable?\\
+
+Stellen Sie sich vor, Sie haben folgenden PHP-Code erstellt:\\
+
+\begin{verbatim}
+$a = 5;
+$b = 3;
+echo($a + $b);
+\end{verbatim}
+Quellcode 4.6: Anonyme Variable\\
+
+Hier haben Sie zwei Variablen addiert und das Ergebnis ausgegeben. Das klingt logisch, aber hier fehlt noch etwas: Wenn ein Computer eine Operation ausführt, dann speichert er das Ergebnis irgendwo ab. Im Regelfall geben sie dieses „irgendwo“ vor, indem Sie dafür eine Variable erzeugen oder den Computer anweisen, den Wert einer anderen Variablen zu überschreiben. Das ist bei diesem Code-Beispiel nicht der Fall. Da wir also das Ergebnis der Operation nicht über einen Namen ansprechen können, reden wir hier von einer anonymen Variable.Quellcode 4.6: Anonyme Variable
+
+Wenn wir keine anonymen Variablen verwenden wollen oder können, dann müssten wir das obige Programm so programmieren:Quellcode 4.6: Anonyme Variable
+
+\begin{verbatim}
+$a = 5;
+$b = 3;
+$c = $a + $b;
+echo($c);
+\end{verbatim}
+Quellcode 4.7: Nutzung einer Hilfsvariable, um keine anonyme Variable zu verwenden.\\
+
+Wie Sie sehen hat dieses Programm keinen Mehrwert gegenüber dem mit der anonymen Variable, sondern ist nur länger und damit fehleranfälliger. Also nutzen sie anonyme Variablen, wenn es Sinn macht.
+
+\subsection{Operationen für Text-Variablen}
+
+Wenn Sie sich wundern, warum es Operatoren für Text-Variablen gibt, dann sehen Sie Variablen und Operationen noch so beschränkt, wie Sie sie intuitiv im Mathematikunterricht kennen gelernt haben. Deshalb hier nochmal eine allgemeinere Beschreibung, die für die Programmierung in prozeduralen Sprachen gilt: Variablen können beliebige Daten speichern und mit Operationen ändern Sie diese Daten oder erzeugen daraus neue Daten.\\
+
+Eine einfache Operation für Texte ist die Konkatenation, also die Verknüpfung von zwei Texten. Für diese wird der . (Punkt) verwendet.\\
+
+Wichtig: Bis auf Variablen, die durch Konkatenation entstehen sind bei echo() keine anonymen Variablen erlaubt. Eine Zeile wie echo(``Das Ergebnis ist: ``.\$a + \$b); wäre also nicht erlaubt.\\
+
+\begin{verbatim}
+\$name = ``Horst``;
+\$zustand = ``krank``;
+echo(\$name.``ist``.\$zustand);
+\end{verbatim}
+Quellcode 4.8: Konkatentation von Texten.
+
+\subsection{Nachteile der dynamischen Typisierung}
+
+Wie beschrieben wird der Datentyp bei dynamisch typisierten Sprachen von der Programmiersprache immer dann geändert, wenn das sinnvoll erscheint. Dafür gibt es natürlich festgelegte Regeln, die sich je nach Sprache unterscheiden. Überlegen Sie, was alles beim folgenden Code passieren könnte und probieren Sie es dann aus, um zu erfahren, wie PHP programmiert ist.\\
+
+\begin{verbatim}
+\$a = 2;
+\$b = 3;
+echo(\$a.\$b);
+\$c = \$a.\$b;
+\$d = \$c*2;
+echo(\$d);
+\end{verbatim}
+Quellcode 4.9: Beispiel für dynamische Typisierung\\
+
+Codebeispiele wie dieses werden von vielen Programmierern als Beweis genutzt, dass die dynamische Typisierung unsicher ist. Alles was eine Beweisführung in dieser Art tatsächlich belegt, ist die Unfähigkeit der Betreffenden, über den eigenen Tellerrand zu schauen.
+
+\subsubsection{Kurzschreibweise für Zuordnung und Operation}
+
+Gerade bei der Konkatenation werden Sie des Öfteren eine Variable mit dem neuen „Wert“ ergänzen wollen. Im folgenden Codebeispiel sehen Sie eine Kurzform, die Sie in diesen Fällen nutzen können. 
+
+\begin{verbatim}
+\$return = ``Siggi``:
+\$taetigkeit = ``geht shoppen.``;
+\$return = \$return.\$taetigkeit;
+
+// Die letzte Zeile können Sie verkürzen:
+
+\$return .= \$taetigkeit;
+\end{verbatim}
+Quellcode 4.10: Verkürzte Form für Zuordnung und Operation.
+
+\subsubsection{Aufgabe}
+
+-	Probieren Sie aus, für welche Operationen das funktioniert.
+
+\section{Kontrollstrukturen und boolesche Ausdrücke}
+
+Wie eingangs erläutert kommen wir jetzt zum ersten Teil der Programmierung, mit dem Sie tatsächlich eine Logik in Ihr Programm bekommen können. Während Sie also mit den vorigen Elementen von PHP kaum einen Mehrwert gegenüber der Programmierung in HTML erreichen konnten kommen wir jetzt zu den eigentlich spannenden Aspekten bei der Webanwendungsentwicklung mit PHP.
+
+\subsection{Grundidee}
+
+Nachdem Sie jetzt wissen, wie Sie Werte in PHP (und anderen prozedurale Sprachen) über Variablen speichern und ändern können, kommen wir jetzt dazu, wie Sie abhängig vom Ergebnis einer Operation unterschiedliche Programmteile ausführen lassen. Ob diese dann eine Ausgabe erzeugen, die als Quellcode in die Webpage eingefügt werden oder ob dadurch die Werte von Variablen geändert werden ist für diese Grundidee belanglos.
+
+\subsection{Vergleichsoperationen}
+
+Bei den Variablen haben Sie Operatoren kennen gelernt, die die Werte von Variablen nutzen, um neue Variablen zu erzeugen oder den Wert von bestehenden Variablen zu ändern. Wenn wir dagegen nur wissen wollen, ob z.B. \$a größer als \$b ist oder ob \$name der Name des Administrators ist, dann wollen wir ja keine Variablen ändern. Vielmehr möchten wir hier Operatoren nutzen, um zu entscheiden, wie das Programm weiter ausgeführt wird. Aber auch dafür nutzen wir Operationen, die wie alle Operationen eine anonyme Variable erzeugen. Diese Operationen heißen Vergleichsoperationen.\\
+
+
+Auch hier begegnet Ihnen im Grunde nichts, was Sie nicht schon aus der Schulzeit kennen würden, nur die Schreibweise müssen Sie sich einprägen. Das einzige, was Sie anfangs verwirren wird ist die Tatsache, dass ein Vergleich auf Gleichheit durch ein doppeltes Gleichheitszeichen ausgedrückt wird, denn das einfache Gleichheitszeichen wird ja bereits verwendet, um einer Variablen einen Wert zuzuordnen.\\
+
+
+Das Ergebnis von Vergleichsoperationen wird in aller Regel als anonyme Variable verwendet. Dennoch kann es vorkommen, dass Sie das Ergebnis speichern wollen, dass Sie also eine boolesche Variable erzeugen wollen, eine Variable, die wahr oder falsch sein kann. In diesen Fall gehen Sie wie bei anderen Zuordnungen von Variablen vor.
+Hier die Liste der Vergleichsoperatoren:\\
+
+
+-	= =	prüft auf die Gleichheit der Werte zweier Operanden.
+-	= = =	prüft außerdem, ob Sie den gleichen Datentyp haben.
+-	! =	prüft, ob zwei Operanden unterschiedliche Werte haben.
+-	! = = 	prüft außerdem, ob auch der Datentyp unterschiedlich ist.
+-	>	prüft, ob der erste Operand größer ist, als der zweite.
+-	> =	prüft, ob der erste Operand nicht kleiner ist, als der zweite.
+-	<	prüft, ob der zweite Operand größer ist, als der erste.
+-	< =	prüft, ob der zweite Operand nicht größer ist, als der zweite.
+
+Sie finden, dass das zu viele Operatoren sind? Vollkommen richtig: Fürs erste brauchen Sie nur = =, != und < oder >. Wie Sie in der technischen Informatik lernen (also in der Veranstaltung Informatik bzw. Informatik 1) brauchen Sie dazu noch Konjunktionen und Disjunktionen. Wie Sie die in PHP programmieren lernen Sie jetzt. 
+
+\subsection{Conditionals 1 – if-then-else}
+
+Es gibt in PHP zwei Möglichkeiten, um Kontrollstrukturen zu programmieren. Beide werden im Englischen als Conditionals bezeichnet.\\
+
+
+Um eine Kontrolle durchzuführen, überlegen Sie sich alle möglichen Fälle und erstellen für jeden Fall einen sogenannten if-Zweig. Wenn Sie mehrere Fälle nicht mit einem eigenen if-Zweig behandeln, dann haben Sie zwei Möglichkeiten: Entweder Sie ignorieren diese Fälle ganz, lassen also das Programm einfach weiterlaufen oder Sie programmieren einen else-Zweig, in dem all das passiert, was eben in den verbliebenen Fällen passieren soll.\\
+
+
+Die Bedingung, die geprüft werden soll steht in runden Klammern hinter dem „Befehl“ if. Das Schlüsselwort „then“ gibt es in PHP nicht. Wenn ein Programmteil bei einem if-Zweig ausgeführt werden soll, dann steht er direkt hinter dem Conditional des if.
+
+\subsubsection{Rümpfe}
+
+Bislang haben Sie immer nur Fälle kennen gelernt, in denen Ihr Programm Zeile für Zeile abgearbeitet wird. Jetzt kommen wir dagegen zu Fällen, in denen mehrere Zeilen nur in bestimmten Fällen ausgeführt werden sollen. In anderen Worten: Wenn diese Fälle nicht eintreten, dann sollen die entsprechenden Zeilen übersprungen werden. Also brauchen wir eine Möglichkeit, um im Quellcode anzuzeigen, welche Teile ggf. übersprungen werden sollen. Solche zusammengehörenden Mehrzeiler werden als Rumpf (z.B. Rumpf einer Funktion) bezeichnet. In PHP werden Rümpfe durch geschweifte Klammern markiert: \\
+
+\begin{verbatim}
+\{ ... \}
+Anstelle der Punkte wird schlicht der Programmcode eingetragen.
+Der folgende PHP-Code ist ein einfacher if-then-else-Fall:
+if (\$login==``admin``)
+\{
+	echo(``<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - -> ``);
+\}
+else 
+\{
+	echo(``Die angeforderte Seite steht nur Administratoren zur Verfügung.``);
+\}
+\end{verbatim}
+Quellcode 4.11: Einfaches if Conditional
+
+\subsection{Conditionals 2 – Switch-Cases}
+
+Wenn-Dann-Kontrollstrukturen sind leicht zu verstehen, aber gerade wenn Sie den weiteren Programmablauf von der Belegung einer Variablen steuern wollen, sind die Switch-Cases häufig mit weniger Programmieraufwand verbunden.\\
+
+Dabei tragen Sie in den Klammern hinter dem „Befehl“ switch den Namen der Variablen ein und bei den einzelnen Cases den Wert der Variablen. Hier ein einfaches Beispiel, das genau dasselbe bewirkt wie der if-then-else-Fall oben:\\
+
+\begin{verbatim}
+switch(\$login)
+\{
+	case(``admin``):
+	echo(``<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - -> ``);
+	break;
+	default:
+	echo(``Die angeforderte Seite steht nur Administratoren zur Verfügung.``);
+\}
+\end{verbatim}
+Quellcode 4.12: Einfaches Switch-Case-Condititonal\\
+
+Im Gegensatz zum if-then-else-Conditional wird bei Switch-Cases der default-Fall immer ausgeführt. Für jeden Fall, bei dem Sie das vermeiden wollen müssen Sie noch die Anweisung break ans Ende des jeweiligen Cases programmieren. Das ist auch der Grund, warum Sie bei Switch-Cases keine geschweiften Klammern benötigen.\\
+
+Letztlich bleibt es Ihnen überlassen, ob Sie nun if-then-else oder Switch-Case verwenden. Aus Gründen der besseren Lesbarkeit sollten Sie allerdings immer dann Switch-Cases verwenden, wenn das möglich ist, da hier der Zusammenhang zwischen den Fällen leicht erkennbar ist.\\
+
+Noch ein abschließender Hinweis: Ob Sie nun (wie bei den obigen Beispielen) für die geschweiften Klammern eine eigene Zeile reservieren oder nicht, ist Geschmacksfrage. Die folgenden Beispiele sind genauso gültig wie die beiden obigen. Beachten Sie bitte noch, dass das Weglassen der geschweiften Klammern bei if-then-else nur dann erlaubt ist, wenn der Fall mit einer Programmzeile erfüllt wird.\\
+
+\begin{verbatim}
+if (\$login==``admin``) \{
+	echo(``<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - -> ``); 
+\} else \{
+echo(``Die angeforderte Seite steht nur Administratoren zur Verfügung.``);
+\} 
+
+if (\$login==``admin``) echo(``<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - -> ``); 
+else echo(``Die angeforderte Seite steht nur Administratoren zur Verfügung.``); 
+
+switch(\$login) \{
+	case(``admin``): echo(``<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - -> ``);
+	break;
+	default: echo(``Die angeforderte Seite steht nur Administratoren zur Verfügung.``);
+\}
+\end{verbatim}
+Quellcode 4.13: Eine Frage des persönlichen Geschmacks: Position der geschweiften Klammern.\\
+
+Neben den hier vorgestellten Möglichkeiten if-then-else oder Switch-Cases zu programmieren, gibt es noch eine weitere Möglichkeit, die Sie dann nutzen können, wenn Sie sehr umfangreichen HTML-Code generieren wollen. Hier unser obiges Beispiel mit den nötigen Änderungen innerhalb eines HTML-Dokuments:\\
+
+\begin{verbatim}
+<?php
+...
+if (\$login==``admin``) \{ ?>
+	<!- - Hier den Code einfügen, damit der Nutzer auf die Administrationsoberfläche gelangt. - ->
+	<?php \} else \{ ?>
+	<p>Die angeforderte Seite steht nur Administratoren zur Verfügung.</p>
+	<?php \} ?>
+\end{verbatim}
+Quellcode 4.14: Einfaches if Conditional, wenn umfangreicher HTML-Code zu übergeben ist
+
+\subsubsection{Prüfung mehrerer Bedingungen}
+
+Wenn Sie nun einen bestimmten Fall nur dann ausführen wollen, wenn mehrere Bedingungen oder eine von mehreren Bedingungen erfüllt sind, gibt es zwei Möglichkeiten: (Um den Code übersichtlich zu halten, werden jetzt keine konkreten Fälle genannt, sondern es wird für jede Bedingung einfach der Buchstabe B und eine Zahl verwendet. B5 ist also im Folgenden die fünfte Bedingung, wobei hier nicht von Belang ist, was diese Bedingung ist.
+
+\subsubsection{Mehrere Bedingungen müssen gelten}
+
+Nehmen wir an, drei Bedingungen (B1, B2 und B3) sollen gelten, damit ein Programmteil ausgeführt wird. Dann können wir verschachtelte if-then-else-Fälle programmieren, um das umzusetzen:\\
+\begin{verbatim}
+if(B1)\{ if(B2) \{if(B3) \{ /* Hier steht der auszuführende Code */ \}\}\}
+\end{verbatim}
+Quellcode 4.14: Verschachteltes if\\
+
+Leider ist diese Form aber eher unübersichtlich. Deshalb gibt es den Konjunktionsoperator: \&\& (Doppeltes Und-Symbol) Wenn wir das einsetzen, wird unser Code besser lesbar:\\
+
+\begin{verbatim}
+if(B1 \&\& B2 \&\& B3)\{ /* Hier steht der auszuführende Code. */ \}
+\end{verbatim}
+Quellcode 4.15: Konjunktion bei if-Cases
+
+\subsubsection{Eine von mehreren Bedingungen muss gelten}
+
+Wenn dagegen eine der drei Bedingungen gelten soll, aber in jedem Fall der gleiche Code ausgeführt werden soll, erhöht die erste Variante die Fehleranfälligkeit unseres Codes massiv:\\
+
+\begin{verbatim}
+if(B1)\{ /*Hier steht der auszuführende Code. */ \}
+if(B2)\{ /* Hier steht er nochmal. */ \}
+if(B3)\{ /* Und hier schon wieder. */ \}
+\end{verbatim}
+Quellcode 4.16: Disjunktive if-Cases\\
+
+In diesen Fällen ist es ein must-have, Disjunktionen anzuwenden. Die werden als | | programmiert:\\
+
+\begin{verbatim}
+if(B1 || B2 || B3)\{ /* Hier steht der auszuführende Code. */ \}
+\end{verbatim}
+Quellcode 4.17: Disjunktion von Bedingungen\\
+
+Alles weitere in Bezug auf die Kombinationsmöglichkeiten von Konjunktionen und Disjunktionen lernen Sie in den Veranstaltungen zur technischen Informatik und den einführenden mathematischen Veranstaltungen Ihres Studiums.\\
+
+Aufgabe:\\
+
+-	Erweitern Sie Ihre Seite wie folgt: (Lesen Sie zunächst alle Aufgabenteile einmal durch. Es ist nicht gesagt, dass Sie die einzelnen Teile in genau der Reihenfolge umsetzen müssen, die hier vorgegeben ist.)
+
+•	Programmieren Sie eine Variable \$login, die standardmäßig den Wert guest hat.
+
+•	Programmieren Sie außerdem  Teile Ihrer Webpage, sodass diese nur angezeigt werden, wenn \$login den Wert admin hat. Dazu benötigen Sie die CSS-Property visibility. Es sollte sich zwar von selbst verstehen, aber zur Sicherheit sei auf folgendes hingewiesen: Recherchieren Sie dazu, welche Belegungen visibility haben kann. Denn nur mit diesem Wissen können Sie die Aufgabe erfüllen.
+
+•	Programmieren Sie Teile Ihrer Webpage so um, dass sie nur dann angezeigt werden, wenn \$login den Wert user oder admin hat. Damit ist gemeint, dass diese Teile sowohl für user als auch für admin angezeigt werden sollen.
+
+Hinweis: Da Sie noch keinen Log-in entwickelt haben, können Sie zurzeit noch nicht prüfen, ob Sie alles richtig gemacht haben. Diese Aufgabe dient vorrangig dazu, dass Sie selbst prüfen können, ob Sie die Inhalte der vorigen Kapitel soweit verinnerlicht haben, dass Sie sinnvoll damit arbeiten können:\\
+
+-	Wenn Sie Probleme damit haben, zu verstehen, was Sie tun sollen, sollten Sie dringend die bisher behandelten Themen wiederholen. Versuchen Sie vor allem zu verstehen, was der Sinn der einzelnen Abschnitte bzw. der darin behandelten Themen ist. Wenn Sie die bislang behandelten Themen nur überflogen haben, dann sollten Sie das dringend abstellen oder sich nach einem Ausbildungsplatz umsehen: Studieren bedeutet, sich intensiv mit den Inhalten von Veranstaltungen auseinander zu setzen... und zwar vor und nach den Veranstaltungen... mehrere Stunden pro Woche.
+
+-	Wenn Sie dagegen ein Problem damit haben, das Verstandene in ein Programm umzusetzen, dann bedeutet das lediglich, dass Sie mehr Übung brauchen. Andererseits ist das das Hauptproblem der meisten Studienanfänger: Sie wenden das Gelernte zu selten an und verinnerlichen es deshalb nicht.
+
+-	Wenn Sie sich dagegen wundern, warum Sie solche einfachen Schritte programmieren sollen, bzw. warum das hier so detailliert steht, dann sind Sie entweder schon deutlich weiter oder Sie sollten sich einen systematischeren Arbeitsstil angewöhnen. Denn auch dafür ist diese Übung gedacht.
+
+Grundsätzlich gilt aber im Studium immer: Es ist gerade zu Beginn vollkommen normal, sich von den Inhalten und Übungen überfordert zu fühlen. Wichtig ist es dann, konzentriert weiter zu arbeiten. Außerdem ist es vollkommen normal, einzelne Veranstaltungen erst im dritten Anlauf zu bestehen. Manche Inhalte brauchen viel Zeit, damit Sie sie wirklich verinnerlicht haben.
+
+\section{Funktionen}
+
+Wenn die Seiten Ihrer Webpage immer umfangreicher werden, werden Sie früher oder später merken, dass Teile Ihrer Seite sich wiederholen. So kann es sein, dass Sie mehrere <summary>-Container programmiert haben, die nur von bestimmten Nutzern geöffnet werden dürfen. Hier wäre es unschön, wenn Sie jedes Mal die entsprechende Kontrollstruktur in PHP programmieren würden. Für solche Fälle gibt es die sogenannten Funktionen, die bei der objektorientierten Programmierung als Methoden bezeichnet werden.\\
+
+Funktionen kennen Sie aus der Oberstufen-Mathematik. Dort tauchten Sie in Formen wie f(x) oder ähnlichem auf. Bei der Programmierung in PHP können Sie längere Bezeichnungen als ein einfaches f verwenden. Dadurch ist es möglich, dass Sie eine Funktion so benennen, dass bereits aus dem Namen hervorgeht, was diese Funktion tun soll.\\
+
+Im Gegensatz zu dem, was Sie in der Mathematik kennen gelernt haben steht es Ihnen hier aber frei, ob und wenn ja, wie viele Parameter einer Funktion übergeben werden sollen. Denn da Ihr Programm ja bereits Variablen hat, können Sie aus einer Funktion auf diese Variablen zugreifen.\\
+
+Jede Funktion besteht aus einem Namen und einem Klammernpaar, das direkt neben dem Namen steht. In dieses Klammernpaar programmieren Sie dann all die Parameter, die von der Funktion verarbeitet werden sollen.\\
+
+Mindestens eine solche Funktion haben Sie schon benutzt.\\
+
+Aufgabe:\\
+
+-	Wie heißt diese Funktion?
+
+(Wenn Sie sich mit der Antwort schwer tun, sehen Sie nochmal in Ihren bisherigen Programmen nach, wo etwas auftaucht, das aus einem Wort und einer anschließenden Klammer besteht.)
+
+-	Was tut diese Funktion?
+
+\subsection{Was ist ein Parameter?}
+
+Der Parameter der Funktion echo() ist immer ein String. Wenn Sie hier eine Zahlenvariable (nennen wir sie einfach \$zahl) einsetzen, dann wird der Wert von \$zahl in einer neuen Variable gespeichert, deren Bezeichner Sie nicht kennen und auch nicht kennen brauchen, weil für Sie nur wichtig ist, dass echo() diesen Wert ausgibt. Diese (für uns anonyme) Variable wird nun zu einem String gecastet. Das ändert jedoch nichts am Datentyp oder Wert der Variablen \$zahl selbst.\\
+
+Beim Aufruf einer Funktion brauchen wir also nichts über die Bezeichnungen der Variablen zu wissen, die innerhalb der Funktion verwendet werden. Diese Tatsache wird später bei Rekursionen wichtig: Bislang haben Sie gelernt, dass Sie den Bezeichner einer Variablen im gesamten Programm nur einmal verwenden dürfen, weil Sie sie an jeder Stelle des Programms nutzen können. Jetzt kommt eine Einschränkung für diese Aussage: Wenn eine Variable nur innerhalb eines Funktionsrumpfes vorkommt, dann kann Sie außerhalb des Funktionsrumpfes nicht verwendet werden, weil sie dort unbekannt ist. Das bedeutet auch, dass Sie eine Funktion mehrfach aufrufen können, denn die Variablen, die innerhalb eines Funktionsaufrufes verwendet werden, werden in einem eigenen Speicherbereich gespeichert. Wenn Sie das momentan noch nicht so recht einordnen oder verstehen können, lassen Sie sich davon nicht irritieren; wir kommen beim Thema Rekursion darauf zurück.\\
+
+Wenn Sie dagegen eine Funktion selbst programmieren wollen, dann müssen Sie darin Parameter selbst programmieren.\\
+
+Als Parameter werden Variablen bezeichnet, die der Zwischenspeicherung von Werten dienen, die bei einer Funktion verwendet werden. Im folgenden Funktionskopf wären das die Variablen \$param1, \$param2 und \$param3:\\
+
+\begin{verbatim}
+function meineFunktion(\$param1, \$param2, \$param3) \{ ... \}
+\end{verbatim}
+
+Die Entwickler von PHP haben z.B. die Funktion echo() in etwa so programmiert:
+
+\begin{verbatim}
+function echo(\$param) \{ 
+	/* Quelltext, der dafür sorgt, dass \$param in ein HTML-Dokument eingefügt wird. */ 
+\}
+\end{verbatim}
+
+Bei der Programmierung des Funktionsrumpfes verwenden Sie dann die Parameter, als wären es ganz normale Variablen, die Sie an anderer Stelle des Programms programmiert haben. \\
+
+Wichtig: Beachten Sie bitte, dass diese Parameter außerhalb des Rumpfes nicht genutzt werden können. Um die Fehlerwahrscheinlichkeit zu reduzieren sollten Sie Variablen, die Sie außerhalb eines Funktionsrumpfes nutzen nicht als Parameter verwenden.\\
+
+Für Fortgeschrittene: Es gibt auch die Möglichkeit, die Variable innerhalb einer Funktion zu überschreiben, von der der Parameter an die Funktion übergeben wurde. In diesem Fall wird bei PHP von einer Referenz auf die Variable gesprochen. Dabei kommt in PHP das \&-Zeichen zum Einsatz. Da wichtig ist, dass Sie einen sauberen Programmierstil lernen, lassen wir diesen Fall hier außen vor. Wenn wir von der Nutzung von Parametern in Funktionen sprechen, so wie Sie es hier kennen gelernt haben, dann wird bei PHP von der Kopie einer Variablen gesprochen. Die Bezeichnung Parameter, wie in diesem Kurs verwendet ist dagegen in anderen Sprachen üblich. Deshalb werden wir in diesem Kurs dabei bleiben. Schließlich sollen Sie hier Dinge lernen, die in möglichst vielen Sprachen gelten.
+
+\subsubsection{Rückgabewert einer Funktion}
+
+Allerdings gibt es etwas, was Sie bei echo() nicht kennen gelernt haben, das Sie aber aus der Oberstufenmathematik kennen: Funktionen haben einen Rückgabewert. Das bedeutet, dass eine Funktion im Regelfall nicht nur etwas tut, bzw. etwas mit den übergebenen Werten tut, sondern dass sie auch ein Ergebnis zurückgibt. Dieses Ergebnis kann der Wert einer beliebigen Variablen sein. Es kann auch einfach eine boolesche Variable sein, die nur anzeigt, ob die Funktion wie gewünscht ausgeführt wurde und sonst nichts weiter mit dem genauen Ablauf der Funktion zu tun hat.\\
+
+In diesen Fällen können Sie also bei einem Programm eine Funktion als Wert einer Variablen programmieren: \$a = eineFunktion(); ist somit eine legale Anweisung, die der Variablen \$a den Wert zuordnet, der nach dem Aufruf von eineFunktion() zurückgegeben wird.\\
+
+Aufgabe:\\
+
+-	Angenommen es gibt eine Funktion namens derNutzerIstAdmin(), die eine anonyme boolesche Variable zurückgibt, die dann wahr ist, wenn der angemeldete Nutzer ein Administrator ist. Wie müssten Sie den folgenden Code erweitern, damit der <summary>-Container nur dann angezeigt wird, wenn der Nutzer ein Administrator ist?
+
+\begin{verbatim}
+<?php
+...
+if( ...... ) \{ ?>
+	<summary> ....
+	<?php \} else ... \{ >
+	...
+	<?php \} ?>
+\end{verbatim}
+Quellcode 4.18: Aufruf einer Funktion bei Conditionals\\
+
+Übrigens müssen Sie natürlich für diesen Fall nicht unbedingt eine Funktion verwenden. Sie könnten auch nach dem Log-in des Nutzers einen Programmteil durchlaufen lassen, in dem geprüft wird, ob der Nutzer ein Administrator ist oder nicht. Und das Ergebnis dieser Prüfung könnten Sie dann einer Variablen zuordnen, die Sie anschließend weiter verwenden würden.\\
+
+Das ist ein Beispiel für etwas, das Sie bei der Programmierung in jeder prozeduralen Programmiersprache (aber auch bei anderen Arten von Sprachen) beachten müssen: Vieles lässt sich auf unterschiedlichste Art und Weise realisieren. Und meist gibt es keine beste Lösung, sondern viele Lösungsmöglichkeiten, von denen einige besser, andere schlechter und viele aus den unterschiedlichsten Gründen sehr schlecht sind. 
+
+\subsection{Eigene Funktionen programmieren}
+
+Wenn Sie einen Programmteil zu einer Funktion machen wollen, dann setzen Sie den gesamten Programmteil in geschweifte Klammern und schreiben in der Zeile davor das Schlüsselwort function und anschließend einen Funktionsnamen, der mit runden Klammern abgeschlossen wird.
+
+\begin{verbatim}
+function meineFunktion(\$p1, \$p2)\{
+	... // Hier programmieren Sie, was innerhalb der Funktion passieren soll, als wäre es ein
+	// beliebiger Teil Ihres Programms.
+	// Allerdings können Sie dafür die Parameter \$p1 und \$p2 verwenden.
+	// Die Werte dieser Parameter werden beim Funktionsaufruf vergeben.
+\}
+\end{verbatim}
+Quellcode 4.19: Definition einer Funktion ohne Parameter\\
+
+Wann immer Sie in Zukunft wollen, dass der Rumpf der Funktion aufgerufen wird, müssen sie nur noch den Funktionsnamen an der entsprechenden Stelle einprogrammieren.
+
+\section{Datenstrukturen}
+
+Dieser Abschnitt ist etwas problematisch, weil wir bislang vorrangig über die Möglichkeiten gesprochen haben, die die Sprache PHP Ihnen bietet. Datenstrukturen gehören genau wie Rekursionen in einen Bereich, bei dem viele Programmierer nur das nutzen, was die Programmiersprache Ihnen anbietet. Und genau dadurch können Sie einfache Programmierer von Menschen mit einem Verständnis für Informatik unterscheiden.\\
+
+Zunächst einmal ist eine Datenstruktur etwas, womit Sie eine Vielzahl gleichartiger Variablen strukturiert als eine Einheit abspeichern können. Nehmen wir an, Sie haben eine Webpage mit einem Spiel entwickelt und wollen eine High-Score-Liste generieren.\\
+
+Das würde natürlich voraussetzen, dass jeder Spieler einen Punktestand für sein Spiel bekommt. Soweit ist es auch kein Problem, aber alles, was Sie mit dem bisherigen Wissen tun können, ist den aktuellen Punktestand mit einem Namen jeweils in einer Variablen zu speichern. Sie könnten weiterhin für die zehn besten Spieler jeweils ein solches Variablenpaar erstellen. Aber Sie hätten keine Möglichkeit, um alle Ergebnisse von Spielern in dieser Weise zu speichern. Denn auch wenn Sie mit PHP eine dynamische Webanwendung entwickeln können, können Sie eben nicht im Vorfeld programmieren, dass Ihr Programm je nach Bedarf zusätzliche Variablen generieren soll.\\
+
+Die Lösung für dieses Dilemma heißt Datenstrukturen. In aller Regel bieten prozedurale Sprachen Ihnen zumindest ein Array als Datenstruktur an, dass Sie ohne weitere Kenntnisse nutzen können. In Veranstaltungen wie Algorithmen und Datenstrukturen lernen Sie dann, wie Sie andere Datenstrukturen selbst programmieren können und wann welche Datenstruktur Sinn macht. Prozedurale Sprachen wie Pascal ermöglichen es Ihnen außerdem beliebige Datenstrukturen selbst zu programmieren.\\
+
+Leider ist PHP derart beschränkt, dass Sie keine eigenen Datenstrukturen programmieren können. Erinnern Sie sich noch an meine Kritik an den „Vorteilen“ die der Autor Thomas Theis bezüglich PHP formulierte? Genau hier haben wir einen Fall, in dem es eben ein massiver Nachteil ist, dass PHP Sie derart in Ihren Möglichkeiten einschränkt. Seit Version 5.3 gibt es allerdings eine Reihe an Klassen in der PHP Standard Library, die weitere Datenstrukturen realisieren. Bei O’Reilly wird betont, dass es ein großer Vorteil ist, dass diese in C programmiert ist, was in einer höheren Geschwindigkeit resultiert. Nur bedeutet das für Sie, dass Sie hier keine individuelle Anpassung durchführen können.\\
+
+In PHP können Sie deshalb leider nur zwei Arten von Datenstrukturen direkt verwenden: Felder und Assoziative Felder. Gleich vorweg: Fehlgeleitete Naturen bezeichnen Assoziative Felder als Hash-Tables. Ein Hash-Table ist aber etwas ganz anderes. Was genau, das lernen Sie z.B. in Veranstaltungen wie Algorithmen und Datenstrukturen. Und nein, das was bei Java als Hash-Table bezeichnet wird ist ebenfalls kein Hash-Table...\\
+
+Nach dieser ausführlichen Einleitung, die vorrangig dazu dient, dass Sie sich im Laufe Ihres Studiums intensiv mit Algorithmen und Datenstrukturen beschäftigen, kommen wir nun zu den beiden Feldertypen, die PHP anbietet:
+
+\subsection{Felder bzw. Arrays}
+
+Ein Array ist eine Art Liste, bei der jeder Eintrag über eine Zahl angesprochen werden kann. Die Nummerierung beginnt jeweils bei 0, sodass Sie den fünfzigsten Wert eines Arrays über die Nummer 49 abrufen.\\
+
+Leider wissen die Entwickler von PHP nicht, was ein Array ist, denn das, was sie als Array implementiert haben ist eine verkettete Liste mit Indizierung jedes Elements. Damit haben die Entwickler von PHP eine Datenstruktur entwickelt, die weder den Geschwindigkeitsvorteil eines Array bietet, noch die Flexibilität beim Einfügen und Entfernen von Elementen einer verketteten Liste.\\
+
+Deshalb hier zunächst die Erklärung, was ein Array ist:\\
+
+Ein Array ist ein Teil des Speichers eines Computers, der in gleichgroße Einheiten unterteilt werden, die genau so groß sind wie es für eine bestimmte Variable nötig ist. Denn bei der Programmierung eines Arrays wird am Anfang festgelegt, welchen Datentyp alle Variablen haben sollen. \\
+
+Der Vorteil eines Array besteht darin, dass das Auslesen oder Überschreiben einer Stelle des Arrays sehr schnell zu erledigen ist. Dafür ist diese Datenstruktur sehr ineffizient, wenn wir ein Element löschen wollen oder ein neues Element hinzufügen wollen, denn beides erfordert bei einem Array einen sehr großen Kopieraufwand. Eine Vergrößerung eines Arrays (z.B. indem ans Ende noch zehn neue Elemente angehängt werden) ist dagegen unmöglich, weil ja in der Zwischenzeit der Speicher „hinter“ dem Array in aller Regel mit anderen Daten beschrieben wurde. \\
+
+Auch hier gilt wieder: Wenn Sie das im Detail verstehen wollen, belegen Sie bitte einen Kurs in Algorithmen und Datenstrukturen.\\
+
+Und jetzt zu dem, was Felder in PHP können, die dort als Arrays bezeichnet werden:\\
+
+Genau wie bei echten Arrays können Sie dort einen Eintrag des Array mithilfe eines Indexes überschreiben oder auslesen. Sie können aber zusätzlich jederzeit neue Elemente ans Ende des Feldes anfügen.\\
+
+Verstehen Sie die hier geäußerte Kritik bitte nicht falsch: Die Datenstrukturen, die PHP anbietet sind sinnvoll. Allerdings gibt es hier ein Problem: Sie lernen jetzt etwas unter dem Namen Array kennen, das kein Array ist. Wenn Sie dann eine andere Programmiersprache kennen lernen, die Ihnen ein echtes Array unter dem Namen Array anbietet werden Sie im schlimmsten Fall nicht verstehen, warum Sie es nicht so programmieren können, wie Sie das bei PHP gelernt haben.\\
+
+Zum anderen müssen Sie bei komplexen Aufgabenstellungen mit hohen Datenmengen bestimmte Datenstrukturen verwenden, damit das Programm nicht zu langsam wird. Und genau das ist in PHP nicht möglich. Viele Webanwendung (oder auch Browsergames) sind also nicht deshalb langsam, weil die Internetanbindung zu langsam ist, sondern weil PHP mit der fehlenden Möglichkeit zur Implementierung von Datenstrukturen einen Flaschenhals darstellt.
+
+\subsubsection{Programmierung eines Arrays}
+
+Um ein PHP-Array zu erzeugen können Sie einerseits die Zuordnung \$name = array(ersterWert, zweiterWert, ...); verwenden.\\
+
+Sie können aber auch direkt über \$name[1] = zweiterWert; ein Array erzeugen, indem Sie einem Eintrag des zu erzeugenden Arrays einen Wert zuordnen.\\
+
+Um einen Eintrag auszulesen, verwenden Sie dann beispielsweise \$name[27], um das 28-igste Element des Array auszugeben. Sie erhalten durch diesen Zugriff wie gewohnt eine Variable. Aber diese ist nicht anonym, denn \$name[27] ist genau wie \$a ein Name für eine Variable. Dass es außerdem einen Zugriff auf das Element eines Arrays darstellt ist davon unabhängig.
+
+\subsubsection{Assoziative Felder (eigentlich Dictionary)}
+Der Unterschied zwischen einem Feld und einem assoziativen Feld besteht darin, dass die Indizes eines assoziativen Feldes Texte sind, also etwas, das zwischen ``...`` steht. Hier wird dann nicht mehr vom Index, sondern vom Schlüssel gesprochen. Und weil der Rechner nicht ahnen kann, welchen Schlüssel Sie verwenden wollen, müssen Sie die Schlüssel bei der Erzeugung explizit angeben.\\
+
+Zum Vergleich: Um Elemente in ein Array einzutragen, konnten Sie bei der Erzeugung des Arrays \$array = array(``Kuchen``, ``Brötchen``, ...); eingeben. Dadurch wurde festgelegt: \\
+
+\$array[0]=``Kuchen``; \$array[1]=``Brötchen``;\\
+
+Um ein assoziatives Feld zu erzeugen, können sie auch wieder auf zwei Arten vorgehen: Entweder Sie legen mehrere Einträge fest: \$name = array(``Erster Eintrag`` => 22, ``Zweiter Eintrag`` => 234234, ...); Wenn Sie ein Array so programmieren könnten, dann würde das so aussehen: \$array = array(0 => ``Kuchen``, 1=>``Brötchen``, ...); Aber so programmieren Sie kein Array.\\
+
+Einzelnen Eintrag für ein assoziatives Feld programmieren Sie so: \$name[``Noch ein Eintrag`` => 232];\\
+
+Der Folgepfeil => dient hier schlicht dazu, um aufzuzeigen, dass Sie einen Schlüssel und einen Wert hinzufügen, während Sie ja beim Feld einfach einen Wert hinzufügen, der dann in die nächste Zeile des Arrays eingefügt wird.\\
+
+Wichtig: Wie beim „Array“ haben die Entwickler von PHP auch hier eine falsche Bezeichnung verwendet: Eine solche Datenstruktur wird als Dictionary bezeichnet (engl. für Wörterbuch, bzw. Nachschlagewerk). \\
+
+Bei einem Dictionary handelt es sich um eine Ansammlung von sogenannten key-value-Paaren. Der key (dt. Schlüssel) ist ein beliebiger Wert, unter dem die Datenstruktur Werte oder Datenstrukturen als value (dt. Wert) speichert. Ein echtes Wörterbuch könnten sie beispielsweise so speichern: Sie erzeugen einen Dictionary, der die Buchstaben von a bis z als keys speichert. Unter jedem key könnten Sie nun einen weiteren Dictionary speichern, der ebenfalls die Werte von a bis z als keys hat, wenn es Wörter gibt, die mit den beiden keys der beiden Dictionaries anfangen. Und auch die values dieser Dictionaries hätten wieder jeweils einen Dictionary mit den keys von a bis z als Wert, usw. usf. Das wäre zwar nicht unbedingt effizient, aber wie gesagt könnten Sie so ein Wörterbuch als Datenstruktur speichern.\\
+
+Aufgabe:\\
+
+-	Wie lautete der Befehl, um Wert zum Schlüssel ``Horst`` aus dem assoziativen Feld \$Kneipengaeste auszulesen?
+
+\section{Wiederholungen von Programmteilen (Schleifen und Rekursionen)}
+
+Im letzten Teil der Einführung in die prozedurale Programmierung mit PHP sprechen wir darüber, wie wir Teile unseres Programms so lange wiederholen können, bis eine bestimmte Bedingung erfüllt ist. In den meisten Einführungen zu diesem Thema lernen Sie lediglich Schleifen kennen. Leider haben Schleifen aber eine ganz böse Einschränkung, die bei den besagten Einführungen ignoriert wird: Sie ermöglichen es nicht, mehrere Ausführungen parallel zu erlauben. Hier sprechen wir allerdings nicht über „echte“ Parallelprogrammierung; die würde für einen Kurs im ersten Studienjahr etwas zu weit führen.\\
+
+Damit Sie verstehen, wovon hier die Rede ist, folgt ein Beispiel, bei dem Wiederholungen eine Rolle spielen, die pseudo-parallel ausgeführt werden. Pseudo-parallele Abläufe sind Dinge, die unabhängig voneinander passieren können und scheinbar gleichzeitig ausgeführt werden. Nehmen wir an, Sie erstellen ein Programm für Vertreter eines Unternehmens. Diese Vertreter benötigen eine Reiseplanung, bei der sie jeweils Kunden besuchen, die in der Nähe voneinander wohnen. Nun sind die Daten der Kunden aber nach dem Namen sortiert. Was Sie also programmieren müssen ist eine Sortierung nach der Postleitzahl.\\
+
+Und hier sind wir wieder bei einem Problem, das Informatikstudierende in einer Veranstaltung mit dem Namen Algorithmen und Datenstrukturen besprechen. Denn die Frage ist jetzt: Wie können wir dieses Umsortieren so durchführen, dass es auch bei Zehntausenden von Kunden noch schnell funktioniert.\\
+
+Hier eine Übung, die Ihnen veranschaulicht, dass die zeitlichen Unterschiede beim Sortieren störend sein können: \\
+
+-	Ein naiver Ansatz zum Sortieren sähe so aus: Sie vergleichen die Postleitzahl des ersten Kunden mit der des zweiten Kunden und tauschen ggf. beide aus. Dann vergleichen Sie die Postleitzahl des zweiten Kunden (der evtl. ursprünglich der erste Kunde war und jetzt durch den Tausch zum zweiten Kunden wurde) mit der des dritten Kunden und machen so weiter, bis Sie einmal zum letzten Kunden gekommen sind. Das wiederholen Sie so oft, bis Sie keine Kunden mehr vertauschen. Nehmen wir an, Sie hätten eine Anzahl Kunden, die wir mit n bezeichnen. Dann müssen Sie im Extremfall (auch bekannt als worst case) n-mal (n-1) Vergleiche (also n²-n Vergleiche) durchführen und jedes Mal einen Austausch durchführen. Bei zehntausend Kunden dauert das selbst auf einem schnellen Rechner knapp eine Minute. Es sind rund 108 Operationen.\\
+
+So etwas können Sie mit den sogenannten Schleifen programmieren.\\
+
+
+-	Nehmen wir dagegen an, Sie teilen Ihre Kunden in zwei Gruppen, ohne dabei zu sortieren. Und jede dieser beiden Gruppen teilen Sie dann wieder in zwei Gruppen. Und das machen Sie so lange, bis Sie nur noch Gruppen mit einem oder zwei Kunden haben. Jetzt kommt der pseudo-parallele Teil: Nun sortieren Sie die Kunden jeder Gruppe. Das macht also in jeder Gruppe höchstens eine Sortier- und Austauschoperation. Und da wir durch die Teilungen genau halb so viele Gruppen wie Kunden haben, macht das maximal n/2 Vergleichsoperationen. \\
+
+
+Im nächsten Schritt nehmen wir jeweils zwei unserer kleinen Gruppen. Hier vergleichen wir das erste Element der ersten Liste mit dem ersten Element der zweiten Liste. Das größere speichern wir in einer neuen Liste. Danach haben wir maximal noch zwei Vergleiche und schon ist aus unseren zwei kleinen Listen eine größere geworden. Da wir jetzt n/4 Listen haben, die jeweils maximal dreimal verglichen werden mussten, haben wir maximal n/2 + n/4 Operationen für diesen Schritt unserer Sortierung gebraucht. (Wenn Sie nachgerechnet haben, fragen Sie sich vielleicht, warum es nicht 3 * n/4 sind. In dem Fall fragen Sie am besten Ihren Mathedozenten, damit er Ihnen nochmal das Bruchrechnen erklärt.) Bis jetzt haben wir also 2 * n/2 + 1 * n/4 Operationen.\\
+
+
+Von jetzt an führen wir den letzten Schritt immer wieder auf die neuen Listen aus, bis wir eine sortierte Liste erhalten. Wenn Sie dabei jeden Schritt genau notieren und die Anzahl Operationen berechnen, alles summieren und Ihre mathematischen Kenntnisse anwenden, erhalten Sie am Ende eine Anzahl, die sich in einen Ausdruck umformen lässt, der n * log2 n ähnelt. Wenn wir nun wieder unsere 10.000 Kunden für n einsetzen, dann landen wir bei ca. 1,4 * 105. Diese Sortierung ist also fast 1.000-mal so schnell wie die oben genannte. Während wir bei der Sortierung mit einer Schleife knapp eine Minute warten müssen, ist bei dieser Art der Sortierung das Ergebnis scheinbar sofort da. Was meinen Sie, welche Variante Ihr Auftraggeber haben möchte.\\
+
+
+Obwohl auch diese Variante Wiederholungen beinhaltet, können Sie sie NICHT mit einer Schleife programmieren, sondern ausschließlich mit einer sogenannten Rekursion. Denn wie Sie sehen werden hier einige Aufgaben pseudo-parallel erledigt und das ist mit einer Schleife unmöglich.\\
+
+Das was Sie gerade gesehen haben ist übrigens Informatik für Erstsemester, es ist also nicht allzu anspruchsvoll. Es wird als divide and conquer-Algorithmus bezeichnet. Wie Sie sehen hat das nichts mit der Beherrschung einer Programmiersprache zu tun, sondern mit Logik und Mathematik. Wenn Sie Informatik an einer Universität studieren würden, müssten Sie die mathematischen Teile selbst berechnen und anhand der Ergebnisse beweisen, wie viel effizienter die eine Variante gegenüber der anderen ist. Informatik-Studierende an einer FH müssen dagegen lediglich wissen, welche Effizienz welches Verfahren bietet. Denn Informatiker von Universitäten werden darauf vorbereitet, neue Verfahren zu entwickeln und müssen deshalb im Stande sein, formal zu beweisen, welchen Mehrwert ihr neues Verfahren hat. FH-Informatiker werden dagegen darauf vorbereitet, neue Verfahren sinnvoll in zum Teil neue Anwendungen zu integrieren. Also brauchen sie die Beweisführung nicht zu kennen, müssen aber die Effizienz eines Algorithmus kennen und in Abhängigkeit davon Algorithmen einsetzen. Wenn Sie dagegen einfach „nur“ programmieren wollen, dann suchen Sie eigentlich nach einer Ausbildung zum/zur Fachinformatiker/in.
+
+\subsection{Rekursionen}
+
+Da also Rekursionen wesentlich mehr bieten als Schleifen und meist auch wesentlich schneller arbeiten, kommen wir zuerst zu dieser Art der Wiederholung in Programmen. Rekursionen sind nur eine Sonderform von Funktionen und deshalb gibt es keine neuen Elemente einer Programmiersprache, die Sie jetzt lernen müssen. Das Besondere dabei ist, dass eine Rekursion eine Funktion ist, die nicht sofort einen Rückgabewert zurückgibt, sondern die so lange mit einem jeweils neuen Zwischenergebnis erneut aufgerufen wird, bis eine bestimmte Bedingung erfüllt ist. Das kann sie fast beliebig oft tun. Die maximale Häufigkeit folgt aus der Größe des Computerspeichers. Bei diesen Bedingungen spricht man von Abbruchbedingungen, denn nur wenn sie erfüllt werden hört die Rekursion bzw. der wiederholte Aufruf der Funktion auf.\\
+
+Es gibt übrigens nichts, was Sie mit einer Schleife programmieren können, das nicht auch als Rekursion programmierbar wäre. Deshalb ist es eigentlich unsinnig, sich überhaupt Schleifen anzusehen, aber wir machen es natürlich trotzdem, weil viele Programmierer nur mit Schleifen programmieren können. Und natürlich würde es blöd aussehen, wenn Sie nicht wissen, was eine Schleife ist.\\
+
+Die folgenden Beispiele zeigen, wie Sie einfache Rekursionen programmieren können:
+// Rekursion, die den Abstand zwischen zwei ganzen Zahlen berechnet.\\
+
+\begin{verbatim}
+function abstand(\$zahl, \$andereZahl){
+	if (\$zahl > \$andereZahl) \{
+		\$andereZahl += 1;
+	\} else if (\$zahl < \$andereZahl) \{
+	\$zahl += 1;
+\} else \{
+return 0;
+\}
+return 1 + abstand(\$zahl, \$andreZahl);
+\}
+\$a = 1;
+\$b = 10;
+\$c = abstand(\$a, \$b);
+echo(``Der Abstand zwischen \$a und \$b betägt: \$c.``);
+\end{verbatim}
+Quellcode 4.20: Rekursion um der Rekursion willen\\
+
+
+Der Anfang der Funktion sollte Ihnen klar sein: \\
+
+-	Wir haben hier drei Fälle: 
+
+•	\$zahl > \$andereZahl
+•	\$andereZahl > \$zahl 
+•	\$zahl = = \$andereZahl (das ist der else-Zweig).
+
+-	In jedem der beiden ersten Zweige wird die Zahl um eins erhöht, die kleiner als die andere Zahl ist. 
+
+-	Wenn der Abstand gleich Null ist, ist die Abbruchbedingung erreicht, also muss hier ein Wert zurückgegeben werden und die Funktion darf nicht nochmal aufgerufen werden.
+
+-	Die letzte Zeile der Funktion ist dann das, was die Funktion zu einer Rekursion macht: Hier wird die Funktion mit neuen Werten erneut aufgerufen.
+Aber warum steht hier 1 + vor dem Rekursionsaufruf? Ganz einfach: Da der Abstand zwischen den beiden Zahlen um 1 geringer geworden ist, müssen wir irgendwie speichern, dass er ursprünglich um ein 1 größer war. Und das passiert durch dieses 1 +.
+
+-	Eine andere häufige Fragen an dieser Stelle lautet: Wie soll denn das Programm weiterlaufen, wenn es hinter dem return einen Funktionsaufruf hat? Das ist im Grunde ganz simpel: Das Programm gibt hier erstmal nichts zurück, sondern es führt quasi eine Zwischenspeicherung des Zustands durch, ruft dann die Funktion mit den neuen Parametern aus und erst, wenn von dieser Funktion ein Rückgabewert kommt, berechnet es den Rückgabewert dieser Funktion aus. Und das geht relativ oft (einige hundert- bis tausendmal).
+
+\subsubsection{Aufgabe}
+
+-	Anhänger statisch typisierter Programmiersprachen würden diese Funktion zum Beweis nutzen, dass dynamisch typisierte Sprachen unsicher sind. Was genau führt dazu, dass diese Funktion endlos laufen kann, bzw. mit einer Fehlermeldung abbricht?
+
+-	In anderen Worten: Was fehlt hier, das aber längst nicht bei jeder Rekursion nötig ist?\\
+
+Nehmen wir jetzt unsere Sortieraufgabe. Da dieser Kurs sich an Einsteiger richtet, wird die folgende Rekursion in Pseudo-Code notiert; in PHP wäre sie umfangreicher und damit nicht mehr übersichtlich. Eine detaillierte Erklärung zum Ablauf folgt nach dem Pseudo-Code.\\
+
+// Rekursion, die eine Liste von Zahlen nach dem devide \& conquer-Ansatz sortiert.\\
+
+\begin{verbatim}
+function sortList(Liste){
+	if(Liste enthält mehr als eine Zahl){
+		\$geordneteListe = teileListe(Liste)
+	} else return Liste;
+	return \$geordneteListe;
+}
+
+/* Diese Hilfsfunktion teilt die Liste in zwei Teillisten auf und ruft außerdem die Sortierung für jede der Teillisten auf. */
+
+function teileListe(Liste){
+	\$n = Anzahl Zahlen in der Liste;
+	return sortListen(neue Liste mit den ersten n/2 Zahlen der Liste, neue Liste mit den restlichen Zahlen der Liste);
+}
+
+/* Zusammen mit teileListe() teilt diese Funktion die Liste so lange auf, bis sie nur noch aus Listen mit einem Element besteht. Danach wird aus den Teillisten rekursiv eine Gesamtliste erstellt. */
+
+function sortListen(Liste1, Liste2)
+if(Liste1 enthält mehr als eine Zahl){
+	\$geordneteListe1 = teileListen(Liste1)
+}
+if(Liste2 enthält mehr als eine Zahl){
+	\$geordneteListe2 = teileListen(Liste2)
+} 
+return mergeListen(\$geordneteListe1, \$geordneteListe2);
+}  
+
+/* In der folgenden Funktion wird öfter += verwendet. Das soll in diesem Fall bedeuten, dass das Programm etwas an eine Liste anfügen soll. */
+
+function mergeListen(Liste1, Liste2){
+	if(Erste Zahl von Liste1 > Erste Zahl von Liste2) {
+		\$geordneteListe += Erste Zahl von Liste1;
+		Lösche die erste Zahl aus Liste1;
+		if (Liste1 ist nicht leer){
+			return \$geordneteListe += mergeListen(Liste1, Liste2);
+		} else return \$geordneteListe += Liste2;
+	}
+	else {
+		\$geordneteListe += Erste Zahl von Liste2;
+		Lösche die erste Zahl aus Liste2;
+		if (Liste2 ist nicht leer){
+			return \$geordneteListe += mergeListen(Liste1, Liste2);
+		} else return \$geordneteListe += Liste1;
+	}
+}
+\end{verbatim}
+Pseudo-Code 4.21: Beispiel für eine Endrekursion.\\
+
+Was passiert hier?\\
+
+Anfangs wird die Funktion sortListe mit einer Liste aufgerufen. Da wir aber in Zukunft immer zwei Listen haben werden (schließlich bewältigen wir das Problem, indem wir die Liste immer wieder teilen) brauchen wir eine zweite Funktion, die bei jedem Aufruf zwei Listen annehmen kann. Bei solchen Fällen, in denen wir eine Hilfsfunktion vor der eigentlichen Rekursion haben reden wir von einer Endrekursion.\\
+
+Die erste Funktion prüft zunächst, ob unsere Liste schon sortiert ist, was dann der Fall ist, wenn sie entweder leer ist oder nur ein Element enthalt. Ist das der Fall, dann wird die Liste so zurückgegeben, wie sie ist. Das passiert oben im else-Zweig. Sonst wird die Liste in zwei Hälften zerlegt, die gleichgroß sind, bzw. deren Größe sich maximal um 1 unterscheidet. Diese beiden Listen werden nun an die eigentliche Rekursion übergeben, die die Listen immer weiter zerlegt. Diese Zerlegung passiert in der zweiten Funktion.\\
+
+Die beiden ersten if-Cases der zweiten Funktion sorgen lediglich dafür, die Listen so lange zu teilen, dass am Ende nur mehr Listen mit einem Element existieren.\\
+
+Damit kommen wir zur dritten Funktion mergeListen(), das den zweiten Teil unserer Rekursion löst. mergeListen() vergleicht nur die erste Zahl der beiden übergebenen Listen und fügt das größere der beiden in eine andere Liste an, die \$geordneteListe heißt und die später zurückgegeben wird. Danach wird diese größte Zahl aus der ursprünglichen Liste gelöscht. Wenn in beiden Listen noch wenigstens eine Zahl ist, werden die beiden Listen mit mergeSort() aufgerufen und das Ergebnis dieses rekursiven Aufrufs wird an \$geordneteListe angehängt.\\
+
+Ist dagegen eine der beiden Listen leer, dann wird einfach der Rest der verbliebenen Liste an \$geordneteListe angehängt, bevor \$geordneteListe zurückgegeben wird.
+An dieser Stelle fragen Sie sich vielleicht, wo denn die rekursiven Schritte nach dem Zusammenfügen (mergen) der Listen auftauchen, die aus mehr als einem Element bestehen. Schauen wir uns dazu den Ablauf an, nachdem aus jeweils zwei Listen mit einem Element eine sortierte Liste mit zwei Elementen geworden ist:\\
+
+Der Rückgabewert (also unsere sortierte Liste) landet in der Funktion sortListen(), die ihn wiederum an die Funktion teileListen() zurückgibt. Und dort wird dieser Rückgabewert entweder als \$geordneteListe1 oder als \$geordneteListe2 gespeichert. Damit wird diese kurze geordnete Liste zusammen mit einer anderen geordneten kurzen Liste an die Funktion mergeListen() übergeben, die dann diese beiden kurzen zu einer längeren geordneten Liste zusammenfügt.\\
+
+Ganz zum Schluss (wenn die ganzen Teillisten endlich wieder zu einer zusammen gefügt wurden), landet der Rückgabewert von mergeListen()wieder im if-Case unserer anfänglichen Hilfsfunktion sortListe() und wird von dieser schließlich als Rückgabewert ausgegeben.
+
+\subsubsection{Aufgabe}
+
+-	Programmieren Sie die oben in Pseudo-Code gegebene Rekursion mit einem Array in PHP.
+
+-	Begründen Sie, warum diese Rekursion im Gegensatz zum vorigen Beispiel nicht endlos weiterlaufen kann.
+
+\subsection{Schleifen}
+
+Bei Schleifen führen Sie im Gegensatz zu Rekursionen einen Programmteil immer auf die gleiche Weise mehrfach aus. Sie können hier zwar auch Kontrollstrukturen programmieren, um ggf. genauer zu steuern, wie die einzelnen Schleifendurchläufe programmiert werden sollen, aber eine pseudo-parallele Ausführung wie bei Rekursionen ist hier nicht möglich.
+
+\subsubsection{foreach-Schleifen, for- und while-Schleifen}
+
+Wenn Sie mit jedem Eintrag eines Feldes etwas tun wollen, dann brauchen Sie dafür keine Rekursion zu programmieren. Sie können stattdessen eine foreach-Schleife nutzen. Dazu brauchen Sie den Bezeichner des Arrays und Sie vergeben zusätzlich eine Variablenbezeichnung (im Beispiel \$element). Bei jedem Durchlauf der foreach-Schleife ist der Wert der von \$element der Wert eines Indexes des Arrays. \\
+
+Wenn am Anfang nicht feststeht, wie oft die Schleife durchlaufen werden soll, müssen Sie eine while-Schleife nutzen, sonst können Sie auch eine for-Schleife nutzen.\\
+
+While-Schleifen gibt es in zwei Varianten: Bei der while-Schleife wird er nur so lange ausgeführt, wenn eine bestimmte Bedingung erfüllt ist. Bei der do-while-Schleife wird er dagegen immer einmal ausgeführt, danach erfolgt die Ausführung wie bei einer while-Schleife.\\
+
+Die Bedingung wird bei einer while-Schleife genau so programmiert, wie Sie das bei if-Conditionals kennen gelernt haben. Allerdings sollte sich das Ergebnis der Bedingung im Laufe der Schleifenausführung ändern, denn sonst haben Sie eine Endlosschleife. Das ist ein Programmteil, in dem das Programm stecken bleibt, bis es vom Nutzer komplett abgebrochen wird.\\
+
+Bei for-Schleifen müssen drei Dinge festgelegt werden: \\
+
+-	Eine Variable mit einem ganzzahligen Wert, 
+-	Eine Abbruchbedingung, bei der diese Variable genutzt wird.
+-	Ein Befehl, der steuert, wie sich der Wert nach je einer Ausführung der Schleife ändert.\\
+
+Hier für jede der Schleifen ein Beispiel:\\
+
+\begin{verbatim}
+\$a = 2;
+\$b = 10;
+\$array ist ein Array, das Sie mit Zahlen gefüllt haben.
+
+
+// foreach-Schleife: Das Schlüsselwort as müssen Sie hier immer in dieser Art programmieren:
+foreach(\$array as \$element) {
+	/* Im foreach-Schleifenrumpf programmieren Sie schlicht, was mit dem aktuellen Element des Arrays passieren soll. */
+}
+
+// Einfache while-Schleife
+while(\$a < \$b){
+	\$a += 1;
+}
+
+// Einfache do-while-Schleife
+do {
+	\$a +=1;
+} while (\$a < \$b);
+
+// Einfache for-Schleife
+for (\$i = 0; \$i < 5; \$i++){
+	if (\$array[i] < i) { ... }
+	else ...
+}
+\end{verbatim}
+Quellcode 4.22: Schleifen
+
+\section{Hinweis bezüglich objektorientierter Softwareentwicklung in PHP}
+
+PHP ermöglicht es Ihnen auch, klassenbasierte objektorientierte Programme zu entwickeln. Objektorientierte Softwareentwicklung geht aber weit über die Nutzung zusätzlicher Programmiermöglichkeiten in prozeduralen Sprachen hinaus. Deshalb müssten wir hier im Grunde zunächst eine umfangreiche Einführung in das Konzept durchführen, bevor wir uns ansehen könnten, wie es in PHP umgesetzt wird. Und dafür bleibt in diesem Kurs leider keine Zeit.\\
+
+Diejenigen von Ihnen, die die Entwicklung von Webanwendungen vertiefen wollen, sollten diesem Thema aber bearbeiten. An dieser Stelle sei noch folgendes gesagt: Werfen Sie jeden Kurs in die Mülltonne, der Ihnen Objektorientierung damit erklärt, dass Sie dort Objekte der realen Welt modellieren. Das ist zwar mit objektorientierter Programmierung möglich, aber wer ernsthaft glaubt, dass es bei objektorientierter Softwareentwicklung darum geht, hat ungefähr so viel Ahnung vom Thema wie ein Maulwurf vom Fliegen. Dem fliegt ja gelegentlich mal was aufs Dach...
+
+\section{Auswertung von Nutzereingaben in HTML durch PHP}
+
+Alles, was Sie bislang über PHP gelernt haben erlaubt Ihnen zwar, dynamisch HTML-Code in HTML-Dokumente zu integrieren, aber bislang können Sie noch keine Nutzereingaben verarbeiten. Damit können Sie also bislang weder einen Log-In, noch eine Registrierung realisieren. Ein Spiel könnten Sie hier realisieren, indem Sie eine Funktion über das onclick-Attribut eines HTML-Containers aufrufen lassen.\\
+
+Im Folgenden werden wir grundsätzlich mit Daten arbeiten, die Nutzer in Formulare eintragen oder über das Aktivieren von Schaltflächen auslösen. Bei der Einführung in Formulare in HTML haben Sie all die Attribute kurz angesprochen, die dafür nötig sind. Deshalb schauen wir uns zunächst an, welche das sind.\\
+
+Wichtig: Sie können zwar an beliebigen Stellen eines HTML-Dokuments HTML-Code durch PHP generieren, aber Eingaben von Nutzern können ausschließlich über HTML-Container durchgeführt werden, die entweder in Formularen eingesetzt werden sollen oder in denen das Attribut onclick programmiert werden kann.\\
+
+Zunächst müssen Sie jeden <form>-Container um zwei Attribute erweitern, wie schon zu Beginn dieses Kapitels erläutert: Das action-Attribut erhält als Wert die URL der PHP-Datei, die die Auswertung durchführt. Das method-Attribut erhält das Wort POST als Wert, auch wenn hier alternativ GET möglich wäre. Es steuert, wie die Daten vom Client zum Server übertragen werden. Kurz gesagt muss ein Angreifer bei der Nutzung von POST etwas mehr Arbeit investieren, um die Datenübertragung abzuhören. Das ist zwar nicht viel und ersetzt auch keine Verschlüsselung, aber es ist ein Schritt in die richtige Richtung.\\
+
+Außerdem müssen Sie jeder Eingabemöglichkeit (außer Buttons) ein name-Attribut zuweisen. Der Wert jedes name-Attributs darf innerhalb eines Formulars nur einmal verwendet werden.\\
+
+Hier ein HTML-Code-Fragment, wenn Sie sich unsicher sein sollten:\\
+
+\begin{verbatim}
+...
+<form action=registrierung.php method=POST>
+<label ...
+<input id= userid name=userid>
+...
+\end{verbatim}
+Quellcode 4.23: HTML-Formular für die Verarbeitung mit PHP\\
+
+Im Quellcode oben wird also eine Variable mit der Namen userid erzeugt, deren Wert an die Datei registrierung.php übertragen wird, nachdem Nutzer die entsprechende Schaltfläche der Webanwendung angewählt haben. Alle Eingaben, die dabei übertragen werden werden in einem assoziativen Feld mit dem Namen \$\_POST gespeichert. Um also die Variable userid in Ihrem PHP-Programm zu verwenden, müssen Sie lediglich den Wert von \$\_POST[``userid``] einer Variablen Ihres PHP-Programms zuweisen. \\
+
+Das ist alles. 
+
+\subsection{Aufgabe}
+
+-	Programmieren Sie eine Checkbox in den Registrierungs- und Log-In-Formularen Ihrer Webpage. Wenn diese Checkbox aktiviert ist, soll die Eingabe des Passworts am Monitor lesbar sein. Ist sie deaktiviert, dann soll das Passwort nicht lesbar sein.
+
+\section{Abschluss}
+
+Sie haben jetzt alles kennen gelernt, was Sie benötigen, um eine dynamische Webpage zu programmieren. Wenn Sie beispielsweise ein Programm entwickeln wollen, um einen Schaltplan für die Laborversuche in Elektrotechnik zu entwerfen, wissen Sie jetzt alles, was dazu nötig ist. Wenn Sie denken, dass das ein langweiliges Programm wird, kann ich Ihnen leider nur zustimmen, aber dafür ist die Fehleranfälligkeit niedrig.\\
+
+Es gibt noch einige Themen, die wir in diesem Kapitel nicht besprochen haben, die Sie sich aber ansehen sollten, wenn Sie langfristig als Webentwickler mit PHP arbeiten wollen. Neben der klassenbasierten objektorientierten Programmierung wären da die folgenden Dinge zu nennen:\\
+
+-	Welche Datentypen kennt PHP und wie können Sie den Datentyp einer Variablen erfahren?
+-	Wie werden Exponentialzahlen in PHP programmiert?
+-	Was genau ist der Unterschied zwischen POST und GET und wie müssen Sie Werte in einem PHP-Programm verarbeiten, die per GET übertragen wurden?
+-	Welche Reihenfolge gilt bei Operatoren? (Bsp.: Wird = = vor < = ausgewertet oder umgekehrt?)
+-	Was sind Pseudo-Zufallszahlen und wie können Sie sie für ein PHP-Programm nutzen?
+-	Was bewirken break und continue bei Schleifen?
+-	Was hat es mit include und require bzw. include\_once und require\_once auf sich?
+-	Was ist der Unterschied zwischen Kopie und Referenz bei einem Funktionsaufruf?
+-	Wie können Sie Funktionen programmieren, die eine dynamische Anzahl von Parametern annehmen können? (Auch bekannt als variable Parameterliste)
+-	Welche Funktionen bietet PHP an, um z.B. mathematische Funktionen zu realisieren?
+-	Mit welchen Funktionen können Sie Strings z.B. auf eine bestimmte Länge kürzen?
+-	Was hat es mit dem Gültigkeitsbereich einer Variablen auf sich?
+-	Was ist eine Generatorfunktion?
+-	Welche Fehler können Sie durch die sogenannten Exceptions lösen? Und warum ist das wichtig?
+-	Wie können Sie Verschlüsselungsverfahren einprogrammieren?
+-	Wie können Sie Nutzereingaben ohne eine Datenbank oder den Einsatz von Cookies und ähnlichem so lange speichern, wie der Nutzer sie braucht? 
+

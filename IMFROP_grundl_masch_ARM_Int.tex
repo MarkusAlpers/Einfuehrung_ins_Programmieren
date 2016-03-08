@@ -1,0 +1,658 @@
+\chapter{Einführung in den Aufbau von ARMv6-Prozessoren am Beispiel eines Cortex-M0-Prozessors}
+
+\textbf{Wichtig (1)}: Dieses Kapitel ist wichtig, auch wenn hier noch nicht eine Zeile Programmcode auftaucht: Erst wenn Sie es durchgearbeitet haben, haben Sie eine Chance zu verstehen, was alles im Hintergrund passieren muss, damit die Dinge in PHP so funktionieren, wie Sie das dort kennen gelernt haben. Wenn Sie diese Kenntnisse nicht haben, werden Sie bei komplexen Problemen wie der nebenläufigen Programmierung (Programmierung von Systemen mit mehreren Prozessorkernen) bekommen.\\
+
+\textbf{Wichtig (2)}: Dieses Kapitel ist zurzeit lediglich ein Einstieg in die Grundlagen  von Mikroprozessoren, konkret die Programmierung von ARM-Prozessoren der Baureihe Cortex-M0. Die tatsächliche Programmierung ist noch nicht Teil dieses Kapitels. Ggf. wird es hier später noch eine Ergänzung geben, zurzeit ist es lediglich eine Unterstützung, wenn Sie Probleme beim Verständnis des Aufbaus dieses Prozessortyps haben.\\
+
+In den letzten Kapiteln haben Sie eine erste Einführung in die Programmierung von Anwendungen mit Hilfe einer Kombination aus vier Programmiersprachen erlernt. Je nachdem, in welchen Bereich der Programmierung als (Medien-)InformatikIn Sie sich später vertiefen wollen benötigen Sie aber zusätzlich ein detailliertes Verständnis aus einem oder mehreren der Bereiche, die wir im letzten Kapitel kurz angeschnitten haben oder die Ihnen dort von einer der Programmiersprachen abgenommen wurden.\\
+
+In diesem Kapitel können Sie sowohl einige Grundlagen der maschinennahen als auch die daraus resultierenden Grundlagen der imperativen Programmierung erlernen. Auch wenn Sie an der maschinenahen Programmierung nicht interessiert sind, benötigen Sie die verschiedene Informationen dieses Kapitels, da Sie nur durch diese verstehen werden, warum bestimmte Dinge in der imperativen Programmierung genauso passieren, wie das der Fall ist. \\
+
+Bitte beachten Sie jedoch, dass dieses Kapitel nur eine Ergänzung zu einer eigentlichen Einführung in die Programmierung von Mikroprozessoren sein kann. Ursprünglich hatte ich geplant, nach der Einführung der Konzepte eine tatsächliche Einführung in die maschinennahe Programmierung zu erstellen. Interessierte Studierende hätten sich so in diesen Bereich vertiefen können. Aus zeitlichen Gründen habe ich diesen Teil vorerst gestrichen.\\
+
+Dieses Kapitel basiert auf den folgenden Quellen: \\
+
+•	Das Standardwerk The definitive Guide to the Cortex-M0 von Joseph Yiu, das Sie erwerben sollten, wenn Sie mit der Softwareentwicklung mit ARM-Prozessoren des Typs Cortex-M0 weiter machen wollen. Prüfen Sie jedoch, ob es inzwischen eine aktuellere Version des Buches gibt; die zurzeit vorliegende Version wurde 2011 veröffentlicht und beinhaltet dementsprechend teilweise veraltete Inhalte.
+•	Das Skript zur Veranstaltung Informatik 3 – Informatik und Elektrotechnik des Studiengangs Media Systems an der HAW Hamburg von Michael Berens und Jens Ginzel. Diese erhalten Sie ggf. zusammen mit dem Zugriff auf die Veranstaltungsinhalte im Rahmen des seminaristischen Unterrichts.
+•	Dem LPC-P1114 development board Users Manual von 2011. Da wir die Version des Boards von 2011 verwenden ist dieses Dokument auf aktuellem Stand.
+•	Dem Cortex-M0 Devices Generic User Guide ARM DUI 0497A (ID 112 109)
+•	Der UM 10398 Dokumentation. Hierin finden Sie detaillierte Informationen, welche Belegung eines Registers beim Entwicklerboard welche Aufgabe erfüllt.
+•	Die Dokumentation zum CMSIS, der Sprachbibliothek zur Cortex-M0-Programmierung in C.\\
+
+Bevor wir zur eigentlichen Programmierung kommen, müssen Sie zunächst einen Überblick darüber bekommen, was Sie da eigentlich im Detail programmieren. Das ist nirgends so wichtig wie bei der maschinennahen Programmierung, weil Sie hier durchgehend die Werte der Komponenten des Prozessors bzw. der Peripherie beeinflussen. Und wie sollen Sie das tun, wenn Sie genau diese Komponenten gar nicht kennen oder wissen, was sie tun?\\
+
+Wenn Sie nicht an der Veranstaltung „Informatik 3“ teilnehmen, in der die Programmierung des Cortex-M0 behandelt wird, z.B. weil Sie nicht Media Systems sondern Medientechnik studieren, dann können Sie natürlich gerne im Labor nachfragen, ob Sie dort ein Entwicklungssystem nutzen können. Alternativ können Sie jedoch auch ein günstiges Entwicklerboard mit den nötigen Anschlüssen erwerben. Zum Teil gibt es beispielsweise bei IAR  Sonderangebote, bei denen Sie ein günstiges Starter-Kit erhalten. Für höchstens 40 Euro (ggf. plus Versandkosten) sollten Sie dort alles finden, was Sie für den Einstieg benötigen. Wenn Sie ein System erwerben wollen, das dem in unseren Laboren verwendeten ähnelt, dann suchen Sie nach einem NXP LPC1114. Die Modelle mit den Bezeichnungen LPC11x14 sind nahezu baugleich, also genauso geeignet; hier steht anstelle des x ein anderer Buchstabe, der für eine zusätzlich verbaute Komponente steht. Das LPC11U14 beinhaltet beispielsweise die Unterstützung von USB 2.0 Schnittstellen.\\
+
+Wenn Sie bereit sind, wesentlich tiefer in die Tasche zu greifen, möchte ich Sie auf den Hersteller Keil hinweisen; die Produkte dieses Herstellers werden in der Wirtschaft häufig eingesetzt, sind aber nichts für den kleinen Geldbeutel. So müssen Sie für eine gute Debugging Unit (die Schnittstelle, die nötig ist, um den Computer und ein Entwicklungsboard zu verbinden) dort zum Teil deutlich mehr als 1.000 € ausgeben. Gerade wenn Sie zunächst nur in diesen Bereich hereinschnuppern wollen ist das eigentlich zu viel. Aber wenn Sie Ihre berufliche bzw. forschende Zukunft im Bereich der Mikroprozessoren sehen, sollten Sie später darüber nachdenken.\\
+
+\section{Mikroprozessoren und eingebettete Systeme}
+
+Die Bezeichnung Mikroprozessor ergibt sich schlicht und ergreifend daraus, dass die ersten Mikroprozessoren in einer Bauweise angefertigt wurden, die in Mikrometern gemessen wurde (heute in Nanometern), und dass Sie Prozesse abarbeiten. So weit, so simpel.\\
+
+In der elektrotechnischen Welt ist es üblich das Symbol µ  (ausgesprochen Mü), das Sie aus dem Bereich der Maßeinheiten kennen, auch außerhalb von Maßeinheiten als Ersetzung für das Präfix Mikro- zu verwenden. Beispielsweise wird die IDE Mikrovision von Keil üblicherweise als µVision beschriftet.\\
+
+Wann immer Sie Kürzel wie CPU (Central Processing Unit), GPU (Graphical Processing Unig), APU (Accelerated Processing Unit) usw. sehen, haben Sie es mit Mikroprozessoren zu tun. Und ob es sich dabei nun um eine CPU, eine GPU oder eine APU handelt, hat vorrangig mit dem konkreten Aufbau des jeweiligen Mikroprozessors und weniger mit dem geplanten Einsatzbereich zu tun. Beispielsweise werden GPUs auch eingesetzt, um die virtuelle Währung Bitcoin zu generieren. Mit Computergrafik hat das nichts mehr zu tun. Im Rahmen dieses Kurses brauchen Sie nicht zu wissen, was eine CPU, eine GPU usw. voneinander unterscheidet.\\
+
+Dementsprechend macht es in diesem Bezug auch keinen Unterschied, ob wir nun über Prozessoren von Intel, AMD, ARM, Motorola oder welchem Hersteller auch immer reden: Es sind alles Mikroprozessoren und im Kern basieren sie alle auf denselben Prinzipien. Allerdings gibt es mittlerweile eine Vielzahl an zusätzlichen Komponenten, durch die sie sich dann wiederum deutlich voneinander unterscheiden. Aber auch ohne diese zusätzlichen Komponenten unterscheiden sich die Bezeichnungen von Komponenten bei verschiedenen Prozessoren desselben Herstellers häufig. Diese Komponenten eines Mikroprozessors zu kennen und ihre Programmierung zu beherrschen zeichnet professionelle EntwickerInnen aus. \\
+
+Wenn die Rede von Mikroprozessoren ist, dann wird häufig auch von eingebetteten Systemen (embedded system) gesprochen. Im Gegensatz zu einem Rechner, den Sie als solchen leicht erkennen können, sind eingebettete Systeme stets so in andere Systeme eingebettet, dass sie als eigenständige Computer nicht erkennbar sind. Ihre Programmierung verläuft aber genauso wie die von einem handelsüblichen Computer. Es gibt eingebettete Systeme seit weit mehr als 20 Jahren.\\
+
+Wenn wir über die Programmierung eines Mikroprozessors reden, nutzen wir gelegentlich auch die Bezeichnung Bare Metal Target. Damit ist ein Mikroprozessor gemeint, auf dem kein Betriebssystem aktiv ist. In diesem Bereich werden Betriebssysteme als embedded OS bezeichnet, um sie als Betriebssystem für eingebettete Systeme von anderen Betriebssystemen abzugrenzen.\\
+
+Kontrolle\\
+
+Sie wissen jetzt, was ein Mikroprozessor ist.
+
+\section{SoC, Mikrocontroller und die Umgebung von Mikroprozessoren}
+
+Da es wenig Sinn macht, einen Mikroprozessor an den Strom anzuschließen und ihn ansonsten nur herumstehen zu lassen, gibt es immer eine Umgebung, an die er angeschlossen wird. Um nun mit dieser Umgebung interagieren zu können, benötigt der Mikroprozessor aber noch einige zum Teil optionale Komponenten:\\
+
+•	Ein Timer dient dazu, mit einer gewissen Genauigkeit zeitliche Abläufe zu koordinieren. Gerade die Formulierung „mit einer gewissen Genauigkeit“ ist hier wichtig: Innerhalb eines Rechners können wir mit einer Genauigkeit im Nanosekundenbereich Daten austauschen. Aber bereits wenn wir zwei Rechner auf kurzer Distanz miteinander verbinden, dann sinkt diese zeitliche Genauigkeit. Und je komplexer die Verknüpfung (das heißt je mehr Rechner verbunden sind) bzw. je größer die Distanz, desto unsicherer ist die Genauigkeit. \\
+
+Wenn Sie sich beispielsweise mit den Grundlagen des Internet ein wenig auskennen, dann wissen Sie, dass es etwas gibt, das als Latenz bezeichnet wird. Das ist der zeitliche Versatz zwischen Versand und Empfang, der bei einer Datenübertragung auftritt. Diese Latenz ist aber kein konstanter Wert, sondern er unterliegt einer Schwankung, die durchaus mehrere Sekunden betragen kann. Und Sie kennen wenigstens einen Fall, in denen ungenaue Zeitabstimmung die Ursache für ein Problem ist: Denken Sie an das letzte Mal, als Sie einen Film im Netz gesehen haben, bei dem die Tonspur und die Bildspur nicht synchron liefen.\\
+
+•	I/O (kurz für Input/Output, teilweise auch nur IO) bezeichnet alle Arten von Komponenten, die es einem Mikroprozessor ermöglichen, Eingaben anzunehmen und Ergebnisse auszugeben. Wir reden hier aber nicht über Displays, sondern über die Schnittstellen, über die ein Mikroprozessor Daten weiterleitet bzw. empfangen kann. Displays, Lautsprecher, Mikrofone, Tastaturen, usw. usf. haben wiederum eigenen Interfaces, die entweder direkt oder mittelbar an die I/O-Interfaces von Prozessoren angeschlossen werden können.\\
+
+•	Interrupt-Controller sind essentiell: Sie signalisieren dem Mikroprozessor, wenn er einen bestimmte Prozess pausieren und zunächst einen anderen ausführen soll. Das kann beispielsweise dann der Fall sein, wenn ein Nutzer am Rechner eine Taste drückt. Wenn Sie diese Funktion verstanden und das ein oder andere Programm entwickelt haben, das mit Interrupts arbeitet, dann werden Sie die Gründe für eine Vielzahl von Fällen verstehen, in denen der naive User ungefähr die folgenden Worte von sich gibt: „Warum macht die sch… Kiste nicht, was ich will?!“\\
+
+Hinweis bezüglich Exceptions: Wenn Sie schon in höheren Programmiersprachen programmiert haben, dann haben Sie die sogenannten Exceptions kennen gelernt. Für den Moment merken Sie sich bitte, dass Exceptions im Rahmen der maschinennahen Programmierung ein Spezialfall von Interrupts sind. Teilweise werden Exceptions und Interrupts hier auch als Synonyme verwendet.\\
+
+•	ROM und RAM sind zwei Bezeichnungen, die für Speicher verwendet werden, in dem sich Programme und Daten befinden. Für den Augenblick genügt es, wenn Sie sich merken, dass der Inhalt vom RAM gelöscht wird, wenn der Strom ausfällt bzw. abgeschaltet wird. ROM-Speicher dagegen behält seinen Inhalt auch ohne Stromversorgung dauerhaft. Dafür können die Daten beim ROM nicht geändert werden. Es gibt außerdem noch eine dritte Art von Speicher, bei dem der Inhalt auch ohne Stromfluss erhalten bleibt, der aber jederzeit überschrieben werden kann. Diese Art von Speicher nennt man Flash oder EPROM (kurz für Erasable Programmable ROM). Je nach Bauart ist nur ein vollständiges Löschen und neu Speichern von Daten möglich.\\
+
+Wenn nun ein Prozessor mit einzelnen dieser Komponenten zu einer Einheit verbunden wird, spricht man vom Mikrocontroller. Eine Abkürzung für Mikrocontroller lautet MCU (Micro Controller Unit).\\
+
+Darüber hinaus gibt es noch größere Verbünde von elektrotechnischen Komponenten, die dann als SoC (kurz für System-On-Chip) bezeichnet werden. Wie so oft ist der zentrale Grund für diese immer stärkere Vereinigung von immer mehr Komponenten in immer weniger Bauteilen schlicht der Kostenfaktor. SoCs sind nicht Teil dieser Veranstaltung, da Sie zunächst die Programmierung von Mikrocontrollern und FPGAs beherrschen sollten, bevor Sie sich mit diesen Geräten auseinander setzen können.\\
+
+\subsection{Das Olimex LPC1114 Entwicklungsboard}
+
+Im Falle des Entwicklungsboards, das in unseren Laboren zum Einsatz kommt, haben Sie einige Komponenten, die bislang nicht aufgeführt wurden, die Sie aber im Laufe der Labore programmieren werden. Diese sind zusammen mit den zugehörigen Befehlen und möglichen Belegungen im UM 10398 User Manual aufgeführt, das Sie dementsprechend für diesen Kurs benötigen:\\
+
+(In einigen Fällen werden Sie die Bezeichnung der MCU benötigen. Hierbei handelt es sich wie geschrieben um den LPC 1114 des Herstellers NXP.)\\
+
+•	Der SPI-Controller (kurz für Serielles Peripherie Interface). Dieser Controller steuert die Datenübertragung vom Prozessorbus zu den Interfaces der verschiedenen externen Komponenten, die Sie an das Entwicklerboard anschließen können. Ihrer Phantasie sind dabei kaum Grenzen gesetzt, weshalb die letzten Wochen dieser Veranstaltung darin bestehen, dass Sie sich eine (oder mehrere Komponenten) auswählen, diese mit dem Entwicklerboard verbinden und dann den Prozessor entsprechend programmieren. Teilweise reden wir hier auch von der Programmierung der SPI-Schnittstelle.\\
+
+•	Ein Oszillator, der für zeitabhängige Anwendungen eine deutlich höhere Präzision bietet als der im Cortex-M0 enthaltene Timer oder der ebenfalls auf dem Entwicklerboard enthaltene WDT (kurz für Watch Dog Timer).\\
+
+\section{Grundlagen des Cortex-M0}
+
+Einige Kenndaten des Cortex-M0 müssen Sie kennen, um Programmierfehler zu vermeiden. Außerdem gibt es einige Begriffe, die speziell von ARM in den offiziellen Referenzen verwendet werden. Wenn Sie sie dann nicht kennen, dürften sie Sie verwirren, weshalb Sie hier mit aufgenommen wurden:\\
+
+•	Es handelt sich um einen 32-Bit-Prozessor. Das bedeutet, der Prozessor kann in jedem Arbeitsschritt ausschließlich Werte zwischen 0 und 232-1 verwenden. Damit ist der Hauptspeicher auf rund 4 GB begrenzt.\\
+
+Anm.: Im Falle der Evaluationsversion des Keil MDK, die wir für die Softwareentwicklung verwenden stehen 32 KB zur Verfügung. Da der LPC1114 aber ohnehin nur über 32 KB verfügt, ist das effektiv keine relevante Einschränkung.\\
+
+•	Sie müssen hexadezimal rechnen. 0x10 – 4 ist also nicht 0x06!\\
+
+•	Sie müssen von Angaben wie „setze das zweite und fünfte Bit“ auf die entsprechende hexadezimale Zahl (hier: 0xA) umrechnen können.\\
+
+•	WICHTIG! Adressen entsprechen jeweils Einheiten von 8 Bit. Da der Cortex-M0 jedoch bei jedem Schritt 32 Bit einliest oder ausgibt, müssen Sie häufig mit dem Faktor 4 multiplizieren, um beispielsweise eine „benutzbare“ Adresse zu erhalten.\\
+
+Beispiel: Sie wollen einen Wert im Speicher des Rechners ablegen und wissen, dass bis zur Adresse 0xFD Daten im Speicher liegen. Dann dürfen Sie erst ab der Adresse 0x100 Daten ablegen, da 0xFE und 0xFF nicht durch 4 teilbar sind.\\
+
+•	Dennoch handelt es sich bei den Befehlen, die auf dem Cortex-M0 ausgeführt werden können, fast ausschließlich um 16-Bit lange Befehle. Dafür gibt es bei ARM-Prozessoren die Bezeichnung Thumb State. Wenn Sie es mit vollwertigen „32-Bit-Befehlen“ zu tun haben, dann werden diese bei ARM Prozessoren als das ARM Instruction Set bezeichnet.\\
+ 
+•	Der Prozessor arbeitet mit einer sogenannten Load-Store-Architektur. Das bedeutet in letzter Konsequenz, dass Sie Daten aus dem Speicher immer in die sogenannten Register laden müssen, um etwas mit Ihnen zu tun. Register sind eine spezielle Form von Speicher, die genauso viele Bit speichern können, wie es der Bittigkeit des Prozessors entspricht. Sie sind Teil des eigentlichen Prozessors.\\
+
+Anm.: Diese Beschränkung macht den Einstieg in die Programmierung etwas leichter, denn so können Sie leichter erkennen, ob eine Zahl bei einer Operation einen Wert oder die Adresse einer Speicherstelle ist.\\
+
+•	Am Rande sei noch bemerkt, dass ARM zwischen zwischen zwei Stati und zwei Modi unterscheidet: Im Thread Mode führt der Prozessor beliebigen Programmcode aus, im Handler Mode werden bestimmte Arten von „Unterbrechungen“ behandelt. Diese Modi spiegeln verschiedene Fälle wieder, mit denen Sie es bei der Programmierung zu tun bekommen. Ebenfalls nicht direkt sichtbar ist der Debug State. Den bekommen sie automatisch dann zu Gesicht, wenn Sie den Debugger benutzen. Genau wie der Thumb State, der die beiden oben genannten Modi (Thread/Handler) zusammenfasst, ist er wie gesagt eher eine virtuelle Abgrenzung, die Sie fürs erste kaum wahrnehmen werden.\\
+
+\section{Die Register des Cortex-MO}
+
+Wie eingangs erwähnt können Sie nur die Daten verändern, die Sie aus dem Speicher in die Register geladen haben. Es gibt verschiedene Arten von Registern, von denen Sie die folgenden kennen müssen, um mit der Programmierung zu beginnen:
+
+\subsection{R0 bis R12 – Die Allzweckregister}
+
+Zunächst wären da die 13 GPRs (kurz für General Purpose Registers), die der Einfachheit halber mit R0 bis R12 angesprochen bzw. programmiert werden. Diese Register können Sie als ProgrammiererIn so mit Inhalten füllen, so wie es Ihnen passt. Wichtig: In aller Regel werden Sie im Thumb-State arbeiten. In diesem können sie von den Registern 0 bis 12 ausschließlich die Register R0 bis R7 nutzen. Das sollte aber in aller Regel genügen.\\
+
+Mehr gibt es zu den Allzweckregistern nicht zu sagen.\\
+
+Hier ein Beispiel in Pseudocode, um die Nutzung der Register zu verdeutlichen:\\
+
+•	Lade den Wert von Speicheradresse 0x1FC in R0.
+•	Lade den Wert von Speicheradresse 0x200 in R1.
+•	Vergleiche den Wert in R0 mit dem in R1.
+•	Ist R1 größer oder gleich R0, dann speichere den Wert von R1 in 0x1FC.
+•	Vergleiche den Wert in R0 mit dem in R1.
+•	Ist R0 kleiner als R1, dann speichere den Wert von R0 in 0x200.\\
+
+Kontrolle\\
+
+Dieses kleine Programm in Pseudocode ist der Kern eines größeren Algorithmus, in dem es vielfach wiederholt wird. Was ist die Aufgabe, die dieser Algorithmus löst?
+
+\subsection{Einschub: LSB = 1 für Thumb State}
+
+Wie Sie wissen, können (Speicher-)adressen, auf die beim Cortex-M0-Prozessor verwiesen wird nur gerade Zahlen (da durch 4 teilbar) sein. Also darf das LSB (kurz für Least Significant Bit) einer verwendbaren Adresse nur eine Null sein.\\
+
+Es gibt jedoch eine Besonderheit: Wenn Sie im Thumb State programmieren, dann muss (!) bei einigen Befehlen das LSB einer Adresse auf 1 gesetzt werden. Das entspricht natürlich einer Erhöhung des Wertes um 1. Bei der Ausführung der Operation prüft der Prozessor also zunächst, ob das LSB gleich 1 ist. Ist das der Fall, zieht er 1 von der übergebenen Adresse ab und führt dann die Operation als Thumb State Operation also 16-bittig mit der jetzt richtigen Adresse aus. Bei welchen Befehlen das der Fall ist, können Sie sich nicht durch logisches Denken erschließen, sondern ausschließlich durchs Lesen der entsprechenden Dokumentation erfahren.
+
+\subsection{SP – Der Stack Pointer (alternativ R13)}
+
+Es kommt im Laufe eines Programms immer wieder vor, dass Daten vorübergehend zwischengespeichert werden müssen, die in einer bestimmten Reihenfolge gespeichert werden sollen. Das ist beispielsweise dann der Fall, wenn ein Prozess unterbrochen aber später fortgesetzt werden soll.\\
+
+In diesem Fall wird dann die Adresse, an der der Prozess unterbrochen wurde in einer Datenstruktur abgelegt, die als Stack bezeichnet wird.\\
+
+Für den Fall, dass Sie noch keine Veranstaltung zu Algorithmen und Datenstrukturen gehört haben, hier eine kurze Einführung in das Thema: Informatiker sind Meister der Abstraktion und Strukturierung. Nicht missverstehen: Abstraktion und Strukturierung sind zentrale Werkzeuge aller naturwissenschaftlichen Disziplinen und Ingenieurswissenschaften, aber im Gegensatz zu Elektrotechnikern beginnen Informatiker und Mathematiker ab dem ersten Semester mit Abstraktionen und Strukturen. Und so dreht sich dann gleich zu Beginn die Frage darum, wie man denn in bestimmten Situationen Daten am sinnvollsten aufbewahren kann und wie man am effizientesten auf sie zugreifen kann. Lösungen für die sinnvolle Aufbewahrung nennt man Datenstrukturen, Lösungen für effiziente Zugriffsweisen u.a. nennt man Algorithmen. Und ein Stack ist eine Datenstruktur. Wobei beide Begriffe auch dann verwendet werden, wenn sie keine effizienten Ansätze umsetzen. Aber mit solchen Fällen sollten Sie sich nur auseinandersetzen, wenn Sie wissen wollen, warum ein anderer Ansatz sinnvoller ist.\\
+
+Einen Stack kann man sich als simplen Stapel vorstellen, bei dem Elemente bzw. Daten nur in der umgekehrten Reihenfolgen abgenommen werden können, in der sie aufgelegt wurden. Aber wohlgemerkt: Wir reden hier über Informatik, die Vorstellung eines Stapels ist also nur ein Modell, das der Anschaulichkeit dient.\\
+
+Konkret wird ein Stack wie folgt umgesetzt: Nachdem man den Speicher so behandelt, als wenn er (bei einem 32-Bit-Prozessor) aus Einheiten mit 32 Bit Länge bestehen würde und man diesen Einheiten fortlaufenden Nummern gegeben hat, legt man willkürlich eine dieser Adressen als Startadresse eines neuen Stack fest. Um zu speichern, wo das aktuellste Element des Stack sich befindet, benötigt man nun einen Stack Pointer. Das ist schlicht ein Speicherbereich bzw. ein Register, dessen einzige Aufgabe darin besteht, zu speichern, wo sich das zuletzt gestackte Element befindet. Beim Cortex-M0 gibt es dafür das Register SP. Sobald ein Wert im Stack gespeichert oder von dort entfernt wird, muss der Wert des Stack Pointer angepasst werden. Das passierte beim Cortex-M0 bei den Branch-Befehlen im Hintergrund, sodass Sie es dann und nur dann nicht selbst machen müssen.\\
+
+Jetzt kommt die erste Hürde für Einsteiger: Es gibt keinerlei generelle Vorschrift dafür, wie der Stack Pointer initialisiert oder geändert werden darf. Was nun beschrieben wird, dürfen Sie also ausschließlich bei Cortex-M0-Prozessoren voraussetzen; bei allen anderen Prozessoren müssen Sie prüfen, wie der Ablauf funktioniert, bzw. ob es dort überhaupt eine entsprechende Konvention gibt. Denn selbst das dürfen Sie nicht voraussetzen.\\
+
+Greifen Sie jetzt am besten zu Stift und Papier und versuchen Sie sich das folgende Beispiel mittels einer Skizze zu veranschaulichen.\\
+
+•	Die erste Zeile Ihres Programms weist dem Speicher 0x0 bis 0x3 des Cortex-M0 die Adresse zu, auf die der SP zu Beginn verweisen soll.\\
+
+Beispiel: Angenommen, die Adresse, auf die der Stack Pointer zu Beginn des Programms verweisen soll lautet 0 x 2EF5 2C04. Dann weist Ihr Programm \\
+
+
+der Adresse 0x0 den Wert 0x2C zu, 
+der Adresse 0x1 den Wert 0x4, 
+der Adresse 0x2 den Wert 0x2E und 
+der Adresse 0x3 den Wert 0xF5.\\
+
+
+Im Debugger würde das so aussehen:\\
+ 
+
+0x00000000	2C04		DCW		0x2C04
+0x00000002	2EF5		DCW		0x2EF5\\
+
+
+DCW ist der Befehl, der einem Speicherbereich einen Wert zuordnet. Und auf der linken Seite steht lediglich vor den Speicheradressen ein 0x, weil Werte im Speicher grundsätzlich als Hexadezimalwerte interpretiert werden.\\
+
+Wichtig: Sehen Sie bitte genau hin: Sie programmieren die Adresse 0x2EF52C04 in zwei Schritten, bei denen sie zuerst die hinteren vier Ziffern eingeben und erst danach die vier vorderen Zahlen! Das gilt für alle Fälle, in denen Sie eine 32-bittige Zahl zuweisen.\\
+
+•	Im Gegensatz zum anschaulichen Beispiel wächst der Stack beim Cortex-M0 nicht von unten nach oben, sondern von größerer Adresse zu kleinerer Adresse. In anderen Worten: Die Adressen des Stack werden mit jedem gespeicherten Wert um 0x4 kleiner!\\
+
+•	Von der Logik her verweist der SP jeweils auf die Adresse, an der das zuletzt gespeicherte Element liegt. Sie weisen hier also beim Programmstart nicht die erste Adresse des Stack zu, sondern die um 0x4 größere Adresse. \\
+
+Zur Erinnerung: Der Cortex-M0 liest bei jedem Arbeitsschritt 32 Bit bzw. 4 Byte und damit 4 Adressen am Stück ein. Und deshalb haben wir es gerade mit dem Faktor 4 bei der Adressierung zu tun.\\
+
+Beispiel: Sie wollen den ersten Wert an der ersten möglichen Adresse unterhalb 0x200 speichern. Daraus ergibt sich die Adresse 0x1FC. Dennoch legen Sie als Initialwert für den SP 0x200 fest, da der Wert des SP auf die Adresse verweist, an der zuletzt ein Element gespeichert wurde. Und das gilt eben auch, wenn im Stack noch kein Element gespeichert wurde. \\
+
+In anderen Worten: Der SP wird nicht (!) mit der Adresse initialisiert, in der das erste Element gespeichert werden soll, denn bei der Speicherung eines Elements im Stack wird zuerst der SP auf die nächste mögliche Adresse gesetzt und dann wird an der dortigen (!) Adresse das Element gespeichert wird. Diese ist die nächste um 4 bzw. 0x4 kleinere Adresse als diejenige, auf die der SP zuletzt verwies.\\
+
+Wenn wir den Initialwert des Beispiels, also die Adresse 0x200 verwenden, dann liegt das erste Element, das wir auf dem Stack ablegen unter den Adressen 0x1FC, 0x1FD, 0x1FE und 0x1FF. Der SP verweist anschließend auf die Adresse 0x1FC. Legen wir ein weiteres Element auf dem Stack ab, so liegt dieses (selbst wenn es nur eine Länge von einem Bit hat) unter den Adressen 0x1FB, 0x1FA, 0x1F9, 0x1F8 und der SP beinhaltet den Wert 0x1F8.\\
+
+Für die Zugriffe auf den Stack gibt es wieder festgelegte Bezeichnungen: Fügen wir ein Element zum Stack hinzu, so nennen wir das PUSH, entfernen wir das zuletzt hinzugefügte, bezeichnen wir das als PULL. Außerdem gibt es noch den Befehl PEEK. Damit wird ein Zugriff auf das oberste Element eines Stack bezeichnet, das dabei aber nicht entfernt wird. In aller Regel kommen aber nur Push und Pull zum Einsatz.\\
+
+Ob der Prozessor bei einem Pull tatsächlich den Wert an der Adresse löscht (wie auch immer ein Löschen aussehen soll), von der gepullt wurde, das steht nicht fest. Somit könnte ein Pull im Grunde wie ein Peek sein, bei dem lediglich der SP verschoben wurde.\\
+
+Aufgabe:\\
+
+Warum gibt es kein Löschen bei der maschinennahen Programmierung?\\
+
+\subsubsection{Kontrolle}
+
+Führen sie die nachfolgenden Schritte mit Stift und Papier durch und notieren Sie in Pseudocode: Sie wollen den Stack initialisieren und ihn für eigene Operationen verwenden.\\
+
+(i) Initialisieren Sie den SP mit einer Startadresse, die beim Cortex-M0 existiert und größer als 
+0xFFFF +2 ist. 
+(ii) Pushen Sie den Wert 17 auf den Stack.
+(iii) Unter welcher Adresse wurde der Wert gespeichert? (Hier gibt es mehrere mögliche Antworten, die alle vier richtig sind.)
+(iv) Welcher Wert steht jetzt an dieser Adresse?
+(v) Pushen Sie den Wert 32 auf den Stack.
+(vi) Auf welche Adresse verweist der Stack Pointer jetzt?
+(vii) Welcher Wert steht dort?
+(viii) An welcher Adresse würde ein Element abgelegt, wenn Sie es jetzt pushen würden?\\
+
+Hinweis: Lassen Sie sich nicht irritieren: Wenn Sie die Funktionsweise des Stack, des Stack Pointers und die Nutzung des Speichers beim Cortex-M0 verstanden haben, ist das eine ganz simple Übung. Teilweise sind die Antworten auf Fragen hier tatsächlich identisch. Es handelt sich aber nicht um einen „Idiotentest“.\\
+
+\subsection{LR – Das Link Register (alternativ R14)}
+Wenn ein Assemblerprogramm nach Abarbeitung einer Programmzeile nicht in die nächste Zeile, sondern in eine beliebige andere Zeile des Programms springt, sprechen wir von einem Branch, bzw. vom branchen. Alternativ ist die Rede vom Aufruf einer Subroutine. Eine solche Subroutine kann beispielsweise ein Programmteil sein, der an verschiedenen Stellen im Programm benötigt wird. Um ihn dann nicht mehrfach programmieren zu müssen, wird er in einem anderen Bereich des Speichers abgelegt und mit einer Zeile beendet, die sinngemäß bedeutet: Branche (zurück) auf die Adresse, die im LR gespeichert ist. Umgangssprachlich würde man sagen: Setze das Programm an der Stelle fort, von der aus du in diese Subroutine gesprungen bist.\\
+
+Hier der Assembler-Befehl, um am Ende einer Subroutine zurück zu der Stelle im Programm zu springen, an der die Ausführung zuletzt war:\\
+
+BX LR\\
+
+Damit wären wir auch beim Sinn dieses Registers: Das Link Register speichert beim branchen die Adresse, an der das Programm sich gerade befindet, bzw. an der es nach Ende der Subroutine fortgesetzt werden soll. \\
+
+Kontrolle:\\
+
+Warum müssen Sie nach bisherigem Kenntnisstand davon ausgehen, dass ein Branch aus einer Subroutine zu einem schweren Fehler im Programmablauf führt bzw. wodurch würde der verursacht?   
+  
+\subsection{PC – Der Program Counter (alternativ R15)}
+
+In diesem Register speichert der Prozessor diejenige Adresse, an der sich die Programmzeile befindet, die als nächstes ausgeführt wird. Um also die aktuelle Programmzeile zu finden, müssen Sie von dieser Adresse 4 abziehen.
+
+\subsection{xPSR – Das kombinierte Statusregister}
+
+Das xPSR nutzen Sie, wenn Sie den Debugger nutzen, um bestimmte Informationen über die Zustände zu erhalten, die durch eine Operation erreicht wurden. Das geht lediglich beim Debuggen, weil die Werte sich bei jeder ausgeführten Operation ändern. Das xPSR ist kein eigenständiges Register, lässt sich aber bei der Programmierung wie ein Register verwenden und stellt die für uns relevanten Inhalte der drei folgenden „echten“ Register gemeinsam dar: \\
+
+APSR (kurz für Application Program Status Register), für das auch die Bezeichnung ALU Register üblich ist, 
+IPSR (kurz für Interrupt Program Status Register) und 
+EPSR (kurz für Execution Program Status Register). 
+
+Die drei PSR zeigen über die folgenden Bits die in der nachfolgenden Tabelle eingetragenen Hinweise dar. Bitte beachten Sie, dass hier die tatsächliche Nummer jedes Bits aufgeführt wird (beginnend bei 0) und nicht die Anzahl (beginnend bei 1).\\
+
+Hinweis: Die PSR beinhalten diese Werte nach der Ausführung einer Operation; sobald eine weitere Operation ausgeführt wurde, werden die PSR mit neuen Daten überschrieben. Um also zu sehen, welche Bits im (x)PSR gesetzt werden, wenn eine bestimmte Operation ausgeführt wurde, müssen Sie im Debugger eine Markierung an der entsprechenden Stelle des Quellcode setzen.\\
+
+Ein typischer Anfängerfehler besteht darin, eine Markierung an der falschen Stelle im Quellcode zu setzen bzw. bei einem „Programmfehler“ die PSR zur falschen Programmzeile zu untersuchen.\\
+
+Bit Nr.	Abkürzung	Bedeutung	Originäres Register
+31	N	Negative	APSR
+30	Z	Zero	
+29	C	Carry	
+28	V	Overflow	
+24	Keine	0 = ARM, 1 = Thumb	EPSR
+5…0	Keine	Exception Type	IPSR\\
+
+
+Für alle folgenden Angaben gilt wie immer bei der maschinennahen Programmierung: Ob etwas Sinn macht, ist für den Prozessor irrelevant; er führt seine Aufgaben nach festen Vorgaben aus und Sie als Entwickler müssen prüfen, was das für Ihr Programm bedeutet. Hier gibt es drei Optionen: \\
+
+(i) Es macht Sinn / erfüllt eine gewünschte Aufgaben.
+(ii) Es ist irrelevant.
+(iii) Sie haben einen Fehler einprogrammiert.\\
+
+•	Bit 31 (N / Negative) wird bei einer Operation gesetzt, wenn Sie eine signed operation ausgeführt haben und das Ergebnis ein negativer Wert ist.
+•	Bit 30 (Z / Zero) wird gesetzt, wenn das Ergebnis einer Operation die Zahl 0 ist. Häufigster Anwendungsfall: Vergleich zweier Zahlen.
+•	Bit 29 (C / Carry): Hier wird zwischen zwei Fällen unterschieden:
+o	Bei einer unsigned addition wird das Bit gesetzt, wenn ein unsigned overflow aufgetreten ist.
+o	Bei einer unsigned subtraction wird das Bit genau dann gesetzt, wenn Bit 28 nicht gesetzt wird.
+•	Bit 28 (V / Overflow): wird gesetzt, wenn eine signed operation durchgeführt wurde und außerdem ein signed overflow aufgetreten ist.\\
+
+Für Bit 24 steht die Bedeutung ja bereits in der Tabelle und die Exception Types folgen im Abschnitt zu Interrupts und Exceptions.
+
+\subsection{PRIMASK – Das Interrupt-Maskierungs-Register}
+
+Hier handelt es sich zwar um ein vollwertiges 32-Bit-Register, aber für uns ist lediglich das LSB von Belang: Wenn wir es auf 1 setzen, dann wird der priority level effektiv auf 0 gesetzt. Da wir bislang nur kurz über Interrupts gesprochen haben, ist Ihnen nicht klar, was das bedeutet, deshalb sie hier nur kurz angemerkt, dass Interrupts die einzige Möglichkeit sind, damit der Prozessor beispielsweise auf Eingaben an einer Tastatur reagiert. Je nach Prioritätslevel werden aber bestimmte Interrupts grundsätzlich ignoriert. Und wenn dieser auf 0 gehoben wird, dann werden ausschließlich die allerwichtigsten Interrupts verarbeitet. Dazu gehört beispielsweise der Interrupt, der durch das Drücken des Resetschalters ausgelöst wird.
+
+\subsection{Weitere Register}
+
+Neben den hier aufgeführten Registern gibt es noch das CONTROL Register, das aber nur dann von Belang ist, wenn Sie ein Betriebssystem entwickeln wollen. In dem Fall müssten Sie sich außerdem mit dem Unterschied zwischen MSP und PSP auseinander setzen; zweier Register, die jeweils einen individuellen Stack Pointer verwalten. Im Rahmen unserer Veranstaltung werden wir uns hiermit nicht beschäftigen.
+
+\subsection{Zusammenfassung}
+
+Sie kennen jetzt die wichtigsten Register, die Sie für die Programmierung des Cortex-M0 nutzen werden. Wenn Sie später mit C arbeiten, ist für Sie lediglich die Initialisierung des Stack Pointers sowie die Nutzung des xPSR von Belang. Die anderen Register „verwaltet“ C für Sie.
+
+\section{Die Aufteilung des Speichers}
+
+Bislang haben wir lediglich allgemein über Speicher gesprochen, also darüber, dass Speicher beim Cortex-M0 in 8-Bit Segmente unterteilt wird, die über Adressen angesprochen werden, und dass Sie regelmäßig nur Einheiten von 4-Byte-Blöcken gemeinsam aus dem Speicher in die Register (und zurück) übertragen können.\\
+
+Was wir damit außen vor gelassen haben sind insbesondere zwei Aspekte: Zum einen haben wir noch nicht darüber gesprochen, dass beim Cortex-M0 bestimmte Speicherbereiche für bestimmte Aufgaben vorgesehen oder sogar reserviert sind. Zum anderen haben wir nicht über externe Speicher gesprochen und wie diese Daten in den Prozessor geladen werden können.\\
+
+Deshalb sehen wir uns jetzt den zweiten Teil des Mikrocontrollers an, mit dem Sie arbeiten werden: Den internen Speicher. (Externen Speicher sprechen Sie über das SPI an, aber dazu kommen wir später.)\\
+
+\subsection{Die Aufteilung des Speichers des Cortex-M0}
+
+Sie wissen bereits, dass der Cortex-M0 bis zu 4 GB an Speicher direkt ansprechen kann, weil es sich um einen 32-Bit-Prozessor handelt. Im Falle des von uns verwendeten Entwicklerboards von Olimex, auf dem ein LPC1114 von NXP zum Einsatz kommt, sind jedoch lediglich 32 KB programmierbar. Allerdings könnten wir mit der Evaluationsversion des MDK von Keil gar nicht mehr als 32 KB internen Speicher nutzen. Es folgt eine Aufstellung, aus der hervorgeht, wie beim Cortex-M0 4 GB an Speicher aufgeteilt werden:\\
+
+Speicherbereich	Größe	Inhalt
+0x 0 … 0x 1F FF FF FF	0,5 GB	Programm Code und Exception Vector Tabelle
+0x 20 00 00 00 … 0x 3F FF FF FF	0,5 GB	Datenspeicher (z.B. static RAM)
+0x 40 00 00 00 … 0x 5F FF FF FF	0,5 GB	Peripherie
+0x 60 00 00 00 … 0x 9F FF FF FF	1 GB	Externer Speicher
+0x A0 00 00 00 … 0x DF FF FF FF	1 GB	Externe Peripherie
+0x E0 00 00 00 … 0x FF FF FF FF	0,5 GB	Systeminterna und private Peripherie\\
+
+
+Beachten Sie bitte, dass es sich bei dieser Aufstellung nur um einen möglichen Fall handelt. Sie müssen für jeden Mikrocontroller prüfen, wie dort die Speicherverteilung organisiert ist. Dazu greifen Sie auf die jeweilige Dokumentation des Herstellers zurück.\\
+
+Nachtrag zum SP: Bei ausreichend Speicher wird der Stack Pointer mit der Adresse 0x40000000 initialisiert, da er so bei der höchsten Adresse des Datenspeichers beginnt und damit so spät wie möglich mit Programmteilen kollidieren dürfte. Letzteres ist auch der Grund, warum er in umgekehrter Reihenfolge addressiert.
+
+\subsection{Weitere Bezeichnungen für Speichereinteilungen}
+
+Im vorigen Abschnitt haben Sie die Aufteilung des Speichers nach den enthaltenen Daten kennen gelernt. Gelegentlich wird bei der Einteilung des Speichers auch eine Dreiteilung vorgenommen. Dann bezeichnet man Speicherbereiche mit Data, Heap und Stack.\\
+
+Es gibt auch Fälle, in denen es mehrere Data/Heap/Stack-Bereiche gibt. Damit wären wir aber bei der Programmierung von embedded OS und/oder einer Form der Verarbeitung paralleler Prozesse. Und das geht über den Inhalt dieses Kurses hinaus. Also werden wir hier davon ausgehen, dass es jeweils nur einen Stack, einen Heap und einen Data-Bereich gibt.\\
+
+Den Stack haben Sie bereits bei der Einführung in die Arbeitsweise des Stack Pointers im Bereich der Register des Cortex-M0 kennen gelernt. Deshalb an dieser Stelle keine weiteren Erläuterungen dazu.\\
+
+Mit Data meint man bei dieser Aufteilung den Speicherbereich, der mit den Programmdaten belegt ist, die vor dem Start des Rechners belegt sind.\\
+
+Mit Heap ist dagegen der Speicherbereich gemeint, der während der Laufzeit des Programms belegt wird. Dieser ist also nicht fest abgegrenzt, sondern ändert sich ähnlich wie der Stack kontinuierlich während der gesamten Laufzeit des Programms. Im Gegensatz zum Stack beginnt der Heap direkt nach dem Data-Bereich und wächst in naiver Reihenfolge. Damit ist gemeint, dass neue Daten im Heap an Adressen abgelegt werden, die höher als die bisherigen sind. Der Stack dagegen wächst ja von hoher zu niedriger Adresse.\\
+
+Somit kann es bei größeren Programmen passieren, dass Stack und Heap kollidieren, dass also ein neuer Eintrag im Heap einen bestehenden Eintrag im Stack überschreibt oder umgekehrt. Diese Fälle werden im Rahmen dieses Kurses im Regelfall nicht auftreten. Sie müssen sich aber bewusst sein, dass auch diese Fälle von Ihnen als Programmierer später berücksichtigt werden müssen. Denn auch hier gilt: Der Mikroprozessor ist gar nicht in der Lage, solche Fälle zu erkennen, also müssen Sie sich darum kümmern.
+
+\subsection{Anbindung von externem Speicher über den SPI Controller}
+
+Sie wissen bereits, dass das Entwicklerboard eine Schnittstelle zur Nutzung externer Peripherie beinhaltet. Über diese können Sie unter anderem einen Speicherbaustein ansprechen, um so die ersten Schritte beim Arbeiten mit externem Speicher durchzuführen. Wie das genau funktioniert folgt später.\\
+
+Kontrolle\\
+
+Sie wissen jetzt, das es zwar ein Standardmodell für die Verteilung der verschiedensten Daten im Speicher eines Cortex-M0 gibt, dass Sie aber für jedes Modell in der Dokumentation des Herstellers prüfen müssen, wie diese Verteilung im Einzelfall realisiert wurde. Das müssen Sie wissen, da Sie bei der maschinennahen Programmierung selbst die Nutzung des Speichers programmieren müssen. Wenn Sie hier Fehler machen, kann es passieren, dass Sie Daten überschreiben, die für die Systemsteuerung von Belang sind.\\
+
+Sie wissen weiterhin, dass die Bezeichnungen Stack, Heap und Data verwendet werden, um die Speicherbelegung während der Laufzeit von Programmen abzugrenzen.\\
+
+Außerdem wissen Sie, über welches Interface Sie üblicherweise externen Speicher anschließen können.
+
+\section{Exceptions und Interrupts}
+
+Diejenigen von Ihnen, die bereits eine objektorientierte Sprache erlernt haben kennen deshalb die sogenannten Exceptions. Dort haben Sie Exceptions vorrangig als eine Spezialform von Fehlern kennen gelernt, die während er Laufzeit eines Programms bereinigt werden können. Außerdem sind Exceptions dort auch eine Möglichkeit, um unterschiedliche Fälle im Programmablauf effizient zu steuern.\\
+
+Bei der maschinennahen Programmierung ist ebenfalls die Rede von Exceptions, hier stellen Sie aber einen Spezialfall der sogenannten Interrupts dar. Wie Sie schon mehrfach gelesen haben sind Interrupts (dt.: Unterbrechungen) so etwas wie Änderungen im Programmablauf. Im Gegensatz zu einem Branch geht es hier aber nicht darum, häufig auftretende Programmabläufe in Form von Subroutinen auszulagern. Vielmehr ist ein Interrupt oder besser gesagt ein IRQ (kurz für external Interrupt ReQuest) die Anfrage einer Peripherie, mit der diese den Prozessor auffordert, seinen aktuellen Programmablauf zu unterbrechen, und dafür eine externe Eingabe zu verarbeiten. (Das passiert z.B. wenn der Nutzer eines Rechners eine Taste drückt.)\\
+
+Sie müssen sich zum Verständnis klar machen, dass ein Prozessor im Grunde nur Zeile für Zeile ein Programm abarbeiten und ansonsten keine weiteren eigenständigen Entscheidungen treffen kann. Bei Mehrkernprozessoren trifft das zwar auf jeden Kern individuell zu, aber am Grundprinzip ändert sich nichts. Es muss also eine Möglichkeit geben, damit Komponenten eines Rechners, die nicht Teil des Prozessors sind, den Prozessor dazu bewegen können seine Arbeit zu unterbrechen, um andere Prozesse auszuführen. (Im Falle eines Tastendrucks durch den Nutzer könnte das z.B. die Speicherung des Buchstaben sein, dessen Taste der Nutzer gedrückt hat.) Danach soll er wieder seine unterbrochene Arbeit fortsetzen.\\
+
+Wenn Sie das verstanden haben, dann haben Sie auch begriffen, warum ein Mehrkernprozessor u.U. genauso langsam ist wie ein ansonsten identisch gebauter Einzelkernprozessor: Die einzelnen Kerne haben keine Möglichkeit ohne externe Kontrolle als Verbund zu agieren.\\
+
+Das mag Ihrer bisherigen Vorstellung von Computern wiedersprechen, weil Sie es i.d.R. gewohnt sind, dass Sie per USB eine neue Komponente an den Rechner anschließen können und Sie dann quasi als Teil des Computers nutzen können. Doch das ist eben nur die oberflächliche Perspektive, die einem naiven Nutzer vorgaukelt, so ein Computer sei ein ganz simples Gerät, das trotzdem unglaubliche Möglichkeiten bietet. Tatsache ist: Ein Computer ist wesentlich komplexer als es für einen Nutzer den Anschein hat. Interrupts sind das einzige Mittel, damit externe Komponenten überhaupt irgendwie genutzt werden können. Und wir reden hier von wesentlich mehr Dingen als nur von Maus, Tastatur, Drucker, usw.\\
+
+Sie können beim Cortex-M0 übrigens bis zu 32 Arten von IRQs definieren. Es ist zusätzlich möglich einen IRQ von mehreren Komponenten gemeinsam nutzen zu lassen.\\
+
+Kontrolle:\\
+
+Ein Interrupt ist ein so etwas wie ein Signal, mit dem eine beliebige Komponente den Prozessor auffordert, den aktuellen Programmablauf zu unterbrechen und eine andere Aufgabe zu erfüllen. Im Gegensatz zu höheren Programmiersprachen ist hier bereits die Verarbeitung eines Tastendrucks eine eigenständig zu verarbeitende Aufgabe.\\
+
+Aufgabe:\\
+
+Was ist der Unterschied zwischen einem IRQ und einem Branch?
+
+\subsection{Exception Types}
+
+Sie erinnern sich noch? Die letzten fünf Bit des xPSR zeigen den Exception Type an. Jetzt kommen wir dazu, wie Sie Exception Types programmieren: An Anfang des Quelltextes legen sie für jede Exception eine Speicheradresse fest, an der der Code steht, der auszuführen ist, wenn die Exception auftritt.\\
+
+Es gibt 35 Exception Types, die Sie nutzen können: Die Exceptions 1 bis 3 (Reset, NMI, Hard fault) und 11, 14, 15 (SVCall, PendSV und SystTick) haben feste Bedeutungen, aber freie Adressen. Die Exceptions 16 bis 47 sind frei belegbar. Ausschließlich über diese 33 IRQs können Sie dem Prozessor Eingaben vermitteln.\\
+
+Hinweis: \\
+
+Damit programmieren Sie lediglich, wo sich der Programmcode befindet, der bei einem bestimmten IRQ ausgeführt werden soll, aber nicht, wodurch er ausgelöst wird. Das tun Sie z.B. bei der Zuordnung von Eingaben des SPI.\\
+
+Beispiel:\\
+
+Sie wollen ein Spiel programmieren, bei dem Sie vier Tasten für die entsprechende Richtung und zwei Tasten für anwählen und abbrechen nutzen wollen. Dann könnten Sie beispielsweise den Exception Types 0x20 bis 0x23 Startadressen zuordnen, die den Code enthalten, der besagt, was passiert, wenn in eine Richtung gesteuert wird. Und den Exception Types 0x25 und 0x26 ordnen Sie die Startadressen mit dem Code für anwählen und abbrechen zu.\\
+
+Sollte Sie diese Formulierung „Startadresse zuordnen“ verwirren, dann machen Sie sich bitte bewusst, dass bei der maschinennahen Programmierung ein Programm aus Zeilen besteht, die an aufeinander folgenden Zeilen im Speicher abgelegt sind. Die Startadresse ist dann schlicht die Adresse, an der ein Programm bzw. ein Programmteil beginnt.\\
+
+Alle IRQs, die soeben nicht aufgeführt wurden sind für das System reserviert und müssen mit bestimmten vorgegebenen Werten initialisiert werden. (Ignorieren Sie bitte für den Augenblick alle IRQs außer den Nummern 1 und 16 bis 47.)\\
+
+Den Reset IRQ können Sie im Bereich der maschinennahen Programmierung als eine Art Neustart verstehen. Im Gegensatz zur Digitaltechnik ist damit also nicht gemeint, dass ein Eingang auf 0 gesetzt wird. Er muss so programmiert werden, dass er auf den Anfang des eigentlichen Programms verweist. \\
+
+! LSB + 1 ! \\
+
+Hier (im Gegensatz zur Intialisierung des SP, aber dafür bei allen IRQ Initialisierungen) haben wir wieder einen Fall, in dem wegen des Thumb State das LSB auf 1 gesetzt werden muss. Wenn die erste auszuführende Zeile also in der Adresse 0x10C steht, so müssen Sie dem Reset IRQ die Adresse 0x1D zuordnen. \\
+
+Wenn Sie die Formulierung „auf den Anfang des eigentlichen Programms“ verwirrt: Am Beginn Ihres Quellcodes initialisieren Sie die Adressen für den SP und die IRQs. Diese Initialisierung brauchen Sie bei einem Reset IRQ nicht erneut durchführen lassen, da Sie bis zur Überschreibung des Speichers durch eine Neuprogrammierung erhalten bleibt. Sie können also direkt zum auszuführenden Teil Ihres Programms springen. Dieser ist hier mit dem Anfang des eigentlichen Programms gemeint.
+
+\subsection{Initialiserung von IRQs}
+
+Eine Intialisierung ist die erstmalige Belegung eines Elements mit einem Wert. Elemente in diesem Sinne können so etwas wie die Bezeichner von IRQs oder auch andere Bezeichner in einem Programm sein. Ob dieser Wert nun als Zahl oder als Adresse zu interpretieren ist hängt vom Kontext ab, macht aber für das, was Sie als Initialisierung programmieren keinen Unterschied.\\
+
+An dieser grundsätzlichen Bedeutung ändert sich übrigens nichts, wenn Sie z.B. über die imperative Programmierung in einer höheren Sprache reden. Dort werden dann zwar andere „Dinge“ initialisiert, aber es geht immer noch um nichts anderes, als das erstmalige Abspeichern eines Wertes zu dem jeweiligen „Ding“.\\
+
+Die Initialisierung eines IRQ besteht also darin, dass Sie (wie zuvor beim SP) schlicht eine Adresse des Speichers „eintragen“. An dieser Adresse beginnt dann der Programmcode derjenigen „Subroutine“, die im Falle dieses IRQs ausgeführt werden soll. Diese Idee unterscheidet sich im Grunde nicht groß von einem Branch, nur dass ein Branch einen Programmteil aufruft, der grundsätzlich zu einem bestimmten Zeitpunkt bei der Ausführung eines Programmes ausgeführt werden soll. Ein Interrupt dagegen (deshalb auch die Bezeichnung als Unterbrechung) soll diesen Programmablauf unterbrechen und einen anderen Programmteil einschieben.\\
+
+Wie mehrere IRQs behandelt werden, die parallel zueinander auftreten, werden wir hier nicht explizit ansprechen. Sie brauchen sich über solche Fälle vorerst keine Gedanken zu machen. Wichtig ist, dass Sie das Grundprinzip von IRQ und Branch verstanden haben.
+
+\subsection{IRQs im Quellcode}
+
+Nun aber zur eigentlichen Programmierung: Sie erinnern sich noch daran, wie Sie in einem Programm den Stack Pointer initialisieren mussten? Wesentlich einfacher aber programmiertechnisch sehr ähnlich initialisieren Sie die IRQs: Sie legen für jeden IRQ fest, an welcher Adresse der Programmcode zu finden ist, der ausgeführt werden soll, wenn dieser IRQ erfolgt. Im Gegensatz zum Stack wird der Programmcode aber in der naiven Reihenfolge abgearbeitet: Der Anfang eines Programms befindet sich bei einer kleineren Adresse als das Ende.\\
+
+Denken Sie bitte wieder daran, dass die Startadressen jeder Subroutine durch 4 teilbar sein muss, weil der Prozessor immer 32 Bit am Stück einliest, auch wenn eine Programmzeile nur 8 oder 16 Bit lang ist.
+
+\subsection{Codebeispiel}
+
+Das folgende Beispiel ist nur ein Auszug, der einige IRQs außen vor lässt, die Sie ebenfalls programmieren müssen:\\
+
+Sie wollen dem
+SP den Wert bzw. die Adresse 0x1000 0268, \\
+dem Reset IRQ (IRQ 1) den Wert 0x1B0 und 
+dem ersten frei programmierbaren IRQ (IRQ 16) den Wert 0x1C
+zuordnen, dann sieht Ihr Quellcode wie folgt aus:\\
+
+DCW	0x0268		; Die LSB+1-Regel gilt nicht bei der SP-Initialisierung.
+DCW	0x1000
+DCW	0x01B1		; Thumb! Bei den IRQs muss wieder das LSB auf 1 gesetzt werden: 1 nicht 0!
+DCW	0x0000
+… 
+Jetzt folgen 28 Zeilen, die den 14 IRQs zwischen Reset IRQ und dem ersten frei programmierbaren IRQ Adressen zuordnen.
+…
+DCW 	0x001D		; Thumb! Bei den IRQs muss wieder das LSB auf 1 gesetzt werden: D nicht C!
+DCW	0x0000
+…\\
+
+Jetzt folgen noch 62 Zeilen, die den verbleibenden 31 IRQs jeweils einen Wert zuweisen. IRQs, die nicht verwendet werden sollen, können beispielsweise mit der Adresse initialisiert werden, mit der der Reset IRQ initialisiert wurde. Wie angekündigt haben wir hier eine Reihe an IRQ Initialisierungen ignoriert, damit Sie das Grundprinzip verstehen. So können Sie sich leichter auf diejenigen Initialisierungen konzentrieren, die für Sie am wichtigsten sind.\\
+
+Fällt Ihnen das schwer? Kein Problem, auch diese Arbeit nimmt Ihnen bei der Arbeit mit C die Programmierumgebung ab. Dennoch sollten Sie grundsätzlich verstanden haben, was hier passiert, damit Sie nachvollziehen können, warum bestimmte Teile im C-Code Ihres Programms auftauchen, ohne dass Sie sie programmiert hätten.\\
+
+Anmerkung: Die Reset Exception wird im Thread Mode ausgeführt, in dem ja auch die Ausführung des Programmcodes stattfindet. Bei anderen Exceptions werden Sie später den Wechsel zum Exception Handler und zurück zum Thread Handler programmieren müssen.\\
+
+Kontrolle\\
+
+Sie kennen den Unterschied zwischen einem Branch und einem Interrupt bzw. einer Exception. Sie wissen, wie Sie in Assembler beim Cortex-M0 Adressen zu einem bestimmten IRQ zuordnen, und dass man das Initialisierung nennt. \\
+
+Sie denken stets daran, dass Sie bei den Initialisierungen der IRQs jeweils eine 1 addieren müssen, auch wenn das bei der Initialisierung des SP nicht der Fall ist. \\
+
+Sie wissen weiterhin, dass Sie bei jedem Programm für den Cortex-M0 in Assembler insgesamt 47 IRQ Initialisierungen durchführen müssen, auch wenn Sie insbesondere bei den vom System reservierten Fällen noch nicht wissen, welche Adressen hier jeweils zuzuordnen sind. \\
+
+Sie wissen, dass für die Initialisierung eines IRQ bzw. des SP jeweils zwei Programmzeilen nötig sind. \\
+
+Sie wissen auch warum das so ist, weil Sie die Inhalte der vorigen Abschnitte dieses Kapitels nicht vergessen haben.\\
+
+Und vor allem freuen Sie sich, weil Sie all das in C nicht zu beachten brauchen.
+
+\section{NVIC – Der Nested Vectored Interrupt Controller}
+
+Im vorigen Abschnitt haben Sie erfahren, wie Sie dem Prozessor Programmcode übermitteln können, den dieser im Falle eines bestimmten Interrupts ausführen soll. Der NVIC (kurz für Nested Vectored Interrupt Controller) kontrolliert schlicht, wann welcher IRQ tatsächlich an den Prozessor weitergeleitet wird. Für diese Kontrolle ist unter anderem der priority level jedes IRQs von Belang.\\
+
+Damit er seine Aufgabe möglichst schnell ausführen kann wird ein Virtualisierungsverfahren angewendet, das als Memory Mapping bezeichnet wird. Bei der Programmierung werden Sie also nicht den NVIC selbst programmieren, sondern Sie werden Speicherbereiche ändern, was am Ende dazu führt, dass der NVIC seine Arbeit so durchführt, wie Sie das wollen. Außer bei denjenigen von Ihnen, die diese ganzen Erklärungen ignorieren und einfach den Programmcode kopieren, den sie irgendwo im Netz oder bei anderen Kommilitonen kopiert haben und die dann gnadenlos durch die Klausur fallen, weil sie nicht wissen, was all das hier soll.
+
+\subsection{Memory Mapping}
+
+Im Regelfall stellen die Datenübertragungswege zwischen den Komponenten eines Rechners einen Flaschenhals dar, weil sie Daten zum Teil wesentlich langsamer übertragen, als die Komponenten sie verarbeiten können. (Erinnern Sie sich bezüglich der Gründe bitte an die Hinweise zur Nachrichtentechnik aus dem ersten Kapitel.) Eine Möglichkeit, um diesen Flaschenhals zu entschärfen besteht nun darin, Daten im Speicher abzulegen und sie danach erst zu übertragen. Und das bezeichnet man als Memory Mapping. \\
+
+Auf die Details werde ich hier nicht eingehen, da Sie für die Zwecke dieser Veranstaltung lediglich wissen müssen, dass Sie auf andere Register zugreifen, indem sie Werte ändern, die im Speicher gespeichert sind. Sie werden in dieser Veranstaltung also weder erfahren, wie Memory Mapping den genannten Flaschenhals entschärft, noch werden Sie erfahren, wie der Mikrocontroller die Datenübertragung durchführt, nachdem Sie die entsprechenden Werte geändert haben.\\
+
+Mehr Details zu Virtualisierungstechniken wie dem Memory Mapping erfahren Sie in Veranstaltungen zu Betriebssystemen. Alternativ empfehle ich Ihnen den Band „Operating Systems: Three Easy Pieces“ von Remzi H. und Andreas C. Arpaci-Dusseau, das Sie als open book über die Webpage \url{http://www.ostep.org} beziehen können.
+
+\section{Das SPI – Serial Peripheral Interface}
+
+Wie am Beginn des Kapitels beschrieben handelt es sich hier um eine Schnittstelle, die auf dem Olimex Entwicklerboard enthalten ist und über die Peripherie angesprochen werden kann, die dem eigentlichen Mikrocontroller nicht bekannt ist. Das bedeutet, dass Sie hierüber Komponenten in den Programmablauf einbinden können, die Sie selbst mit dem Entwicklerboard verbunden haben.
+
+\section{Grundlagen der eigentlichen Programmierung}
+
+Wenn Sie dieses Buch vom Anfang an gelesen haben, dann werden Sie schon mehrfach gedacht haben: Wann fangen wir denn endlich mit der Programmierung an?\\
+
+Vielleicht erinnern Sie sich noch an die einführenden Hinweise dazu, was an Java der Vorteil für Programmiereinsteiger ist? Genau, Sie brauchen bei Java (im Gegensatz zur maschinennahen Programmierung) nichts darüber zu wissen, wie ein Computer aufgebaut ist; Sie können nach der Installation des JDKs und eines Editors direkt loslegen. Bei der maschinennahen Programmierung müssen Sie dagegen zunächst all das wissen, was in den bisherigen Abschnitten dieses Kapitels enthalten war, um auch nur ein einfaches Programm erstellen zu können: Register und Speicheraufteilung. Von den wirklich interessanten Dingen wie der Eingabe von Daten durch einen Nutzer sind wir immer noch weit entfernt. Die fangen dann an, wenn wir den SPI-Controller mit ins Spiel bringen.
+
+\subsection{Die Startsequenz des Cortex-M0}
+
+Mit Startsequenz ist gemeint, in welcher Reihenfolge der Cortex-M0 welche Schritte ausführt, nachdem er gestartet wurde. Die ersten zwei Schritte kennen Sie jetzt schon: Die Initialisierung des SP und die Initialisierung der Exception Types.\\
+
+Es gibt weiterhin die Möglichkeit, dass noch vor diesen Initialisierungen ein Bootloader zum Einsatz kommt, aber das ist etwas, womit wir es nur dann zu tun haben, wenn ein embedded OS gestartet wird. Also brauchen wir uns darum im Rahmen dieses Kurses nicht zu kümmern.\\
+
+Nach den genannten Initialisierungen springt das Programm an die Adresse, die im Reset IRQ genannt ist. Hier kann nun die Systeminitialisierung erfolgen. Damit ist die Initialisierung verschiedener Komponenten wie beispielsweise der Clock Control Circuitry oder des PLL (Phase Locked Loop) gemeint. Keine Sorge, wenn Ihnen diese Begriffe noch nichts sagen; für den Moment müssen Sie nur wissen, dass es dabei um Einstellungen geht, die steuern, wie sich der Mikrocontroller generell verhält. So müssen Sie beispielsweise in Abhängigkeit von angeschlossener Peripherie teilweise die Taktrate senken. Aber dazu später mehr. Diese Systeminitialisierung kann auch im Rahmen der main()-Methode eines C-Programms erfolgen. Im Falle des MDK brauchen Sie sich um die Systeminitialisierung nicht selbst zu kümmern. Das MDK generiert den nötigen Code automatisch.\\
+
+Nach der Systeminitialisierung wird bei C-Programmen noch der C startup code benötigt. Wie Sie wissen programmieren Sie den Cortex-M0, indem Sie memory gemappte Register verändern, die dann die Einstellungen der verschiedenen Komponenten des Mikrocontrollers ändern. Bei Assembler nutzen Sie hierfür entweder die tatsächlichen Speicheradressen oder Bezeichner, die vom eingesetzten Assembler abhängen. Im Gegensatz dazu verwenden Sie in Sprachen wie C Variablen, Pointer und Funktionen. Deshalb wird noch ein Programmbereich benötigt, der die Variablen und den Speicherbereich zuordnet, die von Ihrem C-Programm genutzt werden. Dieser Programmbereich wird als C Startup Code bezeichnet. Genau wie bei der Systeminitialisierung brauchen Sie sich beim MDK nicht um den C Startup Code zu kümmern; das MDK generiert ihn selbst.\\
+
+Kontrolle\\
+
+Das MDK nimmt Ihnen (wie verschiedene andere IDEs) verschiedene Programmieraufgaben ab, die für die Lauffähigkeit des Programms nötig sind. In diesem Fall geht es um die Systeminitialisierung und den C Startup Code.\\
+
+Erstere nimmt grundlegende Konfigurationsschritte vor, durch die das System überhaupt erst durch ein Programm genutzt werden kann, letztere stellt gewissermaßen eine Schnittstelle zwischen Ihrem C-Programm und dem System dar.\\
+
+Das bedeutet für Sie: Weil wir das MDK nutzen müssen Sie bei der Programmierung lediglich den SP und die IRQs initialisieren. Mehr können und brauchen Sie noch nicht.
+
+\subsection{Prozesse – So planen Sie Ihr Programm}
+
+Diesen Abschnitt können Sie vorerst überspringen; die enthaltenen Informationen werden dann wichtig, wenn Ihr Programm eine Vielzahl an Aufgaben erfüllt oder die Aufgabe(n) durch parallel arbeitende Prozesse realisiert wird. Kurz gesagt sind wir hier im Bereich Software Engineering.\\
+
+Bei größeren Projekten gilt: Bevor Sie drauflos tippen, sollten Sie sich einen Überblick über die verschiedenen Prozesse verschaffen, die im Rahmen Ihres Programms aktiv sind. Dann müssen Sie planen, wie Sie diese Prozesse im Rahmen des Programmablaufs koordinieren wollen.
+
+\subsubsection{Polling}
+
+Mit Polling bezeichnet man die einfachste Strategie: Alle Prozesse werden nacheinander abgearbeitet. Wenn es Prozesse mit unterschiedlicher Priorität gibt, sollten Sie eine andere Strategie wählen.
+
+\subsubsection{Interrupt Driven}
+
+Hier lagern Sie Prozesse in sogenannte ISRs (Interrupt Service Routinen) aus und lassen Sie durch IRQs aufrufen. So können Sie Prioritäten ins Programm bringen.
+
+\subsubsection{Concurrent Prozesse}
+
+Diese Strategie gehört in den fortgeschrittenen Bereich: Sie lassen jeden Prozess für eine gewisse Zeit laufen, sodass der Nutzer den Eindruck erhält, alle Prozesse würden gleichzeitig laufen. Entweder Sie programmieren diese Gleichzeitigkeit selbst oder Sie nutzen ein sogenanntes RTOS (Real Time Operating System). Diese Programmierung (also ohne die Nutzung eines RTOS, das Ihnen diese Aufgabe abnimmt) ist deshalb ein fortgeschrittenes Thema, weil Sie hier z.B. sogenannte Deadlocks vermeiden müssen. Das sind Situationen, in denen ein Prozess auf die Ausgabe eines anderen Prozesses wartet, der aber wiederum auf die Ausgabe des ersten Prozesses wartet. Damit hängt das Programm fest und es passiert scheinbar nichts mehr.\\
+
+Wichtig: Der Begriff Realtime System bzw. Echtzeitsystem bezeichnet im Gegensatz dazu komplexe IT Systeme, die wesentlich höhere Anforderungen an die Geschwindigkeit bei der Datenübertragung zwischen den einzelnen Komponenten haben, als das z.B. im Internet der Fall ist. Wenn wir über solche Echtzeitsysteme reden, meinen wir z.B. Systeme die dynamisch auf Änderungen der Temperatur eines Kernreaktors reagieren und scheinbar ohne Zeitverlust verschiedene Zu- und Abflüsse des Reaktors in Abhängigkeit von diesen Änderungen steuern.\\
+
+Kontrolle\\
+
+Dieser Abschnitt gehört in den Bereich nice to know.
+
+\subsection{Ein- und Ausgaben}
+
+Wie schon mehrfach angemerkt müssen Sie bei der Programmierung eines Mikrocontrollers auch für solche Prozesse Code implementieren, die Sie bei höheren Programmiersprachen als von der Programmiersprache „erledigt“ betrachten können. Ein Bereich, in dem Sie hierdurch einen wesentlich höheren Programmieraufwand bekommen sind Ein- und Ausgaben.\\
+
+Um diese zu verarbeiten müssen Sie zunächst wissen, was für ein Interface genutzt wird, um die Ein- bzw. Ausgaben zu übertragen. Mit Interface können zwar auch die „Steckdosen“ gemeint sein, die Sie auf dem Entwicklerboard sehen können, aber bei der Programmierung spielt die physikalische Bauweise keine Rolle. Es folgen einige Anschlussstandards, die Sie wahrscheinlich noch nicht kennen:\\
+
+•	Digitale I/Os
+•	UART
+•	I2C
+•	SPI
+•	Und viele andere mehr.
+Die folgenden Anschlussstandards werden Sie dagegen wahrscheinlich bereits kennen:
+•	USB
+•	Ethernet
+•	CAN
+•	Graphic LCD
+•	SD Card\\
+
+Aber nochmal: Sie dürfen bei der Entwicklung von Software für Mikrocontroller nicht erwarten, einen USB-Stick in den entsprechenden Anschluss zu stecken und dann damit arbeiten zu können. Vielmehr müssen Sie einige Vorbereitungen programmieren, damit die Anschlüsse überhaupt in Ihrem Programm genutzt werden können. Die tatsächliche Datenübertragen (die ja die Nutzung eines solchen Anschlusses darstellt) ist damit aber noch nicht erfüllt, sondern muss ebenfalls eigenständig von Ihnen programmiert werden.
+
+\subsubsection{Anbindung von Anschlüssen an den Mikrocontroller}
+
+Sehen wir uns zunächst an, wie ein solcher Anschluss (nehmen wir hier einen SPI-Controller) mit dem Mikroprozessor verbunden ist. Sie wissen ja bereits, dass der Mikroprozessor ausschließlich über ein Interface Daten erhalten kann. Sie wissen ebenfalls, dass es nicht möglich ist, dem Mikroprozessor über dieses Interface Befehle zu erteilen, sondern dass Sie sich hier eines Interrupts bedienen müssen, der vom NVIC weitergeleitet oder verworfen wird.\\
+
+Was Sie aber noch nicht wissen ist, dass Anschlüsse wie ein SPI-Controller mit der sogenannten Peripherie verbunden sind und somit nur dann genutzt werden können, wenn die Register dieser Peripherie entsprechend initialisiert sind.\\
+
+Und wie konnte es anders sein: Das ist ein komplexerer Prozess als die Intialisierung des SP und der IRQs.
+
+\subsubsection{Initialisierung der Peripherie}
+
+In aller Regel sind vier Schritte nötig, um eine Peripherie zu initialisieren:\\
+
+1.	Konfiguration der clock control circuitry:
+Wie Sie wissen arbeiten Rechner mit einer sogenannten Taktung, sprich sie führen eine exakte Anzahl an Operationen pro Sekunde aus. Besser gesagt: Nach einem festen Zeitintervall führen Sie genau eine Operation aus. Bislang werden Sie wahrscheinlich keine Konfiguration der Taktung für einzelne Komponenten des Systems durchgeführt haben. Doch auch das müssen Sie jetzt tun.
+Der Grund ist recht einfach: Jede Komponente hat eine maximale Taktung, mit der sie arbeiten kann. Aber die Tatsache, dass eine Komponente an Ihr Entwicklerboard angeschlossen werden kann (z.B. über UART) bedeutet natürlich nicht, dass sie genau dieselbe maximale Taktung hat wie Ihr Prozessor. Und da Sie eben jedes Detail selbst programmieren müssen, müssen Sie auch für jede Komponente eine passende Taktung programmieren.
+Eine zu hohe Taktung bedeutet zum Glück normalerweise nur, dass eine Komponente nicht auf Datenübertragungen reagiert; im Bereich der maschinennahen Programmierung gibt es dagegen durchaus Fälle, in denen Sie mit entsprechenden Befehlen bzw. Programmen Schäden bewirken können.\\
+
+2.	Programmierung der I/O-Konfiguration
+Aktuelle Mikroprozessoren in Desktoprechnern haben mehr als 1000 Kontakte bzw. Beinchen. Und jeder dieser Kontakte entspricht einem Bit, das Sie setzen oder löschen können. Zur Erinnerung: Das bedeutet schlicht, dass Sie das Eingangssignal an- oder ausschalten, indem Sie eine 0 oder eine 1 einprogrammieren. Indem Sie also bei der maschinennahen Programmierung 32-stellige Binärwerte programmieren, setzen und löschen Sie gleichzeitig 32 Eingänge des Prozessors.
+Nun werden Sie sich wundern, welchen Sinn es hat, dass z.B. ein 32-Bit-MCU mehr als 32 Kontakte hat; schließlich kann er ja nur 32 Bit pro Rechenschritt verarbeiten. Aber das ist recht simpel: Hier handelt es sich um die Ein- und Ausgänge des Mikrocontrollers, nicht um die Ein- und Ausgänge des Mikroprozessors.
+Und als zweiten Schritt nach der Taktung jeder Peripherie, die Sie nutzen wollen, müssen Sie konfigurieren, über welchen I/O-Pin (also über welches Beinchen des Controllers) Daten mit der jeweiligen Peripherie ausgetauscht werden sollen. Dabei ist es möglich, mehrere periphere Komponenten über denselben I/O-Pin kommunizieren zu lassen.\\
+
+3.	Konfiguration der Peripherie
+Erst jetzt kommt die eigentliche Konfiguration der Peripherie an die Reihe. Zur Erinnerung: Sie nutzen jede Peripherie, indem Sie auf die memory gemappten Register dieser Peripherie zugreifen. Also konfigurieren Sie die Peripherie, indem Sie die entsprechenden Speicherbereiche deklarieren und initialisieren.\\
+
+4.	Interrupt Konfiguration
+Warum Sie nun Interrupts für jede Peripherie konfigurieren müssen, sollte Ihnen nach den vorigen Abschnitten klar sein. Wichtig ist lediglich, dass Sie daran denken, dass die IRQ-Konfiguration der vierte Schritt bei der Konfiguration/Initialisierung jeder Peripherie bzw. jedes Anschlusses an Ihren Mikrocontroller ist.
+Kontrolle\\
+
+Sie wissen jetzt, dass Sie für jede angeschlossene Komponente vier Bereiche programmieren müssen, egal, ob diese von Ihnen selbst am Mikrocontroller angeschlossen wurde oder ob sie Teil des Entwicklerboards ist. Erst danach können sie diese Komponente in Ihr Programm einbinden.\\
+
+Damit haben Sie jetzt endlich einen zweiten Bereich kennen gelernt, den Sie (nach der zuvor eingeführten Initialisierung von SP und IRQs) programmieren können. Dumm nur, dass Ihr Programm damit immer noch nichts tut…
+
+\subsection{Eingebettete Systeme und Debugging im laufenden Betrieb}
+
+Dieser Abschnitt ist zwar im Grunde etwas zu früh, aber da wir uns soeben angesehen haben, wie man Anschlüsse in den Programmablauf einbinden kann, kommen wir jetzt dazu, wie man diese Anschlüsse nutzen kann, um im laufenden Betrieb Rückmeldungen z.B. über Fehler zu bekommen.\\
+
+Denn wie beschrieben haben eingebettete Systeme im Regelfall kein Display und sind auch sonst quasi nicht sichtbar. Deshalb müssen Sie im Regelfall Meldungen des Systems über einen der Anschlüsse (z.B. die UART-Schnittstelle) ausgeben lassen, die Sie dann mittels eines Rechners auswerten können.\\
+
+Da die Schnittstellen aber im Regelfall kein C beherrschen müssen Sie hier noch eine Übersetzung zwischenschalten, die die Fehlermeldungen (z.B. in Form von printf()-Ausgaben) in eine Form übersetzen, die über UART übertragen werden kann. Eine solche Übersetzung wird als retargeting bezeichnet.\\
+
+Kontrolle\\
+
+Sie wissen schon… Ein weiterer Abschnitt, den Sie aktuell unter der Kategorie nice to know ablegen können.
+
+\subsection{Mangelnde Portabilität und das CMSIS}
+
+Bislang haben Sie fast ausschließlich etwas darüber gelesen, wie Sie konzeptionell an das Programmieren herangehen müssen; konkrete Programmierzeilen waren Mangelware. Sie wissen bereits, dass Sie bei der Programmierung von Mikroprozessoren in Assembler und in C je nach Mikroprozessor zum Teil andere Befehle nutzen müssen, weil es hier keinen Standard gibt.\\
+
+Leider gilt das nicht nur für unterschiedliche Mikroprozessoren, sondern auch für unterschiedliche IDEs und Compiler. Bei allen Abschnitten dieses Kapitel, in denen es um konkrete Programmierzeilen geht müssen Sie sich also im Klaren sein: Wenn Sie nicht die Ausstattung unseres Labors nutzen (Olimex LPC1114 Entwicklerboard, Keil MDK Evaluationsversion), dann werden Sie den Programmcode teilweise anpassen müssen, weil entweder Ihr Mikrocontroller oder Ihre IDE bzw. Ihr Compiler und Linker  andere Befehle benötigen.\\
+
+Die Entwickler bei ARM haben aber vor Jahren begonnen, eine Lösung für dieses Problem zu entwickeln (wir sprechen also wieder einmal über Software Engineering) und das sogenannte CMSIS (kurz für Cortex Microcontroller Software Standard) entwickelt, das kontinuierlich erweitert wird. Es ist Teil vieler IDEs, kann aber auch kostenlos von der ARM Webpage heruntergeladen werden. In der Version 1.3  bot es den standardisierten Zugriff auf das NVIC, den SCB und den SysTick. Weiterhin enthielt es verschiedene Funktionen, mit denen unterschiedliche C und Assembler Compiler gleich genutzt werden konnten. In der Einführung in die Programmierung mit C erfahren Sie, wie Sie das CMSIS einsetzen können.\\
+
+Kontrolle\\
+
+Da für diesen Kurs keine Kenntnisse des Software Engineering vorausgesetzt werden und Software Engineering auch eigentlich nicht Teil dieses Kurses ist, können Sie die Vorteile des CMSIS und des im nächsten Abschnitt vorgestellten ABI noch nicht richtig einschätzen. Sie sollten sich allerdings die Abkürzungen merken und in den kommenden Wochen prüfen, welche Lösungen diese beiden Standards Ihnen bieten.\\
+
+Langfristig gehört die Kenntnis dieses Bereiches zu den Kernkompetenzen, die Sie bei der Programmierung für einen Cortex-M0 benötigen.
+
+\subsection{Das ABI – Die Klassenbibliothek für die Cortex-Programmierung}
+
+Wenn Sie bereits mit einer höheren Programmiersprache gearbeitet haben , dann kennen Sie Bibliotheken. Das sind Sammlungen von Programmcode, den Sie für Ihre Programme nutzen können ohne sie selbst verfasst zu haben. Einen guten Programmierer zeichnet es aus, zunächst zu prüfen, ob eine Programmierlösung bereits in einer Bibliothek enthalten ist.\\
+
+Bei ARM wird die entsprechende Sammlung von Funktionen aber auch von anderen hilfreichen Komponenten als ABI (Application Binary Interface) bezeichnet. Sie finden die vollständige Dokumentation des ABI unter http://infocenter.arm.com/ im Bereich Documentation -> ARM Software Development Tools.
+
+\section{Wie Sie die Software in den Mikrocontroller bekommen}
+
+Zunächst müssen Sie sich voll und ganz darüber im Klaren sein, dass der Mikroprozessor bzw. die MCU, die Sie programmieren nicht Teil des Computers ist, mit dem Sie das Programm entwickeln. Das mag trivial klingen, die Konsequenzen sind es definitiv nicht!
+
+\subsection{Die Verbindung zwischen Entwicklungsboard und Rechner herstellen}
+
+Der erste Schritt besteht nun darin, dass Sie das Entwicklungsboard irgendwie mit Ihrem Rechner verbinden müssen. Und auch wenn auf dem Entwicklungsboard ein USB-Port vorhanden ist, können Sie (mit wenigen Ausnahmen) das Board damit nicht (!) mit dem Computer verbinden. Na gut, Sie können hier ein USB-Kabel anschließen, aber Sie werden Ihr Programm so nicht auf den Mikrocontroller übertragen können; der USB-Port dient in aller Regel ausschließlich dazu, das Entwicklerboard mit Strom zu versorgen.\\
+
+Um ein Programm auf das Entwicklerboard zu übertragen (Fachbegriff: Flash programmieren), müssen Sie eine Schnittstelle nutzen, die beim Cortex-M0 JTAG heißt. Physikalisch handelt es sich dabei um einen Anschluss mit 14 Pins, der auf dem Entwicklerboard leicht erkennbar ist.\\
+
+Aber Sie werden kein einfaches Kabel finden, mit dem Sie z.B. den USB-Port Ihres Rechners mit der JTAG-Schnittstelle verbinden können. Sie benötigen hierzu ein zusätzliches physikalisches Interface, für das es verschiedenen Bezeichnungen gibt:\\
+
+•	ICE (In-Circuit Emulator)
+•	In-Circuit Debugger
+•	Debug probe
+•	USB-JTAG-Adapter\\
+
+Wenn Sie (wie in unseren Laboren) die Debugging Einheit ULink2 von Keil verwenden wollen, dann verbinden Sie sie zunächst mit dem USB-Anschluss Ihres Rechners und lassen den entsprechenden Treiber vom Betriebssystem Ihres Rechners installieren. Danach verbinden Sie den  entsprechenden Anschluss des ULink2 mit dem JTAG-Port auf dem Entwicklerboard und verbinden abschließend das Entwicklerboard mit einem USB-Port Ihres Rechners, um die Stromversorgung sicher zu stellen.\\
+
+Kontrolle\\
+
+Sie wissen jetzt, was Sie benötigen, um ein Entwicklerboard mit einem Rechner zu verbinden, auf dem Sie Software für den Mikrocontroller entwickeln wollen.\\
+
+Wie Sie den Quellcode in ein Programm umwandeln und dieses zum Mikrocontroller übertragen ist Inhalt der nächsten Abschnitte.
+
+\subsection{Vom Quellcode zum Programm}
+
+Wenn Sie Quellcode mit einer IDE wie dem MDK entwickelt haben, dann können Sie diesen mit dem Debugger auf Fehler kontrollieren und ihn recht komfortabel in ein sogenanntes Program Image umwandeln. Es ist dieses Program Image, das Sie anschließend in den Mikrocontroller übertragen bzw. in dessen Speicher Sie es flashen.\\
+
+Ein solches Program Image beinhaltet die folgenden Abschnitte:\\
+
+•	Die Vektortabelle (So wird der Programmbereich genannt, der die Adressen des SP und des Exception Types enthält)
+•	C-Startup Routine
+•	Programm Code
+•	C Library Code\\
+
+Sie werden jetzt die Schritte kennen lernen, mittels derer aus Ihrem Quellcode ein solches Program Image erzeugt und auf den Mikroprozessor übertragen wird.\\
+
+Bei der Entwicklung ist noch wichtig, dass Sie sich an bestimmte Namenskonventionen halten, denn nur durch diese zeigen Sie dem Computer, was der Quellcode ist: Dateinamen, die auf .c enden enthalten Quellcode in C, Dateien, die auf .cpp enden, enthalten Quellcode in C++ und Dateien, die auf .s enden enthalten Quellcode in Assembler. \\
+
+Für diejenigen unter Ihnen, die nicht viel über Dateiendungen wissen hier noch ein Hinweis: Sie können an einen Dateinamen eine beliebige Endung anhängen. Das führt aber nicht dazu, dass Sie den Inhalt der Datei ändern, sondern sorgt lediglich dafür, dass der Rechner davon ausgeht, dass es sich um eine entsprechende Datei handelt, so wie Sie einen Schatz an der Stelle erwarten, an der sich auf einer handgezeichneten Karte ein großes X befindet.\\
+
+Beispiel: Wenn Sie an den Dateinamen die Endung .pdf anhängen und nun dem Betriebssystem z.B. durch einen Doppelklick angeben, dass es die Datei öffnen soll, dann wird es versuchen, die Datei mit dem Programm zu öffnen, mit dem Sie üblicherweise .pdf-Dateien öffnen. Nun wird dieses Programm allerdings mit dem Dateiinhalt nichts anfangen können, da Sie ja nur den Dateinamen geändert haben.\\
+
+Sie wissen aus dem ersten Kapitel dieses Buches, dass ein Compiler Quellcode in ausführbaren Code umwandelt. Im Falle von C und Assembler passiert ein weiterer Schritt: Hier werden durch den Compiler aus dem Quellcode zunächst die sogenannten Object Files erzeugt. (Dateiendung .o) Diese sind zwar im Grunde bereits ausführbar, allerdings benötigen sie in aller Regel noch zusätzlichen Programmcode, der in Form sogenannter Linker Scripts (Dateiendung .ld) oder Scatter-Loading Files (Dateiendung .scat) eingebunden wird. Zusammen mit diesen Dateien wird nun aus den object files das Program Image erzeugt. Und diese Aufgabe übernimmt nicht mehr der Compiler, sondern der sogenannte Linker.\\
+
+Wie Sie wissen kann ein Cortex-M0 bis zu 4 GB an Speicher verwalten, aber wie viel Speicher tatsächlich angebunden ist und wie dieser aufgeteilt ist, das muss im scatter-loading file angegeben werden. Beim Arbeiten mit dem MDK brauchen Sie sich darum nicht zu kümmern, wenn Sie im MDK eingetragen haben, welchen Mikrocontroller Sie verwenden. Denn dann nimmt das MDK die entsprechenden Einstellungen selbst vor und führt das Verlinken gemeinsam mit dem Kompilieren durch.
+
+\subsection{Program Image flashen}
+
+Nachdem Sie ein Program Image erzeugt haben, müssen Sie es noch in den Speicher des Mikrocontrollers übertragen. Da es sich bei diesem Speicher um Flash-Speicher handelt, redet man hier auch vom flashen. Hier gilt wieder: Ein einfaches Kopieren, wie Sie es z.B. bei USB-Sticks sonst gewöhnt sind, funktioniert nicht; Sie benötigen ein spezielles Programm, den Program Flasher. Wenn Sie das MDK nutzen (oder auch einige andere IDEs), brauchen Sie jedoch kein eigenständiges Programm zu installieren, da der Flasher dort bereits integriert ist.\\
+
+Kontrolle\\
+
+Sie wissen jetzt, wie Sie den Rechner und das Entwicklungsboard miteinander verbinden können und warum Sie später ein knappes Dutzend Dateien in dem Verzeichnis vorfinden werden, in dem Sie Ihren Quellcode sowie das Program Image speichern.\\
+
+Sie kennen darüber hinaus die Dateiendungen, mit denen Sie es bei der Programmierung eines Mikrocontrollers zu tun haben und was diese Dateien beinhalten.\\
+
+Außerdem wissen Sie, dass Sie das Program Image nicht einfach kopieren können, sondern ein Flash Programm benötigen, um es in den Speicher des Mikrocontrollers zu übertragen.\\
+
+Zusammen mit den übrigen Inhalten dieses Kapitels kennen Sie damit alle Grundlagen, die Sie benötigen, um ein umfangreiches Programm für einen Cortex-M0 zu entwickeln. Damit können wir uns jetzt endlich der eigentlichen Programmierung zuwenden.
+
+\section{Zugriff auf die Peripherie bei einem Cortex-M0}
+
+Wie Sie bereits wissen erfolgt der Zugriff auf die Peripherie (also auch auf alle von Ihnen an den Cortex-M0 angeschlossenen Geräte), indem Sie die Memory-gemappten Register im Speicher des Cortex-M0 überschreiben.\\
+
+Aber natürlich müssen Sie hierfür in Ihrem C-Programm noch einige Codezeilen einfügen, um diese Prozess zu vereinheitlichen. Im Buch von Yiu finden Sie dazu drei Codebeispiele für den Fall, dass Sie eine UART-Schnittstelle nutzen wollen:\\
+
+Auf S. 62 finden Sie den Code, um ein Peripherieregister als einen Pointer zu definieren.\\
+
+Auf S. 63 finden Sie den Code, um eine Datenstruktur für einen Satz von Peripherien zu definieren, in denen jede Peripherie als ein Pointer definiert ist.\\
+
+Auf S. 64 finden Sie dann den Code, um gleich mehreren Instanzen Ihres Programms unabhängig voneinander den Zugriff auf eine solche Datenstruktur zu ermöglichen.
+
+\section{Der CMSIS – Cortex Microcontroller Software Interface Standard}
+
+Sie kennen bislang die einfachen Grundlagen von C, mittels derer Sie einfache Programme entwickeln können. Wie Sie bereits bei der Erklärung zum ABI erfahren haben, benötigen Sie darüber hinaus noch weitergehende Programmiermöglichkeiten, um aus einem C-Programm heraus einen Cortex-M0 ausnutzen zu können.\\
+
+Das CMSIS ist ein Framework, das es Ihnen ermöglicht, Cortex-Programme zu entwickeln, die Sie in unterschiedlichen IDEs weiterentwickeln können. Es wurde von ARM entwickelt und wird u.a. von den folgenden IDEs unterstützt: Keil MDK, ARM DS-5, IAR embedded Workbench, TASKING Compiler und verschiedenen GNU-GCCs.\\
+
+Leider ist die Darstellung in Yius Buch veraltet: Er behandelt hier den CMSIS in der Version 1.3, während mittlerweile die Version 4.3 veröffentlicht wurde. Eine aktuelle Darstellung wird hier zu einem späteren Zeitpunkt erfolgen.
+

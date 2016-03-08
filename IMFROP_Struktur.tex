@@ -1,0 +1,1770 @@
+\chapter{Einstieg in HTML 5}
+
+Dass Sie in diesem Kapitel die Grundlagen der Programmierung in HTML5 erlernen ist nach der Kapitelüberschrift klar. Aber Sie werden hier ebenfalls Konzepte kennen lernen, die wichtig sind, damit Ihre Seite tatsächlich ein Teil des semantic web ist. Dieses Kapitel ist auch für komplette Neueinsteiger in die Programmierung leicht zu bearbeiten, da Sie hier nur wenige abstrakte Grundlagen verinnerlichen müssen, die sonst in der Welt der Informatik und der Programmierung recht häufig vorkommen.\\
+
+Wenn Sie mit Dateien arbeiten, sind Sie es in aller Regel gewöhnt, die Datei mit einem Programm zu öffnen. Die meisten von Ihnen kennen also nur die verschiedenen Ansichten, die einzelne Programme erzeugen, wenn Sie mit einem dieser Programme eine Datei öffnen. Bei einer Webanwendung sehen Sie beispielsweise verschiedene Elemente wie Bilder, Videos, Texte usw. Sie sehen dann aber in aller Regel nicht, wie diese Datei selbst aussieht. Doch genau darum geht es in diesem Kurs.\\
+
+In HTML kümmern wir uns jedoch nicht darum, wie eine Webanwendung aussehen soll, sondern ausschließlich darum, was wir auf der Webanwendung anzeigen lassen wollen. Wenn Sie das erste Kapitel gelesen haben, dann wissen Sie auch, womit wir die Darstellung der Webanwendung programmieren. \\
+
+In anderen Worten: In diesem ganzen Kapitel wird es nicht ein einziges Mal darum gehen, wie die Elemente Ihrer Webanwendung später aussehen werden. Wenn Sie hier also an irgend einer Stelle versuchen, die Darstellung zu programmieren, dann machen Sie einen Fehler.\\
+
+Nachdem wir jetzt weitestgehend geklärt haben, wie wir den Webserver in Betrieb setzen und kontrollieren können, kommen wir nun zum zweiten Teil dieser Einführung: die Einführung in die Markup Language HTML. Am Ende dieses Abschnittes können Sie also statische Webanwendung erstellen. Hier werden wir auch über CSS sprechen: Cascading Style Sheets sind eine Möglichkeit, um auf unterschiedlichen Webanwendung gleiche Strukturen und Formate für Inhalte zu realisieren.\\
+
+Aufgabe: Unabhängig von dem, was in den einzelnen Abschnitten steht, programmieren Sie bitte für jedes Element, dass Sie auf Ihrer Webanwendung einbinden wollen einen eigenen HTML-Container, ohne sich über das Design Gedanken zu machen. Das ist der erste Schritt hin zu professionellen Anwendungen: So lange Sie es nicht schaffen, zuerst die Inhalte bzw. Inhaltsstruktur festzulegen und erst dann ein passendes Design auszusuchen sind Sie weit davon entfernt, professionelle/r InformatikerIn zu sein. Das bedeutet nicht, dass Design unwichtig wäre, sondern es geht darum, dass Sie sich auf Ihre zukünftige Aufgabe in Teams konzentrieren. Und so lange Sie nicht Design (z.B. Medien- und Kommunikationsdesign) studieren, bereiten Sie sich eben auch nicht darauf vor, als DesignerIn zu arbeiten. So lange Sie das nicht akzeptieren werden Sie ein Don Quichote der Medieninformatik bzw. der Medientechnik sein.\\
+
+Ignorieren Sie also Aspekte wie Design, die Positionierung eines Elements auf der Seite, Hyperlinks, usw. usf. Auch für die einzusetzenden Text, Bilder usw. verwenden Sie bitte vorerst Platzhalter: Die Qualität Ihrer Arbeit als MedieninformatikerIn wird sich nicht in umfangreichen Texten und Bildergallerien zeigen, sondern in gut durchdachten und ausgearbeiteten Strukturen. Das Einfügen von Texten und Bildern sowie das Ausarbeiten eines guten Designs ist dann die Aufgabe anderer Mitarbeiter im Team.
+
+\subsection{Das ist HTML}
+
+HTML, kurz für Hyper Text Markup Language ist, wie es aus dem Namen hervorgeht eine Markup Language. Teilweise wird auch von einer statischen Skriptsprache gesprochen. Sie ermöglicht es deshalb nicht, Inhalte nachträglich zu ändern, ohne gleiche die gesamte Seite zu ändern, bzw. eine zusätzliche Seite zu programmieren. In der Anfangszeit des WWW genügte das auch, weil es schon eine großartige Bereicherung darstellte, Texte und Bilder direkt über eine Datenleitung in wenigen Sekunden oder Minuten empfangen zu können, die sonst per Post erst nach einigen Tagen oder Wochen im Haus gewesen wären. \\
+
+Heute dagegen, wo selbst das Format von Displays kaum noch standardisiert ist, benötigen wir weitergehende Möglichkeiten. Diese werden unter dem Begriff Responsive Design zusammengefasst: Das Design einer Webanwendung passt sich automatisch dem Gerät an, auf dem es angezeigt wird. Wir reden wir hier also über etwas, das in den Bereich der Informatik bzw. der Softwareentwicklung fällt und nicht in den Bereich dessen, was üblicherweise unter Design im Sinne von kreativer Gestaltung verstanden wird.\\
+
+Doch auch hier beginnen wir bei den Grundlagen. Für responsive Design können Sie später gerne auf ein Framework namens Bootstrap zurückgreifen. Diese nimmt Ihnen eine Vielzahl an Programmieraufgaben ab, die Sie sonst in HTML selbst programmieren müssen. Zurzeit ist Bootstrap unter der Lizenz CC 3.0 veröffentlicht, das bedeutet unter anderem, dass Sie es kostenlos auch für professionelle Anwendungen verwenden dürfen. Aber da Lizenzen geändert werden können, müssen Sie im Stande sein, auch ohne Bootstrap eine Webanwendung aufzusetzen.\\
+
+\subsection{Erster HTML-Quellcode}
+
+Das wichtigste an einer Webanwendung ist die Antwort auf die Frage, welche Funktion sie übernehmen soll. Erst danach überlegen Sie sich idealerweise unterstützt durch Designer, mittels welches Designs sie diese Funktion erfüllen soll. Ein typischer Einsteigerfehler besteht darin, sich zunächst über das Design Gedanken zu machen und dann mit dem Programmieren anzufangen. Das ist deshalb ein Fehler, weil dabei in aller Regel wichtige Funktionalitäten vergessen werden. Wird dann entdeckt, dass eine Funktionalität fehlt, die wichtig ist, dann muss häufig das Design komplett verworfen und neu entwickelt werden. Oder es herrscht die Überzeugung vor, dass der Kunde schon blöd genug sein wird, sich nicht daran zu stören. Und glauben Sie mir: Bei der Prüfung für Ihre Leistungsnachweise  haben Sie keinen naiven Kunden vor sich.\\
+
+Deshalb nun die Frage: Welche Funktion soll unsere erste Webanwendung erfüllen?\\
+
+Beginnen wir mit einer einfachen Seite, mit der wir einfach nur prüfen wollen, ob ein Text so angezeigt wird, dass wir mit der Darstellung zufrieden sind: Er sollte groß genug angezeigt werden, damit wir ihn lesen können. Außerdem sollte er an einer Position angezeigt werden, an der er von einem Nutzer unserer Seite bemerkt wird.\\
+
+Das ist ziemlich viel Text, um daraus eine Prüfung abzuleiten, ob die Funktionalität erfüllt ist. Deshalb gibt es das Planungswerkzeug Use Case. Ein Use Case ist eine kurze Beschreibung, wer was auf der Webanwendung tut und was dann passieren soll. Machen wir das doch gleich für unseren Fall:\\
+
+Use Case 1: Der Nutzer liest einen Begrüßungstext. (Keine Interaktion.)\\
+
+Sicher, das ist kein spannender Use Case, weil er gerade keine Interaktion enthält. Aber damit können wir arbeiten und nach der Programmierung prüfen, ob die Funktion erfüllt ist. Also, denken Sie sich eine nette Begrüßung aus und setzen Sie sie dann an der passenden Stelle in den folgenden Quellcode ein. Speichern Sie Ihre Seite dann unter dem Namen seite01.html im bekannten Verzeichnis Ihres Webservers.\\
+
+<html>
+<head>
+<title>Die erste HTML-Webanwendung</title>
+</head>
+<body>
+Einführung in die Programmierung, Teil 1
+</body>
+</html>
+
+Gleich vorweg: Willkommensgrüße oder ähnliches haben auf einer Webanwendung nichts verloren. Entweder der Nutzer kann auf Anhieb erkennen, was hier angeboten wird oder wir haben als Entwickler etwas falsch gemacht.\\
+
+Wenn Sie jetzt die Webanwendung aktualisieren (oder bei gestopptem Webserver zunächst den Webserver neustarten und anschließend wieder die Webanwendung localhost aufrufen), sehen Sie, dass das neue HTML-Skript als Datei angezeigt wird. Wählen Sie doch einfach den „Link“ an und öffnen Sie damit die Webanwendung, die Sie gerade programmiert haben.\\
+
+Es gibt zwei Dinge, die Ihnen auffallen, wenn Sie das Ergebnis im Browser genau prüfen (zumindest wenn Sie keinen Tippfehler im Quellcode haben): \\
+
+•	Zum einen steht da nicht das Wort Einführung im Text, sondern so etwas wie EinfÄ3/4rung.
+•	Und dann steht auf der Registerlasche der Webanwendung der Schriftzug „Die erste HTML-Webanwendung“.
+Wenn Sie die einleitenden Kapitel aufmerksam gelesen haben, dann haben Sie sicher schon eine Idee, warum hier kein ü in Einführung steht. Aber dazu gleich mehr. Zunächst müssen wir uns ansehen, welche Bestandteile unser Quellcode enthält.
+
+\subsubsection{Tags und Container}
+
+Der Schriftzug „Die erste HTML-Webanwendung“, der als Titel der Seite im Webbrowser angezeigt wird, steht zwischen den „Befehlen“ <title> und </title>. Solche „Befehle“ nennt man bei Skriptsprachen Tags, spricht sie wie tägs und nicht wie tags (im Sinne von mittags) aus.\\
+
+Mit HTML-Skripten definieren Sie, wie die Bestandteile eine Webanwendung angezeigt werden. Am einfachsten ist das mit Texten, denn die Tippen Sie (nur) größtenteils (siehe ü in Einführung) so ein, wie sie angezeigt werden sollen. Doch fast alles, was auf einer Webanwendung erscheinen soll muss in sogenannte Container eingebettet werden, damit der Webbrowser weiß, was er damit tun soll. Einzig Text, der fließend eingefügt werden soll braucht keinen expliziten Container.\\
+
+Einen Bereich, der im Quellcode von einem öffnenden und einem schließenden Tag umgeben wird, nennt man bei HTML einen Container. Bei vielen Programmiersprachen gibt es den Begriff des Rumpfes oder des Scope. Genau wie bei Rümpfen müssen Sie bei Containern darauf achten, dass alle neuen Container, die innerhalb eines Containers geöffnet wurden, auch wieder geschlossen wurden, bevor der äußere Containter geschlossen wird. Vermutlich wird bei HTML von Containern (und nicht von Rümpfen) gesprochen, weil es sich hier tatsächlich um abgeschlossene Bereiche handelt, für die individuell definiert werden kann, an welcher Position einer Webanwendung sie sich befinden sollen. Im Gegensatz dazu definiert ein Rumpf bei einer imperativen Programmiersprache welche Bedeutung in welchem Bereich ein Bezeichner hat.
+
+\subsection{Struktur eines HTML-Skripts}
+
+Sehen wir uns das mal für unser kleines Programm im Detail an: Zu Beginn sehen Sie dort den öffnenden Container <html>. Dieser darf also erst geschlossen werden, wenn alle nachfolgenden Containter geschlossen werden. Und genauso ist es auch: Erst in der letzten Zeile finden Sie den Container </html>.\\
+
+Danach folgt der head-Container. Wie Sie sehen befindet sich innerhalb dieses Containers der title-Container, der definiert, unter welchem Titel die Webanwendung angezeigt wird. Hier werden Sie später auch allgemeine Formatierungen für eine einzelne Webanwendung programmieren.\\
+
+Danach folgt der body-Container. Dieser beinhaltet all das, was auf der Webanwendung angezeigt wird.\\
+
+Anmerkung: Bei HTML benutze ich die Bezeichnung HTML-Skript, weil es sich ja um kein Programm im dem Sinne handelt, dass hier ein Algorithmus umgesetzt wird. Das ist aber keine allgemeingültige Definition; Sie können also ruhig von einem HTML-Programm oder einer HTML-Seite sprechen, wenn Sie sich damit wohler fühlen. Der von mir angesprochene Unterschied zwischen Skript und Programm wird Ihnen spätestens dann deutlich, wenn Sie mit der imperativen Programmierung in PHP beginnen.\\
+
+Kontrolle\\
+
+Sie wissen jetzt, dass jedes HTML-Skript drei Container beinhalten sollte, den html-, den head- und den body-Container. Sie haben richtig gelesen: Es sollte diese Container beinhalten, muss es aber nicht. Das HTML-Skript ließe sich also auch mit den folgenden Zeilen programmieren:\\
+
+<title>Die erste HTML-Webanwendung</title>
+Willkommen zur Einführung in die Programmierung.\\
+
+Aus Gründen der Lesbarkeit sollten Sie dennoch immer die etwas umfangreichere Skriptstruktur mit html-, head- und body-Container verwenden. Leider ist hier die sonst recht gute HTML-Referenz selfhtml nicht eindeutig: So wird dort mal angegeben, dass der head-Container optional ist, mal soll er verpflichtend sein.
+
+\subsubsection{HTML-Referenz: W3Schools}
+
+Bis Anfang 2015 galt SelfHTML als die Standardreferenz für HTML. Leider kann ich hiervon mittlerweile nur noch abraten: SelfHTML ignoriert wie die meisten HTML 4.01-Veteranen alles, was HTML 5 zu einer echten nächsten Version von HTML macht. Wenn Sie sich an SelfHTML orientieren, dann können Sie auch gleich bei HTML 4.01 bleiben.\\
+
+Die einzige Webpräsenz, bei der eine klare Trennung zwischen HTML 4.01 und 5 durchgeführt wird ist zum Jahreswechsel 2015/16 (neben dem W3 Consortium, das die Standards festlegt) die Seite W3Schools.
+
+\subsubsection{Aktuelles zu XHTML und HTML5}
+
+Ein erster Versuch, um semantische Webanwendungen zu entwickeln wurde unter der Bezeichnung XML veröffentlicht. Eine Kombination aus XML und HTML wird als XHTML bezeichnet.\\
+
+Validierung: Unabhängig davon, ob Sie nun ein HTML-Skript, ein XHTML-Skript oder ein HTML5-Skript programmieren, sollten Sie stets den Doctype angeben, denn nur so können Sie Ihren Code durch Software prüfen lassen. Neben der Arbeitserleichterung folgt hieraus auch, dass Sie sich rechtlich etwas absichern: Indem Sie eine validierbare Webanwendung programmieren zeigen Sie, dass Sie nach den aktuellen technischen Standards arbeiten. Und das kann sich im Falle eines Gerichtsverfahrens zu Ihren Gunsten auswirken.\\
+
+Den W3C-Validator finden Sie unter http://validator.w3.org. Hier geben Sie den Link auf die zu prüfende Seite ein und erhalten dann eine Ausgabe über die Validität Ihrer Seite.\\
+
+HTML5 steht kurz für HTML, Version 5. Hier geht es um wesentlich mehr als nur einige neue Funktionalitäten, mit denen die Inhalte einer Webanwendung angenehmer oder effizienter programmiert werden können.\\
+
+Alles was Sie tun müssen, um ein HTML-Skript als HTML5-Skript zu markieren ist das Hinzufügen einer kurzen Zeile am Anfang des Skripts (noch vor dem html-Container):\\
+
+<!doctype html>\\
+
+Und das ist alles. Wenn Sie sich nicht sicher sind, ob Sie wirklich HTML5 programmieren wollen, brauchen Sie sich keine Sorgen zu machen: HTML5-Skripte können Passagen enthalten, die wie bei einer früheren HTML-Version programmiert sind. Diese werden dann wie bei den früheren Versionen ausgeführt.\\
+
+Bei längeren HTML-Skripten oder bei Skriptbefehlen, die nicht selbstredend sind, sollten Sie außerdem Kommentare einpflegen. Kommentare sind Codezeilen, die nicht ausgeführt werden, sondern ausschließlich dazu dienen, um anzuzeigen, was in einem Teil einer Programms oder Skripts passiert. Im Gegensatz zu anderen Containern sieht ein Kommentar wie folgt aus\\
+
+<! - - Anfang des Kommentars>\\
+
+und endet so:\\
+
+<Ende des Kommentars - - >\\
+
+Das bedeutet, dass es möglich ist, einen Kommentar zu verfassen, der Teile des HTML-Skripts umgibt, auf den er sich bezieht. So etwas werden Sie in den meisten Programmiersprachen nicht finden, weil dort ausführbarer Code nicht innerhalb eines Kommentars programmiert werden kann.\\
+
+Möchten Sie einen Kommentar innerhalb einer Zeile abschließen, sieht das so aus:\\
+
+<! - - Gesamter Kommentar - - >\\
+
+Bei Kommentar-Containern gibt es also keinen Abschluss durch den Slash, wie das bei anderen Tags der Fall ist.\\
+
+In der Vergangenheit wurden spezielle Befehle, die nur für den Internet Explorer zugeschnitten waren in Form von Kommentaren einprogrammiert; sollten Sie also in fremdem HTML-Skripten Kommentare der Form if IE … treffen, dann wissen Sie jetzt, worum es dabei geht.\\
+
+\section{Grundaufbau einer Webanwendung}
+
+Jede HTML-Datei beinhaltet eine Doctype Definition und einen HTML-Container, in dem sich ein head- und ein body-Container befindet. In diesem Abschnitt erfahren Sie, wie das in der Praxis aussieht und was es bedeutet.\\
+
+\subsection{Aufgaben}
+
+1.	Öffnen Sie bitte zunächst einen Texteditor wie notepad++. Dieser ist kostenlos und genügt für unseren Kurs vollkommen.
+
+2.	Wenn sie den Editor gestartet haben, öffnet sich in aller Regel beim ersten Mal ein Dokument, in dem Sie verschiedenes über das Programm erfahren. Öffnen Sie in diesem Fall einfach ein neues Dokument. Wechseln Sie nun in Ihr Netzlaufwerk (das hat jeder Studierende im Department Medientechnik) und erstellen Sie dort ein Verzeichnis mit dem Titel PRG. Dann speichern Sie die neue Datei unter dem namen first.html im Verzeichnis PRG im Netzlaufwerk.
+
+3.	Wechseln Sie nun in das Verzeichnis PRG und starten Sie die Datei first.html. Wie Sie sehen öffnet sich ein Webbrowser, aber er zeigt lediglich eine leere Seite an. Aber das ist nur ein Teil der Wahrheit, denn der Browser zeigt ebenfalls den Standort der Datei an: Werfen Sie einen Blick in die Adresszeile und Sie sehen dort die Angabe:
+
+file:///C:/...
+
+4.	Und jetzt sehen Sie etwas, das Sie im ersten Kapitel lesen konnten: Das World Wide Web ist nichts anderes als eine Ansammlung von Dateien, die sich auf Rechnern irgendwo auf der Welt befinden. Und da, wo Sie sonst bei Webanwendung dieses kryptische http://www. ... sehen, steht jetzt eben file: ... 
+
+Außerdem können Sie auf der Registerlasche des Browsers die selbe Angabe (file:...) sehen. Vielleicht ist es Ihnen bei anderen Seiten aufgefallen: Dort steht sonst immer, auf was für einer Seite Sie sich befinden. Aber da Sie in Ihrer Datei noch nicht einprogrammiert haben, wie Ihre Webanwendung heißen soll, kann das hier auch noch nicht stehen.
+
+Nichts desto trotz haben Sie jetzt bereits Ihre erste Webanwendung programmiert: Eine Seite, die in einem Browser angezeigt wird.\\
+
+\subsection{Die Doctype Definition}
+
+Die erste Programmzeile innerhalb eines HTML-Dokuments gibt zwei Dinge an, die gemeinsam als Doctype Definition (kurz DTD) bezeichnet werden:\\
+
+a)	Dies ist ein HTML-Dokument.
+b)	Die HTML-Version, in der das Dokument erstellt wurde.
+
+Bei HTML 4.01 war diese Zeile recht lang und es gab mehr als nur eine Variante. In HTML5 ist sie dagegen recht kurz:\\
+
+<!doctype html>\\
+
+Erst mit dieser Zeile teilen Sie dem Browser mit, dass es sich bei dieser Datei um eine HTML5-Datei handelt. In HTML4.01 konnte die DTD so aussehen: \\
+
+<!DOCTYPE HTML PUBLIC ``-//W3C//DTD HTML 4.01 Transitional//EN``> \\
+
+Da ist die Variante von HTML5 doch deutlich angenehmer, nicht zuletzt weil es nur genau eine Variante gibt.
+
+\subsubsection{Aufgabe}
+
+-	Fügen Sie jetzt diese Zeile an den Anfang Ihres HTML-Dokuments in notepad++, speichern Sie und laden Sie dann die Seite im Webbrowser erneut. (Beim Mozilla Firefox genügt dafür ein Druck auf die Taste F5.)
+
+Wie Sie sehen hat sich an der Darstellung der Seite im Browser nichts geändert. Deshalb hier nochmals der Hinweis: Diese Programmzeile teilt dem Webbrowser lediglich mit, dass es sich hier um eine HTML5-Seite handelt. Da es für den Besucher einer Webanwendung üblicherweise belanglos ist, wie diese Seite programmiert wurde, wird diese Information auch nicht angezeigt. Der Webbrowser hat damit aber eine wichtige Information erhalten, denn bei der Darstellung einer Seite richten sich Webbrowser unter anderem nach den Sprachen und Versionen, in denen Dokumente verfasst sind.
+Übrigens können Sie eine Webanwendung vollständig in HTML4.01 programmieren und dennoch die DTD von HTML5 verwenden, denn HTML5 ist abwärtskompatibel.
+
+\subsection{Die drei Container jedes HTML-Dokuments}
+
+Jetzt kommen wir zu dem Teil, in dem Sie tatsächlich etwas programmieren, das auf der Seite angezeigt wird. Jede Webanwendung hat eine Struktur, die sich aus einen sogenannten Wurzel-Element, einem <head>- und einem <body>-Container zusammensetzt.\\
+
+Lassen Sie sich bitte nicht davon verwirren, dass hier teilweise die Rede von Elementen und teilweise die Rede von Containern ist. Bei der Programmierung in HTML werden beide als Synonyme verwendet, auch wenn die Bedeutung streng genommen nicht die gleiche ist.\\
+
+Bevor ich Sie mit weiteren Erklärungen langweile sehen Sie hier ein einfaches Beispiel für den „Programm“code einer Webanwendung: \\
+
+<!doctype html> 
+
+<html> 
+
+<head> 
+</head> 
+
+<body> 
+</body> 
+
+</html>
+Quellcode 2.1: Eine leere HTML5-Seite.
+
+Wenn Sie das so in Ihren Editor kopieren, speichern und im Browser laden, werden Sie feststellen, dass sich immer noch nichts geändert hat. Das ist kein Wunder, denn damit haben Sie lediglich eine Struktur angelegt und noch keine Inhalte eingefügt.\\
+
+Wie der Name schon sagt ist ein Container etwas, das etwas anderes enthält. Und in HTML programmieren Sie grundsätzlich nach diesem Muster: Sie programmieren Container, in die Sie Container und Inhalte einprogrammieren. Jeder Container kann wiederum beliebig viele Container und Inhalte enthalten usw. usf.\\
+
+Ein Container besteht aus drei Dingen:\\
+
+a)	Einem öffnenden Tag, das definiert, um was für einen Container es sich handelt. Genaue Definitionen werden über die sogenannten Attribute programmiert.
+b)	Dem Inhalt des Containers.
+c)	Einem sich schließenden Tag, bei dem einfach nur ein / vor dem Bezeichner steht, der im öffnenden Tag verwendet wurde. 
+
+Beispiel: \\
+
+Oben im Quellcodebeispiel sehen Sie das Wurzelelement Ihrer Seite. Das ist der html-Container, der zwei weitere Container enthält: Den head-Container und den body-Container. Das öffnende Tag dieses Containers ist <html> und das schließende Tag ist </html>. Dieses Prinzip gilt für alle Elemente eines HTML-Dokuments. Sie werden dennoch Container kennen lernen, die nur aus einem öffnenden Tag zu bestehen scheinen. Der Grund für diese Ausnahmen ist simpel: Es handelt sich dabei um Container, die keinen Inhalt haben.\\
+
+\subsection{Attribute}
+
+Später werden Sie in öffnende Tags noch Attribute einfügen. Diese programmieren Sie ausschließlich ins öffnende Tag. Das schließende Tag beinhaltet nur die Bezeichnung eines Containers. Wenn Sie zum Beispiel das lang-Attribut benutzen und ihm den Wert de zuordnen, sieht das öffnende html-Tag so aus: <html lang=de>. Das schließende html-Tag wäre dann aber immer noch </html>. Der Grund ist einfach: Attribute legen Einschränkungen oder Erweiterungen für alles fest, das sich innerhalb eines Container befindet. Also wäre es unsinnig, wenn Sie am Ende des Containers nochmals programmieren müssten, dass diese Attribute nun nicht mehr gelten.\\
+
+\subsection{Tags}
+
+Ein Tag besteht aus drei Dingen:\\
+
+a)	Einer öffnenden spitzen Klammer	<
+b)	Einem Bezeichner und ggf. einem oder mehreren Attributen, denen jeweils keiner, einer oder mehrere Werte zugeordnet werden.
+c)	Einer schließenden spitzen Klammer	>
+
+\subsubsection{Aufgabe}
+
+-	Dann lassen Sie uns doch ein wenig Inhalt auf unsere Seite bringen. Kopieren Sie einfach den folgenden Quellcode in Ihre Datei, bzw. ergänzen Sie die neuen Zeilen. Dann speichern Sie die Datei und laden Sie mit einem Webbrowser.
+
+-	Wie Sie im Browser sehen, hat sich ein Fehler eingeschlichen, der im Quellcode nicht enthalten ist: Anstelle der Wörter ``Einführung`` bzw. ``hätte`` stehen da ein paar seltsame Zeichen. Was da passiert ist und wie wir das in Ordnung bringen ist Teil des nächsten Abschnitts.
+
+-	Im Quellcode haben Sie im head-Container einen title-Container programmiert. In diesem Container steht first.html. Suchen Sie im Browser nach der Stelle, wo first.html erscheint. Ändern Sie dann zur Kontrolle den Text im title-Container, speichern Sie das Dokument, laden die Seite im Browser neu und prüfen Sie, ob sie wirklich die richtige Stelle gefunden haben.
+
+<!doctype html> 
+<html> 
+<head> 
+<title>first.html</title> 
+</head> 
+
+<body> 
+<h1>Einführung in die Programmierung von verteilten Anwendungen</h1>
+<p>Dies ist ein Absatz... Wer hätte das gedacht?</p> 
+</body> 
+</html>
+Quellcode 2.2: Eine HTML5-Seite ohne Internationalisierung
+
+Kontrolle\\
+
+-	Sie wissen, dass jedes HTML-Dokument aus einer Doctype Declaration sowie den drei Containern html, head und body besteht.
+
+-	Sie haben eine erste Vorstellung davon, was Sie im <head> und was Sie im <body> programmieren.
+
+-	Sie wissen, dass Sie Text im Webbrowser anzeigen können, indem Sie ihn innerhalb des <body>-Containers eingeben.
+
+-	Sie wissen aber noch nicht, wie Sie Webbrowser dazu bewegen können, Umlaute anzuzeigen.
+
+-	Sie verstehen noch nicht genau, wie Sie mit Hilfe von Attributen einzelne Container ändern können.
+
+\subsection{Übersicht über alle Tags}
+
+Wir werden in diesem Kurs nur einen kleinen Teil aller Tags besprechen, die es gibt. Und wir werden hier auch jeweils nur einige wenige Anwendungen besprechen können. Damit Sie aber sinnvolle Webanwendung und Webanwendungen entwickeln können, müssen Sie wissen, wo Sie nachschlagen können, wenn Sie mehr Informationen zu einzelnen Tags suchen. Öffnen Sie dazu die folgende Webanwendung:\\
+
+\url{http://www.w3schools.com/tags/}\\
+
+Hier finden Sie eine vollständige Übersicht über die Tags in HTML. Außerdem finden Sie hier Hinweise darauf, was sich zwischen HTML4.01 und HTML5 geändert hat. Erfahrene HTML-Programmierer werden hier überrascht: Zwar sind alle Bereiche aus HTML entfallen, die mit dem Layout bzw. der Gestaltung zusammen hängen, aber dafür gibt es zum Teil Elemente aus HTML3, die in HTML4 entfernt und in HTML5 wieder hinzugefügt wurden.\\
+
+Wichtige Hinweise:\\
+
+-	Auf www.w3schools.com finden Sie zu jedem Tag Hinweise darauf, welcher Browser das jeweilige Tag unterstützt. Die Angaben dort werden jedoch nicht aktualisiert, sodass der Eindruck entstehen könnte, dass Sie HTML5 praktisch kaum einsetzen können. Das trifft aber nicht zu. Welche Tags tatsächlich von welchem Browser nicht automatisch unterstützt werden und wie Sie dafür sorgen können, dass ein Tag dennoch richtig angezeigt wird, erfahren Sie im Abschnitt zu den sogenannten Polyfills.
+
+-	Leider wird an dieser Stelle häufig auf selfhtml verwiesen. Das ist eine Webanwendung, die sehr detailliert ist, wenn es um HTML4.01 geht. Bezüglich HTML5 ist die Seite leider zurzeit nicht nutzbar. Zu oft werden Sie dort nach dem Lesen eines Abschnitts vor der Frage stehen: Gilt das jetzt immer noch? Deshalb lautet die klare Empfehlung: Nutzen Sie die oben angegebene Seite der W3Schools.
+
+\subsection{Zusammenfassung zu den drei Containern}
+
+Theoretisch wissen Sie jetzt alles, was Sie benötigen, um eine einfache Webanwendung zu erstellen, die ausschließlich Text beinhalten soll. Denn mehr als die DTD und die drei Container brauchen Sie dafür nicht. Aber da wir keine Webanwendung für Zweitklässler entwickeln wollen, machen wir direkt weiter.
+
+\subsubsection{Aufgabe}
+
+-	Erstellen Sie jetzt die folgenden sechs HTML-Dokumente, programmieren Sie jeweils DTD und die drei Container und speichern Sie sie in Ihrem Netzlaufwerk im Verzeichnis PRG ab:
+
+•	arbeitsweg.html
+•	meinCampus.html
+•	meineHobbies.html
+•	meineZiele.html
+•	meinBlog.html
+•	index.html
+
+\section{Barrierefreiheit, Internationalisierung und Lokalisierung}
+
+Dieser Abschnitt vermittelt Ihnen ein paar grundlegende Informationen dazu, wie Sie sicherstellen können, dass Ihre Webanwendung auf den verschiedensten Endgeräten und von den verschiedensten Nutzern genutzt werden kann.\\
+
+Denn viele Entwickler vergessen schlicht, dass eine Webanwendung auf einem Smartphone anders dargestellt wird als auf einem Rechner mit einem 2k-Display, das horizontal ausgerichtet ist. Außerdem nutzen nicht nur hörbehinderte Personen Software, die Ihnen Webanwendung vorliest. Und zu guter Letzt bieten mehr und mehr Browser eine automatische Übersetzung von Webanwendung an.\\
+
+Damit Ihre Webanwendung unter all diesen Bedingungen immer noch gut aussieht, mussten Sie unter HTML4.01 eine ganze Menge Arbeit leisten, die bei HTML5 mit wenigen Befehlen erledigt werden kann.
+
+\subsection{Barrierefreiheit}
+
+Hier geht es darum, eine Webanwendung so zu programmieren, dass Sie auch dann noch gut aussieht, wenn der Nutzer einen starken Zoom-Faktor nutzt oder sich die Webanwendung durch eine Software vorlesen lässt. Darüber hinaus geht es aber auch um Personen, die beispielsweise die Sprache der Webanwendung nicht gut verstehen.
+
+\subsubsection{Aufgabe}
+
+-	Öffnen Sie die Webanwendung der HAW mit Ihrem Smartphone und versuchen Sie nun, über die Links auf der Startseite auf die Seite des Departments Medientechnik zu gelangen.
+
+Jetzt sollte Ihnen klar sein, dass Barrierefreiheit kein belangloses Thema für Randgruppen ist, sondern dass die Missachtung der Barrierefreiheit ein Problem ist, das Nutzer davon abschreckt eine Webanwendung zu nutzen.\\
+
+Es gibt drei einfache erste Prüfungen, um die grundsätzliche Einhaltung der Barrierefreiheit zu prüfen. \\
+
+1.	Es gibt einen kurzen Seitentitel, der kurz und zutreffend ist und die Seite von anderen Seiten unterscheidet.
+
+2.	Jeder Inhalt in einem Container bekommt eine Überschrift. (Ausnahme: Container wie <p>, <div> und ähnliche, die lediglich einen Absatz umfassen sind davon ausgenommen.)
+
+3.	Für jedes multimediale Element gibt es eine alternative Bezeichnung, die Sie mit Hilfe des alt-Attributs festlegen können. 
+
+Den ersten Punkt können Sie jetzt schon umsetzen, zum zweiten und dritten Punkt kommen wir später.\\
+
+Kontrolle\\
+
+-	Sie verstehen, dass es bei Barrierefreiheit nicht nur um die Unterstützung von Menschen geht, die körperlich oder geistig beeinträchtigt sind.
+
+-	Sie wissen vielmehr, dass die Beachtung der Barrierefreiheit wichtig ist, um Nutzer nicht von der eigenen Webanwendung zu vertreiben.
+
+-	Ihnen ist klar, dass dazu wesentlich mehr nötig ist, als die drei Prüfungen, die Sie gerade kennen gelernt haben. (Für diesen Kurs soll das aber als kleine Einführung genügen.)
+
+\subsection{Internationalisierung (kurz i18n) und Lokalisierung (kurz l10n)}
+
+Wenn Sie sich fragen, warum die Abkürzung i18n lautet, hier ist die Antwort: Das englische Wort internationaliziation beginnt mit einem i, hat 18 Buchstaben und endet mit einem n. Auf ganz ähnliche Weise kommen sie von localization zu l10n.\\
+
+Nach der Barrierefreiheit kümmern wir uns nun darum, dass der Browser mit den deutschen Umlauten zurechtkommt. Dazu müssen wir zwei Dinge erledigen. Zum einen müssen wir unsere Seite internationalisieren. Das bedeutet schlicht, dass wir dem Browser mitteilen, dass unsere Seite auf Deutsch verfasst wurde.\\
+
+Danach müssen wir noch die Codierung festlegen, damit der Browser weiß, dass wir z.B. deutsche Umlaute verwenden. Diesen Schritt nennt man Lokalisierung. Im Gegensatz zur Internationalisierung werden Sie die Auswirkung der Lokalisierung direkt auf der Webanwendung sehen.\\
+
+Wie Sie Ihre Webanwendung internationalisieren und lokalisieren erfahren Sie direkt im nächsten Abschnitt.
+
+\section{Der head-Container, Meta-Daten und Attribute}
+
+Sie wissen, dass unser html-Container (das Wurzelelement) die beiden Container head und body enthält. Wenn Sie sich nun die Webanwendung ansehen, dann können Sie sich schon denken, was die beiden unterscheidet: Im head steht alles, was nicht auf der Webanwendung selbst angezeigt wird. Hier finden sich zusätzliche Informationen und allgemeine Definitionen, die für die gesamte Webanwendung gelten. Beispielsweise wird hier die Lokalisierung festgelegt. Solche allgemeinen Definitionen, die für eine ganze Webanwendung gelten, werden auch als Meta-Daten bezeichnet. Hier der entsprechende Container:\\
+
+<meta charset=utf-8 />\\
+
+Dieser meta-Container legt fest, dass als Codierung für unsere Webanwendung UTF-8 verwendet werden soll. Was das ist lernen Sie in der Veranstaltung Informatik für Medientechnik bzw. Informatik 1 für Media Systems.\\
+
+Außerdem sehen Sie, dass der Container am Ende einen / enthält. Dafür gibt es einen einfachen Grund: Wenn ein Container keinen Inhalt hat, dann können Sie ihn so abschließen und brauchen kein eigenständiges schließendes Tag programmieren. In HTML5 ist das nur dann nötig, wenn ein Container im Regelfall einen Inhalt hat. Hier können Sie also genauso gut die folgende Zeile programmieren:\\
+
+<meta charset=utf-8>\\
+
+Ein Attribut ist eine Einschränkung oder Erweiterung, die für alles gelten soll, das Teil eines Containers ist. Es handelt sich hier entweder um einzelne Bezeichner oder um Bezeichner, zu denen noch eine genaue Festlegung hinzugefügt wird.\\
+
+Nun wollen wir unsere Webanwendung internationalisieren. Das Attribut für Sprache lautet lang.\\
+
+Da wir aber nicht nur allgemein festlegen wollen, dass eine Sprache verwendet wird (das wäre ja sinnlos), müssen wir noch festlegen, dass die Sprache Deutsch sein soll. Und das tun wir, indem wir lang=de als Attribut festlegen.\\
+
+Im Gegensatz zur Lokalisierung müssen wir die Internationalisierung durch ein Attribut durchführen. Damit ist es kein eigener Container, sondern es legt einen Container genauer fest. Deshalb wird Sie auch nicht im als Container im head-Container abgelegt, sondern es handelt sich um ein Attribut des html-Containers.\\
+
+Wenn Sie die nötigen Änderungen an Ihren HTML-Dokumenten durchgeführt haben, sieht das also so aus:\\
+
+<!doctype html> 
+<html lang=de> 
+<head> 
+<meta charset=utf-8>
+<title>first.html</title> 
+</head> 
+
+<body> 
+<h1>Einführung in die Programmierung von verteilten Anwendungen</h1>
+<p>Dies ist ein Absatz... Wer hätte das gedacht?</p> 
+</body> 
+</html>
+Quellcode 2.3: HTML5-Dokument mit i18n und l10n
+
+Sie wollen wissen, welche Codierung Sie für Sprachen wie Farsi (Afghanistan) oder Chinesisch brauchen? Genau dieselbe wie für Deutsch. Eine weitere Anpassung im Rahmen der Lokalisierung ist also nicht nötig. Aber Sie müssen die Internationalisierung in diesen Fällen über das lang-Attribut anpassen.
+
+\subsection{Verwendung von Escape-Sequenzen}
+
+Vor HTML5 galt die Aussage, dass Sie grundsätzlich davon ausgehen mussten, dass Sie Sonderzeichen einer Sprache mit sogenannten Escape-Sequenzen programmieren mussten. Diese werden Ihnen auch weiter in HTML-Quellcode begegnen, weil Sie ja beispielsweise eine spitze Klammer nicht als Text in HTML einfügen dürfen.\\
+
+Standardmäßig beherrschen Webbrowser ausschließlich die Zeichen, die in der sogenannten ASCII-Tabelle aufgeführt sind. Für HTML4.01 bedeutet das: Nur Zeichen, die im englischen Alphabet vorkommen können direkt auf einer Webanwendung angezeigt werden. Alle anderen müssen mit einer sogenannten Escape-Sequenz ausgedrückt werden. Diese beginnt mit einem \&-Zeichen und endet mit einem Semikolon. Das deutsche ß mussten Sie unter HTML4.01 mit der Escape-Sequenz \&szlig; programmieren.\\
+
+Weiterhin gab es noch die Möglichkeiten, Escape-Sequenzen mit der Nummer der Unicode-Tabelle zu programmieren. Beispielsweise steht \&\#x9fb9; für ein chinesisches Schriftzeichen. Stellen Sie sich einmal vor, Sie müssten auf diese Weise eine Webanwendung Zeichen für Zeichen programmieren...\\
+
+Auch hier zeigt sich, dass die Entwickler beim W3C mit HTML5 einen Standard veröffentlicht haben, der wirklich sinnvolle Änderungen einführt, die auch das Programmieren von Webanwendung deutlich vereinfacht, ohne dabei die Funktionalität oder das Layout von Seiten zu beschränken. Vielmehr ist das Gegenteil der Fall.\\
+
+Es folgen einige Escape-Sequenzen, die Sie auch weiterhin benötigen werden:\\
+
+
+\&amp;	\& (kaufmännisches Und)
+\&quot;	`` (quotation mark)
+\&lt;	< (less than)
+\&gt;	> (greater than)
+Tabelle 2.1: Wichtige Escape-Sequenzen\\
+
+Wenn Sie also innerhalb innerhalb einer HTML-Seite den folgenden Satz angeben wollen:\\
+ 
+„Die Zeichenfolge <p> öffnet einen Absatz-Container in HTML“, 
+dann müssen Sie das so einprogrammieren:\\
+Die Zeichenfolge \&lt;p\&gt; öffnet einen Absatz-Container in HTML.
+Unter HTML4.01 hätten Sie zusätzlich für das ö von öffnet die Escape-Sequenz \&ouml; eingeben müssen. Aber das ist wie beschrieben in HTML5 dank Internationalisierung und Lokalisierung nicht mehr nötig.
+
+\section{HTML5: Anführungszeichen sind weitestgehend optional}
+
+Wenn Sie sich ältere HTML-Kurse ansehen, werden Sie feststellen, dass bei Wertzuordnungen wie lang=de der zugeordnete Wert immer in Anführungszeichen steht: <html lang=``de``> Das ist bei HTML5 nicht mehr zwingend vorgeschrieben. \\
+
+Wenn Sie allerdings Werte zuordnen, die Leerzeichen beinhalten oder eine Webanwendung für veraltete Browser entwickeln wollen, dann sollten Sie in jedem Fall Anführungszeichen verwenden.
+
+\section{Strukturen von HTML5-Dokumenten}
+
+Auch wenn das offensichtlich sein sollte, sei hier betont: Alle Container, die in diesem Abschnitt besprochen werden können ausschließlich im body-Container eingesetzt werden.\\
+
+All diese Elemente haben in HTML5 eine feste Bedeutung, die insbesondere im Rahmen der Barrierefreiheit von Belang ist. Bei HTML4.01 mussten Webentwickler sich noch mit div-Containern behelfen, denen Sie nicht-standardisierte Attribute zuordneten. Die Folge bestand darin, das Browser die vom Entwickler vorgesehene Struktur häufig ignorierten.
+
+\subsection{header, footer, main und aside}
+
+Mit diesen vier Containern können Sie eine grobe Struktur vorgeben: \\
+
+-	Im <header> (nicht zu verwechseln mit dem <head>) können Sie beispielsweise ein Unternehmenslogo oder ähnliches unterbringen.
+
+-	Der <footer> dient dann dazu, um beispielsweise einen Verweis auf das Kontaktformular, das Impressum und ähnliches aufzunehmen.
+
+-	Im <main> sollen sich alle Inhalte befinden, die auf der Webanwendung zentral angezeigt werden sollen.
+
+-	Der <aside>-Container ist dann für ergänzende Inhalte zu den Inhalten im <main> gedacht.
+
+\subsection{article und section}
+
+Diese beiden Container kommen vorrangig im <main> und <aside> zum Einsatz. Das Konzept sieht wie folgt aus: Wenn Sie wie bei einem Buch die Inhalte Ihrer Webanwendung in Kapitel und Unterkapitel unterteilen wollen, dann beginnen Sie mit einem <article>. Sobald ein Unterkapitel beginnt, fügen Sie innerhalb dieses Containers einen <section>-Container ein. Wenn Sie dann noch weiter unterteilen wollen, fügen Sie an der entsprechenden Stelle des <section> einen <article> ein usw. usf. Wichtig  ist nur, dass Sie zum einen mit <article> beginnen, und dass Sie die beiden Container-Typen im Wechsel verwenden, wenn Sie jeweils eine weitere unter-Struktur (Unter-Unter-Kapitel zum Unter-Kapitel) beginnen wollen.
+
+\subsection{h1 bis h5}
+
+Alle Container, die Sie in den beiden vorigen Abschnitten kennen gelernt haben, sollen in HTML5 mit einer Überschrift (engl. heading) beginnen. Leider gibt es kein allgemeines <h>-Element, mit dem Sie eine Überschrift definieren können.\\
+
+Vielmehr müssen Sie entsprechend der Struktur, die Sie z.B. durch article und section konstruiert haben den passenden Container (<h1> bis <h5>) auswählen. Durch diese Auswahl legen Sie fest, wie die jeweilige Überschrift angezeigt wird. <h1> ist eine Kapitelüberschrift, <h2> die Überschrift eines Unterkapitels, usw.
+
+\subsection{p}
+
+Wenn Sie einen article oder eine section in mehrere Absätze unterteilen wollen, dann nutzen Sie dafür den <p>-Container. Es gibt zwar auch noch den <div>, der bei HTML4.01 sehr oft verwendet wurde, aber alles, wofür der dort verwendet wurde wird in aller Regel durch die Container erfüllt, die in den beiden ersten Abschnitten aufgezählt wurden.\\
+
+Der <div> ist der einzige Container, für den keine semantischen Merkmale festgelegt werden können. Alleine deshalb sollten Sie im Regelfall <p> verwenden. Bitte missverstehen Sie das nicht: Der Inhalt eines div-Containers kann selbstverständlich auch semantische Informationen enthalten, der Container selbst dagegen nicht.\\
+
+<h1> bis <h5>, <div> und <p> gab es bereits in HTML4.01. In HTML5 haben Sie aber zusätzlich die beschriebenen Funktionen im Rahmen des semantic web.
+
+\subsection{nav}
+
+Dieser Container ist dafür gedacht, die Navigation (also eine Sammlung der wichtigsten Links einer einzelnen Seite) zu bündeln. Im Rahmen dieses Kurses werden wir uns damit nicht auseinander setzen.
+
+\section{Polyfills}
+
+Das englische Wort Polyfill bedeutet schlicht Spachtelmasse. Es geht hier also um Programm-fragmente, die dazu dienen, um Lücken aufzufüllen. Sie werden immer wieder auf Möglichkeiten von HTML5 treffen, die von einzelnen Webbrowsern nicht oder nicht vollständig unterstützt werden. Wenn Sie dann einen Container programmiert haben, wird der im betreffenden Browser nicht wie gewünscht angezeigt und seine Elemente werden wie bei HTML4.01 relativ willkürlich platziert.\\
+
+Aber das ist kein echtes Problem, denn für die meisten dieser Fälle gibt es eine Lösung, die Sie per Copy-Paste in Ihre Webanwendung kopieren können. Und diese Lösungen werden als Polyfill bezeichnet.\\
+
+Wichtig ist hier nicht, dass Sie sich merken, für welche Fälle Sie ein Polyfill benötigen, denn das ändert sich ja kontinuierlich mit jeder neuen Version der verschiedenen Browser. Wichtig ist vielmehr, dass Sie sich merken, auf welcher Seite Sie prüfen können, ob Sie ein Polyfill benötigen und wo Sie es bekommen:\\
+
+-	Auf www.caniuse.com können Sie für jeden HTML5-Container prüfen, in welchem Browser er unterstützt wird. Häufig finden Sie bei den einzelnen Containern auch Verweise auf Seiten, auf denen Sie ein passendes Polyfill finden.
+
+-	Auf www.html5please.com finden Sie eine Vielzahl an Polyfills.
+
+Merken Sie sich dazu den folgenden kurzen Dialog: 
+-	What can I use?
+-	HTML5, please. 
+Denn damit haben Sie sich schon fast die URLs der beiden Seiten gemerkt.
+
+\subsection{Einbindung von Polyfills - <script>-Container}
+
+Polyfills werden in der Sprache JavaScript programmiert. Sie brauchen sich jedoch keine Gedanken zu machen, wenn Sie diese Sprache nicht kennen. Denn Sie müssen lediglich einen <script>-Container in Ihren <html>-Container einfügen. Sämtlichen JavaScript-Code, den Sie verwenden wollen, müssen Sie lediglich in diesen <script>-Container kopieren und schon wird er auf Ihrer Webanwendung angewendet.\\
+
+Wichtig ist dabei nur, dass Sie jeweils genau die Bezeichnungen für Container verwenden, die bei HTML5 gelten. Denn genau wie CSS ändern Polyfills die Art, wie ein bestimmter HTML-Container dargestellt wird. Das geht aber nur, wenn die Container die richtige Bezeichnung haben. Sollten Sie sich also vertippen und anstelle des <aside>-Containers einen <aseid>-Container programmieren, dann wird Ihnen ein Polyfill, dass die Darstellung des <aside>-Containers sicherstellt nichts nützen.\\
+
+Auch hier wieder ein Hinweis für fortgeschrittene HTML-Programmierer: In HTML4.01 mussten Sie für die Verwendung von JavaScript noch eine Zeile im <head>-Container erstellen, die dem Browser mitteilt, dass Scripte in JavaScript (oder einer anderen Scriptsprache) erstellt werden. Das ist bei HTML5 nicht mehr nötig, weil hier JavaScript die Standardprogrammiersprache  ist.
+
+\section{Zusammenfassung}
+
+Die folgenden beiden HTML-Dokumente zeigen, wie Sie mit den bisher vorgestellten HTML5-Elementen eine einfache Webanwendung entwickeln können. Wichtig: Bislang haben Sie noch keine Möglichkeit kennen gelernt, um\\
+
+-	Links auf andere Seiten zu erstellen,
+-	Bilder und andere multimediale Inhalte einzufügen oder
+-	die Webanwendung semantisch zu machen.
+
+Aber keine Sorge, all diese Punkte und noch viel mehr werden wir in Kürze behandeln.\\
+
+Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusammengefasst ist. Die Absätze wurden deutlich gekürzt, damit Sie jeweils sehen können, wie die Programmierung aussehen kann.\\
+
+<!doctype html> 
+<html lang=de> 
+<head> 
+<meta charset=utf-8>
+<title>PRG - Vorwort</title> 
+</head> 
+
+<body> 
+<header>
+<!-- Hier später das Logo der Webanwendung einfügen -->
+</header>
+
+<main>
+<h1>Vorwort</h1>
+<p>Ein häufiges Missverständnis besteht darin, dass Programmierung und Informatik miteinander verwechselt werden. ....</p> 
+</main>
+
+<footer>
+<!-- Hier später den Link auf das Impressum einfügen. -->
+</footer>
+
+<aside>
+<article>
+<h1>Zusammenfassung</h1>
+<p>Informatiker entwickeln Konzepte und Modelle, um Ideen möglichst effizient umzusetzen. Dabei spielt es keine Rolle, ob diese Konzepte mit einem Computer umsetzbar sind.
+</p>
+<p>Programmieren sind Menschen, die Konzepte und Modelle in eine Programmiersprache umsetzen.
+</p>
+</article>
+</aside>
+</body> 
+</html>
+
+<!doctype html> 
+<html lang=de> 
+<head> 
+<meta charset=utf-8 />
+<title>PRG - WWW und semantic Web</title> 
+</head> 
+
+<body> 
+<header>
+<!-- Hier später das Logo der Webanwendung einfügen -->
+</header>
+
+<main>
+<article>
+<h1>Vorwort</h1>
+<p>Programmierveranstaltungen bereiten Sie in aller Regel darauf vor, Programme für einen Computer zu  ....</p> 
+<section>
+<h2>Programmierung von Webanwendung und Webapplicationen</h2>
+<p>Die bekannteste Markup Language ist HTML, die HyperText Markup Language. ...</p>
+<p>Wie gesagt definieren Sie in einer Markup Language lediglich  ...</p>
+</section>
+<section>
+<h2>Das semantische Web</h2>
+<p>Bis hierher haben Sie nur über Dinge gelesen, die Sie unter  ...</p>
+<p>Sehen wir uns das mal im Detail an:</p>
+<article>
+<h3>Syntax und Semantik </h2>
+<p>Den einen dieser Begriffe haben Sie wahrscheinlich in der Schule kennen und ...</p>
+<p>Damit kommen wir zur Semantik. Mit Semantik bezeichnen wir ...</p>
+<p>Aber es gibt einen sehr großen Unterschied zwischen  ...</p>
+<p>Stellen Sie sich nun die folgende Situation vor, ...</p>
+</article>
+</section>
+</article>
+</main>
+
+<footer>
+<!-- Hier später den Link auf das Impressum einfügen. -->
+</footer>
+
+</body> 
+</html>
+
+Quellcode 2.4: HTML5 mit i18n, l10n und einigen der neuen HTML5-Containern.
+
+\subsection{Hausaufgabe}
+
+Sie haben vorhin sechs Dateien (arbeitsweg.html usw.) erstellt. Erweitern Sie diese Seiten zum nächsten Mal wie folgt:\\
+
+-	Internationalisieren und Lokalisieren Sie jede Seite.
+
+-	Erstellen Sie für jede Seite eine grundlegende Struktur, bei der Sie insbesondere sämtliche hier vorgestellten HTML5-Container sinnvoll verwenden.
+
+-	Füllen Sie Ihre Seiten mit Inhalten, die zum Seitentitel passen.
+
+-	Wenn Sie irgendwelche Inhalte wie Spiele, Videos, Bilder usw. einfügen wollen, dann tragen Sie an der entsprechenden Stelle einen Platzhalter ein. (Z.B. „Einzufügen: Bild von Horst“, „Hier mein geniales Gitarrensolo einbauen.“ usw. usf.) Wichtig: Es spielt keine Rolle, ob Sie sich zutrauen, die entsprechenden Inhalte selbst zu entwickeln. Lassen Sie einfach Ihrer Phantasie freien Lauf.
+
+-	Lassen Sie die Datei index.html vorerst so, wie Sie ist.          
+
+-	Suchen Sie nach einem Polyfill und programmieren Sie es ein, damit der <aside>-Container in den folgenden Browsern „richtig“ angezeigt wird: Firefox, Internet Explorer, Safari, Edge
+
+\section{Hyperlinks}
+
+Vorhin haben Sie gelernt, dass das Protokoll zur Übertragung von Webanwendung HyperText Transfer Protokoll heißt. Sie wissen bereit, dass das Wort Protokoll nur eine Bezeichnung für eine Vereinbarung darüber, wie etwas zu tun ist. In diesem Fall geht es also um eine Vereinbarung darüber, wie Hypertexte übertragen (transferiert) werden sollen. Also kommen wir kurz dazu, was denn nun wiederum Hypertexte sind und was die mit Webanwendung zu tun haben.\\
+
+Die Antwort ist ganz einfach: Im Gegensatz zu einem Buch beinhaltet eine Webanwendung Kreuzverweise, denen Sie folgen können. Diese Verweise kennen Sie umgangssprachlich als Links. Eine Webanwendung ist also mehr als nur eine Ansammlung von Texten wie bei einem Buch. Und aus diesem Grund wurde das, was wir heute Webanwendung nennen, in der Zeit als Hypertext bezeichnet, als das WWW gerade erst entwickelt wurde. Wenn Sie also in HTML programmieren, dann programmieren Sie Hypertext. Nur nennt das heute kaum noch jemand so. Im Namen des Protokolls HTTP lebt dieser Begriff wahrscheinlich noch sehr lange weiter.\\
+
+Damit kommen wir zu den Links, die ursprünglich als Hyperlinks bezeichnet wurden. Das englische Wort Link bezeichnet ja allgemein eine Verbindung. Dementsprechend bezeichnet ein Hyperlink eine Verbindung zwischen zwei Hypertexten. Jetzt aber genug über Begriffe, schließlich wollen Sie wissen, wie Sie einen Link programmieren können. Warum der so heißt, wie er heißt, dürfte da für Sie nebensächlich sein.
+
+\subsection{Anker}
+
+Auch wenn wir hier in Hamburg sind, wo Sie am Hafen Anker in Hülle und Fülle finden, reden wir an dieser Stelle über Teile einer Webanwendung, wenn wir über einen Anker reden. Anker sind bei HTML Container, auf die ein Link verweisen kann. In anderen Worten: Wenn Sie in Ihrem HTML-Dokument einen Anker definieren, dann können Sie von einer beliebigen anderen Stelle aus auf diese Stelle verweisen. Sie können dann also an einer beliebigen Stelle einen Link einprogrammieren, mit dem ein Nutzer genau bei einem bestimmten Anker landet.\\
+
+Wie alles andere in HTML waren Anker ursprünglich vollwertige Container. Deshalb können sie auch als eigenständige Container programmiert werden. Sinnvoller ist es allerdings, Container mittels des id-Attributs als einen Anker zu programmieren. Hier ein Beispiel für einen Hypertext, in dem ein Überschrift-Container als Anker programmiert wurde:\\
+
+...
+<main>
+<article>
+<h1>Mein leckerstes Fleischgericht</h1>
+<p>Dieses Rezept habe ich von meiner Oma, die ...</p>
+<p>Als sie dann 1972 in ...</p>
+<section>
+<h2 id=blanchieren>Blanchieren und andere Zubereitungsarten</h2>
+<p>Und dann sagte sie ...</p>
+</section>
+... 
+Quellcode 2.5: Verankerung mittels des id-Attributs
+
+Auch wenn es naheliegend ist: In einem HTML-Dokument darf jedes id-Attribut nur einmal verwendet werden. Das heißt nicht, dass Sie jeweils nur einen Anker programmieren dürfen, sondern dass Sie z.B. innerhalb eines HTML-Dokuments nur einmal id=blanchieren einprogrammieren dürfen.
+
+\subsubsection{Aufgabe:}
+
+-	Programmieren Sie einige Anker in Ihre HTML-Dokumente.
+
+\subsection{Links}
+
+Es gibt drei wichtige Varianten von Links, die aber im Großen und Ganzen gleich programmiert werden.\\
+
+Wenn Sie auf eine andere Seite verlinken wollen, dann nutzen Sie dazu den Container <a href ...>. Das a am Anfang ist noch ein Überbleibsel aus der Zeit, als Anker in Form das <a>-Containers programmiert wurden. Wie gesagt wird dafür heute das id-Attribut verwendet.\\
+
+Hier die drei genannten Varianten:\\
+
+1.	Sie wollen auf einen Anker verlinken, der sich im selben HTML-Dokument befindet, aus dem heraus Sie ihn verlinken wollen. Bsp.: Sie haben ein kleines Glossar auf Ihrer Seite, in dem Sie den Anker „blanchieren“ einprogrammiert haben. Ein Nutzer soll innerhalb dieses Glossars zum Anker springen können. Dann sieht der Link-Container so aus:
+
+<a href=blanchieren> Beliebiger Text, der auf der Webanwendung unterstrichen angezeigt wird und damit anzeigt, dass hier ein Link vorhanden ist. </a>
+
+2.	Sie wollen auf eine andere Webanwendung verlinken. Dann tragen Sie nach dem Gleichzeichen die vollständige URL ein. (Was eine URL ist, klären wir gleich.) Im folgenden Beispiel programmieren wir einen Link auf die Webanwendung des Departments Medientechnik:
+
+<a href=http://www.mt.haw-hamburg.de>Zum Department Medientechnik</a>
+
+3.	Nehmen wir an, Sie wollen dagegen auf einen Anker auf einer anderen Seite verweisen. Dann geben Sie zunächst die URL der Seite an, gefolgt von einem Hash (das ist dieses Zeichen: \#) und gefolgt vom Namen des Ankers. Nehmen wir an, die Seite heißt meineRezepte.html und der Anker heißt kohlroulade. Dann könnte der Link so aussehen:
+
+Zu meinem Rezept für <a href=meineRezepte.html\#kohlroulade>Kohlrouladen</a>.
+
+\subsubsection{Aufgabe:}
+
+-	Programmieren Sie jetzt einige Links auf die verschiedenen Anker Ihrer Webanwendung.
+Sie haben doch die letzte Aufgabe erfüllt, in der Sie Anker programmieren sollten, nicht wahr?
+
+\subsection{Verlinkungen als expliziter Download}
+
+Bei HTML4.01 bewirkt das Anwählen eines Hyperlinks, dass der Browser versuchen wird, die Datei zu öffnen. Erst wenn er feststellt, dass es sich um ein Format handelt, dass er nicht öffnen kann, wird er einen Download anbieten. Mit HTML5 wurde für <a href>-Container das download-Attribut eingeführt. Darüber können Sie explizit angeben, dass ein Link heruntergeladen werden soll.\\
+
+Wenn Sie diesem Attribut einen Namen als Wert übergeben, dann geben Sie dem Browser vor, unter welchem Namen die Datei gespeichert werden soll. Das ist vor allem dann von Vorteil, wenn der Dateiname eher kryptisch ist.\\
+
+
+<a href=DC9287349723.jpg download=FenderAmericanVintage.jpg>Foto meiner Gitarre</a>
+Quellcode 2.6: Expliziter Download eines Hyperlink mit Vergabe einer neuen Dateibezeichnung.
+
+\subsection{Hausaufgabe:}
+
+-	Erstellen Sie einige Bilddateien, damit Sie diese nutzen können, um explizite Links in Ihrem HTML-Dokumenten einprogrammieren können.\\
+
+Wichtig: Sie müssen diese Bilddateien selbst erstellt haben und dürfen keine rechtlich geschützten Gegenstände aufnehmen. Sie sollten ebenfalls darauf achten, dass keine Personen auf den Bildern zu sehen sind, außer wenn Sie das schriftliche Einverständnis dieser Personen haben. Denn auch wenn die Bilddateien vorerst nicht veröffentlicht werden sollen, könnten Sie ansonsten rechtliche Probleme bekommen, bei denen durchaus Bußgelder im vierstelligen Bereich drohen.\\
+
+Diesen Hinweis können Sie auf alle Daten und Dateien beziehen, mit denen Sie arbeiten. Es spielt hier zunächst keine Rolle, ob sie Dateien selbst erstellen oder „nur“ weiterverwenden. Auch wenn Sie sie gar nicht veröffentlichen kann es teuer werden: Die Rechtslage ist hier sehr schnell gegen sie. Mehr darüber lernen Sie in der Veranstaltung Medienrecht. Wenn Sie hier wie unsere Studierenden in Media Systems von einem Anwalt unterrichtet werden, dann können Sie sich freuen, denn der kann Ihnen nicht nur erklären, wie die Rechtslage auf dem Papier ist, sondern auch wie tatsächlich im Gerichtssaal entschieden wird und was all diese Gesetzestexte bedeuten.
+
+\subsection{URLs – absolute und relative Adressen}
+
+Wenn Sie im WWW unterwegs sind, rufen Sie Seiten wie www.haw-hamburg.de auf. Eine solche Adresse wird als Uniform Resource Locator (kurz URL) bezeichnet. Aber auch wenn das Protokoll angegeben wird (wie bei http://www.haw-hamburg.de) und in einer Reihe weitere Fälle spricht man von einer URL. Auch „Adressangaben“, die sich auf Dateien auf Ihrem Computer beziehen werden als URL bezeichnet. Kurz gesagt ist eine URL eine standardisierte Angabe darüber, wo eine Datei zu finden ist.\\
+
+Eine absolute URL ist nun eine URL, die den vollständigen Pfad zu einer Datei angibt. (Zur Erinnerung: Das WWW ist nichts als eine Ansammlung von Dateien auf Rechnern, die weltweit vernetzt sind.) \\
+
+Bei URLs, die nicht auf einen Dateinamen enden, suchen Webbrowser automatisch nach einer Datei namens index.html. Deshalb ist es wichtig, dass Sie bei einer Webanwendung immer eine Datei index.html einprogrammieren.\\
+
+Aber wenn Sie beispielsweise eine Webanwendung programmieren, die aus mehreren HTML-Dokumenten besteht, dann brauchen Sie für einen Link von einem dieser Dokumente zum anderen nicht die absolute URL angeben. Nehmen wir an, alle HTML-Dokumente Ihrer Seite würden innerhalb eines Verzeichnisses liegen. Dann brauchen Sie nur den Dateinamen des HTML-Dokuments als URL angeben, auf das Sie verlinken wollen. Eine solche URL bezeichnet man auch als relative URL.\\
+
+Wichtig ist aber vor allem, dass Sie grundsätzlich verstehen, was eine URL ist und wie sie syntaktisch richtig geschrieben wird.
+
+\section{Formulare}
+
+Formulare sind Bereiche einer Webanwendung, über die Nutzer Daten per Tastatur oder Maus eingeben können. Interaktive Elemente wie Spiele können auch dazu gehören.\\
+
+Wie Sie wissen können Sie mit HTML lediglich Container definieren, deren Darstellung über CSS festgelegt wird. Wenn Sie dann noch Nutzereingaben verarbeiten wollen, benötigen Sie zusätzlich eine Programmiersprache wie PHP oder JavaScript.\\
+
+Da Sie also mit HTML alleine eine Nutzereingabe nicht verarbeiten können macht es scheinbar wenig Sinn, in HTML Formulare zu erstellen. Auf der anderen Seite wird ja in HTML definiert, aus welchen Elementen eine Webanwendung zusammengestellt wird. Und da auch Formulare solche Elemente sind bzw. aus solchen Elementen zusammengestellt werden, müssen wir uns bei der Programmierung in HTML mit Formularen beschäftigen.
+
+\subsection{Elemente eines Formulars}
+
+Wie alles andere in HTML programmieren wir auch Formulare  als Container. Hier ist es der <form>-Container.\\
+
+Wie gewohnt können Sie über das id-Attribut ein Formular zu einem Objekt im Sinne des DOM machen, das einen Namen hat und auf das verlinkt werden kann.\\
+
+<form id=registrierung>
+<!- - Hier werden die einzelnen Eingabemöglichkeiten von Nutzern einprogrammiert. - ->
+</form>
+Quellcode 2.7: Ein leeres Formular\\
+
+Der <form>-Container ist das Wurzelelement für Formulare, so wie der <html>-Container das Wurzelelement für HTML-Dokumente ist: Alles, was ein Nutzer eingeben darf oder soll wird einfach in Form verschiedener Container in den <form>-Container einprogrammiert. Sie können in jedem HTML-Dokument beliebig viele <form>-Container programmieren.\\
+
+Die Grundidee eines Formulars ist, dass Nutzer hier verschiedene Angaben machen und Optionen anwählen können, die dann gewissermaßen als ein Paket verarbeitet werden. Deshalb brauchen Sie in jedem Formular ein Element, das einzig dafür da ist, dass der Nutzer bestätigt, dass alle Daten des jeweiligen Formulars abgeschickt werden sollen. Und auch wenn Sie beliebig viele Formulare auf einer Seite programmieren können, sollten Sie möglichst nicht zu viele individuelle Formulare programmieren, da Nutzer sonst mehr damit beschäftigt sind, die vielen Formulare einzeln abzusenden, als damit, das nötige Formular auszufüllen.\\
+
+Später werden die Eingaben von Nutzern wie beschrieben an Programme weiter gegeben, die z.B. in PHP oder JavaScript programmiert wurden. Diese Datenübergabe steuern Sie dann durch zwei Attribute des <form>-Containers: Das action-Attribut gibt die URL des Programms an, das steuert, wie mit den Eingaben des Nutzers umgegangen werden soll. Das method-Attribut ist für die Übertragung per HTTP wichtig und steuert, wie die Daten an das Programm übertragen werden. Da wir uns momentan auf die Programmierung eines Formulars in HTML kümmern, dessen Eingaben noch nicht von einem Programm verwendet werden sollen, lassen wir diese Attribute vorerst außen vor.\\
+
+Wie gewohnt wird die genaue Darstellung bzw. die Anordnung der Elemente im Webbrowser später über CSS programmiert.\\
+
+Wichtig: Im Gegensatz zu HTML4.01 bietet Ihnen HTML5 eine Vielzahl an Möglichkeiten, damit Sie prüfen können, ob die Eingabe eines Nutzers valide ist. Bei einem Datum ist es dann beispielsweise unmöglich, den 32. Dezember einzugeben. Die entsprechenden Kontrollfunktionen mussten Sie vor HTML5 mithilfe einer Programmiersprache wie PHP oder JavaScript selbst programmieren.
+
+\subsection{Das name-Attribut und das id-Attribut – Sonderfälle in Formularen}
+
+Innerhalb eines <form>-Containers erstellen Sie für jede Eingabemöglichkeit einen weiteren Container. Damit Sie die Eingaben später weiter verwenden können, müssen Sie bei vielen Containern ein name-Attribut programmieren, dessen Wert innerhalb des <form>-Containers nur einmal vorkommen darf. \\
+
+Wenn Sie sich jetzt wundern, warum hier nicht mehr das id- sondern das name-Attribut verwendet werden muss: Das id-Attribut wurde mit HTML5 so erweitert, dass Elemente einer Webanwendung als Objekte in einer objektorientierten Sprache verwenden werden können. Das name-Attribut wird für die Übergabe von Nutzereingaben eines Formulars an ein Programm verwendet. Deshalb gibt es bei Formularen beide Attribute (name und id).\\
+
+Bei allen imperativen Programmiersprachen werden Werte gespeichert, indem sie jeweils einer Variablen zugeordnet werden. Eine Variable hat einen Bezeichner und einen Typ. In diesem Kurs verwenden wir den Begriff des Bezeichners auch um Verwechselungen mit dem name-Attribut zu vermeiden. Bei den meisten imperativen Programmiersprachen müssen Sie den Bezeichner festlegen, bevor Sie ihn nutzen dürfen. Danach können Sie mit dem Wert der Variable an mehreren Stellen etwas tun. Das macht vor allem dann Sinn, wenn ein Wert sich immer wieder ändern kann oder er an vielen Stellen innerhalb eines Programms geändert werden kann bzw. soll. \\
+
+Der Typ einer Variablen sagt etwas darüber aus, um was für eine Art von Variable es sich handelt. Für Sie und mich ist es beispielsweise klar erkennbar, ob eine Zeichenfolge nun ein Text ist oder ein Datum, eine Rechenaufgabe oder etwas anderes. Für einen Computer ist das nicht klar. Ein Computer kann z.B. nicht unterscheiden, ob die Zeichenfolge 10 die Zahl 10 oder die Zahl 2 (binär 10) oder der Text 10 sein soll; all diese Interpretationen werden innerhalb des Computers unterschiedlich gespeichert und verarbeitet. Deshalb gibt es bei der Nutzung von Variablen innerhalb eines Computerprogramms immer einen Typ für jede einzelne Variable.\\
+
+Wichtig: In Sprachen wie Java wird der Typ für jede Variable vom Programmierer festgelegt und kann sich dann nicht mehr ändern. Diese nicht-Änderbarkeit des Datentyps einer Variablen wird als statische Typisierung bezeichnet. Daneben gibt es noch die dynamische Typisierung. Hier wird der Typ einer Variablen von der Programmiersprache verwaltet und bei Bedarf geändert. Schon vorweg sei gesagt, dass PHP eine dynamisch typisierte Sprache ist. Beide Verfahren haben Vor- und Nachteile und keiner (!) ist schlecht.
+
+\subsection{Container für Formulare}
+
+Die restlichen Inhalte des Kapitels sollten Sie überfliegen, um sich zunächst einen groben Überblick darüber zu verschaffen, welche Arten von Eingaben HTML5 direkt unterstützt. Normalerweise hätte ich Sie hierfür auf die Webanwendung der W3Schools verwiesen, aber leider sind dort die Tags nach Ihrem Namen und nicht nach der Funktion sortiert. Das ist für Einsteiger eher verwirrend, denn so brauchen Sie eine ganze Weile, um z.B. das passende Tag zu finden, wenn Sie wollen, dass der Browser prüft, ob eine Eingabe ein reales Datum sein kann oder nicht.\\
+
+Wichtig: Während viele dieser Eingabemöglichkeiten auf einem Rechner nur die Kontrolle durchführen, ob eine Eingabe des Nutzers zum jeweiligen Typ passt, öffnen sich bei Smartphones häufig kleine Fenster, über die Nutzer z.B. ein Datum anwählen können. Auch hier gilt wieder: Vor HTML5 hätten Sie solche Komfortfunktionen noch selbst programmieren müssen, mit HTML5 brauchen Sie sich um eine solche Programmierung nicht zu kümmern. Alles, was Sie hier tun müssen, ist das passende Tag auszuwählen.
+
+\subsubsection{Formularfelder für Texteingaben}
+
+In diesem Unterabschnitt finden Sie die meisten Typen, die Sie nutzen können, damit Nutzer einen Text oder eine Zahl eingeben können. Wenn ein Tag hier nicht aufgeführt ist, dann liegt das daran, dass Sie wie bei Formular-Tags in HTML 4.01 etwas programmieren müssten, damit die betroffenen Tags ihre Aufgabe erfüllen. Ein Beispiel ist das Tag, mit dem Sie es einem Nutzer ermöglichen können, nach einem Begriff zu suchen. Denn die Suche müssen Sie dann doch wieder selbst programmieren. Also taucht es hier nicht auf.\\
+
+Das value-Attribut\\
+
+Bei allen Formular-Containern (außer dem file-Container) können Sie mit dem value-Attribut eine Antwort eintragen, die der Nutzer aber jederzeit überschreiben kann. Wenn ein Nutzer das nicht tut, wird dieser Wert beim Absenden des Formulars so übertragen, als wenn der Nutzer ihn eingetragen hätte.\\
+
+Das required-Attribut\\
+
+Sie können festlegen, dass Nutzer einzelne Felder ausfüllen müssen, bevor sie ein Formular absenden können. Dazu programmieren Sie schlicht das Attribut required.
+Kurzer Text\\
+
+Quellcode: <input> (alternativ: <input type=text>)\\
+
+Damit können Nutzer einen kurzen Text von bis zu 20 Zeichen eingeben.\\
+
+Wenn Sie hier das Attribut type=password vergeben, dann wird die Eingabe maskiert; niemand kann also am Monitor sehen, was der Nutzer eingibt. Das ist aber nur ein Schutz gegen neugierige Kollegen, die nicht verfolgen können, welche Tasten der Nutzer drückt. Gegen die meisten Angriffsarten ist es dagegen vollkommen nutzlos. Um Nutzereingaben gegen diese zu schützen müssen Sie im Programm kryptographische Protokolle integrieren und sollten am besten keine Tastatureingaben als Passwort verwenden. Aber das ist ein Thema für Veranstaltungen in höheren Semestern.\\
+
+Langer Text\\
+
+Quellcode: <textarea>\\
+
+Mit diesem Container ermöglichen Sie es Nutzern, Texte beliebiger Länge einzugeben. Im Gegensatz zu anderen Containern können Sie hier mit den Attributen rows und cols die Größe festlegen. Tipp: Auch wenn es im Moment nicht so gut aussieht, nutzen Sie dazu besser CSS.\\
+
+URL eingeben\\
+
+Quellcode: <input type=url>\\
+
+Nutzer können eine URL eingeben. Einziger Vorteil gegenüber type=text ist die größere Länge.\\
+
+Emails:\\
+
+Quellcode: <input type=email>\\
+
+Hier prüft der Browser, ob die Eingabe eine valide Email-Adresse sein kann: Ist das @-Symbol enthalten? Gibt es eine valide Endung? usw.\\
+
+<form>
+Nutzername: <input name=username required>
+E-Mail: <input type=email name=email required>
+Webanwendung: <input type=url name=webpage>
+Ihr Anliegen: <textfield name=userrequest required>
+</form>
+Quellcode 2.8: Ein einfaches Formular mit Texteingaben
+
+\subsubsection{Formularfelder für Zahleneingaben}
+
+Zahlen eingeben:\\
+
+Quellcode: <input type=number>\\
+
+Hier können Nutzer ganze Zahlen eingeben. Eine Eingabe ist auch per Maus möglich, da zusammen mit dem Eingabefeld noch zwei kleine Schaltflächen eingeblendet werden, über die der Wert erhöht oder gesenkt werden kann.\\
+
+Für diese diesen input-Typ können Sie die selben Attribute verwenden, die auch beim nachfolgenden input-Typ range gelten. \\
+
+Tipp: Verwenden Sie number, wenn Nutzer eine genau Zahl eingeben sollen und Range, wenn ein grober Wert als Eingabe genügt.\\
+
+Zahlen mit einem Schieber auswählen:\\
+
+Quellcode: <input type=range min=... max=...>\\
+
+Im Gegensatz zum Typ number müssen Sie hier die Attribute min und max vorgeben, weil Nutzer kein Feld für eine Eingabe erhalten, sondern einen Slider (zu Deutsch Schieberegler), mit dem sie einen Wert anwählen können. Über das Attribut step können Sie zusätzlich programmieren, wie groß der Abstand zwischen zwei wählbaren Zahlen sein darf.\\
+
+Telefonnummern:\\
+
+Quellcode: <input type=tel>\\
+
+Der Name sagts schon: Damit können Nutzer eine Telefonnummer eingeben. Der Vorteil gegenüber type=number besteht darin, dass so auch eine internationale Vorwahl eingegeben werden kann. Wegen des + ist das bei number nicht möglich.\\
+
+<form>
+Nutzername: <input name=username required>
+E-Mail: <input type=email name=email required>
+Telefon: <input type=tel name=phonenumber>
+Webanwendung: <input type=url name=webpage>
+Ihr Anliegen: <textfield name=userrequest required>
+Ihre Dringlichkeit: <input type=range name=importancy min=1 max=9>
+</form>
+Quellcode 2.9: Ein einfaches Formular
+
+\subsubsection{Formularfelder für Datums- und Zeitangaben}
+
+Datum\\
+
+Quellcode: <input type=date>\\
+
+Bei Smartphones öffnet sich in diesem Fall ein Feld, über das Nutzer ein Datum, wie z.B. ihr Geburtsdatum anwählen können.\\
+
+Monat und Jahr\\
+
+Quellcode: <input type=month>\\
+
+Hier können Nutzer Monat und Jahr eingeben.\\
+
+Monat und Jahr\\
+
+Quellcode: <input type=week>\\
+
+Hier können Nutzer Woche und Jahr eingeben.\\
+
+Datum und Uhrzeit\\
+
+Quellcode: <input type=datetime-local>\\
+
+Zusätzlich zu type=date bietet dieser Typ noch die Angabe einer Uhrzeit an. Der Typ datetime (ohne –local) ist nicht gültig.\\
+
+Uhrzeit\\
+
+Quellcode: <input type=time>\\
+
+Hier kann eine Uhrzeit eingegeben werden.\\
+
+<form>
+Nutzername: <input name=username required>
+E-Mail: <input type=email name=email required>
+Telefon: <input type=tel name=phonenumber>
+Webanwendung: <input type=url name=webpage>
+Ihr Anliegen: <textfield name=userrequest required>
+Ihre Dringlichkeit: <input type=range name=importancy min=1 max=9>
+Für Anrufe teilen Sie uns bitte noch mit, wann wir Sie am besten erreichen. Von <input type=time name=callNoEarlierThan> bis <input type=time name=callNoLaterThan>.
+</form>
+Quellcode 2.10: Ein einfaches Formular
+
+\subsubsection{Auswahlmöglichkeiten}
+
+Die input-Typen, die Sie bis jetzt kennen gelernt haben, lassen Nutzern eine große Freiheit bei der Eingabe. Einzig das Format (z.B. bei einer Telefonnummer) muss stimmen. Sie als Entwickler können dabei keine Antwortmöglichkeiten fest vorgeben. Für ein Bestellformular bei einem Lieferservice sind diese Formularfelder deshalb nicht geeignet. Es folgen Eingabefelder, die dafür gedacht sind, dass Sie Nutzern eine Reihe an Wahlmöglichkeiten anbieten.\\
+
+Im Gegensatz zu den bisherigen input-Containern können Sie hier die Beschriftung einfach dadurch vornehmen, dass Sie sie innerhalb des Containers programmieren. Besser ist die Nutzung des <label>-Containers, zu dem wir im Anschluss kommen.\\
+
+Checkboxen:\\
+
+Quellcode: <input type=checkbox name=bezeichner value=wert>\\
+
+Damit programmieren Sie ein Kästchen, das von Nutzern an- oder abgewählt werden kann.
+Die Attribute name und value werden erst dann von Belang, wenn Sie ein Programm entwickeln, mit dem Sie die Nutzereingaben verwenden wollen (für den Moment können Sie das folgende also überspringen): Das Attribut name kennen Sie bereits. Wenn Sie bei einer Checkbox kein value-Attribut programmiert haben, dann wird dem Programm, das über das action-Attribut des <form> festgelegt wurde die Nachricht bezeichner=on übertragen. (Respektive der Name, den Sie programmiert haben.) Haben Sie dagegen ein Attribut value wie oben programmiert, dann wird dem Programm die Nachricht bezeichner=wert übermittelt.\\
+
+Wichtig (ebenfalls erst in Bezug auf Programme, die Nutzereingaben verwalten): Wenn eine Checkbox nicht angewählt wird, dann wird keine Nachricht an das Programm weitergemeldet. Das mag jetzt überflüssig klingen, aber nehmen wir an, Sie programmieren eine Liste mit solchen Checkboxen, in denen ein Nutzer angeben soll, welche Zutaten er für ein Rezept bereits zu Hause hat. \\
+
+Dann würden Sie wahrscheinlich das folgende im Programm festlegen: Computer, erstelle eine Einkaufsliste all der Zutaten, die der Nutzer noch nicht hat. Da das Programm aber nur diejenigen Zutaten übermittelt bekommt, die der Nutzer schon hat, funktioniert das so nicht.\\
+
+Deshalb sollten Sie keinesfalls Checkboxen programmieren, bei denen es für die weitere Nutzung wichtig ist, dass eine Meldung an das Programm übertragen wird, wonach sie deaktiviert wurde.\\
+
+Radio Buttons:\\
+
+Quellcode: <input type=radio name=bezeichner value=wert>\\
+
+Radio Buttons und Checkboxen (nachfolgender type) verwirren Einsteiger häufig, weil der Unterschied zunächst nicht klar ist. Dabei ist er recht simpel: \\
+
+-	Checkboxen sind für die Fälle gedacht, in denen Nutzer beliebig viele Optionen anwählen dürfen. (Denken Sie an einen Bestellservice, bei dem Nutzer beliebig viele Beilagen zu einem Gericht auswählen können.)
+
+-	Radio Buttons sind dafür gedacht, dass Nutzer sich für eine von vielen Optionen entscheiden müssen. (Denken Sie hier an ein Reisebüro, bei dem Nutzer sich zwischen erster und zweiter Klasse entscheiden müssen.)
+
+<form>
+Wählen Sie bitte Ihre Beilage:
+<input type=radio name=reis value=reis>Reis
+<input type=radio name=fries value=fries>Pommes Frites
+<input type=radio name=potatoes value=potatoes>Kartoffeln
+<form>
+Quellcode 2.11: Einfache Auswahlmöglichkeiten
+
+Drop-Down-Liste\\
+
+Quellcode: <select><option>Beschriftung</option><option>...</select>\\
+
+Über den <select>-Container legen Sie fest, dass eine Drop-Down-Liste angezeigt werden sollen. Für jeden Eintrag müssen Sie einen <option>-Container innerhalb des <select>-Containerns programmieren. Damit Nutzer einen Eintrag angezeigt bekommen, müssen Sie bei jedem <option>-Container einen Text als Inhalt programmieren.\\
+
+Genau wie Radio-Buttons beschränken Drop-Down-Menüs den Nutzer darauf ein Angebot von mehreren auszuwählen. Der Unterschied besteht darin, dass die Auswahlmöglichkeiten mittels Radio-Buttons vollständig angezeigt werden, während die Optionen (deshalb der Name) einer Drop-Down-Liste nur dann angezeigt werden, wenn Nutzer die Liste angewählt haben.\\
+
+Wenn Sie innerhalb eines Drop-Down-Menüs einzelne <option>-Container in einem unter-Drop-Down-Menü versammeln wollen, können Sie dafür den <optgroup>-Container verwenden. Einziger Unterschied gegenüber <option>-Containern ist, dass Nutzer durch das Anwählen des <optgroup>-Containers noch keine Option anwählen. Dieser hat also keinen value, sondern sein Name wird über das label-Attribut definiert.\\
+
+Wenn Sie eine <optgroup> als nicht anwählbar markieren wollen (z.B. weil der Inhalt noch nicht programmiert ist, dann benutzen Sie dafür das Attribut disabled.\\
+
+Datalist\\
+
+Quellcode: <datalist><option><option>...</datalist>\\
+
+Eine Datalist sieht zunächst wie ein Textfeld aus, aber über die option-Container erhalten Nutzer gültige Werte angezeigt. Im Gegensatz zur Drop-Down-Liste sind die <option>-Container mit dem value-Attribut vollständig, es gibt hier also keinen zusätzlichen Container-Inhalt.\\
+
+Farbauswahl:\\
+
+Quellcode: <input type=color>\\
+
+Damit ermöglichen Sie es Nutzern, eine Farbe aus einer Palette auszuwählen. Das könnte beispielsweise nützlich sein, wenn Spieler eine Farbe für Ihre Spielfiguren auswählen sollen. Wie gewohnt nutzen Sie hier das name-Attribut, um die Eingabe an ein Programm zu übergeben. 
+
+\subsubsection{Schalter}
+
+Neben den folgenden input types gibt es noch die <button>-Container, mit denen Sie dieselben Funktionen realisieren können.\\
+
+Schalter mit Beschriftung\\
+
+Quellcode: <input type=button value=“Beschriftung auf der Schaltfläche“ onclick=function()>\\
+
+Damit programmieren Sie einen Schalter, über den eine Funktion des Programms aufgerufen wird, das über das action-Attribut des <form>-Containers festgelegt wurde. Der Name dieser Funktion wird dem Attribut onclick zugeordnet. Was Funktionen sind und wie Sie sie mithilfe des onclick-Attributs nutzen können erfahren Sie im Kapitel ... .\\
+
+Schalter mit Bild\\
+
+Quellcode: <input type=image src=“URL eines Bildes“ onclick=...>\\
+
+Bei dieser Variante programmieren Sie einen Button, der keinen Text, sondern ein Bild enthält.\\
+
+Wichtig: Da ein Button wieder deaktiviert wird, wenn Nutzer den Mausbutton loslassen, macht die Programmierung eines name- und/oder eines value-Attributs hier keinen Sinn. Vielmehr dienen Buttons dazu, dass Nutzer damit bestätigen, dass sie die Eingaben tatsächlich abschicken wollen. Für Sie als EntwicklerIn bedeutet dass, dass die Variablen an das Programm übertragen werden, das über das action-Attribut des <form>-Containers festgelegt wurde.\\
+
+Reset-Schalter\\
+
+Quellcode: <input type=reset>\\
+
+Mit diesem Schalter können Nutzer alle Eingaben löschen.\\
+
+Absende-Schalter\\
+
+Quellcoe: <input type=submit>\\
+
+Mit diesem Schalter übergeben Nutzer die Daten zur weiteren Verwendung durch Ihre Webanwendung.\\
+
+Im Gegensatz zu type=button und type=image rufen Sie hier also keine bestimmte Funktion des Programms auf, sondern durch einen Klick auf diesen Schalter werden sämtliche Eingaben des Nutzers an das Programm übergeben.\\
+
+Wichtig: Sie brauchen keine zusätzliche Beschriftung zu programmieren. Das übernimmt der Browser für Sie.\\
+
+Beachten Sie dabei bitte, dass es hier nur um die Eingaben innerhalb eines Formulars geht. Wenn Sie innerhalb eines HTML-Dokuments mehrere <form>-Container programmiert haben, benötigen Sie für jeden dieser Container einen type=submit. Denn durch diesen werden ausschließlich diejenigen Daten weitergeleitet, die sich im selben <form>-Container befinden.
+
+\subsubsection{Dateien hochladen}
+
+Quellcode: <input type=file>\\
+
+Dadurch wird ein Bereich auf der Webanwendung angezeigt, über den ein Nutzer die Möglichkeit bekommen kann, Dateien auf seinem Rechner auszuwählen, die dann auf den Server hochgeladen werden können.\\
+
+Wichtig: Bitte vergessen Sie nicht, dass Sie in HTML nur programmieren, dass Nutzer eine solche Eingabemöglichkeit erhalten sollen. Die tatsächliche Übertragung der Datei auf den Server wird hier noch nicht realisiert. Das ist Teil der Programmierung eines Servers. Und um die kümmern wir uns im Rahmen der HTML-Programmierung wie besprochen nicht.
+
+\subsection{Container für die Gruppierung und Zuordnung von Eingabeelementen}
+
+Um mehrere Elemente zu gruppieren müssen diese lediglich in einem <fieldset>-Container zusammengefasst und durch einen <br />Container getrennt werden. <br>-Container sind Container ohne Inhalt, die einen Zeilenumbruch bewirken. In HTML5 kann der / deshalb auch weggelassen werden. Vor HTML5 waren sie generell sehr wichtig, da sie für die Gestaltung von Belang waren. Aber da das jetzt in CSS geregelt wird, brauchen Sie sie nur noch in seltenen Fällen wie eben der Zeilentrennung innerhalb eines <fieldset>.\\
+
+Eine Überschrift für ein <fieldset> programmieren Sie nicht mit einem <h...>-Container, sondern mit einem <legend>-Container, der im Gegensatz zu den <h...>-Containern keine Ziffer enthält: Er „heißt“ immer <legend>. Ansonsten gibt es keine Unterschiede zwischen den beiden.\\
+
+Ein weiterer Container, den Sie benötigen, um Formulare zu programmieren ist der <label>-Container. Dieser erzeugt keinen sichtbaren Unterschied, aber er ist wichtig, damit ein Webbrowser z.B. erkennen kann, dass ein Text, der neben einem input-Container steht als Beschriftung für dieses Eingabefeld gedacht ist. Das wirkt sich ggf. auf die Anzeige aus.\\
+
+An dieser Stelle ist das id-Attribut des Containers wichtig, auf den das Label sich beziehen soll. Denn der Label-Container hat an sich noch keine Bindung zu einem anderen Container. Er bekommt die erst, indem das for-Attribut genutzt wird: Dieses bekommt als Wert den Wert des id-Attributs desjenigen Containers, auf den das Label sich beziehen soll.\\
+
+Hier wäre dann ein typisches Formular, wie Sie es für Nutzerregistrierungen verwenden können:\\
+
+<form>
+<fieldset>
+<legend>Bitte geben Sie Ihre persönlichen Daten ein:</legend>
+<label for=surname>Nachname:</label>
+<input id=surname name=surname required >
+<br>
+<label for=email>E-Mail:</label>
+<input type=email id=email name=email required >
+<br>
+<label for=age>Alter:</label>
+<input type=number id=age min=0 max=140 name=age required >
+<br>
+<label for=birthdate>Geburtsdatum:</label>
+<input type=date id=birthdate name=birthdate required >
+</fieldset>
+<input type=submit>
+</form>          
+Quellcode 2.12: Registrierungsformular
+
+\subsection{Zusammenfassung}
+
+Es gibt in HTML5 deutlich mehr Formularfelder als bei 4.01. Der Grund ist recht einfach: Die neuen Felder prüfen (bis auf type=text, type=button und ähnliche), ob die Nutzereingabe valide ist. Die Eingabe einer Telefonnummer im Feld für die Eingabe der Mailadresse ist damit ausgeschlossen. Auch unsinnige Eingaben wie der 99. März sind damit unmöglich. Bei HTML4.01 hätten Sie dazu noch umfangreichen Code in PHP bzw. JavaScript programmieren müssen.
+
+\section{Multimediale Inhalte einfügen}
+
+Auch dieser Abschnitt hat sich gegenüber HTML4.01 deutlich geändert. Es gibt vier neue Container, die speziell für die Einbindung von Audio- und Videodateien sowie für ein gutes Layout aller multimedialen Dateien gedacht sind. Der große Unterschied gegenüber HTML4.01 besteht darin, dass Sie jetzt alle Arten von multimedialen Inhalten im Browser abspielen können, ohne dafür ein PHP- oder JavaScript-Programm zu benötigen. Das galt früher nur für Bilder.\\
+
+Wichtig: Wir reden hier momentan ausschließlich über anzeigbare oder abspielbare Inhalte. Interaktive Formate wie Flash aber auch die Programmierung interaktiver Inhalte mit Canvas lassen wir momentan außen vor. Canvas ist ebenfalls eine Neuerung in HTML5, die die Gestaltung von Bildern und Animationen ermöglicht. Sie brauchen hierzu also kein zusätzliches Programm. Canvas geht aber noch weiter, denn mithilfe von JavaScript können Sie darin vollständige interaktive Anwendungen (also auch Spiele) programmieren.
+
+\subsection{Bilder}
+
+Der <img>-Container ist der einzige Container für multimediale Inhalte, den es so bereits vor HTML5 gab. Allerdings gilt hier wie überall, dass Attribute, die bei HTML4.01 fürs Layout genutzt wurden nicht mehr unterstützt werden. (Viele Browser unterstützen sie zwar immer noch, aber wenn Sie wollen, dass Ihre Webanwendung dauerhaft nutzbar ist, dann sollten sie diese Regelung für HTML5 beachten.)\\
+
+Um eine Bilddatei einzufügen, nutzen Sie den <img>-Container. <img>-Container haben keinen Inhalt, denn die Bilddatei, die Sie anzeigen lassen wollen wird als Attribut des Containers programmiert.\\
+
+-	Das Attribut src erhält als Wert die URL an, unter der die Bilddatei zu finden ist.
+Bsp.: src=bild.jpg
+
+-	Das Attribut alt gibt einen Alternativtitel an, der so lange angezeigt wird, wie das Bild noch nicht geladen ist. Es ist vor allem für die Barrierefreiheit wichtig.
+Bsp.: alt=“schönes Bild“
+
+-	Die Attribute width und height geben an, wie breit bzw. hoch das Bild angezeigt werden soll. Sie ordnen hier jedem der beiden eine Zahl zu, die für die jeweilige Größe in Pixeln, also Bildpunkten steht. 
+
+Wichtig: Sie überschreiben damit das Seitenverhältnis des Bildes. Wenn Sie Bilder also für bestimmte Displaygrößen ändern wollen, dann sollten Sie zunächst über ein PHP- oder JavaScript-Programm das Seitenverhältnis berechnen und dann anhand dieser Berechnung dort (also im Programm) die Änderung von Höhe und Breite durchführen.
+
+\subsection{<figure> und <figcaption>}
+
+Wenn Sie ein wissenschaftliches Buch aufschlagen, sehen Sie zu jeder ergänzenden Darstellung einen Untertitel. Mit dem <figcaption>-Container gibt es in HTML5 die Möglichkeit genau dasselbe in standardisierter Form auf einer Webanwendung zu tun. Dieser Container darf allerdings nur innerhalb eines <figure>-Containers verwendet werden.\\
+
+Nun fragen Sie sich vielleicht, was dieser <figure>-Container denn soll, wo es doch bereits den <img>-Container gibt. Die Antwort ist recht einfach: Dieser Container ist dafür gedacht jede Art von multimedialen Inhalten standardisiert bereitzustellen. Es ist also egal, ob Sie nun ein Bild, ein Video, eine Audiodatei anzeigen bzw. abspielen wollen; immer nutzen Sie die gleiche Kombination aus <figure> und <figcaption>, deren Aussehen Sie über ein CSS-Skript definieren.\\
+
+Und nicht nur dass: Sie können mit dem <figure>-Container auch gleich Kombinationen verschiedener multimedialer Dateien erstellen, die im Sinne des semantic web als solche erkannt werden können. Nehmen wir an, Sie haben im Urlaub mehrere Bilder vom Strand geschossen und zusätzlich Aufnahmen vom Meeresrauschen, aus dem Restaurant und von anderen Stellen aufgenommen. Nun wollen Sie als diese Dateien als eine Diashow mit Sound auf Ihrer Webanwendung platzieren. Dann können Sie genau das über einen <figure>-Container erledigen. Und im Gegensatz zu HTML4.01 erkennt jeder HTML5-kompatible Browser, dass es sich bei all diesen einzelnen Dateien um eine logische Einheit (eben Ihre Diashow mit Sound) handelt, obwohl es auf dem Rechner mehrere Dateien sind.\\
+
+Hier ein einfacher <figure>-Container:\\
+
+<figure>
+<img src=hotel01.jpg alt=“Ein Bild des Hotels, in dem wir die furchtbarsten zwei Wochen unseres Lebens hatten.“>
+<figcaption>Bates Motel</figcaption>
+</figure>
+Quellcode 2.13: Bild mit Untertitel innerhalb eines <figure>-Containers
+
+\subsection{<figcaption> für Fortgeschrittene}
+
+Eine <figcaption> kann aber nicht nur einen Untertitel enthalten, sondern zusätzlich bzw. unabhängig von einem Text die URL einer Audiodatei. Dann wird das Bild mit dieser Audiodatei akustisch untermalt. Dazu wird ein <audio>-Container verwendet. Wie das geht (und das es sehr leicht zu realisieren ist) sehen Sie in Kürze.
+
+\section{Weitere multimediale Formate}
+
+In diesem Abschnitt erfahren Sie, wie Sie die verschiedensten multimedialen Inhalte in Ihre HTML5-Webanwendung einbinden können. Ein Hinweis vorweg: Zwar bringt HTML5 nur für einige Formate eine Unterstützung mit, aber Sie erfahren gleich, wie Sie auch andere Formate einbinden können.
+
+\subsection{Einbindung eigener und frei verfügbarer Videodateien}
+
+Die Einbindung von Videodateien ist fast genauso einfach wie die Einbindung von Bildern: Nutzen Sie dazu den <video>-Container innerhalb eines <figure>-Containers. Der Unterschied besteht nun darin, dass Sie mehrere Videodateien einstellen können, von denen der Webbrowser sich eines aussuchen kann. Das ist deshalb sinnvoll, weil Sie sich so nicht darum kümmern müssen, zu prüfen, welches Videoformat vom jeweiligen Webbrowser abgespielt werden kann. Das bedeutet also, dass Sie sich nicht für ein Format wie .mp4, .mov, .wmv usw. entscheiden müssen, sondern Sie können Sie alle nutzen und es ist sogar ideal, wenn Sie ein Video in möglichst vielen Formaten bereitstellen können.\\
+
+In einem <video>-Container können Sie die folgenden Attribute nutzen:\\
+
+-	controls regelt, welche Bedienelemente angezeigt werden. Die Standardeinstellungen bewirken, dass ein Play/Pause-Button, eine Zeitleiste und die aktuelle Zeit im Video angezeigt werden. Wenn Ihnen das nicht genügt oder Sie eine Vielzahl an Formaten abspielen wollen (z.B. Flash), dann können Sie im Netz eine Vielzahl an Playern finden, die Sie direkt in den Quellcode Ihrer Webanwendung einbinden können. Suchen Sie dazu schlicht nach „HTML5 Videoplayer“.\\
+
+Wichtig: Auch wenn Sie lediglich die Standard-Bedienelemente anzeigen lassen wollen, müssen Sie controls als Attribut in den <figure>-Container einfügen. Sie brauchen dann aber keinen weiteren Wert zuordnen.\\
+
+-	height und width funktionieren wie bei <img>-Containern. Es gelten die selben Hinweise wie dort.
+
+Innerhalb des <video>-Containers erstellen Sie für jede Videodatei einen <source>-Container. In diesem geben Sie zum einen die URL der jeweiligen Videodatei über das src-Attribut und zum anderen das Kompressionsverfahren über das type-Attribut an.\\
+
+Kompressionsverfahren dienen dazu, um aus einer großen Audio- oder Video-Datei eine kleinere Datei zu erstellen. Ob das zu sichtbaren Qualitätsverlusten führt, hängt vom Verfahren ab. Das bekannteste Kompressionsverfahren für Audio-Dateien ist unter der Abkürzung mp3 bekannt.\\
+
+Wichtig: Nichts ist für einen Nutzer ärgerlicher als wenn er nicht weiß, warum etwas nicht funktioniert. Deshalb können Sie als letzten Eintrag im <video>-Container einen Text eintragen, der ausgegeben wird, wenn der Webbrowser keines der Formate abspielen kann.\\
+
+
+<figure controls>
+
+<video alt=“Video über die Herstellung von Büchern“>
+
+<source src=movie.mp4 type=video/mp4>
+<source src=movie.ogg type=video/ogg>
+Leider kann Ihr Browser keines der Formate abspielen, in dem die Videodatei vorliegt. Bitte prüfen Sie, ob Sie eine Erweiterung installieren können, mit dem Sie eines der folgenden Formate abspielen können: MP4, Vorbis OGG
+
+</video>
+
+<figcaption>
+Quelle: www.irgendeineseite.de
+</figcaption>
+
+</figure>
+
+Quellcode 2.14: Einbindung eines Videos mit Caption. (Die Leerzeilen dienen genau wie die Einzüge lediglich der besseren Lesbarkeit.)
+
+\subsection{Anpassungsmöglichkeiten für den Video-Player}
+
+Sie wissen, dass Webanwendung von den verschiedensten Endgeräten aus aufgerufen werden: Manche User nutzen ein Smartphone mit einer langsamen Internetverbindung, andere nutzen einen Rechner, der per Kabelanschluss Daten mit bis zum 15 MB/s (entspricht ungefähr einem 100 mbps-Anschluss) herunterladen kann. Es wäre also ungeschickt, wenn Sie auf einer Webanwendung ein Dutzend Videos platzieren und den Webbrowser anweisen, alle vollständig herunterzuladen, egal ob der Nutzer sie nun sehen will oder nicht. Deshalb können Sie das Verhalten des Videoplayers anpassen, indem Sie die folgenden Attribute bzw. Attributbelegungen in den <video>-Container einprogrammieren:\\
+
+-	preload=none
+
+Diese Attributbelegung bewirkt, dass der Nutzer einen kleinen Platzhalter sieht, der lediglich anzeigt, dass eine Video-Datei zur Verfügung steht. Die Datei selbst wird nicht heruntergeladen, bis der Nutzer sie anfordert. Diese Option ist gut geeignet, wenn Sie eine Webanwendung mit vielen Videos programmieren wollen, die auch mit einem Smartphone noch übersichtlich sein soll.\\
+
+-	preload=metadata
+
+Diese Attributbelegung bewirkt, dass der Nutzer einen Platzhalter sieht, der im Gegensatz zu preload=none auf der Webanwendung so groß angezeigt wird, wie das Video selbst. Das Video wird auch in diesem Fall nicht heruntergeladen, bis der Nutzer es anfordert. Diese Option ist vor allem für Rechner gut geeignet, wenn auf einer Seite viele Videos platziert werden. Denn selbst bei durchschnittlichen DSL-Anschlüssen kann es sonst mehrere Minuten dauern, bis alle Inhalte einer einzelnen Seite herunter geladen sind. Der Vorteil dieser preload-Belegung besteht darin, dass sich das Layout der Seite nicht ändert, wenn Nutzer Videos starten.\\
+
+-	autoplay
+
+dürfte selbsterklärend sein: Das Video beginnt automatisch. Dieses Attribut macht in Verbindung mit den beiden eben vorgestellten preload-Varianten natürlich keinen Sinn. Dieses Attribut sollten Sie keinesfalls bei multimedialen Dateien verwenden, die eine Audio-Komponente haben, denn im schlimmsten Fall schließen Nutzer Ihre Webanwendung schlicht deshalb, weil sie sich von der Tonspur gestört fühlen.
+
+-	loop
+Wurde das Video einmal gestartet, bewirkt dieses Attribut, dass es immer wieder von vorne beginnt. Das ist vor allem dann sinnvoll, wenn Sie ein Video anstelle eines Bildes in den Hintergrund einer Webanwendung einblenden wollen. 
+
+-	poster
+Wird dieses Attribut ohne weitere Zuordnung verwendet, dann wird der erste Frame (quasi das erste Bild) des Videos als Stellvertreter angezeigt. Das macht in Verbindung mit preload=none natürlich keinen Sinn.
+
+Als Wert kann diesem Attribut die URL einer Bilddatei zugeordnet werden. Dann wird dieses Bild als Stellvertreter des Videos angezeigt, bis es gestartet wird.
+
+\subsection{Einbindung von geschützten Inhalten (Stichwort: DRM)}
+
+Mit den beschriebenen Möglichkeiten können Sie Videodateien einbinden, auf die Sie freien Zugriff haben. Aber wie Sie wissen ist das beispielsweise bei Videos auf YouTube nicht der Fall. Wenn Sie sicher sind, dass Sie das Recht dazu haben, dann dürfen Sie solche Videos mit einem <iframe>-Container einbinden. Da hier bis auf allowfullscreen keine neuen Attribute vorkommen, sollten Sie das folgende Codefragment ohne weitere Erklärungen einbinden können:\\
+
+<iframe src=http://www.youtube.de/...     allowfullscreen />
+
+Quellcode 2.15: Einbindung von Videos, auf die nicht direkt verlinkt werden kann.
+
+\subsection{Der <audio>-Container}
+
+Alles, was Sie beim <video>-Container nutzen können und das bei einer Audio-Datei Sinn macht, können Sie genau so bei einem <audio>-Container nutzen. Kommen wir also zu den Unterschieden gegenüber einem <video>-Container:\\
+
+-	Ein <audio>-Container hat in aller Regel kein Bild, also gibt es für den Nutzer keinen sichtbaren Unterschied zwischen den Attributbelegungen prelaod=none und preload=meta.
+
+-	Wenn Sie ein Bild zu einer Audiodatei anzeigen wollen (oder eine Diashow), dann nutzen Sie dazu das Verfahren, auf das bei der Erklärung zur <figcaption> hingewiesen wurde.
+
+-	Dem type-Attribut müssen Sie natürlich audio-Typen zuordnen.
+Bsp.: type=audio/mp3
+
+Wichtig: Das gilt auch dann, wenn ein Type sowohl für Audio- als auch für Video-Dateien existiert. Bsp.: Das Kompressionsverfahren OGG ist für Audio- und Videoverfahren definiert. Also müssen Sie hier je nach Medienformat type=video/ogg oder type=audio/ogg angeben.
+
+\subsection{Close Captions, Untertitel, Einbindung von Webcams usw.}
+
+Neben den genannten Möglichkeiten gibt es aber auch noch Dinge wie Untertitel oder Texteinblendungen für Menschen mit beschränktem Hörvermögen. Wir werden diese Möglichkeiten nicht im Rahmen der Veranstaltung behandeln. Wenn Sie hieran interessiert sind, möchte ich Sie auf das Format WebVTT hinweisen, das Ihnen in diesen Fällen eine Vielzahl praktischer Erweiterungen für Ihre Webanwendung anbietet.\\
+
+Ähnliches gilt für die Nutzung von Webcams, Mikrophonen und anderen Eingabemöglichkeiten für den Nutzer: Alles, was über die Nutzung von Tastatur und Maus hinausgeht ist nicht Teil dieser Veranstaltung. Hier sollten Sie bei Interesse nach dem Begriff getUserMedia suchen.\\
+
+Grundsätzlich sollten Sie jedoch zunächst HTML, CSS und JavaScript beherrschen, bevor Sie sich in diese Bereiche einarbeiten.
+
+\subsection{Hinweis bezüglich Flash und ähnlichen Formaten}
+
+Adobes Flash bzw. Shockwave war über Jahre hinweg der Standard, wenn es um das Entwickeln von interaktiven Elementen bzw. Spielen auf einer Webanwendung ging. JavaScript bot hier zu wenige Möglichkeiten und einzig Java wurde so entwickelt, dass es im Browser nutzbar war. Warum die meisten Entwickler Flash nutzten soll uns an dieser Stelle nicht interessieren; Tatsache ist, dass es den de-facto-Standard für Webanwendungen darstellte. Wie schon oben angesprochen ändert sich das gerade, was nicht zuletzt daran liegen dürfte, dass JavaScript als Standardsprache für HTML5 festgelegt wurde. \\
+
+Wenn Sie nun Flash-Anwendungen auf Ihrer Seite anbieten wollen, müssen Sie aus diesem Grund einen HTML5-Flash-Player integrieren. Danach suchen Sie genau wie nach HTML5-Video-Playern. Auch die Einbindung funktioniert wieder so ähnlich wie dort. Aber auch hier gilt wieder, dass das kein Thema dieser Veranstaltung ist, sondern lediglich eine Zusatzinformation für interessierte Leser.\\
+
+Ein weiterer Nachteil von Flash besteht darin, dass Flash im Gegensatz zu den multimedialen Containern von HTML5 nicht per CSS angepasst werden kann. Neben dem Nachteil, dass Flash-Inhalte somit schwieriger ans Layout der Seite anzupassen sind, folgt daraus, dass sie im Regelfall nicht barrierefrei sind.
+
+\subsection{Hausaufgabe}
+
+Kommen wir jetzt zur Datei index.html, die Sie zwar in Ihrem Projektordner haben, die aber bislang leer ist. Damit dies eine Startseite für Ihre Webanwendung wird und Sie zwischen den einzelnen Seiten hin- und herwechseln können, programmieren Sie bitte folgendes: (Wenn nicht anders geschrieben programmieren Sie es bitte in der index.html.)\\
+
+-	Fügen Sie die Strukturelemente hinzu, die Sie für HTML5-Seiten kennen gelernt haben.
+-	Internationalisieren und Lokalisieren Sie die Seite.
+-	Erstellen Sie ein Log-In-Formular im aside-Container.
+-	Erstellen Sie eine neue Seite mit einem Registrieren-Formular, sodass Sie Nutzern später die Möglichkeit geben, sich zu registrieren. 
+-	Erstellen Sie eine Zusammenfassung der geplanten und vorhandenen Inhalte Ihrer Webanwendung im main-Container.
+-	Verlinken Sie an den passenden Stellen auf die entsprechenden Unterseiten.
+-	Programmieren Sie umgekehrt auf allen bisherigen Seiten Links. Nutzer müssen mindestens die Möglichkeit haben, über einen Link wieder auf die Startseite zurück zu kommen.
+-	Nehmen Sie Bilder, Videos und Audio-Dateien auf, die zu einzelnen Passagen auf Ihrer Webanwendung passen und stellen Sie diese auf Ihrer Webanwendung ein.
+-	Achten Sie darauf, dass bezüglich der Barrierefreiheit zumindest die drei Punkte beachtet werden, die Sie oben kennen gelernt haben.
+-	Erstellen Sie zu wenigstens einer Ihrer Seiten eine Umfrage, bei der Sie auch verschiedene Auswahlmöglichkeiten programmieren.
+-	Nicht vergessen: Prüfen Sie, ob Sie für Firefox, Safari, IE oder Edge Polyfills nutzen müssen.
+
+\section{Weitere Formatierungen und Möglichkeiten in HTML}
+
+Wie es die Überschrift schon sagt finden Sie hier eine Reihe weiterer Möglichkeiten, um Inhalte auf Ihrer Webanwendung zu programmieren bzw. um die Inhalte genauer zu definieren. Die folgenden Abschnitte haben keine feste Reihenfolge, sondern sollen Ihnen lediglich einen Einblick geben, was Sie in HTML5 (zum Teil aber auch schon in HTML4.01) noch an Möglichkeiten haben:
+
+\subsection{Spoiler und andere ausklappbare Texte}
+
+Kennen Sie das? Sie sitzen mit Freunden zusammen und einer davon erzählt das Ende eines Filmes, den Sie noch sehen wollten. So etwas wird mit dem englischen Begriff Spoiler bezeichnet und um jemanden zu warnen, dass gleich ein Spoiler kommt, gibt es den Begriff Spoiler Alarm.\\
+
+Nun nehmen wir an, Sie wollen Filmrezensionen auf Ihrer Webanwendung veröffentlichen, wollen aber dass Ihre Leser selbst entscheiden können, ob Sie die Spoiler mitlesen wollen oder nicht. In HTML5 ist das kein Problem. Nun gibt es aber keinen spoiler-Container, sondern Sie benutzen für solche Fälle zwei Container:\\
+
+-	Der <summary>-Container enthält eine kurze Beschreibung dessen, worum es geht. 
+Bsp.: Sie erstellen eine Webanwendung über die Geschichte Kroatiens. Im laufenden Text wollen Sie etwas über den Geburtsort des amtierenden Präsidenten schreiben. Andererseits sind Sie nicht sicher, ob das die meisten Leser interessiert. Also erstellen Sie den folgenden Container:
+
+<summary>Über den Geburtsort des kroatischen Präsidenten</summary>
+
+-	Anschließend ergänzen Sie nach dem Wort Präsidenten (oder an anderer Stelle innerhalb des <summary>-Containers noch einen <details>-Container, in dem Sie all das über den besagten Geburtsort schreiben, was Sie für interessant halten.
+Hier ein Beispiel für den oben genannten Spoiler-Fall:
+
+<summary>Das Ende von Hamlet
+<details>Alle sind tot.</details>
+</summary>
+
+Quellcode 2.16: Ein einfacher <summary>-Container
+
+Wenn Sie innerhalb des „Spoilers“ noch weitere Spoiler unterbringen wollen ist das kein Problem; ähnlich wie bei <article> und <section> können Sie <summary> und <details> beliebig komplex verschachteln. Dabei müssen Sie lediglich darauf achten, dass der äußerste Container ein <summary> ist, und dass Sie die Container jeweils im Wechsel nutzen müssen.\\
+
+Sprich: Sie dürfen zwar innerhalb eines <summary> mehrere <details>-Container programmieren, aber keinen weiteren <summary>. Den müssten Sie dann wieder innerhalb eines der <details> programmieren. Umgekehrt gilt das selbe.\\
+
+Natürlich müssen Sie auch bei diesen Containern prüfen, ob Sie inzwischen in allen Webbrowsern unterstützt werden und ggf. ein passendes Polyfill einbinden.
+
+\subsection{Zeitangaben}
+
+Ein weiterer praktischer Container ist der <time>-Container. Damit können Sie Zeitangaben und Zeiträume im Sinne des semantic Web definieren. Leider ist das Element noch nicht so ausgereift, dass damit alle möglichen Zeitangaben darstellbar wären, denn im Kern wird hierdurch ein Element definiert, dass einen Zeitpunkt oder einen in Sekunden messbaren Zeitraum festlegt.\\
+
+Und da nunmal eine Zeitangabe wie vom 20. Februar bis zum 3. März nicht eindeutig ist (denken Sie an Schaltjahre, bei denen es einen 29. Februar gibt), gibt es auch keinen einzelnen <time>-Container, mit dem Sie diesen Zeitraum zusammen fassen können. Aus dem gleichen Grund können Sie Zeiträume nicht in Monaten oder Jahren festlegen; in solchen Fällen müssen Sie zwei <time>-Container programmieren, den einen für den Anfang, den anderen für das Ende des Zeitraums.\\
+
+So viel zum Negativen, kommen wir jetzt zur praktischen Anwendung von <time>:\\
+
+-	<time>-Container können beliebige Inhalte haben, können aber auch ohne Inhalt als <time /> beendet werden.
+
+-	Um Zeitpunkte oder Zeiträume zu definieren wird unabhängig vom Inhalte des Containers das datetime-Attribut verwendet. Für dieses gibt es eine Vielzahl ein Möglichkeiten, Werte zuzuordnen:
+
+-	Hier die Varianten für Zeitpunkte:
+
+o	Für Jahre: Eine vierstellige Zahl
+Bsp.: 1905
+
+o	Für Jahr und Monat: Eine vierstellige Zahl, ein Bindestrich, eine zweistellige Zahl
+Bsp.: 2107-03 für März 2107
+
+o	Für ein Datum ohne Uhrzeit: Zusätzlich eine weitere zweistellige Zahl, verbunden per Bindestrich
+Bsp.: 2015-09-15 für den 15. September 2015
+
+o	Für Monat und Tag: Zwei zweistellige Zahlen, verbunden durch einen Bindestrich.
+Bsp.: 12-08 für den 8. Dezember
+
+o	Für die Uhrzeit gibt es mehrere Varianten:
+
+	Zeitpunkt ohne Angabe der Zeitzone:
+17:22
+
+	Zeitpunkt für GMT:
+22:13Z
+
+	Zeitpunkt für eine andere Zeitzone:
+02:18-05	(Für GMT - 5)
+14:47+5:30	(für GMT + 5½)
+
+o	Datum und Uhrzeit können verbunden werden, indem zunächst das Datum, dann nach einer Leerstelle die Uhrzeit aufgeführt wird:
+
+Bsp.: 2017-07-21 20:15-7 (für 20 Uhr 15 in der Zeitzone GMT-7 am 21. Juli 2017)
+
+-	Und jetzt die Varianten für Zeiträume. Diese werden jeweils durch ein großes P für Period bzw. Zeitraum begonnen:
+
+•	P30M entspricht einem Zeitraum von 30 Minuten
+
+•	P5D 20M 7S entspricht einem Zeitraum von 5 Tagen, 20 Minuten und 7 Sekunden.
+
+•	Wie oben aufgeführt können keine Zeiträume in Monaten oder Jahren definiert werden.
+Zwar programmieren Sie die <time>-Container wie alle anderen Container, aber zur Sicherheit hier ein paar Code-Beispiele:
+...
+Die Veranstaltung dauert voraussichtlich<time datetime=“P5D 20M 7s“> mehr als 5 Stunden 20 Minuten</time>.
+...
+Der erste Termin findet am <time datetime=2015-09-14 13:00Z>14. September 2015 um 13 Uhr</time> statt.
+...
+Veranstaltungen finden vom <time datetime=2015-09-15>15. September</time> bis zum <time datetime=2016-02-03> 3. Februar</time> statt.
+...
+Quellcode 2.17: Zeitangaben mit dem <time>-Container
+
+\subsection{Hervorhebung von Texten}
+
+Bei HTML4.01 wurden Textpassagen meist mit Fettdruck, Unterstreichungen oder Kursivschrift hervorgehoben. Die entsprechenden nicht-semantischen Container lauten schlicht <b> oder <strong> für Fettdruck, <u> für unterstrichen und <i> (Englisch für italic bzw. kursiv). \\
+
+Diese können weiterhin verwendet werden. Alle drei haben jedoch Nachteile, wenn die Seite von Personen mit eingeschränktem Sehvermögen genutzt werden oder das Display veraltet ist. Außerdem werden Hyperlinks in Webbrowsern in aller Regel als unterstrichener Text präsentiert.\\
+
+Deshalb bietet HTML5 den <mark>-Container, dessen „Attribute“ background-color und color per CSS angepasst werden können. \\
+
+Bei allen vier Containern müssen Sie also lediglich eine Textpassage, die Ihnen wichtig erscheint mit dem öffnenden und schließenden Tag des jeweiligen Conatainers umschließen.
+
+\subsection{Unterdrückung von Übersetzungen für Textpassagen}
+
+Aktuelle Browser bieten häufig die Übersetzung von Webanwendung aus anderen Sprachen an. Dazu ist das lang-Attribut des <html>-Containers ein wichtiger Hinweis. Doch wenn Sie wollen, dass bestimmte Stellen nicht übersetzt werden sollen, dann können Sie diese durch das Attribut translate=no von der Übersetzung ausschließen.\\
+
+Wenn das nur für einzelne Wörter gilt (z.B. bei Eigennamen wie Müller oder Excel), dann können Sie den <span>-Container verwenden: Dieser ändert die Formatierung des Inhalts zunächst nicht und kann genutzt werden, um beliebig wenige Zeichen innerhalb anderer Container abzugrenzen:\\
+
+<p> 
+... 
+<span translate=no>Tony Marshall</span> sang während 
+<span translate=no>Andy Müller</span> ein Tor schoss. 
+...
+</p>
+Quellcode 2.18: Verhinderung von automatischen Übersetzungen durch Browser.
+
+\subsubsection{Vererbung von Attributen}
+
+Wichtig: Attribute gelten für den gesamten Bereich eines Containers, also auch für alle Container, die sich darin befinden. Dieses Konzept werden Sie in umfangreicherer Form kennen lernen, wenn Sie einen Kurs zur objektorientierten Programmierung belegen.\\
+
+Im folgenden Quellcode haben wir solch einen Fall: Das Attribut translate=no wird für den äußeren <article>-Container deklariert. Damit gilt das Übersetzungsverbot auch in allen Containern, die sich innerhalb dieses <article>-Containers gelten:\\
+
+<article translate=no>
+(Einleitender Text) ...
+<section> ... Sein Vater war von Beruf Müller.
+</section>
+(Noch mehr Text)
+</article>
+Quellcode 2.19: Vererbung von Attributen
+
+In diesem Fall würde der gesamte Satz „Sein Vater war von Beruf Müller.“ nicht übersetzt werden.\\
+
+Aber Sie können innerhalb von Containern weitere Container programmieren, in denen Attribute überschrieben werden. Stellen wir uns dazu vor, Sie wollen auf Ihrer Webanwendung einen latainischen Text im Original veröffentlichen und einige Kommentare dazu posten. Dann möchten Sie natürlich nicht, dass die lateinischen Passagen übersetzt werden, während das bei den Kommentaren sinnvoll wäre. Hier ein entsprechender Quellcode:\\
+
+<article translate=no id=“Carmina Burana mit Kommentar“>
+<p> (Originaltext) <span translate=yes>An dieser Stelle scheint im Text von ... ein Übersetzungsfehler vorzukommen, denn ... </span> ... (Fortsetzung des Originaltexts) ... </p>
+</article>
+Quellcode 2.20: Überschreiben eines vererbten Attributs
+
+Der „Originaltext“ und die „Fortsetzung des Originaltexts“ werden beiden nicht übersetzt, weil Sie Teil des <article>-Containers sind, für den die Übersetzung mittels des translate=no Attributs unterdrückt wird.\\
+
+Dagegen wird der Text „An dieser Stelle ...“ übersetzt, weil er Teil des <span>-Containers ist, für den die Übersetzung mittels des translate=yes Attributs explizit erlaubt wird.\\
+
+Hier sei nochmal darauf hingewiesen: Das translate=yes Attribut gilt nur innerhalb des <span>-Containers. Anschließend gilt es dann nicht mehr. 
+
+\subsection{Aufzählungen (Ordered und Unordered Lists)}
+
+Wenn Sie eine Aufzählung von Elementen erstellen wollen, wie Einkaufslisten, To Do Listen oder ähnliches dann wird das in HTML als unordered List <ul> bezeichnet. \\
+
+Wollen Sie dagegen eine Liste erstellen, bei der die einzelnen Einträge z.B. nummeriert sind, um die Reihenfolge anzugeben, dann wird das in HTML als ordered list <ol> bezeichnet. Wenn Sie die Art der Nummerierung ändern wollen (z.B. in Großbuchstaben statt Zahlen), dann können Sie dazu das type-Attribut nutzen.\\
+
+Die einzelnen Einträge werden dann als <li>-Container innerhalb eines <ul>- oder <ol>-Containers programmiert. Wenn Sie also zwischen einer ordered list und einer unordered list wechseln wollen, müssen Sie nur einen Buchstaben im öffnenden und im schließenden Tag ändern, der Rest bleibt gleich:\\
+
+<ol>
+<li>Michael Schumacher</li>
+<li>Damon Hill</li>
+<li>Jacques Villeneuve</li>
+</ol>
+
+<ul>
+<li>5g Hefe</li>
+<li>3 Eier</li>
+<100ml Wasser</li>
+</ul>
+Quellcode 2.21: Geordnete und Ungeordnete Liste
+
+\subsection{Glossare (Description Lists)}
+
+Manchmal benötigen Sie dagegen eine Listenform, bei der Sie Begriffe und Ihre Bedeutung aufzählen wollen. In dem Fall sind <ul> und <ol> nicht geeignet. Hier greifen Sie am besten auf eine description list <dl> zurück.\\
+
+Innerhalb des <dl>-Containers verwenden Sie dann einen description title <dt>-Container, um den Namen des Eintrags festzulegen und anschließend einen description description <dd>-Container, um die Erklärung einzuprogrammieren:\\
+
+<dl>
+<dt>Kaffee, schwarz</dt>
+<dd>Heißes Getränk, koffeinhaltig, häufig im Becher von Herrn Alpers anzutreffen.</dd>
+<dt>Bohnesuppe</dt>
+<dd>Kohlenhydrathaltiges Gericht, häufig in Italo-Western von Bud Spencer konsumiert.</dd>
+</dl>
+Quellcode 2.22: Glossare / descriptive list
+
+\subsection{Tabellen (table)}
+
+Tabellen sind einer der wenigen Container, mit denen Sie auch unter HTML5 ohne CSS das Layout einer Seite festlegen können. Diese sollten Sie aber aufgrund der vielen verschiedenen Displaygrößen von Endgeräten nur dann einsetzen, wenn es sich nicht vermeiden lässt.\\
+
+Eine Tabelle definieren Sie durch einen <table>-Container. Für jede Zeile definieren Sie darin einen table row <tr>-Container, in dem Sie für jede Spalte einen <td>-Container programmieren.\\
+
+Wenn Sie eine Spaltenüberschrift vergeben wollen, verwenden Sie anstelle des <td>-Containers einen table header <th>-Container.\\
+
+Der folgende Quellcode soll Ihnen verdeutlichen, warum es wichtig ist, Quellcode übersichtlich zu programmieren, so wie Sie das bei den bisherigen Codebeispielen gesehen haben, denn hier ist das eindeutig nicht der Fall: Benutzen Sie dazu Zeileneinzüge (Tabulatoren) und Zeilenumrüche (Enter Taste).\\
+
+<table><tr><th>Uhrzeit</th><th>Montag</th><th>Dienstag</th><th>Mittwoch</th><th>Donnerstag</th><th>Freitag</th></tr><tr><td>8.30-10.00</td><td>PRG</td>...</tr>...</table>
+Quellcode 2.23: Ausgesprochen unübersichtliches Beispiel für eine Tabelle
+
+\subsection{Microdata}
+
+Microdata sind zwar eine zentrale Säule des semantic Web, aber aufgrund des Umfangs dieser Veranstaltung können wir sie uns nur sehr kurz ansehen.\\
+
+Zur Erinnerung: Microdata haben nichts mit der Darstellung oder der Struktur einer Webanwendung zu tun, sondern Sie dienen dazu, dem Browser anzuzeigen, welche Bedeutung einzelne Elemente der Seite haben. Hier ein paar Anwendungsfälle:\\
+
+-	Der Browser soll eine Adresse ohne weitere Programmierung an eine Anwendung wie google maps weiterleiten können.
+
+-	Sie wollen, dass der Browser einen Termin in den Kalender Ihres Mail-Programms übertragen kann.
+
+-	Sie veranstalten ein Event, erstellen eine Webanwendung dazu und wollen, dass eine Suchmaschine erkennt, dass es sich um ein Event handelt.
+
+All diese Fälle und noch wesentlich werden bislang unter Begriffen wie search engine optimization (kurz SEO) und machine-readable content zusammen gefasst. Microdata sind ein Mittel, das in HTML5 unterstützt wird, um diese Fälle zu lösen.
+
+\subsubsection{Programmierung von Microdata}
+
+Dazu müssen Sie als erstes einen Container mit dem Attribut itemscope deklarieren. Dieses Attribut ändert wie geschrieben nichts an einer Webanwendung, sondern er teilt dem Webbrowser mit, dass es in diesem Container Elemente im Sinne des semantic web geben kann.\\
+
+Für diejenigen, die bereits ein wenig Erfahrung mit der objektorientierten Programmierung haben: Damit deklarieren Sie diesen Container explizit zu einem Objekt, das Sie in einer Sprache wie JavaScript wie ein vollwertiges Objekt verwenden können.\\
+
+Für alle anderen: Ein Objekt im Sinne der objektorientierten Programmierung besteht im Grunde aus folgenden abstrakten Bestandteilen:\\
+
+-	Einem Namen oder Bezeichner, der für jedes Objekt individuell sein muss.
+Die Lösung in HTML kennen Sie bereits; es ist das id-Attribut. Sie brauchen aber vorerst keine id-Attribute zu vergeben, weil wir an dieser Stelle nur Microdata programmieren. Die Änderung von Microdata durch eine Programmiersprache folgt in der Einführung in JavaScript (also nur für MediaSystems Studierende) später.
+
+-	Einer beliebigen Anzahl an Eigenschaften, die bei unterschiedlichen Objekten des gleichen Typs unterschiedlich ausgeprägt sein können.
+Damit beschäftigen wir uns gleich. Hier ein Beispiel: Eigenschaften können z.B. Telefonnummern sein. Und dass unterschiedliche Elemente unterschiedlich ausgeprägt sein können, bedeutet bei Elementen vom Datentyp Telefonnummer nicht anderes, als dass unterschiedliche Telefonnummern schlicht unterschiedliche Zahlenkombinationen sind.
+
+-	Einer Datenstruktur oder einem Datentyp, die für jede Eigenschaft individuell beschreibt, um was für eine Eigenschaft es sich handelt.
+Das klingt schwieriger, als es ist; in HTML bedeutet es nur, dass wir damit sagen, dass ein bestimmter Text der Name eines Ansprechpartners ist, dass ein anderer Text seine Anschrift ist, usw.
+
+-	Einer beliebigen Anzahl an Methoden (alte Bezeichnung: Funktionen), mit denen die Eigenschaften geändert werden können.
+
+In HTML haben Sie keinen Zugriff auf Methoden. Diese sind Teil von Programmiersprachen wie JavaScript. Dementsprechend beschäftigen wir uns damit vorerst nicht.
+
+\subsubsection{Festlegung des Objekttyps}
+
+Gerade haben Sie gelernt, dass Sie das Attribut itemscope verwenden müssen, um festzulegen, dass ein Container Microdata enthalten soll.\\
+
+Dann müssen Sie festlegen, welche Art von Microdata das sein soll. Zwar könnten Sie hier auch willkürlich eigene Typen festlegen, aber damit hätten Sie die Idee der Microdata ad absurdum geführt, denn was Sie sich bei eigenen Typen denken, kann kein Webbrowser wissen, also wäre es weitestgehend zwecklos, so vorzugehen.\\
+
+Auf der Seite
+http://schema.org/docs/schemas.html 
+können Sie eine Vielzahl an sogenannten Schemata (das sind unsere Objekttypen) nachschlagen.\\
+
+Wenn Sie nun eine Schema gefunden haben, dass Ihnen gefällt, dann programmieren Sie es mit dem Attribut itemtype in den entsprechenden Container. Im folgenden Beispiel haben wir das Schema für eine Person verwendet, die u.a. Möglichkeiten anbietet, um eine Anschrift als Microdata zu programmieren:\\
+
+<p itemscope itemtype=http://schema.org/Person>
+</p>
+Quellcode 2.24: Definition eines Absatzes als Microdata für die Anschrift einer Person beinhalten soll.\\
+
+Wie Sie sehen haben wir hier noch keinerlei Angaben zur Person selbst einprogrammiert. Dieser Container würde auf einer Webanwendung also nicht sichtbar sein und er würde vorerst auch noch keinen Zweck erfüllen. Aber dieser Schritt ist wichtig, weil der Webbrowser sonst nicht wissen kann, was er mit den Microdata anfangen soll, die in diesem Container auftauchen.
+
+\subsubsection{Eigenschaften von Objekten}
+
+Nehmen wir an, der Name der Person lautet „Martin Schinken“. Für unsere Microdata benötigen wir jetzt also eine Möglichkeit, um eine Eigenschaft „Name“ zu programmieren und diese als Teil des Objekts einzuprogrammieren.\\
+
+In HTML5 wird das wieder über ein Attribut eines Containers erledigt. Das Attribut lautet itemprop (kurz für the items property). Nun gibt es wieder eine Vielzahl an möglichen Arten von Eigenschaften, also müssen wir diese gleich festlegen.\\
+
+Hinweis: Wenn Sie wie in diesem Fall  erfahren, wofür ein „Befehl“ einer Programmsprache steht (hier itemprop für the items property), dann setzen Sie in einen Programm bitte nicht diese Langform (hier „the items property“) ein, denn nur der „Befehl“ (hier itemprop) ist ein gültiger Teil der Programmiersprache. Die Langform soll Ihnen lediglich als eine Eselsbrücke dienen.\\
+
+Aufgabe:\\
+
+-	Schlagen Sie nach, wie die itemprop heißt, die für den Namen einer Person verwendet wird.\\
+
+Jetzt müssen wir nur noch einen Container innerhalb des <p>-Containers programmieren, der das Attribut itemprop mit dem Wert beinhaltet, den Sie gerade nachgeschlagen haben. \\
+
+Anmerkung: Diejenigen von Ihnen, die diese Veranstaltung durch eine Klausur abschließen, sollten das selbst gemacht haben, weil eine Aufgabe in Ihrer Klausur darin besteht, eine passende itemprop für einen itemtype aus einer Liste auszuwählen.\\
+
+Der Quellcode sollte jetzt also so aussehen: (Für die drei Punkte setzen Sie bitte die von Ihnen gerade recherchierte itemprop ein.)\\
+
+<p itemscope itemtype=http://schema.org/Person>
+<span itemprop=...>Martin Schinken</span>
+</p>
+Quellcode 2.25: Microdata, die den Namen einer Person enthält.\\
+
+Aufgabe:\\
+
+Bei diesem Quellcode sind zwei Fehler enthalten. Der eine ist die fehlende itemprop, die Sie nachtragen sollten. Den anderen kennen Sie schon etwas länger. Genauer gesagt sind in diesem Quellcode also nicht zwei Fehler enthalten, sondern vielmehr fehlen hier zwei Einträge. (Tipp: Wäre der Name Martin Holz oder Martin Hammer, dann wären es ebenfalls zwei Fehler. Beim Namen Martin Borowski dagegen würde der zweite Fehler nicht auftreten.)\\
+
+-	Ergänzen Sie den Code so, dass die beiden Fehler bereinigt werden.
+
+\subsubsection{Umfangreiche Microdata am Beispiel einer Person mit Adressangabe}
+
+Aufgabe:\\
+
+Auch das nachfolgende Codefragment ist lückenhaft. Recherchieren Sie, welche Attributbelegungen jeweils Sinn machen:\\
+
+<section itemscope itemtype=http://schema.org/Person>
+<h1>Kontakt</h1>
+<dl>
+<dt>Name</dt>
+<dd itemprop= ... >Ihr Name</dd>
+<dt>Position</dt>
+<dd>
+<span itemprop= ... >Student/in</span> an der
+<span itemprop= ... > HAW Hamburg</span>
+</dd>
+</dl>
+<div itemprop= ... itemscope itemtype= ... >
+<span itemprop= ... >Hamburger Str. 231</span>
+<span itemprop= ... >Hamburg</span>,
+<span itemprop= ... >22081</span>
+</div>
+<h1>Online bin ich aktiv bei:</h1>
+<ul>
+<li><a href=http://www.twitter.com/ihrTwitterAccount itemprop= ... >Twitter</a></li>
+<li><a href=http://www.blogger.com/ihrBlogAccount itemprop= ... >Webblog</a></li>
+</ul>
+</section>
+Quellcode 2.26: Umfangreiche Microdata als Aufgabe zur Recherche
+
+\subsection{Validator für Microdata}
+
+Um zu prüfen, ob Ihre Microdata eindeutig programmiert sind, können Sie auf der folgenden Webanwendung einen Testbereich finden:\\
+
+http://developers.google.com/structured-data  \\
+
+Aufgabe:\\
+
+Prüfen Sie dort, ob Ihre Lösungen zu den beiden letzten Aufgaben valide sind.
+
+\section{Zusammenfassung}
+
+Sie wissen jetzt:\\
+
+-	wie die Grundstruktur jeder Webanwendung aussieht,
+-	verstehen was Internationalisierung und Lokalisierung ist,
+-	wissen um die Bedeutung von meta-Containern,
+-	kennen die neuen Container header, footer, main, aside, usw.
+-	und wissen wie Sie Polyfills finden und nutzen können.
+Sie wissen außerdem:
+-	wie Sie Verbindungen zwischen Webanwendung programmieren können,
+-	wie Sie Nutzereingaben in HTML ermöglichen können
+-	und wie Sie multimediale Inhalte in die Webanwendung einbinden können.\\
+
+Außerdem verstehen Sie, was das semantische Web ist und wie Sie mittels Microdata eine semantische Webanwendung programmieren können.\\
+
+Was jetzt noch fehlt und leider nicht Teil dieses Kurses ist, ist die Entwicklung von interaktiven Oberflächen in HTML5 mit Hilfe von Canvas.\\
+
+Im nächsten Kapitel folgt die zweite Hälfte des Kursteils, in dem sie die Entwicklung statischer Webanwendung kennen lernen: CSS, die Programmiersprache, mit der Sie die Gestaltung einer Webanwendung programmieren.
+
+\subsection{Mehr Text braucht die Welt … und Zeilenumbrüche}
+
+\textbf{Ab hier finden Sie die Abschnitte des ersten HTML-Skripts, das ich erstellt habe. Dieser Teil ist weitgehend veraltet, da er das Vorgehen bei der Programmierung in HTML 4.01 beinhaltet. Er ist zurzeit noch enthalten, da ich prüfe, welche Abschnitte ggf. noch aktuell sind.}\\
+
+Nun gut, die Überschrift mag nicht ganz der Wahrheit entsprechen, aber tun wir einmal so, als wenn sie zuträfe. Erweitern Sie also einfach den body-Container um einige Sätze. Es ist egal, ob diese Sinn machen oder reines Buchstabenchaos sind, da es hier darum geht, dass Sie sehen, welche Anzeige aus Ihrem Quellcode erzeugt wird. Speichern Sie das Ergebnis dann als seite02.html im bekannten Verzeichnis ab, wechseln Sie im Browser auf localhost bzw. aktualisieren Sie die Seite und öffnen sie dann die neue Webanwendung.\\
+
+Einschub: .htm und .html\\
+
+Wenn Sie sich etwas intensiver mit der Entwicklung von Webanwendung beschäftigen, dann werden Sie sehen, dass manche HTML-Skripte unter Dateibezeichnungen gespeichert werden, die nicht auf .html enden, sondern auf .htm. Streckenweise werden Sie auch Kursunterlagen finden, in denen gesagt wird, dass Sie die Skripte in Dateien speichern sollen, deren Namen mit .htm enden. Neugierige Naturen fragen nun: Wo ist der Unterschied? Kurzantwort: Es gibt keinen. Lange Antwort: Bis in die 90er Jahre war es wichtig, so effizient wie möglich zu programmieren. Deshalb gab es z.B. bei damaligen Betriebssystemen die Einschränkung, dass Dateitypen durch eine Endung festgelegt wurden, die nur drei Buchstaben haben durfte. Als immer mehr Hauptspeicher in Rechnern zur Verfügung stand war diese Beschränkung nicht mehr nötig. Wo also früher .htm stand, wurde irgendwann .html eingegeben. Das ist allerdings nicht bei allen Dateitypen so simpel, Sie dürfen es also nur bei HTML-Skripten voraussetzen.\\
+
+Wichtig: Auch wenn Sie beide Endungen nutzen dürfen gilt: seite.htm ist eine andere Datei als seite.html\\
+
+Wieder zurück zu unserer ersten Webanwendung:\\
+
+Und was sehen Sie? Etwas sehr unschönes: Der gesamte Text zieht sich in der ersten Zeile der Webanwendung hin und wird dann auf der nächsten Zeile von links nach rechts fortgesetzt, ohne dass Zeilenumbrüche eingefügt werden.\\
+
+Was ein Zeilenumbruch ist? Immer wenn Sie bei einer Textverarbeitung die Enter- bzw. Return-Taste drücken, wird die aktuelle Zeile beendet und der Text in der nächsten Zeile fortgesetzt. Bei Microsoft Word erhalten Sie dagegen einen Zeilenumbruch durch die Tastenkombination Shift \& Return.\\
+
+Aber Sie können einen Zeilenumbruch in HTML nicht generieren, indem Sie wie bei einer Textverarbeitung einfach die Enter-Taste drücken, sondern Sie müssen wieder ein Tag setzen:\\
+
+<br />\\
+
+Dieses Tag fügt einen Zeilenumbruch in die Webanwendung ein. Nun fragen Sie sich vielleicht, was denn der Slash / in diesem Tag soll. Das ist ganz einfach: Da jedes Tag einen Container öffnet oder schließt, ein Zeilenumbruch aber gleich abgeschlossen ist, würde es wenig Sinn machen, ein öffnendes und ein schließendes br-Tag zu programmieren. Als Kurzschreibweise können Sie deshalb diese Form nutzen. Und damit handelt es sich hier also nicht einfach nur um einen Tag, sondern um einen vollständigen Container.\\
+
+Das selbe gilt für alle Tags, die keinen eigenen Container brauchen. Hier wäre ein Beispiel: Wenn Sie eine waagerechte Linie in Ihre Seite einfügen wollen, nutzen Sie einfach das folgende Tag:\\
+
+<hr />\\
+
+Aufgaben: \\
+
+(1)	Probieren Sie das gleich mal aus: Fügen Sie wenigstens einen br-Container und einen hr-Container in Ihr Dokument ein. Speichern Sie die Datei und lassen Sie sie sich im Browser anzeigen.
+
+(2)	Und probieren Sie jetzt einmal aus, was mit einem Text passiert, den Sie in einen hr-Container einfügen. (Sprich: Sie programmieren eine öffnendes hr-Tag vor diesem Text und ein schließendes hr-Tag dahinter.)
+
+\subsection{Hyperlinks – Verbindungen zwischen Elementen}
+
+Mittlerweile haben Sie mehrere Seiten gespeichert. Und da ist es unschön, dass wir noch keine Links haben, mit denen wir zwischen den Seiten wechseln können. Sonst hat ja jede Webanwendung Hyperlinks, über die wir genau das tun können, also sollten wir als nächstes Hyperlinks in unsere Seite einfügen.\\
+
+Das Skript für einen einfachen Link sieht so aus:\\
+
+<a href=URL>Ein wenig Text</a>\\
+
+Bei einem konkreten Link müssen wir jetzt also noch die URL des Ziels einfügen.
+Beispiel: Wir wollen in unser Skript für die erste Seite einen Link auf die zweite Seite einfügen. Das sähe dann so aus:\\
+
+<a href=seite02.html>Hier geht’s zur zweiten Seite</a>
+
+\subsection{Entitys - Umlaute und andere Sonderzeichen}
+
+All das erklärt aber immer noch nicht, wie Sie Umlaute oder andere Sonderzeichen (die im englischen Alphabet nicht vorkommen) in Ihre Webanwendung einpflegen. Leider müssen wir hier auf eine etwas umständliche Programmierung zurückgreifen.\\
+
+So müssen Sie beispielsweise anstelle des Buchstaben ü das Skript \&uuml; in den fließenden Text eintragen. Aber das sieht nur auf den ersten Blick unübersichtlich aus: Jeder dieser Skriptbefehle beginnt mit dem kaufmännischen Und-Zeichen und endet mit einem Semikolon.\\
+
+Die Zeichenkette dazwischen ist für alle Umlaute simpel: Zunächst der Buchstabe (a, o, u bei kleinen Umlauten und A, O, U bei großen Umlauten) und dann die Zeichenfolge uml für Umlaut.\\
+
+Ähnliches gilt für die übrigen Sonderzeichen, die bei HTML als Entitys bezeichnet werden. Warum sie nicht entsprechend der englischen Grammatik als Entities bezeichnet werden, kann ich Ihnen nicht sagen. Zu Fragen und Nebenwirkungen wenden Sie sich bitte den Anglisten Ihres Vertrauens.\\
+
+Hier eine Tabelle der für den Einstieg wichtigsten Entities :\\
+
+Ä	\&Auml;	
+ä	\&auml;	
+Ö	\&Ouml;	
+ö	\&ouml;	
+Ü	\&Uuml;	
+ü	\&uuml;	
+ß	\&szlig;	(ß mit Ligatur)
+€	\&euro;	
+
+\&	\&amp;	(ampers and)
+>	\&gt;	(greater than)
+<	\&lt;	(less than)
+
+Anführungszeichen unten	\&bdquo;	
+Anführungszeichen oben	\&rdquo;	
+
+Sollten Sie einmal ein Zeichen nutzen wollen, dass Sie in keiner HTML-Tabelle finden, dann gibt es noch eine Lösung: Zeichen, die in der Unicode-Tabelle bzw. der ISO 10646  aufgeführt werden, können wie folgt eingefügt werden. Wählen Sie dazu die Nummer aus der Codetabelle, die Ihrem Zeichen entspricht und fügen es zwischen \&\# sowie dem Semikolon ein. Sollte der Wert ein Hexadezimalwert sein, müssen Sie noch ein x einfügen.\\
+
+Beispiel: Nehmen wir an, Sie wollen ein bestimmtes chinesisches Element in Ihrem Text darstellen, dass im Unicode die Codenummer 9FB9 hat. Es ist leicht zu erkennen, dass es sich hier um eine hexadezimale Zahl handelt. Also müssen wir noch ein x in \&\#    ; einfügen. Es ergibt sich also folgendes Skript, mit dem wir das gewünschte Zeichen einfügen können:\\
+
+\&\#x9fb9;\\
+
+Kontrolle\\
+
+Machen Sie das einmal selbst: Laden Sie sich die Unicode-Tabellen herunter (Umfang knapp 130 MB). Fügen Sie dann Ihre Email-Adresse in das HTML-Skript, wobei Sie den Wert für das @-Symbol anhand der Codetabelle in Ihren Text einfügen. Sie werden hier nicht lange suchen müssen: Der Eintrag befindet sich gleich auf der ersten Seite in einem der Dokumente, die Sie heruntergeladen haben.\\
+
+Hinweis: Beachten Sie bitte, dass es sich hier um eigenständige Zeichen handelt, die mit dieser Zeichenkette erzeugt werden und nicht etwa um Container oder Tags. Spitze Klammern haben an dieser Stelle also nichts verloren.
+
+\subsection{Deutsche Umlaute ohne Entities}
+
+Kommt es Ihnen zu kompliziert vor, wenn Sie jedes Sonderzeichen als eine Entity eingeben müssen? Da sind Sie nicht alleine. Deshalb kommen wir jetzt zu einer Zeile, die uns die ganze Arbeit abnimmt. Mit dieser Zeile teilen wir dem Webbrowser mit, dass wir unsere Zeichen mit UTF-8 codieren. Und dann versteht braucht er keine Entities mehr, sondern wir können direkt Umlaute (oder auch Schriftzeichen anderer Sprachen) direkt im Skript unterbringen.\\
+
+Für Fortgeschrittene: Unter Umständen kommen Sie in die Situation, dass Sie UTF-16 oder UTF-32 nutzen wollen. Selbst bei aktuellen chinesischen Texten wird das nicht passieren, da auch diese mit dem Zeichenvorrat von UTF-8 abgedeckt sind. Hiervon rät das W3C bei Webanwendung ab. Prüfen Sie in einer solchen Situation, welche alternativen Möglichkeiten Sie haben. Ggf. gibt es ein anderes Dokumentformat, das Ihnen in dieser Situation weiter hilft.\\
+
+Hier das Skript, das Sie bitte als erste Zeile in Ihren head-Container einpflegen:\\
+
+<meta charset=utf-8>\\
+
+Um Ihre Webanwendung zu internationalisieren sollten Sie außerdem das öffnende html-Tag wie folgt erweitern:\\
+
+<html lang=de>\\
+
+Wichtig: Dennoch müssen Sie die Entities beherrschen, da Programmiersprachen wie JavaScript hiervon nicht betroffen sind. Dort müssen Sie selbst Anführungszeichen als \&quot; eintragen, was nicht nur die Fehleranfälligkeit erhöht, sondern auch die Programmierung deutlich erschwert.\\
+
+\subsection{Hervorhebungen}
+
+Bislang haben Sie zwei Möglichkeiten kennen gelernt, um Texte innerhalb eines HTML-Skripts hervorheben zu lassen: Zeilenumbrüche, mittels derer Sie Absätze erzeugen können und waagerechte Linien.\\
+
+Die meisten Nutzer möchten aber auch kursiv, fett oder unterstrichen nutzen, um Textstellen hervorzuheben. Fortgeschrittene Nutzer verwenden außerdem standardisierte Einstellungen, mit denen Sie mehrere Überschriftentypen haben. Dadurch kann ein Leser am Format eines Textes erkennen, ob es sich um eine Kapitelüberschrift, eine Unterkapitelüberschrift usw. handelt.\\
+
+Für die Programmierung in HTML handelt es sich jeweils wieder um Container. Sie programmieren also wieder ein öffnendes und schließendes Tag für jede Art der Hervorhebung:\\
+
+Fettdruck	<b> … </b>	(bold)
+Kursive Schrift	<i> … </i>	(italic)
+Unterstrichener Text	<u> … </u>	(underline)
+
+Kapitelüberschrift	<h1> … </h1>	(Header)
+Unterkapitel	<h2> … </h2>	
+…	<h3> … </h3>	
+
+Aufgabe: \\
+
+Warum ist das folgende HTML-Skript falsch? <b><i>Hallo</b></i> Welt\\
+
+Kontrolle\\
+
+Sie können bis jetzt Texte auf eine Webanwendung hochladen, in denen jedes Zeichen vorkommen kann, dass in irgend einer Sprache der Welt vorkommt.\\
+
+Sie können außerdem einzelne Bereiche eines Textes hervorheben und eine erste Strukturierung mit Hilfe von Überschriften erzeugen.\\
+
+Sie wollen jetzt endlich etwas darüber erfahren, wie Sie einzelne Elemente einer Webanwendung anordnen können? Nicht so schnell mit den jungen Pferden. Schauen wir uns doch zunächst an, wie Sie in HTML Eingaben durch den Nutzer ermöglicht werden können. Und damit sind wir im Bereich von Formularen.
+
+\subsection{Formulare}
+
+Der Begriff Formular umfasst alles, was bei einem HTML-Skript Eingaben durch den Nutzer ermöglicht. Grundsätzlich gilt: Für Formulare verwenden wir form-Container:
+<form> … </form>\\
+
+Wichtig: Ohne Unterstützung durch Sprachen wie PHP, JavaScript oder ähnliche können wir zwar Nutzereingaben in einer Webanwendung einprogrammieren, aber wir können diese Eingaben noch nicht weiter nutzen. Wir behandeln Sie aber schon jetzt, weil Sie sich zunächst überlegen sollen, welche Interaktionsmöglichkeiten ein Nutzer haben sollte, um eine bestimmte Funktionalität der Webanwendung zu realisieren. Wie die Webanwendung auf diese Eingaben reagiert werden wir dann später programmieren.\\
+
+Für Fortgeschrittene: Aber auch ohne eine dieser Sprachen können wir seit HTML5 Einschränkungen Programmieren, die z.B. dafür sorgen, dass ein Nutzer bei einem Eingabefeld nur ein echtes Datum (also z.B. keinen 33. 7. 1922) eingeben kann. Wenn Sie daran interessiert sind, solche Einschränkungen gleich in HTML5 zu programmieren, nutzen Sie dazu bitte Selfhtml oder eine andere Quelle.
+
+\subsubsection{Nutzereingaben in HTML programmieren}
+
+Wenn Sie eine Nutzereingabe annehmen wollen, dann müssen Sie innerhalb eines form-Containers einen input-Container für jede Eingabe programmieren:\\
+
+<form>
+<input>Erste Eingabe:</input>
+<input>Zweite Eingaben:</input>
+… 
+</form>\\
+
+Kontrolle:\\
+
+(1)	Prüfen Sie, wie dieser Quellcode auf Ihrer Seite angezeigt wird und was Sie wohl ändern müssen, damit die Abfrage sinnvoll dargestellt wird.
+
+(2)	Oh, und natürlich sollen Sie die HTML-Skripte Ihres Projekts jetzt so erweitern, dass Nutzereingaben tatsächlich möglich sind.
+
+(3)	Prüfen Sie außerdem, was mit den Eingaben passiert, wenn Sie den Quellcode ändern, die geänderte Fassung speichern und die Seite dann nochmal laden.
+
+\subsubsection{Überblick über Formularelemente}
+
+Mit dem input-Container können wir bislang nur Eingaben verarbeiten, die z.B. über eine Tastatur eingegeben werden. Ein Datum kann also bei dieser einfachen Form von input-Containern nicht über ein Fenster angewählt werden, obwohl das in HTML mit einem input-Container programmiert werden kann. \\
+
+Wenn wir solche Eingabemöglichkeiten in HTML realisieren wollen, müssen wir den Typ eines input-Containers explizit definieren. Dazu ergänzen Sie schlicht das input-Tag wie folgt, wobei Sie anstelle der drei Punkte den Bezeichner angeben müssen, der dem jeweiligen Typ entspricht:\\
+
+<input type=“ … “>\\
+
+Wenn Sie einige dieser Typen kennen, sollte das ausreichen. Gehen Sie auch hier schlicht danach vor, welche Typen für die Funktionalitäten Ihrer Webanwendung von Belang sind. Leider wird nicht jeder Typ von jedem Browser unterstützt. Entwickeln Sie Ihre Seite zunächst so, als wenn diese Einschränkung nicht gültig wäre. Die Anpassung einer Webanwendung für unterschiedliche Browser ist ein fortgeschrittenes Thema, das den professionellen Webdeveloper auszeichnet.\\
+
+Für jeden Typen gibt es noch eine Reihe sogenannter Attribute, mit denen Sie weitere Einstellungen für die Nutzereingabe vornehmen können. Dazu müssen Sie Ihr input-Tag wie folgt erweitern:\\
+
+<input type=`` … `` attribut1=`` … `` attribut2=`` … ``>\\
+
+Wie sie sehen gibt es hier im Gegensatz zu vielen imperativen Sprachen kein Zeichen, das Sie zwischen die verschiedenen Einträge setzen müssen. In C und den nachfolgenden Sprachen mussten Sie beispielsweise ein Komma setzen. So etwas gibt es in HTML nicht.\\
+
+Genau wie den Typ legen Sie also ein Attribut für eine Eingabe fest, indem Sie das Attribut in das öffnende input-Tag eintragen, dazu ein Gleichzeichen und anschließend den Wert den Sie dem Attribut geben bzw. zuordnen wollen. Diesen Wert müssen Sie immer in Anführungszeichen setzen.\\
+
+Zunächst einige Typen, mit denen Nutzer verschiedene Arten von Texten eingeben können:\\
+
+•	``text``: Der Name ist selbstredend: Hier kann der Nutzer einen Text eingeben.
+•	``search``: Dieser Typ ermöglicht es dem Nutzer nach einem Begriff zu suchen. Als Entwickler können Sie optional Begriffe festlegen, die gefunden werden können.
+•	``number``: Sie können bei diesem Typen einen Zahlenbereich vorgeben.
+•	``email`` und ``url`` sind wenig sinnvolle Typen, da Sie mit ihnen zwar prüfen können, ob eine Eingabe eine gültige Email-Adresse bzw. eine gültige URL sein könnte, aber die Prüfung, ob sie tatsächlich existiert bzw. ob sich hinter der Angabe ein Skriptbefehl versteckt, über den ein Angriff auf Ihre Seite erfolgen soll, das kann dieser Typ nicht feststellen.\\
+
+Jetzt einige Typen, die es dem Nutzer ermöglichen, Angaben aus einer Tabelle bzw. einem neuen Fenster auszuwählen:\\
+
+•	``tel``: Damit kann der Nutzer eine Telefonnummer eingeben.
+•	``date``: Hier kann der Nutzer ein Datum anwählen.
+•	``time``: Hier kann er einen Zeitpunkt anwählen.
+•	``datetime``: Zusätzlich zum Datum (wie bei date) kann hier noch eine Uhrzeit angewählt werden.
+•	``datetime-local``: Im Gegensatz zu datetime wird hier die Zeitzone ignoriert.
+•	``month``: Hier kann der Nutzer das Jahr und den Monat als vier- bzw. zweistellige Zahl eingeben.
+•	``week```: Dreimal dürfen Sie raten…
+•	``color``: Hier kann der Nutzer eine Farbe aus einer Farbtafel auswählen.
+Abschließend noch eine Möglichkeit, um Schieberegler einzufügen:
+•	``range``: Damit können Sie Schiebregler und Schalter programmieren, sodass der Nutzer keinen festen Wert eingeben muss bzw. kann. Ein solches Element kann sowohl horizontal wie vertikal programmiert werden.\\
+
+Aufgabe:\\
+
+Prüfen Sie, welche Typen für die Nutzereingaben in all Ihren HTML-Skripten sinnvoll sind. 30 Nutzereingaben sollten es wenigsten sein. Und nein, Sie sollen nicht auf jeder Webanwendung die gleichen Nutzereingaben programmieren; stellen Sie sich vor, Sie wären auf einer Seite unterwegs, die Sie pausenlos dazu auffordert, die gleichen Eingaben zu machen.
+
+\subsubsection{Der Typ ``text``}
+
+Diesen Typen kennen Sie bereits: Jeder input-Container, der keinen expliziten Typen hat wird in HTML als input vom Typ Text interpretiert.\\
+
+Sie können hier die folgenden Attribute verwenden. Wie immer gilt: Prüfen Sie, welche dieser Attribute bei Ihren Eingaben Sinn machen und programmieren Sie dann entsprechend. Sie brauchen wirklich nicht jedes Attribut im Detail zu wissen; wichtig ist, dass Sie im Stande sind, Attribute zu programmieren. Professionelle Entwickler zeichnen sich nicht dadurch aus, dass Sie alles wissen, sondern dadurch, dass sie solche Details schnell nachschlagen.\\
+
+Das führt auch direkt zum nächsten Hinweis: Es gehört zu den essentiellen Kenntnissen, die Sie bei der Programmierung in vielen Sprachen benötigen, dass Sie lernen, Referenzen zu nutzen. Ihre nächste Aufgabe wird darin bestehen, genau das zu üben. Und keine Sorge: Das fällt jedem anfangs schwer, weil Referenzen nicht dafür verfasst sind, lesbar zu sein. Dafür sind nämlich Lehrbücher da. Referenzen sind Nachschlagewerke für Programmierer.\\
+
+•	Das Universalattribut id. Dazu folgt etwas später eine Erklärung. Für den Moment ignorieren Sie es bitte.
+•	``name`` kann von JavaScript genutzt werden, um die Eingabe zu nutzen.
+•	``size`` gibt an, wie viele Zeichen sichtbar sein sollen. Wenn Sie hier einen zu großen Wert angeben, dann führt das zu Problemen mit kleinen Displays wie bei Smartphones. Ist der Wert zu klein, dann stört das den Nutzer, weil er zu wenig von seiner Eingabe sieht.
+•	``maxlength`` gibt an, wie lang die Eingabe des Nutzers maximal sein darf. Im Gegensatz zu size, das nur die Anzeige beeinflusst, schränkt maxlength also tatsächlich die Eingabemöglichkeiten des Nutzers ein.
+•	``value`` legt einen Standardinhalt fest. So könnten Sie in ein Eingabefeld für den Vor- und Nachnamen so etwas wie Mäxchen Müller einblenden lassen, das durch die Nutzereingabe überschrieben wird.
+•	``placeholder`` hat eine ähnliche Funktion wie value. Probieren Sie es doch einfach mal aus, um den Unterschied zu sehen.
+•	``readonly`` kann dazu genutzt werden, damit ein text-Feld nicht geändert werden kann. So kann zum Beispiel verhindert werden, dass ein Nutzer eine Angabe einträgt, bevor er den Nutzungsbedingungen Ihrer Seite zugestimmt hat. Schlagen Sie einmal nach, welche Werte dieses Attribut haben kann.
+•	``required`` dagegen verhindert, dass die Eingaben eines Formulars abgeschickt werden können, wenn eine entsprechende Angabe vom Nutzer noch nicht durchgeführt wurde.
+•	``pattern`` ist ein sehr mächtiges Attribut, weil Sie hierüber genau programmieren können, was für Zeichen bei einer Texteingabe erlaubt sind und in welcher Reihenfolge diese auftreten dürfen. Um das richtig nutzen zu können, sollten Sie ein bereits die Veranstaltung Theoretische Informatik besucht haben.\\
+
+Aufgabe: \\
+
+Programmieren Sie jetzt für jede Nutzereingabe nötige und sinnvolle Attribute mit Werten, die Sinn machen.
+
+\subsubsection{Das id-Attribut – Variablen in HTML}
+
+Sie haben gelernt, dass Sie in HTML keine Nutzerangaben verarbeiten können. Aber wie Sie jetzt wissen können Sie Eingabefelder programmieren, mit denen ein Nutzer Eingaben erstellen kann. Wie Sie vielleicht wissen werden solche Eingaben in Programmiersprachen mit Hilfe sogenannter Variablen gespeichert und verarbeitet. Damit wir also später die Nutzereingaben in PHP verarbeiten können, müssen wir nun jeden input-Container einer Variablen zuordnen.\\
+
+Und das erledigen wir über das id-Attribut. Wir programmieren es genauso, wie wir andere Attribute eines input-Containers programmieren. Der Unterschied besteht allerdings in zwei Dingen:\\
+
+(1.)	Das id-Attribut ändert nichts an der Darstellung oder Verarbeitung der Nutzereingabe; es ermöglicht lediglich, dass wir diese Eingabe mit einer Sprache wie PHP oder JavaScript verwenden können.
+
+(2.)	Der Wert des Attributs darf (erst ab HTML5) alle Zeichen außer einem Leerzeichen enthalten.\\
+
+Wichtig: Ein id-Attribut darf auf jeder Webanwendung nur einmal verwendet werden, da sonst der Browser nicht weiß, welches Element Sie mit diesem id-Attribut referenzieren. Sie sollten deshalb über Kommentare jedes vergebende id-Attribut und seinen Zweck am Anfang Ihrer HTML-Skripte festhalten.\\
+
+Praktisch: Das id-Attribut kann außerdem dazu genutzt werden, um später auf eine Stelle in einem HTML-Skript zu verlinken. Wenn Sie später wissen, wie Sie ein Dokument mit anderen Methoden als dem br-Container strukturieren können, dann können Sie es dort einsetzen.\\
+
+Kontrolle:\\
+
+Haben Sie alle input-Container mit einem id-Attribut bezeichnet? Nein, na dann wissen Sie ja, was Sie jetzt tun sollten.
+
+\subsection{Universalattribute}
+
+Sie haben gerade das id-Attribut kennen gelernt. Dieses Attribut unterscheidet sich von allen anderen Attributen, die Sie bislang kennen gelernt haben in einem entscheidenden Punkt: An jeder Stelle eines HTML-Skriptes, wo Sie es nutzen können hat es die selbe Bedeutung.\\
+
+Alle Attribute, die in HTML diese Bedingung erfüllen, also alle Attribute, deren Bedeutung immer gleich bleibt, werden als Universalattribute bezeichnet. Leider werden bei selfhtml in den Beispielen zu Formularen id-Attribute aufgeführt, aber es wird dort nicht explizit angegeben, welche Universalattribute noch verwendet werden dürfen.
+
+\subsection{Labels – Beschriftungen für input-Container}
+
+Bislang haben Sie für jede Abfrage manuell eine Beschriftung hinzugefügt, die aber im Grunde gänzlich unabhängig von diesem input-Container eingefügt wird. Zur Erinnerung: Vorhin haben wir eine Eingabe wie folgt abgefragt: Erste Eingabe:<input \textbackslash>\\
+
+Nun wäre es aber sinnvoll, wenn bereits im Quellcode und damit für den Browser erkennbar der Text Erste Eingabe zum input-Container zugeordnet wäre. Ursprünglich hatten wir erfolglos versucht, das zu erreichen, indem wir die Zeile wie folgt programmiert haben: <input>Erste Eingabe:</input>\\
+
+HTML bietet uns für diese Fälle den label-Container an. Das sähe dann so aus:
+<label>Erste Eingabe:<input /></label>\\
+
+Nun möchten wir ja solche Eingaben immer mit einem id-Attribut versehen, damit wir die Eingabe weiter verarbeiten können. Aber dann haben wir ein Problem, denn wir dürfen die Zuordnung des id-Attributs ja nur einmal vornehmen, weil der Browser sonst nicht weiß, auf welches Element wir uns beziehen.\\
+
+Wenn wir jetzt aber das id-Attribut im input-Container belassen, dann ist das label immer noch unabhängig vom input und wir bekommen bei einem Hyperlink auf die id ggf. nicht die Ansicht, die wir uns wünschen.\\
+
+Deshalb gibt es das for-Attribut für label-Container. Wenn ein label sich auf einen input beziehen soll, dann verwenden wir das for-Attribut und ordnen diesem den selben Wert bzw. den selben Eintrag zu, den wir dem entsprechenden it-Attribut des input-Containers zugeordnet haben. Das sieht dann so aus:\\
+
+<label for=``ersteEingabe``>Erste Eingabe:<input id=``ersteEingabe`` /></label>\\
+
+Aufgabe:\\
+
+Na kommen Sie schon. Sie wissen, welche Aufgabe jetzt ansteht.\verb|^^|\\
+
+Kontrolle:\\
+
+Sie können jetzt Texte auf Webanwendung programmieren und unterschiedliche Arten von Eingaben durch Nutzer vornehmen lassen.\\
+
+Bevor wir uns der Frage zuwenden, wie solche Eingaben verarbeitet werden können, kommen wir zunächst zur fortgeschrittenen Programmierung von statischen Webanwendung: Der Programmierung mit CSS.
+
+\subsection{CSS – Cascading Style Sheets}
+
+In der Anfangszeit von HTML wurden Elemente einer Seite ausschließlich durch Container kombiniert, wie sie Sie bis jetzt kennen gelernt haben. Diese Container bewirkten direkt, dass ein Element an einer bestimmten Stelle oder in einer bestimmten Formatierung auf der Webanwendung platziert wird.\\
+
+Dabei waren viele Einstellungen durch den Browser oder durch HTML vordefiniert, sodass es Designentscheidungen gab, die nicht in HTML umgesetzt werden konnten. Außerdem war eine Planung des Seitenlayouts nur für jede Webanwendung einzeln möglich. CSS stellt deshalb Möglichkeiten zum Entwurf von Strukturen und Formaten bereit, die dann durch einen kurzen Befehl auf beliebig vielen Einzelseiten umgesetzt werden kann, sodass ein einheitliches Layout aller Webanwendung mit geringem Aufwand möglich wird.\\
+
+Wichtig: Wenn etwas mit CSS möglich ist, erledigen Sie es mit CSS!\\
+
+Die Möglichkeiten gehen dabei so weit, dass Sie für jedes Element auf den Bildpunkt genau definieren können, wo ein Element platziert werden soll. Außerdem bietet CSS Ihnen die Möglichkeit beispielsweise zwischen einer Ausgabe auf dem Bildschirm und auf einem Drucker zu unterscheiden. Selbst die Ausgabe über Lautsprecher ist hierdurch möglich.\\
+
+Das bedeutet auch, dass Sie teilweise durch CSS Vorgaben aus HTML-Skripten überschreiben können.  Die entsprechenden Passagen des HTML-Skriptes bleiben dann aber im Quellcode unverändert erhalten. Gerade als Einsteiger können Sie hier Schwierigkeiten bekommen, denn das bedeutet, dass es mitunter keine Auswirkungen hat, wenn Sie im HTML-Skript etwas ändern. Hier hilft einzig und alleine die Erfahrung weiter, denn weder der Webbrowser noch das HTML-Skript wird Ihnen mitteilen, dass eine Passage Ihres HTML-Skriptes durch ein CSS-Skript überschrieben wurde.\\
+
+CSS-Bereiche eines HTML-Skripts sind leicht erkennbar, da hier häufig geschweifte Klammern zum Einsatz kommen. Das bedeutet aber auch, dass Sie nicht mehr ausschließlich über Tags und Container Format und Position von Elementen auf Ihrer Seite programmieren, sondern eben zusätzlich über die Skripte, die für CSS verwendet werden.\\
+
+Einen doctype wie in HTML gibt es nicht.\\
+
+Auch bei CSS geht die Entwicklung kontinuierlich weiter. Und so wie die aktuelle Version von HTML die Nummer 5 trägt, ist bei CSS die Version 2.1 aktueller Standard. Aber im Gegensatz zu HTML dauert es bei CSS deutlich länger, bis neue Standards veröffentlicht und umgesetzt werden.\\
+
+Leider können Sie bei einem CSS-Skript keine Angabe zur Version machen. Im Gegensatz zu HTML sind Sie hier also darauf angewiesen, dass der Webbrowser schon weiß, welche Version Sie verwenden. Erkennt er das nicht, dann passiert es im schlimmsten Fall, dass er Ihre Formatierungen kommentarlos ignoriert.
+
+\subsubsection{Für Fortgeschrittene – Präprozessoren: ACSS und SASS}
+
+Um die Arbeit weiter zu reduzieren, wurden für CSS Präprozessoren entwickelt. Ein Präprozessor ist ein Programm, das in einer bestimmten Programmiersprache häufig wiederkehrende Aufgaben vorbereitet, sodass ein Entwickler diese nicht in voller Länge selbst programmieren muss. Für die beiden Präprozessoren ACSS und SASS gilt allerdings, dass Sie zunächst CSS beherrschen müssen, um sie sinnvoll nutzen zu können. SASS bietet dabei Möglichkeiten an, die einfache Kontrollstrukturen und andere Elemente imperativer Programmiersprachen einfügt und auf der dynamisch typisierten Sprache Ruby aufsetzt. Nicht zuletzt deshalb werden wir uns in diesem Kurs nicht mit CSS-Präprozessoren beschäftigen: Diese Möglichkeiten bietet uns bereits PHP an.
+
+\subsection{CSS und unterschiedliche Displayformate}
+
+Sie wissen, dass mittlerweile Geräte auf dem Markt sind, die jeweils die unterschiedlichsten Formate aufweisen. Vorhin haben Sie etwas über responsive web design gehört und erfahren, dass es hier nicht um ein gestalterisches Element geht, sondern darum, u.a. solche unterschiedlichen Formate in der Programmierung zu beachten. Denn dann werden die von Ihnen eingestellten Inhalte so präsentiert, dass jeder, der Ihre Webanwendung aufruft sie in einer ansprechenden Form präsentiert bekommt.\\
+
+Bei CSS 2.1 (und damit unter HTML4) müssen Sie deshalb für jedes Ausgabeformat eine CSS-Deklaration programmieren. Hier drei Beispiele, von denen das letzte explizit die Breite des Gerätes beachtet:\\
+
+<link rel="stylesheet" type="text/css" href="standard.css" media="screen" />\\
+
+<link rel="stylesheet" type="text/css" href="drucker.css" media="print" />\\
+
+<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 480px)" href="smartphoneMittelgross.css" />
+
+\subsection{Schriftsätze und –farben – CSS/font}
+
+Sie können auch Container skripten, die einen eigenen Schriftsatz mit individueller Schriftgröße und Schriftfarbe verwenden. Allerdings ist es wichtig, dass der Webserver und die üblichen Browser sowohl die Schriftart kennen als dass bei dieser Schriftart auch die Größe definiert ist, da sonst die Standardeinstellungen greifen und Ihr Layout somit über den Haufen geworfen wird.\\
+
+Der Bezeichner für diesen Container lautet font. Im Gegensatz zu den Containern, die Sie bislang kennen gelernt haben, ist ein font-Container ohne zusätzliche Angaben im Tag recht sinnlos.\\
+
+(( Recherche: http://wiki.selfhtml.org/wiki/CSS/Eigenschaften/Schriftformatierung/font ))
+

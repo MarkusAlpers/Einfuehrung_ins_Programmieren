@@ -1,0 +1,72 @@
+\chapter[Maschinennahe Programmierung mit RasPi]{Maschinennahe Programmierung mit dem Raspberry Pi}
+
+\subsection*{Ergänzung zur Lizenz}
+
+Dieses Kapitel basiert auf dem Kurs \textbf{Baking Pi - Operatin Systems Development} von Alex Chadwick, den Sie unter \url{https://github.com/Chadderz121/bakingpi-www} finden können und der ebenfalls unter \url{http://creativecommons.org/licenses/by-sa/3.0/} erschienen ist.\\
+
+An dieser Stelle möchte ich mich herzlich bei Alex für sein Tutorial und dem Projektteam der University of Cambridge bedanken, das den Rapsberry Pi entwickelt hat und ihn kontinuierlich weiterentwickelt. Mehr dazu finden Sie unter \url{https://www.raspberrypi.org/}
+
+\section{Raspberry Pi - Der open source ARM-basierte Computer}
+
+Wie an allen Hochschulen weltweit stellten die Dozenten der Universität in Cambridge vor einigen Jahren fest, dass immer weniger Studienanfänger auch nur die Grundlagen der Programmierung beherrschten. Als Grund wurde dort ausgemacht, dass die Eltern im Regelfall die Einstellung verträten, Computer seien so komplex, das die lieben Kleinen doch besser ihre Finger davon lassen sollten. Das Ergebnis waren Studienanfänger, die zwar die neueste Software kannten, aber zum Großteil nicht mehr die geringste Vorstellung davon hatten, was eigentlich im Hintergrund passiert.\\
+
+Diesen Eindruck kann ich aus der Praxis bestätigen: Die durchschnittlichen Studienanfänger haben noch nie etwas von Rekursionen gehört und denken bei der Programmierung von Computern vor allem daran, wie die Programme aussehen sollen. Selbst einfachste Konzepte der Informatik wie eine verkettete Liste oder die Alloziierung von Speicher sind ihnen fremd. Auf die Frage, wer denn schon einmal programmiert hat, melden sich drei Viertel der Anwesenden, aber wenn man nachfragt, geht es bei den meisten nicht über die Programmierung von HTML hinaus. Doch selbst unter denjenigen, die schon einmal imperativ programmiert haben fehlt in aller Regel selbst das grundlegende Verständnis dafür, wie der Aufbau des Computers und seine Programmierung zusammen hängen. Wenn sich das nicht im Laufe des Studiums ändert, dann haben wir am Ende Absolventen, die zwar einen Computer dazu bringen können, eine Aufgabe zu erfüllen, aber sobald sich am Computer oder der Programmiersprache etwas ändert, sind Sie nicht im Stande, Ihre Software anzupassen, sondern müssen wieder komplett von vorne beginnen.\\
+
+Leider halten jedoch die meisten Dozenten es für unsinnig, Studierenden die Grundlagen der maschinennahen Programmierung zu vermitteln, weil vieles hiervon problemlos in höheren Programmiersprachen umgesetzt werden kann. Doch daraus resultieren zwei Probleme: Zum einen sind Absolventen, die nie Assembler programmiert haben nicht im Stande, Programmteile mit maximaler Effizienz zu entwickeln, was aber bei hochkomplexen Problemen wichtig ist, zum anderen ist ein vollständiges Verständnis für die Abläufe im Computer nur dann erreichbar, wenn EntwicklerInnen die jeweilige Assemblersprache beherrschen.\\
+
+Kurz gesagt: Ohne Kenntnisse der Assemblerprogrammierung können EntwicklerInnen nur durchschnittliche Software entwickeln.
+
+\subsection{Darum der RasPi für den Einstieg}
+
+Nun ist die naheliegende Frage, warum wir denn den RasPi und nicht einen \glqq{}handelsüblichen\grqq{} Windows-, MacOS- oder Linuxrechner für den Einstieg nutzen. Die Antwort ist simpel:
+
+\begin{itemize}
+	\item Der RasPi ist ein vollständiger Computer, für den Sie in der billigsten Version nur 26,- € bezahlen. (Selbst der RasPi 2 B+ kostet lediglich 46,- €, der verfügt aber auch über 1 GB RAM und hat eine Taktfrequenz von 900 MHz.) Tipp: Greifen Sie zum 2 B+; sonst müssen Sie einige weitere Komponenten kaufen und landen bei den gleichen Kosten.
+	\item Sie können ihn direkt an jeden HDMI-Fernseher oder -Monitor anschließen.
+	\item Zur Speicherung der Daten nutzen Sie MicroSD-Karten. Auch das ist sehr günstig.
+	\item Die MicroSD-Karten können Sie sehr schnell austauschen.
+	\item für knapp 8,- € bekommen Sie ein Gehäuse für den RasPi.
+	\item Wenn Sie ein Betriebssystem installieren wollen, dann wählen Sie am besten NOOBS. Dabei handelt es sich um ein leicht zu bedienendes Linux, das alles beinhaltet, was Einsteiger benötigen. (Eine Auswahl an Betriebssystemen für RasPies finden Sie unter \url{https://www.raspberrypi.org/} .
+	\item Wenn Sie das Betriebssystem \glqq{}zerschossen\grqq{} haben, genügt es, die MicroSD-Karte zu überschreiben. Eine \glqq{}Neuinstallation}\grqq{} dauert damit knapp zwei Minuten.
+	\item Den RasPi könenn Sie (im Gehäuse) in die Hosentasche stecken. Er ist damit so kompakt wie ein klassisches Handy, aber Sie können damit alles machen, was mit einem beliebigen Computer möglich wäre. (Nur für Computerspiele der letzten Jahre ist er etwas zu langsam.)
+	\item Sein Stromverbrauch liegt selbst bei maximaler Belastung unter 10 Watt. Damit werden Sie im Regelfall im Monat so viel Strom verbrauchen wie mit anderen Rechnern in wenigen Stunden. Das kann durchaus eine Einsparung von 20 Euro pro Monat bedeuten.
+	\item Das bedeutet auch, dass Sie ihn mit einem Akku tagelang ununterbrochen betreiben können, wenn Sie keine Steckdose in der Nähe haben.
+	\item Die Wärmeabgabe ist so gering, dass keine Kühlung nötig ist. (Das gilt allerdings nicht für den RasPi 3, der im Februar 2016 erschienen ist: Der kann sich bei starker Belastung so sehr erhitzen, dass zumindest ein passiver Kühler nötig ist. Deshalb empfehle ich Ihnen ausdrücklich den RasPi 2 B+.)
+	\item Sollte das noch nicht klar sein: Sie können auf einem RasPi selbstverständlich Ihre E-Mails abrufen, im Internet surfen usw. Es handelt sich hier wirklich um einen vollständigen Computer, für den Sie als einziges eine MicroSD-Karte kaufen müssen. (Selbst 4 GB reichen anfangs problemlos aus.)
+\end{itemize}
+
+In anderen Worten: Wenn wir diesen Kurs mit dem RasPi starten, dann kann jeder sein eigenes Modell kaufen und überallhin mitnehmen.\\
+
+Hier noch ein paar Eckdaten, für den Fall, dass Sie vor der Auswahl zwischen verschiedenen Modellen stehen:
+
+\begin{itemize}
+	\item Der RasPi A verfügt über weniger Anschlussmöglichkeiten. U.a. fehlt hier die Möglichkeit, ihn an das LAN anzuschließen.
+	\item Den RasPi B können Sie dagegen per Kabel ans LAN anschließen und damit wie mit jedem anderen Rechner ins Internet.
+	\item Der RasPi A+ bzw. B+ verfügt u.a. über mehr USB-Anschlüsse.
+	\item Bei allen RasPies wurde ein nahezu identischer ARM-SoC verbaut: Bei Version A ist es der Broadcom BCM 2835, bei Version B ist es der Broadcom BCM 2836. Beide sind nahezu baugleich, sodass Sie nur bei maschinennaher Programmierung einige Unterschiede feststellen werden.
+	\item Lassen Sie weitergehende Startersets erstmal im Regal liegen. Wir schauen uns später an, was es so an Erweiterungsmöglichkeiten gibt.
+	\item Kurz gesagt: So lange Raspberry Pi auf dem Karton steht können Sie zugreifen. Und lassen Sie sich von der Größe nicht irritieren: Ja der RasPi besteht aus einer Platine, die so klein wie eine EC-Karte ist und ist nur deshalb höher als zwei Millimeter, damit die Anschlüsse für USB und ähnliches Platz haben.
+	\item Vergessen Sie die Micro-SD-Karte nicht. (Bitte nicht mit Mini-SD oder anderen Formaten verwechseln.)
+	\item Wenn Sie keines zuhause haben: Ein Netzteil für Micro-USB brauchen Sie auch noch. Lassen Sie sich bitte kein \glqq{}Raspberry Netzteil\grqq{} andrehen, denn so etwas gibt es nicht. Vielmehr sind das in aller Regel Billigimporte, die von findigen Marketingmenschen verkauft werden. Was Sie brauchen ist ein Netzteil mit Micro-USB-Anschluss mit 5 Volt und 1000 mAh. Wenn es 2000 mAh oder mehr hat, ist das kein Problem, sondern später von Vorteil, wenn Sie mehrere Geräte an den RasPi anschließen. Aber für den Einstieg ist es irrelevant.
+	\item Für diesen Kurs brauchen Sie außerdem einen Rechner, mit dem Sie ins Internet gehen können und über den Sie Daten auf einer Micro-SD-Karte speichern können. Wenn Sie keinen haben, dann suchen Sie im Fachhandel (also da, wo Sie den RasPi bekommen) nach einer Erweiterung, um eine zusätzliche Micro-SD-Karte an den RasPi anschließen zu können.\\
+	\textbf{Tipp:} Viele Rechner haben einen Mini-SD-Slot. Um den für die Micro-SD-Karte zu nutzen brauchen Sie einen Adapter. Das ist aber nicht weiter wild, weil die meisten Micro-SD-Karten gar nicht ohne solch einen Adapter verkauft werden.
+	\item Maus und Tastatur mit USB-Anschluss können Sie direkt an den RasPi anschließen.
+	\item Wenn Sie einen billigen RasPi gekauft haben (das günstigste Modell hat nur einen USB-Anschluss), dann brauchen Sie noch eine \glqq{}Steckerleiste\grqq{}, über die Sie mehrere USB-Geräte an einen USB-Anschluss anstöpseln können. Wie oben schon geschrieben: Es lohnt sich im Regelfall nicht, den RasPi 1 A(+) zu kaufen.
+\end{itemize}
+
+\section{Vorbereitung für die Programmierung}
+
+Wenn Sie das vorige Kapitel über die Architektur eine ARMv6/7-Prozessors gelesen haben, dann wissen Sie bereits mehr, als hier nötig ist und einige Erklärungen werden für Sie nur kleine Reminder sein.\\
+
+Um zu beginnen, benötigen Sie einige Dateien. Alles nötige finden Sie hier: \url{http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/downloads.html} Sollten Sie sich hier damit schwer tun, dass die Seite auf Englisch ist, dann arbeiten Sie daran: Es gibt keine fähigen (Medien-)InformatikerInnen, die nicht problemlos umfangreiche englische Anleitungen umsetzen bzw. Bücher auf Englisch lesen können. (Einzige Ausnahme: Theoretische InformatikerInnen). Sollten Sie sich später wundern, dass dieses Kapitel und das verlinkte Tutorial so ähnlich sind, dann werfen Sie nochmal einen Blick in die Ergänzungen zur Lizenz in diesem Kapitel.\\
+
+\subsection{Das ist ein Betriebssystem}
+
+Die meisten Menschen denken, dass ein Computer vorrangig dadurch definiert wird, welches Betriebssystem darauf läuft. Im Regelfall wird dann gesagt: Zum Spielen und fürs Büro brauche ich Windows, für die Coolness MacOS und als IT-Nerd Linux. Das ist so aber Humbug, weil ein Betriebssystem im Kern ausschließlich eine Software ist, die es NutzerInnen ermöglicht, mit wenig Aufwand alle Komponenten des Computers zu nutzen. Windows und MacOS sind im Grunde wesentlich mehr. So bietet Windows mit DirectX z.B. ein Framework an, dass SpieleentwicklerInnen massiv unterstützt. Da dieses Framework aber nur unter Windows vorhanden ist, bindet Microsoft damit viele Spieleentwickler an Windows.\\
+
+Ein Betriebssystem übernimmt dagegen ganz andere Aufgaben (die natürlich auch von MacOS bzw. Windows übernommen werden). So sorgt es dafür, dass z.B. Lämpchen/LEDs aufleuchten, um anzuzeigen, dass der Computer Strom erhält. Es sorgt auch dafür, dass ein Gerät nutzbar ist, das an einen USB-Anschluss angeschlossen wird.\\
+
+Seit Anfang der 90er Jahre sind grafische Betriebssysteme der Normalfall, aber lassen Sie sich davon nicht täuschen: Alles, was in Form von Fenstern und Menüs angezeigt wird ist nur der Inhalt einer Datei, die wir ohne Maus problemlos ändern können, so lange wir wissen, wo diese Datei sich befindet. Allerdings ist die Suche nach solchen Dateien in aller Regel sinnlos. Aktuelle Betriebssysteme bestehen aus mehreren hunderttausend Dateien, die zum Teil Binärcode enthalten und damit effektiv für Menschen unlesbar sind.\\
+
+Da also die grafisch Oberfläche von Betriebssystemen nur eine Unterstützung (für Einsteiger) ist, arbeiten Profis zum Großteil auf der Kommandozeile. Das bedeutet, dass sie sich alles in Textform anzeigen lassen und mittels textueller Befehle arbeiten.\\
+

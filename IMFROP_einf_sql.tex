@@ -1,0 +1,380 @@
+\chapter{Einbindung einer Datenbank mit MySQL}
+
+Im Studiengang Medientechnik wird dieser Teil ausführlich in der Veranstaltung P2 behandelt, die Media Systems Studierenden lernen das Thema intensiv in der Veranstaltung RDB kennen. Deshalb stellt dieses Kapitel nur eine oberflächliche Einführung dar. Sie lernen hier also nur das nötigste, um eine Datenbank mit MySQL an eine Webanwendung anzubinden.\\
+
+\textbf{Wichtig}: Bitte beachten Sie, dass es sich bei diesem Kapitel um eine ganz oberflächliche Einführung in die Programmierung von Datenbanken (genauer von relationalen Datenbanken) handelt. Alles, was Sie hier lernen können sind einige ganz simple Anweisungen, um Daten in einer Datenbank zu speichern und um Daten aus einer Datenbank auszulesen. Die eigentliche Entwicklung von Datenbanken ist dagegen ein sehr umfangreiches Fachgebiet der Informatik. Und auch wenn relationale Datenbanken zunächst sehr simpel erscheinen ist das, was im Hintergrund passiert alles andere als simpel. Für eine ernsthafte Einarbeitung in die Programmierung von Datenbanken im Sinne eines Studiums ist dieses Kapitel also keinesfalls geeignet.
+
+\subsection{Das ist eine Datenbank}
+
+Eine Datenbank ist im Grunde nichts anderes als eine Datenstruktur mit wenigen zusätzlichen Eigenschaften. Die meisten Entwickler denken bei Datenbanken an die sogenannten relationalen Datenbanken (RDB) und in diesem Kurs werden wir uns auch keine anderen Datenbanken ansehen. Der Grund ist recht einfach: Wie immer in der Programmierung hängt die Wahl der Mittel davon ab, was wir wollen. Und für einfache Webanwendungen brauchen wir etwas, worin wir systematisch Daten speichern können, die wir relativ schnell laden können. Außerdem ist es wichtig, dass die gespeicherten Daten konsistent sind. Und dafür ist eine relationale Datenbank eine gute Lösung.\\
+
+Konsistenz bedeutet so viel wie, dass etwas überall gleich ist. Nehmen wir als Beispiel eine Datenbank, die die Kontostände von Bankkunden beinhaltet. Sie fragen sich jetzt vielleicht, wie es denn möglich sein soll, dass der Kontostand eines Bankkunden zu einem Zeitpunkt inkonsistent sein soll, schließlich kann ein  Bankkonto doch immer nur einen Stand haben. In der Praxis gibt es aber tatsächlich Situationen, in denen ein Bankkonto unterschiedliche Stände zum gleichen Zeitpunkt haben kann, wenn wir ein entsprechend schlecht entwickeltes Programm entwickeln. Stellen Sie sich dazu vor, Sie heben von Ihrem Konto Geld ab und zur gleichen Zeit bucht jemand von Ihrem Konto Geld ab. Im Hintergrund passiert jetzt folgendes: Der Geldautomat, an dem Sie Geld abheben liest den Kontostand aus der Datenbank aus, reduziert den Wert um die Summe, die Sie abgehoben haben und speichert den neuen Kontostand in der Datenbank. Bei der Abbuchung passiert das gleiche: Der Kontostand aus der Datenbank wird ausgelesen, der Abbuchungsbetrag abgezogen und der neue Kontostand gespeichert.\\
+
+Relationale Datenbanken werden unter anderem so entwickelt, dass der Fehler, den Sie in der folgenden Aufgabe benennen sollen nicht vorkommen kann. Datenbanken, die dagegen die sogenannten Transaktionen nicht kennen, sind gegen solche Fehler nicht abgesichert.
+
+\subsubsection{Aufgabe:}
+
+Warum kann (!) es wie bei diesem Beispiel dazu kommen, dass Ihr Kontostand in der Datenbank nur um die Summe reduziert wird, die Sie abgehoben haben oder nur um die Summe, die abgebucht wurde?\\
+
+Tipp: Wenn Sie nicht auf die Lösung kommen, dann setzen Sie mit Sicherheit etwas voraus, das hier nicht gegeben ist, etwas das also erst noch programmiert werden müsste.\\
+
+Relationale Datenbanken sind in sogenannte Relationen unterteilt. Stellen Sie sich unter einer Relation so etwas wie eine Tabelle vor, bei der jede Spalte eine Überschrift haben muss.\\
+
+Die Spalten einer Relation nennt man Attribute. Und weil wir in den einzelnen Zellen der Relation Werte eintragen, werden die bei Relationen als Attributwerte bezeichnet. Der Begriff des Attributs sollten Ihnen bekannt vorkommen: In der Programmierung mit PHP hatten Sie es mit Eigenschaften zu tun, die Sie dort als Variablen kennen gelernt haben. In der Programmierung mit HTML haben Sie sie dagegen als Properties kennen gelernt. Es gibt hier zwar jeweils gewisse Unterschiede, aber das Grundprinzip ist jeweils gleich: Über Attribute, Variablen und Properties legen wir Eigenschaften fest, indem wir Ihnen jeweils einen Wert zuordnen.\\
+
+Genau wie Variablen haben Attribute einen Datentyp. Bei Datenbanken gibt es aber nicht die selben Datentypen wie in PHP: Für unsere Zwecke nutzen Sie schlicht die Typen character (für Zeichen bzw. Strings), int (für ganze Zahlen) und double (für Fließkommazahlen).\\
+
+Zusätzlich müssen Sie jedoch bei der Erzeugung einer Relation noch die maximale Länge jedes Attributs angeben.\\
+
+Auch für die Zeilen einer Relation gibt es wieder einen Begriff: Diese werden als Datensätze bezeichnet.
+
+\section{Transaktionen – Die „Befehle“ für relationale Datenbanken}
+
+Auch bei der Arbeit mit Datenbanken begegnen Ihnen wieder neue Begriffe, die im Grunde für Dinge stehen, die Sie schon bei der Programmierung in HTML und PHP kennen gelernt haben. Wenn Sie sich in die Datenbankprogrammierung vertiefen wollen, wird es wichtig, dass Sie hier die genauen Unterschiede verstehen, aber für unseren Kurs sind diese Unterschiede nicht so wichtig.\\
+
+Im Alltag arbeiten Sie mit Datenbanken ähnlich wie mit Variablen: Sie speichern in Datenbanken Werte ab oder lassen sich von Datenbanken Werte ausgeben. Aber im Gegensatz zu Variablen können Sie nicht direkt zwei Einträge einer Datenbank vergleichen bzw. andere Operationen darauf ausführen. Wenn Sie beispielsweise in einer Datenbank eine Highscoreliste für ein Spiel gespeichert haben, dann können Sie die Einträge dieser Liste nur dann umsortieren, wenn Sie zunächst die Werte der Datenbank in eine Datenstruktur in Ihrem PHP-Programm geladen haben. Und nach dem Sortieren müssten Sie die Werte aus der Datenstruktur wieder in der Datenbank speichern.\\
+
+Jede „Operation“, bei der Sie Daten aus einer Datenbank auslesen oder in einer Datenbank abspeichern wird bei relationalen Datenbanken als Transaktion bezeichnet. Was relationale Datenbanken im Detail sind, ist für unseren Kurs irrelevant, Sie müssen sich aber merken, dass es noch andere wichtige Datenbanken gibt.\\
+
+Eine ähnliche Bedeutung wie die Transaktion hat der Begriff der Query. Genau wie bei der Transaktion brauchen Sie für den Einstieg nur zu wissen, dass damit irgendeine Datenübertragung an eine Datenbank gemeint ist. Eine Query kann also beispielsweise eine Transaktion sein.\\
+
+Wichtig: Um eine Transaktion auszuführen müssen sie zwischen Ihrem Programm und der Datenbank zunächst eine Verbindung aufbauen.\\
+
+Genauso wichtig: Sobald eine Transaktion beendet ist, müssen Sie die Verbindung zwischen Datenbank und Programm wieder trennen. Wenn Sie das nicht tun, kann es passieren, dass andere Teile des Programms oder andere Nutzer nicht auf die Datenbank zugreifen können.\\
+
+Bei den sogenannten NoSQL-Datenbanken wird davon gesprochen, dass diese keine Transaktionen kennen. Natürlich gibt es auch dort Anweisungen, die verwendet werden, um die Datenbank anzusprechen, doch 
+
+\subsection{Eine Datenbank anlegen}
+
+In einem PHP-Programm erzeugen und verwenden Sie Variablen je nach Bedarf und müssen dazu nichts weiter organisieren. Wenn Sie mit einer Datenbank arbeiten wollen, dann brauchen Sie dazu als erstes einen Server, auf dem die Datenbank läuft. Mit XAMPP, easyPHP und anderen Softwarepaketen haben Sie das schon erledigt, weil diese eben nicht nur dafür sorgen, dass „Ihr Rechner“ PHP „versteht“, sondern eben auch einen Datenbankserver bereit stellen.\\
+
+Wichtig: Der Betrieb eines Servers gehört im Gegensatz zur Nutzung eines Servers zu den anspruchsvollsten Aufgaben, denen Sie sich im Bereich der Informatik widmen können. Das Problem ist dabei nicht, den Server dazu zu bringen, dass z.B. eine Datenbank darauf läuft, das Problem ist vielmehr bei jedem Server, Angriffe abzuwehren und ihn so zu konfigurieren, dass er seine Aufgabe auch bei vielen Anfragen von Nutzern zuverlässig erfüllt. Das diese Aufgabe schwer bis nicht erfüllbar ist, erleben Sie jedes Mal, wenn Sie im Netz eine Seite aufrufen, die nicht erreichbar ist. Das gleiche gilt für die Fälle, wenn sie keine E-Mails abrufen können. Dazu kommt noch, dass die Tätigkeit als Serveradministrator ausgesprochen undankbar ist, denn egal wie gut Sie Ihre Aufgabe erfüllen gilt immer: Erst wenn das System ausfällt, merkt jemand, dass es Sie gibt. Und dann soll die Lösung ganz schnell da sein.\\
+
+Für den Fall, dass Ihnen der Unterschied zwischen dem Betrieb und der Nutzung eines Servers nicht klar ist: Denken Sie an den Unterschied dazwischen, als Kellner zu arbeiten und einem Gast, der etwas bestellt.\\
+
+Jetzt aber wieder zur Erstellung einer Datenbank: Da Sie die im Regelfall nur einmal erstellen werden, nutzen Sie am besten das Programm MyPHPAdmin. Das ist ein Programm, das Sie auch wieder bei easyPHP, XAMPP und ähnlichen Programmpaketen finden.\\
+
+Nachdem Sie MyPHPAdmin gestartet haben, finden Sie auf der linken Seite der Nutzeroberfläche eine Schaltfläche, um eine neue Datenbank anzulegen.\\
+
+Nachdem Sie diese angewählt haben, müssen Sie nur noch zwei Dinge festlegen: Den Namen der Datenbank und die sogenannte Kollation. Die Kollation beinhaltet zwei Dinge: Den Character Set und eine Sortierungsreihenfolge. In HTML haben wir bei der Lokalisierung UTF-8 als Character Set ausgewählt, von daher werden Sie jetzt die vielen möglichen Einträge in der Kollation wahrscheinlich wundern. Denn dort taucht nicht einfach nur utf-8 auf, sondern eine Vielzahl möglicher Werte. Diese verschiedenen Einträge haben einen einfachen Grund: Es geht wie geschrieben bei der Kollation nicht nur um den Schriftsatz, bzw. die Codierung der Zeichen, sondern zusätzlich um die Reihenfolge.\\
+
+Wenn Sie hier eine ungeeignete Kollation auswählen, dann werden beispielsweise Namen mit Ä am Anfang nicht nach Namen einsortiert, die mit A beginnen, sondern erst nach Namen mit Z. Wählen Sie deshalb bitte als Kollation den Eintrag utf8\_unicode\_ci. (Der Eintrag utf8\_general\_ci bewirkt für unsere Zwecke das gleiche.) Wenn Sie hier nichts auswählen, dann wird utf8\_swedish\_ci ausgewählt.\\
+
+Wichtig: Auch wenn Sie HTML mit UTF-8 lokalisiert haben und jetzt die Datenbank auf UTF-8 eingestellt ist, bedeutet das nicht, dass PHP automatisch mit UTF-8 umgehen kann. Um sicher zu stellen, dass in Ihrer Webanwendung tatsächlich Sonderzeichen richtig angezeigt werden, müssen sie ggf. prüfen, wie Sie PHP bzw. die Datenübertragung mit der Datenbank anpassen müssen.\\
+
+Bevor wir auf einige Transaktionen eingehen, die fürs erste reichen sollten, erfahren Sie alles, was Sie in PHP vorbereiten müssen, um von dort aus auf die Datenbank zuzugreifen.
+
+\section{Zugriff auf eine Datenbank aus PHP heraus}
+
+In diesem Kurs nutzen wir PHP um die Funktionalität einer Webanwendung zu programmieren. PHP wiederum wird in HTML integriert. Wie das geht, haben Sie im letzten Kapitel kennen gelernt. Die Einbindung von MySQL-Queries in PHP sieht komplizierter aus, aber das liegt schlicht daran, dass wir hier die Verbindung zu einer Datenbank mit Funktionen aufbauen und abbauen müssen. Außerdem müssen wir auch die Queries jeweils mit Funktionen durchführen.\\
+
+Jede MySQL-Query wird in PHP mit einer Funktion aufgerufen, deren Name mit mysqli\_ beginnt. Eine Komplettübersicht mit näheren Informationen finden sie z.B. auf \url{http://www.w3schools.com/php/php\_ref\_mysqli.asp} . Ob das i nun für improved steht (wie bei den W3Schools zu lesen) oder für instruction, spielt keine Rolle. Merken Sie sich einfach, dass alle PHP-Funktionen, die sich auf MySQL beziehen mit mysqli\_ beginnen.\\
+
+Wie alle Funktionen haben auch die mysqli\_-Funktionen einen Rückgabewert, den wir einer Variablen zuordnen können. Und wir werden häufig die gleichen Funktionsaufrufe mehr vielen Stellen im Programm nutzen. Deshalb werden wir regelmäßig nicht nur die Funktionen aufrufen, um so auf die Datenbank bzw. die Verbindung zur Datenbank zuzugreifen, sondern wir werden die Rückgabewerte in Variablen speichern, um uns zumindest einen Teil der Tipparbeit zu sparen.\\
+
+Außerdem sollten Sie jeweils prüfen, ob Sie ggf. einzelnen Transaktionen in eigene Funktionen oder sogar eigene PHP-Dateien ausgliedern, um so Ihren Quellcode übersichtlicher zu gestalten. 
+
+\subsection{Verbindung aufbauen}
+
+\textbf{Wichtig}: Streng genommen ist die Überschrift sowie die folgende Erklärung falsch: Wenn wir MySQL nutzen, dann bauen wir keine Verbindung zu einer Datenbank auf, sondern wir nutzen eine bestehende Verbindung von unserem Rechner zu einem Datenbankserver, um auf die dortige Datenbank zuzugreifen. (Das gilt selbst dann, wenn der Datenbankserver auf unserem Rechner läuft.) Was das bedeutet können Sie aber erst dann nachvollziehen, wenn Sie eine Veranstaltung zum Thema Netzwerke, Kommunikationstechnik und/oder Nachrichtentechnik besucht haben. Deshalb bleiben wir hier bei der streng genommen falschen Bezeichnung des Aufbaus einer Verbindung.\\
+
+Um die Verbindung zu einer Relation in einer Datenbank aus PHP aufzubauen, müssen wir eine oder zwei Funktionen nutzen. In die erste Funktion tragen wir u.a. die Zugangsdaten ein. In der zweiten geben wir dann an, auf welche Datenbank wir mit diesen Zugangsdaten zugreifen wollen. Das mag ein wenig umständlich erscheinen, aber wie gewohnt gilt hier: Im Hintergrund laufen viele Prozesse ab, die dafür sorgen, dass unsere Verbindung zum Datenbankserver aufgebaut wird, bzw. die dafür sorgen, dass wir tatsächlich Daten übertragen können. Dabei ist bereits die Idee einer dauerhaften Verbindung schlicht falsch, doch das ist wieder ein Thema für Ihr späteres Studium.\\
+
+Die erste Funktion, mit der Sie u.a. die Zugangsdaten zum Server angeben, heißt mysqli\_connect(host, username, password, dbname, port, socket). Auch wenn das zunächst seltsam wirkt: Sämtliche Argumente können in der Funktion verwendet werden, keines muss verwendet werden. Sehen wir uns das im Detail an:\\
+
+-	host ist der Name des Servers, auf dem die Datenbank liegt. Es kann auch eine IP-Adresse sein. Ggf. müssen Sie hier Anführungszeichen verwenden. Wenn Sie einen DB-Server auf Ihrem Rechner betreiben, dann lautet der Wert im Regelfall ``localhost´´. Ggf. funktioniert auch `` ´´.
+
+-	username ist der Nutzername, mit dem Sie sich am DB-Server anmelden wollen. Bei einer Standard-Installation von XAMPP oder easyPHP ist der Wert ``root´´.
+
+-	password sollte selbsterklärend sein. Allerdings gibt es bei der Standard-Installation von XAMPP und easyPHP kein Passwort. In dem Fall tragen Sie hier nichts ein. Wichtig: Das ist beispielsweise eine Sicherheitslücke, die Sie bei einem Server im Netz niemals zulassen dürfen. Aber hier geht es wieder um das Thema Server-Administration und das lassen wir in diesem Kurs wie gesagt außen vor.
+
+-	dbname ist der Name der zu verwendenden Datenbank.
+
+-	port und socket haben etwas mit der Datenübertragung über ein Netzwerk bzw. mit der Adressierung des Servers zu tun. Um zu verstehen, was es damit auf sich hat, brauchen Sie eine Einführung in Netzwerke.
+
+Tipp: Konsistente Variablenbezeichnungen\\
+
+Wie geschrieben sollten Sie den Rückgabewert von mysqli\_connect() in einer Variablen speichern. Um deutlich zu machen, dass es sich hier um eine Variable handelt, die etwas mit der Datenbank zu tun hat, sollten Sie diese Variable nicht einfach \$connection oder \$verbindung nennen. Besser wäre eine Bezeichnung wie \$db\_connection. So kann jedes Teammitglied erkennen.\\
+
+Die erste Zeile des Verbindungsaufbaus könnte somit wie folgt aussehen:\\
+
+\begin{verbatim}
+\$db\_connection = mysqli\_connect(``localhost´´, ``user1723´´, ``ganzSchlechtesPasswort´´, ``kneipe´´);
+\end{verbatim}
+
+Dabei würden wir also eine Verbindung zum DB-Server auf unserem Rechner (localhost) aufbauen, bei dem wir uns mit einem Nutzeraccount (user1723) und einem Passwort (ganzSchlechtesPasswort) anmelden. Außerdem würden wir bereits hier festlegen, dass wir eine bestimmte Datenbank (kneipe) nutzen wollen.\\
+
+Für den Einstieg sollte eine der beiden folgenden Varianten ausreichen. Wenn wir so vorgehen, können wir später zwischen verschiedenen Datenbanken auf unserem DB-Server wechseln, während wir mit eben genannten Variante auf eine DB (kneipe) festgelegt sind.\\
+
+\begin{verbatim}
+\$db\_connection = mysqli\_connect(``localhost´´, ``root´´);
+\$db\_connection = mysqli\_connect(`` ´´, ``root´´);
+\end{verbatim}
+
+Wenn wir so vorgehen, dann müssen wir noch in einer zweiten Anweisung festlegen, auf welche Datenbank wir zugreifen wollen. Das machen wir über die Funktion \verb{mysqli\_select\_db(connection, db)}.\\
+
+Hier gibt es nicht viel, was Sie verstehen müssen: connection ist der Rückgabewert von \verb{mysqli\_connection()} und db ist der Name der Datenbank. \\
+
+
+Tipp: Prüfung, ob Zugriff auf DB möglich ist.\\
+
+
+Um sicher zu gehen, dass der Zugriff erfolgreich war, können Sie noch eine Variable definieren, der Sie den Rückgabewert der Funktion zuorden. Hier ist das ein boolescher Wert. Ist es true, dann können Sie auf die Datenbank zugreifen, ist es false, dann ist die Datenbank gerade gesperrt. Z.B. weil gerade eine andere Transaktion durchgeführt wird oder weil jemand anders die Verbindung auf den Server noch nicht beendet hat.\\
+
+Zusammenfassung:\\
+
+
+Wenn wir also den Nutzernamen root und kein Passwort nutzen, dann haben wir die folgenden zwei Möglichkeiten, um auf unsere Datenbank kneipe zuzugreifen:\\
+
+
+-	Entweder wir teilen den Zugriff auf zwei Funktionen auf:
+
+\begin{verbatim}
+\$db\_connection = mysqli\_connect(``localhost´´, ``root´´);
+\$db\_transaction\_possible = mysqli\_select\_db(\$db\_connection, ``kneipe´´);
+\end{verbatim}
+
+-	Oder wir erledigen das Ganze in einem Zug:
+
+\begin{verbatim}
+\$db\_connection = mysqli\_connect(``localhost´´, ``root´´, `` ´´ , ``kneipe´´);
+\end{verbatim}
+
+Beachten Sie aber bei der zweiten Variante, dass Sie jetzt nicht prüfen können, ob der Zugriff auf die Datenbank möglich ist. Deshalb sollten Sie immer die erste Variante wählen.
+
+\subsection{Transaktionen in PHP}
+
+Wir haben zwar noch nicht besprochen, wie Sie Transaktionen programmieren, aber hier erhalten Sie schon einmal den Code, um eine Transaktion in PHP durchzuführen. Beachten Sie dabei aber immer, dass Sie sicher sein müssen, dass der Zugriff auf die DB überhaupt möglich ist. Sonst weisen Sie PHP an, Daten aus der DB abzurufen oder sie dort zu speichern, ohne dass das passiert!\\
+
+Kurz zur Erinnerung: Um HTML-Code in PHP zu generieren, benutzen Sie die Funktion echo(...) wobei die drei Punkte für den HTML-Code stehen bzw. für Funktionen und Variablen, die als HTML ins HTML-Dokument integriert werden.\\
+
+Wie gewohnt nutzen wir in PHP dagegen eine Funktion, um eine Query an die DB zu schicken und erhalten dabei einen Rückgabewert. Wenn wir also Daten aus der Datenbank abfragen, dann müssen wir den Rückgabewert der Funktion immer dann in einer Variablen speichern, wenn wir keine anonyme Variable verwenden. Wenn Sie nicht mehr wissen, was mit anonymen Variablen gemeint ist, dann lesen Sie es bitte nochmal im PHP-Kapitel nach.\\
+
+
+Der Funktionsname, um eine Query in PHP aufzurufen ist denkbar naheliegend:
+
+\begin{verbatimg}
+mysqli\_query(connection, query).
+\end{verbatim}
+
+Dabei steht connection wieder für unsere oben aufgebaute Verbindung zum DB-Server und query ist eine beliebige MySQL-Zeile. Die müssen Sie zusätzlich in Anführungszeichen setzen.\\
+
+
+Wdh.: Konsistente Variablenbezeichnung\\
+
+
+Auch hier ist es empfehlenswert, selbstredende Variablenbezeichnungen zu verwenden. Beispielsweise könnten Sie die folgende Zeile verwenden, wenn Sie eine Transaktion durchführen, die einen Datensatz zurückgibt. (Da wir uns noch keine konkreten Transaktionen angesehen haben, stehen hier drei Punkte stellvertretend für die Transaktion.)
+
+\begin{verbatim}
+\$db\_result = mysqli\_query(\$db\_connection, ...);
+\end{verbatim}
+
+Anschließend können Sie dann die Ausgabe der Datenbank weiter verarbeiten. \\
+
+
+Wenn das erledigt ist, sollten Sie die Verbindung zur DB immer beenden, selbst wenn Sie weitere Transaktionen durchführen wollen. Sie stellen so sicher, dass Sie die Datenbank nicht blockieren. Das gilt auch dann, wenn nur Sie bzw. nur Ihre Anwendung Zugriff auf die DB haben soll. Der Grund ist recht einfach: Stellen Sie sich vor, Sie entwickeln ein Spiel, das von vielen Nutzern genutzt werden soll. Dann werden durch die Interaktionen der verschiedenen Spieler unabhängig voneinander zu verschiedenen Zeiten Anfragen an die Datenbank geschickt. Wenn hier mehrere Abfragen zusammen abgearbeitet werden, die nur gemeinsam haben, dass Sie für denselben Spieler bearbeitet werden sollen, dann kann das dazu führen, dass die anderen Spieler nicht weiterspielen können, weil die Datenbank für sie nicht erreichbar ist. Aber auch wenn es nur einen einzigen Nutzer gibt, können Probleme auftreten, wenn Sie meinen Rat nicht beachten. Denn unterschiedliche Komponenten einer Anwendung können unabhängig voneinander versuchen auf die gleiche Datenbank zuzugreifen. Wenn Sie hier die Datenbank länger als für einzelne Transaktionen nötig blockieren, kann auch das das Programm blockieren oder zumindest verlangsamen.
+
+\subsection{Beenden der Verbindung}
+
+Auch das Beenden einer Verbindung ist relativ simpel. Mit dem Funktionsaufruf \verb{mysqli\_close(\$db\_connection);} beenden Sie die Verbindung.\\
+
+
+\subsubsection{Zusammenfassung:}
+
+Sie kennen jetzt die Vorgehensweise und die verwendeten Funktionen, um aus PHP auf eine Datenbank und einzelnen Relationen dieser Datenbank zuzugreifen. Um tatsächlich mit der Relation zu arbeiten, brauchen Sie noch das Wissen, welche Queries bzw. Transaktionen es gibt und wie die genutzt werden können, um Werte aus der Datenbank in PHP verwenden zu können, bzw. um PHP-Variablen in der Datenbank zu speichern.
+
+\section{Queries und Transaktionen in MySQL}
+
+Wenn Sie zum ersten Mal auf eine Relation einer Datenbank zugreifen, wissen Sie vielleicht nicht, wie die einzelnen Attribute der Relation heißen. Bei diesem Beispiel gehen wir davon aus, dass es bereits eine Relation namens kneipe in Ihrer Datenbank gibt. Wenn das nicht der Fall ist, dann arbeiten Sie bitte dennoch diesen Abschnitt durch. Im nächsten Abschnitt erfahren Sie, wie Sie einer Datenbank eine Tabelle hinzufügen.\\
+
+
+Die Attributsnamen einer Relation können Sie mit der MySQL-Anweisung describe kneipe abfragen.\\
+
+
+Wenn Sie nun mit \$db\_result = mysqli\_query(\$db\_connection, ``describe kneipe´´); der Variablen \$db\_result die Rückgabe der Datenbank zugeordnet haben, dann müssen Sie daran denken, dass Sie niemals einen einzelnen Wert zurückbekommen, sondern immer einen Datensatz oder mehrere Datensätze. PHP kennt aber keine Datensätze, sondern nur Variablen und Datenstrukturen. Also müssen wir den Datensatz bzw. die Datensätze, die in \$db\_result gespeichert sind noch in eine Datenstruktur umwandeln.
+
+Hier gibt es in PHP eine Vielzahl Methoden, die alle mit mysqli\_fetch\_ beginnen.
+
+Wenn wir wie in diesem Fall wissen, dass wir genau eine Zeile unserer Relation in \$db\_result haben, dann können wir mit \$db\_dataset\_array = msqli\_fetch\_array(\$db\_result); ein Array erzeugen, das in \$db\_dataset\_array gespeichert wird und dessen Einträge die Attributnamen sind. (Zur Erinnerung: \$db\_dataset\_array ist eine beliebige Variable, aber im Sinne konsistenter Variablenbezeichner sollten Sie diese oder eine ähnliche Variablenbezeichnung verwenden. Da Sie außerdem die Wahl haben, den Datensatz in einem Array oder einem Dictionary zu speichern, macht es ebenfalls Sinn, den Namen wie hier entsprechend zu erweitern.)
+Damit wir erfahren, wie viele Einträge unser Array enthält, können wir jetzt noch folgenden Aufruf programmieren: \$dbset\_number\_fields = mysqli\_num\_rows(\$db\_result);
+Mit \$db\_dataset\_array und \$dbset\_number\_fields können Sie jetzt z.B. eine Ausgabe in HTML erzeugen, in der im Browser die Namen der Attribute aufgeführt werden. Denken Sie dabei daran, dass das erste Element eines Arrays die Nummer 0 hat.
+
+for (int i = 0; i < \$dbset\_number\_fields; i++)
+\{ echo(``Attribut ´´ . i . `` hat den Namen ´´ . \$db\_dataset\_array[i]); \}
+
+8.4.1.	Erzeugen einer Tabelle
+
+Wie geschrieben setzt das letzte Beispiel voraus, dass es bereits eine Relation in Ihrer Datenbank gibt. Wenn Sie dagegen bislang nur die Datenbank erzeugt haben, aber noch keine Relation enthalten ist, dann können Sie eine einfache Relation mit folgender MySQL-Anweisung erzeugen:
+
+create table kneipe(name character(30), vorname character(30), schulden int(4));
+
+Mit create table geben Sie an, dass die Datenbank eine Relation erzeugen soll.
+
+kneipe ist ein Name für die Relation. Hier können Sie jedes beliebige Wort bzw. jede beliebige Buchstabenkombination verwenden, allerdings sollten Sie dabei ausschließlich Buchstaben verwenden, die im Englischen verwendet werden. Ggf. führen Umlaute und Sonderzeichen zu Problemen wegen des Character Sets.
+
+Für jedes Attribut müssen Sie nun noch einen Namen, einen (Daten-)typ und eine Länge angeben. Für den Namen gilt weitestegehend das gleiche wie bei PHP und anderen imperativen Programmiersprachen, zu den Datentypen in MySQL hatte ich am Anfang des Kapitels schon etwas geschrieben, einzig die Länge (die in Klammern steht) muss noch etwas ergänzt werden: Bei relationalen Datenbanken gilt im Regelfall, dass Sie bei der Erzeugung einer Relation festlegen müssen, welche Länge jeder Attributwert eines Attributs maximal haben darf. Die einzelnen Attribute trennen Sie bei der Erzeugung der Relation durch Kommata.
+
+Im Gegensatz zu Datenstrukturen in PHP können Sie eine Relation also nicht gleich mit Werten füllen.
+
+\subsection{Arten von Transaktionen}
+
+Es gibt vier Arten von Transaktionen: select, insert, update und delete.\\
+
+
+Streng genommen ist select keine Transaktion sondern „nur“ eine Query, weil select nichts an den Einträgen in der Datenbank ändert. Aber wie gesagt ist das für den Inhalt dieses Kurses nicht relevant.\\
+
+Ausgaben der Datenbank: \\
+
+
+-	Mit select lassen Sie sich einen oder mehrere Datensätze ausgeben.
+Änderung der Datenbank: 
+-	Mit insert fügen Sie einen neuen Datensatz in eine Datenbank.
+-	Mit update ändern Sie Einträge eines Datensatzes.
+-	Mit delete löschen Sie einen Datensatz.
+
+Wann immer das Sinn macht, können Sie außerdem mit distinct und where ... Einschränkungen vornehmen. Darauf gehen wir ein, nachdem Sie die vier Transaktionen kennen gelernt haben.
+
+\subsubseciton{select}
+
+Mit select fordern wir alles von einzelnen Attributwerten bis zu einer sortierten Auswahl von Datensätzen mehrerer Relationen von einer Datenbank an. \\
+
+
+Richtig gelesen: Wir können zwar die meisten Operationen, die wir in PHP mit Variablen durchführen können nicht direkt in einer Datenbank durchführen, aber wir können die Rückgabe filtern lassen. Datenbanken kennen also durchaus Konjunktionen und Disjunktionen (und/oder), aber während das in PHP und anderen imperativen Programmiersprachen Operationen sind, mit denen wir eine boolesche Variable erzeugen, bewirken Sie bei Datenbanken, dass Teile der Rückgabe gefiltert werden. Genauso können wir auch mit Vergleichsoperatoren wie < und > arbeiten, um nach einzelnen Attributwerten zu filtern.\\
+
+
+Fangen wir mit einer einfachen Abfrage an:\\
+
+
+\begin{verbatim}
+select * from kneipe
+\end{verbatim}
+
+bewirkt, dass alle Datensätze der Relation kneipe ausgegeben werden.
+Wenn Sie das einführende Beispiel zu describe kneipe aufmerksam gelesen haben, dann ist Ihnen jetzt klar, dass wir mit der bisherigen Vorgehenseweise in PHP ein Problem bekommen:\\
+
+\begin{verbatim}
+\$db\_result = mysqli\_query(\$db\_connection, „select * from kneipe“);
+\$db\_dataset = mysqli\_fetch\_array(\$db\_result);
+\end{verbatim}
+
+Denn die Funktion \verb{mysqli\_fetch\_array()} versucht aus der Rückgabe der Datenbank ein Array zu erzeugen. Ein Array besteht aber aus einzelnen Variablen, die jeweils in einer nummerierten Liste (eben dem Array) gespeichert werden. Doch in diesem Fall enthält \verb{\$db\_result} ja nicht mehr eine Liste mit Attributnamen, sondern eine Liste von kompletten Datensätzen. Also brauchen wir eine Funktion, die uns die einzelnen Datensätze jeweils in einem eigenen Array oder einem eigenen Dictionary abspeichert.\\
+
+
+Daraus folgt gleich ein zweites Problem: Da es sich um eine Anzahl Datenstrukturen handelt, deren Anzahl wir nicht kennen, dürfen wir hier nicht nur eine einzelne Variable nutzen, sondern müssen die Datensätze als Einträge eines Arrays speichern.\\
+
+
+Wdh.: Arrays und Dictionaries in PHP\\
+
+
+Ein Array ist eine nummerierte Liste, in der Sie einzelne Werte speichern können. Die Werte können Sie dann später über die Nummer aufrufen. Doch diese Werte können auch komplette Datenstrukturen sein. Das bedeutet, dass Sie in PHP beispielsweise ein Array programmieren können, in dem Sie unter jedem Index einen kompletten Dictionary speichern.\\
+
+
+Neu: Datensatz als Dictionary\\
+
+
+Angenommen, wir hätten nur einen einzelnen Datensatz als Rückgabe, dann könnten wir den im Grunde genommen 1:1 in einem Dictionary (bei PHP assoziatives Feld genannt) speichern. Die Schlüssel wären die Attributsnamen und die Werte die jeweils zugehörigen Attributswerte.\\
+
+
+Wenn wir dagegen wie bei der MySQL-Instruktion „select * from kneipe“ mehrere Datensätzen als einen Rückgabewert erhalten, dann müssen wir die Dictionaries zusätzlich als Einträge eines Arrays abspeichern. Und hierfür bietet PHP uns eine Methode an:\\
+
+\begin{verbatim}
+mysqli\_fetch\_all();
+\end{verbatim}
+
+Wir müssten jetzt also lediglich die zweite der beiden Zeilen oben anpassen und anschließend beachten, dass \verb{\$db\_datasets} ein Arrray ist, in dem Dictionaries gespeichert sind. Um das im Namen deutlich zu machen, sollten Sie die Variable \$db\_datasets, also mit einem s am Ende umbennen. Außerdem können Sie dann weiterhin mit der Variable \$db\_dataset\_array bzw. \$db\_dataset\_dict so umgehen, als wenn es sich dabei um einen einzelnen Datensatz bzw. eine einzelne Datenstruktur handelt.\\
+
+\begin{verbatim}
+\$db\_result = mysqli\_query(\$db\_connection, „select * from kneipe“);
+\$db\_datasets = mysqli\_fetch\_all(\$db\_result);
+\end{verbatim}
+
+Wenn Sie jetzt also mit allen Datensätzen (bzw. in PHP die Dictionaries) nutzen wollen, dann können Sie das wie folgt tun:
+
+\begin{verbatim}
+\$db\_datasets\_number = mysqli\_num\_rows(\$db\_result);
+for (int i = 0; i < \$db\_datasets\_number; i++)
+{ 
+	\$db\_dataset = \$db\_datasets[i]; 
+	// Jetzt können Sie das einzelne Dictionary über \$db\_dataset ansprechen.
+	...
+} 
+\end{verbatim}
+
+\subsubsection{Filtern nach einer Bedingung}
+
+Nehmen wir unsere kleine Datenbank und nehmen wir einmal an, mehrere Gäste der Kneipe schulden dem Wirt unterschiedliche Beträge. Nun will der Wirt sich alles Gäste ausgeben lassen, die ihm mehr als 30,- € schulden. Dazu müssen wir nur die Anweisung select * from kneipe wie folgt erweitern:\\
+
+\begin{verbatim}
+select * from kneipe where schulden > 30;
+\end{verbatim}
+
+Mit dem Wort where leiten Sie also eine Einschränkung der Ausgabe ein. Hier können Sie wie eingangs beschrieben mit <, >, =, <= und >= filtern.\\
+
+
+Zur Erinnerung: Während wir mit diesen Operatoren in imperativen Programmiersprachen eine boolesche Variable (true/false) erzeugen, bewirken wir in MySQL, dass die auszugebenden Datensätze gefiltert werden.
+
+\subsubsection{Filtern von Attributen}
+
+Angenommen, wir wollen nur einige Attribute aber diese Attribute von allen Datensätzen als Rückgabe der Datenbank erhalten, dann müssen wir schlicht anstelle des Sterns die Namen der Attribute angeben:\\
+
+\begin{verbatim}
+select name from kneipe;
+\end{verbatim}
+
+gibt eben alle (Nach-)Namen an, die in der Liste der Schuldner aufgeführt sind. Im Regelfall wollen wir dann aber nicht nur die Nachnamen, sondern Nach- und Vornamen. Das ist kein Problem: Immer wenn wir mehrere Attribute oder mehrere Bedingungen prüfen wollen, nutzen wir Kommata, um die entsprechenden Punkte zu trennen.
+
+\begin{verbatim}
+select name, vorname from kneipe where schulden > 30, schulden < 100;
+\end{verbatim}
+
+Diese Abfrage würde beispielsweis die Aufstellung aller Schuldner geben, die mehr als 30,- € aber weniger als 100,- € Schulden angehäuft haben.
+
+\subsubsection{Filtern aus mehreren Relationen}
+
+Wechseln wir den Bereich. Wir haben ein Unternehmen mit Lagerhaltung und haben u.a. für Schrauben und Muttern jeweils eine Relation mit dem passenden Namen. In beiden Relationen gibt es u.a. ein Attribut durchmesser und ein Attribut preis. Wir wollen nun berechnen, wie viel 100 Schrauben und Muttern mit einem Durchmesser von 10 mm kosten.\\
+
+
+Die Abfrage der Preise ist kein Problem:
+
+\begin{verbatim}
+select schrauben.preis, muttern.preis 
+from schrauben, muttern 
+where schrauben.durchmesser = 10, muttern.durchmesser = 10;
+\end{verbatim}
+
+Wie Sie sehen, können wir also unterschiedliche Attribute aus unterschiedlichen Relationen filtern und müssen dann lediglich den Namen der zugehörigen Relation mit einem Punkt vor den Namen des Attributs schreiben.\\
+
+
+Aber: Wie schon am Anfang dieses Kapitels beschrieben können wir in Datenbanken keine Operationen durchführen, wie wir sie aus der imperativen Programmierung mit PHP kennen.\\
+
+
+Das bedeutet, dass wir den Gesamtpreis nicht berechnen können. Sie müssen für diese Aufgabe also jeweils den Preis für eine Mutter und den Preis für eine Schraube in PHP einer Variablen zuordnen (z.B. \verb{\$preis\_schraube, \$preis\_mutter}), dann beide addieren und mit 100 multiplizieren.
+
+\subsubsection{Ausgabe nur einmal pro Attributwert}
+
+Schließlich möchte ich Ihnen noch die Beschränkung distinct vorstellen. Nehmen wir an, Sie haben eine Relation mitarbeiter, u.a. mit dem Attribut aufgabe. Nun wollen Sie nur eine Aufstellung der verschiedenen Aufgaben, aber selbst wenn mehrere Mitarbeiter die gleiche Aufgabe haben, wollen Sie jede Aufgabe nur einmal angezeigt bekommen. Das ist die Lösung:
+
+\begin{verbatim}
+select distinct aufgabe from mitarbeiter;
+\end{verbatim}
+
+\subsubsection{Löschen von Datensätzen}
+
+Stellen wir uns vor, Sie wollen aus der Relation kneipe alle Gäste löschen, die keine Schulden mehr haben. Auch das können wir recht schnell realiseren:
+
+\begin{verbatim}
+delete from kneipe where schulden = 0 OR schulden < 0;
+\end{verbatim}
+
+Wie Sie sehen können Sie in MySQL auch die Wörter and und or nutzen.
+
+\subsubsection{Update}
+
+Die Syntax für Updates sieht etwas anders aus, aber das ist auch alles:
+
+\begin{verbatim}
+update relation set attribut1=... , attribut2 = ... , ... where ... ;
+\end{verbatim}
+
+Hier geben Sie also nach dem Wort update die Relation(en) an, wie Sie das auch bei select schon genutzt haben. Danach wählen Sie Attribute und Attributwerte aus, die überschrieben werden sollen. Wichtig: Wenn Sie die Beschränkung mit where vergessen, werden die Änderungen der Attributwerte bei jedem Datensatz durchgeführt.
+

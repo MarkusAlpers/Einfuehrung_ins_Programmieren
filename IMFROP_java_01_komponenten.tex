@@ -1,0 +1,135 @@
+\section{Java 8 - Grundlegende Struktur}
+
+Bitte beachten Sie, dass alles, was Sie in diesem Buch zurzeit lesen können auf die Java-Version 8 bezieht. Zum Teil sind Abschnitte jedoch bewusst etwas allgemeiner gehalten, da die Feinheiten der Programmierung mit der Folgeversion geändert werden könnten. Das habe ich deshalb getan, um zu verhindern, dass Sie sich Methoden fest einprägen, die in einem oder zwei Jahren nicht mehr gelten. Außerdem sind Sie so gezwungen das zu tun, was bei Java oberste Pflicht ist: Nutzen Sie für die Details der Sprache die Java API! Ohne die Nutzung der Java API werden Sie auf eine Art programmieren, die früher oder später veraltet oder sogar ungültig ist.
+
+Im Gegensatz zu Programmiersprachen wie C, PROLOG, Scheme und vielen anderen ist Java eine Middleware. Wie Sie also in Veranstaltungen zu Netzwerken oder Nachrichtentechnik lernen können ist Java von vornherein darauf ausgelegt, dass Sie Aspekte wie die Datenübertragung über ein Netzwerk nicht im gleichen Detailgrad programmieren müssen wie beispielsweise in einer Nicht-Middleware wie C. Die Vor- und Nachteile dieses Ansatzes sind Ihnen klar, wenn Sie beide Ansätze programmiert haben: Wenn Sie alle Details selbst programmieren, können Sie ein Höchstmaß an Effizienz erreichen, auch weil Sie die Spezifikation des jeweiligen Systems ausnutzen können. Wenn Sie eine Middleware nutzen, erhalten Sie eine in vielen Fällen noch ausreichend effiziente Lösung mit weniger Programmieraufwand. Außerdem helfen die in einer Middleware wie Java vorhandenen Standardisierungen, um Software in großen Teams zu entwickeln und neue Mitglieder in eine Team zu integrieren.
+
+Als angehende (Medie-)informatikerInnen müssen Sie sich aber darüber bewusst sein, dass Sie in Java nicht die höchstmögliche Effizienz in diesem oder anderen Bereichen erreichen werden. Sie müssen sich insbesondere darüber bewusst sein, was das für ein in Java entwickeltes Programm bedeutet.
+
+Wie Sie wissen, wenn Sie bereits in Java programmiert haben, handelt es sich um eine klassenbasierte objektorientierte und seit Version 8 zumindest teilweise funktionale Programmiersprache. In diesem Abschnitt werden wir uns die hierarchische Struktur von Java ansehen, die sich zum Teil identisch in der Hierarchie der Pakete und Klassen widerspiegelt.
+
+\paragraph{Aufgabe}
+
+Was bedeutet es für diejenigen Ihre Programme, die Sie in Java erstellen, dass es nicht möglich ist, in Java ein Höchstmaß an Effizienz zu erreichen? 
+
+\paragraph{Aufgabe}
+
+Was ist in anderen Programmiersprachen nötig, um dort dieses Höchstmaß zu erreichen?
+
+\subsection{Die Java API}
+
+So wie Java kontinuierlich geändert wird, wird auch die API von Java kontinuierlich überarbeitet. Es ist deshalb nicht sinnvoll, die API herunterzuladen (außer wenn Sie davon ausgehen müssen, des öfteren keine Internetanbindung zu haben, wenn Sie in Java programmieren wollen). Zurzeit finden Sie die Java API unter \url{http://docs.oracle.com/javase/8/docs/index.html}\index{Programmierung!Java 8!API}. Ältere APIs finden Sie, indem Sie schlicht die Ziffer im Link anpassen. Deshalb dürfte die API für Version 9 nach der Veröffentlichung unter \url{http://docs.oracle.com/javase/9/docs/index.html} zu finden sein.
+
+Wenn Sie also in Bezug auf Java einen Link in diesem Buch finden, der nicht funktioniert, dann sollten Sie zumindest über den hier genannten Link zur entsprechenden Passage der API gelangen können.
+
+\subsection{JVM - Java Virtual Machine Technology}
+
+Das Fundament der Middleware Java besteht in der \textbf{JVM}, der Java Virtual Machine. Bislang haben Sie in diesem Buch lesen können, dass es die sogenannte JRE (Java Runtime Environment) ist, das dafür zuständig ist, Java-Programme zu betreiben. Die eigentliche Plattform, die Java-Programme betreibt ist jedoch die JVM, die aber Teil des JRE ist.
+
+Eine \bold{Virtuelle Maschine}\index{Virtuelle Maschine} ist ein Programm, das einen Rechner simuliert. Virtuelle Maschinen sind ein praktisches Werkzeug, wenn Sie beispielsweise Betriebssysteme und Anwendungen ausprobieren wollen, denn Sie benötigen für den Betrieb keinen zusätzlichen Rechner. Stellen Sie sich beispielsweise vor, Sie sind dafür zuständig, in einem Unternehmen die Software zu warten. Sie haben dann Nutzer mit den unterschiedlichsten Systemen und den unterschiedlichsten Installationen auf diesen Systemen. Um also Änderungen zu planen müssten Sie entweder von jedem dieser Systeme ein Exemplar in Ihrem Büro haben oder Sie nutzen eine VM, für die Sie all die verschiedenen Systeme als individuelle Datei vorliegen haben. Das genügt zwar nicht für eine vollständige Prüfung darauf, ob Änderungen reibungslos durchführbar sind, aber es ist eine sinnvolle erste Prüfung.
+
+Die JVM sorgt also dafür, das Java Programme auf einer Vielzahl von Systemen laufen können.
+
+Wenn sie bereits Java-Programme entwickelt haben, dann wissen Sie, dass Sie Programme nach dem Kompilieren mit dem Befehl java starten können. Das bedeutet aber genauer gesagt, dass Sie mit den Befehl java die JVM starten und ihr ein kompiliertes Java-Programm als Argument übergeben.
+
+Sehen wir uns nun den Befehl java etwas genauer an: Es gibt ihn in den zwei Versionen \emph{java} und \emph{javaw}.
+
+\begin{itemize}
+	
+	\item \textbf{java} startet nicht nur die JVM und führt über diese das übergebene Java-Programm aus, sondern öffnet zusätzlich ein Konsolenfenster. Dieser Befehl ist also für die Entwicklung von Java-Programmen gut, weil Sie hier Rückmeldungen erhalten, die innerhalb der Anwendung nicht angezeigt werden.
+	
+	\item \textbf{javaw} öffnet im Gegensatz zum Befehl java keine Konsole. Sollte es allerdings zu Fehlern kommen, wegen denen die Anwendung nicht gestartet werden kann, dann öffnet sich ein Fenster, das eine Fehlermeldung anzeigt.
+	
+\end{itemize}
+
+Nach java bzw. javaw können Optionen folgen, die die Ausführung der Anwendung beeinflussen. beispielsweise können Sie die JVM anweisen, die Anwendung so schnell wie möglich auszuführen. Eine andere Option ermöglicht es, dass die JVM so wenig Speicher wie möglich belegt.
+
+Nun folgt entweder der Name der Klasse oder die Option \emph{-jar} gefolgt vom Dateinamen. Bei der Option -jar folgt also keine einzelne Klasse. Vielmehr haben Sie es hier mit einer Verwendung von java bzw. javaw zu tun, die Sie kennen lernen werden, wenn Sie in Netzen ein Deployment durchführen. Damit ist gemeint, dass Sie z.B. in einem Unternehmensnetzwerk ein Paket verteilen lassen und es auf mehreren Rechnern ausführen lassen, ohne an jeden einzelnen Rechner zu gehen. Das können beispielsweise Sicherheitsupdates sein, aber denken Sie jetzt nicht, dass nur bei Sicherheitsupdates ein Deployment Sinn macht: Jede Art von Installation innerhalb eines Unternehmensnetzwerkes bzw. bei verteilten Anwendungen sollte weitgehend automatisch auf allen betroffenen Systemen durchgeführt werden.
+
+Abschließend können Sie noch ein oder mehrere Argumente eingeben, die als String-Array an die main()-Methode der Java-Klasse übergeben wird, die durch die java- bzw. javaw-Anweisung gestartet wird. (Auch bei den Paketen, die per -jar gestartet werden gibt es eine Java-Klasse, die als erstes gestartet wird.)
+
+Mehr zur JVM, zu java und javaw finden Sie bei Java 8 unter \url{http://docs.oracle.com/javase/8/docs/technotes/guides/vm/index.html}. 
+
+\subsection{Base Libraries}
+
+Die ersten Bibliotheken von Java werden von Oracle als \textbf{Base Libraries} bezeichnet. Diese Base Libraries sind wie alle Bibliotheken von Programmiersprachen nichts anderes als Sammlungen von Programmteilen, die bestimmte Aufgaben erfüllen.
+
+Diese Bibliotheken haben als einzige Gemeinsamkeit, dass Sie den eigentlichen Sprachkern ausmachen. Klassen aus den Base Libraries dienen also niemals dazu, um die Anzeige Ihrer Anwendung zu ändern. Sie bieten keinerlei Unterstützung bei der Interaktion mit Nutzern. (Einzig die Eingabe und Ausgabe von Zeichenfolgen ist hier enthalten.) Auch die Audio- und Videoverarbeitung (von Eingabe oder Ausgabe ganz zu schweigen) werden mit diesen Bibliotheken nicht realisiert.
+
+Über die einzelnen Bibliotheken werden wir sprechen, wenn wir uns die übrigen Bestandteile des JRE bzw. des JDK angesehen haben.
+
+\subsection{Integration Libraries}
+
+Es folgen eine handvoll Bibliotheken, mit denen Sie als fortgeschrittene Java-Entwickler zu tun bekommen: Die Integrationsbibliotheken stellen z.B. Schnittstellen zu Datenbanken her, bei nur mittels SQL-Sprachen angesprochen werden können. Hier finden Sie auch die RMI-Bibliothek, mittels derer Sie auf Java-Programmteile zugreifen können, die auf einem anderen Rechner laufen. Auch wenn Sie mit diesen Bibliotheken anfangs nichts zu tun haben stellen sie also sehr nützliche Möglichkeiten zur Verfügung.
+
+\subsection{User Interface Libraries}
+
+Jetzt kommen wir zu den Bibliotheken, mit denen die meisten von Ihnen die Programmierung beginnen wollen: Die UILs stellen Ihnen eine Vielzahl an Klassen zur Verfügung, mittels derer Sie z.B. Ein- und Ausgabe von Sounds, die Anzeige einer grafischen Nutzeroberfläche und vielem anderen mehr realisieren können, das für aktuelle Programme unverzichtbar ist. Wissenschaftler und Systemadministratoren mögen durchaus auf solchen "`Spielkram"´ verzichten, aber für nahezu alle anderen Kundengruppen gilt: Gibt es keine grafische Nutzeroberfläche mit Soundfeedback und Mausinteraktion, dann bleibts ein Ladenhüter.
+
+\subsection{Deployment}
+
+Dieser Begriff wurde oben schon eingeführt. Es mag deshalb verwirren, dass JAR-Dateien nicht in diese Gruppe von Bibliotheken gehören, aber der Grund ist recht simpel: Sie können JAR-Dateien auch ohne Deployment verwenden. Die Bibliotheken des Deployment-Pakets bieten Ihnen die Möglichkeit an, von einzelnen Patches für eine Java-Anwendung bis hin zu einer vollständigen Java-Anwendung alle denkbaren Softwarepakete automatisisert zusammenstellen, zu komprimieren und an beliebig viele Zielrechner über ein Netzwerk zu verschicken, wo sie dann nach Vorgaben ebenso automatisiert installiert werden können. Der Vollständigkeit halber sei noch erwähnt: Natürlich muss dazu am jeweiligen Rechner nach der Installation des Betriebssystems einmalig eine entsprechende Konfiguration durchgeführt werden, aber das ist auch alles, was an jedem Zielsystem getan werden muss.
+
+\subsection{Weitere Pakete im JDK}
+
+Es folgen nur noch Pakete, die Teil des JDK, aber nicht des JRE sind.
+
+Wenn Sie sich die entsprechende Übersicht in der Java API, genauer gesagt in den Java Docs ansehen, dann werden Sie feststellen, dass dort der Befehl java als ein Teil des JDK, genauer des Pakets "`Tools \& Tool APIs"´ aufgeführt werden. Der Grund ist recht simpel: Um als Entwickler die verschiedenen Bestandteile der Middleware aktiv einsetzen zu können, sind teilweise Anpassungen nötig.
+
+Das ist die grobe Einteilung von Java in Paket- oder Bibliotheksgruppen. Sehen wir uns jetzt die einzelnen Gruppen im Detail an.
+
+\section{Base Libraries im Detail}
+
+Vielleicht fragen Sie sich, warum wir nicht zunächst einen Blick auf die VM werfen: Alles was hier relevant ist wurde bereits ober erklärt. Für die weiteren Details in der aktuellen Java-Version ist es wichtig, dass Sie einen Blick in die Java API werfen.
+
+In den folgenden Abschnitten finden Sie grundlegende Informationen dazu, was im jeweiligen package zu finden ist, bzw. warum es dieses package gibt. Beachten Sie dabei, dass viele dieser Pakete wiederum in Pakete aufgeteilt sind.
+
+\subsection{lang}
+
+Die offizielle Erklärung dieses Paketes ist etwas schwammig. Demnach handelt es sich um essentielle Funktionalitäten der Sprache. Für die Frage, was dieses Paket nützt ist diese Antwort nicht eben hilfreich. Da hätte die Auskunft "`lang ist wichtig,"´ genauso viel oder wenig ausgedrückt.
+
+Einige Klassen dieses Pakets dienen als sogenannte Wrapper Klassen, um Variablen, die in Java ja keine eigenständigen Objekte sind, als Objekte zu verpacken.
+
+Einige Klassen dieses Packets stellen sicher, dass in Java "`Dinge"´, wie Class, Object, Throwable, Thread und ähnliche mehr existieren, die wir bei der Programmierung wie selbstverständlich nutzen.
+
+Sollten Sie sich gefragt haben, warum Sie Klassen ohne Konstruktor programmieren können, können Sie in diesem Teil der API die Antwort nachlesen: Klassen vom Typ Class werden automatisch durch die JVM mittels eines Aufrufs der Methode defineClass(...) erzeugt.
+
+Dazu stellt es auch die Möglichkeiten sicher, um entsprechend der Hierarchie von Threads Vererbung zu realisieren.
+
+Dann gibt es hier Klassen, die dafür sorgen, dass Prozesse (also die tatsächliche Ausführung von Programmteilen) durch das Betriebssystem durchgeführt werden.
+
+Verkürzt ließe sich also sagen, dass java.lang all das beinhaltet, was nötig ist, um einfachste Java-Klassen zu programmieren, aber keine Variablen im Sinne virtueller Objekte, die direkt im Speicher abgelegt werden können und den auf ihnen definierten Operationen.
+
+\paragraph{Aufgabe}
+
+Werfen Sie einen Blick in die Java-API des package java.lang und lösen Sie anhand der dortigen Angaben die folgenden Aufgaben:
+
+\begin{enumerate}
+
+	\item Was passiert, wenn ein NaN vom Typ Float mit einem Objekt vom Typ Float verglichen wird, der eine Zahl enthält?
+
+	\item Neben dem Umgang mit NaN gibt es noch etwas überraschendes, wenn es um den Vergleich mit Zahlen geht. Es geht hier um die Zahl 0.0f. Was ist das?
+	
+	\item Es gibt die Methode sum(), um zwei Float-Objekte zu addieren. Wie sieht es mit anderen arithmetischen Operationen aus?
+	
+	\item Suchen Sie weiter und finden Sie alle Methoden, mittels derer Sie Operationen durchführen können, die für Variablen vom Typ float definiert sind.
+	
+	\item Welchen Sinn kann es haben, einzelne Werte als Float-Objekte (oder andere Variablen z.B. boolesche Variablen) als Objekte vom Typ der entsprechenden Wrapper Klasse zu verpacken?
+	
+	\item Finden Sie (anhand der Java API zu Float) heraus, was der größte und kleinste Wert ist, den eine float Variable haben kann. Geben Sie ihn als gerundete 10-er Potenz an. Was fällt Ihnen auf? (Bitte hier die beiden Felder NEGATIVE\_INFINITY und POSITIVE\_INFINITY ignorieren.)
+	
+	\item Und jetzt das gleiche für ein Objekt vom Typ Double.
+	
+	\item Berechnen Sie, wie viel Speicher eine Variable vom Typ float bzw. double mindestens belegt.
+	
+	\item Erzeugen Sie jetzt ein Objekt von jedem der beiden Typen, jeweils mit einem maximalen Wert und prüfen Sie, wie viel Speicher tatsächlich verwendet werden.
+	
+	\item Finden Sie anhand der API (egal ob für Float oder Double) heraus, wie eine Zahl in einen Text umgewandelt werden kann, der z.B. für System.out.println() nötig ist.
+	
+	\item Sie wollen ein Programm entwickeln, bei dem es auf außerordentliche Präzision bei mathematischen Operationen ankommt. Sie müssen also beispielsweise wissen, wenn es zu einem Overflow bei einer Operation kommt. (Denken Sie hier an ein Programm, dass ein Raumschiff auf dem Flug zum Mars steuert oder an die Steuerung eines Kernkraftwerks. Für beide Fälle würden Sie in der Praxis auf andere Programmiersprachen zurück greifen, aber hier geht es darum, dass Sie die Möglichkeiten von Java kennen lernen.) Prüfen Sie, welche der beiden Klassen Math und StrictMath Sie in diesem Fall nutzen würden. Beschreiben Sie, wie die Klasse Ihnen ein höhere Sicherheit gewährleistet, bzw. welche Methoden das tun. Erklären Sie außerdem, warum es dann noch die andere Klasse gibt.
+	
+	\item Sie haben gelernt, dass Sie Objekte vom Typ String zwar überschreiben können, aber dass Sie mit Ihr nicht umgehen können, als wäre es ein char[] (Array von char-Variablen). Schauen Sie sich nun die Methode delete() der Klasse StringBuffer an. Wie wird die Datenstruktur dieser Klasse allgemein genannt?
+
+\end{enumerate}
+
+Mit diesen Übungen haben Sie ein vertieftes Verständnis für das Package java.lang und damit für die Entwicklung grundlegender Java-Anwendungen gewonnen. Insbesondere können Sie jetzt mithilfe der Wrapper Klassen Aufgaben lösen, für die Sie früher eigene Klassen entworfen hätten. Dazu kommt, dass Sie je nach nötiger Präzision von mathematischen Aufgaben die passenden Methoden verwenden werden. Und Sie werden nie wieder eine eigene Variable für die Eulersche Zahl oder Pi verwenden.
