@@ -1,0 +1,411 @@
+\chapter{ML, Teil 2 - Textverarbeitung mit LaTeX}
+
+LaTeX ist aus Sicht der Programmierung eine Markup Language. Im Gegensatz zu HTML handelt es sich hier aber um eine Sprache, die dafür gedacht ist, verschiedenste (vorrangig gedruckte) Dokumente zu erzeugen. Entwickelt wurde sie von Leslie Lamport, einem der Träger des \textbf{Turing Award}. (Wem das kein Begriff ist: Der Turing Award wird als Nobelpreis der Informatik bezeichnet.) Im Gegensatz zu TeX, von dem LaTeX eine Erweiterung ist müssen wir hier nur all das Programmieren, was anders als beim Standard-Dokument ist.\\
+
+LaTeX hat einige essentielle Vorteile gegenüber den meisten Textverarbeitungen, die Sie aus dem Alltag kennen. Das hier ist nur eine Auswahl:
+
+\begin{itemize}
+	\item Genau wie in HTML kümmern Sie sich um den Inhalt und nicht um die Darstellung.
+	\item Sie können aber jedes Detail anpassen.
+	\item Da Sie direkt im Code arbeiten und auch Einrückungen manuell programmieren kann LaTeX Ihre Arbeit nicht torpedieren.
+	\item Es gibt eine große Community, die im Bedarfsfall helfen kann.
+	\item Es ist vollständig kostenlos.
+	\item Formeln lassen sich sehr einfach eintragen und ändern.
+	\item Überschriften werden wissenschaftliche nummeriert.
+	\item Inhaltsverzeichnisse, Glossare, nummerierte Abschnitte und ähnliches passen sich automatisch an Änderungen an.
+\end{itemize}
+
+Wie bei allen Markup Languages gibt es allerdings einen Nachteil:
+
+\begin{itemize}
+	\item Sie müssen sich in die Programmierung einarbeiten. Aber wenn Sie HTML beherrschen, dann wird das für Sie keinen allzu großen Anspruch darstellen. Streckenweise ist es einfacher als die Einarbeitung in HTML5, da wir hier (genauer gesagt in LaTeX 2) kein semantisches Web haben und uns auch nicht um Aspekte des Responsive Design kümmern müssen.
+\end{itemize}
+
+Zur Erinnerung: Installieren Sie bitte \verb|TeXStudio|, um mit der Programmierung zu beginnen.
+
+\section{Grundlagen}
+
+Das meiste, was Sie an Grundlagen wissen müssen kennen Sie jetzt schon: Sie wissen was eine Markup Language ist. Bei LaTeX gibt es eine andere Syntax und andere Bezeichnungen für Elemente und Container, die müssen Sie also lernen. Außerdem gibt es einige zusätzliche Container, mit denen Sie z.B. ein Inhaltsverzeichnis generieren können. Ähnlich wie in HTML5 gibt es aber nur im Bedarfsfall ein schließendes Tag.\\
+
+\subsection{Struktur eines LaTeX-Dokuments}
+
+In HTML kennen sie die drei zentralen Container html, head und body.\\
+
+In Latex haben wir keinen html-Container bzw. keinen latex-Container und auch keine Doctype Declaration.\\
+
+Stattdessen sprechen wir von einer \textbf{Präambel}\index{Präambel}\index{LaTeX!Präambel}. Diese enthält alles, was wir bei HTML als Attribut im \verb|html|-Tag und im \verb|<head>| untergebracht haben. Danach folgt der eigentliche Inhalt des Dokuments, für den wir keine spezielle Bezeichnung haben.\\
+
+In LaTeX gibt es leider keinen Bezeichner der dem \verb|Tag| in HTML entspricht. Um es Ihnen beim Einstieg einfacher zu machen werde ich den Begriff in diesem Kapitel dennoch verwenden. Allerdings gibt es hier den Begriff des \verb|Elements|, der für eine kleinste Einheit eines Dokuments steht.
+
+\subsection{Einfache Präambel}
+
+Die folgende Präambel beinhaltet alles, was Sie für die meisten Dokumenten benötigen dürften:
+
+\begin{verbatim}
+\documentclass[11pt, a4paper, oneside, draft]{book}
+
+\usepackage{palatino, url}
+\usepackage[ngermanb]{babel}
+\usepackage[utf8]{inputenc}
+
+\setlength{\parindent}{0cm}
+\end{verbatim}
+
+Wie Sie sehen nutzen wir in LaTex keine spitzen Klammern, um Tags anzuzeigen, sondern wir beginnen jedes \glqq{}Tag\grqq{} mit einem Backslash\verb|\|. Bitte beachten Sie den Unterschied: Es handelt sich nicht um den Slash, den Sie mit der Tastenkombination \verb|Shift 7| erhalten, sondern mit der Tastenkombination \verb|Alt gr ß|. Sie müssen dazu also die rechte Alt-Taste (die mit \verb|Alt gr| beschriftet sein sollte) drücken, gedrückt halten und zusätzlich das ß. Das ist anfangs etwas ungewohnt, gibt sich aber mit der Zeit.\\
+
+\subsubsection{Struktur von Umgebungen}
+
+\begin{itemize}
+	\item Jeder LaTeX-Container beginnt mit einem Backslash \verb|\| .
+	\item Danach folgt der Bezeichner.
+	\item Es kann ein paar eckiger Klammern mit einem oder mehreren Einträgen folgen. \verb|[]|
+	\item Es können ein oder mehrere Paare geschweifter Klammern mit jeweils einem oder mehreren Einträgen folgen. \verb|{}|
+\end{itemize}
+
+Dabei gibt es keine allzu genaue Systematik dafür, was in den geschweiften oder eckigen Klammern steht. Die geschweiften Klammern entsprechen aber meist dem Inhalt eines Containers.\\
+
+\subsubsection{documentclass}
+
+Die documentclass gibt in geschweiften Klammern an, um welche Art von Dokument es sich handelt. Daraus folgen einige Standardeinstellungen, die Sie aber auch ändern können. Hier eine Auswahl:
+
+\begin{itemize}
+	\item \verb|book| ist dafür gedacht, um die typischen Elemente eines Buches bereit zu stellen: Teile, Kapitel, usw.
+	\item \verb|report| ist für umfangreiche Reportagen gedacht, also auch beispielsweise für Forschungsberichte, die eine Zusammenfassung und mehrer Kapitel umfassen können.
+	\item \verb|article| ist für Artikel gedacht, die z.B. in Zeitschiften erscheinen sollen. Auch hier ist z.B. eine Zusammenfassung vorgesehen.
+	\item \verb|letter| ist für Anschreiben gedacht.
+\end{itemize}
+
+Oben habe ich mich für die documentclass \verb|book| entschieden und die folgenden Optionen festgelegt:
+
+\begin{itemize}
+	\item \verb|11pt| legt als Schriftgrad 11 Points fest. Der Standardwert liegt bei 10 pt. Wenn der Ihnen genügt, brauchen Sie also gar keine Angabe zu machen.
+	\item \verb|a4paper| legt fest, dass das Seitenformat Din A4 ist. Außer bei der Ausgabe als pdf-Dokument ist ein amerikanisches Seitenformat hier der Standard.
+	\item \verb|oneside| legt fest, dass alle Seiten an der gleichen Stelle nummeriert werden. Alternativ dazu können Sie \verb|twoside| wählen. Dann werden Seiten abwechselnd links und rechts mit einer Nummer versehen.
+	\item \verb|draft| ist eine praktische Option, da sie dafür sorgt, dass Zeilen, an denen Ein Wort in den Seitenrahmen hineinragt mit einem schwarzen Quadrat gekennzeichnet werden. Das ist in sofern praktisch, als Sie schneller sehen, wo Sie ein wenig Feintuning beim Zeilenumbruch machen müssen.
+\end{itemize}
+
+\subsubsection{usepackage}
+
+Dieser LaTeX-Container ermöglicht es Ihnen Packages zu nutzen, mit denen Sie bestimmte Formatierungen anpassen können. Zum Teil erhalten Sie dadurch neue Container, die im \glqq{}Standard-\grqq{}LaTeX nicht enthalten sind.\\
+
+Wenn Sie mehrere Packages nutzen wollen, ohne nähere Optionen auszuwählen, dann können Sie diese durch Kommata getrennt gemeinsam als Argument eines usepackage-Containers verwenden. Bsp.: \verb|\usepackage{palatino, url}| fügt die Packages palatino und url hinzu. palatino ist ein Schriftsatz und url ist ein Container, mit dem Sie URLs im fließenden Text hervorheben können.\\
+
+Wenn Sie dagegen bei einem Package Optionen festlegen wollen, dann müssen Sie für jedes Package einen eigenen Container programmieren. Bsp.: \verb|\usepackage[ngermanb]{babel}| fügt das babel-Package hinzu, das die Syntaxprüfung für verschiedene Sprachen ermöglicht. Hier müssen wir eine Option wählen, da wir uns für eine Sprache entscheiden müssen. Die Option german entspricht allerdings der alten Rechtschreibung, weshalb mit \verb|ngerman| eine eigene Option für die seit Ende der 90er Jahre geltenden Rechtschreibregeln entwickelt wurde.\\
+
+Das Package \verb|inputenc| kann die verwendete Codierung festlegen. Darüber hatten wir ja bereits bei HTML gesprochen, der entsprechende usepackage-Container sollte damit klar sein.
+
+\subsubsection{setlength}
+
+Der Container \verb|\setlength{\parindent}{0cm}| ist dann ein Beispiel dafür, dass wir die Vorstellung eines Containers aus HTML nicht direkt in LaTeX übertragen können: Hier haben wir ein \glqq{}Tag\grqq{}, das zwei Inhalte hat, zum einen \verb|\parindent|, was für den Einzug der ersten Zeile eines Absatzes steht, zum anderen \verb|0cm| was naheliegender Weise für 0 Zentimeter steht.\\
+
+Absätze beginnen bei LaTeX mit einem kleinen Einzug in der ersten Zeile und können nur anhand dieses Einzugs erkannt werden. Wenn Sie dagegen Absätze dadurch trennen wollen, dass Sie eine leere Zeile einfügen wollen und keinen Einzug haben wollen, dann müssen Sie in der Präambel diese Zeile einfügen.\\
+
+\section{Text, Sonderzeichen und Formeln}
+
+Fast alles, was wir von jetzt an kennen lernen wird im body des Dokuments programmiert. Dieser wird ähnlich einem HTML-Container als \verb|\begin{document}| begonnen und mit \verb|\end{document}| beendet.
+
+Wenn Sie dort einen einfachen Text verfassen wollen, dann können Sie direkt damit beginnen: Anders als in HTML gibt es keine expliziten Absatz-Container wie \verb|<p></p>| in LaTeX.\\
+
+Das Ende eines Absatzes \glqq{}programmieren\grqq{} Sie dadurch, dass Sie einfach die Enter-Taste drücken. Wollen Sie zusätzliche Leerzeilen einfügen, dann müssen Sie \verb|\\| eingeben.
+
+\subsection{Sonderzeichen}
+
+Im wissenschaftlichen Bereich nutzen wir immer wieder Sonderzeichen, die dann bei einer Textverarbeitung wie LaTeX nicht direkt eingegeben werden kann, weil dieses Zeichen dort eine besondere Bedeutung hat. Den Backslash und einige mehr haben Sie schon kennen gelernt. Wenn Sie ein solches Zeichen verwenden wollen oder Teile von Programmtexten einfügen wollen, gibt es unter anderem zwei einfache Möglichkeiten. Die beiden folgenden Varianten funktionieren für alle Sonderzeichen identisch:\\
+
+\begin{itemize}
+	\item Wenn Sie innerhalb eines Absatzes einzelne Sonderzeichen oder kurze Textpassagen mit Sonderzeichen einbinden wollen, dann nutzen Sie dazu \verb~\verb|Text mit Sonderzeichen|~. Der \verb|\verb|-Container hat eine Besonderheit: Sie können hier jedes Zeichen (also nicht nur geschweifte Klammern) nutzen, um ihn abzugrenzen.\\
+	
+	Wenn Sie also das Sonderzeichen \verb+|+ verwenden wollen, dann nehmen Sie einfach ein anderes, um den Rahmen des \verb|\verb|-Containers festzulegen. Bsp.: \verb|\verb ~ Text mit Sonderzeichen ~| (Hier wurde \verb|~| als Zeichen verwendet, um den Inhalt des Containers abzugrenzen.)
+	
+	\item Wenn Sie dagegen mehrere Zeilen mit Sonderzeichen anzeigen lassen, dann nutzen Sie die sogenante verbatim-Umgebung:
+	
+	\begin{verbatim}
+		\begin{verbatim}
+		Zeile mit Sonderzeichen
+		Noch eine Zeile mit Sonderzeichen
+		Noch viele Zeilen mit Sonderzeichen
+		...
+		\end{ verbatim}
+	\end{verbatim}
+	
+	Anmerkung: Sollten Sie den seltenen Fall haben, dass Sie innerhalb einer verbatim-Umgebung \verb|\end{verbatim}| eintragen wollen, dann lassen Sie einfach eine Leerstelle zwischen der geschweiften Klammer \verb|{| und \verb|verbatim}| stehen.
+\end{itemize}
+
+\subsection{Formeln}
+
+In vielen Texten wird erklärt, dass Sie Formeln in LaTeX mit dem Dollar-Symbol \verb|$| abgrenzen. Das funktioniert zwar, allerdings handelt es sich dabei um eine TeX-Anweisung. In LaTeX gibt es für Formeln im Fließtext folgende Zeichensequenz:\\
+
+\verb| \( ... Formel ... \)|\\
+
+Dabei gilt, das alles, was zwischen \verb|\(| und \verb|\)| steht im Sinne des mathematischen Modus interpretiert wird. Der mathematische Modus bietet außerordentlich vielfältige Möglichkeiten, um Formeln einzutragen. Wenn Sie in irgend einem mathematischen Buch ein Symbol sehen, dass in einer Formel verwendet wird, dann gibt es ein LaTeX-Tag, mit dem Sie dieses Symbol im mathematischen Modus erzeugen können.\\
+
+Wie Sie sich vorstellen können, würde eine Einführung in den mathematischen Modus alleine schon ein Buch füllen. An dieser Stelle werde ich nur auf einige wenige Möglichkeiten eingehen, die Ihnen bei den ersten Schritten helfen werden. Alles weitere können Sie in aller Regel durch eine Recherche im Netz sehr schnell in Erfahrung bringen.
+
+\begin{itemize}
+	\item Für Multiplikationen sollten Sie \verb|\cdot| nutzen. Dadurch wird ein Multiplikationspunkt eingefügt.
+	\item Einen Bruch können Sie mit \verb|\frac{Divident}{Divisor}| darstellen. Divident und Divisor können dabei beliebig komplexe Formeln sein.
+	\item Um eine Potenz darzustellen benutzen Sie den Hochpfeil \verb|^|. Wie immer gilt: Wenn der Exponent ein Ausdruck ist, dann nutzen Sie die geschweiften Klammern. Bsp.: \(x^{2 + 3}\) programmieren Sie als \verb|x ^{2 + 3}|.
+	\item Indizes wie \(X_{i,j}\) stellen Sie durch \verb|X_{i,j}| dar.
+\end{itemize}
+
+Wenn Sie dagegen mehrere Formeln als eigenständige Absätze anzeigen lassen wollen, dann nutzen Sie dafür die equation-Umgebung:
+
+\begin{verbatim}
+\begin{equation}
+Eine Zeile für jede Zeile der Formel.
+In dieser Umgebung gilt wieder der mathematische Modus, wie Sie ihn gerade kennen gelernt haben.
+\end{equation}
+\end{verbatim}
+
+\section{Umgebungen}
+
+Gerade haben Sie mit \verb|\begin{verbatim}| und \verb|\end{verbatim}| etwas kennen gelernt, das konzeptionell den Containern in HTML entspricht. Bei LaTeX werden diese Container aber als \textbf{Umgebung}en\index{Umgebung}\index{LaTeX!Umgebung} bezeichnet.\\
+
+Wenn Sie beim Anfangs-\glqq{}Tag\grqq{} einer Umgebung Optionen programmieren, dann gilt hier dasselbe, was Sie bei den Attributen bzw. Attributen mit Wertzuweisung in HTML kennen gelernt haben: Diese gelten für alles, was sich innerhalb der Umgebung befindet.
+
+\section{Inhaltsverzeichnis, Kapitel und Abschnitte}
+
+Wenn Sie längere Texte als einen Brief schreiben, dann benötigen Sie noch Möglichkeiten, um z.B. Kapitelüberschriften einzufügen. Aus diesen Überschriften wird später übrigens das \textbf{Inhaltsverzeichnis}\index{LaTeX!Inhaltsverzeichnis} an genau der Stelle erzeugt und ins Dokument eingefügt, an der Sie \verb|\tableofcontents| ins Dokument eintragen.
+
+\subsection{Kapitel, Abschnitte usw.}
+
+Bezüglich der Größe und Strukturierung anhand von Überschriften ist LaTeX komfortabler als HTML: Während dort \verb|<h1>| und \verb|<h2>| nur optisch unterschiedlich sind, bewirken \verb|\chapter{Titel}| und \verb|\section{Titel}|, dass der eine von LaTeX als Teil des anderen interpretiert wird.\\
+
+\textbf{Wichtig}:\\
+
+Diese Überschriften sind keine Umgebungen, sondern werden wie abgeschlossene Container in HTML programmiert und behandelt. Das bedeutet, dass der Text und die Unterüberschriften z.B. innerhalb eines Kapitels für LaTeX nicht Teil des Kapitels sind. Auch wenn das in aller Regel kein Problem ist müssen wir deshalb selbst darauf achten, welche Teile unserer Texte zu welchem Kapitel gehören.\\
+
+Hier nun die Hauptstrukturüberschriften in LaTeX:
+
+\begin{itemize}
+	\item \verb|\part[Kurztitel]{Titel}| wird in aller Regel nur bei Büchern genutzt. Es handelt sich hier um eine Überschrift, die den Inhalt mehrerer Kapitel zusammenfasst. (Denken Sie an so etwas wie die Unterteilung eines Mathebuchs in \verb|Teil 1 - Algebra|, \verb|Teil 2 - Geometrie| usw.)
+	\item \verb|\chapter| entspricht einem Kapitel.
+	\item \verb|\section| entspricht einem Abschnitt innerhalb eines Kapitels.
+	\begin{itemize}
+		\item Um Unterabschnitte zu beginnen, nutzen Sie \verb|\subsection|.
+		\item Dann gibt es noch die \verb|\subsubsection| usw.
+	\end{itemize}
+	\item \verb|\paragraph| ist ein Absatz innerhalb eines Abschnitts, der eine eigene Überschrift erhalten soll. Auch hier können sie mit dem Präfix \verb|sub| wie bei sections eine Priorisierung erstellen. Allerdings werden paragraphs nicht ins Inhaltsverzeichnis mit aufgenommen und auch nicht nummeriert.
+\end{itemize}
+
+Übrigens können Sie bei all diesen Typen jeweils in den geschweiften Klammern die Überschrift festlegen, die im Text angezeigt wird.\\
+
+Und in eckigen Klammern können Sie eine Kurzfassung der Überschrift einfügen, die z.B. im Inhaltsverzeichnis angezeigt wird. Wenn Sie dort nichts angeben, wird auch im Inhaltsverzeichnis die vollständige Überschrift übernommen.
+
+\section{Auslagern von Kapiteln}
+
+Je länger Ihr Dokument wird, desto stärker wird der Wunsch werden, einzelne Teile auszulagern, damit Sie etwas übersichtlicher arbeiten können. In HTML war das nur über den Umweg von PHP möglich, in LaTeX ist es einfacher:\\
+
+Hier verwenden Sie \verb|\include{Dateiname}|, wobei der Dateiname auf \verb|.tex| enden muss. Diese Endung wird aber in der include-Anweisung nicht aufgeführt, sondern nur der Dateiname vor dem .tex .
+
+\section{Titelblatt und Glossar}
+
+Bei einigen Dokumentklassen ist ein Titelblatt vorgesehen, bei anderen müssen sie über den Eintrag der Option \verb|titlepage| zur \verb|\documentclass| angeben, dass ein Titelblatt hinzugefügt werden soll.\\
+
+Dass alleine genügt aber noch nicht. Was wir noch brauchen sind die Angaben für das Titelblatt und die Angabe, wo genau das Titelblatt eigefügt werden soll:\\
+
+Für die nötigen Angaben fügen Sie am Anfang des body (also direkt nach \verb|\begin{document}|) die folgenden LaTeX-Tags ein:
+
+\begin{itemize}
+	\item \verb|\title{}| enthält den Titel, der auf dem Dokument eingeblendet wird.
+	\item \verb|\author{}| enthält den Namen des/der Authoren.
+	\item \verb|\date{}| enthält ein Datum.
+	\begin{itemize}
+		\item Dabei können Sie mit \verb|\date{\today}| automatisch das aktuelle Datum eintragen.
+	\end{itemize}
+\end{itemize}
+
+Wenn Sie diese Angaben eingetragen haben, können Sie per \verb|\maketitle| an beliebigen Stellen im Dokument ein Titelblatt erzeugen und einfügen lassen.
+
+\section{Glossar}
+
+Um ein Glossar bzw. Stichwortverzeichnis zu generieren müssen Sie leider deutlich mehr Arbeit aufwenden, aber wenn Sie das getan haben, wird genau wie beim Inhaltsverzeichnis ein Verzeichnis für Schlagwörter automatisch generiert und aktualisert.\\
+
+\begin{enumerate}
+	\item \verb|\makeindex| muss zur Präambel hinzugefügt werden.
+	\item \verb|\usepackage{makeidx}| kann zusätzlich in der Präambel aufgenommen werden, um die Darstellung des Stichwortverzeichnisses anders zu gestalten.
+\end{enumerate}
+
+Wenn Sie das erledigt haben, müssen Sie an der Stelle des Dokuments, wo das Stichwortverzeichnis eingefügt werden soll, die folgenden Zeilen einfügen:
+
+\begin{itemize}
+	\item \verb|\renewcommand{\indexname}{Stichwortverzeichnis}| legt den Titel des Stichwortverzeichnisses fest. (Es gibt eine Standardbezeichnung.)
+	\item \verb|\addcontentsline{toc}{chapter}{Stichwortverzeichnis}| stellt sicher, dass das Stichwortverzeichnis ins Inhaltsverzeichnis aufgenommen wird.
+	\item \verb|\printindex| fügt an der Stelle, an der es steht das Stichwortverzeichnis in das Dokument ein.
+\end{itemize}
+
+\subsection{Stichwörter und Bezüge festlegen}
+
+Jetzt kommt der Teil, der die eigentliche Arbeit für das Glossar ausmacht: Jeder Begriff, der im Glossar aufgenommen werden soll muss mit \verb|\index{Bezeichnung im Glossar}| aufgenommen werden.\\
+
+Bsp.: Sie wollen einen Verweis auf eine Textpassage festlegen, in der es um die Nutzung von Dampfmaschinen im Allgemeinen geht. Das sähe dann so aus:
+
+\begin{verbatim}
+	Bis zu einem dem Autor nicht bekannten und 
+	aus Faulheit nicht recherchierten Zeitpunkt 
+	waren Dampfmaschinen\index{Dampfmaschine} 
+	eine recht weitverbreitete Antriebsart. ...
+\end{verbatim}
+
+Wenn Sie dabei Haupt- und Unterstichworter nutzen wollen, dann sieht das so aus: \verb|\index{Hauptstichwort!Unterstichwort}|.\\
+
+Bsp.: Sie schreiben über die Programmierung in C und wollen einen entsprechenden Verweis im Stichwortverzeichnis erzeugen. Das sähe so aus:
+
+\begin{verbatim}
+	C\index{Programmiersprache!C} ist eine 
+	kompilierte Sprache ...
+\end{verbatim}
+
+Doch während das Inhaltsverzeichnis von LaTeX automatisch generiert wird, müssen wir die Generierung des Glossars manuell starten. TeXStudio hat dafür einen Assistenten, den sie per \verb|F12| oder über den entsprechenden Eintrag im Menü \verb|Assistenten| starten können.
+
+\subsection{Weitere Verzeichnisse}
+
+Später werden Sie erfahren, wie Sie Abbildungen und die sogenannten Figures in LaTeX programmieren können. Für diese können Sie ähnlich wie beim Inhaltsverzeichnis Verzeichnisse automatisch generieren lassen. Dazu nutzen Sie \verb|\listoffigures| und \verb|listoftables|.
+
+\section{Listen und Tabellen}
+
+Immer wenn Sie mehrere Einträge gruppieren und/oder sortieren wollen, nutzen Sie sogenannten Listen bzw. Tabellen.\\
+
+Aus HTML kennen Sie die unordered und ordered lists sowie die description lists. Und alle drei werden (wenn auch mit einer etwas anderen Syntax) nahezu identisch in LaTeX umgesetzt:\\
+
+Einzelne Einträge werden durch ein vorangestelltes \verb|\item| gekennzeichnet. Als Option können Sie hier noch Labels vergeben.\\
+
+Alle Listen werden als Umgebung (also mit \verb|\begin{}| und \verb|\end{}|) programmiert. Die Argumente lauten dabei:
+
+\begin{itemize}
+	\item itemize (für Listen mit Punkten)
+	\item enumerate (für nummerierte Listen)
+	\item description (für Glossare)
+\end{itemize}
+
+\subsection{Tabellen}
+
+Hier haben wir einen Unterschied gegenüber HTML: Dort ist eine Tabelle ein Rahmen, anhand dessen wir Elemente unsers Dokuments an einer festen Position im Dokument anordnen können. \\
+
+In LaTeX dagegen wird zwischen einem table und einem tabular matter unterschieden. Das was wir umgangssprachlich als Tabelle bezeichnen ist in LaTeX die \textbf{tabular matter}\index{tabular matter}\index{LaTeX!tabular matter}.\\
+
+Die unterschiedlichen Bezeichnungen basieren darauf, dass LaTeX hier den Begriff Tabelle so nutzt wie das bei Schriftsetzern üblich ist. Die differenzieren hier genauer als wir das umgangssprachlich tun.\\
+
+Um klar zwischen umgangssprachlicher Tabelle und den genannten formalen Tabellen bzw. tabellarischen Aufstellungen zu unterscheiden wird hier bei letzteren die englische Bezeichnung gewählt.\\
+
+Hinweis, wenn Sie mehr dazu im Netz recherchieren wollen: Leider ist der Begriff des formular table im Englischen doppelt belegt: Dort wird er häufig für eine formale Eindeckung eines Tisches verwendet. Wenn Sie also nach \verb|formal table| suchen, werden Sie fast ausschließlich Anleitungen für Diener finden. Bei den verbleibenden Einträgen steht in aller Regel nur, dass es sich dabei um etwas anderes handelt, als das, was wir umgangssprachlich als Tabelle bezeichnen. Eine Aussage, die uns im Regelfall gar nicht weiterhilft.
+
+\subsubsection{formal table}
+
+Eine Tabelle (\textbf{formal table}\index{formal table}\index{LaTeX!formal table}) in LaTeX ist dagegen eine Umgebung, die den Titel einer Tabelle und ein Label enthalten muss, auf das wir von anderen Stellen des Dokuments aus verweisen können.\\
+
+Es handelt sich also um etwas, das weitgehend dem \verb|<figcaption>|-Container in HTML entspricht. Es unterscheidet sich allerdings davon, weil ein formal table (\verb|table|-Umgebung) in LaTeX eine Umgebung für beliebige Inhalte außer für Bilder, Videos und Audiodateien wie in HTML ist.\\
+
+Hier ein Beispiel:
+
+\begin{verbatim}
+	\begin[wie immer optional: Buchstabe, der die 
+	Position des formal table festlegt]{table}
+	\caption[Kurztitel]{Titel des formal table}
+	\label{Referenz, entspricht einem Anker in HTML}
+	...
+	(Hier kann z.B. ein tabular matter aber auch 
+	beliebiger anderer Inhalt eingefügt werden.)
+	...
+	\end{table}
+\end{verbatim}
+
+Die Position (Optional der table-Umgebung) kann durch einen von vier Buchstaben festgelegt werden:
+
+\begin{enumerate}
+	\item \verb|t| (top), also am oberen Rand der aktuellen Seite
+	\item \verb|b| (bottom), also am unteren Rand der aktuellen Seite
+	\item \verb|h| (here), also an genau der Stelle, wo die Umgebung im Dokument eingefügt wurde.
+	\item \verb|p| (page): Bei dieser Option wird die Tabelle auf einer eigenen Seite angezeigt.
+\end{enumerate}
+
+\subsubsection{tabular matter}
+
+Dieser Bereich wird ähnlich wie der mathematische Modus nur kurz angeschnitten. Wenn Sie mehr über Tabellen in LaTeX wissen wollen, dann recherchieren Sie dazu bitte im Netz.\\
+
+\textbf{Wichtig}:\\
+
+Eine tabular-Umgebung ist für Texte gedacht. Wenn Sie Formeln in einer Tabelle gruppieren wollen, nutzen Sie bitte die array-Umgebung (siehe nächster Abschnitt).
+
+\begin{verbatim}
+\begin{tabular}{ausrichtung1, ausrichtung2, ...}
+erste Zeile, erste Spalte & erste Zeile, zweite Spalte & ... \\
+zweite Zeile, erste Spalte & zweite Zeile, zweite Spalte & ... \\
+...
+\end{tabular}
+\end{verbatim}
+
+Eine solche Tabelle wird also durch eine \verb|tabular|-Umgebung definiert. Nach dem ersten Paar geschweifter Klammern folgt ein zweites Paar, in dem für jede Spalte die Ausrichtung definiert wird:
+
+\begin{itemize}
+	\item \verb|l| linksbündig
+	\item \verb|c| zentriert
+	\item \verb|r| rechtsbündig
+	\item \verb|p{breite}| definiert eine maximale Breite einer Spalte
+\end{itemize}
+
+\textbf{Wichtig}:\\
+
+Es gibt im Gegensatz zu HTML keine automatische Anpassung der Breite von Spalten.
+
+\subsubsection{array}
+
+Neben dem tabular matter, der für Texte gedacht ist, gibt es noch die array-Umgebung, die für mathematische Formeln gedacht ist. Diese müssen Sie allerdings zusätzlich per \verb|\usepackage{array}| in der Präambel importieren.\\
+
+Um Missverständnisse zu vermeiden: In einer array-Umgebung brauchen Sie nicht mehr den mathematischen Modus zu aktivieren, denn er ist dort automatisch aktiviert.
+
+\section{figures}
+
+Jetzt kommen wir zu dem, was der \verb|<figcaption>| in HTML entspricht: Eine Umgebung für Bilder in LaTeX. Sie nutzen die \verb|figures|-Umgebung also genauso, wie Sie die \verb|table|-Umgebung für Tabellen und Texte nutzen konnten.\\
+
+Es stellen sich also zwei Fragen:
+
+\begin{itemize}
+	\item Warum gibt es die \verb|figures|- und die \verb|table|-Umgebungen?
+	\item Wie können wir Bilddateien in LaTeX-Dokumenten einbinden?
+\end{itemize}
+
+Die Antwort auf die erste Antwort ist simpel: Es gibt getrennte Verzeichnisse für formal tables und figures. Und diese Verzeichnisse werden aus den jeweiligen Umgebungen automatisch generiert, wenn Sie \verb|\listoffigures| bzw. \verb|\listoftables| verwenden, um an einer Stelle im Dokument das entsprechende Verzeichnis erzeugen zu lassen.
+
+\subsection{Bilddateien in LaTeX}
+
+Bevor wir uns mit der Einbindung von Bilddateien beschäftigen können, müssen wir uns mit dem Thema \verb|pdfLaTeX| und \verb|LaTeX| beschäftigen. Ersteres ist eine Erweiterung, mit der wir pdf-Dokumente aus LaTeX-Dokumenten erzeugen können. Dennoch gibt es bei beiden einen entscheidenden Unterschied:
+
+\begin{itemize}
+	\item Wenn wir \verb|pdfLaTeX| verwenden, können wir PNG-, JPG- und PDF-Dateien als Bilddateien einbinden.
+	\item Wenn wir dagegen \glqq{}nur\grqq{} \verb|LaTeX| verwenden, können wir ausschließlich EPS-Dateien verwenden.
+\end{itemize}
+
+Um überhaupt Bilddateien einbinden zu können, müssen wir die Präambel erweitern: \verb|\usepackage{graphix}|\\
+
+Um eine Bilddatei in unserem Dokument anzeigen zu lassen verwenden wir \verb|\includegraphics{Dateiname ohne Endung}| . Das bedeutet, dass der Compiler automatisch nach einer Datei sucht. Wenn wir also sicherstellen wollen, dass wir ein Dokument sowohl mit \verb|pdfLaTeX| als auch mit \verb|LaTeX| konvertieren können, dann müssen wir die Bilddatei mit gleichem Namen einmal als PNG-, JPG- und PDF-Datei und einmal als EPS-Datei im gleichen Verzeichnis speichern wie das .tex-Dokument.\\
+
+Sie können noch die Breite und Höhe als optionale Argumente \verb|width = ...cm| bzw. \verb|height = ...cm| festlegen. Dabei können Sie auch andere Maße wie z.B. pt verwenden, so lange diese in LaTeX definiert sind.\\
+
+\textbf{Wichtig}:\\
+
+Auch bei gleicher Bezeichnung sind diese Maße nicht mit denen in Adobe-Produkten identisch; leider beharrt besagter Konzern darauf eigene Definitionen einzelner Maßstäbe zu verwenden.\\
+
+Außerdem können Sie noch über Werte wie \verb|.75/coumnwidth| die Größe proportional anpassen. Allerdings bedeutet das nicht, dass (z.B. bei einer JPG-Datei) das Bild gestochen scharf ist. Das ist nur bei einer Vektorgrafik sichergestellt.
+
+\section{Referenzen und Labels}
+
+An ein oder zwei Stellen haben Sie bereits \verb|\label{Text}| gesehen. Das entspricht einem Anker in HTML. Also brauchen wir jetzt noch den \glqq{}Link\grqq{} auf einen solchen Anker. In LaTeX heißen die aber nicht Link, sondern \textbf{Referenz}\index{Referenz}\index{LaTeX!Referenz}. Eine Referenz programmieren Sie mit \verb|ref{Text}|.\\
+
+U.a. wegen Labels empfehle ich bei der Erstellung von LaTeX-Dokumenten von Anfang an die Arbeit mit einem erweiterten Editor wie TeXStudio: Dieser zeigt Ihnen alle im Dokument verwendeten Labels an. Und das ist deshalb wichtig, weil es zu Inkonsistenzen kommen wird, wenn Sie zwei Labels gleich bezeichnen.
+
+\section{Boxen}
+
+Wenn Sie sich eine LaTeX-Referenz ansehen, werden Sie immer wieder über Container bzw. Elemente mit \verb|box| im Namen stolpern. Eine Box bezeichnet so etwas wie einen Bereich, der abgeschlossen ist und Inhalte einer (z.B. gedruckten) Seite enthalten kann. Die größte Box entspricht dabei dem Bereich, der auf einer Seite insgesamt bedruckt werden kann. Generell wird aber das, was wir als einzelne Einheit betrachten als Box bezeichnet.\\
+
+Es gibt beispielsweise die Möglichkeit durch \verb|\fbox{text}| eine Textpassage im laufenden Text mit einem Rahmen zu umgeben.\\
+
+Weitere Boxen, mit denen Rahmen erzeugt werden können sind \verb|\shadowbox|, \verb|\doublebox|, \verb|\ovalbox| und \verb|Ovalbox|.\\
+
+Dann gibt es die \verb|\parbox[pos]{width}{text}|, mit der ein Text am oberen \verb|t| oder unteren \verb|b| Rand einer Seite angezeigt werden kann, die die Breite \verb|width| hat und \verb|text| beinhaltet.\\
+
+Aber auch das waren wieder nur einige ausgewählte Möglichkeiten, um Teile Ihres Dokuments hervorzuheben.
+
+\section{Abschluss}
+
+Damit haben Sie jetzt neben HTML eine weitere Markup Language kennen gelernt. Doch während Sie HTML kaum im Studium nutzen werden, sollten Sie LaTeX so schnell wie möglich verinnerlichen. Es ist für wissenschaftlichen Arbeiten ein international anerkannter Standard.
