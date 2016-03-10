@@ -503,41 +503,46 @@ Integrieren Sie die neuen Container in die bisherigen Dateien, auch wenn sie dam
 
 \section{Polyfills}
 
-Das englische Wort Polyfill bedeutet schlicht Spachtelmasse. Es geht hier also um Programm-fragmente, die dazu dienen, um Lücken aufzufüllen. Sie werden immer wieder auf Möglichkeiten von HTML5 treffen, die von einzelnen Webbrowsern nicht oder nicht vollständig unterstützt werden. Wenn Sie dann einen Container programmiert haben, wird der im betreffenden Browser nicht wie gewünscht angezeigt und seine Elemente werden wie bei HTML4.01 relativ willkürlich platziert.\\
+Das englische Wort \textbf{Polyfill}\index{Polyfill} bedeutet schlicht Spachtelmasse. Es geht hier also um Programm-fragmente, die dazu dienen, um Lücken aufzufüllen. Sie werden immer wieder auf Möglichkeiten von HTML5 treffen, die von einzelnen Webbrowsern nicht oder nicht vollständig unterstützt werden. Wenn Sie dann einen Container programmiert haben, wird der im betreffenden Browser nicht wie gewünscht angezeigt und seine Elemente werden wie bei HTML4.01 relativ willkürlich platziert.\\
 
 Aber das ist kein echtes Problem, denn für die meisten dieser Fälle gibt es eine Lösung, die Sie per Copy-Paste in Ihre Webanwendung kopieren können. Und diese Lösungen werden als Polyfill bezeichnet.\\
 
-Wichtig ist hier nicht, dass Sie sich merken, für welche Fälle Sie ein Polyfill benötigen, denn das ändert sich ja kontinuierlich mit jeder neuen Version der verschiedenen Browser. Wichtig ist vielmehr, dass Sie sich merken, auf welcher Seite Sie prüfen können, ob Sie ein Polyfill benötigen und wo Sie es bekommen:\\
+Wichtig ist hier nicht, dass Sie sich merken, für welche Fälle Sie ein Polyfill benötigen, denn das ändert sich ja kontinuierlich mit jeder neuen Version der verschiedenen Browser. Wichtig ist vielmehr, dass Sie sich merken, auf welcher Seite Sie prüfen können, ob Sie ein Polyfill benötigen und wo Sie es bekommen:
 
--	Auf www.caniuse.com können Sie für jeden HTML5-Container prüfen, in welchem Browser er unterstützt wird. Häufig finden Sie bei den einzelnen Containern auch Verweise auf Seiten, auf denen Sie ein passendes Polyfill finden.
-
--	Auf www.html5please.com finden Sie eine Vielzahl an Polyfills.
-
-Merken Sie sich dazu den folgenden kurzen Dialog: 
--	What can I use?
--	HTML5, please. 
-Denn damit haben Sie sich schon fast die URLs der beiden Seiten gemerkt.
+\begin{itemize}
+	\item Auf \url{www.caniuse.com} können Sie für jeden HTML5-Container prüfen, in welchem Browser er unterstützt wird. Häufig finden Sie bei den einzelnen Containern auch Verweise auf Seiten, auf denen Sie ein passendes Polyfill finden.
+	\item Auf \url{www.html5please.com} finden Sie eine Vielzahl an Polyfills.\\
+	Merken Sie sich dazu den folgenden kurzen Dialog: 
+	\begin{itemize}
+		\item What \textbf{can I use}?
+		\item \textbf{HTML5}, \textbf{please}.
+	\end{itemize}
+	Denn damit haben Sie sich schon fast die URLs der beiden Seiten gemerkt.
+\end{itemize}
 
 \subsection{Einbindung von Polyfills - <script>-Container}
 
-Polyfills werden in der Sprache JavaScript programmiert. Sie brauchen sich jedoch keine Gedanken zu machen, wenn Sie diese Sprache nicht kennen. Denn Sie müssen lediglich einen <script>-Container in Ihren <html>-Container einfügen. Sämtlichen JavaScript-Code, den Sie verwenden wollen, müssen Sie lediglich in diesen <script>-Container kopieren und schon wird er auf Ihrer Webanwendung angewendet.\\
+Polyfills werden in der Sprache \textbf{JavaScript}\index{Programmiersprache!JavaScript}\index{JavaScript} programmiert. Sie brauchen sich jedoch keine Gedanken zu machen, wenn Sie diese Sprache nicht kennen. Denn Sie müssen lediglich einen \verb|<script>|-Container in Ihren \verb|<html>|-Container einfügen. Sämtlichen JavaScript-Code, den Sie verwenden wollen, müssen Sie lediglich in diesen \verb|<script>|-Container kopieren und schon wird er auf Ihrer Webanwendung angewendet.\\
 
-Wichtig ist dabei nur, dass Sie jeweils genau die Bezeichnungen für Container verwenden, die bei HTML5 gelten. Denn genau wie CSS ändern Polyfills die Art, wie ein bestimmter HTML-Container dargestellt wird. Das geht aber nur, wenn die Container die richtige Bezeichnung haben. Sollten Sie sich also vertippen und anstelle des <aside>-Containers einen <aseid>-Container programmieren, dann wird Ihnen ein Polyfill, dass die Darstellung des <aside>-Containers sicherstellt nichts nützen.\\
+Wichtig ist dabei nur, dass Sie jeweils genau die Bezeichnungen für Container verwenden, die bei HTML5 gelten. Denn genau wie CSS ändern Polyfills die Art, wie ein bestimmter HTML-Container dargestellt wird. Das geht aber nur, wenn die Container die richtige Bezeichnung haben. Sollten Sie sich also vertippen und anstelle des \verb|<aside>|-Containers einen <aseid>-Container programmieren, dann wird Ihnen ein Polyfill, dass die Darstellung des \verb|<aside>|-Containers sicherstellt nichts nützen.\\
 
-Auch hier wieder ein Hinweis für fortgeschrittene HTML-Programmierer: In HTML4.01 mussten Sie für die Verwendung von JavaScript noch eine Zeile im <head>-Container erstellen, die dem Browser mitteilt, dass Scripte in JavaScript (oder einer anderen Scriptsprache) erstellt werden. Das ist bei HTML5 nicht mehr nötig, weil hier JavaScript die Standardprogrammiersprache  ist.
+Auch hier wieder ein Hinweis für fortgeschrittene HTML-Programmierer: In HTML4.01 mussten Sie für die Verwendung von JavaScript noch eine Zeile im \verb|<head>|-Container erstellen, die dem Browser mitteilt, dass \glqq{}Scripte\grqq{} in JavaScript (oder einer anderen Programmiersprache) erstellt werden. Das ist bei HTML5 nicht mehr nötig, weil hier JavaScript die Standardprogrammiersprache ist.
 
 \section{Zusammenfassung}
 
-Die folgenden beiden HTML-Dokumente zeigen, wie Sie mit den bisher vorgestellten HTML5-Elementen eine einfache Webanwendung entwickeln können. Wichtig: Bislang haben Sie noch keine Möglichkeit kennen gelernt, um\\
+Die folgenden beiden HTML-Dokumente zeigen, wie Sie mit den bisher vorgestellten HTML5-Elementen eine einfache Webanwendung entwickeln können. Wichtig: Bislang haben Sie noch keine Möglichkeit kennen gelernt, um
 
--	Links auf andere Seiten zu erstellen,
--	Bilder und andere multimediale Inhalte einzufügen oder
--	die Webanwendung semantisch zu machen.
+\begin{itemize}
+	\item Links auf andere Seiten zu erstellen,
+	\item Bilder und andere multimediale Inhalte einzufügen oder
+	\item die Webanwendung semantisch zu machen.
+\end{itemize}
 
 Aber keine Sorge, all diese Punkte und noch viel mehr werden wir in Kürze behandeln.\\
 
 Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusammengefasst ist. Die Absätze wurden deutlich gekürzt, damit Sie jeweils sehen können, wie die Programmierung aussehen kann.\\
 
+\begin{verbatim}
 <!doctype html> 
 <html lang=de> 
 <head> 
@@ -613,39 +618,36 @@ Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusa
 
 </body> 
 </html>
-
-Quellcode 2.4: HTML5 mit i18n, l10n und einigen der neuen HTML5-Containern.
+\end{verbatim}
 
 \subsection{Hausaufgabe}
 
-Sie haben vorhin sechs Dateien (arbeitsweg.html usw.) erstellt. Erweitern Sie diese Seiten zum nächsten Mal wie folgt:\\
+Sie haben vorhin sechs Dateien (arbeitsweg.html usw.) erstellt. Erweitern Sie diese Seiten zum nächsten Mal wie folgt:
 
--	Internationalisieren und Lokalisieren Sie jede Seite.
-
--	Erstellen Sie für jede Seite eine grundlegende Struktur, bei der Sie insbesondere sämtliche hier vorgestellten HTML5-Container sinnvoll verwenden.
-
--	Füllen Sie Ihre Seiten mit Inhalten, die zum Seitentitel passen.
-
--	Wenn Sie irgendwelche Inhalte wie Spiele, Videos, Bilder usw. einfügen wollen, dann tragen Sie an der entsprechenden Stelle einen Platzhalter ein. (Z.B. „Einzufügen: Bild von Horst“, „Hier mein geniales Gitarrensolo einbauen.“ usw. usf.) Wichtig: Es spielt keine Rolle, ob Sie sich zutrauen, die entsprechenden Inhalte selbst zu entwickeln. Lassen Sie einfach Ihrer Phantasie freien Lauf.
-
--	Lassen Sie die Datei index.html vorerst so, wie Sie ist.          
-
--	Suchen Sie nach einem Polyfill und programmieren Sie es ein, damit der <aside>-Container in den folgenden Browsern „richtig“ angezeigt wird: Firefox, Internet Explorer, Safari, Edge
+\begin{itemize}
+	\item Internationalisieren und Lokalisieren Sie jede Seite.
+	\item Erstellen Sie für jede Seite eine grundlegende Struktur, bei der Sie insbesondere sämtliche hier vorgestellten HTML5-Container sinnvoll verwenden.
+	\item Füllen Sie Ihre Seiten mit Inhalten, die zum Seitentitel passen.
+	\item Wenn Sie irgendwelche Inhalte wie Spiele, Videos, Bilder usw. einfügen wollen, dann tragen Sie an der entsprechenden Stelle einen Platzhalter ein. (Z.B. „Einzufügen: Bild von Horst“, „Hier mein geniales Gitarrensolo einbauen.“ usw. usf.) Wichtig: Es spielt keine Rolle, ob Sie sich zutrauen, die entsprechenden Inhalte selbst zu entwickeln. Lassen Sie einfach Ihrer Phantasie freien Lauf.
+	\item Lassen Sie die Datei \verb|index.html| vorerst so, wie Sie ist.          
+	\item Suchen Sie nach einem Polyfill und programmieren Sie es ein, damit der \verb|<aside>|-Container in den folgenden Browsern „richtig“ angezeigt wird: Firefox, Internet Explorer, Safari, Edge
+\end{itemize}
 
 \section{Hyperlinks}
 
 Vorhin haben Sie gelernt, dass das Protokoll zur Übertragung von Webanwendung HyperText Transfer Protokoll heißt. Sie wissen bereit, dass das Wort Protokoll nur eine Bezeichnung für eine Vereinbarung darüber, wie etwas zu tun ist. In diesem Fall geht es also um eine Vereinbarung darüber, wie Hypertexte übertragen (transferiert) werden sollen. Also kommen wir kurz dazu, was denn nun wiederum Hypertexte sind und was die mit Webanwendung zu tun haben.\\
 
-Die Antwort ist ganz einfach: Im Gegensatz zu einem Buch beinhaltet eine Webanwendung Kreuzverweise, denen Sie folgen können. Diese Verweise kennen Sie umgangssprachlich als Links. Eine Webanwendung ist also mehr als nur eine Ansammlung von Texten wie bei einem Buch. Und aus diesem Grund wurde das, was wir heute Webanwendung nennen, in der Zeit als Hypertext bezeichnet, als das WWW gerade erst entwickelt wurde. Wenn Sie also in HTML programmieren, dann programmieren Sie Hypertext. Nur nennt das heute kaum noch jemand so. Im Namen des Protokolls HTTP lebt dieser Begriff wahrscheinlich noch sehr lange weiter.\\
+Die Antwort ist ganz einfach: Im Gegensatz zu einem Buch beinhaltet eine Webanwendung Kreuzverweise, denen Sie folgen können. Diese Verweise kennen Sie umgangssprachlich als Links. Eine Webanwendung ist also mehr als nur eine Ansammlung von Texten wie bei einem Buch. Und aus diesem Grund wurde das, was wir heute Webpage nennen, in der Zeit als \textbf{Hypertext}\index{Hypertext} bezeichnet, als das WWW gerade erst entwickelt wurde. Wenn Sie also in \textbf{HTML}\index{HTML}\index{Programmiersprache!HTML} programmieren, dann programmieren Sie Hypertext. Nur nennt das heute kaum noch jemand so. Im Namen des Protokolls HTTP lebt dieser Begriff wahrscheinlich noch sehr lange weiter.\\
 
-Damit kommen wir zu den Links, die ursprünglich als Hyperlinks bezeichnet wurden. Das englische Wort Link bezeichnet ja allgemein eine Verbindung. Dementsprechend bezeichnet ein Hyperlink eine Verbindung zwischen zwei Hypertexten. Jetzt aber genug über Begriffe, schließlich wollen Sie wissen, wie Sie einen Link programmieren können. Warum der so heißt, wie er heißt, dürfte da für Sie nebensächlich sein.
+Damit kommen wir zu den Links, die ursprünglich als Hyperlinks bezeichnet wurden. Das englische Wort Link bezeichnet ja allgemein eine Verbindung. Dementsprechend bezeichnet ein \textbf{Hyperlink}\index{Hyperlink} eine Verbindung zwischen zwei Hypertexten. Jetzt aber genug über Begriffe, schließlich wollen Sie wissen, wie Sie einen Link programmieren können. Warum der so heißt, wie er heißt, dürfte da für Sie nebensächlich sein.
 
 \subsection{Anker}
 
-Auch wenn wir hier in Hamburg sind, wo Sie am Hafen Anker in Hülle und Fülle finden, reden wir an dieser Stelle über Teile einer Webanwendung, wenn wir über einen Anker reden. Anker sind bei HTML Container, auf die ein Link verweisen kann. In anderen Worten: Wenn Sie in Ihrem HTML-Dokument einen Anker definieren, dann können Sie von einer beliebigen anderen Stelle aus auf diese Stelle verweisen. Sie können dann also an einer beliebigen Stelle einen Link einprogrammieren, mit dem ein Nutzer genau bei einem bestimmten Anker landet.\\
+Auch wenn wir hier in Hamburg sind, wo Sie am Hafen Anker in Hülle und Fülle finden, reden wir an dieser Stelle über Teile einer Webanwendung, wenn wir über einen Anker reden. \textbf{Anker}\index{Anker} sind bei HTML Container, auf die ein Link verweisen kann. In anderen Worten: Wenn Sie in Ihrem HTML-Dokument einen Anker definieren, dann können Sie von einer beliebigen anderen Stelle aus auf diese Stelle verweisen. Sie können dann also an einer beliebigen Stelle einen Link einprogrammieren, mit dem ein Nutzer genau bei einem bestimmten Anker landet.\\
 
-Wie alles andere in HTML waren Anker ursprünglich vollwertige Container. Deshalb können sie auch als eigenständige Container programmiert werden. Sinnvoller ist es allerdings, Container mittels des id-Attributs als einen Anker zu programmieren. Hier ein Beispiel für einen Hypertext, in dem ein Überschrift-Container als Anker programmiert wurde:\\
+Wie alles andere in HTML waren Anker ursprünglich vollwertige Container. Deshalb können sie auch als eigenständige Container programmiert werden. Sinnvoller ist es allerdings, Container mittels des id-Attributs als einen Anker zu programmieren. Hier ein Beispiel für einen Hypertext, in dem ein Überschrift-Container als Anker programmiert wurde:
 
+\begin{verbatim}
 ...
 <main>
 <article>
@@ -657,89 +659,100 @@ Wie alles andere in HTML waren Anker ursprünglich vollwertige Container. Deshal
 <p>Und dann sagte sie ...</p>
 </section>
 ... 
-Quellcode 2.5: Verankerung mittels des id-Attributs
+\end{verbatim}
 
-Auch wenn es naheliegend ist: In einem HTML-Dokument darf jedes id-Attribut nur einmal verwendet werden. Das heißt nicht, dass Sie jeweils nur einen Anker programmieren dürfen, sondern dass Sie z.B. innerhalb eines HTML-Dokuments nur einmal id=blanchieren einprogrammieren dürfen.
+Auch wenn es naheliegend ist: In einem HTML-Dokument darf jedes \textbf{id}\index{id}-Attribut nur einmal verwendet werden. Das heißt nicht, dass Sie jeweils nur einen Anker programmieren dürfen, sondern dass Sie z.B. innerhalb eines HTML-Dokuments nur einmal \verb|id=blanchieren| einprogrammieren dürfen.
 
 \subsubsection{Aufgabe:}
 
--	Programmieren Sie einige Anker in Ihre HTML-Dokumente.
+\begin{itemize}
+	\item Programmieren Sie einige Anker in Ihre HTML-Dokumente.
+\end{itemize}
 
 \subsection{Links}
 
 Es gibt drei wichtige Varianten von Links, die aber im Großen und Ganzen gleich programmiert werden.\\
 
-Wenn Sie auf eine andere Seite verlinken wollen, dann nutzen Sie dazu den Container <a href ...>. Das a am Anfang ist noch ein Überbleibsel aus der Zeit, als Anker in Form das <a>-Containers programmiert wurden. Wie gesagt wird dafür heute das id-Attribut verwendet.\\
+Wenn Sie auf eine andere Seite verlinken wollen, dann nutzen Sie dazu den Container \verb|<a href ...>|. Das a am Anfang ist noch ein Überbleibsel aus der Zeit, als Anker in Form das \verb|<a>|-Containers programmiert wurden. Wie gesagt wird dafür heute das \verb|id|-Attribut verwendet.\\
 
-Hier die drei genannten Varianten:\\
+Hier die drei genannten Varianten:
 
-1.	Sie wollen auf einen Anker verlinken, der sich im selben HTML-Dokument befindet, aus dem heraus Sie ihn verlinken wollen. Bsp.: Sie haben ein kleines Glossar auf Ihrer Seite, in dem Sie den Anker „blanchieren“ einprogrammiert haben. Ein Nutzer soll innerhalb dieses Glossars zum Anker springen können. Dann sieht der Link-Container so aus:
-
-<a href=blanchieren> Beliebiger Text, der auf der Webanwendung unterstrichen angezeigt wird und damit anzeigt, dass hier ein Link vorhanden ist. </a>
-
-2.	Sie wollen auf eine andere Webanwendung verlinken. Dann tragen Sie nach dem Gleichzeichen die vollständige URL ein. (Was eine URL ist, klären wir gleich.) Im folgenden Beispiel programmieren wir einen Link auf die Webanwendung des Departments Medientechnik:
-
-<a href=http://www.mt.haw-hamburg.de>Zum Department Medientechnik</a>
-
-3.	Nehmen wir an, Sie wollen dagegen auf einen Anker auf einer anderen Seite verweisen. Dann geben Sie zunächst die URL der Seite an, gefolgt von einem Hash (das ist dieses Zeichen: \#) und gefolgt vom Namen des Ankers. Nehmen wir an, die Seite heißt meineRezepte.html und der Anker heißt kohlroulade. Dann könnte der Link so aussehen:
-
-Zu meinem Rezept für <a href=meineRezepte.html\#kohlroulade>Kohlrouladen</a>.
+\begin{itemize}
+	\item Sie wollen auf einen Anker verlinken, der sich im selben HTML-Dokument befindet, aus dem heraus Sie ihn verlinken wollen. Bsp.: Sie haben ein kleines Glossar auf Ihrer Seite, in dem Sie den Anker „blanchieren“ einprogrammiert haben. Ein Nutzer soll innerhalb dieses Glossars zum Anker springen können. Dann sieht der Link-Container so aus:\\
+	\verb|<a href=blanchieren> Beliebiger Text, der auf der Webanwendung unterstrichen angezeigt wird und damit anzeigt, dass hier ein Link vorhanden ist. </a>|\\
+	\item Sie wollen auf eine andere Webanwendung verlinken. Dann tragen Sie nach dem Gleichzeichen die vollständige URL ein. (Was eine URL ist, klären wir gleich.) Im folgenden Beispiel programmieren wir einen Link auf die Webanwendung des Departments Medientechnik:\\	
+	\verb|<a href=http://www.mt.haw-hamburg.de>Zum Department Medientechnik</a>|\\
+	\item Nehmen wir an, Sie wollen dagegen auf einen Anker auf einer anderen Seite verweisen. Dann geben Sie zunächst die URL der Seite an, gefolgt von einem Hash (das ist dieses Zeichen: \verb|#|) und gefolgt vom Namen des Ankers. Nehmen wir an, die Seite heißt \verb|meineRezepte.html| und der Anker heißt \verb|kohlroulade|. Dann könnte der Link so aussehen:\\	
+	\verb|Zu meinem Rezept für <a href=meineRezepte.html\#kohlroulade>Kohlrouladen</a>.|
+\end{itemize}
 
 \subsubsection{Aufgabe:}
 
--	Programmieren Sie jetzt einige Links auf die verschiedenen Anker Ihrer Webanwendung.
-Sie haben doch die letzte Aufgabe erfüllt, in der Sie Anker programmieren sollten, nicht wahr?
+\begin{itemize}
+	\item Programmieren Sie jetzt einige Links auf die verschiedenen Anker Ihrer Webanwendung.\\
+	
+	(Sie haben doch die letzte Aufgabe erfüllt, in der Sie Anker programmieren sollten, nicht wahr?)
+\end{itemize}
 
 \subsection{Verlinkungen als expliziter Download}
 
-Bei HTML4.01 bewirkt das Anwählen eines Hyperlinks, dass der Browser versuchen wird, die Datei zu öffnen. Erst wenn er feststellt, dass es sich um ein Format handelt, dass er nicht öffnen kann, wird er einen Download anbieten. Mit HTML5 wurde für <a href>-Container das download-Attribut eingeführt. Darüber können Sie explizit angeben, dass ein Link heruntergeladen werden soll.\\
+Bei HTML4.01 bewirkt das Anwählen eines Hyperlinks, dass der Browser versuchen wird, die Datei zu öffnen. Erst wenn er feststellt, dass es sich um ein Format handelt, dass er nicht öffnen kann, wird er einen Download anbieten. Mit HTML5 wurde für \verb|<a href>|-Container das \verb|download|-Attribut eingeführt. Darüber können Sie explizit angeben, dass ein Link heruntergeladen werden soll.\\
 
 Wenn Sie diesem Attribut einen Namen als Wert übergeben, dann geben Sie dem Browser vor, unter welchem Namen die Datei gespeichert werden soll. Das ist vor allem dann von Vorteil, wenn der Dateiname eher kryptisch ist.\\
 
-
-<a href=DC9287349723.jpg download=FenderAmericanVintage.jpg>Foto meiner Gitarre</a>
-Quellcode 2.6: Expliziter Download eines Hyperlink mit Vergabe einer neuen Dateibezeichnung.
+\verb|<a href=DC9287349723.jpg download=FenderAmericanVintage.jpg>Foto meiner Gitarre</a>|
 
 \subsection{Hausaufgabe:}
 
--	Erstellen Sie einige Bilddateien, damit Sie diese nutzen können, um explizite Links in Ihrem HTML-Dokumenten einprogrammieren können.\\
-
-Wichtig: Sie müssen diese Bilddateien selbst erstellt haben und dürfen keine rechtlich geschützten Gegenstände aufnehmen. Sie sollten ebenfalls darauf achten, dass keine Personen auf den Bildern zu sehen sind, außer wenn Sie das schriftliche Einverständnis dieser Personen haben. Denn auch wenn die Bilddateien vorerst nicht veröffentlicht werden sollen, könnten Sie ansonsten rechtliche Probleme bekommen, bei denen durchaus Bußgelder im vierstelligen Bereich drohen.\\
-
-Diesen Hinweis können Sie auf alle Daten und Dateien beziehen, mit denen Sie arbeiten. Es spielt hier zunächst keine Rolle, ob sie Dateien selbst erstellen oder „nur“ weiterverwenden. Auch wenn Sie sie gar nicht veröffentlichen kann es teuer werden: Die Rechtslage ist hier sehr schnell gegen sie. Mehr darüber lernen Sie in der Veranstaltung Medienrecht. Wenn Sie hier wie unsere Studierenden in Media Systems von einem Anwalt unterrichtet werden, dann können Sie sich freuen, denn der kann Ihnen nicht nur erklären, wie die Rechtslage auf dem Papier ist, sondern auch wie tatsächlich im Gerichtssaal entschieden wird und was all diese Gesetzestexte bedeuten.
+\begin{itemize}
+	\item Erstellen Sie einige Bilddateien, damit Sie diese nutzen können, um explizite Links in Ihrem HTML-Dokumenten einprogrammieren können.\\
+	
+	\textbf{Wichtig}:\\
+	
+	Sie müssen diese Bilddateien selbst erstellt haben und dürfen keine rechtlich geschützten Gegenstände aufnehmen. Sie sollten ebenfalls darauf achten, dass keine Personen auf den Bildern zu sehen sind, außer wenn Sie das schriftliche Einverständnis dieser Personen haben. Denn auch wenn die Bilddateien vorerst nicht veröffentlicht werden sollen, könnten Sie ansonsten rechtliche Probleme bekommen, bei denen durchaus Bußgelder im vierstelligen Bereich drohen.\\
+	
+	Diesen Hinweis können Sie auf alle Daten und Dateien beziehen, mit denen Sie arbeiten. Es spielt hier zunächst keine Rolle, ob sie Dateien selbst erstellen oder \glqq{}nur\grqq{} weiterverwenden. Auch wenn Sie sie gar nicht veröffentlichen kann es teuer werden: Die Rechtslage ist hier sehr schnell gegen sie. Mehr darüber lernen Sie in der Veranstaltung Medienrecht. Wenn Sie hier wie unsere Studierenden in Media Systems von einem Anwalt unterrichtet werden, dann können Sie sich freuen, denn der kann Ihnen nicht nur erklären, wie die Rechtslage auf dem Papier ist, sondern auch wie tatsächlich im Gerichtssaal entschieden wird und was all diese Gesetzestexte bedeuten.
+\end{itemize}
 
 \subsection{URLs – absolute und relative Adressen}
 
-Wenn Sie im WWW unterwegs sind, rufen Sie Seiten wie www.haw-hamburg.de auf. Eine solche Adresse wird als Uniform Resource Locator (kurz URL) bezeichnet. Aber auch wenn das Protokoll angegeben wird (wie bei http://www.haw-hamburg.de) und in einer Reihe weitere Fälle spricht man von einer URL. Auch „Adressangaben“, die sich auf Dateien auf Ihrem Computer beziehen werden als URL bezeichnet. Kurz gesagt ist eine URL eine standardisierte Angabe darüber, wo eine Datei zu finden ist.\\
+Wenn Sie im WWW unterwegs sind, rufen Sie Seiten wie \verb|www.haw-hamburg.de| auf. Eine solche Adresse wird als Uniform Resource Locator (kurz \textbf{URL}\index{URL}) bezeichnet. Aber auch wenn das Protokoll angegeben wird (wie bei \verb|http://www.haw-hamburg.de|) und in einer Reihe weitere Fälle spricht man von einer URL. Auch \glqq{}Adressangaben\grqq{}, die sich auf Dateien auf Ihrem Computer beziehen werden als URL bezeichnet. Kurz gesagt ist eine URL eine standardisierte Angabe darüber, wo eine Datei zu finden ist.\\
 
-Eine absolute URL ist nun eine URL, die den vollständigen Pfad zu einer Datei angibt. (Zur Erinnerung: Das WWW ist nichts als eine Ansammlung von Dateien auf Rechnern, die weltweit vernetzt sind.) \\
+Eine \textbf{absolute URL}\index{URL!absolut} ist nun eine URL, die den vollständigen Pfad zu einer Datei angibt. (Zur Erinnerung: Das WWW ist nichts als eine Ansammlung von Dateien auf Rechnern, die weltweit vernetzt sind.)\\
 
-Bei URLs, die nicht auf einen Dateinamen enden, suchen Webbrowser automatisch nach einer Datei namens index.html. Deshalb ist es wichtig, dass Sie bei einer Webanwendung immer eine Datei index.html einprogrammieren.\\
+Im Gegensatz dazu ist eine \textbf{relative URL}\index{URL!relativ} eine Adressangabe, die den Pfad von dem Standort aus beschreibt, an dem die Datei gespeichert ist, in der die URL einprogrammiert wurde. Meist werden Sie aus einem einfachen Grund mit relativen URLs programmieren: Da die Dateien bei der Programmierung nicht an derselben Stelle gespeichert sind wie später, wenn sie online abrufbar sind, müssten Sie bei absoluten URLs später alle Adressen einmal ändern und würden mit Sicherheit Fehler erzeugen.\\
 
-Aber wenn Sie beispielsweise eine Webanwendung programmieren, die aus mehreren HTML-Dokumenten besteht, dann brauchen Sie für einen Link von einem dieser Dokumente zum anderen nicht die absolute URL angeben. Nehmen wir an, alle HTML-Dokumente Ihrer Seite würden innerhalb eines Verzeichnisses liegen. Dann brauchen Sie nur den Dateinamen des HTML-Dokuments als URL angeben, auf das Sie verlinken wollen. Eine solche URL bezeichnet man auch als relative URL.\\
+Ein \glqq{}exzellentes\grqq{} Beispiel finden Sie unter den Tutorials zu Java. Dort wurden viele Links absolut programmiert. Als dann Java von Sun Systems an Oracle verkauft wurde, wurden nicht alle Links überarbeitet. Heute können Sie einzig aus diesem Grund viele Tutorials nicht aufrufen: Da der Link mit \verb|www.sun.com| beginnt, die entsprechende Seite aber bei \verb|www.oracle.com| liegt, führt der Link ins Leere. Häufig wurden die entsprechenden Tutorials dann auf \verb|www.oracle.com| in einem anderen Verzeichnis als bei \verb|www.sun.com| gespeichert, sodass auch eine manuelle Änderung von \verb|sun| in \verb|oracle| nicht hilft, um das Tutorial zu finden.\\
+
+Bei URLs, die nicht auf einen Dateinamen enden, suchen Webbrowser automatisch nach einer Datei namens \verb|index.html|. Deshalb ist es wichtig, dass Sie bei einer Webanwendung immer eine Datei index.html einprogrammieren. (Ausnahmen sind Webpages und Webanwendungen, die Sie mithilfe eines Frameworks, eines CMS oder anderer \glqq{}Hilfen\grqq{} erstellen.\\
+
+Aber wenn Sie beispielsweise eine Webanwendung programmieren, die aus mehreren HTML-Dokumenten besteht, dann brauchen Sie für einen Link von einem dieser Dokumente zum anderen nicht die absolute URL angeben. Nehmen wir an, alle HTML-Dokumente Ihrer Seite würden innerhalb eines Verzeichnisses liegen. Dann brauchen Sie nur den Dateinamen des HTML-Dokuments als URL angeben, auf das Sie verlinken wollen. Eine solche URL wird dementsprechend als \textbf{relative URL}\index{URL!relativ} bezeichnet.\\
 
 Wichtig ist aber vor allem, dass Sie grundsätzlich verstehen, was eine URL ist und wie sie syntaktisch richtig geschrieben wird.
 
 \section{Formulare}
 
-Formulare sind Bereiche einer Webanwendung, über die Nutzer Daten per Tastatur oder Maus eingeben können. Interaktive Elemente wie Spiele können auch dazu gehören.\\
+\textbf{Formulare}\index{Formulare} sind Bereiche einer Webanwendung, über die Nutzer Daten per Tastatur oder Maus eingeben können. Interaktive Elemente wie Spiele können auch dazu gehören.\\
 
 Wie Sie wissen können Sie mit HTML lediglich Container definieren, deren Darstellung über CSS festgelegt wird. Wenn Sie dann noch Nutzereingaben verarbeiten wollen, benötigen Sie zusätzlich eine Programmiersprache wie PHP oder JavaScript.\\
 
-Da Sie also mit HTML alleine eine Nutzereingabe nicht verarbeiten können macht es scheinbar wenig Sinn, in HTML Formulare zu erstellen. Auf der anderen Seite wird ja in HTML definiert, aus welchen Elementen eine Webanwendung zusammengestellt wird. Und da auch Formulare solche Elemente sind bzw. aus solchen Elementen zusammengestellt werden, müssen wir uns bei der Programmierung in HTML mit Formularen beschäftigen.
+Da Sie also mit HTML alleine eine Nutzereingabe nicht verarbeiten können macht es scheinbar wenig Sinn, in HTML Formulare zu erstellen. Auf der anderen Seite wird ja in HTML definiert, aus welchen Elementen eine Webanwendung zusammengestellt wird. Und da auch Formulare solche Elemente sind bzw. aus solchen Elementen zusammengestellt werden, müssen wir uns bei der Programmierung in HTML mit Formularen beschäftigen.\\
+
+Hier sind wir dann auch an einem Punkt angelangt, wo die sonst sehr klare Trennung zwischen HTML und PHP verschwimmt: Alles, was mit Formularen zu tun hat müssen sowohl PHP-EntwicklerInnen als auch HTML-EntwicklerInnen beherrschen.
 
 \subsection{Elemente eines Formulars}
 
-Wie alles andere in HTML programmieren wir auch Formulare  als Container. Hier ist es der <form>-Container.\\
+Wie alles andere in HTML programmieren wir auch Formulare  als Container. Hier ist es der \verb|<form>|-Container.\\
 
-Wie gewohnt können Sie über das id-Attribut ein Formular zu einem Objekt im Sinne des DOM machen, das einen Namen hat und auf das verlinkt werden kann.\\
+Wie gewohnt können Sie über das \verb|id|-Attribut ein Formular zu einem Objekt im Sinne des DOM machen, das einen Namen hat und auf das verlinkt werden kann.
 
+\begin{verbatim}
 <form id=registrierung>
 <!- - Hier werden die einzelnen Eingabemöglichkeiten von Nutzern einprogrammiert. - ->
 </form>
-Quellcode 2.7: Ein leeres Formular\\
+\end{verbatim}
 
-Der <form>-Container ist das Wurzelelement für Formulare, so wie der <html>-Container das Wurzelelement für HTML-Dokumente ist: Alles, was ein Nutzer eingeben darf oder soll wird einfach in Form verschiedener Container in den <form>-Container einprogrammiert. Sie können in jedem HTML-Dokument beliebig viele <form>-Container programmieren.\\
+Der \verb|<form>|-Container ist das Wurzelelement für Formulare, so wie der <html>-Container das Wurzelelement für HTML-Dokumente ist: Alles, was ein Nutzer eingeben darf oder soll wird einfach in Form verschiedener Container in den <form>-Container einprogrammiert. Sie können in jedem HTML-Dokument beliebig viele <form>-Container programmieren.\\
 
 Die Grundidee eines Formulars ist, dass Nutzer hier verschiedene Angaben machen und Optionen anwählen können, die dann gewissermaßen als ein Paket verarbeitet werden. Deshalb brauchen Sie in jedem Formular ein Element, das einzig dafür da ist, dass der Nutzer bestätigt, dass alle Daten des jeweiligen Formulars abgeschickt werden sollen. Und auch wenn Sie beliebig viele Formulare auf einer Seite programmieren können, sollten Sie möglichst nicht zu viele individuelle Formulare programmieren, da Nutzer sonst mehr damit beschäftigt sind, die vielen Formulare einzeln abzusenden, als damit, das nötige Formular auszufüllen.\\
 
