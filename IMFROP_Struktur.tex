@@ -1097,43 +1097,52 @@ Es gibt in HTML5 deutlich mehr Formularfelder als bei 4.01. Der Grund ist recht 
 
 Auch dieser Abschnitt hat sich gegenüber HTML4.01 deutlich geändert. Es gibt vier neue Container, die speziell für die Einbindung von Audio- und Videodateien sowie für ein gutes Layout aller multimedialen Dateien gedacht sind. Der große Unterschied gegenüber HTML4.01 besteht darin, dass Sie jetzt alle Arten von multimedialen Inhalten im Browser abspielen können, ohne dafür ein PHP- oder JavaScript-Programm zu benötigen. Das galt früher nur für Bilder.\\
 
-Wichtig: Wir reden hier momentan ausschließlich über anzeigbare oder abspielbare Inhalte. Interaktive Formate wie Flash aber auch die Programmierung interaktiver Inhalte mit Canvas lassen wir momentan außen vor. Canvas ist ebenfalls eine Neuerung in HTML5, die die Gestaltung von Bildern und Animationen ermöglicht. Sie brauchen hierzu also kein zusätzliches Programm. Canvas geht aber noch weiter, denn mithilfe von JavaScript können Sie darin vollständige interaktive Anwendungen (also auch Spiele) programmieren.
+\textbf{Wichtig}:\\
+
+Wir reden hier momentan ausschließlich über anzeigbare oder abspielbare Inhalte. Interaktive Formate wie Flash aber auch die Programmierung interaktiver Inhalte mit Canvas lassen wir momentan außen vor. \textbf{Canvas}\index{HTML!Canvas} ist ebenfalls eine Neuerung in HTML5, die die Gestaltung von Bildern und Animationen ermöglicht. Sie brauchen hierzu also kein zusätzliches Programm. Canvas geht aber noch weiter, denn mithilfe von JavaScript können Sie darin vollständige interaktive Anwendungen (also auch Spiele) programmieren.
 
 \subsection{Bilder}
 
-Der <img>-Container ist der einzige Container für multimediale Inhalte, den es so bereits vor HTML5 gab. Allerdings gilt hier wie überall, dass Attribute, die bei HTML4.01 fürs Layout genutzt wurden nicht mehr unterstützt werden. (Viele Browser unterstützen sie zwar immer noch, aber wenn Sie wollen, dass Ihre Webanwendung dauerhaft nutzbar ist, dann sollten sie diese Regelung für HTML5 beachten.)\\
+Der \textbf{\verb|<img>|}\index{HTML!Container!img}-Container ist der einzige Container für multimediale Inhalte, den es so bereits vor HTML5 gab. Allerdings gilt hier wie überall, dass Attribute, die bei HTML4.01 fürs Layout genutzt wurden nicht mehr unterstützt werden. (Viele Browser unterstützen sie zwar immer noch, aber wenn Sie wollen, dass Ihre Webanwendung dauerhaft nutzbar ist, dann sollten sie diese Regelung für HTML5 beachten.)\\
 
-Um eine Bilddatei einzufügen, nutzen Sie den <img>-Container. <img>-Container haben keinen Inhalt, denn die Bilddatei, die Sie anzeigen lassen wollen wird als Attribut des Containers programmiert.\\
+Um eine Bilddatei einzufügen, nutzen Sie den \verb|<img>|-Container. \verb|<img>|-Container haben keinen Inhalt, denn die Bilddatei, die Sie anzeigen lassen wollen wird als Attribut des Containers programmiert.\\
 
--	Das Attribut src erhält als Wert die URL an, unter der die Bilddatei zu finden ist.
-Bsp.: src=bild.jpg
+\begin{itemize}
+	\item Das Attribut \verb|src| erhält als Wert die URL an, unter der die Bilddatei zu finden ist.\\
+	
+	\textbf{Bsp}.: \verb|src=bild.jpg|
 
--	Das Attribut alt gibt einen Alternativtitel an, der so lange angezeigt wird, wie das Bild noch nicht geladen ist. Es ist vor allem für die Barrierefreiheit wichtig.
-Bsp.: alt=“schönes Bild“
+	\item Das Attribut \verb|alt|\index{HTML!Attribut!alt} gibt einen Alternativtitel an, der so lange angezeigt wird, wie das Bild noch nicht geladen ist. Es ist vor allem für die Barrierefreiheit wichtig.\\
+	
+	\textbf{Bsp}.: \verb|alt="schönes Bild"|
 
--	Die Attribute width und height geben an, wie breit bzw. hoch das Bild angezeigt werden soll. Sie ordnen hier jedem der beiden eine Zahl zu, die für die jeweilige Größe in Pixeln, also Bildpunkten steht. 
+	\item Die Attribute \verb|width|\index{HTML!Attribut!width} und \verb|height|\index{HTML!Attribut!height} geben an, wie breit bzw. hoch das Bild angezeigt werden soll. Sie ordnen hier jedem der beiden eine Zahl zu, die für die jeweilige Größe in Pixeln, also Bildpunkten steht. 
 
-Wichtig: Sie überschreiben damit das Seitenverhältnis des Bildes. Wenn Sie Bilder also für bestimmte Displaygrößen ändern wollen, dann sollten Sie zunächst über ein PHP- oder JavaScript-Programm das Seitenverhältnis berechnen und dann anhand dieser Berechnung dort (also im Programm) die Änderung von Höhe und Breite durchführen.
+	\textbf{Wichtig}:\\
+	
+	Sie überschreiben mit \verb|width| und \verb|height| damit das Seitenverhältnis des Bildes. Wenn Sie Bilder also für bestimmte Displaygrößen ändern wollen, dann sollten Sie zunächst über ein PHP- oder JavaScript-Programm das Seitenverhältnis berechnen und dann anhand dieser Berechnung dort (also im Programm) die Änderung von Höhe und Breite durchführen.
+\end{itemize}
 
 \subsection{<figure> und <figcaption>}
 
-Wenn Sie ein wissenschaftliches Buch aufschlagen, sehen Sie zu jeder ergänzenden Darstellung einen Untertitel. Mit dem <figcaption>-Container gibt es in HTML5 die Möglichkeit genau dasselbe in standardisierter Form auf einer Webanwendung zu tun. Dieser Container darf allerdings nur innerhalb eines <figure>-Containers verwendet werden.\\
+Wenn Sie ein wissenschaftliches Buch aufschlagen, sehen Sie zu jeder ergänzenden Darstellung einen Untertitel. Mit dem \verb|<figcaption>|\index{HTML!Container!figcaption}-Container gibt es in HTML5 die Möglichkeit genau dasselbe in standardisierter Form auf einer Webanwendung zu tun. Dieser Container darf allerdings nur innerhalb eines \verb|<figure>|\index{HTML!Container!figure}-Containers verwendet werden.\\
 
-Nun fragen Sie sich vielleicht, was dieser <figure>-Container denn soll, wo es doch bereits den <img>-Container gibt. Die Antwort ist recht einfach: Dieser Container ist dafür gedacht jede Art von multimedialen Inhalten standardisiert bereitzustellen. Es ist also egal, ob Sie nun ein Bild, ein Video, eine Audiodatei anzeigen bzw. abspielen wollen; immer nutzen Sie die gleiche Kombination aus <figure> und <figcaption>, deren Aussehen Sie über ein CSS-Skript definieren.\\
+Nun fragen Sie sich vielleicht, was dieser \verb|<figure>|-Container denn soll, wo es doch bereits den \verb|<img>|-Container gibt. Die Antwort ist recht einfach: Dieser Container ist dafür gedacht jede Art von multimedialen Inhalten standardisiert bereitzustellen. Es ist also egal, ob Sie nun ein Bild, ein Video, eine Audiodatei anzeigen bzw. abspielen wollen; immer nutzen Sie die gleiche Kombination aus \verb|<figure>| und \verb|<figcaption>|, deren Aussehen Sie über ein CSS-Skript definieren.\\
 
-Und nicht nur dass: Sie können mit dem <figure>-Container auch gleich Kombinationen verschiedener multimedialer Dateien erstellen, die im Sinne des semantic web als solche erkannt werden können. Nehmen wir an, Sie haben im Urlaub mehrere Bilder vom Strand geschossen und zusätzlich Aufnahmen vom Meeresrauschen, aus dem Restaurant und von anderen Stellen aufgenommen. Nun wollen Sie als diese Dateien als eine Diashow mit Sound auf Ihrer Webanwendung platzieren. Dann können Sie genau das über einen <figure>-Container erledigen. Und im Gegensatz zu HTML4.01 erkennt jeder HTML5-kompatible Browser, dass es sich bei all diesen einzelnen Dateien um eine logische Einheit (eben Ihre Diashow mit Sound) handelt, obwohl es auf dem Rechner mehrere Dateien sind.\\
+Und nicht nur dass: Sie können mit dem \verb|<figure>|-Container auch gleich Kombinationen verschiedener multimedialer Dateien erstellen, die im Sinne des semantic web als solche erkannt werden können. Nehmen wir an, Sie haben im Urlaub mehrere Bilder vom Strand geschossen und zusätzlich Aufnahmen vom Meeresrauschen, aus dem Restaurant und von anderen Stellen aufgenommen. Nun wollen Sie als diese Dateien als eine Diashow mit Sound auf Ihrer Webanwendung platzieren. Dann können Sie genau das über einen \verb|<figure>|-Container erledigen. Und im Gegensatz zu HTML4.01 erkennt jeder HTML5-kompatible Browser, dass es sich bei all diesen einzelnen Dateien um eine logische Einheit (eben Ihre Diashow mit Sound) handelt, obwohl es auf dem Rechner mehrere Dateien sind.\\
 
-Hier ein einfacher <figure>-Container:\\
+Hier ein einfacher \verb|<figure>|-Container:\\
 
+\begin{verbatim}
 <figure>
 <img src=hotel01.jpg alt=“Ein Bild des Hotels, in dem wir die furchtbarsten zwei Wochen unseres Lebens hatten.“>
 <figcaption>Bates Motel</figcaption>
 </figure>
-Quellcode 2.13: Bild mit Untertitel innerhalb eines <figure>-Containers
+\end{verbatim}
 
 \subsection{<figcaption> für Fortgeschrittene}
 
-Eine <figcaption> kann aber nicht nur einen Untertitel enthalten, sondern zusätzlich bzw. unabhängig von einem Text die URL einer Audiodatei. Dann wird das Bild mit dieser Audiodatei akustisch untermalt. Dazu wird ein <audio>-Container verwendet. Wie das geht (und das es sehr leicht zu realisieren ist) sehen Sie in Kürze.
+Eine \verb|<figcaption>| kann aber nicht nur einen Untertitel enthalten, sondern zusätzlich bzw. unabhängig von einem Text die URL einer Audiodatei. Dann wird das Bild mit dieser Audiodatei akustisch untermalt. Dazu wird ein \verb|<audio>|-Container verwendet. Wie das geht (und das es sehr leicht zu realisieren ist) sehen Sie in Kürze.
 
 \section{Weitere multimediale Formate}
 
@@ -1141,26 +1150,28 @@ In diesem Abschnitt erfahren Sie, wie Sie die verschiedensten multimedialen Inha
 
 \subsection{Einbindung eigener und frei verfügbarer Videodateien}
 
-Die Einbindung von Videodateien ist fast genauso einfach wie die Einbindung von Bildern: Nutzen Sie dazu den <video>-Container innerhalb eines <figure>-Containers. Der Unterschied besteht nun darin, dass Sie mehrere Videodateien einstellen können, von denen der Webbrowser sich eines aussuchen kann. Das ist deshalb sinnvoll, weil Sie sich so nicht darum kümmern müssen, zu prüfen, welches Videoformat vom jeweiligen Webbrowser abgespielt werden kann. Das bedeutet also, dass Sie sich nicht für ein Format wie .mp4, .mov, .wmv usw. entscheiden müssen, sondern Sie können Sie alle nutzen und es ist sogar ideal, wenn Sie ein Video in möglichst vielen Formaten bereitstellen können.\\
+Die Einbindung von Videodateien ist fast genauso einfach wie die Einbindung von Bildern: Nutzen Sie dazu den \verb|<video>|\index{HTML!Container!video}-Container innerhalb eines \verb|<figure>|-Containers. Der Unterschied besteht nun darin, dass Sie mehrere Videodateien einstellen können, von denen der Webbrowser sich eines aussuchen kann. Das ist deshalb sinnvoll, weil Sie sich so nicht darum kümmern müssen, zu prüfen, welches Videoformat vom jeweiligen Webbrowser abgespielt werden kann. Das bedeutet also, dass Sie sich nicht für ein Format wie \verb|.mp4|, \verb|.mov|, \verb|.wmv| usw. entscheiden müssen, sondern Sie können Sie alle nutzen und es ist sogar ideal, wenn Sie ein Video in möglichst vielen Formaten bereitstellen können.\\
 
-In einem <video>-Container können Sie die folgenden Attribute nutzen:\\
+In einem \verb|<video>|-Container können Sie die folgenden Attribute nutzen:
 
--	controls regelt, welche Bedienelemente angezeigt werden. Die Standardeinstellungen bewirken, dass ein Play/Pause-Button, eine Zeitleiste und die aktuelle Zeit im Video angezeigt werden. Wenn Ihnen das nicht genügt oder Sie eine Vielzahl an Formaten abspielen wollen (z.B. Flash), dann können Sie im Netz eine Vielzahl an Playern finden, die Sie direkt in den Quellcode Ihrer Webanwendung einbinden können. Suchen Sie dazu schlicht nach „HTML5 Videoplayer“.\\
+\begin{itemize}
+	\item \verb|controls|\index{HTML!Attribut!controls} regelt, welche Bedienelemente angezeigt werden. Die Standardeinstellungen bewirken, dass ein Play/Pause-Button, eine Zeitleiste und die aktuelle Zeit im Video angezeigt werden. Wenn Ihnen das nicht genügt oder Sie eine Vielzahl an Formaten abspielen wollen (z.B. Flash), dann können Sie im Netz eine Vielzahl an Playern finden, die Sie direkt in den Quellcode Ihrer Webanwendung einbinden können. Suchen Sie dazu schlicht nach \glqq{}HTML5 Videoplayer\grqq{}.\\
+	
+	\textbf{Wichtig}: Auch wenn Sie lediglich die Standard-Bedienelemente anzeigen lassen wollen, müssen Sie \verb|controls| als Attribut in den \verb|<figure>|-Container einfügen. Sie brauchen dann aber keinen weiteren Wert zuordnen.\\
+	
+	\item Die Attribute \verb|height| und \verb|width| funktionieren wie bei \verb|<img>|-Containern. Es gelten die selben Hinweise wie dort.
+	
+	\item Innerhalb des \verb|<video>|-Containers erstellen Sie für jede Videodatei einen \verb|<source>|-Container. In diesem geben Sie zum einen die URL der jeweiligen Videodatei über das \verb|src|-Attribut und zum anderen das Kompressionsverfahren über das \verb|type|-Attribut an.\\
 
-Wichtig: Auch wenn Sie lediglich die Standard-Bedienelemente anzeigen lassen wollen, müssen Sie controls als Attribut in den <figure>-Container einfügen. Sie brauchen dann aber keinen weiteren Wert zuordnen.\\
+	\textbf{Kompressionsverfahren}\index{Kompression} dienen dazu, um aus einer großen Audio- oder Video-Datei eine kleinere Datei zu erstellen. Ob das zu sichtbaren Qualitätsverlusten führt, hängt vom Verfahren ab. Das bekannteste Kompressionsverfahren für Audio-Dateien ist unter der Abkürzung mp3 bekannt.\\
 
--	height und width funktionieren wie bei <img>-Containern. Es gelten die selben Hinweise wie dort.
+	\item \textbf{Wichtig}: Nichts ist für einen Nutzer ärgerlicher als wenn er nicht weiß, warum etwas nicht funktioniert. Deshalb können Sie als letzten Eintrag im \verb|<video>|-Container einen Text eintragen, der ausgegeben wird, wenn der Webbrowser keines der Formate abspielen kann.\\
+\end{itemize}
 
-Innerhalb des <video>-Containers erstellen Sie für jede Videodatei einen <source>-Container. In diesem geben Sie zum einen die URL der jeweiligen Videodatei über das src-Attribut und zum anderen das Kompressionsverfahren über das type-Attribut an.\\
-
-Kompressionsverfahren dienen dazu, um aus einer großen Audio- oder Video-Datei eine kleinere Datei zu erstellen. Ob das zu sichtbaren Qualitätsverlusten führt, hängt vom Verfahren ab. Das bekannteste Kompressionsverfahren für Audio-Dateien ist unter der Abkürzung mp3 bekannt.\\
-
-Wichtig: Nichts ist für einen Nutzer ärgerlicher als wenn er nicht weiß, warum etwas nicht funktioniert. Deshalb können Sie als letzten Eintrag im <video>-Container einen Text eintragen, der ausgegeben wird, wenn der Webbrowser keines der Formate abspielen kann.\\
-
-
+\begin{verbatim}
 <figure controls>
 
-<video alt=“Video über die Herstellung von Büchern“>
+<video alt="Video über die Herstellung von Büchern">
 
 <source src=movie.mp4 type=video/mp4>
 <source src=movie.ogg type=video/ogg>
@@ -1169,57 +1180,62 @@ Leider kann Ihr Browser keines der Formate abspielen, in dem die Videodatei vorl
 </video>
 
 <figcaption>
-Quelle: www.irgendeineseite.de
+Quelle: <a href=http://www.irgendeineseite.de>www.irgendeineseite.de</a>
 </figcaption>
 
 </figure>
-
-Quellcode 2.14: Einbindung eines Videos mit Caption. (Die Leerzeilen dienen genau wie die Einzüge lediglich der besseren Lesbarkeit.)
+\end{verbatim}
 
 \subsection{Anpassungsmöglichkeiten für den Video-Player}
 
-Sie wissen, dass Webanwendung von den verschiedensten Endgeräten aus aufgerufen werden: Manche User nutzen ein Smartphone mit einer langsamen Internetverbindung, andere nutzen einen Rechner, der per Kabelanschluss Daten mit bis zum 15 MB/s (entspricht ungefähr einem 100 mbps-Anschluss) herunterladen kann. Es wäre also ungeschickt, wenn Sie auf einer Webanwendung ein Dutzend Videos platzieren und den Webbrowser anweisen, alle vollständig herunterzuladen, egal ob der Nutzer sie nun sehen will oder nicht. Deshalb können Sie das Verhalten des Videoplayers anpassen, indem Sie die folgenden Attribute bzw. Attributbelegungen in den <video>-Container einprogrammieren:\\
+Sie wissen, dass Webanwendung von den verschiedensten Endgeräten aus aufgerufen werden: Manche User nutzen ein Smartphone mit einer langsamen Internetverbindung, andere nutzen einen Rechner, der per Kabelanschluss Daten mit bis zum 15 MB/s (entspricht ungefähr einem 100 mbps-Anschluss) herunterladen kann. Es wäre also ungeschickt, wenn Sie auf einer Webanwendung ein Dutzend Videos platzieren und den Webbrowser anweisen, alle vollständig herunterzuladen, egal ob der Nutzer sie nun sehen will oder nicht. Deshalb können Sie das Verhalten des Videoplayers anpassen, indem Sie die folgenden Attribute bzw. Attributbelegungen in den \verb|<video>|-Container einprogrammieren:\\
 
--	preload=none
+\begin{itemize}
+	\item \verb|preload=none|\index{HTML!Attribut!preload}\\
+	
+	Diese Attributbelegung bewirkt, dass der NutzerInnen einen kleinen Platzhalter sehen, der lediglich anzeigt, dass eine Video-Datei zur Verfügung steht. Die Datei selbst wird nicht heruntergeladen, bis NutzerInnen sie anforderen. Diese Option ist gut geeignet, wenn Sie eine Webanwendung mit vielen Videos programmieren wollen, die auch mit einem Smartphone noch übersichtlich sein soll.\\
+	
+	\item \verb|preload=metadata|\\
+	
+	Diese Attributbelegung bewirkt, dass NutzerInnen einen Platzhalter sehen, der im Gegensatz zu \verb|preload=none| auf der Webanwendung so groß angezeigt wird, wie das Video selbst. Das Video wird auch in diesem Fall nicht heruntergeladen, bis NutzerInnen es anfordern. Diese Option ist vor allem für Rechner gut geeignet, wenn auf einer Seite viele Videos platziert werden. Denn selbst bei durchschnittlichen DSL-Anschlüssen kann es sonst mehrere Minuten dauern, bis alle Inhalte einer einzelnen Seite herunter geladen sind. Der Vorteil dieser \verb|preload|-Belegung besteht darin, dass sich das Layout der Seite nicht ändert, wenn Nutzer Videos starten.\\
+	
+	\item \verb|autoplay|\index{HTML!Attribut!autoplay}\\
+	
+	dürfte selbsterklärend sein: Das Video wird automatisch gestartet, wenn NutzerInnen die Seite öffnen, auf der es eingebunden ist. Dieses Attribut macht in Verbindung mit den beiden eben vorgestellten \verb|preload|-Varianten natürlich keinen Sinn. Dieses Attribut sollten Sie keinesfalls bei multimedialen Dateien verwenden, die eine Audio-Komponente haben, denn im schlimmsten Fall schließen Nutzer Ihre Webanwendung schlicht deshalb, weil sie sich von der Tonspur gestört fühlen.
+	
+	\item \verb|loop|\index{HTML!Attribut!loop}\\
+	
+	Wurde das Video einmal gestartet, bewirkt dieses Attribut, dass es immer wieder von vorne beginnt. Das ist vor allem dann sinnvoll, wenn Sie ein Video anstelle eines Bildes in den Hintergrund einer Webanwendung einblenden wollen. Sie können dieses Attribut also mit autoplay kombinieren, wenn Sie ein Video anstelle eines Bildes im Hintergrund einer Seite abspielen wollen.
+	
+	\item \verb|poster|\index{HTML!Attribut!poster}\\
+	
+	Wird dieses Attribut ohne weitere Zuordnung verwendet, dann wird der erste Frame (quasi das erste Bild) des Videos als Stellvertreter angezeigt. Das macht in Verbindung mit \verb|preload=none| natürlich keinen Sinn.\\
+	
+	Als Wert kann diesem Attribut die URL einer Bilddatei zugeordnet werden. Dann wird dieses Bild als Stellvertreter des Videos angezeigt, bis es gestartet wird.
+\end{itemize}
 
-Diese Attributbelegung bewirkt, dass der Nutzer einen kleinen Platzhalter sieht, der lediglich anzeigt, dass eine Video-Datei zur Verfügung steht. Die Datei selbst wird nicht heruntergeladen, bis der Nutzer sie anfordert. Diese Option ist gut geeignet, wenn Sie eine Webanwendung mit vielen Videos programmieren wollen, die auch mit einem Smartphone noch übersichtlich sein soll.\\
+\subsubsection{Aufgabe}
 
--	preload=metadata
-
-Diese Attributbelegung bewirkt, dass der Nutzer einen Platzhalter sieht, der im Gegensatz zu preload=none auf der Webanwendung so groß angezeigt wird, wie das Video selbst. Das Video wird auch in diesem Fall nicht heruntergeladen, bis der Nutzer es anfordert. Diese Option ist vor allem für Rechner gut geeignet, wenn auf einer Seite viele Videos platziert werden. Denn selbst bei durchschnittlichen DSL-Anschlüssen kann es sonst mehrere Minuten dauern, bis alle Inhalte einer einzelnen Seite herunter geladen sind. Der Vorteil dieser preload-Belegung besteht darin, dass sich das Layout der Seite nicht ändert, wenn Nutzer Videos starten.\\
-
--	autoplay
-
-dürfte selbsterklärend sein: Das Video beginnt automatisch. Dieses Attribut macht in Verbindung mit den beiden eben vorgestellten preload-Varianten natürlich keinen Sinn. Dieses Attribut sollten Sie keinesfalls bei multimedialen Dateien verwenden, die eine Audio-Komponente haben, denn im schlimmsten Fall schließen Nutzer Ihre Webanwendung schlicht deshalb, weil sie sich von der Tonspur gestört fühlen.
-
--	loop
-Wurde das Video einmal gestartet, bewirkt dieses Attribut, dass es immer wieder von vorne beginnt. Das ist vor allem dann sinnvoll, wenn Sie ein Video anstelle eines Bildes in den Hintergrund einer Webanwendung einblenden wollen. 
-
--	poster
-Wird dieses Attribut ohne weitere Zuordnung verwendet, dann wird der erste Frame (quasi das erste Bild) des Videos als Stellvertreter angezeigt. Das macht in Verbindung mit preload=none natürlich keinen Sinn.
-
-Als Wert kann diesem Attribut die URL einer Bilddatei zugeordnet werden. Dann wird dieses Bild als Stellvertreter des Videos angezeigt, bis es gestartet wird.
+Finden Sie zwei Einsatzmöglichkeiten für \verb|poster| mit einem Wert gebraucht und missbraucht werden kann.
 
 \subsection{Einbindung von geschützten Inhalten (Stichwort: DRM)}
 
-Mit den beschriebenen Möglichkeiten können Sie Videodateien einbinden, auf die Sie freien Zugriff haben. Aber wie Sie wissen ist das beispielsweise bei Videos auf YouTube nicht der Fall. Wenn Sie sicher sind, dass Sie das Recht dazu haben, dann dürfen Sie solche Videos mit einem <iframe>-Container einbinden. Da hier bis auf allowfullscreen keine neuen Attribute vorkommen, sollten Sie das folgende Codefragment ohne weitere Erklärungen einbinden können:\\
+Mit den beschriebenen Möglichkeiten können Sie Videodateien einbinden, auf die Sie freien Zugriff haben. Aber wie Sie wissen ist das beispielsweise bei Videos auf YouTube nicht der Fall. Wenn Sie sicher sind, dass Sie das Recht dazu haben, dann dürfen Sie solche Videos mit einem \verb|<iframe>|\index{HTML!Container!iframe}-Container einbinden. Da hier bis auf \verb|allowfullscreen|\index{HTML!Attribut!allowfullscreen} keine neuen Attribute vorkommen, sollten Sie das folgende Codefragment ohne weitere Erklärungen einbinden können:\\
 
-<iframe src=http://www.youtube.de/...     allowfullscreen />
-
-Quellcode 2.15: Einbindung von Videos, auf die nicht direkt verlinkt werden kann.
+\verb|<iframe src=http://www.youtube.de/...     allowfullscreen />|
 
 \subsection{Der <audio>-Container}
 
-Alles, was Sie beim <video>-Container nutzen können und das bei einer Audio-Datei Sinn macht, können Sie genau so bei einem <audio>-Container nutzen. Kommen wir also zu den Unterschieden gegenüber einem <video>-Container:\\
+Alles, was Sie beim \verb|<video>|-Container nutzen können und das bei einer Audio-Datei Sinn macht, können Sie genau so bei einem \verb|<audio>|\index{HTML!Container!audio}-Container nutzen. Kommen wir also zu den Unterschieden gegenüber einem \verb|<video>|-Container:
 
--	Ein <audio>-Container hat in aller Regel kein Bild, also gibt es für den Nutzer keinen sichtbaren Unterschied zwischen den Attributbelegungen prelaod=none und preload=meta.
-
--	Wenn Sie ein Bild zu einer Audiodatei anzeigen wollen (oder eine Diashow), dann nutzen Sie dazu das Verfahren, auf das bei der Erklärung zur <figcaption> hingewiesen wurde.
-
--	Dem type-Attribut müssen Sie natürlich audio-Typen zuordnen.
-Bsp.: type=audio/mp3
-
-Wichtig: Das gilt auch dann, wenn ein Type sowohl für Audio- als auch für Video-Dateien existiert. Bsp.: Das Kompressionsverfahren OGG ist für Audio- und Videoverfahren definiert. Also müssen Sie hier je nach Medienformat type=video/ogg oder type=audio/ogg angeben.
+\begin{itemize}
+	\item Ein \verb|<audio>|-Container hat in aller Regel kein Bild, also gibt es für den Nutzer keinen sichtbaren Unterschied zwischen den Attributbelegungen \verb|prelaod=none| und \verb|preload=meta|.
+	\item Wenn Sie ein Bild zu einer Audiodatei anzeigen wollen (oder eine Diashow), dann nutzen Sie dazu das Verfahren, auf das bei der Erklärung zur \verb|<figcaption>| hingewiesen wurde.
+	\item Dem \verb|type|-Attribut müssen Sie natürlich audio-Typen zuordnen.\\
+	\textbf{Bsp}.: \verb|type=audio/mp3|\\
+	\item Das gilt auch dann, wenn ein Type sowohl für Audio- als auch für Video-Dateien existiert.\\
+	\textbf{Bsp}.: Das Kompressionsverfahren OGG ist für Audio- und Videoverfahren definiert. Also müssen Sie hier je nach Medienformat \verb|type=video/ogg| oder \verb|type=audio/ogg| angeben.
+\end{itemize}
 
 \subsection{Close Captions, Untertitel, Einbindung von Webcams usw.}
 
@@ -1231,7 +1247,7 @@ Grundsätzlich sollten Sie jedoch zunächst HTML, CSS und JavaScript beherrschen
 
 \subsection{Hinweis bezüglich Flash und ähnlichen Formaten}
 
-Adobes Flash bzw. Shockwave war über Jahre hinweg der Standard, wenn es um das Entwickeln von interaktiven Elementen bzw. Spielen auf einer Webanwendung ging. JavaScript bot hier zu wenige Möglichkeiten und einzig Java wurde so entwickelt, dass es im Browser nutzbar war. Warum die meisten Entwickler Flash nutzten soll uns an dieser Stelle nicht interessieren; Tatsache ist, dass es den de-facto-Standard für Webanwendungen darstellte. Wie schon oben angesprochen ändert sich das gerade, was nicht zuletzt daran liegen dürfte, dass JavaScript als Standardsprache für HTML5 festgelegt wurde. \\
+Adobes \textbf{Flash}\index{Programmiersprache!Flash} bzw. Shockwave war über Jahre hinweg der Standard, wenn es um das Entwickeln von interaktiven Elementen bzw. Spielen auf einer Webanwendung ging. \textbf{JavaScript}\index{Programmiersprache!JavaScript} bot hier zu wenige Möglichkeiten und einzig \textbf{Java}\index{Programmiersprache!Java} wurde so entwickelt, dass es im Browser nutzbar war. Warum die meisten Entwickler Flash nutzten soll uns an dieser Stelle nicht interessieren; Tatsache ist, dass es den de-facto-Standard für Webanwendungen darstellte. Wie schon oben angesprochen ändert sich das gerade, was nicht zuletzt daran liegen dürfte, dass JavaScript als Standardsprache für HTML5 festgelegt wurde. \\
 
 Wenn Sie nun Flash-Anwendungen auf Ihrer Seite anbieten wollen, müssen Sie aus diesem Grund einen HTML5-Flash-Player integrieren. Danach suchen Sie genau wie nach HTML5-Video-Playern. Auch die Einbindung funktioniert wieder so ähnlich wie dort. Aber auch hier gilt wieder, dass das kein Thema dieser Veranstaltung ist, sondern lediglich eine Zusatzinformation für interessierte Leser.\\
 
@@ -1239,19 +1255,21 @@ Ein weiterer Nachteil von Flash besteht darin, dass Flash im Gegensatz zu den mu
 
 \subsection{Hausaufgabe}
 
-Kommen wir jetzt zur Datei index.html, die Sie zwar in Ihrem Projektordner haben, die aber bislang leer ist. Damit dies eine Startseite für Ihre Webanwendung wird und Sie zwischen den einzelnen Seiten hin- und herwechseln können, programmieren Sie bitte folgendes: (Wenn nicht anders geschrieben programmieren Sie es bitte in der index.html.)\\
+Kommen wir jetzt zur Datei \verb|index.html|, die Sie zwar in Ihrem Projektordner haben, die aber bislang leer ist. Damit dies eine Startseite für Ihre Webanwendung wird und Sie zwischen den einzelnen Seiten hin- und herwechseln können, programmieren Sie bitte folgendes: (Wenn nicht anders geschrieben programmieren Sie es bitte in der \verb|index.html|.)
 
--	Fügen Sie die Strukturelemente hinzu, die Sie für HTML5-Seiten kennen gelernt haben.
--	Internationalisieren und Lokalisieren Sie die Seite.
--	Erstellen Sie ein Log-In-Formular im aside-Container.
--	Erstellen Sie eine neue Seite mit einem Registrieren-Formular, sodass Sie Nutzern später die Möglichkeit geben, sich zu registrieren. 
--	Erstellen Sie eine Zusammenfassung der geplanten und vorhandenen Inhalte Ihrer Webanwendung im main-Container.
--	Verlinken Sie an den passenden Stellen auf die entsprechenden Unterseiten.
--	Programmieren Sie umgekehrt auf allen bisherigen Seiten Links. Nutzer müssen mindestens die Möglichkeit haben, über einen Link wieder auf die Startseite zurück zu kommen.
--	Nehmen Sie Bilder, Videos und Audio-Dateien auf, die zu einzelnen Passagen auf Ihrer Webanwendung passen und stellen Sie diese auf Ihrer Webanwendung ein.
--	Achten Sie darauf, dass bezüglich der Barrierefreiheit zumindest die drei Punkte beachtet werden, die Sie oben kennen gelernt haben.
--	Erstellen Sie zu wenigstens einer Ihrer Seiten eine Umfrage, bei der Sie auch verschiedene Auswahlmöglichkeiten programmieren.
--	Nicht vergessen: Prüfen Sie, ob Sie für Firefox, Safari, IE oder Edge Polyfills nutzen müssen.
+\begin{itemize}
+	\item Fügen Sie die Strukturelemente hinzu, die Sie für HTML5-Seiten kennen gelernt haben.
+	\item Internationalisieren und Lokalisieren Sie die Seite.
+	\item Erstellen Sie ein Log-In-Formular im \verb|aside|-Container.
+	\item Erstellen Sie eine neue Seite mit einem Registrieren-Formular, sodass Sie Nutzern später die Möglichkeit geben, sich zu registrieren. 
+	\item Erstellen Sie eine Zusammenfassung der geplanten und vorhandenen Inhalte Ihrer Webanwendung im \verb|main|-Container.
+	\item Verlinken Sie an den passenden Stellen auf die entsprechenden Unterseiten.
+	\item Programmieren Sie umgekehrt auf allen bisherigen Seiten Links. Nutzer müssen mindestens die Möglichkeit haben, über einen Link wieder auf die Startseite zurück zu kommen.
+	\item Nehmen Sie Bilder, Videos und Audio-Dateien auf, die zu einzelnen Passagen auf Ihrer Webanwendung passen und stellen Sie diese auf Ihrer Webanwendung ein.
+	\item Achten Sie darauf, dass bezüglich der Barrierefreiheit zumindest die drei Punkte beachtet werden, die Sie oben kennen gelernt haben.
+	\item Erstellen Sie zu wenigstens einer Ihrer Seiten eine Umfrage, bei der Sie auch verschiedene Auswahlmöglichkeiten programmieren.
+	\item Nicht vergessen: Prüfen Sie, ob Sie für Firefox, Safari, IE oder Edge Polyfills nutzen müssen.
+\end{itemize}
 
 \section{Weitere Formatierungen und Möglichkeiten in HTML}
 
@@ -1261,86 +1279,98 @@ Wie es die Überschrift schon sagt finden Sie hier eine Reihe weiterer Möglichk
 
 Kennen Sie das? Sie sitzen mit Freunden zusammen und einer davon erzählt das Ende eines Filmes, den Sie noch sehen wollten. So etwas wird mit dem englischen Begriff Spoiler bezeichnet und um jemanden zu warnen, dass gleich ein Spoiler kommt, gibt es den Begriff Spoiler Alarm.\\
 
-Nun nehmen wir an, Sie wollen Filmrezensionen auf Ihrer Webanwendung veröffentlichen, wollen aber dass Ihre Leser selbst entscheiden können, ob Sie die Spoiler mitlesen wollen oder nicht. In HTML5 ist das kein Problem. Nun gibt es aber keinen spoiler-Container, sondern Sie benutzen für solche Fälle zwei Container:\\
+Nun nehmen wir an, Sie wollen Filmrezensionen auf Ihrer Webanwendung veröffentlichen, wollen aber dass Ihre Leser selbst entscheiden können, ob Sie die Spoiler mitlesen wollen oder nicht. In HTML5 ist das kein Problem. Nun gibt es aber keinen spoiler-Container, sondern Sie benutzen für solche Fälle zwei Container:
 
--	Der <summary>-Container enthält eine kurze Beschreibung dessen, worum es geht. 
-Bsp.: Sie erstellen eine Webanwendung über die Geschichte Kroatiens. Im laufenden Text wollen Sie etwas über den Geburtsort des amtierenden Präsidenten schreiben. Andererseits sind Sie nicht sicher, ob das die meisten Leser interessiert. Also erstellen Sie den folgenden Container:
+\begin{itemize}
+	\item Der \verb|<summary>|\index{HTML!Container!summary}-Container enthält eine kurze Beschreibung dessen, worum es geht. \\
+	
+	\textbf{Bsp}.: Sie erstellen eine Webanwendung über die Geschichte Kroatiens. Im laufenden Text wollen Sie etwas über den Geburtsort des amtierenden Präsidenten schreiben. Andererseits sind Sie nicht sicher, ob das die meisten Leser interessiert. Also erstellen Sie den folgenden Container:
+	
+	\verb|<summary>Über den Geburtsort des kroatischen Präsidenten</summary>|
+	
+	\item Anschließend ergänzen Sie nach dem Wort Präsidenten (oder an anderer Stelle innerhalb des \verb|<summary>|-Containers noch einen \verb|<details>|\index{HTML!Container!details}-Container, in dem Sie all das über den besagten Geburtsort schreiben, was Sie für interessant halten.\\
+	
+	Hier ein Beispiel für den oben genannten Spoiler-Fall:\\
+	
+	\begin{verbatim}
+		<summary>Das Ende von Hamlet
+		<details>Alle sind tot.</details>
+		</summary>
+	\end{verbatim}
+	
+\end{itemize}
 
-<summary>Über den Geburtsort des kroatischen Präsidenten</summary>
+Wenn Sie innerhalb des \glqq{}Spoilers\grqq{} noch weitere Spoiler unterbringen wollen ist das kein Problem; ähnlich wie bei \verb|<article>| und \verb|<section>| können Sie \verb|<summary>| und \verb|<details>| beliebig komplex verschachteln. Dabei müssen Sie lediglich darauf achten, dass der äußerste Container ein \verb|<summary>| ist, und dass Sie die Container jeweils im Wechsel nutzen müssen.\\
 
--	Anschließend ergänzen Sie nach dem Wort Präsidenten (oder an anderer Stelle innerhalb des <summary>-Containers noch einen <details>-Container, in dem Sie all das über den besagten Geburtsort schreiben, was Sie für interessant halten.
-Hier ein Beispiel für den oben genannten Spoiler-Fall:
-
-<summary>Das Ende von Hamlet
-<details>Alle sind tot.</details>
-</summary>
-
-Quellcode 2.16: Ein einfacher <summary>-Container
-
-Wenn Sie innerhalb des „Spoilers“ noch weitere Spoiler unterbringen wollen ist das kein Problem; ähnlich wie bei <article> und <section> können Sie <summary> und <details> beliebig komplex verschachteln. Dabei müssen Sie lediglich darauf achten, dass der äußerste Container ein <summary> ist, und dass Sie die Container jeweils im Wechsel nutzen müssen.\\
-
-Sprich: Sie dürfen zwar innerhalb eines <summary> mehrere <details>-Container programmieren, aber keinen weiteren <summary>. Den müssten Sie dann wieder innerhalb eines der <details> programmieren. Umgekehrt gilt das selbe.\\
+Sprich: Sie dürfen zwar innerhalb eines \verb|<summary>| mehrere \verb|<details>|-Container programmieren, aber keinen weiteren \verb|<summary>|. Den müssten Sie dann wieder innerhalb eines der \verb|<details>| programmieren. Umgekehrt gilt das selbe.\\
 
 Natürlich müssen Sie auch bei diesen Containern prüfen, ob Sie inzwischen in allen Webbrowsern unterstützt werden und ggf. ein passendes Polyfill einbinden.
 
 \subsection{Zeitangaben}
 
-Ein weiterer praktischer Container ist der <time>-Container. Damit können Sie Zeitangaben und Zeiträume im Sinne des semantic Web definieren. Leider ist das Element noch nicht so ausgereift, dass damit alle möglichen Zeitangaben darstellbar wären, denn im Kern wird hierdurch ein Element definiert, dass einen Zeitpunkt oder einen in Sekunden messbaren Zeitraum festlegt.\\
+\textbf{Wichtig}:\\
 
-Und da nunmal eine Zeitangabe wie vom 20. Februar bis zum 3. März nicht eindeutig ist (denken Sie an Schaltjahre, bei denen es einen 29. Februar gibt), gibt es auch keinen einzelnen <time>-Container, mit dem Sie diesen Zeitraum zusammen fassen können. Aus dem gleichen Grund können Sie Zeiträume nicht in Monaten oder Jahren festlegen; in solchen Fällen müssen Sie zwei <time>-Container programmieren, den einen für den Anfang, den anderen für das Ende des Zeitraums.\\
+Bitte beachten Sie, dass es sich bei dem gleich vorgestellten Container um einen Container handelt, den Sie im Gegensatz zu Formularcontainern wie \verb|<input type=datetime>| und ähnlichen \verb|input|-Containern an beliebigen Stellen innerhalb eines \verb|<body>|-Containers nutzen können. (Zur Erinnerung: \verb|input|-Container bieten NutzerInnen die Möglichkeit, Eingaben durchzuführen.)\\
 
-So viel zum Negativen, kommen wir jetzt zur praktischen Anwendung von <time>:\\
+Bitte beachten Sie ebenfalls, dass der \verb|<time>|-Container keine Ausgabe im Browser erzeugt, sondern einzig dafür sorgt, dass ein Teil des Dokuments einen Zeitstempel erhält. Das bedeutet, dass ein Browser hier direkt erkennen kann, dass ein bestimmter Bereich etwas mit einem bestimmten Zeitpunkt zu tun hat. Wenn also die EntwicklerInnen des Browsers den \verb|<time>|-Container richtig auswerten lassen, dann können Nutzer sich einen Termin direkt aus einer Webanwendung in den eigenen Terminkalender eintragen lassen, ohne dass Sie als EntwicklerIn der Webanwendung dafür etwas programmieren müssten.\\
 
--	<time>-Container können beliebige Inhalte haben, können aber auch ohne Inhalt als <time /> beendet werden.
+Mit dem \verb|<time>|-Container können Sie also Zeitangaben und Zeiträume im Sinne des semantic Web definieren. Leider ist es nicht möglich, dass damit alle möglichen Zeitangaben darstellbar wären, denn im Kern wird hierdurch ein Element definiert, dass einen Zeitpunkt oder einen in Sekunden messbaren Zeitraum festlegt. Genau wie bei den entsprechenden \verb|input|-Containern haben Sie also keine Möglichkeit, einen Zeitraum mithilfe eines einzelnen Containers zu programmieren.\\
 
--	Um Zeitpunkte oder Zeiträume zu definieren wird unabhängig vom Inhalte des Containers das datetime-Attribut verwendet. Für dieses gibt es eine Vielzahl ein Möglichkeiten, Werte zuzuordnen:
+Zur Erklärung:\\
 
--	Hier die Varianten für Zeitpunkte:
+Da eine Zeitangabe wie die vom 20. Februar bis zum 3. März nicht eindeutig ist (denken Sie an Schaltjahre, bei denen es einen 29. Februar gibt), gibt es auch keinen einzelnen \verb|<time>|\index{HTML!Container!time}-Container, mit dem Sie diesen Zeitraum zusammen fassen können. Aus dem gleichen Grund können Sie Zeiträume nicht in Monaten oder Jahren festlegen; in solchen Fällen müssen Sie zwei \verb|<time>|-Container programmieren, den einen für den Anfang, den anderen für das Ende des Zeitraums. Sie haben hier zwar die Möglichkeit, die Dauer als eigenständigen Container einzuprogrammieren, aber da Sie den Zeitraum explizit angeben müssen, könnten Sie hier einen Fehler einprogrammieren, der für NutzerInnen ärgerlich wäre.\\
 
-o	Für Jahre: Eine vierstellige Zahl
-Bsp.: 1905
+So viel zum Negativen, kommen wir jetzt zur praktischen Anwendung von \verb|<time>|:
 
-o	Für Jahr und Monat: Eine vierstellige Zahl, ein Bindestrich, eine zweistellige Zahl
-Bsp.: 2107-03 für März 2107
+\begin{itemize}
+	\item \verb|<time>|-Container können beliebige Inhalte haben, können aber auch ohne Inhalt als \verb|<time />| beendet werden.
+	\item Um Zeitpunkte oder Zeiträume zu definieren wird unabhängig vom Inhalte des Containers das \verb|datetime|\index{HTML!Attribut!datetime}-Attribut verwendet. Für dieses gibt es eine Vielzahl ein Möglichkeiten, Werte zuzuordnen:
+	\begin{itemize}
+		\item Hier die Varianten für Zeitpunkte:
+		\begin{itemize}
+			\item Für Jahre:\\
+			Eine vierstellige Zahl\\
+			\verb|datetime=1905|
+			\item Für Jahr und Monat:\\
+			Eine vierstellige Zahl, ein Bindestrich, eine zweistellige Zahl\\
+			\verb|datetime=2107-03| für März 2107
+			\item Für ein Datum ohne Uhrzeit:\\
+			Zusätzlich eine weitere zweistellige Zahl, verbunden per Bindestrich\\
+			\verb|datetime=2015-09-15| für den 15. September 2015
+			\item Für Monat und Tag:\\
+			Zwei zweistellige Zahlen, verbunden durch einen Bindestrich.\\
+			\verb|datetime=12-08| für den 8. Dezember
+		\end{itemize}
+		\item Für die Uhrzeit gibt es mehrere Varianten:
+		\begin{itemize}
+			\item Zeitpunkt ohne Angabe der Zeitzone:\\
+			\verb|datetime=17:22|
+			\item Zeitpunkt für GMT:
+			\verb|datetime=22:13Z| (Hiweis: Richtig gesehen: Einzig durch das \verb|Z| am Ende des Wertes wird hier eine Uhrzeit als Zeitpunkt nach GMT festgelegt.)
+			\item Zeitpunkt für eine andere Zeitzone:\\
+			\verb|datetime=02:18-05| (Für GMT - 5)\\
+			\verb|datetime=14:47+5:30|	(für GMT + 5½)
+			\item Datum und Uhrzeit können verbunden werden, indem zunächst das Datum, dann nach einer Leerstelle die Uhrzeit aufgeführt wird:\\
+			\verb|datetime="2017-07-21 20:15-7"| (für 20.15 Uhr in der Zeitzone GMT-7 am 21. Juli 2017)
+		\end{itemize}
+	\end{itemize}
+\end{itemize}
 
-o	Für ein Datum ohne Uhrzeit: Zusätzlich eine weitere zweistellige Zahl, verbunden per Bindestrich
-Bsp.: 2015-09-15 für den 15. September 2015
+Wie oben beschrieben können Sie eine Angabe wie \glqq{}Vom 2. bis 7. März\grqq{} nicht direkt als einen Container programmieren. Aber Sie können die Dauer eines Termins als einen Container programmieren:
 
-o	Für Monat und Tag: Zwei zweistellige Zahlen, verbunden durch einen Bindestrich.
-Bsp.: 12-08 für den 8. Dezember
+\begin{itemize}
+	\item \verb|datetime=P30M| entspricht einem Zeitraum von 30 Minuten.
+	\item \verb|datetime="P5D 20M 7S"| entspricht einem Zeitraum von 5 Tagen, 20 Minuten und 7 Sekunden.
+	\item Wie oben aufgeführt können keine Zeiträume in Monaten oder Jahren definiert werden.
+\end{itemize}
 
-o	Für die Uhrzeit gibt es mehrere Varianten:
+Hier noch ein paar Beispiele für \verb|<time>|-Container in HTML:
 
-	Zeitpunkt ohne Angabe der Zeitzone:
-17:22
-
-	Zeitpunkt für GMT:
-22:13Z
-
-	Zeitpunkt für eine andere Zeitzone:
-02:18-05	(Für GMT - 5)
-14:47+5:30	(für GMT + 5½)
-
-o	Datum und Uhrzeit können verbunden werden, indem zunächst das Datum, dann nach einer Leerstelle die Uhrzeit aufgeführt wird:
-
-Bsp.: 2017-07-21 20:15-7 (für 20 Uhr 15 in der Zeitzone GMT-7 am 21. Juli 2017)
-
--	Und jetzt die Varianten für Zeiträume. Diese werden jeweils durch ein großes P für Period bzw. Zeitraum begonnen:
-
-•	P30M entspricht einem Zeitraum von 30 Minuten
-
-•	P5D 20M 7S entspricht einem Zeitraum von 5 Tagen, 20 Minuten und 7 Sekunden.
-
-•	Wie oben aufgeführt können keine Zeiträume in Monaten oder Jahren definiert werden.
-Zwar programmieren Sie die <time>-Container wie alle anderen Container, aber zur Sicherheit hier ein paar Code-Beispiele:
-...
-Die Veranstaltung dauert voraussichtlich<time datetime=“P5D 20M 7s“> mehr als 5 Stunden 20 Minuten</time>.
-...
-Der erste Termin findet am <time datetime=2015-09-14 13:00Z>14. September 2015 um 13 Uhr</time> statt.
-...
-Veranstaltungen finden vom <time datetime=2015-09-15>15. September</time> bis zum <time datetime=2016-02-03> 3. Februar</time> statt.
-...
-Quellcode 2.17: Zeitangaben mit dem <time>-Container
+\begin{itemize}
+	\item Die Veranstaltung dauert voraussichtlich\verb|<time datetime="P5D 20M 7s">| mehr als 5 Stunden 20 Minuten\verb|</time>|.
+	\item Der erste Termin findet am \verb|<time datetime="2015-09-14 13:00Z">|14. September 2015 um 13 Uhr\verb|</time>| statt.
+	\item Veranstaltungen finden vom \verb|<time datetime=2015-09-15>|15. September\verb|</time>| bis zum \verb|<time datetime=2016-02-03>| 3. Februar\verb|</time>| statt.
+\end{itemize}
 
 \subsection{Hervorhebung von Texten}
 
