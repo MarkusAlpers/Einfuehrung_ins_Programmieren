@@ -639,7 +639,7 @@ Sie haben vorhin sechs Dateien (arbeitsweg.html usw.) erstellt. Erweitern Sie di
 
 \section{Hyperlinks}
 
-Vorhin haben Sie gelernt, dass das Protokoll zur Übertragung von Webanwendung HyperText Transfer Protokoll heißt. Sie wissen bereit, dass das Wort Protokoll nur eine Bezeichnung für eine Vereinbarung darüber, wie etwas zu tun ist. In diesem Fall geht es also um eine Vereinbarung darüber, wie Hypertexte übertragen (transferiert) werden sollen. Also kommen wir kurz dazu, was denn nun wiederum Hypertexte sind und was die mit Webanwendung zu tun haben.\\
+Vorhin haben Sie gelernt, dass das Protokoll zur Übertragung von Webanwendung HyperText Transfer Protokoll heißt. Sie wissen bereit, dass das Wort Protokoll nur eine Bezeichnung für eine Vereinbarung darüber, wie etwas zu tun ist. In diesem Fall geht es also um eine Vereinbarung darüber, wie Hypertexte übertragen (transferiert) werden sollen. Also kommen wir kurz dazu, was denn nun wiederum \textbf{Hypertexte}\index{Hypertext} sind und was die mit Webanwendung zu tun haben.\\
 
 Die Antwort ist ganz einfach: Im Gegensatz zu einem Buch beinhaltet eine Webanwendung Kreuzverweise, denen Sie folgen können. Diese Verweise kennen Sie umgangssprachlich als Links. Eine Webanwendung ist also mehr als nur eine Ansammlung von Texten wie bei einem Buch. Und aus diesem Grund wurde das, was wir heute Webpage nennen, in der Zeit als \textbf{Hypertext}\index{Hypertext} bezeichnet, als das WWW gerade erst entwickelt wurde. Wenn Sie also in \textbf{HTML}\index{HTML}\index{Programmiersprache!HTML} programmieren, dann programmieren Sie Hypertext. Nur nennt das heute kaum noch jemand so. Im Namen des Protokolls HTTP lebt dieser Begriff wahrscheinlich noch sehr lange weiter.\\
 
@@ -756,11 +756,11 @@ Wie gewohnt können Sie über das \verb|id|-Attribut ein Formular zu einem Objek
 </form>
 \end{verbatim}
 
-Der \verb|<form>|-Container ist das Wurzelelement für Formulare, so wie der <html>-Container das Wurzelelement für HTML-Dokumente ist: Alles, was ein Nutzer eingeben darf oder soll wird einfach in Form verschiedener Container in den <form>-Container einprogrammiert. Sie können in jedem HTML-Dokument beliebig viele <form>-Container programmieren.\\
+Der \verb|<form>|\index{HTML!Container!form|}-Container ist das Wurzelelement für Formulare, so wie der <html>-Container das Wurzelelement für HTML-Dokumente ist: Alles, was ein Nutzer eingeben darf oder soll wird einfach in Form verschiedener Container in den <form>-Container einprogrammiert. Sie können in jedem HTML-Dokument beliebig viele <form>-Container programmieren.\\
 
-Die Grundidee eines Formulars ist, dass Nutzer hier verschiedene Angaben machen und Optionen anwählen können, die dann gewissermaßen als ein Paket verarbeitet werden. Deshalb brauchen Sie in jedem Formular ein Element, das einzig dafür da ist, dass der Nutzer bestätigt, dass alle Daten des jeweiligen Formulars abgeschickt werden sollen. Und auch wenn Sie beliebig viele Formulare auf einer Seite programmieren können, sollten Sie möglichst nicht zu viele individuelle Formulare programmieren, da Nutzer sonst mehr damit beschäftigt sind, die vielen Formulare einzeln abzusenden, als damit, das nötige Formular auszufüllen.\\
+Die Grundidee eines Formulars ist, dass NutzerInnen hier verschiedene Angaben machen und Optionen anwählen können, die dann gewissermaßen als ein Paket verarbeitet werden. Deshalb brauchen Sie in jedem Formular ein Element, das einzig dafür da ist, dass der Nutzer bestätigt, dass alle Daten des jeweiligen Formulars abgeschickt werden sollen. Und auch wenn Sie beliebig viele Formulare auf einer Seite programmieren können, sollten Sie möglichst nicht zu viele individuelle Formulare programmieren, da Nutzer sonst mehr damit beschäftigt sind, die vielen Formulare einzeln abzusenden, als damit, das nötige Formular auszufüllen.\\
 
-Später werden die Eingaben von Nutzern wie beschrieben an Programme weiter gegeben, die z.B. in PHP oder JavaScript programmiert wurden. Diese Datenübergabe steuern Sie dann durch zwei Attribute des <form>-Containers: Das action-Attribut gibt die URL des Programms an, das steuert, wie mit den Eingaben des Nutzers umgegangen werden soll. Das method-Attribut ist für die Übertragung per HTTP wichtig und steuert, wie die Daten an das Programm übertragen werden. Da wir uns momentan auf die Programmierung eines Formulars in HTML kümmern, dessen Eingaben noch nicht von einem Programm verwendet werden sollen, lassen wir diese Attribute vorerst außen vor.\\
+Später werden die Eingaben von Nutzern wie beschrieben an Programme weiter gegeben, die z.B. in PHP oder JavaScript programmiert wurden. Diese Datenübergabe steuern Sie dann durch zwei Attribute des <form>-Containers: Das \verb|action|\index{HTML!Attribut!action}-Attribut gibt die URL des Programms an, das steuert, wie mit den Eingaben des Nutzers umgegangen werden soll. Das \verb|method|\index{HTML!Attribut!method}-Attribut ist für die Übertragung per HTTP wichtig und steuert, wie die Daten an das Programm übertragen werden. Da wir uns momentan auf die Programmierung eines Formulars in HTML kümmern, dessen Eingaben noch nicht von einem Programm verwendet werden sollen, lassen wir diese Attribute vorerst außen vor.\\
 
 Wie gewohnt wird die genaue Darstellung bzw. die Anordnung der Elemente im Webbrowser später über CSS programmiert.\\
 
@@ -768,15 +768,15 @@ Wichtig: Im Gegensatz zu HTML4.01 bietet Ihnen HTML5 eine Vielzahl an Möglichke
 
 \subsection{Das name-Attribut und das id-Attribut – Sonderfälle in Formularen}
 
-Innerhalb eines <form>-Containers erstellen Sie für jede Eingabemöglichkeit einen weiteren Container. Damit Sie die Eingaben später weiter verwenden können, müssen Sie bei vielen Containern ein name-Attribut programmieren, dessen Wert innerhalb des <form>-Containers nur einmal vorkommen darf. \\
+Innerhalb eines <form>-Containers erstellen Sie für jede Eingabemöglichkeit einen weiteren Container. Damit Sie die Eingaben später weiter verwenden können, müssen Sie bei vielen Containern ein \verb|name|\index{HTML!Attribut!name}-Attribut programmieren, dessen Wert innerhalb des <form>-Containers nur einmal vorkommen darf. \\
 
-Wenn Sie sich jetzt wundern, warum hier nicht mehr das id- sondern das name-Attribut verwendet werden muss: Das id-Attribut wurde mit HTML5 so erweitert, dass Elemente einer Webanwendung als Objekte in einer objektorientierten Sprache verwenden werden können. Das name-Attribut wird für die Übergabe von Nutzereingaben eines Formulars an ein Programm verwendet. Deshalb gibt es bei Formularen beide Attribute (name und id).\\
+Wenn Sie sich jetzt wundern, warum hier nicht mehr das \verb|id|- sondern das \verb|name|-Attribut verwendet werden muss: Das \verb|id|-Attribut wurde mit HTML5 so erweitert, dass Elemente einer Webanwendung als Objekte in einer objektorientierten Sprache verwenden werden können. Das \verb|name|-Attribut wird für die Übergabe von Nutzereingaben eines Formulars an ein Programm verwendet. Deshalb gibt es bei Formularen beide Attribute (\verb|name| und \verb|id|).\\
 
-Bei allen imperativen Programmiersprachen werden Werte gespeichert, indem sie jeweils einer Variablen zugeordnet werden. Eine Variable hat einen Bezeichner und einen Typ. In diesem Kurs verwenden wir den Begriff des Bezeichners auch um Verwechselungen mit dem name-Attribut zu vermeiden. Bei den meisten imperativen Programmiersprachen müssen Sie den Bezeichner festlegen, bevor Sie ihn nutzen dürfen. Danach können Sie mit dem Wert der Variable an mehreren Stellen etwas tun. Das macht vor allem dann Sinn, wenn ein Wert sich immer wieder ändern kann oder er an vielen Stellen innerhalb eines Programms geändert werden kann bzw. soll. \\
+Bei allen imperativen Programmiersprachen werden Werte gespeichert, indem sie jeweils einer Variablen zugeordnet werden. Eine Variable hat einen Bezeichner und einen Datentyp. In diesem Buch verwende ich den Begriff des Bezeichners auch um Verwechselungen mit dem \verb|name|-Attribut zu vermeiden. Bei den meisten imperativen Programmiersprachen müssen Sie den Bezeichner festlegen, bevor Sie ihn nutzen dürfen. Danach können Sie mit dem Wert der Variable an mehreren Stellen etwas tun. Das macht vor allem dann Sinn, wenn ein Wert sich immer wieder ändern kann oder er an vielen Stellen innerhalb eines Programms geändert werden kann bzw. soll.\\
 
 Der Typ einer Variablen sagt etwas darüber aus, um was für eine Art von Variable es sich handelt. Für Sie und mich ist es beispielsweise klar erkennbar, ob eine Zeichenfolge nun ein Text ist oder ein Datum, eine Rechenaufgabe oder etwas anderes. Für einen Computer ist das nicht klar. Ein Computer kann z.B. nicht unterscheiden, ob die Zeichenfolge 10 die Zahl 10 oder die Zahl 2 (binär 10) oder der Text 10 sein soll; all diese Interpretationen werden innerhalb des Computers unterschiedlich gespeichert und verarbeitet. Deshalb gibt es bei der Nutzung von Variablen innerhalb eines Computerprogramms immer einen Typ für jede einzelne Variable.\\
 
-Wichtig: In Sprachen wie Java wird der Typ für jede Variable vom Programmierer festgelegt und kann sich dann nicht mehr ändern. Diese nicht-Änderbarkeit des Datentyps einer Variablen wird als statische Typisierung bezeichnet. Daneben gibt es noch die dynamische Typisierung. Hier wird der Typ einer Variablen von der Programmiersprache verwaltet und bei Bedarf geändert. Schon vorweg sei gesagt, dass PHP eine dynamisch typisierte Sprache ist. Beide Verfahren haben Vor- und Nachteile und keiner (!) ist schlecht.
+Wichtig: In Sprachen wie Java wird der Typ für jede Variable vom Programmierer festgelegt und kann sich dann nicht mehr ändern. Diese nicht-Änderbarkeit des Datentyps einer Variablen wird als \textbf{statische Typisierung}\index{Typisierung!statisch} bezeichnet. Daneben gibt es noch die \textbf{dynamische Typisierung}\index{Typisierung!dynamisch}. Hier wird der Typ einer Variablen von der Programmiersprache verwaltet und bei Bedarf geändert. Schon vorweg sei gesagt, dass PHP eine dynamisch typisierte Sprache ist. Beide Verfahren haben unterschiedliche Vor- und Nachteile und keines (!) ist schlecht. Insbesondere ist die Aussage, dass die dynamische Typisierung unsicher sei kompletter Humbug; es gibt eine Art von Sicherheit, die dadurch sicher gestellt wird, aber gleichzeitig ist sie der Grund für eine Vielzahl überflüssiger Fehlermeldungen.
 
 \subsection{Container für Formulare}
 
@@ -786,73 +786,92 @@ Wichtig: Während viele dieser Eingabemöglichkeiten auf einem Rechner nur die K
 
 \subsubsection{Formularfelder für Texteingaben}
 
-In diesem Unterabschnitt finden Sie die meisten Typen, die Sie nutzen können, damit Nutzer einen Text oder eine Zahl eingeben können. Wenn ein Tag hier nicht aufgeführt ist, dann liegt das daran, dass Sie wie bei Formular-Tags in HTML 4.01 etwas programmieren müssten, damit die betroffenen Tags ihre Aufgabe erfüllen. Ein Beispiel ist das Tag, mit dem Sie es einem Nutzer ermöglichen können, nach einem Begriff zu suchen. Denn die Suche müssen Sie dann doch wieder selbst programmieren. Also taucht es hier nicht auf.\\
+In diesem Unterabschnitt finden Sie die meisten Typen, die Sie nutzen können, damit Nutzer einen Text oder eine Zahl eingeben können. Wenn ein Tag hier nicht aufgeführt ist, dann liegt das daran, dass Sie wie bei Formular-Tags in HTML 4.01 etwas programmieren müssten, damit die betroffenen Tags ihre Aufgabe erfüllen. Ein Beispiel ist das Tag, mit dem Sie es einem Nutzer ermöglichen können, nach einem Begriff zu suchen. Denn die Suche müssen Sie dann doch wieder selbst programmieren. Also taucht es hier nicht auf.
 
-Das value-Attribut\\
+Die folgenden beiden Attribute können Sie bei allen Formularfeldern verwenden: (Ausnahmen sind jeweils angegeben, zum Teil können Sie sich das aber auch logisch erschließen.)
 
-Bei allen Formular-Containern (außer dem file-Container) können Sie mit dem value-Attribut eine Antwort eintragen, die der Nutzer aber jederzeit überschreiben kann. Wenn ein Nutzer das nicht tut, wird dieser Wert beim Absenden des Formulars so übertragen, als wenn der Nutzer ihn eingetragen hätte.\\
+\begin{itemize}
+	\item Das \verb|value|-Attribut\\
 
-Das required-Attribut\\
+	Bei allen Formular-Containern (außer dem \verb|file|-Container) können Sie mit dem \verb|value|-Attribut eine Antwort eintragen, die der Nutzer aber jederzeit überschreiben kann. Wenn ein Nutzer das nicht tut, wird dieser Wert beim Absenden des Formulars so übertragen, als wenn der Nutzer ihn eingetragen hätte.
 
-Sie können festlegen, dass Nutzer einzelne Felder ausfüllen müssen, bevor sie ein Formular absenden können. Dazu programmieren Sie schlicht das Attribut required.
-Kurzer Text\\
+	\item Das \verb|required|-Attribut\\
 
-Quellcode: <input> (alternativ: <input type=text>)\\
+	Sie können festlegen, dass Nutzer einzelne Felder ausfüllen müssen, bevor sie ein Formular absenden können. Dazu programmieren Sie schlicht das Attribut \verb|required|.
+\end{itemize}
 
-Damit können Nutzer einen kurzen Text von bis zu 20 Zeichen eingeben.\\
+Jetzt folgen die meisten der Container, die Sie verwenden können, damit NutzerInnen alphabetische oder alphanumerische Eingaben durchführen können:
 
-Wenn Sie hier das Attribut type=password vergeben, dann wird die Eingabe maskiert; niemand kann also am Monitor sehen, was der Nutzer eingibt. Das ist aber nur ein Schutz gegen neugierige Kollegen, die nicht verfolgen können, welche Tasten der Nutzer drückt. Gegen die meisten Angriffsarten ist es dagegen vollkommen nutzlos. Um Nutzereingaben gegen diese zu schützen müssen Sie im Programm kryptographische Protokolle integrieren und sollten am besten keine Tastatureingaben als Passwort verwenden. Aber das ist ein Thema für Veranstaltungen in höheren Semestern.\\
+\begin{itemize}
+	\item Kurzer Text\\
+	
+	\textbf{Zweck}: Damit können Nutzer einen kurzen Text von bis zu 20 Zeichen eingeben.\\
+	
+	\textbf{Quellcode}: \verb|<input>| (alternativ aber redundant: \verb|<input type=text>|)\\
+	
+	Wenn Sie hier das Attribut \verb|type=password| vergeben, dann wird die Eingabe maskiert; niemand kann also am Monitor sehen, was der Nutzer eingibt. Das ist aber nur ein Schutz gegen neugierige Kollegen, die nicht verfolgen können, welche Tasten der Nutzer drückt. Gegen die meisten Angriffsarten ist es dagegen vollkommen nutzlos. Um Nutzereingaben gegen diese zu schützen müssen Sie im Programm kryptographische Protokolle integrieren und sollten am besten keine Tastatureingaben als Passwort verwenden. Aber das ist ein Thema für Veranstaltungen in höheren Semestern.\\
 
-Langer Text\\
+	\item Langer Text\\
 
-Quellcode: <textarea>\\
+	\textbf{Zweck}: Mit diesem Container ermöglichen Sie es Nutzern, Texte beliebiger Länge einzugeben. Im Gegensatz zu anderen Containern können Sie hier mit den Attributen rows und cols die Größe festlegen. Tipp: Auch wenn es im Moment nicht so gut aussieht, nutzen Sie dazu besser CSS.\\
 
-Mit diesem Container ermöglichen Sie es Nutzern, Texte beliebiger Länge einzugeben. Im Gegensatz zu anderen Containern können Sie hier mit den Attributen rows und cols die Größe festlegen. Tipp: Auch wenn es im Moment nicht so gut aussieht, nutzen Sie dazu besser CSS.\\
+	\textbf{Quellcode}: \verb|<textarea>|\\
 
-URL eingeben\\
+	\item URL eingeben\\
 
-Quellcode: <input type=url>\\
+	\textbf{Zweck}: Nutzer können eine URL eingeben. Einziger Vorteil gegenüber \verb|type=text| ist die größere Länge.\\
+	
+	\textbf{Quellcode}: \verb|<input type=url>|\\
 
-Nutzer können eine URL eingeben. Einziger Vorteil gegenüber type=text ist die größere Länge.\\
+	\item Emails:\\
 
-Emails:\\
+	\textbf{Zweck}: Hier prüft der Browser, ob die Eingabe eine valide Email-Adresse sein kann: Ist das @-Symbol enthalten? Gibt es eine valide Endung? usw.\\
+	
+	\textbf{Quellcode}: \verb|<input type=email>|\\
+\end{itemize}
 
-Quellcode: <input type=email>\\
+\textbf{Beispiel für ein einfaches Formular}:
 
-Hier prüft der Browser, ob die Eingabe eine valide Email-Adresse sein kann: Ist das @-Symbol enthalten? Gibt es eine valide Endung? usw.\\
-
+\begin{verbatim}
 <form>
 Nutzername: <input name=username required>
 E-Mail: <input type=email name=email required>
 Webanwendung: <input type=url name=webpage>
 Ihr Anliegen: <textfield name=userrequest required>
 </form>
-Quellcode 2.8: Ein einfaches Formular mit Texteingaben
+\end{verbatim}
 
 \subsubsection{Formularfelder für Zahleneingaben}
 
-Zahlen eingeben:\\
+Jetzt die Formularfelder, die für verschiedene numerische Eingaben gedacht sind:
 
-Quellcode: <input type=number>\\
+\begin{itemize}
+	\item Zahlen eingeben:\\
 
-Hier können Nutzer ganze Zahlen eingeben. Eine Eingabe ist auch per Maus möglich, da zusammen mit dem Eingabefeld noch zwei kleine Schaltflächen eingeblendet werden, über die der Wert erhöht oder gesenkt werden kann.\\
+	\textbf{Zweck}: Hier können Nutzer ganze Zahlen eingeben. Eine Eingabe ist auch per Maus möglich, da zusammen mit dem Eingabefeld noch zwei kleine Schaltflächen eingeblendet werden, über die der Wert erhöht oder gesenkt werden kann.\\
+	
+	Für diese diesen input-Typ können Sie die selben Attribute verwenden, die auch beim nachfolgenden input-Typ \verb|range| gelten. \\
+	
+	\textbf{Quellcode}: \verb|<input type=number>|\\
 
-Für diese diesen input-Typ können Sie die selben Attribute verwenden, die auch beim nachfolgenden input-Typ range gelten. \\
+	Tipp: Verwenden Sie \verb|number|, wenn Nutzer eine genau Zahl eingeben sollen und \verb|range|, wenn ein grober Wert als Eingabe genügt.\\
 
-Tipp: Verwenden Sie number, wenn Nutzer eine genau Zahl eingeben sollen und Range, wenn ein grober Wert als Eingabe genügt.\\
+	\item Zahlen mit einem Schieber auswählen:\\
 
-Zahlen mit einem Schieber auswählen:\\
+	\textbf{Quellcode}: \verb|<input type=range min=... max=...>|\\
 
-Quellcode: <input type=range min=... max=...>\\
+	Im Gegensatz zum Typ \verb|number| müssen Sie hier die Attribute \verb|min| und \verb|max| vorgeben, weil Nutzer kein Feld für eine Eingabe erhalten, sondern einen Slider (zu Deutsch Schieberegler), mit dem sie einen Wert anwählen können. Über das Attribut \verb|step| können Sie zusätzlich programmieren, wie groß der Abstand zwischen zwei wählbaren Zahlen sein darf.\\
 
-Im Gegensatz zum Typ number müssen Sie hier die Attribute min und max vorgeben, weil Nutzer kein Feld für eine Eingabe erhalten, sondern einen Slider (zu Deutsch Schieberegler), mit dem sie einen Wert anwählen können. Über das Attribut step können Sie zusätzlich programmieren, wie groß der Abstand zwischen zwei wählbaren Zahlen sein darf.\\
+	\item Telefonnummern:\\
 
-Telefonnummern:\\
+	\textbf{Quellcode}: \verb|<input type=tel>|\\
 
-Quellcode: <input type=tel>\\
+	\textbf{Zweck}: Der Name sagts schon: Damit können Nutzer eine Telefonnummer eingeben. Der Vorteil gegenüber \verb|type=number| besteht darin, dass so auch eine internationale Vorwahl eingegeben werden kann. Wegen des + ist das bei \verb|number| nicht möglich. (Streng genommen handelt es sich hier also nicht um einen Typ für Zahleneingaben, aber da die meisten Menschen Telefonnummern als Zahlen betrachten, habe ich es in diesem Abschnitt eingruppiert.)\\
+\end{itemize}
 
-Der Name sagts schon: Damit können Nutzer eine Telefonnummer eingeben. Der Vorteil gegenüber type=number besteht darin, dass so auch eine internationale Vorwahl eingegeben werden kann. Wegen des + ist das bei number nicht möglich.\\
+Hier ein weiteres Beispiel für ein einfaches Formular:
 
+\begin{verbatim}
 <form>
 Nutzername: <input name=username required>
 E-Mail: <input type=email name=email required>
@@ -861,40 +880,51 @@ Webanwendung: <input type=url name=webpage>
 Ihr Anliegen: <textfield name=userrequest required>
 Ihre Dringlichkeit: <input type=range name=importancy min=1 max=9>
 </form>
-Quellcode 2.9: Ein einfaches Formular
+\end{verbatim}
 
-\subsubsection{Formularfelder für Datums- und Zeitangaben}
+\subsubsection{Formularfelder für Datumsangaben und Zeitpunkte}
 
-Datum\\
+Zwar setzen sich Datums- und Zeitangaben größtenteils aus Zahlen zusammen, aber bei den folgenden Typen geht es darum, sicher zu stellen, dass die Eingabe(n) von Nutzerinnen reale Zeitpunkte sind.\\
 
-Quellcode: <input type=date>\\
+\textbf{Wichtig}:\\
 
-Bei Smartphones öffnet sich in diesem Fall ein Feld, über das Nutzer ein Datum, wie z.B. ihr Geburtsdatum anwählen können.\\
+Es gibt kein Formularfeld, das Zeiträume aufnehmen kann: Sie können zwar Einen Anfangszeitpunkt und einen Endzeitpunkt als Formularfeld programmieren, aber beide werden auch in HTML5 selbst nicht als Zeitraum, sondern als zwei individuelle Zeitpunkt betrachtet, die keinen Zusammenhang haben. Bei der Auswertung z.B. in PHP müssen sie das ggf. \glqq{}korrigieren\grqq{}.
 
-Monat und Jahr\\
+\begin{itemize}
+	\item Datum\\
 
-Quellcode: <input type=month>\\
+	\textbf{Zweck}: Bei Smartphones öffnet sich in diesem Fall ein Feld, über das Nutzer ein Datum, wie z.B. ihr Geburtsdatum anwählen können.
+	
+	\textbf{Quellcode}: \verb|<input type=date>|\\
 
-Hier können Nutzer Monat und Jahr eingeben.\\
+	\item Monat und Jahr\\
 
-Monat und Jahr\\
+	\textbf{Zweck}: Hier können Nutzer Monat und Jahr eingeben.\\
+	
+	\textbf{Quellcode}: \verb|<input type=month>|\\
 
-Quellcode: <input type=week>\\
+	\item Monat und Jahr\\
 
-Hier können Nutzer Woche und Jahr eingeben.\\
+	\textbf{Zweck}: Hier können Nutzer Woche und Jahr eingeben.\\
+	
+	\textbf{Quellcode}: \verb|<input type=week>|\\
 
-Datum und Uhrzeit\\
+	\item Uhrzeit\\
+	
+	\textbf{Zweck}: Hier kann eine Uhrzeit eingegeben werden.\\
+	
+	\textbf{Quellcode}: \verb|<input type=time>|\\
 
-Quellcode: <input type=datetime-local>\\
+	\item Datum und Uhrzeit\\
 
-Zusätzlich zu type=date bietet dieser Typ noch die Angabe einer Uhrzeit an. Der Typ datetime (ohne –local) ist nicht gültig.\\
+	\textbf{Zweck}: Zusätzlich zu \verb|type=date| bietet dieser Typ noch die Angabe einer Uhrzeit an. \emph{Der Typ datetime (ohne –local) ist nicht gültig.}\\
 
-Uhrzeit\\
+	\textbf{Quellcode}: \verb|<input type=datetime-local>|\\
+\end{itemize}
 
-Quellcode: <input type=time>\\
+Weiteres Beispiel für ein einfaches Formular:
 
-Hier kann eine Uhrzeit eingegeben werden.\\
-
+\begin{verbatim}
 <form>
 Nutzername: <input name=username required>
 E-Mail: <input type=email name=email required>
@@ -904,125 +934,142 @@ Ihr Anliegen: <textfield name=userrequest required>
 Ihre Dringlichkeit: <input type=range name=importancy min=1 max=9>
 Für Anrufe teilen Sie uns bitte noch mit, wann wir Sie am besten erreichen. Von <input type=time name=callNoEarlierThan> bis <input type=time name=callNoLaterThan>.
 </form>
-Quellcode 2.10: Ein einfaches Formular
+\end{verbatim}
 
 \subsubsection{Auswahlmöglichkeiten}
 
-Die input-Typen, die Sie bis jetzt kennen gelernt haben, lassen Nutzern eine große Freiheit bei der Eingabe. Einzig das Format (z.B. bei einer Telefonnummer) muss stimmen. Sie als Entwickler können dabei keine Antwortmöglichkeiten fest vorgeben. Für ein Bestellformular bei einem Lieferservice sind diese Formularfelder deshalb nicht geeignet. Es folgen Eingabefelder, die dafür gedacht sind, dass Sie Nutzern eine Reihe an Wahlmöglichkeiten anbieten.\\
+Die input-Typen, die Sie bis jetzt kennen gelernt haben, lassen Nutzern eine große Freiheit bei der Eingabe. Einzig das Format (z.B. bei einer Telefonnummer) muss stimmen. Sie als Entwickler können dabei keine Antwortmöglichkeiten fest vorgeben. Für ein Bestellformular bei einem Lieferservice sind diese Formularfelder deshalb nicht ausreichend.\\
 
-Im Gegensatz zu den bisherigen input-Containern können Sie hier die Beschriftung einfach dadurch vornehmen, dass Sie sie innerhalb des Containers programmieren. Besser ist die Nutzung des <label>-Containers, zu dem wir im Anschluss kommen.\\
+Es folgen Eingabefelder, die dafür gedacht sind, dass Sie Nutzern eine Reihe an Wahlmöglichkeiten anbieten.\\
 
-Checkboxen:\\
+Im Gegensatz zu den bisherigen \verb|input|-Containern können Sie hier die Beschriftung einfach dadurch vornehmen, dass Sie sie innerhalb des Containers programmieren. Besser ist die Nutzung des \verb|<label>|-Containers, zu dem wir im Anschluss kommen.\\
 
-Quellcode: <input type=checkbox name=bezeichner value=wert>\\
+\begin{itemize}
+	\item Checkboxen:\\
 
-Damit programmieren Sie ein Kästchen, das von Nutzern an- oder abgewählt werden kann.
-Die Attribute name und value werden erst dann von Belang, wenn Sie ein Programm entwickeln, mit dem Sie die Nutzereingaben verwenden wollen (für den Moment können Sie das folgende also überspringen): Das Attribut name kennen Sie bereits. Wenn Sie bei einer Checkbox kein value-Attribut programmiert haben, dann wird dem Programm, das über das action-Attribut des <form> festgelegt wurde die Nachricht bezeichner=on übertragen. (Respektive der Name, den Sie programmiert haben.) Haben Sie dagegen ein Attribut value wie oben programmiert, dann wird dem Programm die Nachricht bezeichner=wert übermittelt.\\
+	\textbf{Quellcode:} \verb|<input type=checkbox name=bezeichner value=wert>|\\
 
-Wichtig (ebenfalls erst in Bezug auf Programme, die Nutzereingaben verwalten): Wenn eine Checkbox nicht angewählt wird, dann wird keine Nachricht an das Programm weitergemeldet. Das mag jetzt überflüssig klingen, aber nehmen wir an, Sie programmieren eine Liste mit solchen Checkboxen, in denen ein Nutzer angeben soll, welche Zutaten er für ein Rezept bereits zu Hause hat. \\
+	Damit programmieren Sie ein Kästchen, das von Nutzern an- oder abgewählt werden kann.\\
+	Die Attribute \verb|name| und \verb|value| werden erst dann von Belang, wenn Sie ein Programm entwickeln, mit dem Sie die Nutzereingaben verwenden wollen (für den Moment können Sie das folgende also überspringen): 
+	
+	\begin{itemize}
+		\item Das Attribut \verb|name| kennen Sie bereits. 
+		\item Wenn Sie bei einer Checkbox kein \verb|value|-Attribut programmiert haben, dann wird dem Programm, das über das \verb|action|-Attribut des \verb|<form>| festgelegt wurde die Nachricht \verb|bezeichner=on| übertragen. (Respektive der Name, den Sie programmiert haben.)
+		\item Haben Sie dagegen ein Attribut \verb|value| wie oben programmiert, dann wird dem Programm die Nachricht \verb|bezeichner=wert| übermittelt.\\
+	\end{itemize}
+	
+	Wichtig (ebenfalls erst in Bezug auf Programme, die Nutzereingaben verwalten):\\
+	
+	Wenn eine Checkbox nicht angewählt wird, dann wird keine Nachricht an das Programm weitergemeldet. Das mag jetzt überflüssig klingen, aber nehmen wir an, Sie programmieren eine Liste mit solchen Checkboxen, in denen ein Nutzer angeben soll, welche Zutaten er für ein Rezept bereits zu Hause hat. In diesem Fall würden Sie wahrscheinlich das folgende im Programm festlegen: Computer, erstelle eine Einkaufsliste all der Zutaten, die der Nutzer noch nicht hat. Da das Programm aber nur diejenigen Zutaten übermittelt bekommt, die der Nutzer schon hat, funktioniert das so nicht: Es weiß ja gar nicht, welche Zutaten der Nutzer noch nicht hat.\\
 
-Dann würden Sie wahrscheinlich das folgende im Programm festlegen: Computer, erstelle eine Einkaufsliste all der Zutaten, die der Nutzer noch nicht hat. Da das Programm aber nur diejenigen Zutaten übermittelt bekommt, die der Nutzer schon hat, funktioniert das so nicht.\\
+	Deshalb sollten Sie keinesfalls Checkboxen programmieren, bei denen es für die weitere Nutzung wichtig ist, dass eine Meldung an das Programm übertragen wird, wonach sie deaktiviert wurde.\\
 
-Deshalb sollten Sie keinesfalls Checkboxen programmieren, bei denen es für die weitere Nutzung wichtig ist, dass eine Meldung an das Programm übertragen wird, wonach sie deaktiviert wurde.\\
+	\item Radio Buttons:\\
 
-Radio Buttons:\\
+	\textbf{Quellcode}: \verb|<input type=radio name=bezeichner value=wert>|\\
 
-Quellcode: <input type=radio name=bezeichner value=wert>\\
+\end{itemize}
 
-Radio Buttons und Checkboxen (nachfolgender type) verwirren Einsteiger häufig, weil der Unterschied zunächst nicht klar ist. Dabei ist er recht simpel: \\
+Checkboxen und Radio Buttons verwirren Einsteiger häufig, weil der Unterschied zunächst nicht klar ist. Dabei ist er recht simpel: \\
 
--	Checkboxen sind für die Fälle gedacht, in denen Nutzer beliebig viele Optionen anwählen dürfen. (Denken Sie an einen Bestellservice, bei dem Nutzer beliebig viele Beilagen zu einem Gericht auswählen können.)
+\begin{itemize}
+	\item Checkboxen sind für die Fälle gedacht, in denen Nutzer beliebig viele Optionen anwählen dürfen.\\
+	(Denken Sie an einen Bestellservice, bei dem Nutzer beliebig viele Beilagen zu einem Gericht auswählen können.)
+	\item Radio Buttons sind dafür gedacht, dass Nutzer sich für eine von vielen Optionen entscheiden müssen.\\
+	(Denken Sie hier an ein Reisebüro, bei dem Nutzer sich zwischen erster und zweiter Klasse entscheiden müssen.)
+\end{itemize}
 
--	Radio Buttons sind dafür gedacht, dass Nutzer sich für eine von vielen Optionen entscheiden müssen. (Denken Sie hier an ein Reisebüro, bei dem Nutzer sich zwischen erster und zweiter Klasse entscheiden müssen.)
+Beispiel für einfaches Formular mit Auswahlmöglichkeiten zum An-/Abwählen:
 
-<form>
-Wählen Sie bitte Ihre Beilage:
-<input type=radio name=reis value=reis>Reis
-<input type=radio name=fries value=fries>Pommes Frites
-<input type=radio name=potatoes value=potatoes>Kartoffeln
-<form>
-Quellcode 2.11: Einfache Auswahlmöglichkeiten
+\begin{verbatim}
+	<form>
+	Wählen Sie bitte Ihre Beilage:
+	<input type=radio name=reis value=reis>Reis
+	<input type=radio name=fries value=fries>Pommes Frites
+	<input type=radio name=potatoes value=potatoes>Kartoffeln
+	<form>
+\end{verbatim}
 
-Drop-Down-Liste\\
+Die folgenden Eingabetypen sind Alternativen zu Radio Buttons und Checkboxen: Im Gegensatz zu diesen beiden wird bei den folgenden jeweils eine Menüleiste eingeblendet, aus der NutzerInnen Einträge auswählen können. Ein Sonderfall ist die Farbpalette, aus der NutzerInnen eine Farbe auswählen können.
 
-Quellcode: <select><option>Beschriftung</option><option>...</select>\\
+\begin{itemize}
+	\item Drop-Down-Liste\\
 
-Über den <select>-Container legen Sie fest, dass eine Drop-Down-Liste angezeigt werden sollen. Für jeden Eintrag müssen Sie einen <option>-Container innerhalb des <select>-Containerns programmieren. Damit Nutzer einen Eintrag angezeigt bekommen, müssen Sie bei jedem <option>-Container einen Text als Inhalt programmieren.\\
+	\textbf{Zweck}: Genau wie Radio-Buttons beschränken Drop-Down-Menüs NutzerInnen darauf, eines von mehreren Angeboten auszuwählen. Der Unterschied besteht darin, dass die Auswahlmöglichkeiten mittels Radio-Buttons vollständig angezeigt werden, während die Optionen (deshalb der Name) einer Drop-Down-Liste nur dann angezeigt werden, wenn Nutzer die Liste angewählt haben.\\
+	
+	\textbf{Quellcode}: \verb|<select><option>Beschriftung</option><option>...</select>|\\
 
-Genau wie Radio-Buttons beschränken Drop-Down-Menüs den Nutzer darauf ein Angebot von mehreren auszuwählen. Der Unterschied besteht darin, dass die Auswahlmöglichkeiten mittels Radio-Buttons vollständig angezeigt werden, während die Optionen (deshalb der Name) einer Drop-Down-Liste nur dann angezeigt werden, wenn Nutzer die Liste angewählt haben.\\
+	Über den \verb|<select>|\index{HTML!Container!select}-Container legen Sie fest, dass eine Drop-Down-Liste angezeigt werden sollen. Für jeden Eintrag müssen Sie einen \verb|<option>|\index{HTML!Container!option}-Container innerhalb des \verb|<select>|-Containerns programmieren. Damit Nutzer einen Eintrag angezeigt bekommen, müssen Sie bei jedem \verb|<option>|-Container einen Text als Inhalt programmieren.\\
 
-Wenn Sie innerhalb eines Drop-Down-Menüs einzelne <option>-Container in einem unter-Drop-Down-Menü versammeln wollen, können Sie dafür den <optgroup>-Container verwenden. Einziger Unterschied gegenüber <option>-Containern ist, dass Nutzer durch das Anwählen des <optgroup>-Containers noch keine Option anwählen. Dieser hat also keinen value, sondern sein Name wird über das label-Attribut definiert.\\
+	Wenn Sie innerhalb eines Drop-Down-Menüs einzelne \verb|<option>|-Container in einem unter-Drop-Down-Menü versammeln wollen, können Sie dafür den \verb|<optgroup>|\index{HTML!Container!optgroup}-Container verwenden. Einziger Unterschied gegenüber \verb|<option>|-Containern ist, dass Nutzer durch das Anwählen des \verb|<optgroup>|-Containers noch keine Option anwählen. Dieser hat also keinen \verb|value|, sondern sein Name wird über das \verb|label|-Attribut definiert.\\
 
-Wenn Sie eine <optgroup> als nicht anwählbar markieren wollen (z.B. weil der Inhalt noch nicht programmiert ist, dann benutzen Sie dafür das Attribut disabled.\\
+	Wenn Sie eine \verb|<optgroup>| als nicht anwählbar markieren wollen (z.B. weil der Inhalt noch nicht programmiert ist, dann benutzen Sie dafür das Attribut \verb|disabled|\index{HTML!Attribut!disabled}.\\
 
-Datalist\\
+	\item Datalist\\
 
-Quellcode: <datalist><option><option>...</datalist>\\
+	\textbf{Quellcode}: \verb|<datalist><option><option>...</datalist>|\\
 
-Eine Datalist sieht zunächst wie ein Textfeld aus, aber über die option-Container erhalten Nutzer gültige Werte angezeigt. Im Gegensatz zur Drop-Down-Liste sind die <option>-Container mit dem value-Attribut vollständig, es gibt hier also keinen zusätzlichen Container-Inhalt.\\
+	Eine Datalist sieht zunächst wie ein Textfeld aus, aber über die option-Container erhalten Nutzer gültige Werte angezeigt. Im Gegensatz zur Drop-Down-Liste sind die \verb|<option>|-Container mit dem \verb|value|-Attribut vollständig, es gibt hier also keinen zusätzlichen Container-Inhalt.\\
 
-Farbauswahl:\\
+	\item Farbauswahl:\\
 
-Quellcode: <input type=color>\\
+	\textbf{Quellcode}: \verb|<input type=color>|\\
 
-Damit ermöglichen Sie es Nutzern, eine Farbe aus einer Palette auszuwählen. Das könnte beispielsweise nützlich sein, wenn Spieler eine Farbe für Ihre Spielfiguren auswählen sollen. Wie gewohnt nutzen Sie hier das name-Attribut, um die Eingabe an ein Programm zu übergeben. 
+	Damit ermöglichen Sie es Nutzern, eine Farbe aus einer Palette auszuwählen. Das könnte beispielsweise nützlich sein, wenn Spieler eine Farbe für Ihre Spielfiguren auswählen sollen. Wie gewohnt nutzen Sie hier das \verb|name|-Attribut, um die Eingabe an ein Programm zu übergeben. 
+\end{itemize}
+
 
 \subsubsection{Schalter}
 
-Neben den folgenden input types gibt es noch die <button>-Container, mit denen Sie dieselben Funktionen realisieren können.\\
+Neben den folgenden input types gibt es noch die \verb|<button>|-Container, mit denen Sie dieselben Funktionen realisieren können. Hier lautet meine Empfehlung allerdings, keine \verb|<button>|-Container zu nutzen: Wenn alle Eingabemöglichkeiten als \verb|<input>|-Container programmiert werden, ist es leichter, alle Eingabemöglichkeiten im Code zu finden. (Für den Leistungsnachweis \glqq{}Projekt 1\grqq{} ist die Nutzung von \verb|<button>| deshalb untersagt.\\
 
-Schalter mit Beschriftung\\
+\begin{itemize}
+	\item Schalter mit Beschriftung\\
+	
+	Zweck: Damit programmieren Sie einen Schalter, über den eine Funktion des Programms aufgerufen wird, das über das \verb|action|-Attribut des \verb|<form>|-Containers festgelegt wurde. Der Name dieser Funktion wird dem Attribut \verb|onclick| zugeordnet. Was Funktionen sind und wie Sie sie mithilfe des \verb|onclick|-Attributs nutzen können erfahren Sie im Kapitel zur Programmierung in PHP.\\
 
-Quellcode: <input type=button value=“Beschriftung auf der Schaltfläche“ onclick=function()>\\
-
-Damit programmieren Sie einen Schalter, über den eine Funktion des Programms aufgerufen wird, das über das action-Attribut des <form>-Containers festgelegt wurde. Der Name dieser Funktion wird dem Attribut onclick zugeordnet. Was Funktionen sind und wie Sie sie mithilfe des onclick-Attributs nutzen können erfahren Sie im Kapitel ... .\\
-
-Schalter mit Bild\\
-
-Quellcode: <input type=image src=“URL eines Bildes“ onclick=...>\\
-
-Bei dieser Variante programmieren Sie einen Button, der keinen Text, sondern ein Bild enthält.\\
-
-Wichtig: Da ein Button wieder deaktiviert wird, wenn Nutzer den Mausbutton loslassen, macht die Programmierung eines name- und/oder eines value-Attributs hier keinen Sinn. Vielmehr dienen Buttons dazu, dass Nutzer damit bestätigen, dass sie die Eingaben tatsächlich abschicken wollen. Für Sie als EntwicklerIn bedeutet dass, dass die Variablen an das Programm übertragen werden, das über das action-Attribut des <form>-Containers festgelegt wurde.\\
-
-Reset-Schalter\\
-
-Quellcode: <input type=reset>\\
-
-Mit diesem Schalter können Nutzer alle Eingaben löschen.\\
-
-Absende-Schalter\\
-
-Quellcoe: <input type=submit>\\
-
-Mit diesem Schalter übergeben Nutzer die Daten zur weiteren Verwendung durch Ihre Webanwendung.\\
-
-Im Gegensatz zu type=button und type=image rufen Sie hier also keine bestimmte Funktion des Programms auf, sondern durch einen Klick auf diesen Schalter werden sämtliche Eingaben des Nutzers an das Programm übergeben.\\
-
-Wichtig: Sie brauchen keine zusätzliche Beschriftung zu programmieren. Das übernimmt der Browser für Sie.\\
-
-Beachten Sie dabei bitte, dass es hier nur um die Eingaben innerhalb eines Formulars geht. Wenn Sie innerhalb eines HTML-Dokuments mehrere <form>-Container programmiert haben, benötigen Sie für jeden dieser Container einen type=submit. Denn durch diesen werden ausschließlich diejenigen Daten weitergeleitet, die sich im selben <form>-Container befinden.
-
-\subsubsection{Dateien hochladen}
-
-Quellcode: <input type=file>\\
-
-Dadurch wird ein Bereich auf der Webanwendung angezeigt, über den ein Nutzer die Möglichkeit bekommen kann, Dateien auf seinem Rechner auszuwählen, die dann auf den Server hochgeladen werden können.\\
-
-Wichtig: Bitte vergessen Sie nicht, dass Sie in HTML nur programmieren, dass Nutzer eine solche Eingabemöglichkeit erhalten sollen. Die tatsächliche Übertragung der Datei auf den Server wird hier noch nicht realisiert. Das ist Teil der Programmierung eines Servers. Und um die kümmern wir uns im Rahmen der HTML-Programmierung wie besprochen nicht.
+	\textbf{Quellcode}: \verb|<input type=button value="Beschriftung auf der Schaltfläche" onclick=function()>|\\
+		
+	\item Schalter mit Bild\\
+	
+	\textbf{Zweck}: Bei dieser Variante programmieren Sie einen Button, der keinen Text, sondern ein Bild enthält.\\
+	
+	\textbf{Quellcode}: \verb|<input type=image src="URL eines Bildes" onclick=...>|\\
+	
+	\textbf{Wichtig}: Da ein Button wieder deaktiviert wird, wenn Nutzer den Mausbutton loslassen, macht die Programmierung eines \verb|name|- und/oder eines \verb|value|-Attributs hier keinen Sinn. Vielmehr dienen Buttons dazu, dass Nutzer damit bestätigen, dass sie die Eingaben tatsächlich abschicken wollen. Für Sie als EntwicklerIn bedeutet dass, dass die Variablen an das Programm übertragen werden, das über das \verb|action|-Attribut des \verb|<form>|-Containers festgelegt wurde.\\
+	
+	\item Reset-Schalter\\
+	
+	\textbf{Zweck}: Mit diesem Schalter können Nutzer alle Eingaben löschen.\\
+	
+	\textbf{Quellcode}: \verb|<input type=reset>|\\
+	
+	\item Absende-Schalter\\
+	
+	\textbf{Zweck}: Mit diesem Schalter übergeben Nutzer die Daten zur weiteren Verwendung durch Ihre Webanwendung.\\
+	
+	\textbf{Quellcode}: \verb|<input type=submit>|\\
+	
+	Im Gegensatz zu \verb|type=button| und \verb|type=image| rufen Sie hier also keine bestimmte Funktion des Programms auf, sondern durch einen Klick auf diesen Schalter werden sämtliche Eingaben des Nutzers an das Programm übergeben.\\
+	
+	Wichtig: Sie brauchen keine zusätzliche Beschriftung zu programmieren. Das übernimmt der Browser für Sie.\\
+	
+	Beachten Sie dabei bitte, dass es hier nur um die Eingaben innerhalb eines Formulars geht. Wenn Sie innerhalb eines HTML-Dokuments mehrere \verb|<form>|-Container programmiert haben, benötigen Sie für jeden dieser Container einen \verb|type=submit|. Denn durch diesen werden ausschließlich diejenigen Daten weitergeleitet, die sich im selben \verb|<form>|-Container befinden.
+\end{itemize}
 
 \subsection{Container für die Gruppierung und Zuordnung von Eingabeelementen}
 
-Um mehrere Elemente zu gruppieren müssen diese lediglich in einem <fieldset>-Container zusammengefasst und durch einen <br />Container getrennt werden. <br>-Container sind Container ohne Inhalt, die einen Zeilenumbruch bewirken. In HTML5 kann der / deshalb auch weggelassen werden. Vor HTML5 waren sie generell sehr wichtig, da sie für die Gestaltung von Belang waren. Aber da das jetzt in CSS geregelt wird, brauchen Sie sie nur noch in seltenen Fällen wie eben der Zeilentrennung innerhalb eines <fieldset>.\\
+Um mehrere Elemente zu gruppieren müssen diese lediglich in einem \verb|<fieldset>|\index{HTML!Container!fieldset}-Container zusammengefasst und durch einen \verb|<br />|-Container getrennt werden. \verb|<br>|-Container sind Container ohne Inhalt, die einen Zeilenumbruch bewirken. In HTML5 kann der \verb|/| deshalb auch weggelassen werden. Vor HTML5 waren sie generell sehr wichtig, da sie für die Gestaltung von Belang waren. Aber da das jetzt in CSS geregelt wird, brauchen Sie sie nur noch in seltenen Fällen wie eben der Zeilentrennung innerhalb eines \verb|<fieldset>|.\\
 
-Eine Überschrift für ein <fieldset> programmieren Sie nicht mit einem <h...>-Container, sondern mit einem <legend>-Container, der im Gegensatz zu den <h...>-Containern keine Ziffer enthält: Er „heißt“ immer <legend>. Ansonsten gibt es keine Unterschiede zwischen den beiden.\\
+Eine Überschrift für ein \verb|<fieldset>| programmieren Sie nicht mit einem \verb|<h...>|-Container, sondern mit einem \verb|<legend>|\index{HTML!Container!legend}-Container, der im Gegensatz zu den \verb|<h...>|-Containern keine Ziffer enthält: Er \glqq{}heißt\grqq{} immer \verb|<legend>|, nicht legend1, legend2, legend3 usw.. Ansonsten gibt es keine Unterschiede zwischen den beiden.\\
 
-Ein weiterer Container, den Sie benötigen, um Formulare zu programmieren ist der <label>-Container. Dieser erzeugt keinen sichtbaren Unterschied, aber er ist wichtig, damit ein Webbrowser z.B. erkennen kann, dass ein Text, der neben einem input-Container steht als Beschriftung für dieses Eingabefeld gedacht ist. Das wirkt sich ggf. auf die Anzeige aus.\\
+Ein weiterer Container, den Sie benötigen, um Formulare zu programmieren ist der \verb|<label>|-Container. Dieser erzeugt keinen sichtbaren Unterschied, aber er ist wichtig, damit ein Webbrowser z.B. erkennen kann, dass ein Text, der neben einem \verb|<input>|-Container steht als Beschriftung für dieses Eingabefeld gedacht ist. Das wirkt sich ggf. auf die Anzeige aus.\\
 
-An dieser Stelle ist das id-Attribut des Containers wichtig, auf den das Label sich beziehen soll. Denn der Label-Container hat an sich noch keine Bindung zu einem anderen Container. Er bekommt die erst, indem das for-Attribut genutzt wird: Dieses bekommt als Wert den Wert des id-Attributs desjenigen Containers, auf den das Label sich beziehen soll.\\
+An dieser Stelle ist das \verb|id|-Attribut des Containers wichtig, auf den das Label sich beziehen soll. Denn der \verb|<label>|-Container hat an sich noch keine Bindung zu einem anderen Container. Er bekommt die erst, indem das \verb|for|-Attribut genutzt wird: Dieses bekommt als Wert den Wert des \verb|id|-Attributs desjenigen Containers, auf den das Label sich beziehen soll.\\
 
 Hier wäre dann ein typisches Formular, wie Sie es für Nutzerregistrierungen verwenden können:\\
 
+\begin{verbatim}
 <form>
 <fieldset>
 <legend>Bitte geben Sie Ihre persönlichen Daten ein:</legend>
@@ -1040,11 +1087,11 @@ Hier wäre dann ein typisches Formular, wie Sie es für Nutzerregistrierungen ve
 </fieldset>
 <input type=submit>
 </form>          
-Quellcode 2.12: Registrierungsformular
+\end{verbatim}
 
 \subsection{Zusammenfassung}
 
-Es gibt in HTML5 deutlich mehr Formularfelder als bei 4.01. Der Grund ist recht einfach: Die neuen Felder prüfen (bis auf type=text, type=button und ähnliche), ob die Nutzereingabe valide ist. Die Eingabe einer Telefonnummer im Feld für die Eingabe der Mailadresse ist damit ausgeschlossen. Auch unsinnige Eingaben wie der 99. März sind damit unmöglich. Bei HTML4.01 hätten Sie dazu noch umfangreichen Code in PHP bzw. JavaScript programmieren müssen.
+Es gibt in HTML5 deutlich mehr Formularfelder als bei 4.01. Der Grund ist recht einfach: Die neuen Felder prüfen (bis auf \verb|type=text|, \verb|type=button| und ähnliche), ob die Nutzereingabe valide ist. Die Eingabe einer Telefonnummer im Feld für die Eingabe der Mailadresse ist damit ausgeschlossen. Auch unsinnige Eingaben wie der 99. März sind damit unmöglich. Bei HTML4.01 hätten Sie dazu noch umfangreichen Code in PHP bzw. JavaScript programmieren müssen.
 
 \section{Multimediale Inhalte einfügen}
 
