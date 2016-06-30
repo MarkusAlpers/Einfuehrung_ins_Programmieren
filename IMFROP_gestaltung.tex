@@ -1,115 +1,182 @@
-\chapter{6.	Programmierung der Gestaltung einer Webpage mittels CSS}
-\section{6.1.	Einbindung von CSS in HTML}
-\section{6.2.	Programmierung einer CSS-Datei}
-\section{6.3.	Programmierung von Formatierungen}
-\subsection{6.3.1.	Mehr über Farben}
-\subsection{6.3.2.	Zwei weitere Properties in Bezug auf Farben}
-\section{6.4.	Ein wenig Form}
-\section{6.5.	Definition von CSS für einzelne Container eines Typs}
-\section{6.6.	Mehr zu CSS}
-Leider beginnt dieses Kapitel mit einer Enttäuschung für all diejenigen, die dachten, jetzt käme der spannende Teil. Denn da dieses Skript für Studierenden mit den Schwerpunkten Informatik bzw. Elektrotechnik im Medienumfeld entworfen wurde, erhalten Sie hier lediglich einen grundlegenden Einblick darin, wie Sie die Elemente in HTML5 gruppieren können. Der Grund ist einfach und wurde auch schon mehrfach aufgeführt: Gestaltung ist die Aufgabe von Designern. Wir gehen deshalb auch nicht auf die Besonderheiten von CSS (bzw. der aktuellen Version CSS3) ein.
-Die in diesem Kapitel besprochenen Aspekte werden im Sinne des MVC als View bezeichnet.
-Wichtig: Bevor Sie mit diesem Kapitel beginnen sollten Sie eine Webpage programmiert haben, in der Sie eine Vielzahl der HTML-Container einprogrammiert haben, die Sie im letzten Kapitel kennen gelernt haben. Denn die Aufgaben in diesem Kapitel setzen eine solche Seite voraus.
-6.1.	Einbindung von CSS in HTML
-Sie haben zwei Möglichkeiten, um CSS-Code in einem HTML-Dokument zu verwenden. Zum einen können Sie CSS-Code in Anführungszeichen setzen und ihn dann als Wert dem style-Attribut eines beliebigen Containers übergeben. Dieses Verfahren hat allerdings einen massiven Nachteil: Wenn Sie bei einer umfangreichen Webpage so vorgehen, wird es selbst bei kleinen Änderungen sehr mühsam, diese überall zu programmieren. Außerdem wird Ihr Layout so kaum einheitlich.
-Deshalb sollten Sie besser die zweite Variante wählen. Hier programmieren Sie den CSS-Code in einer oder mehreren eigenen Datei/en und binden diese mit folgender Zeile in Ihr HTML-Dokument ein, die Sie in den <head>-Container der HTML-Dokumente programmieren:
-<link rel=stylesheet href=style.css>
-Die Datei kann natürlich auch anders als style.css heißen, wichtig ist nur, dass die Endung .css ist. Außerdem gilt in Bezug auf die URL dasselbe, was Sie schon im letzten Kapitel über relative und absolute Adressierung gelernt haben.
-6.2.	Programmierung einer CSS-Datei
-Im Gegensatz zu einem HTML-Dokument besteht eine CSS-Datei lediglich aus den Namen von Containern eines HTML-Dokuments und jeweils einem Rumpf, in dem die Formatierungsvorgaben einprogrammiert werden.
-Wenn Sie CSS wie oben beschrieben innerhalb eines HTML-Dokuments über das style-Attribut programmieren, dann stehen in den Anführungszeichen genau die Formatierungsvorgaben, die im Rumpf bei der CSS-Datei stehen.
-Nehmen wir an, Sie wollen eine Formatierungsvorschrift für alle <h1>-Container einzelner HTML-Dokumente festlegen, haben sich aber noch auf keine Formatierungsvorschrift festgelegt. Dann sieht Ihre CSS-Datei so aus:
+\chapter{Gestaltung mit CSS}
+
+Leider beginnt dieses Kapitel mit einer Enttäuschung für all diejenigen, die dachten, jetzt käme der spannende Teil. Denn da dieses Skript für Studierenden mit den Schwerpunkten Informatik bzw. Elektrotechnik im Medienumfeld entworfen wurde, erhalten Sie hier lediglich einen grundlegenden Einblick darin, wie Sie die Elemente in HTML5 gruppieren können. Der Grund ist einfach und wurde auch schon mehrfach aufgeführt: Gestaltung ist die Aufgabe von Designern. Wir gehen deshalb auch nicht auf die Besonderheiten von CSS (bzw. der aktuellen Version CSS3) ein.\\
+
+Die in diesem Kapitel besprochenen Aspekte werden im Sinne des MVC als View bezeichnet.\\
+
+Wichtig: Bevor Sie mit diesem Kapitel beginnen sollten Sie eine Webpage programmiert haben, in der Sie eine Vielzahl der HTML-Container einprogrammiert haben, die Sie im vorletzten Kapitel kennen gelernt haben. Denn die Aufgaben in diesem Kapitel setzen eine solche Seite voraus.
+
+\section{Einbindung von CSS in HTML}
+
+Sie haben zwei Möglichkeiten, um CSS-Code in einem HTML-Dokument zu verwenden. Zum einen können Sie CSS-Code in Anführungszeichen setzen und ihn dann als Wert dem style-Attribut eines beliebigen Containers übergeben. Dieses Verfahren hat allerdings einen massiven Nachteil: Wenn Sie bei einer umfangreichen Webpage so vorgehen, wird es selbst bei kleinen Änderungen sehr mühsam, diese überall zu programmieren. Außerdem wird Ihr Layout so kaum einheitlich.\\
+
+Deshalb sollten Sie besser die zweite Variante wählen. Hier programmieren Sie den CSS-Code in einer oder mehreren eigenen Datei/en und binden diese mit folgender Zeile in Ihr HTML-Dokument ein, die Sie in den \verb|<head>|-Container der HTML-Dokumente programmieren:\\
+
+\verb|<link rel=stylesheet href=style.css>|\\
+
+Die Datei kann natürlich auch anders als \verb|style.css| heißen, wichtig ist nur, dass die Endung \verb|.css| ist. Außerdem gilt in Bezug auf die URL dasselbe, was Sie schon im letzten Kapitel über relative und absolute Adressierung gelernt haben.
+
+\section{Programmierung einer CSS-Datei}
+
+Im Gegensatz zu einem HTML-Dokument besteht eine CSS-Datei lediglich aus den Namen von Containern eines HTML-Dokuments und jeweils einem Rumpf, in dem die Formatierungsvorgaben einprogrammiert werden.\\
+
+Wenn Sie CSS wie oben beschrieben innerhalb eines HTML-Dokuments über das style-Attribut programmieren, dann stehen in den Anführungs-zeichen genau die Formatierungsvorgaben, die im Rumpf bei der CSS-Datei stehen.\\
+
+Nehmen wir an, Sie wollen eine Formatierungsvorschrift für alle \verb|<h1>|-Container einzelner HTML-Dokumente festlegen, haben sich aber noch auf keine Formatierungsvorschrift festgelegt. Dann sieht Ihre CSS-Datei so aus:
+\begin{verbatim}
 h1 {
-	
+
 }
-Quellcode 3.1: CSS-Rumpf für den <h1>-Container
-In Dokumentationen über CSS werden Sie des Öfteren auf den Begriff des Selektors stoßen. Der Selektor ist in CSS schlicht der Bezeichner des Containers, den Sie formatieren wollen.
-Damit wissen Sie jetzt ungefähr 50% dessen, was Sie im Rahmen dieses Kurses für die Programmierung von CSS wissen müssen. Alles was Sie noch lernen müssen ist wie Sie den sogenannten Properties Werte zuordnen müssen, um die Gestaltung der Container festzulegen und was es mit dem . (Punkt) und # vor Selektoren in CSS auf sich hat.
-6.3.	Programmierung von Formatierungen
+\end{verbatim}
+Quellcode 3.1: CSS-Rumpf für Designdefinitionen für den \verb|<h1>|-Container
+
+In Dokumentationen über CSS werden Sie des Öfteren auf den Begriff des Selektors stoßen. Der Selektor ist in CSS schlicht der Bezeichner des Containers, den Sie formatieren wollen.\\
+
+Damit wissen Sie jetzt ungefähr 50\% dessen, was Sie im Rahmen dieses Kurses für die Programmierung von CSS wissen müssen. Alles was Sie noch lernen müssen ist wie Sie den sogenannten Properties Werte zuordnen müssen, um die Gestaltung der Container festzulegen und was es mit dem \verb|.| (Punkt) und \verb|#| vor Selektoren in CSS auf sich hat.
+
+\section{Programmierung von Formatierungen}
+
 Schauen wir uns an, was wir nun in den Rumpf programmieren. Sie kennen ja die Attribute aus HTML. Bei denen konnte ein Wert mit einem Gleichzeichen zugeordnet werden. Bei CSS gibt es dazu zwei Unterschiede: Hier reden wir nicht von Attributen sondern von Properties und die Zuordnung eines Wertes wird durch einen Doppelpunkts und nicht durch ein Gleichzeichen durchgeführt. Die Fortgeschrittenen unter Ihnen haben den Begriff Property schon im Zusammenhang mit Objekten im Sinne der objektorientierten Programmierung gehört. CSS hat nichts mit objektorientierter Programmierung zu tun und deshalb reden wir hier nicht von Objekten, sondern von Elementen, deren Eigenschaften (also Properties) wir ändern.
-Und welche Eigenschaft können wir fast überall ändern? Genau: Die Schriftfarbe. Und wie machen wir das? Wir nehmen die Eigenschaft Schriftfarbe, die naheliegender Weise color heißt und ordnen Ihr einen Wert zu. Fangen wir mit so etwas profanem wie rot an. Wenn Sie also wollen, dass alle Überschriften in einem schreienden Rot angezeigt werden, müssen Sie nur das folgende in Ihre CSS-Datei programmieren: 
+
+Und welche Eigenschaft können wir fast überall ändern? Genau: Die Schriftfarbe. Und wie machen wir das? Wir nehmen die Eigenschaft Schriftfarbe, die naheliegender Weise \verb|color| heißt und ordnen Ihr einen Wert zu. Fangen wir mit so etwas profanem wie rot an. Wenn Sie also wollen, dass alle Überschriften in einem schreienden Rot angezeigt werden, müssen Sie nur das folgende in Ihre CSS-Datei programmieren: 
+
+\begin{verbatim}
 h1 {
 	color : red;
 }
-Quellcode 3.2: Rote Überschrift
+\end{verbatim}
+Quellcode 3.2: Rote Überschrift\\
+
 Wenn Sie die CSS-Datei wie oben beschrieben in Ihr HTML-Dokument eingebunden haben und Sie im gleichen Verzeichnis gespeichert haben wie das HTML-Dokument, dann müssen sie nur noch den Browser aktualisieren (z.B. per F5 beim Firefox) und schon werden alle Überschriften in rot angezeigt. Und wenn Sie sonst nichts in der CSS-Datei geändert haben, dann ändert sich auch sonst nichts.
-6.3.1.	Mehr über Farben
-Anstelle von vielen englischen Wörtern für Farben, können Sie auch noch präzise Farbangaben zum Beispiel in der RGB-Notation programmieren.
+
+\subsection{Mehr über Farben}
+
+Anstelle von vielen englischen Wörtern für Farben, können Sie auch noch präzise Farbangaben zum Beispiel in der RGB-Notation programmieren.\\
+
 An dieser Stelle werden wir Themen wie RGB u.a. nicht ausführliche behandeln. Hier werden Sie nur erfahren, wie Sie diese Farbangaben in einem CSS-Dokument einprogrammieren können:
--	RGB-Farben: Diese Farbangaben bestehen aus drei Zahlen, jeweils von 0 bis 255 (oder von 0 bis FF als Hexadezimalzahl). Um sie in CSS zu programmieren, können sie auch als Hexadezimalwerte vorliegen.
+\begin{itemize}
+	\item RGB-Farben: Diese Farbangaben bestehen aus drei Zahlen, jeweils von 0 bis 255 (oder von 0 bis FF als Hexadezimalzahl). Um sie in CSS zu programmieren, können sie auch als Hexadezimalwerte vorliegen.
 
-•	Variante a: Die Zahlen liegen als Hexadezimalzahlen vor. Nehmen wir an, es sind die Zahlen 1F, 9, 27. Dann lautet die Formatierungsvorschrift in CSS: 
-color : \#1f0927;
-Sie schreiben also zunächst ein \#-Symbol, um zu zeigen, dass ein RGB-Wert in Hexadezimalzahlen folgt. Danach folgen die drei Zahlen ohne Leerstelle, wobei Sie für jede einstellige Zahl (wie hier die 9) noch eine führende Null ergänzen müssen.
+	\begin{itemize}
+		\item Variante a: Die Zahlen liegen als Hexadezimalzahlen vor. Nehmen wir an, es sind die Zahlen 1F, 9, 27. Dann lautet die Formatierungsvorschrift in CSS:\\
+		color : \verb|#1f0927;|
+		Sie schreiben also zunächst ein \verb|#|-Symbol, um zu zeigen, dass ein RGB-Wert in Hexadezimalzahlen folgt. Danach folgen die drei Zahlen ohne Leerstelle, wobei Sie für jede einstellige Zahl (wie hier die 9) noch eine führende Null ergänzen müssen.
+		
+		Wenn Sie jetzt denken: Da stehen aber sechs Zahlen und nicht drei, dann verwechseln Sie Zahlen mit Ziffern.
+		
+		\item Variante b: Die Zahlen liegen als Dezimalzahlen vor. Nehmen wir an, es sind die Zahlen 128, 92, 7. Dann lautet die Anweisung:\\
+		\verb|color: rgb(128, 92, 7);|
+	\end{itemize}
+	\item Es gibt außerdem Fälle, in denen der Alpha-Wert (Opacity) der Farbe angegben ist. Das ist ein Wert von 0 bis 1, der die Transparenz definiert. Nehmen wir an, Alpha wäre bei 0.3 und die Farbe ist die selbe wie bei Variante b. Dann lautet die Anweisung:
 
-•	Variante b: Die Zahlen liegen als Dezimalzahlen vor. Nehmen wir an, es sind die Zahlen 128, 92, 7. Dann lautet die Anweisung:
-color: rgb(128, 92, 7);
+	\verb|color: rgba(128, 92, 7, 0.3);|
 
--	Es gibt außerdem Fälle, in denen der Alpha-Wert (Opacity) der Farbe angegben ist. Das ist ein Wert von 0 bis 1, der die Transparenz definiert. Nehmen wir an, Alpha wäre bei 0.3 und die Farbe ist die selbe wie bei Variante b. Dann lautet die Anweisung:
-color: rgba(128, 92, 7, 0.3);
+	Das ist eine Kurzfassung der folgenden Anweisung:
+	
+	\verb|color : rgb(128, 92, 7); opacity(0.3); |
+\end{itemize}
 
-Das ist eine Kurzfassung der folgenden Anweisung:
-color : rgb(128, 92, 7); opacity(0.3); 
-Ist es Ihnen aufgefallen? Bei der letzten Anweisung wurde zweimal ein Semikolon gesetzt, um jeweils eine Formatierung zu beenden, obwohl beide für die Property color gelten. Das ist sehr wichtig: Sie können einer Property mehrere Formatierungen zuordnen, aber jede einzelne muss durch ein Semikolon beendet werden.
-Außerdem wird hier die englische Schreibweise für die Dezimaltrennung verwendet: Dort verwenden Sie kein Komma, sondern einen Punkt, um zwischen ganzen Zahlen und „Nachkommastellen“ zu trennen.
+Ist es Ihnen aufgefallen? Bei der letzten Anweisung wurde zweimal ein Semikolon gesetzt, um jeweils eine Formatierung zu beenden, obwohl beide für die Property \verb|color| gelten. Das ist sehr wichtig: Sie können einer Property mehrere Formatierungen zuordnen, aber jede einzelne muss durch ein Semikolon beendet werden.\\
+
+Außerdem wird hier die englische Schreibweise für die Dezimaltrennung verwendet: Dort verwenden Sie kein Komma, sondern einen Punkt, um zwischen ganzen Zahlen und \glqq{}Nachkommastellen\grqq{} zu trennen.\\
+
 Für den Fall, dass Sie unsicher sind, folgt hier ein aktualisierter Quellcode:
+\begin{verbatim}
 h1 {
 	color : rgb(128, 92, 7); opacity(0.3);
 }
-Quellcode 3.3: Eine Überschrift mit einem abgedunkelten Farbton.
+\end{verbatim}
+Quellcode 3.3: Eine Überschrift mit einem abgedunkelten Farbton.\\
+
 Alternativ zu RGB können Sie auch HSL-Farben programmieren. Aber das lassen wir an dieser Stelle außen vor, weil Designer im Regelfall Farbwerte in mehreren Standards angeben.
-6.3.2.	Zwei weitere Properties in Bezug auf Farben
+
+\subsection{Zwei weitere Properties in Bezug auf Farben}
+
 Hier folgen noch ein paar Properties, mit denen Sie verschiedene Bereiche Ihrer Webpage farblich anpassen können:
--	background: Damit färben Sie den Hintergrund eines Elements. Wenn Sie hier anstelle einer Farbe ein Bild einstellen wollen, z.B. image.jpg, dann können Sie es mittels 
-background : url(image.jpg); 
-als Hintergrund des Elements festlegen.
 
--	mark ist keine Property, sondern ein HTML-Container, mit dem Sie Textpassagen hervorheben können. Schlagen Sie im Zweifelsfall nochmal im HTML-Kapitel nach.
+\begin{itemize}
+	\item \verb|background|: 
+	
+	Damit färben Sie den Hintergrund eines Elements. Wenn Sie hier anstelle einer Farbe ein Bild einstellen wollen, z.B. \url{image.jpg}, dann kön-nen Sie es mittels
+	
+	\verb|background : url(image.jpg); |
+	
+	als Hintergrund des Elements festlegen.
+	
+	\item \verb|mark|
+	
+	ist keine Property, sondern ein HTML-Container, mit dem Sie Textpassagen hervorheben können. Schlagen Sie im Zweifelsfall nochmal im HTML-Kapitel nach.
+\end{itemize}
+
 Aufgaben:
--	Öffnen Sie die Webpage http://www.colorpicker.com/ und wählen Sie dort eine Farbe aus, die Sie für Ihre Überschriften verwenden wollen. Am oberen Rand finden Sie den hexadezimalen Wert, den Sie einfach kopieren können, um ihn im CSS-Code zu verwenden.
+\begin{itemize}
+	\item Öffnen Sie die Webpage \url{http://www.colorpicker.com/} und \\wählen Sie dort eine Farbe aus, die Sie für Ihre Überschriften verwenden wollen. Am oberen Rand finden Sie den hexadezimalen Wert, den Sie einfach kopieren können, um ihn im CSS-Code zu verwenden.
+	
+	\item Vergeben Sie jetzt für die verschiedenen Überschriften Ihrer Webpage einen jeweils etwas helleren Farbton.
+	
+	\item Wählen Sie nun einen anderen Farbton aus, in dem Sie Absätze anzeigen lassen wollen.
+	
+	\item Stellen Sie zusätzlich einen Farbton für den Hintergrund jeder Über-schrift und jedes Absatzes (das sind die \verb|<p>|-Container) ein.\\
+	
+	Vermutlich sieht Ihre Webpage jetzt alles andere als augenfreundlich aus, aber das macht nichts. Einzig wenn Sie merken, dass Texte gar nicht mehr zu lesen sind, sollten Sie die Einstellungen anpassen.
+\end{itemize}
 
--	Vergeben Sie jetzt für die verschiedenen Überschriften Ihrer Webpage einen jeweils etwas helleren Farbton.
+\section{Ein wenig Form}
 
--	Wählen Sie nun einen anderen Farbton aus, in dem Sie Absätze anzeigen lassen wollen.
+Wie Sie sehen sind die Hintergründe der Absätze Ihrer Texte und der Über-schriften im Moment rechteckig. Das sieht nicht wirklich schön aus, da wären abgerundete Ecken schöner. Also kümmern wir uns darum.\\
 
--	Stellen Sie zusätzlich einen Farbton für den Hintergrund jeder Überschrift und jedes Absatzes (das sind die <p>-Container) ein.
-Vermutlich sieht Ihre Webpage jetzt alles andere als augenfreundlich aus, aber das macht nichts. Einzig wenn Sie merken, dass Texte gar nicht mehr zu lesen sind, sollten Sie die Einstellungen anpassen.
-6.4.	Ein wenig Form
-Wie Sie sehen sind die Hintergründe der Absätze Ihrer Texte und der Überschriften im Moment rechteckig. Das sieht nicht wirklich schön aus, da wären abgerundete Ecken schöner. Also kümmern wir uns darum.
-Das Prinzip fürs Abrunden von Ecken funktioniert wie folgt: Sie legen einen Radius fest, der in Bildpunkten (Pixel, kurz px) gemessen wird und ordnen diesen Wert der Property border-radius zu. Meist ist ein Wert zwischen 5 und 25 gut, aber Sie haben hier die freie Auswahl:
-border-radius : 20px;
-Manchmal finden Sie auch Quellcode, in dem border-radius mit bis zu vier Werten verwendet wird. Schlagen Sie ggf. bei w3schools nach, wie diese Angaben zu verstehen sind.
-Unter Umständen überschneidet Ihr Text jetzt die abgerundeten Ecken. Da können Sie sich mit der Property padding behelfen. Padding legt einen Abstand vom Rand fest, den der Text haben muss.
-padding : 5 px;
-Sie können auch die Größe festlegen, die die farbige Fläche im Hintergrund haben soll. Dazu verwenden Sie die beiden Properties width und height, die trivialerweise festlegen, welche Breite und Höhe der Hintergrund haben soll. Allerdings könnten Sie hier eine Festlegung treffen, die bei kleinen Displays zu Problemen in der Darstellung oder der Bedienung führt.
-6.5.	Definition von CSS für einzelne Container eines Typs
-Stellen Sie sich vor, Sie wollen jetzt noch die Formatierung von einigen <p>-Containern anpassen, die aber z.B. nur dann angewendet werden soll, wenn in dem Container Quellcode angezeigt werden soll. Da es in HTML (auch in Version 5) keine solchen Spezialcontainer gibt, hätten Sie mit Ihrem bisherigen Wissen jetzt ein Problem.
+Das Prinzip fürs Abrunden von Ecken funktioniert wie folgt: Sie legen einen Radius fest, der in Bildpunkten (Pixel, kurz \verb|px|) gemessen wird und ordnen diesen Wert der Property border-radius zu. Meist ist ein Wert zwischen 5 und 25 gut, aber Sie haben hier die freie Auswahl:\\
+
+\verb|border-radius : 20px;|\\
+
+Manchmal finden Sie auch Quellcode, in dem \verb|border-radius| mit bis zu vier Werten verwendet wird. Schlagen Sie ggf. bei w3schools nach, wie diese Angaben zu verstehen sind.\\
+
+Unter Umständen überschneidet Ihr Text jetzt die abgerundeten Ecken. Da können Sie sich mit der Property \verb|padding| behelfen. Padding legt einen Abstand vom Rand fest, den der Text haben muss.\\
+
+\verb|padding : 5 px;|\\
+
+Sie können auch die Größe festlegen, die die farbige Fläche im Hintergrund haben soll. Dazu verwenden Sie die beiden Properties \verb|width| und \verb|height|, die trivialerweise festlegen, welche Breite und Höhe der Hintergrund haben soll. Allerdings könnten Sie hier eine Festlegung treffen, die bei kleinen Displays zu Problemen in der Darstellung oder der Bedienung führt.
+
+\section{Definition von CSS für einzelne Container eines Typs}
+
+Stellen Sie sich vor, Sie wollen jetzt noch die Formatierung von einigen \verb|<p>|-Containern anpassen, die aber z.B. nur dann angewendet werden soll, wenn in dem Container Quellcode angezeigt werden soll. Da es in HTML (auch in Version 5) keine solchen Spezialcontainer gibt, hätten Sie mit Ihrem bisherigen Wissen jetzt ein Problem.\\
+
 Für die Lösung dieses Problems gibt es zwei Möglichkeiten:
--	Zum einen können Sie über das class-Attribut einzelne Container in HTML so hervorheben, dass Sie diesen durch ein entsprechendes CSS-Skript formatieren lassen.
+\begin{itemize}
+	\item Zum einen können Sie über das class-Attribut einzelne Container in HTML so hervorheben, dass Sie diesen durch ein entsprechendes CSS-Skript formatieren lassen.
 
-Bsp.: In HTML haben Sie mehrere Absätze mit dem Attribut class=PHP programmiert: 
-
-<p class=PHP>
-
-Jetzt können Sie in CSS einen entsprechenden Teil programmieren:
-
-.PHP {
+	Bsp.: In HTML haben Sie mehrere Absätze mit dem Attribut \verb|class=PHP| programmiert: 
+	
+	\verb|<p class=PHP>|
+	
+	Jetzt können Sie in CSS einen entsprechenden Teil programmieren:
+	
+	\begin{verbatim}
+	.PHP {
 	color : blue;
 	font-family : monospace;
-}
+	}
+	\end{verbatim}
 
-Damit werden zusätzlich zu allen CSS-Anweisungen, die für <p>-Container gelten bei den <p class=PHP>-Containern die Schrift in blau und einem etwas veränderten Textformat angezeigt.
+	Damit werden zusätzlich zu allen CSS-Anweisungen, die für \verb|<p>|-Container gelten bei den \verb|<p class=PHP>|-Containern die Schrift in blau und einem etwas veränderten Textformat angezeigt.
+	
+	\item Zum anderen können Sie aber auch anhand der Bezeichner von \verb|id|-Containern CSS-Skripte definieren. Anstelle des Punktes (wie bei \verb|class|) wird hier ein \verb|#| verwendet.
+	
+	Bsp.: In HTML haben Sie einen Container mit dem Attribut \verb|id=nutzer| programmiert.
+	In CSS können Sie diesen wie folgt formatieren:
+	
+	\verb|#nutzer { ... }|
+\end{itemize}
 
--	Zum anderen können Sie aber auch anhand der Bezeichner von id-Containern CSS-Skripte definieren. Anstelle des Punktes (wie bei class) wird hier ein \# verwendet.
+\section{Mehr zu CSS}
 
-Bsp.: In HTML haben Sie einen Container mit dem Attribut id=nutzer programmiert.
-In CSS können Sie diesen wie folgt formatieren:
+Dieses Kapitel ist sehr kurz ausgefallen, weil Sie sich im Rahmen dieser Veranstaltung auf gute Programmiertechniken konzentrieren sollen und CSS eine Sprache für Mediendesigner ist, um das Design in den Dokumenten einer Webanwendung festzulegen: Sie entscheiden sich dafür, wie Sie einen Container gestalten wollen und programmieren das schlicht Zeile für Zeile in einer CSS-Datei. Das ist Programmieren für Sechstklässler und hat nichts aber auch nicht das Geringste mit Medieninformatik zu tun.\\
 
-\#nutzer \{ ... \}
-6.6.	Mehr zu CSS
-Dieses Kapitel ist sehr kurz ausgefallen, weil Sie sich im Rahmen dieser Veranstaltung auf gute Programmiertechniken konzentrieren sollen und CSS eine Sprache für Mediendesigner ist, um das Design in den Dokumenten einer Webanwendung festzulegen: Sie entscheiden sich dafür, wie Sie einen Container gestalten wollen und programmieren das schlicht Zeile für Zeile in einer CSS-Datei. Das ist Programmieren für Sechstklässler und hat nichts aber auch nicht das Geringste mit Medieninformatik zu tun.
 Deshalb hier Ihre Hausaufgaben:
--	Sehen Sie sich auf http://www.w3schools.com/css/css3\_intro.asp um, was es noch für Gestaltungsmöglichkeiten in CSS3 gibt und setzen Sie auf Ihrer Webpage alles um, was Sie gestalterisch spannend finden.
 
--	Programmieren Sie einige HTML-Container über die entsprechenden Attribute, sodass diese für Administratoren bzw. eingeloggte Nutzer eine andere Darstellung erhalten können. Momentan können die entsprechenden CSS-Container noch leer bleiben.
+\begin{itemize}
+	\item Sehen Sie sich auf\\ \url{http://www.w3schools.com/css/css3\_intro.asp} um, was es noch für Gestaltungsmöglichkeiten in CSS3 gibt und setzen Sie auf Ihrer Webpage alles um, was Sie gestalterisch spannend finden.
+	
+	\item Programmieren Sie einige HTML-Container über die entsprechenden Attribute, sodass diese für Administratoren bzw. eingeloggte Nutzer eine andere Darstellung erhalten können. Momentan können die entsprechenden CSS-Container noch leer bleiben.	
+\end{itemize}
 

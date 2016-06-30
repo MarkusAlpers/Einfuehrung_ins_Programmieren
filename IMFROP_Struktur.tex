@@ -42,7 +42,7 @@ Das ist ziemlich viel Text, um daraus eine Prüfung abzuleiten, ob die Funktiona
 
 Use Case 1: Der Nutzer liest einen Begrüßungstext. (Keine Interaktion.)\\
 
-Sicher, das ist kein spannender Use Case, weil er keine Interaktion enthält. Vor allem können wir auch gar nicht prüfen, ob einzelne NutzerInnen tatsächlich lesen, was da angezeigt wird. Aber damit können wir arbeiten und nach der Programmierung prüfen, ob die Funktionalität erfüllt ist. Geben Sie den folgenden Quellcode in einen einfachen Editor (z.B. den kostenlosen notepad++) ein und speichern ihn unter dem Namen \verb|seite01.html| im bekannten Verzeichnis Ihres Webservers.
+Sicher, das ist kein spannender Use Case, weil er keine Interaktion enthält. Vor allem können wir auch gar nicht prüfen, ob einzelne NutzerInnen\\tatsächlich lesen, was da angezeigt wird. Aber damit können wir arbeiten und nach der Programmierung prüfen, ob die Funktionalität erfüllt ist. Geben Sie den folgenden Quellcode in einen einfachen Editor (z.B. den kostenlosen notepad++) ein und speichern ihn unter dem Namen \verb|seite01.html| im bekannten Verzeichnis Ihres Webservers.
 
 \begin{verbatim}
 <html>
@@ -57,7 +57,7 @@ Einführung in die Programmierung, Teil 1
 
 Gleich vorweg: Willkommensgrüße oder ähnliches haben auf einer Webanwendung nichts verloren. Entweder der Nutzer kann auf Anhieb erkennen, was hier angeboten wird oder wir haben als Entwickler etwas falsch gemacht.\\
 
-Wenn Sie jetzt die Webanwendung aktualisieren (oder bei gestopptem Webserver zunächst den Webserver neustarten und anschließend wieder die Webanwendung localhost aufrufen), sehen Sie, dass das neue HTML-Skript als Datei angezeigt wird. Wählen Sie doch einfach den \glqq{}Link\grqq{} an und öffnen Sie damit die Webanwendung, die Sie gerade programmiert haben.\\
+Wenn Sie jetzt die Webanwendung aktualisieren (oder bei gestopptem\\Webserver zunächst den Webserver neustarten und anschließend wieder die Webanwendung localhost aufrufen), sehen Sie, dass das neue HTML-Skript als Datei angezeigt wird. Wählen Sie doch einfach den \glqq{}Link\grqq{} an und öffnen Sie damit die Webanwendung, die Sie gerade programmiert haben.\\
 
 Es gibt zwei Dinge, die Ihnen auffallen, wenn Sie das Ergebnis im Browser genau prüfen (zumindest wenn Sie keinen Tippfehler im Quellcode haben): \\
 
@@ -85,26 +85,27 @@ Wir haben aber auch Container, die zwischen dem öffnenden und dem schließenden
 
 \subsubsection{Dokumentteile auslagern}
 
-Mit HTML-Dokumenten definieren Sie, aus welchen Bestandteilen eine Webanwendung besteht. Sie besteht dagegen nicht aus den konkreten Inhalten. Texte, Bilder, Sound und Videos sind nicht Teil von HTML. Allerdings können wir Texte durchaus direkt ins HTML einfügen, so wie wir das oben getan haben. Das ist allerdings eine Vorgehensweise, die bei größeren Projekten nicht empfehlenswert ist. Vielmehr sollten Sie auch Texte in eigenständigen Dateien speichern und sie durch den Webserver ins HTML einfügen lassen. Die einfachste Möglichkeit dafür ist eine PHP-Funktion, die Sie in das HTML-Dokument einfügen.\\
+Mit HTML-Dokumenten definieren Sie, aus welchen Bestandteilen eine Webanwendung besteht. Sie besteht dagegen nicht aus den konkreten Inhalten. Texte, Bilder, Sound und Videos sind nicht Teil von HTML. Allerdings können wir Texte durchaus direkt ins HTML einfügen, so wie wir das oben getan haben. Das ist allerdings eine Vorgehensweise, die bei größeren Projekten nicht empfehlenswert ist. Vielmehr sollten Sie auch Texte in\\eigenständigen Dateien speichern und sie durch den Webserver ins HTML einfügen lassen. Die einfachste Möglichkeit dafür ist eine PHP-Funktion, die Sie in das HTML-Dokument einfügen.\\
 
 \begin{enumerate}
 	\item Erstellen Sie dafür eine Datei mit dem Namen \verb|test_title_001.txt|, in der Sie die folgende Zeile eintragen und die Sie dann im gleichen Verzeichnis wie \verb|seite01.html| abspeichern:
 	\begin{verbatim}
 		echo("Die erste HTML-Webanwendung");
 	\end{verbatim}
-	\item Erstellen Sie jetzt eine Datei mit dem Namen \verb|test_begruessung_001.txt| mit dem Inhalt \verb|echo("Einführung in die Programmierung, Teil 1");|.
+	\item Erstellen Sie jetzt eine Datei mit dem Namen\\ \verb|test_begruessung_001.txt| mit dem Inhalt\\ \verb|echo("Einführung in die Programmierung, Teil 1");|.
 	\item Ändern Sie die Datei \verb|seite01.html| wie folgte ab und speichern Sie sie unter dem Namen \verb|seite01.php|:
 	\begin{verbatim}
 	<html>
 	<head>
-	<title><?php include(test_title_001.txt); ?></title>
+	<title><?php include(test_title_001.txt); ?>
+	</title>
 	</head>
 	<body>
 	<?php include(test_begruessung_001.txt); ?>
 	</body>
 	</html>
 	\end{verbatim}
-	\item Rufen Sie jetzt im Browser \verb|localhost| auf und wählen Sie dort \verb|seite01.php| an.
+	\item Rufen Sie jetzt im Browser \verb|localhost| auf und wählen Sie dort\\ \verb|seite01.php| an.
 \end{enumerate}
 
 Wie Sie sehen sieht die Webpage genauso aus, als wenn Sie \verb|seite01.html| geöffnet hätten. Schauen wir uns die Änderungen und Ihre Auswirkungen einmal im Detail an:
@@ -115,7 +116,7 @@ Wie Sie sehen sieht die Webpage genauso aus, als wenn Sie \verb|seite01.html| ge
 	\item Eine Programmzeile in PHP wird durch ein Semikolon beendet.
 	\item Die PHP-Funktion \verb|include()| lädt den Inhalt einer anderen Datei und fügt ihn an der Stelle ein, wo die include()-Funktion steht.
 	\begin{itemize}
-		\item Sie können also mit include() beliebige Teile eines PHP-Programms in eigenen Dateien speichern.
+		\item Sie können also mit include() beliebige Teile eines \\PHP-Programms in eigenen Dateien speichern.
 		\item Das besondere dabei ist, dass Sie somit jeden Teil eines PHP-Programms, der mehrfach genutzt werden soll nur einmal programmieren müssen. (Wenn Sie die objektorientierte Programmierung kennen lernen werden Sie dafür eine andere Möglichkeit kennen lernen.)
 	\end{itemize}
 	\item Um PHP-Programme oder Programmteile in ein HTML-Dokument einzufügen müssen Sie es in ein Tag eintragen, das mit \verb|<?php| beginnt und mit \verb|?>| endet.
@@ -129,8 +130,8 @@ Wie Sie sehen sieht die Webpage genauso aus, als wenn Sie \verb|seite01.html| ge
 Ausblick \textbf{für Fortgeschrittene}: 
 
 \begin{itemize}
-	\item Um Programme oder Programmteile in ein HTML-Dokument zu integrieren, die in JavaScript programmiert wurden, nutzen Sie das \verb|script|-Tag. Wenn Sie beispielsweise die JavaScript-Datei \verb|intro.js| an einer Stelle Ihres HTML-Dokuments einzufügen, lautet das HTML-Tag \verb|<script src=intro.js>|. In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
-	\item Wollen Sie dagegen JavaScript direkt in HTML programmieren, dann sieht das so aus: \verb|<script> ... Hier steht der JavaScript-Code ... </script>|. Auch hier gilt wieder: In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
+	\item Um Programme oder Programmteile in ein HTML-Dokument zu integrieren, die in JavaScript programmiert wurden, nutzen Sie das\\ \verb|script|-Tag. Wenn Sie beispielsweise die JavaScript-Datei \verb|intro.js| an einer Stelle Ihres HTML-Dokuments einzufügen, lautet das HTML-Tag \verb|<script src=intro.js>|. In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
+	\item Wollen Sie dagegen JavaScript direkt in HTML programmieren, dann sieht das so aus: \verb|<script> ... Hier steht der JavaScript-|\\\verb|Code ... </script>|. Auch hier gilt wieder: In HTML4.01 musste deutlich mehr programmiert werden, um JavaScript-Code in HTML einzufügen.
 	\item \textbf{Hinweis}: Diejenigen von Ihnen, die bei mir den Leistungsnachweis \glqq{}Projekt 1 (MS)\grqq{} erwerben wollen sollten sich das genau merken: Ich brauche in aller Regel nur zwei Sekunden, um zu erkennen, ob Sie HTML4.01 oder HTML5 programmieren. Für den Leistungsnachweis gilt: Die Nutzung von HTML4.01 bedeutet automatisch, dass Sie (noch) nicht bestanden haben.
 \end{itemize}
 
@@ -143,7 +144,7 @@ Damit bleibt die Frage, was die HTML-Tags eigentlich bewirken oder besser gesagt
 	Dieser gibt an, dass alles nachfolgende HTML-Code ist. In der letzten Zeile finden Sie dann das schließende Tag \verb|</html>|. Dieses besagt also schlicht, dass jetzt kein HTML-Code mehr folgt.
 	\item Danach folgt der \verb|head|-Container.\\
 	Wie Sie sehen befindet sich innerhalb dieses Containers der \verb|title|-Container, der definiert, unter welchem Titel die Webanwendung angezeigt wird. Hier werden Sie später auch allgemeine Formatierungen für eine einzelne Webanwendung programmieren.\\
-	Grundsätzlich gilt, dass wir nicht unbedingt einen <head>-Container programmieren müssen. Aber es macht nur selten Sinn, ihn vollständig wegzulassen.
+	Grundsätzlich gilt, dass wir nicht unbedingt einen \verb|<head>|-Container programmieren müssen. Aber es macht nur selten Sinn, ihn vollständig wegzulassen.
 	\item Danach folgt der \verb|body|-Container.\\
 	Dieser beinhaltet all das, was einer Ansicht der Webanwendung angezeigt wird.
 \end{itemize}
@@ -167,7 +168,7 @@ Aus Gründen der Lesbarkeit sollten Sie dennoch immer die etwas umfangreichere S
 
 Bis Anfang 2015 galt \textbf{SelfHTML}\index{SelfHTML} als die Standardreferenz für HTML. Leider kann ich hiervon mittlerweile nur noch abraten: SelfHTML ignoriert wie die meisten HTML 4.01-Veteranen alles, was HTML 5 zu einer echten nächsten Version von HTML macht. Wenn Sie sich an SelfHTML orientieren, dann können Sie auch gleich bei HTML 4.01 bleiben.\\
 
-Die einzige mir bekannte Webpage, bei der eine klare Trennung zwischen HTML 4.01 und 5 durchgeführt wird ist zum Jahreswechsel 2015/16 (neben dem W3 Consortium, das die Standards festlegt) die Seite \textbf{W3Schools}\index{W3Schools}(\url{http://www.w3schools.com/default.asp}).
+Die einzige mir bekannte Webpage, bei der eine klare Trennung zwischen HTML 4.01 und 5 durchgeführt wird ist zum Jahreswechsel 2015/16 (neben dem W3 Consortium, das die Standards festlegt) die Seite \textbf{W3Schools}\index{W3Schools} (\url{http://www.w3schools.com/default.asp}).
 
 \paragraph{Übersicht über alle Tags}
 
@@ -178,14 +179,14 @@ Hier finden Sie eine vollständige Übersicht über die Tags in HTML. Außerdem 
 \textbf{Wichtige Hinweise}:
 
 \begin{itemize}
-	\item Auf \url{www.w3schools.com} finden Sie zu jedem Tag Hinweise darauf, welcher Browser das jeweilige Tag unterstützt. Die Angaben dort werden jedoch nicht aktualisiert, sodass der Eindruck entstehen könnte, dass Sie HTML5 praktisch kaum einsetzen können. Das trifft aber nicht zu. Welche Tags tatsächlich von welchem Browser nicht automatisch unterstützt werden und wie Sie dafür sorgen können, dass ein Tag dennoch richtig angezeigt wird, erfahren Sie im Abschnitt zu den sogenannten Polyfills.
+	\item Auf \url{www.w3schools.com} finden Sie zu jedem Tag Hinweise darauf, welcher Browser das jeweilige Tag unterstützt. Die Angaben dort werden jedoch nicht aktualisiert, sodass der Eindruck entstehen\\ könnte, dass Sie HTML5 praktisch kaum einsetzen können. Das trifft aber nicht zu. Welche Tags tatsächlich von welchem Browser nicht automatisch unterstützt werden und wie Sie dafür sorgen können, dass ein Tag dennoch richtig angezeigt wird, erfahren Sie im Abschnitt zu den sogenannten Polyfills.
 	\item Für diejenigen, die bereits in HTML4.01 programmiert haben hier noch ein essentieller Hinweis: Einige Container wie z.B. \verb|<div>|, die bislang sehr oft verwendet wurden, gibt es weiterhin, aber sie sind nur noch in den seltenen Spezialfällen einzusetzen, die mit den neuen Tags in HTML5 nicht abgedeckt sind.
 	\item Leider wird an dieser Stelle häufig auf selfhtml verwiesen. Das ist eine Webpage, die sehr detailliert ist, wenn es um HTML4.01 geht. Bezüglich HTML5 ist die Seite leider zurzeit nicht nutzbar. Zu oft werden Sie dort nach dem Lesen eines Abschnitts vor der Frage stehen: Gilt das jetzt immer noch? Deshalb lautet die klare Empfehlung: Nutzen Sie die Seite der W3Schools.
 \end{itemize}
 
 \subsubsection{Was haben XML und XHTML mit Webanwendungen zu tun?}
 
-Einer der ersten Versuche, um semantische Webanwendungen zu entwickeln wurde unter der Bezeichnung \textbf{XML}\index{Programmiersprache!XML} (kurz für extended markup language) veröffentlicht. Eine Kombination aus XML und HTML wird als \textbf{XHTML}\index{XHTML}\index{Programmiersprache!XHTML} bezeichnet.
+Einer der ersten Versuche, um semantische Webanwendungen zu entwickeln wurde unter der Bezeichnung \textbf{XML}\index{Programmiersprache!XML} (kurz für extended markup language) veröffentlicht. Eine Kombination aus XML und HTML wird als\\ \textbf{XHTML}\index{XHTML}\index{Programmiersprache!XHTML} bezeichnet.
 
 \subsubsection{Validierung - Prüfung auf Fehler}
 
@@ -193,7 +194,7 @@ Bei der Eingabe von Programmcode machen wir unvermeidlich Fehler. Sie haben im v
 
 Vor diesem Hintergrund ist die Behauptung, dass nur \textbf{streng typisierte Sprachen}\index{Typisierung!streng}\index{statisch} sicher seien kompletter Humbug: Sie bieten eine minimale Art von Sicherheit, die aber häufig irrelevant ist. Wer das nicht glauben mag, dem möchte ich einmal empfehlen, sich anzusehen, warum der erste Start der \verb|Ariane V| ein Totalausfall war. Was hat all die ach so großartige Typsicherheit beim Start dieser Rakete gebracht? Gar nichts! Ist Typsicherheit deshalb irrelevant? Nein. Sorgt sie dafür, dass Entwickler ein ungerechtigtes Gefühl von Sicherheit haben? Definitiv. Ist sie somit selbst ein Sicherheitsrisiko? Das können Sie sich selbst beantworten.\\
 
-Kommen wir nun wieder zurück zur Programmierung von HTML-Dokumenten. Bislang kennen Sie keine Möglichkeit, um Ihr HTML-Dokument auf Fehlerfreiheit zu prüfen. Der Begriff der Fehlerfreiheit ist aber ungenau. Syntaktische Fehler können Sie ja recht leicht durch die Syntaxhervorhebung von notepad++ erkennen. Bei Markup Languages geht es uns aber um die Struktur einer Anwendung, also wäre es schön, eine Möglichkeit zu haben, um zu prüfen, ob die Struktur zumindest grundsätzlich den Vorgaben für HTML5 entspricht. Und das wird als \textbf{Validierung}\index{Validierung} bezeichnet.\\
+Kommen wir nun wieder zurück zur Programmierung von HTML-\\Dokumenten. Bislang kennen Sie keine Möglichkeit, um Ihr HTML-\\Dokument auf Fehlerfreiheit zu prüfen. Der Begriff der Fehlerfreiheit ist aber ungenau. Syntaktische Fehler können Sie ja recht leicht durch die Syntaxhervorhebung von notepad++ erkennen. Bei Markup Languages geht es uns aber um die Struktur einer Anwendung, also wäre es schön, eine Möglichkeit zu haben, um zu prüfen, ob die Struktur zumindest \\grundsätzlich den Vorgaben für HTML5 entspricht. Und das wird als \textbf{Validierung}\index{Validierung} bezeichnet.\\
 
 Damit aber ein Browser oder Validator (Programm, das die Validität eines Dokuments prüft) erkennen kann, dass wir ein HTML5-Dokument erstellt haben, müssen wir noch eine Zeile an den Anfang des Dokuments einfügen. Diese Zeile gibt den sogenannten \textbf{Doctype}\index{Doctype}\index{HTML!Doctype} an. Neben der Arbeitserleichterung folgt hieraus auch, dass Sie sich rechtlich etwas absichern: Indem Sie eine validierbare Webanwendung programmieren zeigen Sie, dass Sie nach den aktuellen technischen Standards arbeiten. Und das kann sich im Falle eines Gerichtsverfahrens zu Ihren Gunsten auswirken.\\
 
@@ -203,7 +204,7 @@ Den \textbf{W3C-Validator}\index{Validator!W3C} finden Sie unter \url{http://val
 	<!doctype html>
 \end{verbatim}
 
-Und das ist alles. Wenn Sie sich nicht sicher sind, ob Sie wirklich HTML5 programmieren wollen, brauchen Sie sich keine Sorgen zu machen: HTML5-Skripte können Passagen enthalten, die wie bei einer früheren HTML-Version programmiert sind. Diese werden dann wie bei den früheren Versionen ausgeführt.\\
+Und das ist alles. Wenn Sie sich nicht sicher sind, ob Sie wirklich HTML5 programmieren wollen, brauchen Sie sich keine Sorgen zu machen: HTML5-Skripte können Passagen enthalten, die wie bei einer früheren HTML-\\Version programmiert sind. Diese werden dann wie bei den früheren Versionen ausgeführt.\\
 
 Wenn wir also unseren bisherigen Code (als HTML5-Code) validierbar machen wollen, dann sieht er so aus:
 
@@ -228,7 +229,7 @@ Die erste Programmzeile innerhalb eines HTML-Dokuments gibt somit zwei Dinge an,
 
 Bei HTML 4.01 war diese Zeile recht lang und es gab mehr als nur eine Variante. Hier ein Beispiel für eine DTD in HTML4.01:\\
 
-\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">|\\
+\verb|<!DOCTYPE HTML PUBLIC "-//W3C//DTD|\\\verb|HTML 4.01 Transitional//EN">|\\
 
 Da ist die Variante von HTML5 doch deutlich angenehmer, nicht zuletzt weil es nur genau eine Variante gibt.\\
 
@@ -254,7 +255,7 @@ Bei längeren HTML-Dokumenten oder Containern, die nicht selbstredend sind, soll
 
 Bei Kommentar-Containern gibt es also keinen Abschluss durch den Slash, wie das bei anderen Tags der Fall ist.\\
 
-In der Vergangenheit wurden spezielle Befehle, die nur für den Internet Explorer zugeschnitten waren in Form von Kommentaren einprogrammiert; sollten Sie also in fremdem HTML-Skripten Kommentare der Form \verb|if IE ...|treffen, dann wissen Sie jetzt, worum es dabei geht.
+In der Vergangenheit wurden spezielle Befehle, die nur für den Internet Explorer zugeschnitten waren in Form von Kommentaren einprogrammiert; sollten Sie also in fremdem HTML-Skripten Kommentare der Form \\\verb|if IE ...|treffen, dann wissen Sie jetzt, worum es dabei geht.
 
 \subsubsection{Attribute}
 
@@ -292,7 +293,7 @@ Die meisten Kurse zu HTML4.01 kommen (wenn überhaupt) erst ganz zum Schluss zu 
 
 Der Grund für die Bedeutung dieses Kapitels ist so simpel wie ärgerlich:\\
 
-Viele Entwickler vergessen schlicht, dass eine Webanwendung auf einem Smartphone anders dargestellt wird als auf einem Rechner mit einem 2k-Display, das horizontal ausgerichtet ist. Außerdem nutzen nicht nur hörbehinderte Personen Software, die Ihnen Webanwendung vorliest. Und zu guter Letzt bieten mehr und mehr Browser eine automatische Übersetzung von Texten an.\\
+Viele Entwickler vergessen schlicht, dass eine Webanwendung auf einem Smartphone anders dargestellt wird als auf einem Rechner mit einem 2k-Display, das horizontal ausgerichtet ist. Außerdem nutzen nicht nur \\hörbehinderte Personen Software, die Ihnen Webanwendung vorliest. Und zu guter Letzt bieten mehr und mehr Browser eine automatische \\Übersetzung von Texten an.\\
 
 Damit Ihre Webanwendung unter all diesen Bedingungen immer noch gut aussieht, mussten Sie unter HTML4.01 eine ganze Menge Arbeit leisten, die bei HTML5 mit wenigen Befehlen erledigt werden kann. Wobei all die guten Vorsätze nichts Wert sind, wenn Sie im Team jemanden haben, der in HTML Design programmiert.
 
@@ -319,9 +320,9 @@ Den ersten Punkt können Sie jetzt schon umsetzen, zum zweiten und dritten Punkt
 \textbf{Kontrolle}:
 
 \begin{itemize}
-	\item Sie verstehen, dass es bei Barrierefreiheit nicht nur um die Unterstützung von Menschen geht, die körperlich oder geistig beeinträchtigt sind.
+	\item Sie verstehen, dass es bei Barrierefreiheit nicht nur um die \\Unterstützung von Menschen geht, die körperlich oder geistig beeinträchtigt sind.
 	\item Sie wissen vielmehr, dass die Beachtung der Barrierefreiheit wichtig ist, um Nutzer nicht von der eigenen Webanwendung zu vertreiben.
-	\item Ihnen ist klar, dass dazu wesentlich mehr nötig ist, als die drei Prüfungen, die Sie gerade kennen gelernt haben. (Für diesen Kurs soll das aber als kleine Einführung genügen.)
+	\item Ihnen ist klar, dass dazu wesentlich mehr nötig ist, als die drei \\Prüfungen, die Sie gerade kennen gelernt haben. (Für diesen Kurs soll das aber als kleine Einführung genügen.)
 \end{itemize}
 
 \subsection{Internationalisierung (kurz i18n) und Lokalisierung (kurz l10n)}
@@ -379,13 +380,55 @@ Sie wollen wissen, welche Codierung Sie für Sprachen wie Farsi (Afghanistan) od
 
 Nachdem Sie Ihr Dokument um Internationalisierung und Lokalisierung erweitert haben, laden Sie es erneut. Jetzt wird endlich das \verb|ü| im Browser als ein ü angezeigt.
 
+\subsection{Entitys - Umlaute und andere Sonderzeichen}
+
+Es kann jedoch (aufgrund eines veralteten Browsers bei NutzerInnen) immer passieren, das die Lokalisierung nicht funktioniert. Diese Abschnitt erklärt, wie Sie in dem Fall Sonderzeichen einfügen können und diese Methode funktioniert immer:\\
+
+In diesem Fall müssen Sie beispielsweise anstelle des Buchstaben ü die Sequenz \verb|\&uuml;| in den fließenden Text eintragen. Aber das sieht nur auf den ersten Blick unübersichtlich aus: Jede dieser Sequenzen beginnt mit dem kaufmännischen Und-Zeichen und endet mit einem Semikolon.\\
+
+Die Zeichenkette dazwischen ist für alle Umlaute simpel: Zunächst der Buchstabe (a, o, u bei kleinen Umlauten und A, O, U bei großen Umlauten) und dann die Zeichenfolge uml für Umlaut.\\
+
+Ähnliches gilt für die übrigen Sonderzeichen, die bei HTML als Entitys bezeichnet werden. Warum sie nicht entsprechend der englischen Grammatik als Entities bezeichnet werden, kann ich Ihnen nicht sagen. Zu Fragen und Nebenwirkungen wenden Sie sich bitte den Anglisten Ihres Vertrauens.\\
+
+Hier eine Tabelle der für den Einstieg wichtigsten Entities :\\
+
+\begin{tabular}{l l l}
+	Ä & \verb|&Auml;|\\
+	ä & \verb|&auml;|\\	
+	Ö & \verb|&Ouml;|\\	
+	ö & \verb|&ouml;|\\	
+	Ü & \verb|&Uuml;|\\	
+	ü & \verb|&uuml;|\\	
+	ß & \verb|&szlig;| & (ß mit Ligatur)\\
+	€ & \verb|&euro;|	\\
+	\\
+	\verb|&| & \verb|&amp;|	& (ampers and)\\
+	\verb|>| & \verb|&gt;| & (greater than)\\
+	\verb|<| & \verb|&lt;| & (less than)\\
+	\\
+	Anführungszeichen unten & \verb|&bdquo;|\\
+	Anführungszeichen oben & \verb|&rdquo;|	\\
+\end{tabular}
+
+Sollten Sie einmal ein Zeichen nutzen wollen, dass Sie in keiner HTML-Tabelle finden, dann gibt es noch eine Lösung: Zeichen, die in der \verb|Unicode|\index{Unicode}-Tabelle bzw. der \verb|ISO 10646|\index{ISO 10646} aufgeführt werden, können wie folgt eingefügt werden. Wählen Sie dazu die Nummer aus der Codetabelle, die Ihrem Zeichen entspricht und fügen es zwischen \verb|&#| sowie dem Semikolon ein. Sollte der Wert ein Hexadezimalwert sein, müssen Sie noch ein \verb|x| einfügen.\\
+
+Beispiel: Nehmen wir an, Sie wollen ein bestimmtes chinesisches Element in Ihrem Text darstellen, dass im Unicode die Codenummer \verb|9FB9| hat. Es ist leicht zu erkennen, dass es sich hier um eine hexadezimale Zahl handelt. Also müssen wir noch ein \verb|x| in \verb|&#    ;| einfügen. Es ergibt sich also folgende Sequenz, mit dem wir das gewünschte Zeichen einfügen können:\\
+
+\verb|&#x9fb9;|\\
+
+\textbf{Kontrolle}\\
+
+Machen Sie das einmal selbst: Laden Sie sich die Unicode-Tabellen herunter (Umfang knapp 130 MB). Fügen Sie dann Ihre Email-Adresse in das HTML-Skript, wobei Sie den Wert für das \verb|@|-Symbol anhand der Codetabelle in Ihren Text einfügen. Sie werden hier nicht lange suchen müssen: Der Eintrag befindet sich gleich auf der ersten Seite in einem der Dokumente, die Sie heruntergeladen haben.\\
+
+Hinweis: Beachten Sie bitte, dass es sich hier um eigenständige Zeichen handelt, die mit dieser Zeichenkette erzeugt werden und nicht etwa um Container oder Tags. Spitze Klammern haben an dieser Stelle also nichts verloren.
+
 \section{Mehr Grundlagen in HTML}
 
 \subsection{Mehr Auslagerung von Code}
 
 \textbf{Aufgabe}:\\
 
-Oben haben Sie gelernt, wie Sie Texte aus Dateien mit Hilfe von PHP in eine HTML-Dokument einfügen können. Stellen Sie sich vor, Sie müssten 95 HTML-Dokumente programmieren und bei allen würde in den ersten drei Zeilen der folgende Code stehen: \verb|<html lang=de><head><meta charset=utf-8>|.\\
+Oben haben Sie gelernt, wie Sie Texte aus Dateien mit Hilfe von PHP in eine HTML-Dokument einfügen können. Stellen Sie sich vor, Sie müssten 95 HTML-Dokumente programmieren und bei allen würde in den ersten drei Zeilen der folgende Code stehen:\\ \verb|<html lang=de><head><meta charset=utf-8>|.\\
 
 Programmieren Sie die Auslagerung dieses Code-Fragments in eine Datei, die per PHP ausgelesen und in ein HTML-Dokument eingefügt wird.\\
 
@@ -396,15 +439,15 @@ Eine Auslagerung von so wenig Code ist meist nicht sinnvoll, weil es Ihnen den �
 \textbf{Kontrolle}
 
 \begin{itemize}
-	\item Sie wissen, dass jedes HTML-Dokument aus einer Doctype Declaration sowie den drei Containern html, head und body besteht.
-	\item Sie haben eine erste Vorstellung davon, was Sie im <head> und was Sie im <body> programmieren.
-	\item Sie wissen, dass Sie Text im Webbrowser anzeigen können, indem Sie ihn innerhalb des <body>-Containers eingeben.
+	\item Sie wissen, dass jedes HTML-Dokument aus einer Doctype Declaration sowie den drei Containern \verb|html|, \verb|head| und \verb|body| besteht.
+	\item Sie haben eine erste Vorstellung davon, was Sie im \verb|<head>| und was Sie im \verb|<body>| programmieren.
+	\item Sie wissen, dass Sie Text im Webbrowser anzeigen können, indem Sie ihn innerhalb des \verb|<body>|-Containers eingeben.
 	\item Sie verstehen noch nicht genau, wie Sie mit Hilfe von Attributen einzelne Container ändern können.
 \end{itemize}
 
 \subsection{Verwendung von Escape-Sequenzen}
 
-Vor HTML5 galt die Aussage, dass Sie grundsätzlich davon ausgehen mussten, dass Sie Sonderzeichen einer Sprache mit sogenannten Escape-Sequenzen programmieren mussten. Diese werden Ihnen auch weiter in HTML-Quellcode begegnen, weil Sie ja beispielsweise eine spitze Klammer nicht als Text in HTML einfügen dürfen.\\
+Vor HTML5 galt die Aussage, dass Sie grundsätzlich davon ausgehen mussten, dass Sie Sonderzeichen einer Sprache mit sogenannten Entitys programmieren mussten. Diese werden Ihnen auch weiter in HTML-Quellcode begegnen, weil Sie ja beispielsweise eine spitze Klammer nicht als Text in HTML einfügen dürfen.\\
 
 Standardmäßig beherrschen Webbrowser ausschließlich die Zeichen, die in der sogenannten ASCII-Tabelle aufgeführt sind. Für HTML4.01 bedeutet das: Nur Zeichen, die im englischen Alphabet vorkommen können direkt auf einer Webanwendung angezeigt werden. Alle anderen müssen mit einer sogenannten Escape-Sequenz ausgedrückt werden. Diese beginnt mit einem \verb|&|-Zeichen und endet mit einem Semikolon. Das deutsche ß mussten Sie unter HTML4.01 mit der Escape-Sequenz \verb|&szlig;| programmieren.\\
 
@@ -414,28 +457,27 @@ Auch hier zeigt sich, dass die Entwickler beim W3C mit HTML5 einen Standard ver�
 
 Es folgen einige Escape-Sequenzen, die Sie auch weiterhin benötigen werden:\\
 
-\begin{verbatim}
-	&amp;	& (kaufmännisches Und)
-	&quot;	`` (quotation mark)
-	&lt;	< (less than)
-	&gt;	> (greater than)
-\end{verbatim}
+\begin{tabular}{l l l}
+	\verb|&amp;| & \& & (kaufmännisches Und)\\
+	\verb|&lt;| & \verb|<| & (less than)\\
+	\verb|&gt;| & \verb|>| & (greater than)\\
+\end{tabular}
 
 Nehmen wir dazu an, dass Sie innerhalb eines HTML-Dokuments den folgenden Satz angeben wollen:\\
 
-\verb|Die Zeichenfolge <p> öffnet einen Absatz-Container in HTML|, \\
+\verb|Die Zeichenfolge <p> öffnet|\\\verb|einen Absatz-Container in HTML|, \\
 
 dann müssen Sie das so einprogrammieren:\\
 
-\verb|Die Zeichenfolge &lt;p&gt; öffnet einen Absatz-Container in HTML.|\\
+\verb|Die Zeichenfolge &lt;p&gt; öffnet|\\\verb|einen Absatz-Container in HTML.|\\
 
-Unter HTML4.01 hätten Sie zusätzlich für das ö von öffnet die Escape-Sequenz \verb|&ouml;| eingeben müssen:\\
+Unter HTML4.01 hätten Sie zusätzlich für das ö von öffnet die Entity \verb|&ouml;| eingeben müssen:\\
 
-\verb|Die Zeichenfolge &lt;p&gt; &ouml;ffnet einen Absatz-Container in HTML.|
+\verb|Die Zeichenfolge &lt;p&gt; &ouml;ffnet|\\\verb|einen Absatz-Container in HTML.|
 
 \subsection{HTML5: Anführungszeichen sind weitestgehend optional}
 
-Wenn Sie sich ältere HTML-Kurse ansehen, werden Sie feststellen, dass bei Wertzuordnungen wie lang=de der zugeordnete Wert immer in Anführungszeichen steht: \verb|<html lang="de">| Das ist bei HTML5 nicht mehr zwingend vorgeschrieben. \\
+Wenn Sie sich ältere HTML-Kurse ansehen, werden Sie feststellen, dass bei Wertzuordnungen wie lang=de der zugeordnete Wert immer in\\Anführungszeichen steht: \verb|<html lang="de">| Das ist bei HTML5 nicht mehr zwingend vorgeschrieben. \\
 
 Wenn Sie allerdings Werte zuordnen, die Leerzeichen beinhalten oder eine Webanwendung für veraltete Browser entwickeln wollen, dann sollten Sie in jedem Fall Anführungszeichen verwenden.
 
@@ -461,8 +503,8 @@ Mit diesen vier Containern können Sie eine grobe Struktur Ihrer Webanwendung vo
 
 \begin{itemize}
 	\item Im \verb|<main>| sollen sich alle Inhalte befinden, die auf der Webanwendung zentral angezeigt werden sollen.
-	\item Der \verb|<aside>|-Container ist dann für ergänzende Inhalte zu den Inhalten im <main> gedacht.
-	\item Im \verb|<header>| (nicht zu verwechseln mit dem <head>) können Sie beispielsweise ein Unternehmenslogo oder ähnliches unterbringen.
+	\item Der \verb|<aside>|-Container ist dann für ergänzende Inhalte zu den Inhalten im \verb|<main>| gedacht.
+	\item Im \verb|<header>| (nicht zu verwechseln mit dem \verb|<head>|) können Sie beispielsweise ein Unternehmenslogo oder ähnliches unterbringen.
 	\item Der \verb|<footer>| dient dann dazu, um beispielsweise einen Verweis auf das Kontaktformular, das Impressum und ähnliches aufzunehmen.
 	\begin{itemize}
 		\item Der \verb|<nav>|-Container kann in jedem der anderen vier Container untergebracht werden. Er ist vorrangig dafür gedacht, um eine Navigationsleiste zu realisieren. (Wir haben noch nicht darüber gesprochen, wie Sie einen Link auf eine andere Seite programmieren, aber auch dazu kommen wir bald.)
@@ -477,25 +519,25 @@ Es wären auch noch viele weitere Möglichkeiten denkbar, aber letztlich würden
 
 \subsection{article und section}
 
-Diese beiden Container kommen vorrangig im <main> und <aside> zum Einsatz. Das Konzept sieht wie folgt aus: Wenn Sie wie bei einem Buch die Inhalte Ihrer Webanwendung in Kapitel und Unterkapitel unterteilen wollen, dann beginnen Sie mit einem \verb|<article>|. Sobald ein Unterkapitel beginnt, fügen Sie innerhalb dieses Containers einen \verb|<section>|-Container ein. Wenn Sie dann noch weiter unterteilen wollen, fügen Sie an der entsprechenden Stelle des <section> einen <article> ein usw. usf. Wichtig  ist nur, dass Sie zum einen mit <article> beginnen, und dass Sie die beiden Container-Typen im Wechsel verwenden, wenn Sie jeweils eine weitere unter-Struktur (Unter-Unter-Kapitel zum Unter-Kapitel) beginnen wollen.
+Diese beiden Container kommen vorrangig im \verb|<main>| und \verb|<aside>| zum Einsatz. Das Konzept sieht wie folgt aus: Wenn Sie wie bei einem Buch die Inhalte Ihrer Webanwendung in Kapitel und Unterkapitel unterteilen wollen, dann beginnen Sie mit einem \verb|<article>|. Sobald ein Unterkapitel beginnt, fügen Sie innerhalb dieses Containers einen \verb|<section>|-Container ein. Wenn Sie dann noch weiter unterteilen wollen, fügen Sie an der entsprechenden Stelle des \verb|<section>| einen \verb|<article>| ein usw. usf. Wichtig  ist nur, dass Sie zum einen mit \verb|<article>| beginnen, und dass Sie die beiden Container-Typen im Wechsel verwenden, wenn Sie jeweils eine weitere unter-Struktur (Unter-Unter-Kapitel zum Unter-Kapitel) beginnen wollen.
 
 \subsection{h1 bis h5}
 
-Alle Container, die Sie in den beiden vorigen Abschnitten kennen gelernt haben, sollen in HTML5 mit einer Überschrift (engl. heading) beginnen. Leider gibt es kein allgemeines <h>-Element, mit dem Sie eine Überschrift definieren können.\\
+Alle Container, die Sie in den beiden vorigen Abschnitten kennen gelernt haben, sollen in HTML5 mit einer Überschrift (engl. heading) beginnen. Leider gibt es kein allgemeines \verb|<h>|-Element, mit dem Sie eine Überschrift definieren können.\\
 
-Vielmehr müssen Sie entsprechend der Struktur, die Sie z.B. durch article und section konstruiert haben den passenden Container (<h1> bis <h5>) auswählen. Durch diese Auswahl legen Sie fest, wie die jeweilige Überschrift angezeigt wird. <h1> ist eine Kapitelüberschrift, <h2> die Überschrift eines Unterkapitels, usw.
+Vielmehr müssen Sie entsprechend der Struktur, die Sie z.B. durch article und section konstruiert haben den passenden Container (\verb|<h1>| bis \verb|<h5>|) auswählen. Durch diese Auswahl legen Sie fest, wie die jeweilige Überschrift angezeigt wird. \verb|<h1>| ist eine Kapitelüberschrift, \verb|<h2>| die Überschrift eines Unterkapitels, usw.
 
 \subsection{p}
 
-Wenn Sie einen article oder eine section in mehrere Absätze unterteilen wollen, dann nutzen Sie dafür den <p>-Container. Es gibt zwar auch noch den <div>, der bei HTML4.01 sehr oft verwendet wurde, aber alles, wofür der dort verwendet wurde wird in aller Regel durch die Container erfüllt, die in den beiden ersten Abschnitten aufgezählt wurden.\\
+Wenn Sie einen article oder eine section in mehrere Absätze unterteilen wollen, dann nutzen Sie dafür den \verb|<p>|-Container. Es gibt zwar auch noch den \verb|<div>|, der bei HTML4.01 sehr oft verwendet wurde, aber fast alles, wofür der dort verwendet wurde wird in aller Regel durch die Container erfüllt, die in den beiden ersten Abschnitten aufgezählt wurden.\\
 
-Der <div> ist der einzige Container, für den keine semantischen Merkmale festgelegt werden können. Alleine deshalb sollten Sie im Regelfall <p> verwenden. Bitte missverstehen Sie das nicht: Der Inhalt eines div-Containers kann selbstverständlich auch semantische Informationen enthalten, der Container selbst dagegen nicht.\\
+Der \verb|<div>| ist der einzige Container, für den keine semantischen Merkmale festgelegt werden können. Alleine deshalb sollten Sie im Regelfall \verb|<p>| verwenden. Bitte missverstehen Sie das nicht: Der Inhalt eines div-Containers kann selbstverständlich auch semantische Informationen enthalten, der Container selbst dagegen nicht.\\
 
 \textbf{Für diejenigen, die bereits HTML4.01 programmiert haben}:\\
 
-Wenn Sie Container wie \verb|<div class="main"> <div class="section">| usw. verwenden, ist klar, dass Sie nichts von dem verstanden haben, was hier wir bislang über HTML5 besprochen haben.\\
+Wenn Sie Container wie \verb|<div class="main">|\\\verb|<div class="section">| usw. verwenden, ist klar, dass Sie nichts von dem verstanden haben, was hier wir bislang über HTML5 besprochen haben.\\
 
-<h1> bis <h5>, <div> und <p> gab es bereits in HTML4.01. In HTML5 haben Sie aber zusätzlich die eine Vielzahl an Containern, die für die standardisierte Strukturierung einer Webanwendung genutzt werden sollen.
+\verb|<h1>| bis \verb|<h5>|, \verb|<div>| und \verb|<p>| gab es bereits in HTML4.01. In HTML5 haben Sie aber zusätzlich die eine Vielzahl an Containern, die für die standardisierte Strukturierung einer Webanwendung genutzt werden sollen.
 
 \subsection{Aufgabe}
 
@@ -510,7 +552,7 @@ Aber das ist kein echtes Problem, denn für die meisten dieser Fälle gibt es ei
 Wichtig ist hier nicht, dass Sie sich merken, für welche Fälle Sie ein Polyfill benötigen, denn das ändert sich ja kontinuierlich mit jeder neuen Version der verschiedenen Browser. Wichtig ist vielmehr, dass Sie sich merken, auf welcher Seite Sie prüfen können, ob Sie ein Polyfill benötigen und wo Sie es bekommen:
 
 \begin{itemize}
-	\item Auf \url{www.caniuse.com} können Sie für jeden HTML5-Container prüfen, in welchem Browser er unterstützt wird. Häufig finden Sie bei den einzelnen Containern auch Verweise auf Seiten, auf denen Sie ein passendes Polyfill finden.
+	\item Auf \url{www.caniuse.com} können Sie für jeden HTML5-Container\\prüfen, in welchem Browser er unterstützt wird. Häufig finden Sie bei den einzelnen Containern auch Verweise auf Seiten, auf denen Sie ein passendes Polyfill finden.
 	\item Auf \url{www.html5please.com} finden Sie eine Vielzahl an Polyfills.\\
 	Merken Sie sich dazu den folgenden kurzen Dialog: 
 	\begin{itemize}
@@ -522,13 +564,13 @@ Wichtig ist hier nicht, dass Sie sich merken, für welche Fälle Sie ein Polyfil
 
 \textbf{Aktualisierung am 15. März 2016}:\\
 
-Es gibt zwar noch Fälle, in denen einzelne HTML5-Container in einzelnen Browsern nicht oder nicht vollständig unterstützt werden. Der Vollständigkeit halber werde ich diesen Abschnitt deshalb noch hier belassen, langfristig dürfte die Arbeit mit Polyfills aber überflüssig werden.\\
+Es gibt zwar noch Fälle, in denen einzelne HTML5-Container in einzelnen Browsern nicht oder nicht vollständig unterstützt werden.  Vollständigkeit halber werde ich diesen Abschnitt deshalb noch hier belassen, langfristig dürfte die Arbeit mit Polyfills aber überflüssig werden.
 
-\subsection{Einbindung von Polyfills - <script>-Container}
+\subsection{Einbindung von Polyfills - script-Container}
 
 Polyfills werden in der Sprache \textbf{JavaScript}\index{Programmiersprache!JavaScript}\index{JavaScript} programmiert. Sie brauchen sich jedoch keine Gedanken zu machen, wenn Sie diese Sprache nicht kennen. Denn Sie müssen lediglich einen \verb|<script>|-Container in Ihren \verb|<html>|-Container einfügen. Sämtlichen JavaScript-Code, den Sie verwenden wollen, müssen Sie lediglich in diesen \verb|<script>|-Container kopieren und schon wird er auf Ihrer Webanwendung angewendet.\\
 
-Wichtig ist dabei nur, dass Sie jeweils genau die Bezeichnungen für Container verwenden, die bei HTML5 gelten. Denn genau wie CSS ändern Polyfills die Art, wie ein bestimmter HTML-Container dargestellt wird. Das geht aber nur, wenn die Container die richtige Bezeichnung haben. Sollten Sie sich also vertippen und anstelle des \verb|<aside>|-Containers einen <aseid>-Container programmieren, dann wird Ihnen ein Polyfill, dass die Darstellung des \verb|<aside>|-Containers sicherstellt nichts nützen.\\
+Wichtig ist dabei nur, dass Sie jeweils genau die Bezeichnungen für Container verwenden, die bei HTML5 gelten. Denn genau wie CSS ändern Polyfills die Art, wie ein bestimmter HTML-Container dargestellt wird. Das geht aber nur, wenn die Container die richtige Bezeichnung haben. Sollten Sie sich also vertippen und anstelle des \verb|<aside>|-Containers einen \verb|<aseid>|-Container programmieren, dann wird Ihnen ein Polyfill, dass die Darstellung des \verb|<aside>|-Containers sicherstellt nichts nützen.\\
 
 Auch hier wieder ein Hinweis für fortgeschrittene HTML-Programmierer: In HTML4.01 mussten Sie für die Verwendung von JavaScript noch eine Zeile im \verb|<head>|-Container erstellen, die dem Browser mitteilt, dass \glqq{}Scripte\grqq{} in JavaScript (oder einer anderen Programmiersprache) erstellt werden. Das ist bei HTML5 nicht mehr nötig, weil hier JavaScript die Standardprogrammiersprache ist.
 
@@ -544,7 +586,7 @@ Die folgenden beiden HTML-Dokumente zeigen, wie Sie mit den bisher vorgestellten
 
 Aber keine Sorge, all diese Punkte und noch viel mehr werden wir in Kürze behandeln.\\
 
-Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusammengefasst ist. Die Absätze wurden deutlich gekürzt, damit Sie jeweils sehen können, wie die Programmierung aussehen kann.\\
+Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-\\Dokumente zusammengefasst ist. Die Absätze wurden deutlich gekürzt, damit Sie jeweils sehen können, wie die Programmierung aussehen kann.\\
 
 \begin{verbatim}
 <!doctype html> 
@@ -556,24 +598,32 @@ Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusa
 
 <body> 
 <header>
-<!-- Hier später das Logo der Webanwendung einfügen -->
+<!-- Hier später das Logo der Webanwendung einfügen 
+-->
 </header>
 
 <main>
 <h1>Vorwort</h1>
-<p>Ein häufiges Missverständnis besteht darin, dass Programmierung und Informatik miteinander verwechselt werden. ....</p> 
+<p>Ein häufiges Missverständnis besteht darin,
+dass Programmierung und Informatik miteinander 
+verwechselt werden. ....</p> 
 </main>
 
 <footer>
-<!-- Hier später den Link auf das Impressum einfügen. -->
+<!-- Hier später den Link auf das Impressum einfügen. 
+-->
 </footer>
 
 <aside>
 <article>
 <h1>Zusammenfassung</h1>
-<p>Informatiker entwickeln Konzepte und Modelle, um Ideen möglichst effizient umzusetzen. Dabei spielt es keine Rolle, ob diese Konzepte mit einem Computer umsetzbar sind.
+<p>Informatiker entwickeln Konzepte und Modelle, 
+um Ideen möglichst effizient umzusetzen. Dabei 
+spielt es keine Rolle, ob diese Konzepte mit 
+einem Computer umsetzbar sind.
 </p>
-<p>Programmieren sind Menschen, die Konzepte und Modelle in eine Programmiersprache umsetzen.
+<p>Programmieren sind Menschen, die Konzepte 
+und Modelle in eine Programmiersprache umsetzen.
 </p>
 </article>
 </aside>
@@ -589,35 +639,47 @@ Hier ein Beispiel, in dem der Anfang dieses Skripts als zwei HTML-Dokumente zusa
 
 <body> 
 <header>
-<!-- Hier später das Logo der Webanwendung einfügen -->
+<!-- Hier später das Logo der Webanwendung einfügen 
+-->
 </header>
 
 <main>
 <article>
 <h1>Vorwort</h1>
-<p>Programmierveranstaltungen bereiten Sie in aller Regel darauf vor, Programme für einen Computer zu  ....</p> 
+<p>Programmierveranstaltungen bereiten Sie in aller 
+Regel darauf vor, Programme für einen Computer zu  
+....</p> 
 <section>
-<h2>Programmierung von Webanwendung und Webapplicationen</h2>
-<p>Die bekannteste Markup Language ist HTML, die HyperText Markup Language. ...</p>
-<p>Wie gesagt definieren Sie in einer Markup Language lediglich  ...</p>
+<h2>Programmierung von Webanwendung und 
+Webapplicationen</h2>
+<p>Die bekannteste Markup Language ist HTML, die 
+HyperText Markup Language. ...</p>
+<p>Wie gesagt definieren Sie in einer Markup Language 
+lediglich  ...</p>
 </section>
 <section>
 <h2>Das semantische Web</h2>
-<p>Bis hierher haben Sie nur über Dinge gelesen, die Sie unter  ...</p>
+<p>Bis hierher haben Sie nur über Dinge gelesen, die 
+Sie unter  ...</p>
 <p>Sehen wir uns das mal im Detail an:</p>
 <article>
 <h3>Syntax und Semantik </h2>
-<p>Den einen dieser Begriffe haben Sie wahrscheinlich in der Schule kennen und ...</p>
-<p>Damit kommen wir zur Semantik. Mit Semantik bezeichnen wir ...</p>
-<p>Aber es gibt einen sehr großen Unterschied zwischen  ...</p>
-<p>Stellen Sie sich nun die folgende Situation vor, ...</p>
+<p>Den einen dieser Begriffe haben Sie wahrscheinlich 
+in der Schule kennen und ...</p>
+<p>Damit kommen wir zur Semantik. Mit Semantik 
+bezeichnen wir ...</p>
+<p>Aber es gibt einen sehr großen Unterschied 
+zwischen  ...</p>
+<p>Stellen Sie sich nun die folgende Situation 
+vor, ...</p>
 </article>
 </section>
 </article>
 </main>
 
 <footer>
-<!-- Hier später den Link auf das Impressum einfügen. -->
+<!-- Hier später den Link auf das Impressum einfügen. 
+-->
 </footer>
 
 </body> 
@@ -632,7 +694,7 @@ Sie haben vorhin sechs Dateien (arbeitsweg.html usw.) erstellt. Erweitern Sie di
 	\item Internationalisieren und Lokalisieren Sie jede Seite.
 	\item Erstellen Sie für jede Seite eine grundlegende Struktur, bei der Sie insbesondere sämtliche hier vorgestellten HTML5-Container sinnvoll verwenden.
 	\item Füllen Sie Ihre Seiten mit Inhalten, die zum Seitentitel passen.
-	\item Wenn Sie irgendwelche Inhalte wie Spiele, Videos, Bilder usw. einfügen wollen, dann tragen Sie an der entsprechenden Stelle einen Platzhalter ein. (Z.B. „Einzufügen: Bild von Horst“, „Hier mein geniales Gitarrensolo einbauen.“ usw. usf.) Wichtig: Es spielt keine Rolle, ob Sie sich zutrauen, die entsprechenden Inhalte selbst zu entwickeln. Lassen Sie einfach Ihrer Phantasie freien Lauf.
+	\item Wenn Sie irgendwelche Inhalte wie Spiele, Videos, Bilder usw. \\einfügen wollen, dann tragen Sie an der entsprechenden Stelle einen Platzhalter ein. (Z.B. „Einzufügen: Bild von Horst“, „Hier mein geniales Gitarrensolo einbauen.“ usw. usf.) Wichtig: Es spielt keine Rolle, ob Sie sich zutrauen, die entsprechenden Inhalte selbst zu entwickeln. Lassen Sie einfach Ihrer Phantasie freien Lauf.
 	\item Lassen Sie die Datei \verb|index.html| vorerst so, wie Sie ist.          
 	\item Suchen Sie nach einem Polyfill und programmieren Sie es ein, damit der \verb|<aside>|-Container in den folgenden Browsern „richtig“ angezeigt wird: Firefox, Internet Explorer, Safari, Edge
 \end{itemize}
@@ -659,7 +721,8 @@ Wie alles andere in HTML waren Anker ursprünglich vollwertige Container. Deshal
 <p>Dieses Rezept habe ich von meiner Oma, die ...</p>
 <p>Als sie dann 1972 in ...</p>
 <section>
-<h2 id=blanchieren>Blanchieren und andere Zubereitungsarten</h2>
+<h2 id=blanchieren>Blanchieren und andere 
+Zubereitungsarten</h2>
 <p>Und dann sagte sie ...</p>
 </section>
 ... 
@@ -682,12 +745,23 @@ Wenn Sie auf eine andere Seite verlinken wollen, dann nutzen Sie dazu den Contai
 Hier die drei genannten Varianten:
 
 \begin{itemize}
-	\item Sie wollen auf einen Anker verlinken, der sich im selben HTML-Dokument befindet, aus dem heraus Sie ihn verlinken wollen. Bsp.: Sie haben ein kleines Glossar auf Ihrer Seite, in dem Sie den Anker „blanchieren“ einprogrammiert haben. Ein Nutzer soll innerhalb dieses Glossars zum Anker springen können. Dann sieht der Link-Container so aus:\\
-	\verb|<a href=blanchieren> Beliebiger Text, der auf der Webanwendung unterstrichen angezeigt wird und damit anzeigt, dass hier ein Link vorhanden ist. </a>|\\
-	\item Sie wollen auf eine andere Webanwendung verlinken. Dann tragen Sie nach dem Gleichzeichen die vollständige URL ein. (Was eine URL ist, klären wir gleich.) Im folgenden Beispiel programmieren wir einen Link auf die Webanwendung des Departments Medientechnik:\\	
-	\verb|<a href=http://www.mt.haw-hamburg.de>Zum Department Medientechnik</a>|\\
-	\item Nehmen wir an, Sie wollen dagegen auf einen Anker auf einer anderen Seite verweisen. Dann geben Sie zunächst die URL der Seite an, gefolgt von einem Hash (das ist dieses Zeichen: \verb|#|) und gefolgt vom Namen des Ankers. Nehmen wir an, die Seite heißt \verb|meineRezepte.html| und der Anker heißt \verb|kohlroulade|. Dann könnte der Link so aussehen:\\	
-	\verb|Zu meinem Rezept für <a href=meineRezepte.html\#kohlroulade>Kohlrouladen</a>.|
+	\item Sie wollen auf einen Anker verlinken, der sich im selben HTML-\\Dokument befindet, aus dem heraus Sie ihn verlinken wollen. Bsp.: Sie haben ein kleines Glossar auf Ihrer Seite, in dem Sie den Anker „blanchieren“ einprogrammiert haben. Ein Nutzer soll innerhalb dieses Glossars zum Anker springen können. Dann sieht der Link-Container so aus:
+	\begin{verbatim}
+	<a href=blanchieren> Beliebiger Text, der auf der 
+	Webanwendung unterstrichen angezeigt wird und damit 
+	anzeigt, dass hier ein Link vorhanden ist. </a>
+	\end{verbatim}
+	\item Sie wollen auf eine andere Webanwendung verlinken. Dann tragen Sie nach dem Gleichzeichen die vollständige URL ein. (Was eine URL ist, klären wir gleich.) Im folgenden Beispiel programmieren wir einen Link auf die Webanwendung des Departments Medientechnik:
+	\begin{verbatim}	
+	<a href=http://www.mt.haw-hamburg.de>
+	Zum Department Medientechnik</a>|
+	\end{verbatim}
+	\item Nehmen wir an, Sie wollen dagegen auf einen Anker auf einer anderen Seite verweisen. Dann geben Sie zunächst die URL der Seite an, gefolgt von einem Hash (das ist dieses Zeichen: \verb|#|) und gefolgt vom Namen des Ankers. Nehmen wir an, die Seite heißt\\ \verb|meineRezepte.html| und der Anker heißt \verb|kohlroulade|. Dann könnte der Link so aussehen:
+	\begin{verbatim}
+	Zu meinem Rezept für 
+	<a href=meineRezepte.html\#kohlroulade>
+	Kohlrouladen</a>.
+	\end{verbatim}
 \end{itemize}
 
 \subsubsection{Aufgabe:}
@@ -700,16 +774,20 @@ Hier die drei genannten Varianten:
 
 \subsection{Verlinkungen als expliziter Download}
 
-Bei HTML4.01 bewirkt das Anwählen eines Hyperlinks, dass der Browser versuchen wird, die Datei zu öffnen. Erst wenn er feststellt, dass es sich um ein Format handelt, dass er nicht öffnen kann, wird er einen Download anbieten. Mit HTML5 wurde für \verb|<a href>|-Container das \verb|download|-Attribut eingeführt. Darüber können Sie explizit angeben, dass ein Link heruntergeladen werden soll.\\
+Bei HTML4.01 bewirkt das Anwählen eines Hyperlinks, dass der Browser versuchen wird, die Datei zu öffnen. Erst wenn er feststellt, dass es sich um ein Format handelt, dass er nicht öffnen kann, wird er einen Download anbieten. Mit HTML5 wurde für \verb|<a href>|-Container das \verb|download|\\-Attribut eingeführt. Darüber können Sie explizit angeben, dass ein Link heruntergeladen werden soll.\\
 
-Wenn Sie diesem Attribut einen Namen als Wert übergeben, dann geben Sie dem Browser vor, unter welchem Namen die Datei gespeichert werden soll. Das ist vor allem dann von Vorteil, wenn der Dateiname eher kryptisch ist.\\
+Wenn Sie diesem Attribut einen Namen als Wert übergeben, dann geben Sie dem Browser vor, unter welchem Namen die Datei gespeichert werden soll. Das ist vor allem dann von Vorteil, wenn der Dateiname eher kryptisch ist.
 
-\verb|<a href=DC9287349723.jpg download=FenderAmericanVintage.jpg>Foto meiner Gitarre</a>|
+\begin{verbatim}
+<a href=DC9287349723.jpg 
+download=FenderAmericanVintage.jpg>
+Foto meiner Gitarre</a>
+\end{verbatim}
 
 \subsection{Hausaufgabe:}
 
 \begin{itemize}
-	\item Erstellen Sie einige Bilddateien, damit Sie diese nutzen können, um explizite Links in Ihrem HTML-Dokumenten einprogrammieren können.\\
+	\item Erstellen Sie einige Bilddateien, damit Sie diese nutzen können, um explizite Links in Ihrem HTML-Dokumenten einprogrammieren\\ können.\\
 	
 	\textbf{Wichtig}:\\
 	
@@ -720,13 +798,13 @@ Wenn Sie diesem Attribut einen Namen als Wert übergeben, dann geben Sie dem Bro
 
 \subsection{URLs – absolute und relative Adressen}
 
-Wenn Sie im WWW unterwegs sind, rufen Sie Seiten wie \verb|www.haw-hamburg.de| auf. Eine solche Adresse wird als Uniform Resource Locator (kurz \textbf{URL}\index{URL}) bezeichnet. Aber auch wenn das Protokoll angegeben wird (wie bei \verb|http://www.haw-hamburg.de|) und in einer Reihe weitere Fälle spricht man von einer URL. Auch \glqq{}Adressangaben\grqq{}, die sich auf Dateien auf Ihrem Computer beziehen werden als URL bezeichnet. Kurz gesagt ist eine URL eine standardisierte Angabe darüber, wo eine Datei zu finden ist.\\
+Wenn Sie im WWW unterwegs sind, rufen Sie Seiten wie \\\verb|www.haw-hamburg.de| auf. Eine solche Adresse wird als Uniform Resource Locator (kurz \textbf{URL}\index{URL}) bezeichnet. Aber auch wenn das Protokoll angegeben wird (wie bei \verb|http://www.haw-hamburg.de|) und in einer Reihe weitere Fälle spricht man von einer URL. Auch \glqq{}Adressangaben\grqq{}, die sich auf Dateien auf Ihrem Computer beziehen werden als URL bezeichnet. Kurz gesagt ist eine URL eine standardisierte Angabe darüber, wo eine Datei zu finden ist.\\
 
 Eine \textbf{absolute URL}\index{URL!absolut} ist nun eine URL, die den vollständigen Pfad zu einer Datei angibt. (Zur Erinnerung: Das WWW ist nichts als eine Ansammlung von Dateien auf Rechnern, die weltweit vernetzt sind.)\\
 
 Im Gegensatz dazu ist eine \textbf{relative URL}\index{URL!relativ} eine Adressangabe, die den Pfad von dem Standort aus beschreibt, an dem die Datei gespeichert ist, in der die URL einprogrammiert wurde. Meist werden Sie aus einem einfachen Grund mit relativen URLs programmieren: Da die Dateien bei der Programmierung nicht an derselben Stelle gespeichert sind wie später, wenn sie online abrufbar sind, müssten Sie bei absoluten URLs später alle Adressen einmal ändern und würden mit Sicherheit Fehler erzeugen.\\
 
-Ein \glqq{}exzellentes\grqq{} Beispiel finden Sie unter den Tutorials zu Java. Dort wurden viele Links absolut programmiert. Als dann Java von Sun Systems an Oracle verkauft wurde, wurden nicht alle Links überarbeitet. Heute können Sie einzig aus diesem Grund viele Tutorials nicht aufrufen: Da der Link mit \verb|www.sun.com| beginnt, die entsprechende Seite aber bei \verb|www.oracle.com| liegt, führt der Link ins Leere. Häufig wurden die entsprechenden Tutorials dann auf \verb|www.oracle.com| in einem anderen Verzeichnis als bei \verb|www.sun.com| gespeichert, sodass auch eine manuelle Änderung von \verb|sun| in \verb|oracle| nicht hilft, um das Tutorial zu finden.\\
+Ein \glqq{}exzellentes\grqq{} Beispiel finden Sie unter den Tutorials zu Java. Dort wurden viele Links absolut programmiert. Als dann Java von Sun Systems an Oracle verkauft wurde, wurden nicht alle Links überarbeitet. Heute können Sie einzig aus diesem Grund viele Tutorials nicht aufrufen: Da der Link mit\verb|www.sun.com| beginnt, die entsprechende Seite aber bei \\\verb|www.oracle.com| liegt, führt der Link ins Leere. Häufig wurden die entsprechenden Tutorials dann auf \verb|www.oracle.com| in einem anderen Verzeichnis als bei \verb|www.sun.com| gespeichert, sodass auch eine manuelle\\Änderung von \verb|sun| in \verb|oracle| nicht hilft, um das Tutorial zu finden.\\
 
 Bei URLs, die nicht auf einen Dateinamen enden, suchen Webbrowser automatisch nach einer Datei namens \verb|index.html|. Deshalb ist es wichtig, dass Sie bei einer Webanwendung immer eine Datei index.html einprogrammieren. (Ausnahmen sind Webpages und Webanwendungen, die Sie mithilfe eines Frameworks, eines CMS oder anderer \glqq{}Hilfen\grqq{} erstellen.\\
 
@@ -736,7 +814,7 @@ Wichtig ist aber vor allem, dass Sie grundsätzlich verstehen, was eine URL ist 
 
 \section{Formulare}
 
-\textbf{Formulare}\index{Formulare} sind Bereiche einer Webanwendung, über die Nutzer Daten per Tastatur oder Maus eingeben können. Interaktive Elemente wie Spiele können auch dazu gehören.\\
+\textbf{Formulare}\index{Formulare} sind Bereiche einer Webanwendung, über die Nutzer Daten per Tastatur oder Maus eingeben können. Interaktive Elemente wie Spiele \\können auch dazu gehören.\\
 
 Wie Sie wissen können Sie mit HTML lediglich Container definieren, deren Darstellung über CSS festgelegt wird. Wenn Sie dann noch Nutzereingaben verarbeiten wollen, benötigen Sie zusätzlich eine Programmiersprache wie PHP oder JavaScript.\\
 
@@ -768,7 +846,8 @@ Wichtig: Im Gegensatz zu HTML4.01 bietet Ihnen HTML5 eine Vielzahl an Möglichke
 
 \subsection{Das name-Attribut und das id-Attribut – Sonderfälle in Formularen}
 
-Innerhalb eines <form>-Containers erstellen Sie für jede Eingabemöglichkeit einen weiteren Container. Damit Sie die Eingaben später weiter verwenden können, müssen Sie bei vielen Containern ein \verb|name|\index{HTML!Attribut!name}-Attribut programmieren, dessen Wert innerhalb des <form>-Containers nur einmal vorkommen darf. \\
+Innerhalb eines \verb|<form>|-Containers erstellen Sie für jede \\Eingabemöglichkeit einen weiteren Container. Damit Sie die Eingaben \\
+später weiter verwenden können, müssen Sie bei vielen Containern ein \verb|name|\index{HTML!Attribut!name}-Attribut programmieren, dessen Wert innerhalb des \verb|<form>|\\-Containers nur einmal vorkommen darf. \\
 
 Wenn Sie sich jetzt wundern, warum hier nicht mehr das \verb|id|- sondern das \verb|name|-Attribut verwendet werden muss: Das \verb|id|-Attribut wurde mit HTML5 so erweitert, dass Elemente einer Webanwendung als Objekte in einer objektorientierten Sprache verwenden werden können. Das \verb|name|-Attribut wird für die Übergabe von Nutzereingaben eines Formulars an ein Programm verwendet. Deshalb gibt es bei Formularen beide Attribute (\verb|name| und \verb|id|).\\
 
@@ -776,7 +855,7 @@ Bei allen imperativen Programmiersprachen werden Werte gespeichert, indem sie je
 
 Der Typ einer Variablen sagt etwas darüber aus, um was für eine Art von Variable es sich handelt. Für Sie und mich ist es beispielsweise klar erkennbar, ob eine Zeichenfolge nun ein Text ist oder ein Datum, eine Rechenaufgabe oder etwas anderes. Für einen Computer ist das nicht klar. Ein Computer kann z.B. nicht unterscheiden, ob die Zeichenfolge 10 die Zahl 10 oder die Zahl 2 (binär 10) oder der Text 10 sein soll; all diese Interpretationen werden innerhalb des Computers unterschiedlich gespeichert und verarbeitet. Deshalb gibt es bei der Nutzung von Variablen innerhalb eines Computerprogramms immer einen Typ für jede einzelne Variable.\\
 
-Wichtig: In Sprachen wie Java wird der Typ für jede Variable vom Programmierer festgelegt und kann sich dann nicht mehr ändern. Diese nicht-Änderbarkeit des Datentyps einer Variablen wird als \textbf{statische Typisierung}\index{Typisierung!statisch} bezeichnet. Daneben gibt es noch die \textbf{dynamische Typisierung}\index{Typisierung!dynamisch}. Hier wird der Typ einer Variablen von der Programmiersprache verwaltet und bei Bedarf geändert. Schon vorweg sei gesagt, dass PHP eine dynamisch typisierte Sprache ist. Beide Verfahren haben unterschiedliche Vor- und Nachteile und keines (!) ist schlecht. Insbesondere ist die Aussage, dass die dynamische Typisierung unsicher sei kompletter Humbug; es gibt eine Art von Sicherheit, die dadurch sicher gestellt wird, aber gleichzeitig ist sie der Grund für eine Vielzahl überflüssiger Fehlermeldungen.
+Wichtig: In Sprachen wie Java wird der Typ für jede Variable vom Programmierer festgelegt und kann sich dann nicht mehr ändern. Diese nicht-Änderbarkeit des Datentyps einer Variablen wird als \textbf{statische Typisierung}\index{Typisierung!statisch} bezeichnet. Daneben gibt es noch die \textbf{dynamische Typisierung}\index{Typisierung!dynamisch}. Hier wird der Typ einer Variablen von der Programmiersprache verwaltet und bei Bedarf geändert. Schon vorweg sei gesagt, dass PHP eine dynamisch typisierte Sprache ist. Beide Verfahren haben unterschiedliche Vor- und Nachteile und keines (!) ist schlecht. Insbesondere ist die Aussage, dass die dynamische Typisierung unsicher sei kompletter Humbug; es gibt eine Art von Sicherheit, die durch die statische Typisierung sicher gestellt wird, aber gleichzeitig ist sie der Grund für eine Vielzahl überflüssiger Fehlermeldungen.
 
 \subsection{Container für Formulare}
 
@@ -786,47 +865,36 @@ Wichtig: Während viele dieser Eingabemöglichkeiten auf einem Rechner nur die K
 
 \subsubsection{Formularfelder für Texteingaben}
 
-In diesem Unterabschnitt finden Sie die meisten Typen, die Sie nutzen können, damit Nutzer einen Text oder eine Zahl eingeben können. Wenn ein Tag hier nicht aufgeführt ist, dann liegt das daran, dass Sie wie bei Formular-Tags in HTML 4.01 etwas programmieren müssten, damit die betroffenen Tags ihre Aufgabe erfüllen. Ein Beispiel ist das Tag, mit dem Sie es einem Nutzer ermöglichen können, nach einem Begriff zu suchen. Denn die Suche müssen Sie dann doch wieder selbst programmieren. Also taucht es hier nicht auf.
+In diesem Unterabschnitt finden Sie die meisten Typen, die Sie nutzen \\können, damit Nutzer einen Text oder eine Zahl eingeben können. Wenn ein Tag hier nicht aufgeführt ist, dann liegt das daran, dass Sie wie bei Formular-Tags in HTML 4.01 etwas programmieren müssten, damit die betroffenen Tags ihre Aufgabe erfüllen. Ein Beispiel ist das Tag, mit dem Sie es einem Nutzer ermöglichen können, nach einem Begriff zu suchen. Denn die Suche müssen Sie dann doch wieder selbst programmieren. Also taucht es hier nicht auf.
 
 Die folgenden beiden Attribute können Sie bei allen Formularfeldern verwenden: (Ausnahmen sind jeweils angegeben, zum Teil können Sie sich das aber auch logisch erschließen.)
 
 \begin{itemize}
 	\item Das \verb|value|-Attribut\\
-
 	Bei allen Formular-Containern (außer dem \verb|file|-Container) können Sie mit dem \verb|value|-Attribut eine Antwort eintragen, die der Nutzer aber jederzeit überschreiben kann. Wenn ein Nutzer das nicht tut, wird dieser Wert beim Absenden des Formulars so übertragen, als wenn der Nutzer ihn eingetragen hätte.
 
 	\item Das \verb|required|-Attribut\\
-
 	Sie können festlegen, dass Nutzer einzelne Felder ausfüllen müssen, bevor sie ein Formular absenden können. Dazu programmieren Sie schlicht das Attribut \verb|required|.
 \end{itemize}
 
 Jetzt folgen die meisten der Container, die Sie verwenden können, damit NutzerInnen alphabetische oder alphanumerische Eingaben durchführen können:
 
 \begin{itemize}
-	\item Kurzer Text\\
-	
-	\textbf{Zweck}: Damit können Nutzer einen kurzen Text von bis zu 20 Zeichen eingeben.\\
-	
-	\textbf{Quellcode}: \verb|<input>| (alternativ aber redundant: \verb|<input type=text>|)\\
-	
+	\item \textbf{Kurzer Text}\\	
+	\textbf{Zweck}: Damit können Nutzer einen kurzen Text von bis zu 20 Zeichen eingeben.\\	
+	\textbf{Quellcode}: \verb|<input>| (alternativ: \verb|<input type=text>|)\\	
 	Wenn Sie hier das Attribut \verb|type=password| vergeben, dann wird die Eingabe maskiert; niemand kann also am Monitor sehen, was der Nutzer eingibt. Das ist aber nur ein Schutz gegen neugierige Kollegen, die nicht verfolgen können, welche Tasten der Nutzer drückt. Gegen die meisten Angriffsarten ist es dagegen vollkommen nutzlos. Um Nutzereingaben gegen diese zu schützen müssen Sie im Programm kryptographische Protokolle integrieren und sollten am besten keine Tastatureingaben als Passwort verwenden. Aber das ist ein Thema für Veranstaltungen in höheren Semestern.\\
 
 	\item Langer Text\\
-
-	\textbf{Zweck}: Mit diesem Container ermöglichen Sie es Nutzern, Texte beliebiger Länge einzugeben. Im Gegensatz zu anderen Containern können Sie hier mit den Attributen rows und cols die Größe festlegen. Tipp: Auch wenn es im Moment nicht so gut aussieht, nutzen Sie dazu besser CSS.\\
-
+	\textbf{Zweck}: Mit diesem Container ermöglichen Sie es Nutzern, Texte beliebiger Länge einzugeben. Im Gegensatz zu anderen Containern \\können Sie hier mit den Attributen rows und cols die Größe festlegen. Tipp: Auch wenn es im Moment nicht so gut aussieht, nutzen Sie dazu besser CSS.\\
 	\textbf{Quellcode}: \verb|<textarea>|\\
 
 	\item URL eingeben\\
-
-	\textbf{Zweck}: Nutzer können eine URL eingeben. Einziger Vorteil gegenüber \verb|type=text| ist die größere Länge.\\
-	
+	\textbf{Zweck}: Nutzer können eine URL eingeben. Einziger Vorteil gegenüber \verb|type=text| ist die größere Länge.\\	
 	\textbf{Quellcode}: \verb|<input type=url>|\\
 
 	\item Emails:\\
-
-	\textbf{Zweck}: Hier prüft der Browser, ob die Eingabe eine valide Email-Adresse sein kann: Ist das @-Symbol enthalten? Gibt es eine valide Endung? usw.\\
-	
+	\textbf{Zweck}: Hier prüft der Browser, ob die Eingabe eine valide Email-Adresse sein kann: Ist das @-Symbol enthalten? Gibt es eine valide Endung? usw.\\	
 	\textbf{Quellcode}: \verb|<input type=email>|\\
 \end{itemize}
 
@@ -847,26 +915,18 @@ Jetzt die Formularfelder, die für verschiedene numerische Eingaben gedacht sind
 
 \begin{itemize}
 	\item Zahlen eingeben:\\
-
-	\textbf{Zweck}: Hier können Nutzer ganze Zahlen eingeben. Eine Eingabe ist auch per Maus möglich, da zusammen mit dem Eingabefeld noch zwei kleine Schaltflächen eingeblendet werden, über die der Wert erhöht oder gesenkt werden kann.\\
-	
-	Für diese diesen input-Typ können Sie die selben Attribute verwenden, die auch beim nachfolgenden input-Typ \verb|range| gelten. \\
-	
+	\textbf{Zweck}: Hier können Nutzer ganze Zahlen eingeben. Eine Eingabe ist auch per Maus möglich, da zusammen mit dem Eingabefeld noch zwei kleine Schaltflächen eingeblendet werden, über die der Wert erhöht oder gesenkt werden kann.\\	
+	Für diese diesen input-Typ können Sie die selben Attribute verwenden, die auch beim nachfolgenden input-Typ \verb|range| gelten. \\	
 	\textbf{Quellcode}: \verb|<input type=number>|\\
-
-	Tipp: Verwenden Sie \verb|number|, wenn Nutzer eine genau Zahl eingeben sollen und \verb|range|, wenn ein grober Wert als Eingabe genügt.\\
+	Tipp: Verwenden Sie \verb|number|, wenn Nutzer eine genau Zahl eingeben sollen und \verb|range|, wenn ein grober Wert als Eingabe genügt.
 
 	\item Zahlen mit einem Schieber auswählen:\\
-
 	\textbf{Quellcode}: \verb|<input type=range min=... max=...>|\\
-
-	Im Gegensatz zum Typ \verb|number| müssen Sie hier die Attribute \verb|min| und \verb|max| vorgeben, weil Nutzer kein Feld für eine Eingabe erhalten, sondern einen Slider (zu Deutsch Schieberegler), mit dem sie einen Wert anwählen können. Über das Attribut \verb|step| können Sie zusätzlich programmieren, wie groß der Abstand zwischen zwei wählbaren Zahlen sein darf.\\
+	Im Gegensatz zum Typ \verb|number| müssen Sie hier die Attribute \verb|min| und \verb|max| vorgeben, weil Nutzer kein Feld für eine Eingabe erhalten, sondern einen Slider (zu Deutsch Schieberegler), mit dem sie einen Wert anwählen können. Über das Attribut \verb|step| können Sie zusätzlich programmieren, wie groß der Abstand zwischen zwei wählbaren Zahlen sein darf.
 
 	\item Telefonnummern:\\
-
 	\textbf{Quellcode}: \verb|<input type=tel>|\\
-
-	\textbf{Zweck}: Der Name sagts schon: Damit können Nutzer eine Telefonnummer eingeben. Der Vorteil gegenüber \verb|type=number| besteht darin, dass so auch eine internationale Vorwahl eingegeben werden kann. Wegen des + ist das bei \verb|number| nicht möglich. (Streng genommen handelt es sich hier also nicht um einen Typ für Zahleneingaben, aber da die meisten Menschen Telefonnummern als Zahlen betrachten, habe ich es in diesem Abschnitt eingruppiert.)\\
+	\textbf{Zweck}: Der Name sagts schon: Damit können Nutzer eine Telefonnummer eingeben. Der Vorteil gegenüber \verb|type=number| besteht darin, dass so auch eine internationale Vorwahl eingegeben werden kann. Wegen des + ist das bei \verb|number| nicht möglich. (Streng genommen handelt es sich hier also nicht um einen Typ für Zahleneingaben, aber da die meisten Menschen Telefonnummern als Zahlen betrachten, habe ich es in diesem Abschnitt eingruppiert.)
 \end{itemize}
 
 Hier ein weiteres Beispiel für ein einfaches Formular:
@@ -892,34 +952,24 @@ Es gibt kein Formularfeld, das Zeiträume aufnehmen kann: Sie können zwar Einen
 
 \begin{itemize}
 	\item Datum\\
-
-	\textbf{Zweck}: Bei Smartphones öffnet sich in diesem Fall ein Feld, über das Nutzer ein Datum, wie z.B. ihr Geburtsdatum anwählen können.
+	\textbf{Zweck}: Bei Smartphones öffnet sich in diesem Fall ein Feld, über das Nutzer ein Datum, wie z.B. ihr Geburtsdatum anwählen können.	
+	\textbf{Quellcode}: \verb|<input type=date>|
 	
-	\textbf{Quellcode}: \verb|<input type=date>|\\
+	\item Monat und Jahr\\
+	\textbf{Zweck}: Hier können Nutzer Monat und Jahr eingeben.\\	
+	\textbf{Quellcode}: \verb|<input type=month>|
 
 	\item Monat und Jahr\\
-
-	\textbf{Zweck}: Hier können Nutzer Monat und Jahr eingeben.\\
+	\textbf{Zweck}: Hier können Nutzer Woche und Jahr eingeben.\\	
+	\textbf{Quellcode}: \verb|<input type=week>|
 	
-	\textbf{Quellcode}: \verb|<input type=month>|\\
-
-	\item Monat und Jahr\\
-
-	\textbf{Zweck}: Hier können Nutzer Woche und Jahr eingeben.\\
-	
-	\textbf{Quellcode}: \verb|<input type=week>|\\
-
-	\item Uhrzeit\\
-	
-	\textbf{Zweck}: Hier kann eine Uhrzeit eingegeben werden.\\
-	
-	\textbf{Quellcode}: \verb|<input type=time>|\\
+	\item Uhrzeit\\	
+	\textbf{Zweck}: Hier kann eine Uhrzeit eingegeben werden.\\	
+	\textbf{Quellcode}: \verb|<input type=time>|
 
 	\item Datum und Uhrzeit\\
-
-	\textbf{Zweck}: Zusätzlich zu \verb|type=date| bietet dieser Typ noch die Angabe einer Uhrzeit an. \emph{Der Typ datetime (ohne –local) ist nicht gültig.}\\
-
-	\textbf{Quellcode}: \verb|<input type=datetime-local>|\\
+	\textbf{Zweck}: Zusätzlich zu \verb|type=date| bietet dieser Typ noch die Angabe einer Uhrzeit an. Der Typ datetime (ohne –local) ist nicht gültig.\\
+	\textbf{Quellcode}: \verb|<input type=datetime-local>|
 \end{itemize}
 
 Weiteres Beispiel für ein einfaches Formular:
@@ -931,8 +981,12 @@ E-Mail: <input type=email name=email required>
 Telefon: <input type=tel name=phonenumber>
 Webanwendung: <input type=url name=webpage>
 Ihr Anliegen: <textfield name=userrequest required>
-Ihre Dringlichkeit: <input type=range name=importancy min=1 max=9>
-Für Anrufe teilen Sie uns bitte noch mit, wann wir Sie am besten erreichen. Von <input type=time name=callNoEarlierThan> bis <input type=time name=callNoLaterThan>.
+Ihre Dringlichkeit: <input type=range name=importancy 
+min=1 max=9>
+Für Anrufe teilen Sie uns bitte noch mit, wann wir 
+Sie am besten erreichen. Von <input type=time 
+name=callNoEarlierThan> bis <input type=time 
+name=callNoLaterThan>.
 </form>
 \end{verbatim}
 
@@ -946,27 +1000,23 @@ Im Gegensatz zu den bisherigen \verb|input|-Containern können Sie hier die Besc
 
 \begin{itemize}
 	\item Checkboxen:\\
-
-	\textbf{Quellcode:} \verb|<input type=checkbox name=bezeichner value=wert>|\\
-
+	\textbf{Quellcode:}\\\verb|<input type=checkbox name=bezeichner value=wert>|\\
 	Damit programmieren Sie ein Kästchen, das von Nutzern an- oder abgewählt werden kann.\\
 	Die Attribute \verb|name| und \verb|value| werden erst dann von Belang, wenn Sie ein Programm entwickeln, mit dem Sie die Nutzereingaben verwenden wollen (für den Moment können Sie das folgende also überspringen): 
 	
 	\begin{itemize}
 		\item Das Attribut \verb|name| kennen Sie bereits. 
 		\item Wenn Sie bei einer Checkbox kein \verb|value|-Attribut programmiert haben, dann wird dem Programm, das über das \verb|action|-Attribut des \verb|<form>| festgelegt wurde die Nachricht \verb|bezeichner=on| übertragen. (Respektive der Name, den Sie programmiert haben.)
-		\item Haben Sie dagegen ein Attribut \verb|value| wie oben programmiert, dann wird dem Programm die Nachricht \verb|bezeichner=wert| übermittelt.\\
+		\item Haben Sie dagegen ein Attribut \verb|value| wie oben programmiert, dann wird dem Programm die Nachricht \verb|bezeichner=wert| übermittelt.
 	\end{itemize}
 	
-	Wichtig (ebenfalls erst in Bezug auf Programme, die Nutzereingaben verwalten):\\
-	
+	\textbf{Wichtig} (ebenfalls erst in Bezug auf Programme, die Nutzereingaben verwalten):\\	
 	Wenn eine Checkbox nicht angewählt wird, dann wird keine Nachricht an das Programm weitergemeldet. Das mag jetzt überflüssig klingen, aber nehmen wir an, Sie programmieren eine Liste mit solchen Checkboxen, in denen ein Nutzer angeben soll, welche Zutaten er für ein Rezept bereits zu Hause hat. In diesem Fall würden Sie wahrscheinlich das folgende im Programm festlegen: Computer, erstelle eine Einkaufsliste all der Zutaten, die der Nutzer noch nicht hat. Da das Programm aber nur diejenigen Zutaten übermittelt bekommt, die der Nutzer schon hat, funktioniert das so nicht: Es weiß ja gar nicht, welche Zutaten der Nutzer noch nicht hat.\\
 
 	Deshalb sollten Sie keinesfalls Checkboxen programmieren, bei denen es für die weitere Nutzung wichtig ist, dass eine Meldung an das Programm übertragen wird, wonach sie deaktiviert wurde.\\
 
 	\item Radio Buttons:\\
-
-	\textbf{Quellcode}: \verb|<input type=radio name=bezeichner value=wert>|\\
+	\textbf{Quellcode}: \\\verb|<input type=radio name=bezeichner value=wert>|
 
 \end{itemize}
 
@@ -979,75 +1029,62 @@ Checkboxen und Radio Buttons verwirren Einsteiger häufig, weil der Unterschied 
 	(Denken Sie hier an ein Reisebüro, bei dem Nutzer sich zwischen erster und zweiter Klasse entscheiden müssen.)
 \end{itemize}
 
-Beispiel für einfaches Formular mit Auswahlmöglichkeiten zum An-/Abwählen:
+Beispiel für einfaches Formular mit Auswahlmöglichkeiten zum An- oder Abwählen:
 
 \begin{verbatim}
 	<form>
 	Wählen Sie bitte Ihre Beilage:
 	<input type=radio name=reis value=reis>Reis
 	<input type=radio name=fries value=fries>Pommes Frites
-	<input type=radio name=potatoes value=potatoes>Kartoffeln
+	<input type=radio name=potatoes value=potatoes>
+	Kartoffeln
 	<form>
 \end{verbatim}
 
-Die folgenden Eingabetypen sind Alternativen zu Radio Buttons und Checkboxen: Im Gegensatz zu diesen beiden wird bei den folgenden jeweils eine Menüleiste eingeblendet, aus der NutzerInnen Einträge auswählen können. Ein Sonderfall ist die Farbpalette, aus der NutzerInnen eine Farbe auswählen können.
+Die folgenden Eingabetypen sind Alternativen zu Radio Buttons und \\Checkboxen: Im Gegensatz zu diesen beiden wird bei den folgenden jeweils eine Menüleiste eingeblendet, aus der NutzerInnen Einträge \\auswählen können. Ein Sonderfall ist die Farbpalette, aus der NutzerInnen eine Farbe auswählen können.
 
 \begin{itemize}
 	\item Drop-Down-Liste\\
+	\textbf{Zweck}: Genau wie Radio-Buttons beschränken Drop-Down-Menüs NutzerInnen darauf, eines von mehreren Angeboten auszuwählen. Der Unterschied besteht darin, dass die Auswahlmöglichkeiten mittels Radio-Buttons vollständig angezeigt werden, während die Optionen (deshalb der Name) einer Drop-Down-Liste nur dann angezeigt werden, wenn Nutzer die Liste angewählt haben.\\	
+	\textbf{Quellcode}:\verb|<select>|\\\verb|<option>Beschriftung</option>|\\\verb|<option>...</select>|\\
 
-	\textbf{Zweck}: Genau wie Radio-Buttons beschränken Drop-Down-Menüs NutzerInnen darauf, eines von mehreren Angeboten auszuwählen. Der Unterschied besteht darin, dass die Auswahlmöglichkeiten mittels Radio-Buttons vollständig angezeigt werden, während die Optionen (deshalb der Name) einer Drop-Down-Liste nur dann angezeigt werden, wenn Nutzer die Liste angewählt haben.\\
-	
-	\textbf{Quellcode}: \verb|<select><option>Beschriftung</option><option>...</select>|\\
+	Über den \verb|<select>|\index{HTML!Container!select}-Container legen Sie fest, dass eine Drop-Down-Liste angezeigt werden sollen. Für jeden Eintrag müssen Sie einen \verb|<option>|\index{HTML!Container!option}-Container innerhalb des \verb|<select>|-Containerns \\programmieren. Damit Nutzer einen Eintrag angezeigt bekommen, müssen Sie bei jedem \verb|<option>|-Container einen Text als Inhalt programmieren.\\
 
-	Über den \verb|<select>|\index{HTML!Container!select}-Container legen Sie fest, dass eine Drop-Down-Liste angezeigt werden sollen. Für jeden Eintrag müssen Sie einen \verb|<option>|\index{HTML!Container!option}-Container innerhalb des \verb|<select>|-Containerns programmieren. Damit Nutzer einen Eintrag angezeigt bekommen, müssen Sie bei jedem \verb|<option>|-Container einen Text als Inhalt programmieren.\\
-
-	Wenn Sie innerhalb eines Drop-Down-Menüs einzelne \verb|<option>|-Container in einem unter-Drop-Down-Menü versammeln wollen, können Sie dafür den \verb|<optgroup>|\index{HTML!Container!optgroup}-Container verwenden. Einziger Unterschied gegenüber \verb|<option>|-Containern ist, dass Nutzer durch das Anwählen des \verb|<optgroup>|-Containers noch keine Option anwählen. Dieser hat also keinen \verb|value|, sondern sein Name wird über das \verb|label|-Attribut definiert.\\
+	Wenn Sie innerhalb eines Drop-Down-Menüs einzelne \verb|<option>|-Container in einem unter-Drop-Down-Menü versammeln wollen, \\können Sie dafür den \verb|<optgroup>|\index{HTML!Container!optgroup}-Container verwenden. Einziger Unterschied gegenüber \verb|<option>|-Containern ist, dass Nutzer durch das Anwählen des \verb|<optgroup>|-Containers noch keine Option \\anwählen. Dieser hat also keinen \verb|value|, sondern sein Name wird über das \verb|label|-Attribut definiert.\\
 
 	Wenn Sie eine \verb|<optgroup>| als nicht anwählbar markieren wollen (z.B. weil der Inhalt noch nicht programmiert ist, dann benutzen Sie dafür das Attribut \verb|disabled|\index{HTML!Attribut!disabled}.\\
 
 	\item Datalist\\
-
 	\textbf{Quellcode}: \verb|<datalist><option><option>...</datalist>|\\
-
 	Eine Datalist sieht zunächst wie ein Textfeld aus, aber über die option-Container erhalten Nutzer gültige Werte angezeigt. Im Gegensatz zur Drop-Down-Liste sind die \verb|<option>|-Container mit dem \verb|value|-Attribut vollständig, es gibt hier also keinen zusätzlichen Container-Inhalt.\\
 
 	\item Farbauswahl:\\
-
 	\textbf{Quellcode}: \verb|<input type=color>|\\
-
 	Damit ermöglichen Sie es Nutzern, eine Farbe aus einer Palette auszuwählen. Das könnte beispielsweise nützlich sein, wenn Spieler eine Farbe für Ihre Spielfiguren auswählen sollen. Wie gewohnt nutzen Sie hier das \verb|name|-Attribut, um die Eingabe an ein Programm zu übergeben. 
 \end{itemize}
 
 
 \subsubsection{Schalter}
 
-Neben den folgenden input types gibt es noch die \verb|<button>|-Container, mit denen Sie dieselben Funktionen realisieren können. Hier lautet meine Empfehlung allerdings, keine \verb|<button>|-Container zu nutzen: Wenn alle Eingabemöglichkeiten als \verb|<input>|-Container programmiert werden, ist es leichter, alle Eingabemöglichkeiten im Code zu finden. (Für den Leistungsnachweis \glqq{}Projekt 1\grqq{} ist die Nutzung von \verb|<button>| deshalb untersagt.\\
+Neben den folgenden input types gibt es noch die \verb|<button>|-Container, mit denen Sie dieselben Funktionen realisieren können. Hier lautet meine Empfehlung allerdings, keine \verb|<button>|-Container zu nutzen: Wenn alle Eingabemöglichkeiten als \verb|<input>|-Container programmiert werden, ist es leichter, alle Eingabemöglichkeiten im Code zu finden. (Für den Leistungsnachweis \glqq{}Projekt 1\grqq{} ist die Nutzung von \verb|<button>| deshalb untersagt.
 
 \begin{itemize}
-	\item Schalter mit Beschriftung\\
-	
+	\item Schalter mit Beschriftung\\	
 	Zweck: Damit programmieren Sie einen Schalter, über den eine Funktion des Programms aufgerufen wird, das über das \verb|action|-Attribut des \verb|<form>|-Containers festgelegt wurde. Der Name dieser Funktion wird dem Attribut \verb|onclick| zugeordnet. Was Funktionen sind und wie Sie sie mithilfe des \verb|onclick|-Attributs nutzen können erfahren Sie im Kapitel zur Programmierung in PHP.\\
-
-	\textbf{Quellcode}: \verb|<input type=button value="Beschriftung auf der Schaltfläche" onclick=function()>|\\
+	\textbf{Quellcode}: \verb|<input type=button value="Beschriftung |\\\verb|auf der Schaltfläche" onclick=function()>|\\
 		
-	\item Schalter mit Bild\\
+	\item Schalter mit Bild\\	
+	\textbf{Zweck}: Bei dieser Variante programmieren Sie einen Button, der keinen Text, sondern ein Bild enthält.\\	
+	\textbf{Quellcode}: \verb|<input type=image src="URL eines Bildes"|\\\verb| onclick=...>|\\
 	
-	\textbf{Zweck}: Bei dieser Variante programmieren Sie einen Button, der keinen Text, sondern ein Bild enthält.\\
+	\textbf{Wichtig}: Da ein Button wieder deaktiviert wird, wenn Nutzer den Mausbutton loslassen, macht die Programmierung eines \verb|name|- und/ oder eines \verb|value|-Attributs hier keinen Sinn. Vielmehr dienen Buttons dazu, dass Nutzer damit bestätigen, dass sie die Eingaben \\tatsächlich abschicken wollen. Für Sie als EntwicklerIn bedeutet dass, dass die Variablen an das Programm übertragen werden, das über das \verb|action|-Attribut des \verb|<form>|-Containers festgelegt wurde.\\
 	
-	\textbf{Quellcode}: \verb|<input type=image src="URL eines Bildes" onclick=...>|\\
-	
-	\textbf{Wichtig}: Da ein Button wieder deaktiviert wird, wenn Nutzer den Mausbutton loslassen, macht die Programmierung eines \verb|name|- und/oder eines \verb|value|-Attributs hier keinen Sinn. Vielmehr dienen Buttons dazu, dass Nutzer damit bestätigen, dass sie die Eingaben tatsächlich abschicken wollen. Für Sie als EntwicklerIn bedeutet dass, dass die Variablen an das Programm übertragen werden, das über das \verb|action|-Attribut des \verb|<form>|-Containers festgelegt wurde.\\
-	
-	\item Reset-Schalter\\
-	
-	\textbf{Zweck}: Mit diesem Schalter können Nutzer alle Eingaben löschen.\\
-	
+	\item Reset-Schalter\\	
+	\textbf{Zweck}: Mit diesem Schalter können Nutzer alle Eingaben löschen.\\	
 	\textbf{Quellcode}: \verb|<input type=reset>|\\
 	
-	\item Absende-Schalter\\
-	
-	\textbf{Zweck}: Mit diesem Schalter übergeben Nutzer die Daten zur weiteren Verwendung durch Ihre Webanwendung.\\
-	
+	\item Absende-Schalter\\	
+	\textbf{Zweck}: Mit diesem Schalter übergeben Nutzer die Daten zur weiteren Verwendung durch Ihre Webanwendung.\\	
 	\textbf{Quellcode}: \verb|<input type=submit>|\\
 	
 	Im Gegensatz zu \verb|type=button| und \verb|type=image| rufen Sie hier also keine bestimmte Funktion des Programms auf, sondern durch einen Klick auf diesen Schalter werden sämtliche Eingaben des Nutzers an das Programm übergeben.\\
@@ -1059,7 +1096,7 @@ Neben den folgenden input types gibt es noch die \verb|<button>|-Container, mit 
 
 \subsection{Container für die Gruppierung und Zuordnung von Eingabeelementen}
 
-Um mehrere Elemente zu gruppieren müssen diese lediglich in einem \verb|<fieldset>|\index{HTML!Container!fieldset}-Container zusammengefasst und durch einen \verb|<br />|-Container getrennt werden. \verb|<br>|-Container sind Container ohne Inhalt, die einen Zeilenumbruch bewirken. In HTML5 kann der \verb|/| deshalb auch weggelassen werden. Vor HTML5 waren sie generell sehr wichtig, da sie für die Gestaltung von Belang waren. Aber da das jetzt in CSS geregelt wird, brauchen Sie sie nur noch in seltenen Fällen wie eben der Zeilentrennung innerhalb eines \verb|<fieldset>|.\\
+Um mehrere Elemente zu gruppieren müssen diese lediglich in einem\\ \verb|<fieldset>|\index{HTML!Container!fieldset}-Container zusammengefasst und durch einen \verb|<br />|-\\Container getrennt werden. \verb|<br>|-Container sind Container ohne Inhalt, die einen Zeilenumbruch bewirken. In HTML5 kann der \verb|/| deshalb auch weggelassen werden. Vor HTML5 waren sie generell sehr wichtig, da sie für die Gestaltung von Belang waren. Aber da das jetzt in CSS geregelt wird, brauchen Sie sie nur noch in seltenen Fällen wie eben der Zeilentrennung innerhalb eines \verb|<fieldset>|.\\
 
 Eine Überschrift für ein \verb|<fieldset>| programmieren Sie nicht mit einem \verb|<h...>|-Container, sondern mit einem \verb|<legend>|\index{HTML!Container!legend}-Container, der im Gegensatz zu den \verb|<h...>|-Containern keine Ziffer enthält: Er \glqq{}heißt\grqq{} immer \verb|<legend>|, nicht legend1, legend2, legend3 usw.. Ansonsten gibt es keine Unterschiede zwischen den beiden.\\
 
@@ -1072,7 +1109,8 @@ Hier wäre dann ein typisches Formular, wie Sie es für Nutzerregistrierungen ve
 \begin{verbatim}
 <form>
 <fieldset>
-<legend>Bitte geben Sie Ihre persönlichen Daten ein:</legend>
+<legend>Bitte geben Sie Ihre persönlichen Daten ein:
+</legend>
 <label for=surname>Nachname:</label>
 <input id=surname name=surname required >
 <br>
@@ -1080,10 +1118,12 @@ Hier wäre dann ein typisches Formular, wie Sie es für Nutzerregistrierungen ve
 <input type=email id=email name=email required >
 <br>
 <label for=age>Alter:</label>
-<input type=number id=age min=0 max=140 name=age required >
+<input type=number id=age min=0 max=140 name=age 
+required >
 <br>
 <label for=birthdate>Geburtsdatum:</label>
-<input type=date id=birthdate name=birthdate required >
+<input type=date id=birthdate name=birthdate 
+required >
 </fieldset>
 <input type=submit>
 </form>          
@@ -1103,50 +1143,49 @@ Wir reden hier momentan ausschließlich über anzeigbare oder abspielbare Inhalt
 
 \subsection{Bilder}
 
-Der \textbf{\verb|<img>|}\index{HTML!Container!img}-Container ist der einzige Container für multimediale Inhalte, den es so bereits vor HTML5 gab. Allerdings gilt hier wie überall, dass Attribute, die bei HTML4.01 fürs Layout genutzt wurden nicht mehr unterstützt werden. (Viele Browser unterstützen sie zwar immer noch, aber wenn Sie wollen, dass Ihre Webanwendung dauerhaft nutzbar ist, dann sollten sie diese Regelung für HTML5 beachten.)\\
+Der \verb|<img>|\index{HTML!Container!img}-Container ist der einzige Container für multimediale Inhalte, den es so bereits vor HTML5 gab. Allerdings gilt hier wie überall, dass Attribute, die bei HTML4.01 fürs Layout genutzt wurden nicht mehr unterstützt werden. (Viele Browser unterstützen sie zwar immer noch, aber wenn Sie wollen, dass Ihre Webanwendung dauerhaft nutzbar ist, dann sollten sie diese Regelung für HTML5 beachten.)\\
 
 Um eine Bilddatei einzufügen, nutzen Sie den \verb|<img>|-Container. \verb|<img>|-Container haben keinen Inhalt, denn die Bilddatei, die Sie anzeigen lassen wollen wird als Attribut des Containers programmiert.\\
 
 \begin{itemize}
-	\item Das Attribut \verb|src| erhält als Wert die URL an, unter der die Bilddatei zu finden ist.\\
-	
+	\item Das Attribut \verb|src| erhält als Wert die URL an, unter der die Bilddatei zu finden ist.\\	
 	\textbf{Bsp}.: \verb|src=bild.jpg|
 
-	\item Das Attribut \verb|alt|\index{HTML!Attribut!alt} gibt einen Alternativtitel an, der so lange angezeigt wird, wie das Bild noch nicht geladen ist. Es ist vor allem für die Barrierefreiheit wichtig.\\
-	
+	\item Das Attribut \verb|alt|\index{HTML!Attribut!alt} gibt einen Alternativtitel an, der so lange angezeigt wird, wie das Bild noch nicht geladen ist. Es ist vor allem für die Barrierefreiheit wichtig.\\	
 	\textbf{Bsp}.: \verb|alt="schönes Bild"|
 
 	\item Die Attribute \verb|width|\index{HTML!Attribut!width} und \verb|height|\index{HTML!Attribut!height} geben an, wie breit bzw. hoch das Bild angezeigt werden soll. Sie ordnen hier jedem der beiden eine Zahl zu, die für die jeweilige Größe in Pixeln, also Bildpunkten steht. 
 
-	\textbf{Wichtig}:\\
-	
-	Sie überschreiben mit \verb|width| und \verb|height| damit das Seitenverhältnis des Bildes. Wenn Sie Bilder also für bestimmte Displaygrößen ändern wollen, dann sollten Sie zunächst über ein PHP- oder JavaScript-Programm das Seitenverhältnis berechnen und dann anhand dieser Berechnung dort (also im Programm) die Änderung von Höhe und Breite durchführen.
+	\textbf{Wichtig}:\\	
+	Sie überschreiben mit \verb|width| und \verb|height| damit das Seitenverhältnis des Bildes. Wenn Sie Bilder also für bestimmte Displaygrößen ändern wollen, dann sollten Sie zunächst über ein PHP- oder JavaScript-\\Programm das Seitenverhältnis berechnen und dann anhand dieser Berechnung dort (also im Programm) die Änderung von Höhe und Breite durchführen.
 \end{itemize}
 
-\subsection{<figure> und <figcaption>}
+\subsection{figure und figcaption}
 
-Wenn Sie ein wissenschaftliches Buch aufschlagen, sehen Sie zu jeder ergänzenden Darstellung einen Untertitel. Mit dem \verb|<figcaption>|\index{HTML!Container!figcaption}-Container gibt es in HTML5 die Möglichkeit genau dasselbe in standardisierter Form auf einer Webanwendung zu tun. Dieser Container darf allerdings nur innerhalb eines \verb|<figure>|\index{HTML!Container!figure}-Containers verwendet werden.\\
+Wenn Sie ein wissenschaftliches Buch aufschlagen, sehen Sie zu jeder \\ergänzenden Darstellung einen Untertitel. Mit dem \verb|<figcaption>|\index{HTML!Container!figcaption}-\\Container gibt es in HTML5 die Möglichkeit genau dasselbe in standardisierter Form auf einer Webanwendung zu tun. Dieser Container darf allerdings nur innerhalb eines \verb|<figure>|\index{HTML!Container!figure}-Containers verwendet werden.\\
 
 Nun fragen Sie sich vielleicht, was dieser \verb|<figure>|-Container denn soll, wo es doch bereits den \verb|<img>|-Container gibt. Die Antwort ist recht einfach: Dieser Container ist dafür gedacht jede Art von multimedialen Inhalten standardisiert bereitzustellen. Es ist also egal, ob Sie nun ein Bild, ein Video, eine Audiodatei anzeigen bzw. abspielen wollen; immer nutzen Sie die gleiche Kombination aus \verb|<figure>| und \verb|<figcaption>|, deren Aussehen Sie über ein CSS-Skript definieren.\\
 
-Und nicht nur dass: Sie können mit dem \verb|<figure>|-Container auch gleich Kombinationen verschiedener multimedialer Dateien erstellen, die im Sinne des semantic web als solche erkannt werden können. Nehmen wir an, Sie haben im Urlaub mehrere Bilder vom Strand geschossen und zusätzlich Aufnahmen vom Meeresrauschen, aus dem Restaurant und von anderen Stellen aufgenommen. Nun wollen Sie als diese Dateien als eine Diashow mit Sound auf Ihrer Webanwendung platzieren. Dann können Sie genau das über einen \verb|<figure>|-Container erledigen. Und im Gegensatz zu HTML4.01 erkennt jeder HTML5-kompatible Browser, dass es sich bei all diesen einzelnen Dateien um eine logische Einheit (eben Ihre Diashow mit Sound) handelt, obwohl es auf dem Rechner mehrere Dateien sind.\\
+Und nicht nur dass: Sie können mit dem \verb|<figure>|-Container auch gleich Kombinationen verschiedener multimedialer Dateien erstellen, die im Sinne des semantic web als solche erkannt werden können. Nehmen wir an, Sie haben im Urlaub mehrere Bilder vom Strand geschossen und zusätzlich Aufnahmen vom Meeresrauschen, aus dem Restaurant und von anderen Stellen aufgenommen. Nun wollen Sie als diese Dateien als eine Diashow mit Sound auf Ihrer Webanwendung platzieren. Dann können Sie genau das über einen \verb|<figure>|-Container erledigen. Und im Gegensatz zu\\ HTML4.01 erkennt jeder HTML5-kompatible Browser, dass es sich bei all diesen einzelnen Dateien um eine logische Einheit (eben Ihre Diashow mit Sound) handelt, obwohl es auf dem Rechner mehrere Dateien sind.\\
 
-Hier ein einfacher \verb|<figure>|-Container:\\
+Hier ein einfacher \verb|<figure>|-Container:
 
 \begin{verbatim}
 <figure>
-<img src=hotel01.jpg alt=“Ein Bild des Hotels, in dem wir die furchtbarsten zwei Wochen unseres Lebens hatten.“>
+<img src=hotel01.jpg alt="Ein Bild des Hotels, 
+in dem wir die furchtbarsten zwei Wochen 
+unseres Lebens hatten.">
 <figcaption>Bates Motel</figcaption>
 </figure>
 \end{verbatim}
 
-\subsection{<figcaption> für Fortgeschrittene}
+\subsection{figcaption für Fortgeschrittene}
 
 Eine \verb|<figcaption>| kann aber nicht nur einen Untertitel enthalten, sondern zusätzlich bzw. unabhängig von einem Text die URL einer Audiodatei. Dann wird das Bild mit dieser Audiodatei akustisch untermalt. Dazu wird ein \verb|<audio>|-Container verwendet. Wie das geht (und das es sehr leicht zu realisieren ist) sehen Sie in Kürze.
 
 \section{Weitere multimediale Formate}
 
-In diesem Abschnitt erfahren Sie, wie Sie die verschiedensten multimedialen Inhalte in Ihre HTML5-Webanwendung einbinden können. Ein Hinweis vorweg: Zwar bringt HTML5 nur für einige Formate eine Unterstützung mit, aber Sie erfahren gleich, wie Sie auch andere Formate einbinden können.
+In diesem Abschnitt erfahren Sie, wie Sie die verschiedensten multimedialen Inhalte in Ihre HTML5-Webanwendung einbinden können. Ein Hinweis vorweg: Zwar bringt HTML5 nur für einige Formate eine \\Unterstützung mit, aber Sie erfahren gleich, wie Sie auch andere Formate einbinden können.
 
 \subsection{Einbindung eigener und frei verfügbarer Videodateien}
 
@@ -1155,11 +1194,11 @@ Die Einbindung von Videodateien ist fast genauso einfach wie die Einbindung von 
 In einem \verb|<video>|-Container können Sie die folgenden Attribute nutzen:
 
 \begin{itemize}
-	\item \verb|controls|\index{HTML!Attribut!controls} regelt, welche Bedienelemente angezeigt werden. Die Standardeinstellungen bewirken, dass ein Play/Pause-Button, eine Zeitleiste und die aktuelle Zeit im Video angezeigt werden. Wenn Ihnen das nicht genügt oder Sie eine Vielzahl an Formaten abspielen wollen (z.B. Flash), dann können Sie im Netz eine Vielzahl an Playern finden, die Sie direkt in den Quellcode Ihrer Webanwendung einbinden können. Suchen Sie dazu schlicht nach \glqq{}HTML5 Videoplayer\grqq{}.\\
+	\item \verb|controls|\index{HTML!Attribut!controls} regelt, welche Bedienelemente angezeigt werden. Die \\Standardeinstellungen bewirken, dass ein Play/Pause-Button, eine Zeitleiste und die aktuelle Zeit im Video angezeigt werden. Wenn Ihnen das nicht genügt oder Sie eine Vielzahl an Formaten abspielen wollen (z.B. Flash), dann können Sie im Netz eine Vielzahl an Playern finden, die Sie direkt in den Quellcode Ihrer Webanwendung einbinden können. Suchen Sie dazu schlicht nach \glqq{}HTML5 Videoplayer\grqq{}.\\
 	
-	\textbf{Wichtig}: Auch wenn Sie lediglich die Standard-Bedienelemente anzeigen lassen wollen, müssen Sie \verb|controls| als Attribut in den \verb|<figure>|-Container einfügen. Sie brauchen dann aber keinen weiteren Wert zuordnen.\\
+	\textbf{Wichtig}: Auch wenn Sie lediglich die Standard-Bedienelemente anzeigen lassen wollen, müssen Sie \verb|controls| als Attribut in den\\ \verb|<figure>|-Container einfügen. Sie brauchen dann aber keinen weiteren Wert zuordnen.
 	
-	\item Die Attribute \verb|height| und \verb|width| funktionieren wie bei \verb|<img>|-Containern. Es gelten die selben Hinweise wie dort.
+	\item Die Attribute \verb|height| und \verb|width| funktionieren wie bei \verb|<img>|-\\Containern. Es gelten die selben Hinweise wie dort.
 	
 	\item Innerhalb des \verb|<video>|-Containers erstellen Sie für jede Videodatei einen \verb|<source>|-Container. In diesem geben Sie zum einen die URL der jeweiligen Videodatei über das \verb|src|-Attribut und zum anderen das Kompressionsverfahren über das \verb|type|-Attribut an.\\
 
@@ -1175,12 +1214,17 @@ In einem \verb|<video>|-Container können Sie die folgenden Attribute nutzen:
 
 <source src=movie.mp4 type=video/mp4>
 <source src=movie.ogg type=video/ogg>
-Leider kann Ihr Browser keines der Formate abspielen, in dem die Videodatei vorliegt. Bitte prüfen Sie, ob Sie eine Erweiterung installieren können, mit dem Sie eines der folgenden Formate abspielen können: MP4, Vorbis OGG
+Leider kann Ihr Browser keines der Formate abspielen, 
+in dem die Videodatei vorliegt. Bitte prüfen Sie, ob 
+Sie eine Erweiterung installieren können, mit dem Sie 
+eines der folgenden Formate abspielen können: 
+MP4, Vorbis OGG
 
 </video>
 
 <figcaption>
-Quelle: <a href=http://www.irgendeineseite.de>www.irgendeineseite.de</a>
+Quelle: <a href=http://www.irgendeineseite.de>
+www.irgendeineseite.de</a>
 </figcaption>
 
 </figure>
@@ -1188,43 +1232,38 @@ Quelle: <a href=http://www.irgendeineseite.de>www.irgendeineseite.de</a>
 
 \subsection{Anpassungsmöglichkeiten für den Video-Player}
 
-Sie wissen, dass Webanwendung von den verschiedensten Endgeräten aus aufgerufen werden: Manche User nutzen ein Smartphone mit einer langsamen Internetverbindung, andere nutzen einen Rechner, der per Kabelanschluss Daten mit bis zum 15 MB/s (entspricht ungefähr einem 100 mbps-Anschluss) herunterladen kann. Es wäre also ungeschickt, wenn Sie auf einer Webanwendung ein Dutzend Videos platzieren und den Webbrowser anweisen, alle vollständig herunterzuladen, egal ob der Nutzer sie nun sehen will oder nicht. Deshalb können Sie das Verhalten des Videoplayers anpassen, indem Sie die folgenden Attribute bzw. Attributbelegungen in den \verb|<video>|-Container einprogrammieren:\\
+Sie wissen, dass Webanwendung von den verschiedensten Endgeräten aus aufgerufen werden: Manche User nutzen ein Smartphone mit einer langsamen Internetverbindung, andere nutzen einen Rechner, der per Kabelanschluss Daten mit bis zum 15 MB/s (entspricht ungefähr einem 100 mbps-Anschluss) herunterladen kann. Es wäre also ungeschickt, wenn Sie auf einer Webanwendung ein Dutzend Videos platzieren und den Webbrowser anweisen, alle vollständig herunterzuladen, egal ob der Nutzer sie nun sehen will oder nicht. Deshalb können Sie das Verhalten des Videoplayers anpassen, indem Sie die folgenden Attribute bzw. Attributbelegungen in den \verb|<video>|-Container einprogrammieren:
 
 \begin{itemize}
-	\item \verb|preload=none|\index{HTML!Attribut!preload}\\
+	\item \verb|preload=none|\index{HTML!Attribut!preload}\\		
+	Diese Attributbelegung bewirkt, dass der NutzerInnen einen kleinen Platzhalter sehen, der lediglich anzeigt, dass eine Video-Datei zur Verfügung steht. Die Datei selbst wird nicht heruntergeladen, bis NutzerInnen sie anforderen. Diese Option ist gut geeignet, wenn Sie eine Webanwendung mit vielen Videos programmieren wollen, die auch mit einem Smartphone noch übersichtlich sein soll.
 	
-	Diese Attributbelegung bewirkt, dass der NutzerInnen einen kleinen Platzhalter sehen, der lediglich anzeigt, dass eine Video-Datei zur Verfügung steht. Die Datei selbst wird nicht heruntergeladen, bis NutzerInnen sie anforderen. Diese Option ist gut geeignet, wenn Sie eine Webanwendung mit vielen Videos programmieren wollen, die auch mit einem Smartphone noch übersichtlich sein soll.\\
+	\item \verb|preload=metadata|\\	
+	Diese Attributbelegung bewirkt, dass NutzerInnen einen Platzhalter sehen, der im Gegensatz zu \verb|preload=none| auf der Webanwendung so groß angezeigt wird, wie das Video selbst. Das Video wird auch in diesem Fall nicht heruntergeladen, bis NutzerInnen es anfordern. Diese Option ist vor allem für Rechner gut geeignet, wenn auf einer Seite viele Videos platziert werden. Denn selbst bei durchschnittlichen DSL-Anschlüssen kann es sonst mehrere Minuten dauern, bis alle Inhalte einer einzelnen Seite herunter geladen sind. Der Vorteil dieser \verb|preload|-Belegung besteht darin, dass sich das Layout der Seite nicht ändert, wenn Nutzer Videos starten.
 	
-	\item \verb|preload=metadata|\\
-	
-	Diese Attributbelegung bewirkt, dass NutzerInnen einen Platzhalter sehen, der im Gegensatz zu \verb|preload=none| auf der Webanwendung so groß angezeigt wird, wie das Video selbst. Das Video wird auch in diesem Fall nicht heruntergeladen, bis NutzerInnen es anfordern. Diese Option ist vor allem für Rechner gut geeignet, wenn auf einer Seite viele Videos platziert werden. Denn selbst bei durchschnittlichen DSL-Anschlüssen kann es sonst mehrere Minuten dauern, bis alle Inhalte einer einzelnen Seite herunter geladen sind. Der Vorteil dieser \verb|preload|-Belegung besteht darin, dass sich das Layout der Seite nicht ändert, wenn Nutzer Videos starten.\\
-	
-	\item \verb|autoplay|\index{HTML!Attribut!autoplay}\\
-	
+	\item \verb|autoplay|\index{HTML!Attribut!autoplay}\\	
 	dürfte selbsterklärend sein: Das Video wird automatisch gestartet, wenn NutzerInnen die Seite öffnen, auf der es eingebunden ist. Dieses Attribut macht in Verbindung mit den beiden eben vorgestellten \verb|preload|-Varianten natürlich keinen Sinn. Dieses Attribut sollten Sie keinesfalls bei multimedialen Dateien verwenden, die eine Audio-Komponente haben, denn im schlimmsten Fall schließen Nutzer Ihre Webanwendung schlicht deshalb, weil sie sich von der Tonspur gestört fühlen.
 	
-	\item \verb|loop|\index{HTML!Attribut!loop}\\
-	
+	\item \verb|loop|\index{HTML!Attribut!loop}\\	
 	Wurde das Video einmal gestartet, bewirkt dieses Attribut, dass es immer wieder von vorne beginnt. Das ist vor allem dann sinnvoll, wenn Sie ein Video anstelle eines Bildes in den Hintergrund einer Webanwendung einblenden wollen. Sie können dieses Attribut also mit autoplay kombinieren, wenn Sie ein Video anstelle eines Bildes im Hintergrund einer Seite abspielen wollen.
 	
-	\item \verb|poster|\index{HTML!Attribut!poster}\\
-	
-	Wird dieses Attribut ohne weitere Zuordnung verwendet, dann wird der erste Frame (quasi das erste Bild) des Videos als Stellvertreter angezeigt. Das macht in Verbindung mit \verb|preload=none| natürlich keinen Sinn.\\
+	\item \verb|poster|\index{HTML!Attribut!poster}\\	
+	Wird dieses Attribut ohne weitere Zuordnung verwendet, dann wird der erste Frame (quasi das erste Bild) des Videos als Stellvertreter angezeigt. Das macht in Verbindung mit \verb|preload=none| natürlich keinen Sinn.
 	
 	Als Wert kann diesem Attribut die URL einer Bilddatei zugeordnet werden. Dann wird dieses Bild als Stellvertreter des Videos angezeigt, bis es gestartet wird.
 \end{itemize}
 
 \subsubsection{Aufgabe}
 
-Finden Sie zwei Einsatzmöglichkeiten für \verb|poster| mit einem Wert gebraucht und missbraucht werden kann.
+Finden Sie zwei Einsatzmöglichkeiten für \verb|poster| mit einem Wert \\gebraucht und missbraucht werden kann.
 
 \subsection{Einbindung von geschützten Inhalten (Stichwort: DRM)}
 
 Mit den beschriebenen Möglichkeiten können Sie Videodateien einbinden, auf die Sie freien Zugriff haben. Aber wie Sie wissen ist das beispielsweise bei Videos auf YouTube nicht der Fall. Wenn Sie sicher sind, dass Sie das Recht dazu haben, dann dürfen Sie solche Videos mit einem \verb|<iframe>|\index{HTML!Container!iframe}-Container einbinden. Da hier bis auf \verb|allowfullscreen|\index{HTML!Attribut!allowfullscreen} keine neuen Attribute vorkommen, sollten Sie das folgende Codefragment ohne weitere Erklärungen einbinden können:\\
 
-\verb|<iframe src=http://www.youtube.de/...     allowfullscreen />|
+\verb|<iframe src=http://www.youtube.de/...|\\\verb|allowfullscreen />|
 
-\subsection{Der <audio>-Container}
+\subsection{Der audio-Container}
 
 Alles, was Sie beim \verb|<video>|-Container nutzen können und das bei einer Audio-Datei Sinn macht, können Sie genau so bei einem \verb|<audio>|\index{HTML!Container!audio}-Container nutzen. Kommen wir also zu den Unterschieden gegenüber einem \verb|<video>|-Container:
 
@@ -1232,14 +1271,14 @@ Alles, was Sie beim \verb|<video>|-Container nutzen können und das bei einer Au
 	\item Ein \verb|<audio>|-Container hat in aller Regel kein Bild, also gibt es für den Nutzer keinen sichtbaren Unterschied zwischen den Attributbelegungen \verb|prelaod=none| und \verb|preload=meta|.
 	\item Wenn Sie ein Bild zu einer Audiodatei anzeigen wollen (oder eine Diashow), dann nutzen Sie dazu das Verfahren, auf das bei der Erklärung zur \verb|<figcaption>| hingewiesen wurde.
 	\item Dem \verb|type|-Attribut müssen Sie natürlich audio-Typen zuordnen.\\
-	\textbf{Bsp}.: \verb|type=audio/mp3|\\
+	\textbf{Bsp}.: \verb|type=audio/mp3|
 	\item Das gilt auch dann, wenn ein Type sowohl für Audio- als auch für Video-Dateien existiert.\\
 	\textbf{Bsp}.: Das Kompressionsverfahren OGG ist für Audio- und Videoverfahren definiert. Also müssen Sie hier je nach Medienformat \verb|type=video/ogg| oder \verb|type=audio/ogg| angeben.
 \end{itemize}
 
 \subsection{Close Captions, Untertitel, Einbindung von Webcams usw.}
 
-Neben den genannten Möglichkeiten gibt es aber auch noch Dinge wie Untertitel oder Texteinblendungen für Menschen mit beschränktem Hörvermögen. Wir werden diese Möglichkeiten nicht im Rahmen der Veranstaltung behandeln. Wenn Sie hieran interessiert sind, möchte ich Sie auf das Format WebVTT hinweisen, das Ihnen in diesen Fällen eine Vielzahl praktischer Erweiterungen für Ihre Webanwendung anbietet.\\
+Neben den genannten Möglichkeiten gibt es aber auch noch Dinge wie Untertitel oder Texteinblendungen für Menschen mit beschränktem Hör-vermögen. Wir werden diese Möglichkeiten nicht im Rahmen der Veranstaltung behandeln. Wenn Sie hieran interessiert sind, möchte ich Sie auf das Format WebVTT hinweisen, das Ihnen in diesen Fällen eine Vielzahl praktischer Erweiterungen für Ihre Webanwendung anbietet.\\
 
 Ähnliches gilt für die Nutzung von Webcams, Mikrophonen und anderen Eingabemöglichkeiten für den Nutzer: Alles, was über die Nutzung von Tastatur und Maus hinausgeht ist nicht Teil dieser Veranstaltung. Hier sollten Sie bei Interesse nach dem Begriff getUserMedia suchen.\\
 
@@ -1273,24 +1312,22 @@ Kommen wir jetzt zur Datei \verb|index.html|, die Sie zwar in Ihrem Projektordne
 
 \section{Weitere Formatierungen und Möglichkeiten in HTML}
 
-Wie es die Überschrift schon sagt finden Sie hier eine Reihe weiterer Möglichkeiten, um Inhalte auf Ihrer Webanwendung zu programmieren bzw. um die Inhalte genauer zu definieren. Die folgenden Abschnitte haben keine feste Reihenfolge, sondern sollen Ihnen lediglich einen Einblick geben, was Sie in HTML5 (zum Teil aber auch schon in HTML4.01) noch an Möglichkeiten haben:
+Wie es die Überschrift schon sagt finden Sie hier eine Reihe weiterer \\Möglichkeiten, um Inhalte auf Ihrer Webanwendung zu programmieren bzw. um die Inhalte genauer zu definieren. Die folgenden Abschnitte haben keine feste Reihenfolge, sondern sollen Ihnen lediglich einen Einblick geben, was Sie in HTML5 (zum Teil aber auch schon in HTML4.01) noch an Möglichkeiten haben:
 
 \subsection{Spoiler und andere ausklappbare Texte}
 
-Kennen Sie das? Sie sitzen mit Freunden zusammen und einer davon erzählt das Ende eines Filmes, den Sie noch sehen wollten. So etwas wird mit dem englischen Begriff Spoiler bezeichnet und um jemanden zu warnen, dass gleich ein Spoiler kommt, gibt es den Begriff Spoiler Alarm.\\
+Kennen Sie das? Sie sitzen mit Freunden zusammen und einer davon\\ erzählt das Ende eines Filmes, den Sie noch sehen wollten. So etwas wird mit dem englischen Begriff Spoiler bezeichnet und um jemanden zu warnen, dass gleich ein Spoiler kommt, gibt es den Begriff Spoiler Alarm.\\
 
 Nun nehmen wir an, Sie wollen Filmrezensionen auf Ihrer Webanwendung veröffentlichen, wollen aber dass Ihre Leser selbst entscheiden können, ob Sie die Spoiler mitlesen wollen oder nicht. In HTML5 ist das kein Problem. Nun gibt es aber keinen spoiler-Container, sondern Sie benutzen für solche Fälle zwei Container:
 
 \begin{itemize}
-	\item Der \verb|<summary>|\index{HTML!Container!summary}-Container enthält eine kurze Beschreibung dessen, worum es geht. \\
-	
+	\item Der \verb|<summary>|\index{HTML!Container!summary}-Container enthält eine kurze Beschreibung dessen, worum es geht. \\	
 	\textbf{Bsp}.: Sie erstellen eine Webanwendung über die Geschichte Kroatiens. Im laufenden Text wollen Sie etwas über den Geburtsort des amtierenden Präsidenten schreiben. Andererseits sind Sie nicht sicher, ob das die meisten Leser interessiert. Also erstellen Sie den folgenden Container:
 	
-	\verb|<summary>Über den Geburtsort des kroatischen Präsidenten</summary>|
+	\verb|<summary>Über den Geburtsort des kroatischen|\\\verb|Präsidenten</summary>|
 	
-	\item Anschließend ergänzen Sie nach dem Wort Präsidenten (oder an anderer Stelle innerhalb des \verb|<summary>|-Containers noch einen \verb|<details>|\index{HTML!Container!details}-Container, in dem Sie all das über den besagten Geburtsort schreiben, was Sie für interessant halten.\\
-	
-	Hier ein Beispiel für den oben genannten Spoiler-Fall:\\
+	\item Anschließend ergänzen Sie nach dem Wort Präsidenten (oder an anderer Stelle innerhalb des \verb|<summary>|-Containers noch einen \verb|<details>|\index{HTML!Container!details}-Container, in dem Sie all das über den besagten Geburtsort schreiben, was Sie für interessant halten.\\	
+	Hier ein Beispiel für den oben genannten Spoiler-Fall:
 	
 	\begin{verbatim}
 		<summary>Das Ende von Hamlet
@@ -1300,7 +1337,7 @@ Nun nehmen wir an, Sie wollen Filmrezensionen auf Ihrer Webanwendung veröffentl
 	
 \end{itemize}
 
-Wenn Sie innerhalb des \glqq{}Spoilers\grqq{} noch weitere Spoiler unterbringen wollen ist das kein Problem; ähnlich wie bei \verb|<article>| und \verb|<section>| können Sie \verb|<summary>| und \verb|<details>| beliebig komplex verschachteln. Dabei müssen Sie lediglich darauf achten, dass der äußerste Container ein \verb|<summary>| ist, und dass Sie die Container jeweils im Wechsel nutzen müssen.\\
+Wenn Sie innerhalb des \glqq{}Spoilers\grqq{} noch weitere Spoiler unterbringen wollen ist das kein Problem; ähnlich wie bei \verb|<article>| und \verb|<section>| können Sie \verb|<summary>| und \verb|<details>| beliebig komplex verschachteln. Dabei müssen Sie lediglich darauf achten, dass der äußerste Container ein \verb|<summary>| ist, und dass Sie die Container jeweils im Wechsel nutze\\n müssen.\\
 
 Sprich: Sie dürfen zwar innerhalb eines \verb|<summary>| mehrere \verb|<details>|-Container programmieren, aber keinen weiteren \verb|<summary>|. Den müssten Sie dann wieder innerhalb eines der \verb|<details>| programmieren. Umgekehrt gilt das selbe.\\
 
@@ -1316,7 +1353,7 @@ Bitte beachten Sie ebenfalls, dass der \verb|<time>|-Container keine Ausgabe im 
 
 Mit dem \verb|<time>|-Container können Sie also Zeitangaben und Zeiträume im Sinne des semantic Web definieren. Leider ist es nicht möglich, dass damit alle möglichen Zeitangaben darstellbar wären, denn im Kern wird hierdurch ein Element definiert, dass einen Zeitpunkt oder einen in Sekunden messbaren Zeitraum festlegt. Genau wie bei den entsprechenden \verb|input|-Containern haben Sie also keine Möglichkeit, einen Zeitraum mithilfe eines einzelnen Containers zu programmieren.\\
 
-Zur Erklärung:\\
+\textbf{Zur Erklärung:}\\
 
 Da eine Zeitangabe wie die vom 20. Februar bis zum 3. März nicht eindeutig ist (denken Sie an Schaltjahre, bei denen es einen 29. Februar gibt), gibt es auch keinen einzelnen \verb|<time>|\index{HTML!Container!time}-Container, mit dem Sie diesen Zeitraum zusammen fassen können. Aus dem gleichen Grund können Sie Zeiträume nicht in Monaten oder Jahren festlegen; in solchen Fällen müssen Sie zwei \verb|<time>|-Container programmieren, den einen für den Anfang, den anderen für das Ende des Zeitraums. Sie haben hier zwar die Möglichkeit, die Dauer als eigenständigen Container einzuprogrammieren, aber da Sie den Zeitraum explizit angeben müssen, könnten Sie hier einen Fehler einprogrammieren, der für NutzerInnen ärgerlich wäre.\\
 
@@ -1335,10 +1372,10 @@ So viel zum Negativen, kommen wir jetzt zur praktischen Anwendung von \verb|<tim
 			Eine vierstellige Zahl, ein Bindestrich, eine zweistellige Zahl\\
 			\verb|datetime=2107-03| für März 2107
 			\item Für ein Datum ohne Uhrzeit:\\
-			Zusätzlich eine weitere zweistellige Zahl, verbunden per Bindestrich\\
+			Zusätzlich eine weitere zweistellige Zahl, verbunden per \\Bindestrich\\
 			\verb|datetime=2015-09-15| für den 15. September 2015
 			\item Für Monat und Tag:\\
-			Zwei zweistellige Zahlen, verbunden durch einen Bindestrich.\\
+			Zwei zweistellige Zahlen, verbunden durch einen \\Bindestrich.\\
 			\verb|datetime=12-08| für den 8. Dezember
 		\end{itemize}
 		\item Für die Uhrzeit gibt es mehrere Varianten:
@@ -1350,7 +1387,7 @@ So viel zum Negativen, kommen wir jetzt zur praktischen Anwendung von \verb|<tim
 			\item Zeitpunkt für eine andere Zeitzone:\\
 			\verb|datetime=02:18-05| (Für GMT - 5)\\
 			\verb|datetime=14:47+5:30|	(für GMT + 5½)
-			\item Datum und Uhrzeit können verbunden werden, indem zunächst das Datum, dann nach einer Leerstelle die Uhrzeit aufgeführt wird:\\
+			\item Datum und Uhrzeit können verbunden werden, indem \\zunächst das Datum, dann nach einer Leerstelle die Uhrzeit aufgeführt wird:\\
 			\verb|datetime="2017-07-21 20:15-7"| (für 20.15 Uhr in der Zeitzone GMT-7 am 21. Juli 2017)
 		\end{itemize}
 	\end{itemize}
@@ -1367,568 +1404,269 @@ Wie oben beschrieben können Sie eine Angabe wie \glqq{}Vom 2. bis 7. März\grqq
 Hier noch ein paar Beispiele für \verb|<time>|-Container in HTML:
 
 \begin{itemize}
-	\item Die Veranstaltung dauert voraussichtlich\verb|<time datetime="P5D 20M 7s">| mehr als 5 Stunden 20 Minuten\verb|</time>|.
-	\item Der erste Termin findet am \verb|<time datetime="2015-09-14 13:00Z">|14. September 2015 um 13 Uhr\verb|</time>| statt.
-	\item Veranstaltungen finden vom \verb|<time datetime=2015-09-15>|15. September\verb|</time>| bis zum \verb|<time datetime=2016-02-03>| 3. Februar\verb|</time>| statt.
+	\item Die Veranstaltung dauert voraussichtlich\\\verb|<time datetime="P5D 20M 7s">| mehr als 5 Stunden 20 \\Minuten\verb|</time>|.
+	\item Der erste Termin findet am \\\verb|<time datetime="2015-09-14 13:00Z">|\\14. September 2015 um 13 Uhr\verb|</time>| statt.
+	\item Veranstaltungen finden vom \verb|<time datetime=2015-09-15>|\\15. September\verb|</time>| bis zum \verb|<time datetime=2016-02-03>| 3. Februar\verb|</time>| statt.
 \end{itemize}
 
 \subsection{Hervorhebung von Texten}
 
-Bei HTML4.01 wurden Textpassagen meist mit Fettdruck, Unterstreichungen oder Kursivschrift hervorgehoben. Die entsprechenden nicht-semantischen Container lauten schlicht <b> oder <strong> für Fettdruck, <u> für unterstrichen und <i> (Englisch für italic bzw. kursiv). \\
+Bei HTML4.01 wurden Textpassagen meist mit Fettdruck, Unterstreichungen oder Kursivschrift hervorgehoben. Die entsprechenden nicht-\\semantischen Container lauten schlicht \verb|<b>| oder \verb|<strong>| für Fettdruck, \verb|<u>| für unterstrichen und \verb|<i>| (Englisch für italic bzw. kursiv). \\
 
 Diese können weiterhin verwendet werden. Alle drei haben jedoch Nachteile, wenn die Seite von Personen mit eingeschränktem Sehvermögen genutzt werden oder das Display veraltet ist. Außerdem werden Hyperlinks in Webbrowsern in aller Regel als unterstrichener Text präsentiert.\\
 
-Deshalb bietet HTML5 den <mark>-Container, dessen „Attribute“ background-color und color per CSS angepasst werden können. \\
+Deshalb bietet HTML5 den \verb|<mark>|-Container, dessen \glqq{}Attribute\grqq{} \\\verb|background-color| und \verb|color| per CSS angepasst werden können. \\
 
 Bei allen vier Containern müssen Sie also lediglich eine Textpassage, die Ihnen wichtig erscheint mit dem öffnenden und schließenden Tag des jeweiligen Conatainers umschließen.
 
 \subsection{Unterdrückung von Übersetzungen für Textpassagen}
 
-Aktuelle Browser bieten häufig die Übersetzung von Webanwendung aus anderen Sprachen an. Dazu ist das lang-Attribut des <html>-Containers ein wichtiger Hinweis. Doch wenn Sie wollen, dass bestimmte Stellen nicht übersetzt werden sollen, dann können Sie diese durch das Attribut translate=no von der Übersetzung ausschließen.\\
+Aktuelle Browser bieten häufig die Übersetzung von Webanwendung aus anderen Sprachen an. Dazu ist das lang-Attribut des \verb|<html>|-Containers ein wichtiger Hinweis. Doch wenn Sie wollen, dass bestimmte Stellen nicht übersetzt werden sollen, dann können Sie diese durch das Attribut \\\verb|translate=no| von der Übersetzung ausschließen.\\
 
-Wenn das nur für einzelne Wörter gilt (z.B. bei Eigennamen wie Müller oder Excel), dann können Sie den <span>-Container verwenden: Dieser ändert die Formatierung des Inhalts zunächst nicht und kann genutzt werden, um beliebig wenige Zeichen innerhalb anderer Container abzugrenzen:\\
+Wenn das nur für einzelne Wörter gilt (z.B. bei Eigennamen wie Müller oder Excel), dann können Sie den \verb|<span>|-Container verwenden: Dieser ändert die Formatierung des Inhalts zunächst nicht und kann genutzt werden, um beliebig wenige Zeichen innerhalb anderer Container abzugrenzen:
 
-<p> 
-... 
-<span translate=no>Tony Marshall</span> sang während 
-<span translate=no>Andy Müller</span> ein Tor schoss. 
-...
-</p>
-Quellcode 2.18: Verhinderung von automatischen Übersetzungen durch Browser.
+\begin{verbatim}
+	<p> 
+	... 
+	<span translate=no>Tony Marshall</span> sang während 
+	<span translate=no>Andy Müller</span> ein Tor schoss. 
+	...
+	</p>
+\end{verbatim}
 
 \subsubsection{Vererbung von Attributen}
 
 Wichtig: Attribute gelten für den gesamten Bereich eines Containers, also auch für alle Container, die sich darin befinden. Dieses Konzept werden Sie in umfangreicherer Form kennen lernen, wenn Sie einen Kurs zur objektorientierten Programmierung belegen.\\
 
-Im folgenden Quellcode haben wir solch einen Fall: Das Attribut translate=no wird für den äußeren <article>-Container deklariert. Damit gilt das Übersetzungsverbot auch in allen Containern, die sich innerhalb dieses <article>-Containers gelten:\\
+Im folgenden Quellcode haben wir solch einen Fall: Das Attribut\\ \verb|translate=no| wird für den äußeren \verb|<article>|-Container deklariert. Damit gilt das Übersetzungsverbot auch in allen Containern, die sich innerhalb dieses \verb|<article>|-Containers gelten:
 
-<article translate=no>
-(Einleitender Text) ...
-<section> ... Sein Vater war von Beruf Müller.
-</section>
-(Noch mehr Text)
-</article>
-Quellcode 2.19: Vererbung von Attributen
+\begin{verbatim}
+	<article translate=no>
+	(Einleitender Text) ...
+	<section> ... Sein Vater war von Beruf Müller.
+	</section>
+	(Noch mehr Text)
+	</article>
+\end{verbatim}
 
-In diesem Fall würde der gesamte Satz „Sein Vater war von Beruf Müller.“ nicht übersetzt werden.\\
+In diesem Fall würde der gesamte Satz \glqq{}Sein Vater war von Beruf Müller.\grqq{} nicht übersetzt werden.\\
 
-Aber Sie können innerhalb von Containern weitere Container programmieren, in denen Attribute überschrieben werden. Stellen wir uns dazu vor, Sie wollen auf Ihrer Webanwendung einen latainischen Text im Original veröffentlichen und einige Kommentare dazu posten. Dann möchten Sie natürlich nicht, dass die lateinischen Passagen übersetzt werden, während das bei den Kommentaren sinnvoll wäre. Hier ein entsprechender Quellcode:\\
+Aber Sie können innerhalb von Containern weitere Container programmieren, in denen Attribute überschrieben werden. Stellen wir uns dazu vor, Sie wollen auf Ihrer Webanwendung einen latainischen Text im Original veröffentlichen und einige Kommentare dazu posten. Dann möchten Sie natürlich nicht, dass die lateinischen Passagen übersetzt werden, während das bei den Kommentaren sinnvoll wäre. Hier ein entsprechender Quellcode:
 
-<article translate=no id=“Carmina Burana mit Kommentar“>
-<p> (Originaltext) <span translate=yes>An dieser Stelle scheint im Text von ... ein Übersetzungsfehler vorzukommen, denn ... </span> ... (Fortsetzung des Originaltexts) ... </p>
-</article>
-Quellcode 2.20: Überschreiben eines vererbten Attributs
+\begin{verbatim}
+	<article translate=no id="Carmina Burana mit Kommentar">
+	<p> (Originaltext) <span translate=yes>An dieser Stelle 
+	scheint im Text von ... ein Übersetzungsfehler 
+	vorzukommen, denn ... </span> ... (Fortsetzung des 
+	Originaltexts) ... </p>
+	</article>
+\end{verbatim}
 
-Der „Originaltext“ und die „Fortsetzung des Originaltexts“ werden beiden nicht übersetzt, weil Sie Teil des <article>-Containers sind, für den die Übersetzung mittels des translate=no Attributs unterdrückt wird.\\
+Der \glqq{}Originaltext\grqq{} und die \glqq{}Fortsetzung des Originaltexts\grqq{} werden beiden nicht übersetzt, weil Sie Teil des \verb|<article>|-Containers sind, für den die Übersetzung mittels des \verb|translate=no| Attributs unterdrückt wird.\\
 
-Dagegen wird der Text „An dieser Stelle ...“ übersetzt, weil er Teil des <span>-Containers ist, für den die Übersetzung mittels des translate=yes Attributs explizit erlaubt wird.\\
+Dagegen wird der Text \glqq{}An dieser Stelle ...\grqq{} übersetzt, weil er Teil des \verb|<span>|-Containers ist, für den die Übersetzung mittels des \\\verb|translate=yes| Attributs explizit erlaubt wird.\\
 
-Hier sei nochmal darauf hingewiesen: Das translate=yes Attribut gilt nur innerhalb des <span>-Containers. Anschließend gilt es dann nicht mehr. 
+Hier sei nochmal darauf hingewiesen: Das \verb|translate=yes| Attribut gilt nur innerhalb des \verb|<span>|-Containers. Anschließend gilt es dann nicht mehr. 
 
-\subsection{Aufzählungen (Ordered und Unordered Lists)}
+\subsection{Aufzählungen (Ordered und Unordered Lists)}\index{HTML!ordered list}\index{HTML!unordered list}\index{HTML!Container!ul}\index{HTML!Container!ol}\index{HTML!Container!li}
 
-Wenn Sie eine Aufzählung von Elementen erstellen wollen, wie Einkaufslisten, To Do Listen oder ähnliches dann wird das in HTML als unordered List <ul> bezeichnet. \\
+Wenn Sie eine Aufzählung von Elementen erstellen wollen, wie Einkaufslisten, To Do Listen oder ähnliches dann wird das in HTML als unordered List \verb|<ul>| bezeichnet. \\
 
-Wollen Sie dagegen eine Liste erstellen, bei der die einzelnen Einträge z.B. nummeriert sind, um die Reihenfolge anzugeben, dann wird das in HTML als ordered list <ol> bezeichnet. Wenn Sie die Art der Nummerierung ändern wollen (z.B. in Großbuchstaben statt Zahlen), dann können Sie dazu das type-Attribut nutzen.\\
+Wollen Sie dagegen eine Liste erstellen, bei der die einzelnen Einträge z.B. nummeriert sind, um die Reihenfolge anzugeben, dann wird das in HTML als ordered list \verb|<ol>| bezeichnet. Wenn Sie die Art der Nummerierung ändern wollen (z.B. in Großbuchstaben statt Zahlen), dann können Sie dazu das \verb|type|-Attribut nutzen.\\
 
-Die einzelnen Einträge werden dann als <li>-Container innerhalb eines <ul>- oder <ol>-Containers programmiert. Wenn Sie also zwischen einer ordered list und einer unordered list wechseln wollen, müssen Sie nur einen Buchstaben im öffnenden und im schließenden Tag ändern, der Rest bleibt gleich:\\
+Die einzelnen Einträge werden dann als \verb|<li>|-Container innerhalb eines \verb|<ul>|- oder \verb|<ol>|-Containers programmiert. Wenn Sie also zwischen einer ordered list und einer unordered list wechseln wollen, müssen Sie nur einen Buchstaben im öffnenden und im schließenden Tag ändern, der Rest bleibt gleich:
 
-<ol>
-<li>Michael Schumacher</li>
-<li>Damon Hill</li>
-<li>Jacques Villeneuve</li>
-</ol>
+\begin{verbatim}
+	<ol>
+	<li>Michael Schumacher</li>
+	<li>Damon Hill</li>
+	<li>Jacques Villeneuve</li>
+	</ol>
+	
+	<ul>
+	<li>5g Hefe</li>
+	<li>3 Eier</li>
+	<100ml Wasser</li>
+	</ul>
+\end{verbatim}
 
-<ul>
-<li>5g Hefe</li>
-<li>3 Eier</li>
-<100ml Wasser</li>
-</ul>
-Quellcode 2.21: Geordnete und Ungeordnete Liste
+\subsection{Glossare (Description Lists)}\index{HTML!Description List}\index{HTML!Container!dl}\index{HTML!Container!dd}\index{HTML!Container!dt|}
 
-\subsection{Glossare (Description Lists)}
+Manchmal benötigen Sie dagegen eine Listenform, bei der Sie Begriffe und Ihre Bedeutung aufzählen wollen. In dem Fall sind \verb|<ul>| und \verb|<ol>| nicht geeignet. Hier greifen Sie am besten auf eine description list \verb|<dl>| zurück.\\
 
-Manchmal benötigen Sie dagegen eine Listenform, bei der Sie Begriffe und Ihre Bedeutung aufzählen wollen. In dem Fall sind <ul> und <ol> nicht geeignet. Hier greifen Sie am besten auf eine description list <dl> zurück.\\
+Innerhalb des \verb|<dl>|-Containers verwenden Sie dann einen description title \verb|<dt>|-Container, um den Namen des Eintrags festzulegen und anschließend einen description description \verb|<dd>|-Container, um die Erklärung einzuprogrammieren: (Ob das dd tatsächlich für ein doppeltes description steht, ist nicht sicher, eine Erklärung konnte ich leider nicht finden.)
+\begin{verbatim}
+	<dl>
+	<dt>Kaffee, schwarz</dt>
+	<dd>Heißes Getränk, koffeinhaltig, häufig im Becher 
+	von Herrn Alpers zu finden.</dd>
+	<dt>Bohnesuppe</dt>
+	<dd>Kohlenhydrathaltiges Gericht, häufig in Italo-
+	Western von Bud Spencer konsumiert.</dd>
+	</dl>
+\end{verbatim}
 
-Innerhalb des <dl>-Containers verwenden Sie dann einen description title <dt>-Container, um den Namen des Eintrags festzulegen und anschließend einen description description <dd>-Container, um die Erklärung einzuprogrammieren:\\
+\subsection{Tabellen (table)}\index{HTML!Tabelle}\index{HTML!Container!table}\index{HTML!Container!tr}\index{HTML!Container!td}\index{HTML!Container!th}
 
-<dl>
-<dt>Kaffee, schwarz</dt>
-<dd>Heißes Getränk, koffeinhaltig, häufig im Becher von Herrn Alpers anzutreffen.</dd>
-<dt>Bohnesuppe</dt>
-<dd>Kohlenhydrathaltiges Gericht, häufig in Italo-Western von Bud Spencer konsumiert.</dd>
-</dl>
-Quellcode 2.22: Glossare / descriptive list
+Tabellen sind einer der wenigen Container, mit denen Sie auch unter HTML5 ohne CSS das Layout einer Seite festlegen können. Diese sollten Sie aber aufgrund der vielen verschiedenen Displaygrößen von Endgeräten nur dann einsetzen, wenn es sich nicht vermeiden lässt. In dem Fall sollten Sie auf jeden Fall per PHP, JavaScript oder mittels einer anderen Sprache die Größe der Tabelle dynamisch anpassen.\\
 
-\subsection{Tabellen (table)}
+Eine Tabelle definieren Sie durch einen \verb|<table>|-Container. Für jede Zeile definieren Sie darin einen table row \verb|<tr>|-Container, in dem Sie für jede Spalte einen \verb|<td>|-Container programmieren.\\
 
-Tabellen sind einer der wenigen Container, mit denen Sie auch unter HTML5 ohne CSS das Layout einer Seite festlegen können. Diese sollten Sie aber aufgrund der vielen verschiedenen Displaygrößen von Endgeräten nur dann einsetzen, wenn es sich nicht vermeiden lässt.\\
-
-Eine Tabelle definieren Sie durch einen <table>-Container. Für jede Zeile definieren Sie darin einen table row <tr>-Container, in dem Sie für jede Spalte einen <td>-Container programmieren.\\
-
-Wenn Sie eine Spaltenüberschrift vergeben wollen, verwenden Sie anstelle des <td>-Containers einen table header <th>-Container.\\
+Wenn Sie eine Spaltenüberschrift vergeben wollen, verwenden Sie anstelle des <td>-Containers einen table header \verb|<th>|-Container.\\
 
 Der folgende Quellcode soll Ihnen verdeutlichen, warum es wichtig ist, Quellcode übersichtlich zu programmieren, so wie Sie das bei den bisherigen Codebeispielen gesehen haben, denn hier ist das eindeutig nicht der Fall: Benutzen Sie dazu Zeileneinzüge (Tabulatoren) und Zeilenumrüche (Enter Taste).\\
 
-<table><tr><th>Uhrzeit</th><th>Montag</th><th>Dienstag</th><th>Mittwoch</th><th>Donnerstag</th><th>Freitag</th></tr><tr><td>8.30-10.00</td><td>PRG</td>...</tr>...</table>
-Quellcode 2.23: Ausgesprochen unübersichtliches Beispiel für eine Tabelle
+\verb|<table><tr><th>Uhrzeit</th><th>Montag</th><th>Dienstag|\\\verb|</th><th>Mittwoch</th><th>Donnerstag</th><th>Freitag|\\\verb|</th></tr><tr><td>8.30-10.00</td><td>PRG</td>|\\\verb|...</tr>...</table>|
 
-\subsection{Microdata}
+\subsection{Microdata}\index{Microdata}\index{semantic web}
 
 Microdata sind zwar eine zentrale Säule des semantic Web, aber aufgrund des Umfangs dieser Veranstaltung können wir sie uns nur sehr kurz ansehen.\\
 
 Zur Erinnerung: Microdata haben nichts mit der Darstellung oder der Struktur einer Webanwendung zu tun, sondern Sie dienen dazu, dem Browser anzuzeigen, welche Bedeutung einzelne Elemente der Seite haben. Hier ein paar Anwendungsfälle:\\
 
--	Der Browser soll eine Adresse ohne weitere Programmierung an eine Anwendung wie google maps weiterleiten können.
+\begin{itemize}
+	\item Der Browser soll eine Adresse ohne weitere Programmierung an eine Anwendung wie google maps weiterleiten können.
+	\item Sie wollen, dass der Browser einen Termin in den Kalender Ihres Mail-Programms übertragen kann.
+	\item Sie veranstalten ein Event, erstellen eine Webanwendung dazu und wollen, dass eine Suchmaschine erkennt, dass es sich um ein Event handelt.
+\end{itemize}
 
--	Sie wollen, dass der Browser einen Termin in den Kalender Ihres Mail-Programms übertragen kann.
-
--	Sie veranstalten ein Event, erstellen eine Webanwendung dazu und wollen, dass eine Suchmaschine erkennt, dass es sich um ein Event handelt.
-
-All diese Fälle und noch wesentlich werden bislang unter Begriffen wie search engine optimization (kurz SEO) und machine-readable content zusammen gefasst. Microdata sind ein Mittel, das in HTML5 unterstützt wird, um diese Fälle zu lösen.
+All diese Fälle und noch wesentlich werden bislang unter Begriffen wie \textbf{search engine optimization}\index{search engine optimization} (kurz \textbf{SEO}\index{SEO}) und \textbf{machine-readable content}\index{machine-readable content} zusammen gefasst. Microdata sind ein Mittel, das in HTML5 unterstützt wird, um diese Fälle zu lösen.
 
 \subsubsection{Programmierung von Microdata}
 
-Dazu müssen Sie als erstes einen Container mit dem Attribut itemscope deklarieren. Dieses Attribut ändert wie geschrieben nichts an einer Webanwendung, sondern er teilt dem Webbrowser mit, dass es in diesem Container Elemente im Sinne des semantic web geben kann.\\
+Dazu müssen Sie als erstes einen Container mit dem Attribut \verb|itemscope|\index{HTML!Attrubute!itemscope} deklarieren. Dieses Attribut ändert wie geschrieben nichts an einer Webanwendung, sondern er teilt dem Webbrowser mit, dass es in diesem Container Elemente im Sinne des semantic web geben kann.\\
 
 Für diejenigen, die bereits ein wenig Erfahrung mit der objektorientierten Programmierung haben: Damit deklarieren Sie diesen Container explizit zu einem Objekt, das Sie in einer Sprache wie JavaScript wie ein vollwertiges Objekt verwenden können.\\
 
-Für alle anderen: Ein Objekt im Sinne der objektorientierten Programmierung besteht im Grunde aus folgenden abstrakten Bestandteilen:\\
+Für alle anderen: Ein Objekt im Sinne der klassenbasierten objektorientierten Programmierung besteht im Grunde aus folgenden abstrakten Bestandteilen:
 
--	Einem Namen oder Bezeichner, der für jedes Objekt individuell sein muss.
-Die Lösung in HTML kennen Sie bereits; es ist das id-Attribut. Sie brauchen aber vorerst keine id-Attribute zu vergeben, weil wir an dieser Stelle nur Microdata programmieren. Die Änderung von Microdata durch eine Programmiersprache folgt in der Einführung in JavaScript (also nur für MediaSystems Studierende) später.
+\begin{itemize}
+	\item Einem Namen oder Bezeichner, der für jedes Objekt individuell sein muss.\\
+	Die Lösung in HTML kennen Sie bereits; es ist das \verb|id|-Attribut. Sie brauchen aber vorerst keine \verb|id|-Attribute zu vergeben, weil wir an dieser Stelle nur Microdata programmieren. Die Änderung von Microdata können Sie durch eine Programmiersprache wie PHP oder JavaScript durchführen.
 
--	Einer beliebigen Anzahl an Eigenschaften, die bei unterschiedlichen Objekten des gleichen Typs unterschiedlich ausgeprägt sein können.
-Damit beschäftigen wir uns gleich. Hier ein Beispiel: Eigenschaften können z.B. Telefonnummern sein. Und dass unterschiedliche Elemente unterschiedlich ausgeprägt sein können, bedeutet bei Elementen vom Datentyp Telefonnummer nicht anderes, als dass unterschiedliche Telefonnummern schlicht unterschiedliche Zahlenkombinationen sind.
+	\item Einer beliebigen Anzahl an Eigenschaften, die bei unterschiedlichen Objekten des gleichen Typs unterschiedlich ausgeprägt sein können.
+	Damit beschäftigen wir uns gleich. Hier ein Beispiel: Eigenschaften können z.B. Telefonnummern sein. Und dass unterschiedliche Elemente unterschiedlich ausgeprägt sein können, bedeutet bei Elementen vom Datentyp Telefonnummer nicht anderes, als dass unterschiedliche Telefonnummern schlicht unterschiedliche Zahlenkombinationen sind.
 
--	Einer Datenstruktur oder einem Datentyp, die für jede Eigenschaft individuell beschreibt, um was für eine Eigenschaft es sich handelt.
-Das klingt schwieriger, als es ist; in HTML bedeutet es nur, dass wir damit sagen, dass ein bestimmter Text der Name eines Ansprechpartners ist, dass ein anderer Text seine Anschrift ist, usw.
+	\item Einer Datenstruktur oder einem Datentyp, die für jede Eigenschaft individuell beschreibt, um was für eine Eigenschaft es sich handelt.
+	Das klingt schwieriger, als es ist; in HTML bedeutet es nur, dass wir damit sagen, dass ein bestimmter Text der Name eines Ansprechpartners ist, dass ein anderer Text seine Anschrift ist, usw.
 
--	Einer beliebigen Anzahl an Methoden (alte Bezeichnung: Funktionen), mit denen die Eigenschaften geändert werden können.
+	\item Einer beliebigen Anzahl an Methoden (alte Bezeichnung: Funktionen), mit denen die Eigenschaften geändert werden können.
+\end{itemize}
 
 In HTML haben Sie keinen Zugriff auf Methoden. Diese sind Teil von Programmiersprachen wie JavaScript. Dementsprechend beschäftigen wir uns damit vorerst nicht.
 
 \subsubsection{Festlegung des Objekttyps}
 
-Gerade haben Sie gelernt, dass Sie das Attribut itemscope verwenden müssen, um festzulegen, dass ein Container Microdata enthalten soll.\\
+Gerade haben Sie gelernt, dass Sie das Attribut \verb|itemscope| verwenden müssen, um festzulegen, dass ein Container Microdata enthalten soll.\\
 
 Dann müssen Sie festlegen, welche Art von Microdata das sein soll. Zwar könnten Sie hier auch willkürlich eigene Typen festlegen, aber damit hätten Sie die Idee der Microdata ad absurdum geführt, denn was Sie sich bei eigenen Typen denken, kann kein Webbrowser wissen, also wäre es weitestgehend zwecklos, so vorzugehen.\\
 
-Auf der Seite
-http://schema.org/docs/schemas.html 
-können Sie eine Vielzahl an sogenannten Schemata (das sind unsere Objekttypen) nachschlagen.\\
+Auf der Seite \url{http://schema.org/docs/schemas.html} können Sie eine Vielzahl an sogenannten \textbf{Schemata}\index{Schemata} (das sind unsere Objekttypen) nachschlagen.\\
 
-Wenn Sie nun eine Schema gefunden haben, dass Ihnen gefällt, dann programmieren Sie es mit dem Attribut itemtype in den entsprechenden Container. Im folgenden Beispiel haben wir das Schema für eine Person verwendet, die u.a. Möglichkeiten anbietet, um eine Anschrift als Microdata zu programmieren:\\
+Wenn Sie nun eine Schema gefunden haben, dass Ihnen gefällt, dann programmieren Sie es mit dem Attribut \verb|itemtype|\index{HTML!Attribute!itemtype} in den entsprechenden Container. Im folgenden Beispiel haben wir das Schema für eine Person verwendet, die u.a. Möglichkeiten anbietet, um eine Anschrift als Microdata zu programmieren:
 
-<p itemscope itemtype=http://schema.org/Person>
-</p>
-Quellcode 2.24: Definition eines Absatzes als Microdata für die Anschrift einer Person beinhalten soll.\\
+\begin{verbatim}
+	<p itemscope itemtype=http://schema.org/Person>
+	</p>
+\end{verbatim}
 
 Wie Sie sehen haben wir hier noch keinerlei Angaben zur Person selbst einprogrammiert. Dieser Container würde auf einer Webanwendung also nicht sichtbar sein und er würde vorerst auch noch keinen Zweck erfüllen. Aber dieser Schritt ist wichtig, weil der Webbrowser sonst nicht wissen kann, was er mit den Microdata anfangen soll, die in diesem Container auftauchen.
 
 \subsubsection{Eigenschaften von Objekten}
 
-Nehmen wir an, der Name der Person lautet „Martin Schinken“. Für unsere Microdata benötigen wir jetzt also eine Möglichkeit, um eine Eigenschaft „Name“ zu programmieren und diese als Teil des Objekts einzuprogrammieren.\\
+Nehmen wir an, der Name der Person lautet \glqq{}Martin Schinken\grqq{}. Für unsere Microdata benötigen wir jetzt also eine Möglichkeit, um eine Eigenschaft \glqq{}Name\grqq{} zu programmieren und diese als Teil des Objekts einzuprogrammieren.\\
 
-In HTML5 wird das wieder über ein Attribut eines Containers erledigt. Das Attribut lautet itemprop (kurz für the items property). Nun gibt es wieder eine Vielzahl an möglichen Arten von Eigenschaften, also müssen wir diese gleich festlegen.\\
+In HTML5 wird das wieder über ein Attribut eines Containers erledigt. Das Attribut lautet \verb|itemprop|\index{HTML!Attribute!itemprop} (kurz für the items property). Nun gibt es wieder eine Vielzahl an möglichen Arten von Eigenschaften, also müssen wir diese gleich festlegen.\\
 
-Hinweis: Wenn Sie wie in diesem Fall  erfahren, wofür ein „Befehl“ einer Programmsprache steht (hier itemprop für the items property), dann setzen Sie in einen Programm bitte nicht diese Langform (hier „the items property“) ein, denn nur der „Befehl“ (hier itemprop) ist ein gültiger Teil der Programmiersprache. Die Langform soll Ihnen lediglich als eine Eselsbrücke dienen.\\
+Hinweis: Wenn Sie wie in diesem Fall erfahren, wofür ein \glqq{}Befehl\grqq{} einer Programmsprache steht (hier \verb|itemprop| für the items property), dann setzen Sie in einen Programm bitte nicht diese Langform (hier \glqq{}the items property\grqq{}) ein, denn nur der \glqq{}Befehl\grqq{} (hier \verb|itemprop|) ist ein gültiger Teil der Programmiersprache. Die Langform soll Ihnen lediglich als eine Eselsbrücke dienen.\\
 
-Aufgabe:\\
+\textbf{Aufgabe:}
 
--	Schlagen Sie nach, wie die itemprop heißt, die für den Namen einer Person verwendet wird.\\
+\begin{itemize}
+	\item Schlagen Sie nach, wie die itemprop heißt, die für den Namen einer Person verwendet wird.
+\end{itemize}
 
-Jetzt müssen wir nur noch einen Container innerhalb des <p>-Containers programmieren, der das Attribut itemprop mit dem Wert beinhaltet, den Sie gerade nachgeschlagen haben. \\
+Jetzt müssen wir nur noch einen Container innerhalb des \verb|<p>|-Containers programmieren, der das Attribut \verb|itemprop| mit dem Wert beinhaltet, den Sie gerade nachgeschlagen haben. \\
 
-Anmerkung: Diejenigen von Ihnen, die diese Veranstaltung durch eine Klausur abschließen, sollten das selbst gemacht haben, weil eine Aufgabe in Ihrer Klausur darin besteht, eine passende itemprop für einen itemtype aus einer Liste auszuwählen.\\
+Der Quellcode sollte jetzt also so aussehen: (Für die drei Punkte setzen Sie bitte die von Ihnen gerade recherchierte \verb|itemprop| ein.)
 
-Der Quellcode sollte jetzt also so aussehen: (Für die drei Punkte setzen Sie bitte die von Ihnen gerade recherchierte itemprop ein.)\\
+\begin{verbatim}
+	<p itemscope itemtype=http://schema.org/Person>
+	<span itemprop=...>Martin Schinken</span>
+	</p>
+\end{verbatim}
 
-<p itemscope itemtype=http://schema.org/Person>
-<span itemprop=...>Martin Schinken</span>
-</p>
-Quellcode 2.25: Microdata, die den Namen einer Person enthält.\\
+\textbf{Aufgabe:}\\
 
-Aufgabe:\\
+Bei diesem Quellcode sind zwei Fehler enthalten. Der eine ist die fehlende \verb|itemprop|, die Sie nachtragen sollten. Den anderen kennen Sie schon etwas länger. Genauer gesagt sind in diesem Quellcode also nicht zwei Fehler enthalten, sondern vielmehr fehlen hier zwei Einträge. (Tipp: Wäre der Name Martin Holz oder Martin Hammer, dann wären es ebenfalls zwei Fehler. Beim Namen Martin Borowski dagegen würde der zweite Fehler nicht auftreten.)
 
-Bei diesem Quellcode sind zwei Fehler enthalten. Der eine ist die fehlende itemprop, die Sie nachtragen sollten. Den anderen kennen Sie schon etwas länger. Genauer gesagt sind in diesem Quellcode also nicht zwei Fehler enthalten, sondern vielmehr fehlen hier zwei Einträge. (Tipp: Wäre der Name Martin Holz oder Martin Hammer, dann wären es ebenfalls zwei Fehler. Beim Namen Martin Borowski dagegen würde der zweite Fehler nicht auftreten.)\\
-
--	Ergänzen Sie den Code so, dass die beiden Fehler bereinigt werden.
+\begin{itemize}
+	\item Ergänzen Sie den Code so, dass die beiden Fehler bereinigt werden.
+\end{itemize}
 
 \subsubsection{Umfangreiche Microdata am Beispiel einer Person mit Adressangabe}
 
-Aufgabe:\\
+\textbf{Aufgabe:}\\
 
-Auch das nachfolgende Codefragment ist lückenhaft. Recherchieren Sie, welche Attributbelegungen jeweils Sinn machen:\\
+Auch das nachfolgende Codefragment ist lückenhaft. Recherchieren Sie, welche Attributbelegungen jeweils Sinn machen:
 
-<section itemscope itemtype=http://schema.org/Person>
-<h1>Kontakt</h1>
-<dl>
-<dt>Name</dt>
-<dd itemprop= ... >Ihr Name</dd>
-<dt>Position</dt>
-<dd>
-<span itemprop= ... >Student/in</span> an der
-<span itemprop= ... > HAW Hamburg</span>
-</dd>
-</dl>
-<div itemprop= ... itemscope itemtype= ... >
-<span itemprop= ... >Hamburger Str. 231</span>
-<span itemprop= ... >Hamburg</span>,
-<span itemprop= ... >22081</span>
-</div>
-<h1>Online bin ich aktiv bei:</h1>
-<ul>
-<li><a href=http://www.twitter.com/ihrTwitterAccount itemprop= ... >Twitter</a></li>
-<li><a href=http://www.blogger.com/ihrBlogAccount itemprop= ... >Webblog</a></li>
-</ul>
-</section>
-Quellcode 2.26: Umfangreiche Microdata als Aufgabe zur Recherche
+\begin{verbatim}
+	<section itemscope itemtype=http://schema.org/Person>
+	<h1>Kontakt</h1>
+	<dl>
+	<dt>Name</dt>
+	<dd itemprop= ... >Ihr Name</dd>
+	<dt>Position</dt>
+	<dd>
+	<span itemprop= ... >Student/in</span> an der
+	<span itemprop= ... > HAW Hamburg</span>
+	</dd>
+	</dl>
+	<div itemprop= ... itemscope itemtype= ... >
+	<span itemprop= ... >Hamburger Str. 231</span>
+	<span itemprop= ... >Hamburg</span>,
+	<span itemprop= ... >22081</span>
+	</div>
+	<h1>Online bin ich aktiv bei:</h1>
+	<ul>
+	<li><a href=http://www.twitter.com/ihrTwitterAccount itemprop= ... >Twitter</a></li>
+	<li><a href=http://www.blogger.com/ihrBlogAccount itemprop= ... >Webblog</a></li>
+	</ul>
+	</section>
+\end{verbatim}
 
 \subsection{Validator für Microdata}
 
 Um zu prüfen, ob Ihre Microdata eindeutig programmiert sind, können Sie auf der folgenden Webanwendung einen Testbereich finden:\\
 
-http://developers.google.com/structured-data  \\
+\verb|http://developers.google.com/structured-data|  \\
 
-Aufgabe:\\
+\textbf{Aufgabe:}\\
 
 Prüfen Sie dort, ob Ihre Lösungen zu den beiden letzten Aufgaben valide sind.
 
 \section{Zusammenfassung}
 
-Sie wissen jetzt:\\
+Sie wissen jetzt:
 
--	wie die Grundstruktur jeder Webanwendung aussieht,
--	verstehen was Internationalisierung und Lokalisierung ist,
--	wissen um die Bedeutung von meta-Containern,
--	kennen die neuen Container header, footer, main, aside, usw.
--	und wissen wie Sie Polyfills finden und nutzen können.
+\begin{itemize}
+	\item wie die Grundstruktur jeder Webanwendung aussieht,
+	\item verstehen was Internationalisierung und Lokalisierung ist,
+	\item wissen um die Bedeutung von meta-Containern,
+	\item kennen die neuen Container header, footer, main, aside, usw.
+	\item und wissen wie Sie Polyfills finden und nutzen können.
+\end{itemize}
+
 Sie wissen außerdem:
--	wie Sie Verbindungen zwischen Webanwendung programmieren können,
--	wie Sie Nutzereingaben in HTML ermöglichen können
--	und wie Sie multimediale Inhalte in die Webanwendung einbinden können.\\
+
+\begin{itemize}
+	\item wie Sie Verbindungen zwischen Webanwendung programmieren können,
+	\item wie Sie Nutzereingaben in HTML ermöglichen können
+	\item und wie Sie multimediale Inhalte in die Webanwendung einbinden können.
+\end{itemize}
 
 Außerdem verstehen Sie, was das semantische Web ist und wie Sie mittels Microdata eine semantische Webanwendung programmieren können.\\
 
-Was jetzt noch fehlt und leider nicht Teil dieses Kurses ist, ist die Entwicklung von interaktiven Oberflächen in HTML5 mit Hilfe von Canvas.\\
+Was jetzt noch fehlt und leider nicht Teil dieses Kurses ist, ist die Entwicklung von interaktiven Oberflächen in HTML5 mit Hilfe von Canvas. Denn das programmieren Sie über JavaScript.\\
 
 Im nächsten Kapitel folgt die zweite Hälfte des Kursteils, in dem sie die Entwicklung statischer Webanwendung kennen lernen: CSS, die Programmiersprache, mit der Sie die Gestaltung einer Webanwendung programmieren.
-
-\subsection{Mehr Text braucht die Welt … und Zeilenumbrüche}
-
-\textbf{Ab hier finden Sie die Abschnitte des ersten HTML-Skripts, das ich erstellt habe. Dieser Teil ist weitgehend veraltet, da er das Vorgehen bei der Programmierung in HTML 4.01 beinhaltet. Er ist zurzeit noch enthalten, da ich prüfe, welche Abschnitte ggf. noch aktuell sind.}\\
-
-Nun gut, die Überschrift mag nicht ganz der Wahrheit entsprechen, aber tun wir einmal so, als wenn sie zuträfe. Erweitern Sie also einfach den body-Container um einige Sätze. Es ist egal, ob diese Sinn machen oder reines Buchstabenchaos sind, da es hier darum geht, dass Sie sehen, welche Anzeige aus Ihrem Quellcode erzeugt wird. Speichern Sie das Ergebnis dann als seite02.html im bekannten Verzeichnis ab, wechseln Sie im Browser auf localhost bzw. aktualisieren Sie die Seite und öffnen sie dann die neue Webanwendung.\\
-
-Einschub: .htm und .html\\
-
-Wenn Sie sich etwas intensiver mit der Entwicklung von Webanwendung beschäftigen, dann werden Sie sehen, dass manche HTML-Skripte unter Dateibezeichnungen gespeichert werden, die nicht auf .html enden, sondern auf .htm. Streckenweise werden Sie auch Kursunterlagen finden, in denen gesagt wird, dass Sie die Skripte in Dateien speichern sollen, deren Namen mit .htm enden. Neugierige Naturen fragen nun: Wo ist der Unterschied? Kurzantwort: Es gibt keinen. Lange Antwort: Bis in die 90er Jahre war es wichtig, so effizient wie möglich zu programmieren. Deshalb gab es z.B. bei damaligen Betriebssystemen die Einschränkung, dass Dateitypen durch eine Endung festgelegt wurden, die nur drei Buchstaben haben durfte. Als immer mehr Hauptspeicher in Rechnern zur Verfügung stand war diese Beschränkung nicht mehr nötig. Wo also früher .htm stand, wurde irgendwann .html eingegeben. Das ist allerdings nicht bei allen Dateitypen so simpel, Sie dürfen es also nur bei HTML-Skripten voraussetzen.\\
-
-Wichtig: Auch wenn Sie beide Endungen nutzen dürfen gilt: seite.htm ist eine andere Datei als seite.html\\
-
-Wieder zurück zu unserer ersten Webanwendung:\\
-
-Und was sehen Sie? Etwas sehr unschönes: Der gesamte Text zieht sich in der ersten Zeile der Webanwendung hin und wird dann auf der nächsten Zeile von links nach rechts fortgesetzt, ohne dass Zeilenumbrüche eingefügt werden.\\
-
-Was ein Zeilenumbruch ist? Immer wenn Sie bei einer Textverarbeitung die Enter- bzw. Return-Taste drücken, wird die aktuelle Zeile beendet und der Text in der nächsten Zeile fortgesetzt. Bei Microsoft Word erhalten Sie dagegen einen Zeilenumbruch durch die Tastenkombination Shift \& Return.\\
-
-Aber Sie können einen Zeilenumbruch in HTML nicht generieren, indem Sie wie bei einer Textverarbeitung einfach die Enter-Taste drücken, sondern Sie müssen wieder ein Tag setzen:\\
-
-<br />\\
-
-Dieses Tag fügt einen Zeilenumbruch in die Webanwendung ein. Nun fragen Sie sich vielleicht, was denn der Slash / in diesem Tag soll. Das ist ganz einfach: Da jedes Tag einen Container öffnet oder schließt, ein Zeilenumbruch aber gleich abgeschlossen ist, würde es wenig Sinn machen, ein öffnendes und ein schließendes br-Tag zu programmieren. Als Kurzschreibweise können Sie deshalb diese Form nutzen. Und damit handelt es sich hier also nicht einfach nur um einen Tag, sondern um einen vollständigen Container.\\
-
-Das selbe gilt für alle Tags, die keinen eigenen Container brauchen. Hier wäre ein Beispiel: Wenn Sie eine waagerechte Linie in Ihre Seite einfügen wollen, nutzen Sie einfach das folgende Tag:\\
-
-<hr />\\
-
-Aufgaben: \\
-
-(1)	Probieren Sie das gleich mal aus: Fügen Sie wenigstens einen br-Container und einen hr-Container in Ihr Dokument ein. Speichern Sie die Datei und lassen Sie sie sich im Browser anzeigen.
-
-(2)	Und probieren Sie jetzt einmal aus, was mit einem Text passiert, den Sie in einen hr-Container einfügen. (Sprich: Sie programmieren eine öffnendes hr-Tag vor diesem Text und ein schließendes hr-Tag dahinter.)
-
-\subsection{Hyperlinks – Verbindungen zwischen Elementen}
-
-Mittlerweile haben Sie mehrere Seiten gespeichert. Und da ist es unschön, dass wir noch keine Links haben, mit denen wir zwischen den Seiten wechseln können. Sonst hat ja jede Webanwendung Hyperlinks, über die wir genau das tun können, also sollten wir als nächstes Hyperlinks in unsere Seite einfügen.\\
-
-Das Skript für einen einfachen Link sieht so aus:\\
-
-<a href=URL>Ein wenig Text</a>\\
-
-Bei einem konkreten Link müssen wir jetzt also noch die URL des Ziels einfügen.
-Beispiel: Wir wollen in unser Skript für die erste Seite einen Link auf die zweite Seite einfügen. Das sähe dann so aus:\\
-
-<a href=seite02.html>Hier geht’s zur zweiten Seite</a>
-
-\subsection{Entitys - Umlaute und andere Sonderzeichen}
-
-All das erklärt aber immer noch nicht, wie Sie Umlaute oder andere Sonderzeichen (die im englischen Alphabet nicht vorkommen) in Ihre Webanwendung einpflegen. Leider müssen wir hier auf eine etwas umständliche Programmierung zurückgreifen.\\
-
-So müssen Sie beispielsweise anstelle des Buchstaben ü das Skript \&uuml; in den fließenden Text eintragen. Aber das sieht nur auf den ersten Blick unübersichtlich aus: Jeder dieser Skriptbefehle beginnt mit dem kaufmännischen Und-Zeichen und endet mit einem Semikolon.\\
-
-Die Zeichenkette dazwischen ist für alle Umlaute simpel: Zunächst der Buchstabe (a, o, u bei kleinen Umlauten und A, O, U bei großen Umlauten) und dann die Zeichenfolge uml für Umlaut.\\
-
-Ähnliches gilt für die übrigen Sonderzeichen, die bei HTML als Entitys bezeichnet werden. Warum sie nicht entsprechend der englischen Grammatik als Entities bezeichnet werden, kann ich Ihnen nicht sagen. Zu Fragen und Nebenwirkungen wenden Sie sich bitte den Anglisten Ihres Vertrauens.\\
-
-Hier eine Tabelle der für den Einstieg wichtigsten Entities :\\
-
-Ä	\&Auml;	
-ä	\&auml;	
-Ö	\&Ouml;	
-ö	\&ouml;	
-Ü	\&Uuml;	
-ü	\&uuml;	
-ß	\&szlig;	(ß mit Ligatur)
-€	\&euro;	
-
-\&	\&amp;	(ampers and)
->	\&gt;	(greater than)
-<	\&lt;	(less than)
-
-Anführungszeichen unten	\&bdquo;	
-Anführungszeichen oben	\&rdquo;	
-
-Sollten Sie einmal ein Zeichen nutzen wollen, dass Sie in keiner HTML-Tabelle finden, dann gibt es noch eine Lösung: Zeichen, die in der Unicode-Tabelle bzw. der ISO 10646  aufgeführt werden, können wie folgt eingefügt werden. Wählen Sie dazu die Nummer aus der Codetabelle, die Ihrem Zeichen entspricht und fügen es zwischen \&\# sowie dem Semikolon ein. Sollte der Wert ein Hexadezimalwert sein, müssen Sie noch ein x einfügen.\\
-
-Beispiel: Nehmen wir an, Sie wollen ein bestimmtes chinesisches Element in Ihrem Text darstellen, dass im Unicode die Codenummer 9FB9 hat. Es ist leicht zu erkennen, dass es sich hier um eine hexadezimale Zahl handelt. Also müssen wir noch ein x in \&\#    ; einfügen. Es ergibt sich also folgendes Skript, mit dem wir das gewünschte Zeichen einfügen können:\\
-
-\&\#x9fb9;\\
-
-Kontrolle\\
-
-Machen Sie das einmal selbst: Laden Sie sich die Unicode-Tabellen herunter (Umfang knapp 130 MB). Fügen Sie dann Ihre Email-Adresse in das HTML-Skript, wobei Sie den Wert für das @-Symbol anhand der Codetabelle in Ihren Text einfügen. Sie werden hier nicht lange suchen müssen: Der Eintrag befindet sich gleich auf der ersten Seite in einem der Dokumente, die Sie heruntergeladen haben.\\
-
-Hinweis: Beachten Sie bitte, dass es sich hier um eigenständige Zeichen handelt, die mit dieser Zeichenkette erzeugt werden und nicht etwa um Container oder Tags. Spitze Klammern haben an dieser Stelle also nichts verloren.
-
-\subsection{Deutsche Umlaute ohne Entities}
-
-Kommt es Ihnen zu kompliziert vor, wenn Sie jedes Sonderzeichen als eine Entity eingeben müssen? Da sind Sie nicht alleine. Deshalb kommen wir jetzt zu einer Zeile, die uns die ganze Arbeit abnimmt. Mit dieser Zeile teilen wir dem Webbrowser mit, dass wir unsere Zeichen mit UTF-8 codieren. Und dann versteht braucht er keine Entities mehr, sondern wir können direkt Umlaute (oder auch Schriftzeichen anderer Sprachen) direkt im Skript unterbringen.\\
-
-Für Fortgeschrittene: Unter Umständen kommen Sie in die Situation, dass Sie UTF-16 oder UTF-32 nutzen wollen. Selbst bei aktuellen chinesischen Texten wird das nicht passieren, da auch diese mit dem Zeichenvorrat von UTF-8 abgedeckt sind. Hiervon rät das W3C bei Webanwendung ab. Prüfen Sie in einer solchen Situation, welche alternativen Möglichkeiten Sie haben. Ggf. gibt es ein anderes Dokumentformat, das Ihnen in dieser Situation weiter hilft.\\
-
-Hier das Skript, das Sie bitte als erste Zeile in Ihren head-Container einpflegen:\\
-
-<meta charset=utf-8>\\
-
-Um Ihre Webanwendung zu internationalisieren sollten Sie außerdem das öffnende html-Tag wie folgt erweitern:\\
-
-<html lang=de>\\
-
-Wichtig: Dennoch müssen Sie die Entities beherrschen, da Programmiersprachen wie JavaScript hiervon nicht betroffen sind. Dort müssen Sie selbst Anführungszeichen als \&quot; eintragen, was nicht nur die Fehleranfälligkeit erhöht, sondern auch die Programmierung deutlich erschwert.\\
-
-\subsection{Hervorhebungen}
-
-Bislang haben Sie zwei Möglichkeiten kennen gelernt, um Texte innerhalb eines HTML-Skripts hervorheben zu lassen: Zeilenumbrüche, mittels derer Sie Absätze erzeugen können und waagerechte Linien.\\
-
-Die meisten Nutzer möchten aber auch kursiv, fett oder unterstrichen nutzen, um Textstellen hervorzuheben. Fortgeschrittene Nutzer verwenden außerdem standardisierte Einstellungen, mit denen Sie mehrere Überschriftentypen haben. Dadurch kann ein Leser am Format eines Textes erkennen, ob es sich um eine Kapitelüberschrift, eine Unterkapitelüberschrift usw. handelt.\\
-
-Für die Programmierung in HTML handelt es sich jeweils wieder um Container. Sie programmieren also wieder ein öffnendes und schließendes Tag für jede Art der Hervorhebung:\\
-
-Fettdruck	<b> … </b>	(bold)
-Kursive Schrift	<i> … </i>	(italic)
-Unterstrichener Text	<u> … </u>	(underline)
-
-Kapitelüberschrift	<h1> … </h1>	(Header)
-Unterkapitel	<h2> … </h2>	
-…	<h3> … </h3>	
-
-Aufgabe: \\
-
-Warum ist das folgende HTML-Skript falsch? <b><i>Hallo</b></i> Welt\\
-
-Kontrolle\\
-
-Sie können bis jetzt Texte auf eine Webanwendung hochladen, in denen jedes Zeichen vorkommen kann, dass in irgend einer Sprache der Welt vorkommt.\\
-
-Sie können außerdem einzelne Bereiche eines Textes hervorheben und eine erste Strukturierung mit Hilfe von Überschriften erzeugen.\\
-
-Sie wollen jetzt endlich etwas darüber erfahren, wie Sie einzelne Elemente einer Webanwendung anordnen können? Nicht so schnell mit den jungen Pferden. Schauen wir uns doch zunächst an, wie Sie in HTML Eingaben durch den Nutzer ermöglicht werden können. Und damit sind wir im Bereich von Formularen.
-
-\subsection{Formulare}
-
-Der Begriff Formular umfasst alles, was bei einem HTML-Skript Eingaben durch den Nutzer ermöglicht. Grundsätzlich gilt: Für Formulare verwenden wir form-Container:
-<form> … </form>\\
-
-Wichtig: Ohne Unterstützung durch Sprachen wie PHP, JavaScript oder ähnliche können wir zwar Nutzereingaben in einer Webanwendung einprogrammieren, aber wir können diese Eingaben noch nicht weiter nutzen. Wir behandeln Sie aber schon jetzt, weil Sie sich zunächst überlegen sollen, welche Interaktionsmöglichkeiten ein Nutzer haben sollte, um eine bestimmte Funktionalität der Webanwendung zu realisieren. Wie die Webanwendung auf diese Eingaben reagiert werden wir dann später programmieren.\\
-
-Für Fortgeschrittene: Aber auch ohne eine dieser Sprachen können wir seit HTML5 Einschränkungen Programmieren, die z.B. dafür sorgen, dass ein Nutzer bei einem Eingabefeld nur ein echtes Datum (also z.B. keinen 33. 7. 1922) eingeben kann. Wenn Sie daran interessiert sind, solche Einschränkungen gleich in HTML5 zu programmieren, nutzen Sie dazu bitte Selfhtml oder eine andere Quelle.
-
-\subsubsection{Nutzereingaben in HTML programmieren}
-
-Wenn Sie eine Nutzereingabe annehmen wollen, dann müssen Sie innerhalb eines form-Containers einen input-Container für jede Eingabe programmieren:\\
-
-<form>
-<input>Erste Eingabe:</input>
-<input>Zweite Eingaben:</input>
-… 
-</form>\\
-
-Kontrolle:\\
-
-(1)	Prüfen Sie, wie dieser Quellcode auf Ihrer Seite angezeigt wird und was Sie wohl ändern müssen, damit die Abfrage sinnvoll dargestellt wird.
-
-(2)	Oh, und natürlich sollen Sie die HTML-Skripte Ihres Projekts jetzt so erweitern, dass Nutzereingaben tatsächlich möglich sind.
-
-(3)	Prüfen Sie außerdem, was mit den Eingaben passiert, wenn Sie den Quellcode ändern, die geänderte Fassung speichern und die Seite dann nochmal laden.
-
-\subsubsection{Überblick über Formularelemente}
-
-Mit dem input-Container können wir bislang nur Eingaben verarbeiten, die z.B. über eine Tastatur eingegeben werden. Ein Datum kann also bei dieser einfachen Form von input-Containern nicht über ein Fenster angewählt werden, obwohl das in HTML mit einem input-Container programmiert werden kann. \\
-
-Wenn wir solche Eingabemöglichkeiten in HTML realisieren wollen, müssen wir den Typ eines input-Containers explizit definieren. Dazu ergänzen Sie schlicht das input-Tag wie folgt, wobei Sie anstelle der drei Punkte den Bezeichner angeben müssen, der dem jeweiligen Typ entspricht:\\
-
-<input type=“ … “>\\
-
-Wenn Sie einige dieser Typen kennen, sollte das ausreichen. Gehen Sie auch hier schlicht danach vor, welche Typen für die Funktionalitäten Ihrer Webanwendung von Belang sind. Leider wird nicht jeder Typ von jedem Browser unterstützt. Entwickeln Sie Ihre Seite zunächst so, als wenn diese Einschränkung nicht gültig wäre. Die Anpassung einer Webanwendung für unterschiedliche Browser ist ein fortgeschrittenes Thema, das den professionellen Webdeveloper auszeichnet.\\
-
-Für jeden Typen gibt es noch eine Reihe sogenannter Attribute, mit denen Sie weitere Einstellungen für die Nutzereingabe vornehmen können. Dazu müssen Sie Ihr input-Tag wie folgt erweitern:\\
-
-<input type=`` … `` attribut1=`` … `` attribut2=`` … ``>\\
-
-Wie sie sehen gibt es hier im Gegensatz zu vielen imperativen Sprachen kein Zeichen, das Sie zwischen die verschiedenen Einträge setzen müssen. In C und den nachfolgenden Sprachen mussten Sie beispielsweise ein Komma setzen. So etwas gibt es in HTML nicht.\\
-
-Genau wie den Typ legen Sie also ein Attribut für eine Eingabe fest, indem Sie das Attribut in das öffnende input-Tag eintragen, dazu ein Gleichzeichen und anschließend den Wert den Sie dem Attribut geben bzw. zuordnen wollen. Diesen Wert müssen Sie immer in Anführungszeichen setzen.\\
-
-Zunächst einige Typen, mit denen Nutzer verschiedene Arten von Texten eingeben können:\\
-
-•	``text``: Der Name ist selbstredend: Hier kann der Nutzer einen Text eingeben.
-•	``search``: Dieser Typ ermöglicht es dem Nutzer nach einem Begriff zu suchen. Als Entwickler können Sie optional Begriffe festlegen, die gefunden werden können.
-•	``number``: Sie können bei diesem Typen einen Zahlenbereich vorgeben.
-•	``email`` und ``url`` sind wenig sinnvolle Typen, da Sie mit ihnen zwar prüfen können, ob eine Eingabe eine gültige Email-Adresse bzw. eine gültige URL sein könnte, aber die Prüfung, ob sie tatsächlich existiert bzw. ob sich hinter der Angabe ein Skriptbefehl versteckt, über den ein Angriff auf Ihre Seite erfolgen soll, das kann dieser Typ nicht feststellen.\\
-
-Jetzt einige Typen, die es dem Nutzer ermöglichen, Angaben aus einer Tabelle bzw. einem neuen Fenster auszuwählen:\\
-
-•	``tel``: Damit kann der Nutzer eine Telefonnummer eingeben.
-•	``date``: Hier kann der Nutzer ein Datum anwählen.
-•	``time``: Hier kann er einen Zeitpunkt anwählen.
-•	``datetime``: Zusätzlich zum Datum (wie bei date) kann hier noch eine Uhrzeit angewählt werden.
-•	``datetime-local``: Im Gegensatz zu datetime wird hier die Zeitzone ignoriert.
-•	``month``: Hier kann der Nutzer das Jahr und den Monat als vier- bzw. zweistellige Zahl eingeben.
-•	``week```: Dreimal dürfen Sie raten…
-•	``color``: Hier kann der Nutzer eine Farbe aus einer Farbtafel auswählen.
-Abschließend noch eine Möglichkeit, um Schieberegler einzufügen:
-•	``range``: Damit können Sie Schiebregler und Schalter programmieren, sodass der Nutzer keinen festen Wert eingeben muss bzw. kann. Ein solches Element kann sowohl horizontal wie vertikal programmiert werden.\\
-
-Aufgabe:\\
-
-Prüfen Sie, welche Typen für die Nutzereingaben in all Ihren HTML-Skripten sinnvoll sind. 30 Nutzereingaben sollten es wenigsten sein. Und nein, Sie sollen nicht auf jeder Webanwendung die gleichen Nutzereingaben programmieren; stellen Sie sich vor, Sie wären auf einer Seite unterwegs, die Sie pausenlos dazu auffordert, die gleichen Eingaben zu machen.
-
-\subsubsection{Der Typ ``text``}
-
-Diesen Typen kennen Sie bereits: Jeder input-Container, der keinen expliziten Typen hat wird in HTML als input vom Typ Text interpretiert.\\
-
-Sie können hier die folgenden Attribute verwenden. Wie immer gilt: Prüfen Sie, welche dieser Attribute bei Ihren Eingaben Sinn machen und programmieren Sie dann entsprechend. Sie brauchen wirklich nicht jedes Attribut im Detail zu wissen; wichtig ist, dass Sie im Stande sind, Attribute zu programmieren. Professionelle Entwickler zeichnen sich nicht dadurch aus, dass Sie alles wissen, sondern dadurch, dass sie solche Details schnell nachschlagen.\\
-
-Das führt auch direkt zum nächsten Hinweis: Es gehört zu den essentiellen Kenntnissen, die Sie bei der Programmierung in vielen Sprachen benötigen, dass Sie lernen, Referenzen zu nutzen. Ihre nächste Aufgabe wird darin bestehen, genau das zu üben. Und keine Sorge: Das fällt jedem anfangs schwer, weil Referenzen nicht dafür verfasst sind, lesbar zu sein. Dafür sind nämlich Lehrbücher da. Referenzen sind Nachschlagewerke für Programmierer.\\
-
-•	Das Universalattribut id. Dazu folgt etwas später eine Erklärung. Für den Moment ignorieren Sie es bitte.
-•	``name`` kann von JavaScript genutzt werden, um die Eingabe zu nutzen.
-•	``size`` gibt an, wie viele Zeichen sichtbar sein sollen. Wenn Sie hier einen zu großen Wert angeben, dann führt das zu Problemen mit kleinen Displays wie bei Smartphones. Ist der Wert zu klein, dann stört das den Nutzer, weil er zu wenig von seiner Eingabe sieht.
-•	``maxlength`` gibt an, wie lang die Eingabe des Nutzers maximal sein darf. Im Gegensatz zu size, das nur die Anzeige beeinflusst, schränkt maxlength also tatsächlich die Eingabemöglichkeiten des Nutzers ein.
-•	``value`` legt einen Standardinhalt fest. So könnten Sie in ein Eingabefeld für den Vor- und Nachnamen so etwas wie Mäxchen Müller einblenden lassen, das durch die Nutzereingabe überschrieben wird.
-•	``placeholder`` hat eine ähnliche Funktion wie value. Probieren Sie es doch einfach mal aus, um den Unterschied zu sehen.
-•	``readonly`` kann dazu genutzt werden, damit ein text-Feld nicht geändert werden kann. So kann zum Beispiel verhindert werden, dass ein Nutzer eine Angabe einträgt, bevor er den Nutzungsbedingungen Ihrer Seite zugestimmt hat. Schlagen Sie einmal nach, welche Werte dieses Attribut haben kann.
-•	``required`` dagegen verhindert, dass die Eingaben eines Formulars abgeschickt werden können, wenn eine entsprechende Angabe vom Nutzer noch nicht durchgeführt wurde.
-•	``pattern`` ist ein sehr mächtiges Attribut, weil Sie hierüber genau programmieren können, was für Zeichen bei einer Texteingabe erlaubt sind und in welcher Reihenfolge diese auftreten dürfen. Um das richtig nutzen zu können, sollten Sie ein bereits die Veranstaltung Theoretische Informatik besucht haben.\\
-
-Aufgabe: \\
-
-Programmieren Sie jetzt für jede Nutzereingabe nötige und sinnvolle Attribute mit Werten, die Sinn machen.
-
-\subsubsection{Das id-Attribut – Variablen in HTML}
-
-Sie haben gelernt, dass Sie in HTML keine Nutzerangaben verarbeiten können. Aber wie Sie jetzt wissen können Sie Eingabefelder programmieren, mit denen ein Nutzer Eingaben erstellen kann. Wie Sie vielleicht wissen werden solche Eingaben in Programmiersprachen mit Hilfe sogenannter Variablen gespeichert und verarbeitet. Damit wir also später die Nutzereingaben in PHP verarbeiten können, müssen wir nun jeden input-Container einer Variablen zuordnen.\\
-
-Und das erledigen wir über das id-Attribut. Wir programmieren es genauso, wie wir andere Attribute eines input-Containers programmieren. Der Unterschied besteht allerdings in zwei Dingen:\\
-
-(1.)	Das id-Attribut ändert nichts an der Darstellung oder Verarbeitung der Nutzereingabe; es ermöglicht lediglich, dass wir diese Eingabe mit einer Sprache wie PHP oder JavaScript verwenden können.
-
-(2.)	Der Wert des Attributs darf (erst ab HTML5) alle Zeichen außer einem Leerzeichen enthalten.\\
-
-Wichtig: Ein id-Attribut darf auf jeder Webanwendung nur einmal verwendet werden, da sonst der Browser nicht weiß, welches Element Sie mit diesem id-Attribut referenzieren. Sie sollten deshalb über Kommentare jedes vergebende id-Attribut und seinen Zweck am Anfang Ihrer HTML-Skripte festhalten.\\
-
-Praktisch: Das id-Attribut kann außerdem dazu genutzt werden, um später auf eine Stelle in einem HTML-Skript zu verlinken. Wenn Sie später wissen, wie Sie ein Dokument mit anderen Methoden als dem br-Container strukturieren können, dann können Sie es dort einsetzen.\\
-
-Kontrolle:\\
-
-Haben Sie alle input-Container mit einem id-Attribut bezeichnet? Nein, na dann wissen Sie ja, was Sie jetzt tun sollten.
-
-\subsection{Universalattribute}
-
-Sie haben gerade das id-Attribut kennen gelernt. Dieses Attribut unterscheidet sich von allen anderen Attributen, die Sie bislang kennen gelernt haben in einem entscheidenden Punkt: An jeder Stelle eines HTML-Skriptes, wo Sie es nutzen können hat es die selbe Bedeutung.\\
-
-Alle Attribute, die in HTML diese Bedingung erfüllen, also alle Attribute, deren Bedeutung immer gleich bleibt, werden als Universalattribute bezeichnet. Leider werden bei selfhtml in den Beispielen zu Formularen id-Attribute aufgeführt, aber es wird dort nicht explizit angegeben, welche Universalattribute noch verwendet werden dürfen.
-
-\subsection{Labels – Beschriftungen für input-Container}
-
-Bislang haben Sie für jede Abfrage manuell eine Beschriftung hinzugefügt, die aber im Grunde gänzlich unabhängig von diesem input-Container eingefügt wird. Zur Erinnerung: Vorhin haben wir eine Eingabe wie folgt abgefragt: Erste Eingabe:<input \textbackslash>\\
-
-Nun wäre es aber sinnvoll, wenn bereits im Quellcode und damit für den Browser erkennbar der Text Erste Eingabe zum input-Container zugeordnet wäre. Ursprünglich hatten wir erfolglos versucht, das zu erreichen, indem wir die Zeile wie folgt programmiert haben: <input>Erste Eingabe:</input>\\
-
-HTML bietet uns für diese Fälle den label-Container an. Das sähe dann so aus:
-<label>Erste Eingabe:<input /></label>\\
-
-Nun möchten wir ja solche Eingaben immer mit einem id-Attribut versehen, damit wir die Eingabe weiter verarbeiten können. Aber dann haben wir ein Problem, denn wir dürfen die Zuordnung des id-Attributs ja nur einmal vornehmen, weil der Browser sonst nicht weiß, auf welches Element wir uns beziehen.\\
-
-Wenn wir jetzt aber das id-Attribut im input-Container belassen, dann ist das label immer noch unabhängig vom input und wir bekommen bei einem Hyperlink auf die id ggf. nicht die Ansicht, die wir uns wünschen.\\
-
-Deshalb gibt es das for-Attribut für label-Container. Wenn ein label sich auf einen input beziehen soll, dann verwenden wir das for-Attribut und ordnen diesem den selben Wert bzw. den selben Eintrag zu, den wir dem entsprechenden it-Attribut des input-Containers zugeordnet haben. Das sieht dann so aus:\\
-
-<label for=``ersteEingabe``>Erste Eingabe:<input id=``ersteEingabe`` /></label>\\
-
-Aufgabe:\\
-
-Na kommen Sie schon. Sie wissen, welche Aufgabe jetzt ansteht.\verb|^^|\\
-
-Kontrolle:\\
-
-Sie können jetzt Texte auf Webanwendung programmieren und unterschiedliche Arten von Eingaben durch Nutzer vornehmen lassen.\\
-
-Bevor wir uns der Frage zuwenden, wie solche Eingaben verarbeitet werden können, kommen wir zunächst zur fortgeschrittenen Programmierung von statischen Webanwendung: Der Programmierung mit CSS.
-
-\subsection{CSS – Cascading Style Sheets}
-
-In der Anfangszeit von HTML wurden Elemente einer Seite ausschließlich durch Container kombiniert, wie sie Sie bis jetzt kennen gelernt haben. Diese Container bewirkten direkt, dass ein Element an einer bestimmten Stelle oder in einer bestimmten Formatierung auf der Webanwendung platziert wird.\\
-
-Dabei waren viele Einstellungen durch den Browser oder durch HTML vordefiniert, sodass es Designentscheidungen gab, die nicht in HTML umgesetzt werden konnten. Außerdem war eine Planung des Seitenlayouts nur für jede Webanwendung einzeln möglich. CSS stellt deshalb Möglichkeiten zum Entwurf von Strukturen und Formaten bereit, die dann durch einen kurzen Befehl auf beliebig vielen Einzelseiten umgesetzt werden kann, sodass ein einheitliches Layout aller Webanwendung mit geringem Aufwand möglich wird.\\
-
-Wichtig: Wenn etwas mit CSS möglich ist, erledigen Sie es mit CSS!\\
-
-Die Möglichkeiten gehen dabei so weit, dass Sie für jedes Element auf den Bildpunkt genau definieren können, wo ein Element platziert werden soll. Außerdem bietet CSS Ihnen die Möglichkeit beispielsweise zwischen einer Ausgabe auf dem Bildschirm und auf einem Drucker zu unterscheiden. Selbst die Ausgabe über Lautsprecher ist hierdurch möglich.\\
-
-Das bedeutet auch, dass Sie teilweise durch CSS Vorgaben aus HTML-Skripten überschreiben können.  Die entsprechenden Passagen des HTML-Skriptes bleiben dann aber im Quellcode unverändert erhalten. Gerade als Einsteiger können Sie hier Schwierigkeiten bekommen, denn das bedeutet, dass es mitunter keine Auswirkungen hat, wenn Sie im HTML-Skript etwas ändern. Hier hilft einzig und alleine die Erfahrung weiter, denn weder der Webbrowser noch das HTML-Skript wird Ihnen mitteilen, dass eine Passage Ihres HTML-Skriptes durch ein CSS-Skript überschrieben wurde.\\
-
-CSS-Bereiche eines HTML-Skripts sind leicht erkennbar, da hier häufig geschweifte Klammern zum Einsatz kommen. Das bedeutet aber auch, dass Sie nicht mehr ausschließlich über Tags und Container Format und Position von Elementen auf Ihrer Seite programmieren, sondern eben zusätzlich über die Skripte, die für CSS verwendet werden.\\
-
-Einen doctype wie in HTML gibt es nicht.\\
-
-Auch bei CSS geht die Entwicklung kontinuierlich weiter. Und so wie die aktuelle Version von HTML die Nummer 5 trägt, ist bei CSS die Version 2.1 aktueller Standard. Aber im Gegensatz zu HTML dauert es bei CSS deutlich länger, bis neue Standards veröffentlicht und umgesetzt werden.\\
-
-Leider können Sie bei einem CSS-Skript keine Angabe zur Version machen. Im Gegensatz zu HTML sind Sie hier also darauf angewiesen, dass der Webbrowser schon weiß, welche Version Sie verwenden. Erkennt er das nicht, dann passiert es im schlimmsten Fall, dass er Ihre Formatierungen kommentarlos ignoriert.
-
-\subsubsection{Für Fortgeschrittene – Präprozessoren: ACSS und SASS}
-
-Um die Arbeit weiter zu reduzieren, wurden für CSS Präprozessoren entwickelt. Ein Präprozessor ist ein Programm, das in einer bestimmten Programmiersprache häufig wiederkehrende Aufgaben vorbereitet, sodass ein Entwickler diese nicht in voller Länge selbst programmieren muss. Für die beiden Präprozessoren ACSS und SASS gilt allerdings, dass Sie zunächst CSS beherrschen müssen, um sie sinnvoll nutzen zu können. SASS bietet dabei Möglichkeiten an, die einfache Kontrollstrukturen und andere Elemente imperativer Programmiersprachen einfügt und auf der dynamisch typisierten Sprache Ruby aufsetzt. Nicht zuletzt deshalb werden wir uns in diesem Kurs nicht mit CSS-Präprozessoren beschäftigen: Diese Möglichkeiten bietet uns bereits PHP an.
-
-\subsection{CSS und unterschiedliche Displayformate}
-
-Sie wissen, dass mittlerweile Geräte auf dem Markt sind, die jeweils die unterschiedlichsten Formate aufweisen. Vorhin haben Sie etwas über responsive web design gehört und erfahren, dass es hier nicht um ein gestalterisches Element geht, sondern darum, u.a. solche unterschiedlichen Formate in der Programmierung zu beachten. Denn dann werden die von Ihnen eingestellten Inhalte so präsentiert, dass jeder, der Ihre Webanwendung aufruft sie in einer ansprechenden Form präsentiert bekommt.\\
-
-Bei CSS 2.1 (und damit unter HTML4) müssen Sie deshalb für jedes Ausgabeformat eine CSS-Deklaration programmieren. Hier drei Beispiele, von denen das letzte explizit die Breite des Gerätes beachtet:\\
-
-<link rel="stylesheet" type="text/css" href="standard.css" media="screen" />\\
-
-<link rel="stylesheet" type="text/css" href="drucker.css" media="print" />\\
-
-<link rel="stylesheet" type="text/css" media="screen and (max-device-width: 480px)" href="smartphoneMittelgross.css" />
-
-\subsection{Schriftsätze und –farben – CSS/font}
-
-Sie können auch Container skripten, die einen eigenen Schriftsatz mit individueller Schriftgröße und Schriftfarbe verwenden. Allerdings ist es wichtig, dass der Webserver und die üblichen Browser sowohl die Schriftart kennen als dass bei dieser Schriftart auch die Größe definiert ist, da sonst die Standardeinstellungen greifen und Ihr Layout somit über den Haufen geworfen wird.\\
-
-Der Bezeichner für diesen Container lautet font. Im Gegensatz zu den Containern, die Sie bislang kennen gelernt haben, ist ein font-Container ohne zusätzliche Angaben im Tag recht sinnlos.\\
-
-(( Recherche: http://wiki.selfhtml.org/wiki/CSS/Eigenschaften/Schriftformatierung/font ))
-

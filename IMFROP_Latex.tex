@@ -1,5 +1,7 @@
 \chapter{ML, Teil 2 - Textverarbeitung mit LaTeX}
 
+Dieses Kapitel ist nicht Teil des Kurses \glqq{}Einführung ins Programmieren\grqq{} oder von \glqq{}Programmieren 1\grqq{}, aber Sie sollten es dennoch durcharbeiten. Zum einen lernen Sie hier eine weitere Markup Language kennen und können dadurch einige Gemeinsamkeiten und Unterschiede erlernen. Zum anderen ist LaTeX die weltweit am häufigsten eingesetzte Textverarbeitung für wissenschaftliche Texte. An einigen Hochschulen wird sogar verlangt, dass Arbeiten als LaTeX-Dokumente eingereicht werden.\\
+
 LaTeX ist aus Sicht der Programmierung eine Markup Language. Im Gegensatz zu HTML handelt es sich hier aber um eine Sprache, die dafür gedacht ist, verschiedenste (vorrangig gedruckte) Dokumente zu erzeugen. Entwickelt wurde sie von Leslie Lamport, einem der Träger des \textbf{Turing Award}. (Wem das kein Begriff ist: Der Turing Award wird als Nobelpreis der Informatik bezeichnet.) Im Gegensatz zu TeX, von dem LaTeX eine Erweiterung ist müssen wir hier nur all das Programmieren, was anders als beim Standard-Dokument ist.\\
 
 Dieser Kurs ist eine knappe Einführung. Umfangreichere Kurs werden an den meisten Hochschulen aber auch direkt von lokalen LaTeX-Gruppen angeboten. Im Department Medientechnik bietet beispielsweise Prof. Görne alle zwei Semester eine Schulung an, die für die Mitglieder des Departments kostenlos ist. Hier können Sie natürlich auch individuelle Fragen stellen.\\
@@ -155,7 +157,8 @@ Wenn Sie dagegen mehrere Formeln als eigenständige Absätze anzeigen lassen wol
 \begin{verbatim}
 \begin{equation}
 Eine Zeile für jede Zeile der Formel.
-In dieser Umgebung gilt wieder der mathematische Modus, wie Sie ihn gerade kennen gelernt haben.
+In dieser Umgebung gilt wieder der mathematische Modus, 
+wie Sie ihn gerade kennen gelernt haben.
 \end{equation}
 \end{verbatim}
 
@@ -167,7 +170,7 @@ Wenn Sie beim Anfangs-\glqq{}Tag\grqq{} einer Umgebung Optionen programmieren, d
 
 \section{Inhaltsverzeichnis, Kapitel und Abschnitte}
 
-Wenn Sie längere Texte als einen Brief schreiben, dann benötigen Sie noch Möglichkeiten, um z.B. Kapitelüberschriften einzufügen. Aus diesen Überschriften wird später übrigens das \textbf{Inhaltsverzeichnis}\index{LaTeX!Inhaltsverzeichnis} an genau der Stelle erzeugt und ins Dokument eingefügt, an der Sie \verb|\tableofcontents| ins Dokument eintragen.
+Wenn Sie längere Texte als einen Brief schreiben, dann benötigen Sie noch Möglichkeiten, um z.B. Kapitelüberschriften einzufügen. Aus diesen \\Überschriften wird später übrigens das \textbf{Inhaltsverzeichnis}\index{LaTeX!Inhaltsverzeichnis} an genau der Stelle erzeugt und ins Dokument eingefügt, an der Sie \verb|\tableofcontents| ins Dokument eintragen.
 
 \subsection{Kapitel, Abschnitte usw.}
 
@@ -180,7 +183,7 @@ Diese Überschriften sind keine Umgebungen, sondern werden wie abgeschlossene Co
 Hier nun die Hauptstrukturüberschriften in LaTeX:
 
 \begin{itemize}
-	\item \verb|\part[Kurztitel]{Titel}| wird in aller Regel nur bei Büchern genutzt. Es handelt sich hier um eine Überschrift, die den Inhalt mehrerer Kapitel zusammenfasst. (Denken Sie an so etwas wie die Unterteilung eines Mathebuchs in \verb|Teil 1 - Algebra|, \verb|Teil 2 - Geometrie| usw.)
+	\item \verb|\part[Kurztitel]{Titel}| wird in aller Regel nur bei Büchern genutzt. Es handelt sich hier um eine Überschrift, die den Inhalt mehrerer Kapitel zusammenfasst. (Denken Sie an so etwas wie die Unterteilung eines Mathebuchs in \verb|Teil 1 - Algebra|, \verb|Teil 2 -|\\\verb|Geometrie| usw.)
 	\item \verb|\chapter| entspricht einem Kapitel.
 	\item \verb|\section| entspricht einem Abschnitt innerhalb eines Kapitels.
 	\begin{itemize}
@@ -192,7 +195,7 @@ Hier nun die Hauptstrukturüberschriften in LaTeX:
 
 Übrigens können Sie bei all diesen Typen jeweils in den geschweiften Klammern die Überschrift festlegen, die im Text angezeigt wird.\\
 
-Und in eckigen Klammern können Sie eine Kurzfassung der Überschrift einfügen, die z.B. im Inhaltsverzeichnis angezeigt wird. Wenn Sie dort nichts angeben, wird auch im Inhaltsverzeichnis die vollständige Überschrift übernommen.
+Und in eckigen Klammern können Sie eine Kurzfassung der Überschrift einfügen, die z.B. im Inhaltsverzeichnis angezeigt wird. Wenn Sie dort nichts angeben, wird auch im Inhaltsverzeichnis die vollständige Überschrift \\übernommen.
 
 \section{Auslagern von Kapiteln}
 
@@ -202,7 +205,7 @@ Hier verwenden Sie \verb|\include{Dateiname}|, wobei der Dateiname auf \verb|.te
 
 \section{Titelblatt und Glossar}
 
-Bei einigen Dokumentklassen ist ein Titelblatt vorgesehen, bei anderen müssen sie über den Eintrag der Option \verb|titlepage| zur \verb|\documentclass| angeben, dass ein Titelblatt hinzugefügt werden soll.\\
+Bei einigen Dokumentklassen ist ein Titelblatt vorgesehen, bei anderen \\müssen sie über den Eintrag der Option \verb|titlepage| zur \\\verb|\documentclass| angeben, dass ein Titelblatt hinzugefügt werden soll.\\
 
 Dass alleine genügt aber noch nicht. Was wir noch brauchen sind die Angaben für das Titelblatt und die Angabe, wo genau das Titelblatt eigefügt werden soll:\\
 
@@ -231,14 +234,14 @@ Um ein Glossar bzw. Stichwortverzeichnis zu generieren müssen Sie leider deutli
 Wenn Sie das erledigt haben, müssen Sie an der Stelle des Dokuments, wo das Stichwortverzeichnis eingefügt werden soll, die folgenden Zeilen einfügen:
 
 \begin{itemize}
-	\item \verb|\renewcommand{\indexname}{Stichwortverzeichnis}| legt den Titel des Stichwortverzeichnisses fest. (Es gibt eine Standardbezeichnung.)
+	\item \verb|\renewcommand{\indexname}{Stichwortverzeichnis}| legt \\den Titel des Stichwortverzeichnisses fest. (Es gibt eine Standardbezeichnung.)
 	\item \verb|\addcontentsline{toc}{chapter}{Stichwortverzeichnis}| stellt sicher, dass das Stichwortverzeichnis ins Inhaltsverzeichnis aufgenommen wird.
 	\item \verb|\printindex| fügt an der Stelle, an der es steht das Stichwortverzeichnis in das Dokument ein.
 \end{itemize}
 
 \subsection{Stichwörter und Bezüge festlegen}
 
-Jetzt kommt der Teil, der die eigentliche Arbeit für das Glossar ausmacht: Jeder Begriff, der im Glossar aufgenommen werden soll muss mit \verb|\index{Bezeichnung im Glossar}| aufgenommen werden.\\
+Jetzt kommt der Teil, der die eigentliche Arbeit für das Glossar ausmacht: Jeder Begriff, der im Glossar aufgenommen werden soll muss mit \\\verb|\index{Bezeichnung im Glossar}| aufgenommen werden.\\
 
 Bsp.: Sie wollen einen Verweis auf eine Textpassage festlegen, in der es um die Nutzung von Dampfmaschinen im Allgemeinen geht. Das sähe dann so aus:
 
@@ -296,7 +299,7 @@ Hinweis, wenn Sie mehr dazu im Netz recherchieren wollen: Leider ist der Begriff
 
 Eine Tabelle (\textbf{formal table}\index{formal table}\index{LaTeX!formal table}) in LaTeX ist dagegen eine Umgebung, die den Titel einer Tabelle und ein Label enthalten muss, auf das wir von anderen Stellen des Dokuments aus verweisen können.\\
 
-Es handelt sich also um etwas, das weitgehend dem \verb|<figcaption>|-Container in HTML entspricht. Es unterscheidet sich allerdings davon, weil ein formal table (\verb|table|-Umgebung) in LaTeX eine Umgebung für beliebige Inhalte außer für Bilder, Videos und Audiodateien wie in HTML ist.\\
+Es handelt sich also um etwas, das weitgehend dem \verb|<figcaption>|\\-Container in HTML entspricht. Es unterscheidet sich allerdings davon, weil ein formal table (\verb|table|-Umgebung) in LaTeX eine Umgebung für beliebige Inhalte außer für Bilder, Videos und Audiodateien wie in HTML ist.\\
 
 Hier ein Beispiel:
 
@@ -327,12 +330,14 @@ Dieser Bereich wird ähnlich wie der mathematische Modus nur kurz angeschnitten.
 
 \textbf{Wichtig}:\\
 
-Eine tabular-Umgebung ist für Texte gedacht. Wenn Sie Formeln in einer Tabelle gruppieren wollen, nutzen Sie bitte die array-Umgebung (siehe nächster Abschnitt).
+Eine tabular-Umgebung ist für Texte gedacht. Wenn Sie Formeln in einer Tabelle gruppieren wollen, nutzen Sie bitte die array-Umgebung (siehe \\nächster Abschnitt).
 
 \begin{verbatim}
 \begin{tabular}{ausrichtung1, ausrichtung2, ...}
-erste Zeile, erste Spalte & erste Zeile, zweite Spalte & ... \\
-zweite Zeile, erste Spalte & zweite Zeile, zweite Spalte & ... \\
+erste Zeile, erste Spalte & erste Zeile, 
+zweite Spalte & ... \\
+zweite Zeile, erste Spalte & zweite Zeile, 
+zweite Spalte & ... \\
 ...
 \end{tabular}
 \end{verbatim}
@@ -371,7 +376,7 @@ Die Antwort auf die erste Antwort ist simpel: Es gibt getrennte Verzeichnisse f�
 
 \subsection{Bilddateien in LaTeX}
 
-Bevor wir uns mit der Einbindung von Bilddateien beschäftigen können, müssen wir uns mit dem Thema \verb|pdfLaTeX| und \verb|LaTeX| beschäftigen. Ersteres ist eine Erweiterung, mit der wir pdf-Dokumente aus LaTeX-Dokumenten erzeugen können. Dennoch gibt es bei beiden einen entscheidenden Unterschied:
+Bevor wir uns mit der Einbindung von Bilddateien beschäftigen können, müssen wir uns mit dem Thema \verb|pdfLaTeX| und \verb|LaTeX| beschäftigen. Ersteres ist eine Erweiterung, mit der wir pdf-Dokumente aus LaTeX-\\Dokumenten erzeugen können. Dennoch gibt es bei beiden einen entscheidenden Unterschied:
 
 \begin{itemize}
 	\item Wenn wir \verb|pdfLaTeX| verwenden, können wir PNG-, JPG- und PDF-Dateien als Bilddateien einbinden.
@@ -380,9 +385,9 @@ Bevor wir uns mit der Einbindung von Bilddateien beschäftigen können, müssen 
 
 Um überhaupt Bilddateien einbinden zu können, müssen wir die Präambel erweitern: \verb|\usepackage{graphix}|\\
 
-Um eine Bilddatei in unserem Dokument anzeigen zu lassen verwenden wir \verb|\includegraphics{Dateiname ohne Endung}| . Das bedeutet, dass der Compiler automatisch nach einer Datei sucht. Wenn wir also sicherstellen wollen, dass wir ein Dokument sowohl mit \verb|pdfLaTeX| als auch mit \verb|LaTeX| konvertieren können, dann müssen wir die Bilddatei mit gleichem Namen einmal als PNG-, JPG- und PDF-Datei und einmal als EPS-Datei im gleichen Verzeichnis speichern wie das .tex-Dokument.\\
+Um eine Bilddatei in unserem Dokument anzeigen zu lassen verwenden wir \verb|\includegraphics{Dateiname ohne Endung}|. Das bedeutet, \\dass der Compiler automatisch nach einer Datei sucht. Wenn wir also sicherstellen wollen, dass wir ein Dokument sowohl mit \verb|pdfLaTeX| als auch mit \verb|LaTeX| konvertieren können, dann müssen wir die Bilddatei mit gleichem Namen einmal als PNG-, JPG- und PDF-Datei und einmal als EPS-Datei im gleichen Verzeichnis speichern wie das .tex-Dokument.\\
 
-Sie können noch die Breite und Höhe als optionale Argumente \verb|width = ...cm| bzw. \verb|height = ...cm| festlegen. Dabei können Sie auch andere Maße wie z.B. pt verwenden, so lange diese in LaTeX definiert sind.\\
+Sie können noch die Breite und Höhe als optionale Argumente \\\verb|width = ...cm| bzw. \verb|height = ...cm| festlegen. Dabei können Sie auch andere Maße wie z.B. pt verwenden, so lange diese in LaTeX definiert sind.\\
 
 \textbf{Wichtig}:\\
 
