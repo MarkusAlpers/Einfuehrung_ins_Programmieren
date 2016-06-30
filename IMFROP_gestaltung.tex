@@ -2,19 +2,19 @@
 
 Leider beginnt dieses Kapitel mit einer Enttäuschung für all diejenigen, die dachten, jetzt käme der spannende Teil. Denn da dieses Skript für Studierenden mit den Schwerpunkten Informatik bzw. Elektrotechnik im Medienumfeld entworfen wurde, erhalten Sie hier lediglich einen grundlegenden Einblick darin, wie Sie die Elemente in HTML5 gruppieren können. Der Grund ist einfach und wurde auch schon mehrfach aufgeführt: Gestaltung ist die Aufgabe von Designern. Wir gehen deshalb auch nicht auf die Besonderheiten von CSS (bzw. der aktuellen Version CSS3) ein.\\
 
-Die in diesem Kapitel besprochenen Aspekte werden im Sinne des MVC als View bezeichnet.\\
+Die in diesem Kapitel besprochenen Aspekte werden im Sinne des MVC als \textbf{View}\index{MVC!View} bezeichnet.\\
 
 Wichtig: Bevor Sie mit diesem Kapitel beginnen sollten Sie eine Webpage programmiert haben, in der Sie eine Vielzahl der HTML-Container einprogrammiert haben, die Sie im vorletzten Kapitel kennen gelernt haben. Denn die Aufgaben in diesem Kapitel setzen eine solche Seite voraus.
 
 \section{Einbindung von CSS in HTML}
 
-Sie haben zwei Möglichkeiten, um CSS-Code in einem HTML-Dokument zu verwenden. Zum einen können Sie CSS-Code in Anführungszeichen setzen und ihn dann als Wert dem style-Attribut eines beliebigen Containers übergeben. Dieses Verfahren hat allerdings einen massiven Nachteil: Wenn Sie bei einer umfangreichen Webpage so vorgehen, wird es selbst bei kleinen Änderungen sehr mühsam, diese überall zu programmieren. Außerdem wird Ihr Layout so kaum einheitlich.\\
+Sie haben zwei Möglichkeiten, um CSS-Code in einem HTML-Dokument zu verwenden. Zum einen können Sie CSS-Code in Anführungszeichen setzen und ihn dann als Wert dem style-Attribut eines beliebigen Containers übergeben. Dieses Verfahren hat allerdings einen massiven Nachteil: Wenn Sie bei einer umfangreichen Webanwendung so vorgehen, wird es selbst bei kleinen Änderungen sehr mühsam, diese überall zu programmieren. Außerdem wird Ihr Layout so kaum einheitlich.\\
 
 Deshalb sollten Sie besser die zweite Variante wählen. Hier programmieren Sie den CSS-Code in einer oder mehreren eigenen Datei/en und binden diese mit folgender Zeile in Ihr HTML-Dokument ein, die Sie in den \verb|<head>|-Container der HTML-Dokumente programmieren:\\
 
 \verb|<link rel=stylesheet href=style.css>|\\
 
-Die Datei kann natürlich auch anders als \verb|style.css| heißen, wichtig ist nur, dass die Endung \verb|.css| ist. Außerdem gilt in Bezug auf die URL dasselbe, was Sie schon im letzten Kapitel über relative und absolute Adressierung gelernt haben.
+Die Datei kann natürlich auch anders als \verb|style.css| heißen, wichtig ist nur, dass die Endung \verb|.css| ist. Außerdem gilt in Bezug auf die URL dasselbe, was Sie schon im vorletzten Kapitel über relative und absolute Adressierung gelernt haben.
 
 \section{Programmierung einer CSS-Datei}
 
@@ -23,6 +23,7 @@ Im Gegensatz zu einem HTML-Dokument besteht eine CSS-Datei lediglich aus den Nam
 Wenn Sie CSS wie oben beschrieben innerhalb eines HTML-Dokuments über das style-Attribut programmieren, dann stehen in den Anführungs-zeichen genau die Formatierungsvorgaben, die im Rumpf bei der CSS-Datei stehen.\\
 
 Nehmen wir an, Sie wollen eine Formatierungsvorschrift für alle \verb|<h1>|-Container einzelner HTML-Dokumente festlegen, haben sich aber noch auf keine Formatierungsvorschrift festgelegt. Dann sieht Ihre CSS-Datei so aus:
+
 \begin{verbatim}
 h1 {
 
@@ -30,9 +31,9 @@ h1 {
 \end{verbatim}
 Quellcode 3.1: CSS-Rumpf für Designdefinitionen für den \verb|<h1>|-Container
 
-In Dokumentationen über CSS werden Sie des Öfteren auf den Begriff des Selektors stoßen. Der Selektor ist in CSS schlicht der Bezeichner des Containers, den Sie formatieren wollen.\\
+In Dokumentationen über CSS werden Sie des Öfteren auf den Begriff des \textbf{Selektor}s\index{Selektor}\index{CSS!Selektor} stoßen. Der Selektor ist in CSS schlicht der Bezeichner des Containers, den Sie formatieren wollen.\\
 
-Damit wissen Sie jetzt ungefähr 50\% dessen, was Sie im Rahmen dieses Kurses für die Programmierung von CSS wissen müssen. Alles was Sie noch lernen müssen ist wie Sie den sogenannten Properties Werte zuordnen müssen, um die Gestaltung der Container festzulegen und was es mit dem \verb|.| (Punkt) und \verb|#| vor Selektoren in CSS auf sich hat.
+Damit wissen Sie jetzt ungefähr 50\% dessen, was Sie im Rahmen dieses Kurses für die Programmierung von CSS wissen müssen. Alles was Sie noch lernen müssen ist wie Sie den sogenannten \textbf{Properties}\index{Property}\index{CSS!Property} Werte zuordnen müssen, um die Gestaltung der Container festzulegen und was es mit dem \verb|.| (Punkt) und \verb|#| vor Selektoren in CSS auf sich hat.
 
 \section{Programmierung von Formatierungen}
 

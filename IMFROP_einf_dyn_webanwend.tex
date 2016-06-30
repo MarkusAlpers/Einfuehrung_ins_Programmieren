@@ -12,7 +12,7 @@ Bislang haben wir konzeptionell im Grunde nur über das MVC-Pattern gesprochen, 
 Im einfachsten Fall geht es also um die Unterscheidung der Programmteile, die die angebotenen Dienste darstellen von den Programmteilen, die diese Dienste anfordern. Hier kann aber auch danach unterteilt werden, welche Daten vom Server und welche vom Client erzeugt werden. Leider gibt es hier keine einfache entweder/oder-Entscheidung. Im Grunde können die meisten Komponenten sowohl auf dem Server als auch auf dem Client betrieben werden. Wie Sie hier erkennen können, werden die Begriffe Server und Client also sowohl für Programme als auch für vernetzte Computer benutzt.\\
 
 
-Nehmen wir dafür CSS als Beispiel: Wir haben hier mehrere HTML-Dokumenten und vielleicht auch mehrere CSS-Dateien. Ein Server könnte nun an allen nötigen Stellen den CSS-Code mittels des style-Attributs in die HTML-Dokumente integrieren und dann dieses Ergebnis an einen Client übertragen. Er könnte aber auch alle Dateien so wie sie sind an den Client übertragen. Für den Nutzer, der am Client sitzt macht das keinen Unterschied, denn er bekommt in beiden Fällen das gleiche angezeigt. Für den Entwickler der Webpage kann es dagegen einen Unterschied machen. Und für den Serveradministrator macht es in jedem Fall einen Unterschied. Keine Sorge, denn wie das im Detail abläuft ist für uns gänzlich irrelevant, damit dürfen sich Informatik-Studierende im Master-Studium beschäftigen.\\
+Nehmen wir dafür CSS als Beispiel: Wir haben hier mehrere HTML-\\Dokumenten und vielleicht auch mehrere CSS-Dateien. Ein Server könnte nun an allen nötigen Stellen den CSS-Code mittels des style-Attributs in die HTML-Dokumente integrieren und dann dieses Ergebnis an einen Client übertragen. Er könnte aber auch alle Dateien so wie sie sind an den Client übertragen. Für den Nutzer, der am Client sitzt macht das keinen Unterschied, denn er bekommt in beiden Fällen das gleiche angezeigt. Für den Entwickler der Webpage kann es dagegen einen Unterschied machen. Und für den Serveradministrator macht es in jedem Fall einen Unterschied. Keine Sorge, denn wie das im Detail abläuft ist für uns gänzlich irrelevant, damit dürfen sich Informatik-Studierende im Master-Studium beschäftigen.\\
 
 
 Es soll Ihnen lediglich deutlich machen, dass die Ausführung des programmierten Codes nicht immer auf dieselbe Art erfolgen muss. Das ist immer nur dann der Fall, wenn wir mit prozeduralen Programmiersprachen arbeiten. Wichtig für Sie ist, dass den Begriff der serverseitigen Programmierung kennen lernen, dann bei der Programmierung in PHP tun wir genau das: Wir programmieren ein Programm, dass auf dem Server laufen wird und das steuern wird, wie die Inhalte unserer HTML-Seiten geändert werden: Wenn ein Nutzer z.B. Eingaben in Formularen einträgt und dann über eine Schaltfläche, die Sie mit <input type=submit> programmiert haben, die Übertragung an das Programm startet, dann wird PHP (oder eine andere Programmiersprache) interessant.\\
@@ -23,12 +23,13 @@ Im Rahmen dieses Kurses brauchen Sie sich allerdings über die Installation und 
 
 Umgekehrt möchte ich Sie allerdings davor warnen, den Aufwand beim Betrieb eines Servers zu unterschätzen. Denn hier geht es nicht allein um das Anmieten bei einem Betreiber und um eine grundlegende Konfiguration. Vielmehr müssen Sie bei einem solchen Server sicherstellen, dass dieser so gut wie möglich gegen Angriffe geschützt ist. Denn wenn Sie hier nicht ausreichende Vorkehrungen treffen, können Sie sicher sein, dass Ihr Server von Angreifern missbraucht wird, um Angriffe gegen andere Nutzer zu starten. Im schlimmsten Fall kann das für Sie bedeuten, wegen Beihilfe zu einer Straftat verurteilt zu werden.\\
 
-\textbf{Wichtig:} Dieses Kapitel ist eine einfache Einführung in die imperative Programmierung mit PHP. Zum Teil werden Sie hier Anmerkungen finden, die klar aufzeigen, dass vieles hier vereinfacht dargestellt ist. Insbesonder werden hier viele Dinge, die in PHP nicht möglich sind außen vor gelassen, obwohl es sich dabei um Möglichkeiten aus dem Bereich der imperativen Programmierung handelt. Die Struktur dieses Kapitels ist aber ansonsten gleich derjenigen, die im zweiten Teil dieses Buches eingeführt wird. Wenn Sie also die Grundlagen der imperativen Programmierung erlernen wollen, dann blättern Sie gleich weiter in den zweiten Teil dieses Buches. Und immer, wenn Sie dort einen Abschnitt beendet haben, schlagen Sie in diesem Kapitel nach, wie der entsprechende Abschnitt in PHP umgesetzt wird. So haben Sie die Grundlagen der imperativen Programmierung und erlernen, wie diese in PHP umgesetzt werden, bzw. welche dieser Grundlagen in PHP nicht enthalten sind.\\
+\textbf{Wichtig:} Dieses Kapitel ist eine einfache Einführung in die imperative Programmierung mit PHP. Zum Teil werden Sie hier Anmerkungen finden, die klar aufzeigen, dass vieles hier vereinfacht dargestellt ist. Insbesonder werden hier viele Dinge, die in PHP nicht möglich sind außen vor gelassen, obwohl es sich dabei um Möglichkeiten aus dem Bereich der imperativen Programmierung handelt. Die Struktur dieses Kapitels ist aber ansonsten gleich derjenigen, die im zweiten Teil dieses Buches eingeführt wird. Wenn Sie also die Grundlagen der imperativen Programmierung erlernen wollen, dann blättern Sie gleich weiter in den zweiten Teil dieses Buches. Und immer, wenn Sie dort einen Abschnitt beendet haben, schlagen Sie in diesem Kapitel nach, wie der entsprechende Abschnitt in PHP umgesetzt wird. So haben Sie die Grundlagen der imperativen Programmierung und erlernen, wie diese in PHP umgesetzt werden, bzw. welche dieser Grundlagen in PHP nicht enthalten sind.
 
 \section{PHP 5}
 
-Bis auf die Zahl der Version haben PHP und HTML nichts gemein. Während HTML5 nach 14 Jahren eine vollständig überarbeitete Version der Markup Language ist, wurde PHP in der Version 5.0 vor 11 Jahren veröffentlicht und seitdem immer wieder erweitert. Die aktuelle Version trägt die Nummer 5.6. Die nächste Version wird nicht PHP6 sondern 7 sein und voraussichtlich im November 2015 erscheinen.\\
+Bis auf die Zahl der Version haben PHP und HTML nichts gemein. Während HTML5 nach 14 Jahren eine vollständig überarbeitete Version der Markup Language ist, wurde PHP in der Version 5.0 vor 11 Jahren veröffentlicht und seitdem immer wieder erweitert. Die letzte Version trug die Nummer 5.6. Die aktuellste Version ist nicht PHP 6 sondern 7 und im November 2015 erschienen.\\
 
+Wie an der Überschrift zu erkennen ist, wird in diesem Kapitel aber noch die Version 5, besser gesagt die Version 5.6 behandelt.\\
 
 Doch auch wenn es eine neue Version geben wird, werden wir bei diesem Kurs für die Medientechnik bis auf weiteres bei PHP 5.6 bleiben. Wobei alles, was Sie hier kennen lernen auch in den PHP-Versionen 5.0 – 5.5 nutzbar sein sollte.\\
 
@@ -39,33 +40,30 @@ Doch was ist PHP eigentlich? Schauen wir uns dazu den Namen an: PHP steht für H
 Vielleicht fragen Sie jetzt, was denn mit CSS-Dateien ist. Und sie haben es richtig erkannt: Mit PHP können wir zwar CSS-Code über das style-Attribut in einen Container integrieren, aber an unseren CSS-Dateien können wir nichts direkt ändern. Andererseits ist das kein Problem, wenn Sie sauber zwischen Controller und View trennen: In PHP programmieren wir, welche Inhalte wann dargestellt werden. In CSS (und nur dort) programmieren wir, wie diese Inhalte dargestellt werden.\\
 
 
-Sehen wir uns nun an, was Thomas Theis in seinem Band „Einstieg in PHP 5.6 und MySQL 5.6“ über die Vorteile von PHP schreibt:\\
+Sehen wir uns nun an, was Thomas Theis in seinem Band \glqq{}Einstieg in PHP 5.6 und MySQL 5.6\grqq{} über die Vorteile von PHP schreibt:
 
-
--	Demnach ist PHP für Einsteiger leicht erlernbar, weil es nur all das beinhalten würde, was für die serverseitige Programmierung einer Webanwendung nötig ist.
-
-Die Vorstellung, dass es Einsteigern leichter fällt, eine Sprache zu erlernen, die weniger Möglichkeiten bietet, als das bei anderen Sprachen der Fall ist, ist absurd. Es mag sein, dass die vollständige Dokumentation einer solchen Sprache übersichtlicher ist, aber letztlich hängt die Leichtigkeit des Einstiegs davon ab, wie gut die Dokumentation zur Sprache auf Einsteiger ausgerichtet ist. Und in der professionellen Softwareentwicklung spielt ein leichter Einstieg in eine Sprache eher eine untergeordnete Rolle. Hier ist es vor allem wichtig, welche Möglichkeiten genutzt werden können. \\
-
-
--	PHP sei nach Theis eine gute Wahl, weil es von einer Vielzahl von Servern unterstützt wird.
-
-Doch auch das ist eher ein schwaches Argument; letztlich ist der Preis relevant, den wir für den Betrieb aufwenden müssen. Hier ist beispielsweise JavaScript mit node.js aus Gründen im Nachteil, die daraus resultieren, dass es mehr Zugriffsrechte benötigt, was die Betreiber von Servern sich eben entsprechend bezahlen lassen.\\
-
-
--	Weiter sei die Tatsache wichtig, dass PHP kostenlos ist.
-
-Das ist zwar eine sympathische Tatsache, aber kostenlos nutzbare Sprachen und sogar Frameworks sind heute keine Ausnahme mehr. Egal ob Java EE, Ruby on Rails, HTML5 mit CSS3 und JavaScript oder woran Sie noch denken: Alle können kostenlos genutzt werden und bieten einen vergleichbaren, wenn nicht sogar größeren Umfang.\\
-
-
--	Dann sei es ein Vorteil, dass PHP ausschließlich serverseitig eingesetzt werden kann.
-
-Worin der Nachteil besteht, eine Sprache sowohl server- als auch clientseitig ausführen zu können, erschließt sich dem Autor dieses Skripts nicht. So bedeutet die Tatsache, dass eine Sprache auch clientseitig ausgeführt werden kann, eben nicht, dass sie vollständig dort ausgeführt wird. Und damit kann ein Nutzer eben auch nicht wie von Theis behauptet den gesamten Code einer Webanwendung einsehen. Im Gegenteil ist diese Beschränkung von PHP von Nachteil: Wenn bei der Entwicklung festgestellt wird, dass ein Programmteil effizienter vom Client ausgeführt werden kann, ohne dabei sicherheitsrelevante Daten preiszugeben, dann sollte ein Entwickler das tun. Genau das verhindert aber PHP mit seiner Fixierung auf die Serverseitigkeit.\\
-
+\begin{itemize}
+	
+	\item Demnach ist PHP für Einsteiger leicht erlernbar, weil es nur all das beinhalten würde, was für die serverseitige Programmierung einer Webanwendung nötig ist.
+	
+	Die Vorstellung, dass es Einsteigern leichter fällt, eine Sprache zu erlernen, die weniger Möglichkeiten bietet, als das bei anderen Sprachen der Fall ist, ist absurd. Es mag sein, dass die vollständige Dokumentation einer solchen Sprache übersichtlicher ist, aber letztlich hängt die Leichtigkeit des Einstiegs davon ab, wie gut die Dokumentation zur Sprache auf Einsteiger ausgerichtet ist. Und in der professionellen Softwareentwicklung spielt ein leichter Einstieg in eine Sprache eher eine untergeordnete Rolle. Hier ist es vor allem wichtig, welche Möglichkeiten genutzt werden können.
+	
+	\item PHP sei nach Theis eine gute Wahl, weil es von einer Vielzahl von Servern unterstützt wird.
+	
+	Doch auch das ist eher ein schwaches Argument; letztlich ist der Preis relevant, den wir für den Betrieb aufwenden müssen. Hier ist beispielsweise JavaScript mit node.js aus Gründen im Nachteil, die daraus resultieren, dass es mehr Zugriffsrechte benötigt, was die Betreiber von Servern sich eben entsprechend bezahlen lassen.
+	
+	\item Weiter sei die Tatsache wichtig, dass PHP kostenlos ist.
+	
+	Das ist zwar eine sympathische Tatsache, aber kostenlos nutzbare Sprachen und sogar Frameworks sind heute keine Ausnahme mehr. Egal ob Java EE, Ruby on Rails, HTML5 mit CSS3 und JavaScript oder woran Sie noch denken: Alle können kostenlos genutzt werden und bieten einen vergleichbaren, wenn nicht sogar größeren Umfang.
+	
+	\item Dann sei es ein Vorteil, dass PHP ausschließlich serverseitig eingesetzt werden kann.
+	
+	Worin der Nachteil besteht, eine Sprache sowohl server- als auch clientseitig ausführen zu können, erschließt sich dem Autor dieses Buches nicht. So bedeutet die Tatsache, dass eine Sprache auch clientseitig ausgeführt werden kann, eben nicht, dass sie vollständig dort ausgeführt wird. Und damit kann ein Nutzer eben auch nicht wie von Theis behauptet den gesamten Code einer Webanwendung einsehen. Im Gegenteil ist diese Beschränkung von PHP von Nachteil: Wenn bei der Entwicklung festgestellt wird, dass ein Programmteil effizienter vom Client ausgeführt werden kann, ohne dabei sicherheitsrelevante Daten preiszugeben, dann sollte ein Entwickler das tun. Genau das verhindert aber PHP mit seiner Fixierung auf die Serverseitigkeit.
+\end{itemize}
 
 Aus meiner Sicht gibt es nur einen Grund, sich mit PHP zu beschäftigen: Es ist schlicht eine der häufigsten Sprachen, die bei der Entwicklung dynamischer Webanwendungen zum Einsatz kommen. Wenn Sie also in die Webentwicklung gehen wollen, haben Sie mit Kenntnissen in diesem Bereich mehr Auswahl unter potentiellen Arbeitgebern.\\
 
-
-Andererseits ist das der aktuelle Stand. Und der ändert sich in kaum einem Bereich so schnell wie in der Informatik. JavaScript hat aus Sicht dieses Autors zurzeit wesentlich mehr Potential, um zur meistverwendeten Sprache für die Entwicklung von Webanwendungen zu werden. PHP ist mit seinen Beschränkungen dagegen einfach nicht universell genug einsetzbar. Das könnte sich mit der Version 7 natürlich ändern. Aber aktuell (Anfang September 2015) weist nichts darauf hin.
+Andererseits ist das der aktuelle Stand. Und der ändert sich in kaum einem Bereich so schnell wie in der Informatik. JavaScript hat aus Sicht dieses Autors zurzeit wesentlich mehr Potential, um zur meistverwendeten Sprache für die Entwicklung von Webanwendungen zu werden. PHP ist mit seinen Beschränkungen dagegen einfach nicht universell genug einsetzbar. Das könnte sich mit der Version 7 natürlich geändert haben.
 
 \subsection{Vorbereitung des Computers, um in PHP programmieren zu können.}
 
@@ -76,104 +74,124 @@ Hier gibt es zwei Standardlösungen, die Sie kostenlos im Netz herunterladen kö
 
 \section{PHP-Programme in HTML-Dokumenten integrieren}
 
-Genau wie bei CSS und JavaScript können wir innerhalb eines HTML-Dokuments PHP-Code ausführen lassen. Allerdings gibt es hier einen wichtigen Unterschied: \\
+Genau wie bei CSS und JavaScript können wir innerhalb eines HTML-Dokuments PHP-Code ausführen lassen. Allerdings gibt es hier einen wichtigen Unterschied:
 
+\begin{itemize}
+	\item Der Dateiname eines HTML-Dokuments, das das tut, sollte in \verb|.php| umbenannt werden. Richtig! Die Datei sollte dann nicht mehr auf  \verb|.hmtl| enden. Der Unterschied ist in sofern wichtig, als Sie bei der Bearbeitung eines Projekts so schneller die relevanten Dateien finden können.
+	
+	Um PHP-Code direkt in HTML-Code zu programmieren, muss ein besonderer Container verwendet werden. Er zeichnet sich dadurch aus, dass der gesamte PHP-Code im öffnenden Tag steht und es kein schließendes Tag gibt. (Zur Erinnerung: Das war bei JavaScript anders. Dort wurde ein \verb|<script>|-Container verwendet, dessen Inhalt der JavaScript-Code ist.)
 
--	Der Dateiname eines HTML-Dokuments, das das tut, sollte in .php umbenannt werden. Richtig! Die Datei darf dann nicht mehr auf .htm oder .hmtl enden.
+	Der PHP-Container sieht so aus:
+	\begin{verbatim}
+	<?php
+	
+	?>	
+	\end{verbatim}
+	Quellcode 4.1: Ein HTML-Container, in dem PHP-Code programmiert werden kann.
+\end{itemize}
 
-Um PHP-Code direkt in HTML-Code zu programmieren, muss ein besonderer Container verwendet werden. Er zeichnet sich dadurch aus, dass der gesamte PHP-Code im öffnenden Tag steht und es kein schließendes Tag gibt. (Zur Erinnerung: Das war bei JavaScript anders. Dort wurde ein <script>-Container verwendet, dessen Inhalt der JavaScript-Code ist.)\\
+Wenn wir JavaScript- oder CSS-Dateien haben, dann können wir diese auch über den \verb|<head>|-Container einbinden. Das ist bei PHP leider nicht der Fall. Dort gibt es zwei andere Möglichkeiten:
 
-Der PHP-Container sieht so aus:
-<?php
+\begin{itemize}
+	\item Zum einen können wir PHP-Code, der im laufenden HTML-Code eingefügt werden soll in eine Datei speichern. Diese können wir dann innerhalb des \verb|<?php ... ?>|-Containers durch den Befehl\\ \verb|include()| aufrufen:
+	
+	\begin{verbatim}
+	<?php
+	include(phpdatei.php);
+	?>	
+	\end{verbatim}
+	Quellcode 4.2.: Einfügen von PHP-Code in ein HTML-Dokument
 
-?>
-Quellcode 4.1: Ein HTML-Container, in dem PHP-Code programmiert werden kann.
+	\item Zum anderen müssen wir bei Formularen (wenn wir sie per PHP auswerten wollen) über das action-Attribut des \verb|<form>|-Containers explizit den Dateinamen zuordnen. Das bewirkt, dass beim Anwählen des submit-Buttons durch einen Nutzer die Eingaben an das genannte PHP-Programm übergeben werden.
 
-Wenn wir JavaScript- oder CSS-Dateien haben, dann können wir diese auch über den <head>-Container einbinden. Das ist bei PHP leider nicht der Fall. Dort gibt es zwei andere Möglichkeiten:\\
+	In diesem Fall müssen wir noch die Übertragungsmethode festlegen. Dazu programmieren wir das \verb|method|-Attribut des \verb|<form>|-\\Containers. Es gibt zwar zwei Möglichkeiten, welchen Wert Sie method zuordnen, Sie sollten hier aber immer den Wert \verb|POST| wählen. Die Alternative zu POST lautet GET.
+\end{itemize}
 
+\paragraph{Aufgabe:}
 
--	Zum einen können wir PHP-Code, der im laufenden HTML-Code eingefügt werden soll in eine Datei speichern. Diese können wir dann innerhalb des <?php ... ?>-Containers durch den Befehl include() aufrufen:
+\begin{itemize}
+	\item Erstellen Sie jetzt für jedes Formular, das Sie in Ihrer Webpage programmiert haben eine Datei mit einem Namen, der zu dem Formular passt. Die Endung muss zwar nicht auf \verb|.php| lauten, allerdings lässt sich so bei größeren Projekten leichter der Überblick bewahren.
 
-<?php
-include(phpdatei.php);
-?>
-Quellcode 4.2.: Einfügen von PHP-Code in ein HTML-Dokument
+	\item Ergänzen Sie Ihre Formulare so, dass bei jedem Formular die Nutzereingaben an das passende PHP-Programm übergeben werden.
+\end{itemize}
 
--	Zum anderen müssen wir bei Formularen (wenn wir sie per PHP auswerten wollen) über das action-Attribut des <form>-Containers explizit den Dateinamen zuordnen. Das bewirkt, dass beim Anwählen des submit-Buttons durch einen Nutzer die Eingaben an das genannte PHP-Programm übergeben werden.
+\textbf{Anm.:} Wenn Sie danach die Webpage neu starten (vorausgesetzt, Sie haben die Dateien zuvor in das Verzeichnis verschoben, in dem XAMPP bzw. \\EasyPHP darauf zugreifen können und jeweils den Server gestartet), und bei einem Formular den Submit-Button anwählen, werden Sie wahrscheinlich eine Fehlermeldung erhalten, denn bislang haben wir ja noch kein PHP-Programm erstellt. Aber das ist vollkommen in Ordnung.\\
 
-In diesem Fall müssen wir noch die Übertragungsmethode festlegen. Dazu programmieren wir das method-Attribut des <form>-Containers. Es gibt zwar zwei Möglichkeiten, welchen Wert Sie method zuordnen, Sie sollten hier aber immer den Wert POST wählen. Die Alternative zu POST lautet GET.\\
-
-Aufgabe:\\
-
--	Erstellen Sie jetzt für jedes Formular, das Sie in Ihrer Webpage programmiert haben eine Datei mit einem Namen, der zu dem Formular passt. Die Endung muss zwar nicht auf .php lauten, allerdings lässt sich so bei größeren Projekten leichter der Überblick bewahren.
-
--	Ergänzen Sie Ihre Formulare so, dass bei jedem Formular die Nutzereingaben an das passende PHP-Programm übergeben werden.
-
-Anm.: Wenn Sie danach die Webpage neu starten (vorausgesetzt, Sie haben die Dateien zuvor in das Verzeichnis verschoben, in dem XAMPP bzw. EasyPHP darauf zugreifen können und jeweils den Server gestartet), und bei einem Formular den Submit-Button anwählen, werden Sie wahrscheinlich eine Fehlermeldung erhalten, denn bislang haben wir ja noch kein PHP-Programm erstellt. Aber das ist vollkommen in Ordnung.\\
-
-
-Wichtig: Dieser Abschnitts könnte von Ihnen in einer Hinsicht missverstanden werden: Streng genommen wird eben kein PHP-Programm in ein HTML-Dokument integriert, sondern es passiert folgendes: Wann immer der Server in einem HTML-Dokument auf ein PHP-Programm hingewiesen wird startet er einen Prozess, in dem dieses Programm laufen wird. Wann immer nun das PHP-Programm etwas tun soll, dann wird es auf dem Server ausgeführt. Wenn dann HTML-Code durch das PHP-Programm ausgegeben wird, wird dieser Code an der entsprechenden Stelle des HTML-Dokuments eingefügt. Danach wird das vollständige HTML-Dokument vom Server zum Client übertragen. Der Nutzer wird also nie erkennen können, dass bzw. wo die Webpage mit PHP erzeugt wurde. Im nächsten Abschnitt gibts dazu gleich ein Beispiel.
+\textbf{Wichtig:} Dieser Abschnitts könnte von Ihnen in einer Hinsicht missverstanden werden: Streng genommen wird eben kein PHP-Programm in ein HTML-Dokument integriert, sondern es passiert folgendes: Wann immer der Server in einem HTML-Dokument auf ein PHP-Programm hingewiesen wird startet er einen Prozess, in dem dieses Programm laufen wird. Wann immer nun das PHP-Programm etwas tun soll, dann wird es auf dem Server ausgeführt. Wenn dann HTML-Code durch das PHP-Programm ausgegeben wird, wird dieser Code an der entsprechenden Stelle des HTML-Dokuments eingefügt. Danach wird das vollständige HTML-Dokument\\ vom Server zum Client übertragen. Der Nutzer wird also nie erkennen können, dass bzw. wo die Webpage mit PHP erzeugt wurde. Im nächsten Abschnitt gibts dazu gleich ein Beispiel.
 
 \section{PHP-Code innerhalb von HTML – Erstes Beispiel}
 
 Rufen Sie eine Ihrer Seiten mit einem Webbrowser auf. Es sollte eine Seite mit mehreren Absätzen sein. Öffnen Sie nun das HTML-Dokument mit einem Editor. Gehen Sie hier zu einer beliebigen Zeile, in der sich lediglich Text befindet. Ändern Sie das Dokument dann so ab, wie im folgenden Beispiel und speichern Sie die Datei anschließend wieder. Vergessen Sie dabei bitte nicht die Änderung des Dateinamens. \\
 
-Achten Sie außerdem bei den entsprechenden Seiten darauf, Links in den statischen Webpages zu ändern, die auf Dateien mit der Endung .htm bzw. .html verweisen.\\
+Achten Sie außerdem bei den entsprechenden Seiten darauf, Links in den statischen Webpages zu ändern, die auf Dateien mit der Endung \verb|.htm| bzw. \verb|.html| verweisen.
 
+\begin{verbatim}
 <p>
 .... Ihr Text ....
 </p>
+\end{verbatim}
 
 Ändern Sie diesen Teil so ab:
 
+\begin{verbatim}
 <p>
-<?php echo ``.... Ihr Text ....``; ?>
+<?php echo ".... Ihr Text ...."; ?>
 </p>
-
+\end{verbatim}
 Quellcode 4.3: Textausgabe mit PHP\\
 
-Aktualisieren Sie jetzt die Seite im Browser, achten Sie dabei aber darauf, dass in der Adresszeile die Endung der Datei nicht mehr .htm bzw. .html heißt, sondern .php. Sehen Sie den Unterschied? Nein? Natürlich nicht, denn der PHP-Teil  tut ja nichts anderes, als genau den HTML-Code ins HTML-Dokument einzufügen, der da vorher schon stand. Das mag relativ sinnfrei wirken, aber Sie werden in den nächsten Abschnitten lernen, dass es Ihnen mit PHP möglich ist, eine von mehreren HTML-Code-Passagen auszuwählen und diese in ein HTML-Dokument einfügen zu lassen. So können Sie später entscheiden, ob ein bestimmter Nutzer Zugriff auf Inhalte bekommt, ob eine bestimmte Nutzerin bestimmte Auswahloptionen anwählen darf usw.\\
+Aktualisieren Sie jetzt die Seite im Browser, achten Sie dabei aber darauf, dass in der Adresszeile die Endung der Datei nicht mehr \verb|.htm| bzw. \verb|.html| heißt, sondern \verb|.php|. Sehen Sie den Unterschied? Nein? Natürlich nicht, denn der PHP-Teil  tut ja nichts anderes, als genau den HTML-Code ins HTML-Dokument einzufügen, der da vorher schon stand. Das mag relativ sinnfrei wirken, aber Sie werden in den nächsten Abschnitten lernen, dass es Ihnen mit PHP möglich ist, eine von mehreren HTML-Code-Passagen auszuwählen und diese in ein HTML-Dokument einfügen zu lassen. So können Sie später entscheiden, ob ein bestimmter Nutzer Zugriff auf Inhalte bekommt, ob eine bestimmte Nutzerin bestimmte Auswahloptionen anwählen darf usw.\\
 
-Wenn Sie Sonderzeichen per echo() ausgeben wollen, also Zeichen, die eigentlich eine Funktion übernehmen, dann schreiben Sie schlich ein \ davor. (Nicht zu verwechseln mit /.) Wenn Sie also Anführungszeichen ausgeben lassen wollen, die ja sonst in echo() bewirken, dass die Ausgabe beendet wird, dann schreiben Sie anstelle von `` einfach \`` und schon wird `` im HTML-Dokument eingeblendet.\\
+Wenn Sie Sonderzeichen per \verb|echo()| ausgeben wollen, also Zeichen, die eigentlich eine Funktion übernehmen, dann schreiben Sie schlich ein \verb|\| davor. (Nicht zu verwechseln mit \verb|/|.) Wenn Sie also Anführungszeichen ausgeben lassen wollen, die ja sonst in \verb|echo()| bewirken, dass die Ausgabe beendet wird, dann schreiben Sie anstelle von \grqq{} einfach \verb|\|\grqq{} und schon wird \grqq{} im HTML-Dokument eingeblendet.
 
-Aufgaben: \\
+\paragraph{Aufgaben:}
 
-Prüfen Sie folgendes selbst aus:
--	Wie siehts mit Umlauten aus, die Sie mit echo() durch PHP erzeugen lassen? Internationalisierung und Lokalisierung betreffen ja nur das HTML-Dokument und nicht das PHP-Programm.
--	Und was ist mit HTML-Tags? Können Sie vollständige HTML-Container per echo() erzeugen und in ein HTML-Dokument einfügen?
+Probieren Sie folgendes selbst aus:
+
+\begin{itemize}
+	\item Wie siehts mit Umlauten aus, die Sie mit \verb|echo()| durch PHP erzeugen lassen? Internationalisierung und Lokalisierung betreffen ja nur das HTML-Dokument und nicht das PHP-Programm.
+	
+	\item Und was ist mit HTML-Tags? Können Sie vollständige HTML-Container per \verb|echo()| erzeugen und in ein HTML-Dokument einfügen?	
+\end{itemize}
 
 \subsection{Kommentare}
 
 Bislang haben Sie ausschließlich Zeilen programmiert (egal ob in HTML, CSS oder PHP), die dann vom Computer in irgend einer Form ausgeführt wurden und die für die Anzeige oder den Aufbau der Webanwendung wichtig waren. Kommentare sind etwas anderes: Sie dienen dazu, dass andere Entwickler erkennen können, welche Aufgabe ein Programmteil übernimmt.\\
 
-Deshalb werden Kommentare auch häufig entweder schlecht oder gar nicht verwendet: Während Sie etwas programmieren wissen Sie im Regelfall genau, was Sie tun, also brauchen Sie in diesem Moment keine Kommentare. Aber Sie können sich darauf verlassen, dass Sie früher oder später einzelne Passagen Ihres Projektes nochmal ändern müssen und dann werden Sie sie brauchen.\\
+Deshalb werden Kommentare auch häufig entweder schlecht oder gar nicht verwendet: Während Sie etwas programmieren wissen Sie im Regelfall genau, was Sie tun, also brauchen Sie in diesem Moment keine Kommentare. Aber Sie können sich darauf verlassen, dass Sie früher oder später einzelne Passagen Ihres Projektes nochmal ändern müssen und dann werden Sie die Kommentare brauchen.\\
 
-Vielleicht fragen Sie sich, was das denn soll, da man doch bloß den Code lesen muss, um zu erkennen, was er tut. Wenn Ihnen diese Frage durch den Kopf geht, dann rufen Sie sich bitte in Erinnerung, was eigentlich der Sinn und Zweck des semantic web ist.\\
+Vielleicht fragen Sie sich, was das denn soll, da man doch bloß den Code lesen muss, um zu erkennen, was er tut. Wenn Ihnen diese Frage durch den Kopf geht, dann rufen Sie sich bitte in Erinnerung, was eigentlich der Sinn und Zweck des semantic web ist, bzw. was der Unterschied zwischen Syntax und Semantik ist und warum imperative Programme sehr leicht so zu programmieren sind, dass sie etwas anderes tun als Sie wollen.\\
 
-Zur Erinnerung: Eine Programmzeile in einer imperativen Sprache weist den Rechner an, bestimmte Anweisungen auszuführen. Sie sagt dagegen nichts darüber aus, wofür diese Anweisungen dienen. Wenn Sie also keine Kommentare verfassen oder in Ihren Kommentaren nur steht, was der Quellcode tut, dann werden auch Sie bereits wenige Tage später nicht mehr wissen, welche Aufgabe damit erfüllt wird. Und wenn Sie dann eine Änderung durchführen, ist die Wahrscheinlichkeit sehr groß, dass Sie zwar eine neue Funktionalität realisieren, aber gleichzeitig eine alte Funktionalität entfernen.\\
+Zur Erinnerung: Eine Programmzeile in einer imperativen Sprache weist den Rechner an, bestimmte Anweisungen auszuführen. Sie sagt dagegen nichts darüber aus, wofür diese Anweisungen dienen, bzw. in welchem Kontext jede einzelne Zeile steht. Wenn Sie also keine Kommentare verfassen oder in Ihren Kommentaren nur steht, was der Quellcode tut, dann werden auch Sie bereits wenige Tage später nicht mehr wissen, welche Aufgabe damit erfüllt wird. Und wenn Sie dann eine Änderung durchführen, ist die Wahrscheinlichkeit sehr groß, dass Sie zwar eine neue Funktionalität realisieren, aber gleichzeitig eine alte Funktionalität entfernen.\\
 
 Hier ein einfacher Algorithmus, um das Problem zu veranschaulichen:
-Erzeuge eine Variable mit dem Namen a.
-Weise a die Adresse zu, an der der Anfang einer Liste mit elf Einträgen steht.
-Erzeuge eine Variable mit dem Namen b.
-Erzeuge eine Variable mit dem Namen c.
-Erzeuge eine Variable mit dem Namen d.
-Erzeuge eine Variable mit dem Namen e.
-Erzeuge eine Variable mit dem Namen m.
-Erzeuge eine Variable mit dem Namen n.
-Erzeuge eine Variable mit dem Namen q.
-Tu das folgende zehnmal, wobei du den Durchlauf in der Variable m speicherst.
-n bekommt jetzt den Wert 10-m.
-Tu das folgende n-mal, wobei du die Nummer des Durchlaufs in der Variable q speicherst.
-Lies den Wert aus der Speicherstelle mit der Nummer von a + q und speichere ihn in c.
-Lies den Wert aus der Speicherstelle mit der Nummer von a + q + 1 und speichere ihn in d.
-Wenn c größer als d ist, tue folgendes:
-Speichere c in e.
-Speichere d in c.
-Speichere e in d.
-Speichere den Wert von c in der Speicherstelle mit der Nummer a + q.
-Speichere den Wert von d in der Speicherstelle mit der Nummer a + q + 1.
-sonst mache einfach weiter. 
+\begin{itemize}
+	\item Erzeuge eine Variable mit dem Namen a.
+	\item Weise a die Adresse zu, an der der Anfang einer Liste mit elf Einträgen steht.
+	\item Erzeuge eine Variable mit dem Namen b.
+	\item Erzeuge eine Variable mit dem Namen c.
+	\item Erzeuge eine Variable mit dem Namen d.
+	\item Erzeuge eine Variable mit dem Namen e.
+	\item Erzeuge eine Variable mit dem Namen m.
+	\item Erzeuge eine Variable mit dem Namen n.
+	\item Erzeuge eine Variable mit dem Namen q.
+	\item Tu das folgende zehnmal, wobei du den Durchlauf in der Variable m speicherst.
+	\item n bekommt jetzt den Wert 10-m.
+	\item Tu das folgende n-mal, wobei du die Nummer des Durchlaufs in der Variable q speicherst:
+	\begin{itemize}
+		\item Lies den Wert aus der Speicherstelle mit der Nummer von a + q und speichere ihn in c.
+		\item Lies den Wert aus der Speicherstelle mit der Nummer von a + q + 1 und speichere ihn in d.
+		\item Wenn c größer als d ist, tue folgendes:
+		\begin{itemize}
+			\item Speichere c in e.
+			\item Speichere d in c.
+			\item Speichere e in d.
+			\item Speichere den Wert von c in der Speicherstelle mit der Nummer a + q.
+			\item Speichere den Wert von d in der Speicherstelle mit der Nummer a + q + 1.
+		\end{itemize}
+		sonst mache einfach weiter. 
+	\end{itemize}
+\end{itemize}
 Beispiel für schlechte Kommentare.\\
 
 Und? Was macht dieses Programm? Wenn Sie jetzt sagen, dass Sie das nicht erkennen können, dann ist das kein Wunder, denn Sie können zwar im Detail nachlesen, was der Computer in jeder Zeile tun soll, aber nirgends steht, welchen Zweck das ganze erfüllen soll. Dieser Zweck dagegen ist recht simpel:\\
@@ -190,26 +208,47 @@ Bei den meisten Programmiersprachen ist das anders: Dort müssen Sie Kommentare 
 
 Es gibt zwei Möglichkeiten, um Kommentare in PHP zu programmieren: Entweder als Ergänzung zu einer Programmzeile oder als einen mehrzeiligen Absatz.\\
 
-Alles, was in einer Programmzeile nach // steht, ist ein Kommentar. Die nächste Zeile ist dann wieder normaler Programmcode.\\
+Alles, was in einer Programmzeile nach \verb|//| steht, ist ein Kommentar. Die nächste Zeile ist dann wieder normaler Programmcode.\\
 
-Einen mehrzeiligen Kommentar beginnen Sie mit /* und beenden ihn nach beliebig vielen Zeilen und Zeichen mit */.\\
+Einen mehrzeiligen Kommentar beginnen Sie mit \verb|/*| und beenden ihn nach beliebig vielen Zeilen und Zeichen mit \verb|*/|.\\
 
-Wichtig: Alles, was als Kommentar gilt wird nicht ausgeführt. Wenn Sie also einen mehrzeiligen Kommentar erstellen, achten Sie bitte darauf, keine auszuführenden Programmzeilen in diesen Kommentar einzufügen. Andererseits können Sie /* ... */ nutzen, um Teile des Quellcodes auszukommentieren. Sie können dadurch prüfen, wie der Code ausgeführt wird, wenn diese Zeilen entfallen.
+Wichtig: Alles, was als Kommentar gilt wird nicht ausgeführt. Wenn Sie also einen mehrzeiligen Kommentar erstellen, achten Sie bitte darauf, keine auszuführenden Programmzeilen in diesen Kommentar einzufügen. Andererseits können Sie \verb|/* ... */| nutzen, um Teile des Quellcodes auszukommentieren. Sie können dadurch prüfen, wie der Code ausgeführt wird, wenn diese Zeilen entfallen.
 
-\section{Grundlagen der Programmierung in PHP}
+\section{Überarbeitung: Grundlagen der Programmierung in PHP}
 
 In den Kapiteln zu HTML und CSS haben Sie gelernt, wie Sie Bereiche einer Webanwendung programmieren können und wie Sie diese gestalten können. Jetzt kommen wir dazu, was wir mittels Programmierung in PHP tun müssen, um die Inhalte einer Webpage dynamisch (also zu beliebigen Zeitpunkten) ändern zu können.\\
 
-Hier werden wir uns mit sechs Bereichen auseinander setzen: Variablen, Operationen, Kontrollstrukturen, Funktionen, Datenstrukturen und Schleifen bzw. Rekursionen.\\
+Die folgenden Grundlagen finden Sie in ähnlicher Form in einer Vielzahl von Programmiersprachen, die zum imperativen Paradigma gehören. Wie schon in den ersten Kapiteln erklärt denken deshalb viele Programmierer irrtümlicherweise, dass sie wissen, was Programmieren ist, und dass es ausreichen würde, immer nur die Syntax einer Sprache zu erlernen, um in dieser (neuen) Sprache zu programmieren. Aber wie Sie dort lesen konnten ist das schlicht und ergreifend falsch und wird auch nicht dadurch richtig, dass es immer wieder falsch wiederholt wird.\\
 
--	Variablen sind die Teile eines imperativen Programms, in denen Daten gespeichert werden.
--	Operationen sind einfache Anweisungen, mit denen die Inhalte von Variablen geändert werden können oder durch die neue Variablen erzeugt werden können. Wichtig: Im Gegensatz zur Mathematik und zu funktionalen Programmiersprachen dürfen Variablen bei prozeduralen Programmiersprachen wie PHP geändert werden.
--	Kontrollstrukturen ermöglichen es Ihnen, zu kontrollieren, unter welchen Bedingungen welcher Teil eines Programms ausgeführt wird.
--	Funktionen fassen mehrere Operationen zusammen, um komplexe Abläufe als eine Einheit nutzen zu können. So können Sie sie an verschiedenen Stellen ausführen lassen, ohne sie jedes Mal komplett neu programmieren zu müssen.
--	Datenstrukturen fassen mehrere Variablen zusammen, die gleichartig sind. Und so, wie wir mit einer Funktion mehr Übersicht in unseren Programmablauf bekommen, helfen uns Datenstrukturen, wenn wir mit vielen Variablen arbeiten wollen oder müssen.
--	Schleifen und Rekursionen können Sie dann für all die Fälle nutzen, in denen ein Programmteil wiederholt ausgeführt werden soll.\\
+Stellvertretend möchte ich hier die Publikationen des heise-Verlags nennen: Dort wird nahezu durchgehend das Konzept der imperativen Programmierung als das einzige Konzept der Programmierung verklärt. Daraus folgen das Aussagen wie diejenige, dass es im Grunde genügen würde eine der dort vorgestellten Sprachen zu lernen, um alle Programmiersprachen nutzen zu können. (Sonderheft \glqq{}Programmieren\grqq{} 2012) Wie schon erklärt ist das so abwegig, als würden Sie denken, dass ein Führerschein für PkWs genügen würde, um eine Planierraupe sicher zu fahren. Was dabei herauskommt können Sie in Serien wie \glqq{}Hör mal wer da hämmert\grqq{} sehen.\\
 
-Im nächsten Kapitel führen wir die sogenannten Datenbanken ein. Datenbanken sind dann sinnvoll, wenn wir nicht mehr nur Dutzende von Variablen haben, die wir in einer Datenstruktur gruppieren können, sondern wir über Tausende von Variablen in Dutzenden Datenstrukturen sprechen. Ein Beispiel wäre die Kundendatenbank eines Versandhändlers. Aber keine Sorge: Dafür sind Datenbanken zwar gedacht, aber wir können sie auch bei viel weniger Variablen nutzen, um uns die Nutzung anzusehen.\\
+Um die Grundlagen der imperativen Programmierung und damit z.B. die Programmierung in PHP zu erlernen, stelle ich Ihnen sechs Themen vor: Variablen, Operationen, Kontrollstrukturen, Funktionen, Datenstrukturen und abschließend Schleifen bzw. Rekursionen:
+
+\begin{itemize}
+	\item \textbf{Variablen}\index{Variable} sind die Teile eines imperativen Programms, in denen Daten gespeichert werden.
+	
+	\textbf{Wichtig:} Im Gegensatz zur Mathematik und z.B. zu Programmiersprachen, die das funktionale Paradigma umsetzen, darf der Wert einer Variablen bei prozeduralen Programmiersprachen wie PHP \\während des Ablaufs eines Programms geändert werden.
+	
+	\item \textbf{Operationen}\index{Operation} sind einfache Anweisungen, mit denen die Inhalte von Variablen geändert werden können oder durch die neue Variablen erzeugt werden können. 
+\end{itemize}
+	
+Im Grunde könnten wir also mit Variablen und Operationen bereits Programme erstellen. Besonders spannend wären diese Programme aber nicht.
+	
+\begin{itemize}	
+	\item \textbf{Kontrollstrukturen}\index{Kontrollstruktur} ermöglichen es Ihnen, zu kontrollieren, unter welchen Bedingungen welcher Teil eines Programms ausgeführt wird.
+	
+	\item \textbf{Funktionen}\index{Funktion}\index{PHP!Funktion} fassen mehrere Operationen zusammen, um komplexe Abläufe als eine Einheit nutzen zu können. Da Funktionen einen Bezeichner haben, über den Sie aufgerufen (\glqq{}gestartet\grqq{}) werden, können Sie sie an verschiedenen Stellen eines Programms ausführen lassen, ohne sie jedes Mal komplett neu programmieren zu müssen.
+	
+	\item Funktionen ähneln sehr den sogenannten \textbf{Prozeduren}\index{Prozedur} und werden in vielen Sprachen auch nicht von diesen unterschieden. Der Unterschied ist der, dass eine Funktion einen Rückgabewert hat, dass also durch den Aufruf einer Funktion (evtl. mit einem oder mehreren Werten) ein Wert erzeugt wird. Im Gegensatz dazu ist eine Prozedur schlicht eine Abfolge von Operationen, die nicht dazu dienen, einen Wert zu berechnen, der als Ergebnis der Prozedur zurück gegeben wird. In PHP unterscheiden wir nicht zwischen Funktionen und Prozeduren.
+	
+	\item \textbf{Datenstrukturen}\index{Datenstruktur} fassen mehrere Variablen zusammen, die gleichartig sind. Und so, wie wir mit einer Funktion mehr Übersicht in unseren Programmablauf bekommen, helfen uns Datenstrukturen, wenn wir mit vielen Variablen arbeiten wollen oder müssen.
+	
+	\item \textbf{Schleifen}\index{Schleife} und \textbf{Rekursionen}\index{Rekursion} ähneln Prozeduren und Funktionen. Der Unterschied besteht darin, dass eine Funktion bzw. eine Prozedur genau einmal ausgeführt wird, wenn Sie genutzt wird. Bei Schleifen und Rekursionen führen wir den Inhalten mehrfach aus, indem wir an einer Stelle angeben, wie oft sie ausgeführt werden sollen.
+	
+	\item Im nächsten Kapitel führen wir die sogenannten Datenbanken ein. \textbf{Datenbanken}\index{Datenbank} sind dann sinnvoll, wenn wir nicht mehr nur Dutzende von Variablen haben, die wir in einer Datenstruktur gruppieren können, sondern wir über Tausende von Variablen in Dutzenden Datenstrukturen sprechen. Ein Beispiel wäre die Kundendatenbank eines Versandhändlers. Aber keine Sorge: Dafür sind Datenbanken zwar gedacht, aber wir können sie auch bei viel weniger Variablen nutzen, um uns die Nutzung anzusehen.
+	
+	Datenbanken werden anhand von eigenen Programmiersprachen programmiert. Eine dieser Sprachen heißt MySQL. Und der Grund aus dem viele Bücher eine Einführung in PHP und MySQL anbieten ist der, dass wir bei der Programmierung in PHP (wie in vielen anderen Programmiersprachen) häufig Datenbanken benötigen, um effizient große Datenmengen zu verwalten.
+\end{itemize}
 
 Jetzt also zu den Variablen.
 
@@ -217,9 +256,11 @@ Jetzt also zu den Variablen.
 
 Wie eingangs beschrieben sind Variablen die Teile von prozeduralen Programmen, in denen wir auf Daten zugreifen können. Sie kennen Variablen bislang aus dem Mathematikunterricht der Oberstufe, wo jede Variable im Regelfall für eine Zahl steht. Dabei haben sie gelernt, dass der Wert einer Variablen sich nicht ändern darf: Wenn x an mehreren Stellen einer Aufgabe auftaucht, dann hat es immer denselben Wert, auch wenn wir ihn noch nicht kennen.\\
 
-Wichtig: \\
+\textbf{Wichtig:} \\
 
-Variablen und insbesondere Variablen in der Form, wie Sie sie jetzt kennenlernen sind nur eine Spezialform von Daten mit denen Sie in bestimmten Programmiersprachen wie C, C++, Java, Ruby, Python und vielen anderen mehr arbeiten. Insbesondere, wenn Sie einen Informatikstudiengang besuchen ist es außerordentlich wichtig, dass Sie so bald als möglich das Studium von Teil 2 dieses Buches fortsetzen. Dort werden Sie eine wesentlich allgemeinere Form von Daten in Computern kennen lernen und nur wenn Sie diese wesentlich allgemeinere Form von Daten wirklich verstanden haben, haben Sie die Grundlage, um „echte/r“ InformatikerIn zu werden. So lange Sie dagegen auf die Programmierung fixiert bleiben, die Sie in diesem Teil des Buches kennen lernen, werden Sie zwar einen Computer dazu bringen können, Aufgaben für Sie zu erfüllen, aber Sie werden keinesfalls ernsthafte Informatik betreiben oder gar ein umfangreiches Verständnis dessen haben, was Programmierung alles ist. Beachten Sie jedoch auch, dass Sie nach Ende dieses Gesamtwerks lediglich die Programmierung mit Sprachen erlernt haben werden, die die diskrete Mathematik zur Grundlage haben. Die Programmierung kontinuierlicher Systeme wie Steuer- und Regelsysteme sind eine Kernkompetenz von Elektro- und Nachrichtentechnikern, auch wenn InformatikerInnen mit einer entsprechenden Vertiefung in diesem Bereich gleichwertige Fachkräfte werden können.
+Variablen und insbesondere Variablen in der Form, wie Sie sie jetzt kennenlernen sind nur eine Spezialform von Daten mit denen Sie in bestimmten Programmiersprachen wie C, C++, Java, Ruby, Python und vielen anderen mehr arbeiten. Insbesondere, wenn Sie einen Informatikstudiengang besuchen ist es außerordentlich wichtig, dass Sie so bald als möglich das Studium von Teil 2 dieses Buches fortsetzen. Dort werden Sie eine wesentlich allgemeinere Form von Daten in Computern kennen lernen und nur wenn Sie diese wesentlich allgemeinere Form von Daten wirklich verstanden haben, haben Sie die Grundlage, um \glqq{}echte/r\grqq{} InformatikerIn zu werden. So lange Sie dagegen auf die Programmierung fixiert bleiben, die Sie in diesem Teil des Buches kennen lernen (eben die imperative Programmierung), werden Sie zwar einen Computer dazu bringen können, Aufgaben für Sie zu erfüllen, aber Sie werden keinesfalls ernsthafte Informatik betreiben oder gar ein umfangreiches Verständnis dessen haben, was Programmierung alles ist.\\
+
+Beachten Sie jedoch auch, dass Sie nach Ende des gesamten Buches lediglich die Programmierung mit Sprachen erlernt haben werden, die die diskrete Mathematik zur Grundlage haben. Die Programmierung kontinuierlicher Systeme wie Steuer- und Regelsysteme sind eine Kernkompetenz von Elektro- und Nachrichtentechnikern, auch wenn InformatikerInnen mit einer entsprechenden Vertiefung in diesem Bereich gleichwertige Fachkräfte werden können.
 
 \subsubsection{Erzeugung einer Variablen}
 
@@ -229,19 +270,28 @@ Das ist alles.\\
 
 Wenn wir außerdem einen Startwert vorgeben wollen, dann können wir das tun. Hier wie an jeder Stelle, an der wir den Wert einer Variablen festlegen bzw. ändern wollen, nutzen wir dazu ein einfaches Gleichzeichen.\\
 
-Wenn Sie eine Variable für einen Text (das kann auch HTML-Code sein) erzeugen wollen, dann schreiben Sie diesen „Wert“ der Variablen in Anführungszeichen.\\
+Wenn Sie eine Variable für einen Text (das kann auch HTML-Code sein) erzeugen wollen, dann schreiben Sie diesen \glqq{}Wert\grqq{} der Variablen in Anführungs-zeichen.\\
 
-\$name;                         // Erzeugung einer Variablen mit der Bezeichnung name.
-\$pi = 3.14;                    // Erzeugung einer Variablen, der der Wert 3.14 zugeordnet wird.
-\$quellcode = ``<p>Wir brauchen die Vorratsdatenspeicherung, weil wir die Vorratsdatenspeicherung brauchen.</p>``;
-Quellcode 4.4: Erzeugung von Variablen in PHP\\
+\begin{verbatim}
+// Erzeugung einer Variablen mit der Bezeichnung name.
+$name;                         
 
-Wenn Sie den Namen einer Variablen speichern und ihn dann später nutzen wollen, geht das auch:\\
+// Erzeugung einer Variablen, der der Wert 3.14 
+zugeordnet wird.
+$pi = 3.14;                    
 
-\$name = ``var``;
-\$var = 12;
-echo(\$\$name); \\
+$quellcode = "<p>Wir brauchen die Vorrats- 
+datenspeicherung, weil wir die Vorratsdaten-
+speicherung brauchen.</p>";
+\end{verbatim}Quellcode 4.4: Erzeugung von Variablen in PHP\\
 
+Wenn Sie den Namen einer Variablen speichern und ihn dann später nutzen wollen, geht das auch:
+
+\begin{verbatim}
+$name = "var";
+$var = 12;
+echo($$name);
+\end{verbatim}
 
 Die letzten Zeile bewirkt, dass nicht etwa var sondern 12 ins HTML-Dokument eingefügt wird.
 
@@ -249,9 +299,9 @@ Die letzten Zeile bewirkt, dass nicht etwa var sondern 12 ins HTML-Dokument eing
 
 Wir unterscheiden zunächst zwischen konstanten bzw. statischen Variablen, die Ihren Wert nicht ändern können und dynamischen Variablen, deren Wert sich jederzeit ändern kann. Konstante Variablen verwenden wir meist nur dann, wenn es wichtig ist, dass sich der Wert dieser Variablen nicht ändern darf oder es einfacher ist, einen Wert durch eine kurze Bezeichnung darzustellen. Letzteres reduziert die Wahrscheinlichkeit für Fehler im Programm.\\
 
-Deshalb gibt es auch keinen besonderen „Befehl“, mit dem wir dem Programm mitteilen, dass eine Variable dynamisch ist. Bei statischen Variablen, die in PHP als Konstanten bezeichnet werden, müssen wir dagegen das Schlüsselwort const verwenden, dafür lassen wir das \$-Zeichen am Anfang des Variablennamens weg:\\
+Deshalb gibt es auch keinen besonderen \glqq{}Befehl\grqq{}, mit dem wir dem Programm mitteilen, dass eine Variable dynamisch ist. Bei statischen Variablen, die in PHP als Konstanten bezeichnet werden, müssen wir dagegen das Schlüsselwort const verwenden, dafür lassen wir das \$-Zeichen am Anfang des Variablennamens weg:\\
 
-const pi=3.1415926535897932384626433832795028841971693993751058209749445923078164;
+\verb|const pi=3.14159265358979323846264338327950;|\\
 Quellcode 4.5: Erzeugung einer Konstanten mit Zuordnung eines Wertes.
 
 \subsection{Datentypen}
@@ -305,7 +355,7 @@ echo($a + $b);
 \end{verbatim}
 Quellcode 4.6: Anonyme Variable\\
 
-Hier haben Sie zwei Variablen addiert und das Ergebnis ausgegeben. Das klingt logisch, aber hier fehlt noch etwas: Wenn ein Computer eine Operation ausführt, dann speichert er das Ergebnis irgendwo ab. Im Regelfall geben sie dieses „irgendwo“ vor, indem Sie dafür eine Variable erzeugen oder den Computer anweisen, den Wert einer anderen Variablen zu überschreiben. Das ist bei diesem Code-Beispiel nicht der Fall. Da wir also das Ergebnis der Operation nicht über einen Namen ansprechen können, reden wir hier von einer anonymen Variable.Quellcode 4.6: Anonyme Variable
+Hier haben Sie zwei Variablen addiert und das Ergebnis ausgegeben. Das klingt logisch, aber hier fehlt noch etwas: Wenn ein Computer eine Operation ausführt, dann speichert er das Ergebnis irgendwo ab. Im Regelfall geben sie dieses \glqq{}irgendwo\grqq{} vor, indem Sie dafür eine Variable erzeugen oder den Computer anweisen, den Wert einer anderen Variablen zu überschreiben. Das ist bei diesem Code-Beispiel nicht der Fall. Da wir also das Ergebnis der Operation nicht über einen Namen ansprechen können, reden wir hier von einer anonymen Variable.Quellcode 4.6: Anonyme Variable
 
 Wenn wir keine anonymen Variablen verwenden wollen oder können, dann müssten wir das obige Programm so programmieren:Quellcode 4.6: Anonyme Variable
 
@@ -352,7 +402,7 @@ Codebeispiele wie dieses werden von vielen Programmierern als Beweis genutzt, da
 
 \subsubsection{Kurzschreibweise für Zuordnung und Operation}
 
-Gerade bei der Konkatenation werden Sie des Öfteren eine Variable mit dem neuen „Wert“ ergänzen wollen. Im folgenden Codebeispiel sehen Sie eine Kurzform, die Sie in diesen Fällen nutzen können. 
+Gerade bei der Konkatenation werden Sie des Öfteren eine Variable mit dem neuen \glqq{}Wert\grqq{} ergänzen wollen. Im folgenden Codebeispiel sehen Sie eine Kurzform, die Sie in diesen Fällen nutzen können. 
 
 \begin{verbatim}
 \$return = ``Siggi``:
@@ -369,7 +419,7 @@ Quellcode 4.10: Verkürzte Form für Zuordnung und Operation.
 
 -	Probieren Sie aus, für welche Operationen das funktioniert.
 
-\section{Kontrollstrukturen und boolesche Ausdrücke}
+\section{Überarbeitung: Kontrollstrukturen und boolesche Ausdrücke}
 
 Wie eingangs erläutert kommen wir jetzt zum ersten Teil der Programmierung, mit dem Sie tatsächlich eine Logik in Ihr Programm bekommen können. Während Sie also mit den vorigen Elementen von PHP kaum einen Mehrwert gegenüber der Programmierung in HTML erreichen konnten kommen wir jetzt zu den eigentlich spannenden Aspekten bei der Webanwendungsentwicklung mit PHP.
 
@@ -408,7 +458,7 @@ Es gibt in PHP zwei Möglichkeiten, um Kontrollstrukturen zu programmieren. Beid
 Um eine Kontrolle durchzuführen, überlegen Sie sich alle möglichen Fälle und erstellen für jeden Fall einen sogenannten if-Zweig. Wenn Sie mehrere Fälle nicht mit einem eigenen if-Zweig behandeln, dann haben Sie zwei Möglichkeiten: Entweder Sie ignorieren diese Fälle ganz, lassen also das Programm einfach weiterlaufen oder Sie programmieren einen else-Zweig, in dem all das passiert, was eben in den verbliebenen Fällen passieren soll.\\
 
 
-Die Bedingung, die geprüft werden soll steht in runden Klammern hinter dem „Befehl“ if. Das Schlüsselwort „then“ gibt es in PHP nicht. Wenn ein Programmteil bei einem if-Zweig ausgeführt werden soll, dann steht er direkt hinter dem Conditional des if.
+Die Bedingung, die geprüft werden soll steht in runden Klammern hinter dem \glqq{}Befehl\grqq{} if. Das Schlüsselwort \glqq{}then\grqq{} gibt es in PHP nicht. Wenn ein Programmteil bei einem if-Zweig ausgeführt werden soll, dann steht er direkt hinter dem Conditional des if.
 
 \subsubsection{Rümpfe}
 
@@ -433,7 +483,7 @@ Quellcode 4.11: Einfaches if Conditional
 
 Wenn-Dann-Kontrollstrukturen sind leicht zu verstehen, aber gerade wenn Sie den weiteren Programmablauf von der Belegung einer Variablen steuern wollen, sind die Switch-Cases häufig mit weniger Programmieraufwand verbunden.\\
 
-Dabei tragen Sie in den Klammern hinter dem „Befehl“ switch den Namen der Variablen ein und bei den einzelnen Cases den Wert der Variablen. Hier ein einfaches Beispiel, das genau dasselbe bewirkt wie der if-then-else-Fall oben:\\
+Dabei tragen Sie in den Klammern hinter dem \glqq{}Befehl\grqq{} switch den Namen der Variablen ein und bei den einzelnen Cases den Wert der Variablen. Hier ein einfaches Beispiel, das genau dasselbe bewirkt wie der if-then-else-Fall oben:\\
 
 \begin{verbatim}
 switch(\$login)
@@ -543,7 +593,7 @@ Hinweis: Da Sie noch keinen Log-in entwickelt haben, können Sie zurzeit noch ni
 
 Grundsätzlich gilt aber im Studium immer: Es ist gerade zu Beginn vollkommen normal, sich von den Inhalten und Übungen überfordert zu fühlen. Wichtig ist es dann, konzentriert weiter zu arbeiten. Außerdem ist es vollkommen normal, einzelne Veranstaltungen erst im dritten Anlauf zu bestehen. Manche Inhalte brauchen viel Zeit, damit Sie sie wirklich verinnerlicht haben.
 
-\section{Funktionen}
+\section{Überarbeitung: Funktionen}
 
 Wenn die Seiten Ihrer Webpage immer umfangreicher werden, werden Sie früher oder später merken, dass Teile Ihrer Seite sich wiederholen. So kann es sein, dass Sie mehrere <summary>-Container programmiert haben, die nur von bestimmten Nutzern geöffnet werden dürfen. Hier wäre es unschön, wenn Sie jedes Mal die entsprechende Kontrollstruktur in PHP programmieren würden. Für solche Fälle gibt es die sogenannten Funktionen, die bei der objektorientierten Programmierung als Methoden bezeichnet werden.\\
 
@@ -632,7 +682,7 @@ Quellcode 4.19: Definition einer Funktion ohne Parameter\\
 
 Wann immer Sie in Zukunft wollen, dass der Rumpf der Funktion aufgerufen wird, müssen sie nur noch den Funktionsnamen an der entsprechenden Stelle einprogrammieren.
 
-\section{Datenstrukturen}
+\section{Überarbeitung: Datenstrukturen}
 
 Dieser Abschnitt ist etwas problematisch, weil wir bislang vorrangig über die Möglichkeiten gesprochen haben, die die Sprache PHP Ihnen bietet. Datenstrukturen gehören genau wie Rekursionen in einen Bereich, bei dem viele Programmierer nur das nutzen, was die Programmiersprache Ihnen anbietet. Und genau dadurch können Sie einfache Programmierer von Menschen mit einem Verständnis für Informatik unterscheiden.\\
 
@@ -642,7 +692,7 @@ Das würde natürlich voraussetzen, dass jeder Spieler einen Punktestand für se
 
 Die Lösung für dieses Dilemma heißt Datenstrukturen. In aller Regel bieten prozedurale Sprachen Ihnen zumindest ein Array als Datenstruktur an, dass Sie ohne weitere Kenntnisse nutzen können. In Veranstaltungen wie Algorithmen und Datenstrukturen lernen Sie dann, wie Sie andere Datenstrukturen selbst programmieren können und wann welche Datenstruktur Sinn macht. Prozedurale Sprachen wie Pascal ermöglichen es Ihnen außerdem beliebige Datenstrukturen selbst zu programmieren.\\
 
-Leider ist PHP derart beschränkt, dass Sie keine eigenen Datenstrukturen programmieren können. Erinnern Sie sich noch an meine Kritik an den „Vorteilen“ die der Autor Thomas Theis bezüglich PHP formulierte? Genau hier haben wir einen Fall, in dem es eben ein massiver Nachteil ist, dass PHP Sie derart in Ihren Möglichkeiten einschränkt. Seit Version 5.3 gibt es allerdings eine Reihe an Klassen in der PHP Standard Library, die weitere Datenstrukturen realisieren. Bei O’Reilly wird betont, dass es ein großer Vorteil ist, dass diese in C programmiert ist, was in einer höheren Geschwindigkeit resultiert. Nur bedeutet das für Sie, dass Sie hier keine individuelle Anpassung durchführen können.\\
+Leider ist PHP derart beschränkt, dass Sie keine eigenen Datenstrukturen programmieren können. Erinnern Sie sich noch an meine Kritik an den \glqq{}Vorteilen\grqq{} die der Autor Thomas Theis bezüglich PHP formulierte? Genau hier haben wir einen Fall, in dem es eben ein massiver Nachteil ist, dass PHP Sie derart in Ihren Möglichkeiten einschränkt. Seit Version 5.3 gibt es allerdings eine Reihe an Klassen in der PHP Standard Library, die weitere Datenstrukturen realisieren. Bei O’Reilly wird betont, dass es ein großer Vorteil ist, dass diese in C programmiert ist, was in einer höheren Geschwindigkeit resultiert. Nur bedeutet das für Sie, dass Sie hier keine individuelle Anpassung durchführen können.\\
 
 In PHP können Sie deshalb leider nur zwei Arten von Datenstrukturen direkt verwenden: Felder und Assoziative Felder. Gleich vorweg: Fehlgeleitete Naturen bezeichnen Assoziative Felder als Hash-Tables. Ein Hash-Table ist aber etwas ganz anderes. Was genau, das lernen Sie z.B. in Veranstaltungen wie Algorithmen und Datenstrukturen. Und nein, das was bei Java als Hash-Table bezeichnet wird ist ebenfalls kein Hash-Table...\\
 
@@ -658,7 +708,7 @@ Deshalb hier zunächst die Erklärung, was ein Array ist:\\
 
 Ein Array ist ein Teil des Speichers eines Computers, der in gleichgroße Einheiten unterteilt werden, die genau so groß sind wie es für eine bestimmte Variable nötig ist. Denn bei der Programmierung eines Arrays wird am Anfang festgelegt, welchen Datentyp alle Variablen haben sollen. \\
 
-Der Vorteil eines Array besteht darin, dass das Auslesen oder Überschreiben einer Stelle des Arrays sehr schnell zu erledigen ist. Dafür ist diese Datenstruktur sehr ineffizient, wenn wir ein Element löschen wollen oder ein neues Element hinzufügen wollen, denn beides erfordert bei einem Array einen sehr großen Kopieraufwand. Eine Vergrößerung eines Arrays (z.B. indem ans Ende noch zehn neue Elemente angehängt werden) ist dagegen unmöglich, weil ja in der Zwischenzeit der Speicher „hinter“ dem Array in aller Regel mit anderen Daten beschrieben wurde. \\
+Der Vorteil eines Array besteht darin, dass das Auslesen oder Überschreiben einer Stelle des Arrays sehr schnell zu erledigen ist. Dafür ist diese Datenstruktur sehr ineffizient, wenn wir ein Element löschen wollen oder ein neues Element hinzufügen wollen, denn beides erfordert bei einem Array einen sehr großen Kopieraufwand. Eine Vergrößerung eines Arrays (z.B. indem ans Ende noch zehn neue Elemente angehängt werden) ist dagegen unmöglich, weil ja in der Zwischenzeit der Speicher \glqq{}hinter\grqq{} dem Array in aller Regel mit anderen Daten beschrieben wurde. \\
 
 Auch hier gilt wieder: Wenn Sie das im Detail verstehen wollen, belegen Sie bitte einen Kurs in Algorithmen und Datenstrukturen.\\
 
@@ -691,7 +741,7 @@ Einzelnen Eintrag für ein assoziatives Feld programmieren Sie so: \$name[``Noch
 
 Der Folgepfeil => dient hier schlicht dazu, um aufzuzeigen, dass Sie einen Schlüssel und einen Wert hinzufügen, während Sie ja beim Feld einfach einen Wert hinzufügen, der dann in die nächste Zeile des Arrays eingefügt wird.\\
 
-Wichtig: Wie beim „Array“ haben die Entwickler von PHP auch hier eine falsche Bezeichnung verwendet: Eine solche Datenstruktur wird als Dictionary bezeichnet (engl. für Wörterbuch, bzw. Nachschlagewerk). \\
+Wichtig: Wie beim \glqq{}Array\grqq{} haben die Entwickler von PHP auch hier eine falsche Bezeichnung verwendet: Eine solche Datenstruktur wird als Dictionary bezeichnet (engl. für Wörterbuch, bzw. Nachschlagewerk). \\
 
 Bei einem Dictionary handelt es sich um eine Ansammlung von sogenannten key-value-Paaren. Der key (dt. Schlüssel) ist ein beliebiger Wert, unter dem die Datenstruktur Werte oder Datenstrukturen als value (dt. Wert) speichert. Ein echtes Wörterbuch könnten sie beispielsweise so speichern: Sie erzeugen einen Dictionary, der die Buchstaben von a bis z als keys speichert. Unter jedem key könnten Sie nun einen weiteren Dictionary speichern, der ebenfalls die Werte von a bis z als keys hat, wenn es Wörter gibt, die mit den beiden keys der beiden Dictionaries anfangen. Und auch die values dieser Dictionaries hätten wieder jeweils einen Dictionary mit den keys von a bis z als Wert, usw. usf. Das wäre zwar nicht unbedingt effizient, aber wie gesagt könnten Sie so ein Wörterbuch als Datenstruktur speichern.\\
 
@@ -699,9 +749,9 @@ Aufgabe:\\
 
 -	Wie lautete der Befehl, um Wert zum Schlüssel ``Horst`` aus dem assoziativen Feld \$Kneipengaeste auszulesen?
 
-\section{Wiederholungen von Programmteilen (Schleifen und Rekursionen)}
+\section{Überarbeitung: Wiederholungen von Programmteilen (Schleifen und Rekursionen)}
 
-Im letzten Teil der Einführung in die prozedurale Programmierung mit PHP sprechen wir darüber, wie wir Teile unseres Programms so lange wiederholen können, bis eine bestimmte Bedingung erfüllt ist. In den meisten Einführungen zu diesem Thema lernen Sie lediglich Schleifen kennen. Leider haben Schleifen aber eine ganz böse Einschränkung, die bei den besagten Einführungen ignoriert wird: Sie ermöglichen es nicht, mehrere Ausführungen parallel zu erlauben. Hier sprechen wir allerdings nicht über „echte“ Parallelprogrammierung; die würde für einen Kurs im ersten Studienjahr etwas zu weit führen.\\
+Im letzten Teil der Einführung in die prozedurale Programmierung mit PHP sprechen wir darüber, wie wir Teile unseres Programms so lange wiederholen können, bis eine bestimmte Bedingung erfüllt ist. In den meisten Einführungen zu diesem Thema lernen Sie lediglich Schleifen kennen. Leider haben Schleifen aber eine ganz böse Einschränkung, die bei den besagten Einführungen ignoriert wird: Sie ermöglichen es nicht, mehrere Ausführungen parallel zu erlauben. Hier sprechen wir allerdings nicht über \glqq{}echte\grqq{} Parallelprogrammierung; die würde für einen Kurs im ersten Studienjahr etwas zu weit führen.\\
 
 Damit Sie verstehen, wovon hier die Rede ist, folgt ein Beispiel, bei dem Wiederholungen eine Rolle spielen, die pseudo-parallel ausgeführt werden. Pseudo-parallele Abläufe sind Dinge, die unabhängig voneinander passieren können und scheinbar gleichzeitig ausgeführt werden. Nehmen wir an, Sie erstellen ein Programm für Vertreter eines Unternehmens. Diese Vertreter benötigen eine Reiseplanung, bei der sie jeweils Kunden besuchen, die in der Nähe voneinander wohnen. Nun sind die Daten der Kunden aber nach dem Namen sortiert. Was Sie also programmieren müssen ist eine Sortierung nach der Postleitzahl.\\
 
@@ -725,7 +775,7 @@ Von jetzt an führen wir den letzten Schritt immer wieder auf die neuen Listen a
 
 Obwohl auch diese Variante Wiederholungen beinhaltet, können Sie sie NICHT mit einer Schleife programmieren, sondern ausschließlich mit einer sogenannten Rekursion. Denn wie Sie sehen werden hier einige Aufgaben pseudo-parallel erledigt und das ist mit einer Schleife unmöglich.\\
 
-Das was Sie gerade gesehen haben ist übrigens Informatik für Erstsemester, es ist also nicht allzu anspruchsvoll. Es wird als divide and conquer-Algorithmus bezeichnet. Wie Sie sehen hat das nichts mit der Beherrschung einer Programmiersprache zu tun, sondern mit Logik und Mathematik. Wenn Sie Informatik an einer Universität studieren würden, müssten Sie die mathematischen Teile selbst berechnen und anhand der Ergebnisse beweisen, wie viel effizienter die eine Variante gegenüber der anderen ist. Informatik-Studierende an einer FH müssen dagegen lediglich wissen, welche Effizienz welches Verfahren bietet. Denn Informatiker von Universitäten werden darauf vorbereitet, neue Verfahren zu entwickeln und müssen deshalb im Stande sein, formal zu beweisen, welchen Mehrwert ihr neues Verfahren hat. FH-Informatiker werden dagegen darauf vorbereitet, neue Verfahren sinnvoll in zum Teil neue Anwendungen zu integrieren. Also brauchen sie die Beweisführung nicht zu kennen, müssen aber die Effizienz eines Algorithmus kennen und in Abhängigkeit davon Algorithmen einsetzen. Wenn Sie dagegen einfach „nur“ programmieren wollen, dann suchen Sie eigentlich nach einer Ausbildung zum/zur Fachinformatiker/in.
+Das was Sie gerade gesehen haben ist übrigens Informatik für Erstsemester, es ist also nicht allzu anspruchsvoll. Es wird als divide and conquer-Algorithmus bezeichnet. Wie Sie sehen hat das nichts mit der Beherrschung einer Programmiersprache zu tun, sondern mit Logik und Mathematik. Wenn Sie Informatik an einer Universität studieren würden, müssten Sie die mathematischen Teile selbst berechnen und anhand der Ergebnisse beweisen, wie viel effizienter die eine Variante gegenüber der anderen ist. Informatik-Studierende an einer FH müssen dagegen lediglich wissen, welche Effizienz welches Verfahren bietet. Denn Informatiker von Universitäten werden darauf vorbereitet, neue Verfahren zu entwickeln und müssen deshalb im Stande sein, formal zu beweisen, welchen Mehrwert ihr neues Verfahren hat. FH-Informatiker werden dagegen darauf vorbereitet, neue Verfahren sinnvoll in zum Teil neue Anwendungen zu integrieren. Also brauchen sie die Beweisführung nicht zu kennen, müssen aber die Effizienz eines Algorithmus kennen und in Abhängigkeit davon Algorithmen einsetzen. Wenn Sie dagegen einfach \glqq{}nur\grqq{} programmieren wollen, dann suchen Sie eigentlich nach einer Ausbildung zum/zur Fachinformatiker/in.
 
 \subsection{Rekursionen}
 
@@ -904,13 +954,13 @@ for (\$i = 0; \$i < 5; \$i++){
 \end{verbatim}
 Quellcode 4.22: Schleifen
 
-\section{Hinweis bezüglich objektorientierter Softwareentwicklung in PHP}
+\section{Überarbeitung: Hinweis bezüglich objektorientierter Softwareentwicklung in PHP}
 
 PHP ermöglicht es Ihnen auch, klassenbasierte objektorientierte Programme zu entwickeln. Objektorientierte Softwareentwicklung geht aber weit über die Nutzung zusätzlicher Programmiermöglichkeiten in prozeduralen Sprachen hinaus. Deshalb müssten wir hier im Grunde zunächst eine umfangreiche Einführung in das Konzept durchführen, bevor wir uns ansehen könnten, wie es in PHP umgesetzt wird. Und dafür bleibt in diesem Kurs leider keine Zeit.\\
 
 Diejenigen von Ihnen, die die Entwicklung von Webanwendungen vertiefen wollen, sollten diesem Thema aber bearbeiten. An dieser Stelle sei noch folgendes gesagt: Werfen Sie jeden Kurs in die Mülltonne, der Ihnen Objektorientierung damit erklärt, dass Sie dort Objekte der realen Welt modellieren. Das ist zwar mit objektorientierter Programmierung möglich, aber wer ernsthaft glaubt, dass es bei objektorientierter Softwareentwicklung darum geht, hat ungefähr so viel Ahnung vom Thema wie ein Maulwurf vom Fliegen. Dem fliegt ja gelegentlich mal was aufs Dach...
 
-\section{Auswertung von Nutzereingaben in HTML durch PHP}
+\section{Überarbeitung: Auswertung von Nutzereingaben in HTML durch PHP}
 
 Alles, was Sie bislang über PHP gelernt haben erlaubt Ihnen zwar, dynamisch HTML-Code in HTML-Dokumente zu integrieren, aber bislang können Sie noch keine Nutzereingaben verarbeiten. Damit können Sie also bislang weder einen Log-In, noch eine Registrierung realisieren. Ein Spiel könnten Sie hier realisieren, indem Sie eine Funktion über das onclick-Attribut eines HTML-Containers aufrufen lassen.\\
 
@@ -941,7 +991,7 @@ Das ist alles.
 
 -	Programmieren Sie eine Checkbox in den Registrierungs- und Log-In-Formularen Ihrer Webpage. Wenn diese Checkbox aktiviert ist, soll die Eingabe des Passworts am Monitor lesbar sein. Ist sie deaktiviert, dann soll das Passwort nicht lesbar sein.
 
-\section{Abschluss}
+\section{Überarbeitung: Abschluss}
 
 Sie haben jetzt alles kennen gelernt, was Sie benötigen, um eine dynamische Webpage zu programmieren. Wenn Sie beispielsweise ein Programm entwickeln wollen, um einen Schaltplan für die Laborversuche in Elektrotechnik zu entwerfen, wissen Sie jetzt alles, was dazu nötig ist. Wenn Sie denken, dass das ein langweiliges Programm wird, kann ich Ihnen leider nur zustimmen, aber dafür ist die Fehleranfälligkeit niedrig.\\
 
