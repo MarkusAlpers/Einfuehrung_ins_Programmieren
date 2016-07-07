@@ -1,0 +1,77 @@
+\documentclass[11pt, a4paper, oneside, draft]{book}
+
+\usepackage{palatino, url}
+\usepackage[ngermanb]{babel}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{0cm}
+\usepackage{textcomp}	% für \textmu also das Mü- bzw. Mikro-Symbol
+\usepackage{makeidx}	% für ein "schöneres" Stichwortverzeichnis
+\makeindex				% erzeugt das Stichwortvereichnis, blendet es jedoch nicht hier ein. Dafür am Ende den entspr. Code verwenden.
+
+%
+% \index{Eintrag}
+% \index{Eintrag!Unterbegriff}
+% erstellt eine Referenz auf eine Stelle im Text. Allerdings wird der Text in geschw. Klammern
+% später nicht hier angezeigt, sondern das ist das Stichwort, das im Stichwortverzeichnis aufgeführt wird.
+%
+% \printindex 
+% fügt das Stichwortverzeichnis an der Stelle ins Dokument ein, wo dieser Code verwendet wird.
+
+\begin{document}
+
+%%% Title declaration begin %%%
+
+\title{Einführung in die maschinennahe, imperative, funktionale, relationale und objektorientierte Programmierung\\-\\EMIFROP 0.28}
+\author{Markus Alpers\\B.Sc. und Ausbilder f. Industriekaufleute}
+\date{\today}
+
+\maketitle
+
+%%% Title declaration end %%%
+
+\tableofcontents
+
+\include{IMFROP_Lizenz}
+\include{IMFROP_vorwort}
+
+\part{Einfache Einführung in die imperative Programmierung}
+
+\include{IMFROP_kap_01}
+\include{IMFROP_kap_02}
+\include{IMFROP_vorbereitung_prog}
+\include{IMFROP_kap_03}
+\include{IMFROP_einf_vert_anw}
+\include{IMFROP_Struktur}
+\include{IMFROP_Latex}
+%\include{IMFROP_gestaltung}
+\chapter{Gestaltung mit CSS}
+%\include{IMFROP_einf_dyn_webanwend}
+\chapter{Funktionalität mit PHP 5.6}
+%\include{IMFROP_einf_sql}
+\chapter{Langfristige Datenspeicherung mit MySQL 5.6}
+
+%\part{Fortsetzung für Studierende der Informatik}
+
+%\include{IMFROP_grundl_masch_ARM_Int}
+
+%Der Abschnitt zu den Grundlagen der imperativen Programmierung muss noch an die Latex-Syntax angepasst werden.
+% Nachfolgender Abschnitt muss noch an Latex angepasst werden.
+%\include{IMFROP_grundl_imp_prog}
+
+%\part{Einführung in die objektorientierte Programmierung und Softwareentwicklung}
+
+%Die Abschnitte dieses Teils müssen noch an die LeTeX-Syntax angepasst werden.
+% Nachfolgender Abschnitt muss noch an Latex angepasst werden.
+%\include{IMFROP_java_01_komponenten}
+
+% Nachfolgender Abschnitt muss noch an Latex angepasst werden.
+%\include{IMFROP_grundl_oop}
+
+% Nachfolgender Abschnitt muss noch an Latex angepasst werden.
+%\include{IMFROP_anhaenge}
+
+\renewcommand{\indexname}{Stichwortverzeichnis}		% Legt den Titel des Stichwortverzeichnisses fest.
+\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
+\printindex
+
+\end{document}

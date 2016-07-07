@@ -1,0 +1,51 @@
+\documentclass[11pt, a4paper, oneside, draft]{book}
+
+\usepackage{palatino, url}
+\usepackage[ngermanb]{babel}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{0cm}
+\usepackage{textcomp}	% für \textmu also das Mü- bzw. Mikro-Symbol
+\usepackage{makeidx}	% für ein "schöneres" Stichwortverzeichnis
+\makeindex				% erzeugt das Stichwortvereichnis, blendet es jedoch nicht hier ein. Dafür am Ende den entspr. Code verwenden.
+
+%
+% \index{Eintrag}
+% \index{Eintrag!Unterbegriff}
+% erstellt eine Referenz auf eine Stelle im Text. Allerdings wird der Text in geschw. Klammern
+% später nicht hier angezeigt, sondern das ist das Stichwort, das im Stichwortverzeichnis aufgeführt wird.
+%
+% \printindex 
+% fügt das Stichwortverzeichnis an der Stelle ins Dokument ein, wo dieser Code verwendet wird.
+
+\begin{document}
+
+%%% Title declaration begin %%%
+
+\title{Informatik II\\-\\Algorithmen und Datenstrukturen\\-\\Betriebssysteme}
+\author{Markus Alpers\\B.Sc. und Ausbilder f. Industriekaufleute}
+\date{\today}
+
+\maketitle
+
+%%% Title declaration end %%%
+
+\tableofcontents
+
+\include{introduction}
+
+\part{Arrays}
+
+\include{firstExample}
+
+\part{Verkettete Listen}
+
+
+
+\part{Betriebssysteme}
+
+
+\renewcommand{\indexname}{Stichwortverzeichnis}		% Legt den Titel des Stichwortverzeichnisses fest.
+\addcontentsline{toc}{chapter}{Stichwortverzeichnis}
+\printindex
+
+\end{document}

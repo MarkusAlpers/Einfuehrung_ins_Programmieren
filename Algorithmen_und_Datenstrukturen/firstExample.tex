@@ -1,0 +1,203 @@
+\chapter{Eine erste Aufgabe: Highscore-Liste}
+
+Stellen Sie sich vor, Sie wollen in einem Ihrer Programme eine Highscore-Liste programmieren, also eine Aufstellung der Spieler, die ein Spiel gespielt haben und die nach dem erreichten Punktestand sortiert wird. Dann ist die wichtigste Frage nicht die, welchen Datentyp Sie für den Namen der einzelnen SpielerInnen wählen oder welchen Datentyp Sie für die Punkte wählen. Vielmehr ist die wichtigste Frage die, wie Sie die Sortierung so organisieren können, dass die Liste auch dann noch vollständig richtig sortiert ist, wenn in jeder Sekunde neue Einträge hinzukommen bzw. alte Einträge entfallen.\\
+
+Sie fragen, warum da alte Einträge entfallen müssen? Ganz einfach: Stellen Sie sich vor, Spieler beenden ein Spiel alle drei oder fünf Minuten. Wenn nun nicht jeweils nur ein Ergebnis pro SpielerIn in der Liste auftaucht, dann ist es kaum möglich, dass Spieler sich vergleichen. Es wird stets die Frage im Raum stehen, ob die SpielerInnen in der Liste doch noch irgendwo ein besseres Ergebnis geschafft haben. Und damit ist die Liste letztlich überflüssig.\\
+
+Eine zweite wichtige Frage ist die, wie Sie den Teil der Liste anzeigen können, der jeweils für einzelne SpielerInnen interessant sind.\\
+
+Reine Programmierer werden diese beiden Frage ignorieren und sich erst dann mit Ihr beschäftigen, wenn das Kind in den Brunnen gefallen ist, also dann, wenn die Spieler sich reihenweise im Forum zum Spiel darüber beklagen, dass die Highscoreliste \glqq{}voll buggy\grqq{} oder \glqq{}zu langsam\grqq{} ist. Und tatsächlich ist die Entwicklung einer \glqq{}guten\grqq{} Highscore-Liste eine ausgesprochen anspruchsvolle Aufgabe. Schauen wir uns also an, wie wir mit diesem Problem umgehen können, bzw. was es bedeutet, wenn wir die Sortierung auf unterschiedliche Weise angehen.\\
+
+\textbf{Anm.:} Ein Ziel dieses Kurses besteht darin, dass Sie einige Standard-\\Algorithmen kennen, und dass Sie im Stande sind, zu bewerten, wie gut diese Algorithmen für ein bestimmtes Problem geeignet sind. Um das etwas anschaulicher zu gestalten werden Sie diese Algorithmen bzw. jeweils passende Datenstrukturen in Java programmieren.
+
+\section{Highscore-Liste und Array}
+
+Ein \textbf{Array}\index{Datenstruktur!Array}\index{Array} ist ein Bereich im Speicher, der in gleichgroße Teile unterteilt ist. Jedes dieser Teile ist genau so groß, dass eine Variable eines bestimmten Datentyps darin gespeichert werden kann.\\
+
+Wenn wir dagegen von einem fünf-dimensionalen Array sprechen, dann bedeutet das, dass jeder der genannten Teile so groß ist, dass fünf Variablen darin gespeichert werden können. Ob diese fünf Variablen alle den gleichen Datentyp haben müssen oder ob jede davon einen individuellen Datentypen haben darf, das hängt von der Programmiersprache ab. Aber grundsätzlich gilt, dass alle Variablen in einer Dimension eines Arrays den gleichen Datentyp haben müssen. Analog zum fünf-dimensionalen Array können Sie sich andere mehr-dimensionale Arrays veranschaulichen.\\
+
+Dementsprechend können wir bei einer dynamisch typisierten Sprache wie PHP gar keine Datenstruktur wie ein Array haben. In dynamisch typisierten Sprachen werden wir aber dennoch häufig Datenstrukturen finden, die als Array bezeichnet werden. Der Grund ist simpel: Da die Programmierung dieser Datenstrukturen genauso durchgeführt wird, wie das bei einem Array der Fall ist, wirkt es für reine ProgrammiererInnen so, als wenn es sich tatsächlich um Arrays handeln würde.\\
+
+Die vier Algorithmen, die wir in diesem Teil des Buches untersuchen setzen alle voraus, dass sie auf einem Array ausgeführt werden.
+
+\textbf{Aufgabe:}\\
+
+Erklären Sie in eigenen Worten, warum es in dynamisch typisierten Sprachen kein \glqq{}echtes\grqq{} Array geben kann. (Tipp: Die Antwort steht nicht im vorigen Absatz. Um diese Aufgabe zu lösen müssen Sie den Unterschied zwischen statischer und dynamischer Typisierung verstanden haben.)\\
+
+Nehmen wir jetzt einmal an, wir haben eine zweidimensionales Array, in dem die ersten Ergebnisse gespeichert, aber noch nicht sortiert sind:\\
+
+\begin{tabular}{l l}
+	Horst & 100 \\
+	Susi & 260 \\
+	Max & 10 \\
+	Knock Knock & 500 \\
+	Super Richie & 2321\\
+	Queen Alice & 91243 \\
+	Zombie Maniac & 2212 \\
+	Cammy-Ka-Tse & 90 \\
+	Say cheeeeeeeeze & 1203 \\
+\end{tabular}\\
+
+Damit daraus eine wunschgemäße Highscore-Liste wird, müssen wir nun etwas entwickeln, das als \textbf{Sortieralgorithmus}\index{Algorithmus!Sortieralg.} bezeichnet wird.\\
+
+Die Bezeichnung folgt dabei direkt aus der Aufgabe: Ein Sortieralgorithmus heißt Sortieralgorithmus, weil er ein Algorithmus ist, der die Elemente einer Menge (hier die Einträge eines Arrays) sortieren soll.\\
+
+Wie Sie weiter oben gesehen haben, sprechen wir fürs erste nur über Arrays bzw. Algorithmen für Arrays und die Komplexität dieser Arrays.
+
+\chapter{Einfache Sortieralgorithmen}
+
+\textbf{Aufgabe:}
+
+\begin{itemize}
+	\item Notieren Sie eine Methode, wie Sie eine solche Highscore-Liste sortieren könnten. Die Reihenfolge soll dabei der Punktstand der SpielerInnen sein.
+	
+	Arbeiten Sie danach die folgenden Sortieralgorithmen durch und versuchen Sie sich insbesondere die Unterschiede bei der Laufzeit klar zu machen.
+\end{itemize}
+
+\section{Insertion Sort}\index{Sortieralgorithmen!Insertion Sort}
+
+Wenn Sie häufig Karten spielen (oder gespielt haben), dann werden Sie die Einträge der Highscore-Liste vielleicht wie Karten behandeln, die Sie nacheinander auf ein Hand nehmen.\\
+
+Der Sortieralgorithmus insertion sort basiert auf diesem Vorgehen, allerdings nehmen wir hier die unsortierten Karten direkt auf die Hand und beginnen dann von links nach rechts (oder umgekehrt) mit der Sortierung.\\
+
+\textbf{Anm.:} Hier und bei allen nachfolgenden Algorithmen werden wir uns auch gleich ansehen, wie viele Austauschoperationen wir maximal brauchen, um mit eine gegebene Menge Karten zu sortieren. Wir werden dabei die Anzahl Operationen für den eigentlichen Eintrag in die Liste außen vor lassen, um uns voll und ganz auf den Aufwand fürs eigentliche Sortieren zu konzentrieren.\\
+
+Im folgenden Beispiel gilt, dass wir die Karten von klein nach groß von links nach rechts sortieren:
+
+\begin{itemize}
+	\item Die erste Karte ist (verglichen mit sich selbst) bereits sortiert. Für das Vergleichen brauchen wir also keine Operation.
+	\item Die zweite Karte vergleichen wir mit der ersten und sortieren Sie dann davor oder danach ein. Danach sind die ersten beiden Karten sortiert. Wir haben bis hierher also 0 + 1 Vergleichsoperationen.
+	\item Die dritte Karte vergleichen wir zuerst mit der zweiten. Wenn sie größer als die zweite ist, ist sie damit sortiert. Ist sie nicht sortiert, vergleichen wir sie anschließend mit der ersten. Für die dritte Karte brauchen wir also mindestens eine Vergleichsoperation aber maximal zwei. Im besten Fall haben wir also 0 + 1 + 1, im schlimmsten Fall 0 + 1 + 2 Vergleichsoperationen.
+\end{itemize}
+
+\textbf{Aufgaben:}
+
+\begin{itemize}
+	\item Rechnen Sie den besten und schlimmsten Fall für die vierte und fünfte Karte durch. Den durchschnittlichen Fall und weitere Varianten lassen Sie vorerst außen vor. Diese haben wir nicht besprochen, auch wenn es sinnvolle Anwendungsgebiete dafür gibt.
+	\item Formulieren Sie das Ergebnis als Summenformel.
+	\item Formulieren Sie das Ergebnis jetzt für n Karten. (Und wenn Sie jetzt nicht an einen Beweis per Induktion denken, dann haben Sie zu wenig Zeit für Mathematik 1 investiert.)
+	\item Prüfen Sie nun, in welcher der folgenden Größenordnungen Ihr Ergebnis am ehesten liegt:
+	\begin{itemize}
+		\item Eine konkrete ganze Zahl
+		\item Die Variable n 
+		\item \(log_2\) n (in der Informatik meist als log n abgekürzt)
+		\item n \(log_2\) n (in der Informatik dementsprechend meist als n log n abgekürzt)
+		\item \(n^2\)
+		\item \(2^n\) 
+		\item \(n^n\)
+	\end{itemize}
+\end{itemize}
+
+Wenn Sie die vierte Aufgabe erfolgreich abgeschlossen haben, dann haben Sie eine Analyse der \textbf{Laufzeitkomplexität}\index{Komplexität!Laufzeit} durchgeführt.\\
+
+\textbf{Wichtig:}\\
+
+Für große Datenmengen ist es weniger wichtig, ob ein Algorithmus nun eine Komplexität von O(2 \(n^2\)) oder O(3 \(n^2\)) hat. Viel wichtiger ist die Antwort auf die Frage, ob sie bei \(n^2\) oder \(n^3\) oder doch bei n \(log\) n liegt. Deshalb musste Sie im vierten Aufgabenteil entscheiden, in welchem Bereich Ihr Ergebnis liegt.
+
+\section{Die O-Notation}\index{Komplexität!O-Notation}\index{O-Notation}
+
+Für den schlimmsten Fall nutzen wir die sogenannte O-Notation. Das wird als Groß-O Notation ausgesprochen, also nicht als Null-Notation. Sie können sich das so merken, dass das O für obere Grenze steht. Angenommen, Sie haben jetzt berechnet, dass die Laufzeitkomplexität im schlimmsten Fall \(2^n\) beträgt, dann würden Sie das in der O-Notation als \(O(2^n)\) notieren. (Wobei die Laufzeitkomplexität für insertion sort NICHT \(O(2^n)\) ist.)
+
+\subsection{Der Bezug zur Realität}
+
+Um es in Worten auszudrücken: Ein Algorithmus mit \(O(2^n)\) benötigt also \(2^n\) Operationen, um n Daten zu bearbeiten. Hier steht bearbeiten, denn die gleiche Art der Laufzeitanalyse können wir für jeden Algorithmus verwenden, der Datenmengen bearbeitet, egal ob er sie nun sortiert oder etwas anderes mit jedem einzelnen Datum macht.\\
+
+Schauen wir uns das mal im Detail an: Ein Algorithmus mit \(O(2^n)\) benötigt also im schlimmsten Fall rund \(10^{33}\) Operationen, um 100 Daten zu sortieren. Nehmen wir an, wir können für unsere Aufgabe einen Prozessor mit einer Geschwindigkeit von 4 GHz nutzen, also einen Prozessor, der \(4 \cdot 10^9\) Operationen pro Sekunde ausführen kann. Dann würde dieser Prozessor immer noch mehr als \(10^{23}\) Sekunden für die Lösung dieses Problems benötigen.
+
+\paragraph{Aufgabe:} Angenommen, Sie hätten einen solchen Algorithmus programmiert. Berechnen Sie die Dauer, die dieser auf dem genannten Prozessor braucht, um seine Aufgabe abzuschließen. Haben Sie eine realistische Chance, das er diese Aufgabe vor Ihrem Eintritt in die Rente abgeschlossen hat?
+
+\paragraph{Aufgabe:} Berechnen Sie jetzt diese Aufgabe für einen Algorithmus durch, der die Aufgabe in O(n) lösen kann.\\
+
+Sie sollten jetzt verstanden haben, dass die O-Notation ein extrem wertvolles Mittel bei der Entwicklung von Software ist.\\
+
+In Büchern, in denen die Komplexitätsanalyse von Algorithmen behandelt wird, wird ein Thema in aller Regel außen vor gelassen, das in der Praxis aber  relevant werden kann: Ausführung von Algorithmen auf Parallelprozessoren. Wir werden uns in diesem Kurs auch nicht umfangreich mit diesem Thema beschäftigen, aber beim nächsten Algorithmus werden Sie lernen, dass die O-Notation nichts darüber aussagt, ob ein Algorithmus auf einem Rechner mit mehreren Tausend Kernen noch die gleiche absolute Rechenzeit benötigt wie auf einem Rechner mit nur einem Kern.\\
+
+Allerdings gibt es dafür einen guten Grund: Selbst wenn wir ein System mit mehreren Millionen Kernen zur Verfügung haben und wir einen Algorithmus nutzen, der diese Vielzahl an Kernen vollständig ausnutzt, selbst dann wird ein Algorithmus mit O(\(n^n\)) niemals 100 Daten innerhalb Ihrer Lebensdauer abarbeiten.\\
+
+\subsection{Programmierung eines Insertion Sort}
+
+Da Sie im ersten Semester die Programmierung von Java kennen gelernt haben, werden die Quellcodes in diesem Buch ebenfalls in Java angegeben.\\
+
+Wie Sie hier sehen, sind für jeden einzelnen Austausch zweier Elemente mehrere Operationen nötig. Diese Details vernachlässigen wir bei der O-Notation, weil dieser Mehrbedarf für alle Sortieralgorithmen gilt. Wenn Sie später die verschiedenen Algorithmen miteinander vergleichen werden Sie genau das leicht nachvollziehen können.
+
+\begin{verbatim}
+// Das zu sortierende Array ist: int[] values
+
+for (int i = 0; i < values.length; i++){
+for (int j = values.length - i; j < values.length; j++){
+if (values[i] > values[i+1]){
+int x = values[i];
+values[i] = values[i+1];
+values[i+1] = x;
+}}}
+\end{verbatim}
+
+Zur Erinnerung: Wenn wir eine Highscore-Liste sortieren wollen, in die alle Spieler eines online Games eingetragen sind, dann reden wir nicht über 100 sondern eher über mehr als 100.000 Einträge. Hier sind also Laufzeiten von O(\(2^n\)) in jedem Fall vollkommen inakzeptabel. Und selbst eine Laufzeit von O(n) wäre schlecht. Doch bevor wir zu Algorithmen mit einer Laufzeit von kleiner als O(n) kommen, schauen wir uns noch einen \textbf{einfachen Sortieralgorithmus}\index{Algorithmus!Einfacher Alg.} an:
+
+\section{Bubble Sort}
+
+Von nun an werden wir nicht mehr über Karten, sondern über Elemente einer Datenstruktur reden.\\
+
+Bubble Sort ähnelt insertion sort, aber die Reihenfolge der verglichenen Elemente ist anders:
+
+\begin{itemize}
+	\item Wir vergleichen paarweise Elemente:
+	
+	Das erste mit dem zweiten,\\
+	dann das dritte mit dem vierten,\\
+	dann das fünfte mit dem sechsten usw.\\
+	und vertauschen jeweils, wenn nötig.
+	
+	\item Dann vergleichen wir wieder paarweise, aber dieses Mal:
+	
+	Das zweite mit dem dritten,\\
+	dann das vierte mit dem fünften,\\
+	dann das sechste mit dem siebten usw.\\
+	und vertauschen auch hier wieder, wenn nötig.
+	
+	\item Und so lange wir bei einem der beiden Durchläufe auch nur ein Element vertauscht haben, fangen wir anschließend wieder von vorne an.
+\end{itemize}
+
+\textbf{Aufgabe:}
+
+\begin{itemize}
+	\item Berechnen Sie wie bei Insertion Sort die Laufzeitkomplexität von Bubble Sort.
+\end{itemize}
+
+Wenn Sie den Ablauf von Bubble Sort nachvollzogen haben, dann ist Ihnen wahrscheinlich intuitiv klar geworden, dass dieser eine ähnlich schlechte Laufzeit wie Insertion Sort haben muss. Und tatsächlich gehören beide bezüglich der Laufzeitkomplexität in eine Klasse.\\
+
+Auch wenn Sie jetzt noch keinen effizienten Algorithmus in diesem Kurs kennen gelernt haben, sollte Ihnen eines klar geworden sein: Die Methoden, die wir in alltäglichen Problemen nutzen, um effizient eine Aufgabe zu lösen (z.B. die Verteilung von Aufgaben bei der Organisation einer Feier) sind für Aufgaben, für die wir Computer nutzen können meist mangelhaft bis ungenügend geeignet: Sie benötigen schlicht zu viel Zeit für die Massen an Daten, die damit verarbeitet werden müssen.
+
+\subsection{Noch mehr Bezug zur Realität}
+
+Wenn Sie diesen Kurs erfolgreich abgeschlossen haben, dann werden Sie dementsprechend verstehen, warum es nicht genügt, eine Programmiersprache gut zu verstehen, um auch gute Software zu entwickeln.\\
+
+Gleichzeitig ist dieser Kurs lediglich ein Einstieg in diesen Bereich. Hier setzen wir fast durchgehend voraus, dass die n Elemente, die unser Algorithmus bearbeiten soll sich während des Ablaufs nicht ändern. In der Praxis ist das aber leider nur selten der Fall. Aber zumindest bei Fällen wie unserer Highscore-Liste können wir damit gut arbeiten, weil die Änderungen in einer solchen Liste sich eher linear entwickelt. Würden wir dagegen über einen Ticketverkauf im Kino reden, sähe die Sache ganz anders aus.
+
+\subsection{Sortieren mit Parallelprozessoren}
+
+Wenn Sie lesen, dass ein Computer vier Kerne hat und das jeder dieser Kerne mit 4 GHz arbeitet, dann könnten Sie auf die Idee kommen, dass der Computer effektiv mit 16 GHz (also viermal so schnell) arbeiten kann. Sie würden sich vielleicht noch denken, dass da ein wenige Verwaltungsaufwand abgezogen werden müsste. Doch selbst dann könnten Sie zumindest denken, dass solch ein Computer doch im Regelfall praktisch jedes Programm deutlich schneller ablaufen lassen müsste als ein Prozessor mit nur einem Kern.\\
+
+Leider liegen Sie damit falsch: Wenn die ProgrammiererInnen eines Programms dieses Programm nicht explizit für Parallelprozessoren erweitert haben, dann läuft es selbst auf einem Computer mit 50.000 Kernen noch genauso langsam/schnell wie auf einem ansonsten baugleichen Computer mit nur einem Kern.\\
+
+Nehmen wir einen Vergleich: Stellen Sie sich vor, Sie haben in Ihrer Garage zwanzig Autos, die baugleich sind. Können Sie deshalb zwanzig Mal so schnell zum Supermarkt fahren, als wenn Sie nur einen davon hätten? Natürlich nicht. Aber wenn Sie 19 Freunde hätten, die alle genauso schnell wie Sie einkaufen können und Sie jedem von Ihnen einen Wagen geben würden, dann könnten Sie in der gleichen Zeit zwanzig mal so viele Einkäufe erledigen, als wenn Sie nur einen Wagen hätten.\\
+
+Wie kommen wir jetzt von diesem Vergleich zu Programmen und parallelen Prozessoren? Ganz einfach: Ein Programm muss in unabhängige Teile zerlegbar sein, damit wir es auf mehreren Kernen eines Computers ablaufen lassen können. Und in unserem Beispiel gibt es eine Sache, die wir in unabhängige Teile zerlegen können: Die zu beschaffenden Einkäufe.\\
+
+\textbf{Aufgabe:}
+
+\begin{itemize}
+	\item Begründen Sie, warum Bubble Sort auf Parallelprozessoren schneller laufen kann als Insertion Sort.
+	\item Rechnen Sie die folgende Aufgabe für einen 10-Kern-Prozessor, einen 50-Kern-Prozessor und einen 100-Kernprozessor durch:
+	
+	Berechnen Sie die Dauer, die ein Bubble Sort Algorithmus auf dem genannten Prozessor (4 GHz-Takt) braucht, um seine Aufgabe (Sortieren von 100 Elementen) abzuschließen. Haben Sie eine realistische Chance, das er diese Aufgabe vor Ihrem Eintritt in die Rente abgeschlossen hat? (Schlagen Sie ggf. bei den Aufgaben zu Insertion Sort nach; dort stehen schon einige Teilberechnungen.)
+	
+	\item Warum macht es bei diesem Beispiel keinen Unterschied, ob der Prozessor 50 oder 100 Kerne hat?
+	\item (schwer) Warum macht es bei diesem Beispiel keinen Unterschied, ob der Prozessor einen 10-Kern-Prozessor, einen 11-Kern-Prozessor oder einen 12-Kern-Prozessor hat?
+\end{itemize}
+
+\chapter{Effiziente Algorithmen}
+
+Das letzte Kapitel diente vorrangig dazu, Ihnen zu zeigen, dass der naheliegende Weg, um Daten zu verarbeiten oftmals ein desaströser Weg ist. Dennoch sind solchen einfachen Sortieralgorithmen durchaus ein sinnvolles Mittel, wenn Sie wissen, dass Sie sie nur für das Sortieren sehr kleiner Mengen (z.B. fünf Elemente) nutzen werden.\\
+
+Schauen wir uns nun zwei Algorithmen an, die bezüglich der Laufzeit in den meisten Fällen wesentlich effizienter als Insertion Sort und Bubble Sort sind. Aber genau wie bei Insertion Sort und Bubble Sort gilt auch hier, dass diese Sortieralgorithmen für Arrays definiert sind.
