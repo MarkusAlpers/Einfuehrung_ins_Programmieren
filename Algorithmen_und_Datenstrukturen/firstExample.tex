@@ -12,21 +12,119 @@ Reine Programmierer werden diese beiden Frage ignorieren und sich erst dann mit 
 
 \textbf{Anm.:} Ein Ziel dieses Kurses besteht darin, dass Sie einige Standard-\\Algorithmen kennen, und dass Sie im Stande sind, zu bewerten, wie gut diese Algorithmen für ein bestimmtes Problem geeignet sind. Um das etwas anschaulicher zu gestalten werden Sie diese Algorithmen bzw. jeweils passende Datenstrukturen in Java programmieren.
 
+\section{Vertiefung: Variablen in der Realität}
+
+Die Überschrift mag etwas seltsam klingen: Sie haben Variablen bislang als etwas kennen gelernt, dass in einer Programmiersprache dazu dient, um Werte zu speichern. Also stellt sich nun die Frage, warum es hier einen Abschnitt zu Variablen \glqq{}in der Realität\grqq{} geben soll.\\
+
+In diesem Abschnitt behandeln wir mehrere Aspekte, die in den Bereich der \textbf{Technischen Informatik}\index{Technische Informatik} gehören, da wir tatsächlich über die technischen Grundlagen von Computern reden, die für unseren Kurs relevant sind.\\
+
+Tatsächlich ist das, was Sie als Variablen in einer Programmiersprache wie Java oder PHP kennen gelernt haben aber nur eine stark vereinfachte Sicht auf das, was tatsächlich im Computer passiert. Und ohne ein besseres Verständnis dafür, was dort tatsächlich passiert werden Sie nicht im Stande sein, Datenstrukturen zu verstehen. Damit wiederum werden Sie nicht im Stande sein, umfassend zu verstehen, warum die Beschäftigung mit Algorithmen und Datenstrukturen so essenziell ist.\\
+
+Schauen wir uns dazu zunächst an, woraus ein Computer besteht. In anderen Worten: Schauen wir uns die \textbf{Computerarchitektur}\index{Computerarchitektur} an. Im Folgenden geht es nicht um die Konzepte des von-Neumann-Rechners oder der Harvard-Architektur, die sonst einen Einstieg in dieses Thema bietet. Vielmehr schauen wir uns Computerarchitektur vor dem Hintergrund an, wie Variablen dort tatsächlich vorliegen und was alles nötig ist, damit wir Sie so nutzen können, wie das in Programmiersprachen der Fall ist.\\
+
+Grunsätzlich haben wir bei Computern (mindestens) einen Prozessor, (mindestens) einen Speicher und (mindestens) einen Weg, um Daten zwischen den beiden zu transportieren. Um es uns leicht zu machen werden wir im folgenden so tun, als wenn es von all diesen Dingen jeweils nur eines gäbe.\\
+
+Der Speicher und der Prozessor sind bei heutigen Computern einzig im Stande, Binärwerte, also die zwei unterschiedliche Symbole zu verarbeiten. Die bezeichnen wir in der Informatik als 1 und 0. Was diese 1 und 0 in der realen Welt alles sein können ist Thema von Veranstaltungen zur Nachrichten- und Kommunikationstechnik. Wie in der Informatik üblich vereinfachen wir die Situation, indem wir so tun, als wenn es die 1 und die 0 als Zahl gäbe.\\
+
+Als NutzerInnen von Computern sind wir es dagegen gewöhnt, dass Computer uns Bilder und Texte anzeigen sowie Musik spielen. Außerdem können wir mit ihnen diese drei Medien übertragen. Weiterhin können wir mit den unterschiedlichsten Geräte Computer bedienen. Da wären Touchscreens, Mäuse, Tastaturen, usw. In Programmieren 1 haben Sie gelernt, dass all das bereits durch die Benutzung von Variablen erreicht werden kann.\\
+
+Wir müssen uns jetzt also ansehen, wie es möglich ist, von Einsen und Nullen zu Variablen zu kommen, um zu verstehen, was eine Programmiersprache leisten muss. Zum Teil werden diese Aufgaben von Betriebssystemen übernommen, zum Teil von Programmiersprachen. Die Grenze ist dabei nicht festgelegt und darum unterscheiden wir an dieser Stelle nicht, wo die Aufgaben gelöst werden.
+
+\subsection{Speicher im Computer}
+
+Damit wir Variablen nutzen können ist die erste Voraussetzung, dass wir \textbf{addressierbaren Speicher}\index{Speicher} nutzen können. Wie Sie wissen befindet sich in jedem Computer Speicher. Diesen können Sie sich vereinfacht als eine nahezu endlose Fläche mit Karopapier vorstellen: Jedes Kästchen enthält eine 1 oder eine 0. Wenn wir damit arbeiten wollen, dann müssen wir im Stande sein, jedes Kästchen bewusst anzusprechen. Denn sonst ist der Speicher für uns wie ein Telefon: Wenn wir keine Möglichkeit haben, andere Personen bewusst auszuwählen, dann nützt uns das Telefon nichts. Beim Telefonieren nutzen wir dafür Telefonnummern: Zahlen, denen jeweils genau ein bestimmter Anschluss zugeordnet ist.\\
+
+Genau dasselbe brauchen wir auch beim Computerspeicher, nur dass wir hier nicht von Telefonnummern, sondern von \textbf{Addressen}\index{Speicher!Addresse} reden. Und genau wie eine Telefonnummer jedem Anschluss zugeordnet werden muss, muss auch beim Speicher eines Computers jedem Bereich eine Addresse zugeordnet werden. Das ist eine der Aufgaben, die nie von der Programmiersprache, sondern immer vom Betriebssytem übernommen wird.\\
+
+Bei vielen Rechnern wird der Speicher in Einheiten von 8 Bit Länge einzuteilen. Bei vielen, aber längst nicht bei allen, also seien Sie auf Systeme mit einer anderen Speichereinteilung vorbereitet.\\
+
+Das bedeutet, dass jede Adresse auf einen Speicherbereich verweist, in dem wir eine Zahl von 0 bis 255 speichern können. Anders ausgedrückt (und das ist wichtig), können wir mit einem solchen Speicherbereich 256 verschiedene Symbole \glqq{}speichern\grqq{}. Wir können in solch einem Speicherbereich auch die Belegung von 8 Leitungen  speichern, über die unser Computer Daten empfängt oder sendet.\\
+
+Diese beiden unterschiedlichen Interpretationen dienen dazu, dass Sie verstehen, dass ein 8-Bit-Speicher nicht ausschließlich dafür genutzt werden kann, um die Zahlen von 0 bis 256 speichern zu können; denn wofür die einzelnen Ziffern und Zahlen stehen, darüber sagt der gespeicherte Wert nichts aus. Wichtig ist auch, dass Sie sich vergegenwärtigen, dass diese Einteilung des Speichers in 8-Bit-Einheiten eine willkürliche Festlegung ist und dass es möglich ist, mehr oder weniger Bit pro Speicheradresse zusammenfassen. Es ist dabei weitgehend irrelevant, was für ein Prozessor im Computer steckt.\\
+
+Im Gegensatz dazu hat Speicher immer auch eine Zugriffsgeschwindigkeit, die durch seine Bauweise und Spezifikation festgelegt ist. Hierauf können wir im Regelfall nicht zugreifen, sondern müssen mit der Geschwindigkeit zurechtkommen, für die der Speicher konfiguriert ist. Eine höhere Geschwindigkeit als die Lichtgeschwindigkeit ist aber nicht möglich. Als grobes Augenmaß können Sie sagen, dass die 4 GHz, also \(4 \cdot 10^9\) Operationen pro Sekunde, die ein Prozessor ausführen kann die Obergrenze für jede Art der Datenübertragung bildet. Speicher in aktuellen Desktoprechnern arbeitet üblicherweise mit weniger als 300 MHz, also werden maximal \(3 \cdot 10^8\)-mal pro Sekunde Daten zwischen Speicher und Prozessor ausgetauscht.\\
+
+\emph{Einige von Ihnen werden jetzt vielleicht protestieren, weil in Ihrem Computer Speicher eingebaut ist, der mit 3 GHz arbeitet, aber das basiert auf einem Missverständnis: Die tatsächliche Taktung von Speicher kann z.B. 200 MHz sein. Daraus ergeben sich \glqq{}3 GHz\grqq{} über einen Rechentrick: Vereinfacht ausgedrückt werden bei jeder Datenübertragung 15 Byte übertragen, anstelle von nur einem. \(15 \cdot 200\) MHz = 3 GHZ. Das sind aber eben keine realen 3 GHz und es ist auch nicht der volle Geschwindigkeitsgewinn, weil eben nicht 15 Byte übertragen werden, die für den Programmablauf benötigt werden, sondern es wird in diesem Fall ein Byte übertragen, das benötigt wird und 14 Byte, die im Speicher darauf folgen. Es ist richtig, dass benachbarter Speicher häufig gemeinsam benutzt wird und deshalb ergibt ein solcher Multiplikator auch durchaus Sinn: Dieser Multiplikator erhöht tatsächlich die Menge der übertragenen Daten pro Sekunde, aber nicht alle dieser Daten werden tatsächlich benötigt. Viel wichtiger ist hier also der Takt, mit dem der Speicher arbeitet, denn das erste Byte, das in einem Takt übertragen wird wird auch immer benötigt.}\\
+
+\textbf{Zusammenfassung:}\\
+
+Sie haben jetzt ein Grundverständnis dafür, was Computerspeicher ist: Eine geordnete Ansammlung von direkt ansprechbaren Bereichen, in denen wir Binärwerte einer gewissen Größe speichern können.
+
+\subsection{Datenübertragung}
+
+Aus der Sicht der Informatik sind Wege zur Datenübertragung gewissermaßen eine Black Box, von der wir nur wissen, dass wir in einem bestimmten Zeitraum eine bestimmte Menge an Daten maximal darüber übertragen können. Die Nachrichten- und Kommunikationstechnik ist dann der wissenschaftliche Bereich, in dem die Techniken und Technologien entwickelt werden, die uns die Datenübertragung überhaupt ermöglicht. Sie untersucht auch, wie und wie gut Fehler bei der Datenübertragung automatisch korrigiert oder zumindest erkannt werden können.\\
+
+Für uns ist in diesem Kurs einzig die resultierende Geschwindigkeit relevant. Sie werden allerdings feststellen, dass wir auch diese nicht konkret untersuchen, da wir uns auf die Geschwindigkeitsunterschiede von unterschiedlichen Algorithmen konzentrieren werden, die die gleiche Aufgabe erfüllen. Und das das Verhältnis der beiden zueinander nicht von der Geschwindigkeit der Datenübertragung auf unterschiedlichen Systemen abhängt, ist eben diese Geschwindigkeit im Rahmen dieses Kurses irrelevant.
+
+\subsection{Prozessoren}
+
+Damit kommen wir zu dem Teil eines Computers, der die eigentliche Verarbeitung leistet. Ähnlich wie die Datenübertragung spielt der Prozessor selbst in diesem Kurs nur eine kleine Rolle: Bezüglich der Geschwindigkeit gilt dasselbe wie für die Datenübertragung. Allerdings werden wir gelegentlich auf Parallelprozessoren eingehen.\\
+
+Der Vollständigkeit halber sei hier noch angemerkt, was es mit Prozessoren wie einem 64-Bit-Prozessor auf sich hat: Die \textbf{Bittigkeit} eines Prozessors (in diesem Fall 64) sagt aus, wie viele Bit der Prozessor gleichzeitig verarbeiten kann. Sie gibt damit auch an, wie viel Speicher ein Prozessor maximal verwalten kann: Ein 8-Bit-Prozessor kann maximal \(2^8\), also 256 Bereiche im Speicher addressieren, weil er eben nur bis zu 256 Zahlen kennt. Das ist auch der Hauptgrund, aus dem vor einigen Jahren 64-Bit-Prozessoren auf den Markt kamen: Ein 32-Bit-Prozessor kann maximal 4 Mrd. Einheiten Speicher verwalten (bei einem Byte pro Einheit ergibt das die Obergrenze von 4 GB).\\
+
+Rechnen Sie es ruhig nach: Wir haben also mit 64-Bit-Prozessoren die Möglichkeit, mehr Speicherbereiche direkt anzusprechen als das Universum Atome hat. Damit können heutige Prozessoren genug Speicher nutzen, um jedes lösbare Problem tatsächlich zu bearbeiten.
+
+\subsection{Datentypen und Computerspeicher}
+
+Aus Sprachen wie Java kennen Sie statische Datentypen. Bislang wissen Sie lediglich, dass es sich dabei um eine Festlegung handelt, was für eine Art von Wert in einer Variablen gespeichert werden kann. So haben Sie den Datentyp int kennen gelernt, mit dem Sie Zahlen speichern können, die zwischen 0 und \(2^{32}-1\) Bit groß sind. Mit dem Wissen der vorigen Abschnitte können Sie jetzt schlussfolgern, dass diese Zahlen (vermutlich) 4 Einheiten Speicher belegen. Hier hätten wir also einen Datentyp, der jeder Zahl zur Basis 10 einen Gegenwert als 2er Komplement im Speicher zuordnet.\\
+
+Und genau das ist es, was \textbf{Datentypen} tun: Sie \textbf{legen fest, wie ein Binärwert im Speicher interpretiert wird.}\\
+
+Schauen wir uns das einmal für char-Variablen an, also für Variablen an, die z.B. einen Buchstaben speichern können. Zwar können wir willkürlich eine Zuordnung (Interpretation) eines Binärwerts im Speicher zu einem Buchstaben festlegen, aber das wäre problematisch, weil diese Zuordnung eben unsere willkürliche Festlegung wäre, anstatt das wir einen international gültigen Standard hätten. Wir hätten somit eine (wenn auch sehr schwache) Verschlüsselung erzeugt. Wenn Sie wissen wollen, warum diese Verschlüsselung sehr schwach ist, dann freuen Sie sich schon einmal auf die Veranstaltung \textbf{Kryptographie}, denn dort werden Sie die Antwort auf diese Frage kennen lernen.\\
+
+Hier wie auch an anderen Stellen nutzen wir wieder Ergebnisse aus der Nachrichtentechnik: In der Nachrichtentechnik werden auch Standards entwickelt, wie Binärzahlen z.B. als Buchstaben interpretiert werden können. Wenn wir eine Tabelle haben, die festlegt, welche Binärzahl welchem Buchstaben (oder anderen Symbol) entspricht, dann wird das als \textbf{Codierung}\index{Codierung} bezeichnet. Codierung umfasst allerdings noch wesentlich mehr. Aber darüber hören Sie etwas in der Veranstaltung \textbf{Kommunikationstechnik}\index{Kommunikationstechnik}.\\
+
+Die beste Codierung, die Sie zurzeit wie Texte in Programmen verwenden können ist die sogenannte UTF-Codierung. Sie ist deshalb am besten geeignet, weil sie entwickelt wurde, damit die Symbole jeder Sprache der Welt eindeutig einem Binärwert zugeordnet sind. Wenn Sie also einen Datentyp verwenden, der UTF umsetzt, dann können Sie jedes Symbol jeder Sprache weltweit direkt in Ihrem Programm verwenden. Allerdings hat UTF gegenüber Codierungen wie ASCII einen Nachteil: Sie benötigt bis zu 32 Bit (4 Byte) pro Zeichen. Sollten Sie also einen Rechner mit wenigen KB Speicher nutzen, könnte es nötig sein, auf UTF zu verzichten.\\
+
+Das bringt uns zum zweiten Detail bezüglich Datentypen in der Realität: \textbf{Ein Datentyp} legt nämlich nicht nur fest, wie ein Binärwert aus dem Speicher zu interpretieren ist, sondern er \textbf{legt gleichzeitig fest, wie viel Speicher für eine Variable zu reservieren ist}: Eine Programmiersprache, in der eine char-Variable die Codierung ASCII umsetzt reserviert für jede dieser Variablen 8 Bit Speicher. Eine Programmiersprache, in der eine char-Variable dagegen die Codierung UTF umsetzt, reserviert für jede dieser Variablen 32 Bit Speicher.
+
+\subsection{Vom Datentyp zur Datenstruktur}
+
+Und damit können Sie auch umfassend verstehen, was der Unterschied zwischen einem Datentyp und einer Datenstruktur ist: Ein Datentyp sagt immer aus, wie viel Speicher eine Variable belegt. Und dieser Speicherbedarf ist für alle Variablen eines Datentyps identisch. Also können Sie jetzt verstehen, warum ein String kein Datentyp ist.\\
+
+\textbf{Aufgabe:}\\
+
+Begründen Sie in eigenen Worten, warum ein String kein Datentyp ist.
+
+\subsection{Zusammenfassung und Abschluss}
+
+Beim Programmieren erzeugen, nutzen und ändern wir Variablen, die einen Datentyp und einen Wert haben.\\
+
+In der Realität haben wir einen \textbf{Bezeichner} (den Namen, den wir der Variablen geben), also etwas, das bereits eine Datenstruktur vom Typ String ist.\\
+
+\emph{Mit ein wenig Denkschmalz können Sie sich jetzt erklären, warum es Programmiersprachen gibt, bei denen nur die ersten acht Buchstaben eines Bezeichners tatsächlich verwendet werden können. Richtig gelesen: Die übrigen Zeichen des Bezeichners werden von diesen Sprachen ignoriert. Die Variablen abcdefgah und abcdefgahcde sind in solchen Sprachen also identisch.}\\
+
+Dieser Bezeichner verweist auf eine (!) \textbf{Adresse} im Speicher. Was Sie noch nicht wissen: Dieser Verweis, wird als \textbf{Pointer} bezeichnet. Es gibt Programmiersprachen, in denen Sie den Pointer ähnlich dem Wert der Variablen selbst programmieren können. Das wird als \textbf{Pointerarithmetik} bezeichnet.\\
+
+\emph{Viele Informatikstudierende scheitern an der Pointerarithmetik in C, weil Sie nicht begreifen bzw. weil ihnen nicht gesagt wurde, das der Pointer schlicht die Adresse ist, auf die eine Variable verweist.}\\
+
+Der \textbf{Datentyp} legt wiederum zwei Dinge fest:\\
+
+(1) Wie groß der Speicherbedarf der Variablen ist, also wie viele Einheiten Speicher für die Variable reserviert werden, auf die die Variable verweist. In anderen Worten: Gehören nachfolgende Adressen zur Variable und wenn ja, wie viele sind es.\\
+
+(2) Wie der Binärwert zu interpretieren ist, der in dem Speicherbereich gespeichert ist, der der Variablen zugeordnet ist.\\
+
+Es ist wichtig, dass Sie diese Vertiefung grundsätzlich verstanden haben, da sie die Grundlage für alles darstellt, was wir in diesem Kurs besprechen werden. Das beginnt bereits bei der Besprechung von Arrays, bzw. bei der Antwort auf die Frage, warum das, was in PHP als Array bezeichnet wird keine Datenstruktur namens Array ist.
+
 \section{Highscore-Liste und Array}
 
 Ein \textbf{Array}\index{Datenstruktur!Array}\index{Array} ist ein Bereich im Speicher, der in gleichgroße Teile unterteilt ist. Jedes dieser Teile ist genau so groß, dass eine Variable eines bestimmten Datentyps darin gespeichert werden kann.\\
 
 Es gibt aber auch mehrdimensionale Arrays. Wenn wir z.B. von einem fünf-dimensionalen Array sprechen, dann bedeutet das, dass jeder der genannten Teile so groß ist, dass fünf Variablen darin gespeichert werden können. Ob diese fünf Variablen alle den gleichen Datentyp haben müssen oder ob jede davon einen individuellen Datentypen haben darf, das hängt von der Programmiersprache ab. Aber grundsätzlich gilt, dass alle Variablen in einer Dimension eines Arrays den gleichen Datentyp haben müssen. Analog zum fünf-dimensionalen Array können Sie sich andere mehr-dimensionale Arrays veranschaulichen.\\
 
-Dementsprechend können wir bei einer dynamisch typisierten Sprache wie PHP gar keine Datenstruktur wie ein Array haben. In dynamisch typisierten Sprachen werden wir aber dennoch häufig Datenstrukturen finden, die als Array bezeichnet werden. Der Grund ist simpel: Da die Programmierung dieser Datenstrukturen genauso durchgeführt wird, wie das bei einem Array der Fall ist, wirkt es für reine ProgrammiererInnen so, als wenn es sich tatsächlich um Arrays handeln würde.\\
+Dementsprechend können wir bei einer dynamisch typisierten Sprache wie PHP gar keine Datenstruktur wie ein Array haben. In \textbf{dynamisch typisierten Sprachen}\index{Array!dynamisch typisiert} werden wir aber dennoch häufig Datenstrukturen finden, die als Array bezeichnet werden. Der Grund ist simpel: Da die Programmierung dieser Datenstrukturen genauso durchgeführt wird, wie das bei einem Array der Fall ist, wirkt es für reine ProgrammiererInnen so, als wenn es sich tatsächlich um Arrays handeln würde. Im Hintergrund ist aber eine ganz andere Datenstruktur am Werk, mit den jeweiligen Vor- und Nachteilen.\\
 
 Das ist ein weiterer Punkt, in dem sich InformatikerInnen und ProgrammiererInnen unterscheiden: InformatikerInnen lernen zuerst, was die Datenstruktur Array ist, während ProgrammiererInnen zuerst etwas kennen lernen, dass in einer Programmiersprache als Array bezeichnet wird. Da die \glqq{}Arrays\grqq{} in unterschiedlichen Sprachen aber teilweise nichts mit der Datenstruktur Array gemein haben, führt der Einstieg von reinen ProgrammiererInnen häufig zu Problemen, wenn sie neue Programmiersprachen erlernen wollen: Kaum eine Einführung in eine Programmiersprache geht auf die Unterschiede zwischen den allgemein definierten Datenstrukturen und der konkreten Umsetzung in der jeweiligen Sprache ein. Wenn Sie beispielsweise Java gelernt haben, dann werden Sie sehr aufpassen müssen, wenn wir in diesem Kurs über Hash-basierte Datenstrukturen sprechen.\\
 
-Die vier Algorithmen, die wir in diesem Teil des Buches untersuchen setzen alle voraus, dass sie auf einem Array ausgeführt werden.\\
+Um den Einstieg zu erleichtern werden wir in den nächsten Abschnitten so tun, als wenn es nur die Datenstruktur Array gäbe. Später lernen Sie dann Datenstrukturen kennen, die sich sehr von Arrays unterscheiden.\\
 
-\textbf{Aufgabe:}\\
+\textbf{Aufgabe:}
 
-Erklären Sie in eigenen Worten, warum es in dynamisch typisierten Sprachen kein \glqq{}echtes\grqq{} Array geben kann. (Tipp: Die Antwort steht nicht im vorigen Absatz. Um diese Aufgabe zu lösen müssen Sie den Unterschied zwischen statischer und dynamischer Typisierung verstanden haben.)\\
+\begin{itemize}
+	\item Erklären Sie in eigenen Worten, warum es in dynamisch typisierten Sprachen kein \glqq{}echtes\grqq{} Array geben kann.
+	
+	\textbf{Tipp:} Die Antwort steht nicht im vorigen Absatz. Um diese Aufgabe zu lösen müssen Sie den Unterschied zwischen statischer und dynamischer Typisierung verstanden haben und sich bewusst machen, was während des Ablaufs eines Programms im Speicher passieren kann.
+\end{itemize}
 
 Nehmen wir an, wir haben ein zweidimensionales Array, in dem die ersten Ergebnisse gespeichert, aber noch nicht sortiert sind:\\
 
@@ -44,347 +142,7 @@ Nehmen wir an, wir haben ein zweidimensionales Array, in dem die ersten Ergebnis
 
 Damit daraus eine wunschgemäße Highscore-Liste wird, müssen wir nun etwas entwickeln, das als \textbf{Sortieralgorithmus}\index{Algorithmus!Sortieralg.} bezeichnet wird.\\
 
-Die Bezeichnung folgt dabei direkt aus der Aufgabe eines Algorithmus: Ein Sortieralgorithmus heißt Sortieralgorithmus, weil er ein Algorithmus ist, der die Elemente einer Menge (hier die Einträge eines Arrays) sortieren soll.\\
+Die Bezeichnung folgt dabei direkt aus der Aufgabe eines Algorithmus: Ein Sortieralgorithmus heißt Sortieralgorithmus, weil er ein Algorithmus ist, der die Elemente einer Menge (hier die Einträge eines Arrays) sortiert.\\
 
-Wie Sie weiter oben gesehen haben, sprechen wir fürs erste nur über Arrays bzw. Algorithmen für Arrays und die Komplexität dieser Arrays.
+\emph{Und nun raten Sie mal, was ein Suchalgorithmus ist.}
 
-\chapter{Einfache Sortieralgorithmen}
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Notieren Sie eine Methode, wie Sie eine solche Highscore-Liste sortieren könnten. Die Reihenfolge soll dabei der Punktstand der SpielerInnen sein.
-	
-	Arbeiten Sie danach die folgenden Sortieralgorithmen durch und versuchen Sie sich insbesondere die Unterschiede bei der Laufzeit klar zu machen.
-\end{itemize}
-
-\section{Insertion Sort}\index{Sortieralgorithmen!Insertion Sort}
-
-Wenn Sie häufig Karten spielen (oder gespielt haben), dann werden Sie die Einträge der Highscore-Liste vielleicht wie Karten behandeln, die Sie nacheinander auf ein Hand nehmen.\\
-
-Der Sortieralgorithmus Insertion Sort basiert auf diesem Vorgehen, allerdings nehmen wir hier die unsortierten Karten direkt auf die Hand und beginnen dann von links nach rechts (oder umgekehrt) mit der Sortierung.\\
-
-Bezüglich der Datenstruktur bedeutet das: Die Karten liegen als Elemente eines Arrays vor, Sie werden also nicht im Laufe des Algorithmus eingefügt, sondern lediglich umsortiert.
-
-\textbf{Anm.:}\\
-
-Hier und bei allen nachfolgenden Algorithmen werden wir uns auch gleich ansehen, wie viele Austausch- oder Vergleichsoperationen wir maximal brauchen, um mit eine gegebene Menge Karten zu sortieren.\\
-
-Im folgenden Beispiel gilt, dass wir die Karten von klein nach groß von links nach rechts sortieren:
-
-\begin{itemize}
-	\item Die erste Karte ist (verglichen mit sich selbst) bereits sortiert. Für das Vergleichen brauchen wir also keine Operation.
-	\item Die zweite Karte vergleichen wir mit der ersten und sortieren Sie dann davor oder danach ein. Danach sind die ersten beiden Karten sortiert. Wir haben bis hierher also 0 + 1 Vergleichsoperationen.
-	\item Die dritte Karte vergleichen wir zuerst mit der zweiten. Wenn sie größer als die zweite ist, ist sie damit sortiert, denn die zweite Karte ist ja in der letzten Iteration bereits nach Größe sortiert worden. Ist die dritte Karte dagegen kleiner als die zweite, dann werden die beiden umgehend vertauscht. In diesem Fall folgt noch ein Vergleich und ggf. ein Austausch mit der ersten Karte. Für die dritte Karte brauchen wir also mindestens eine Vergleichsoperation aber maximal zwei. Im besten Fall haben wir also 0 + 1 + 1, im schlimmsten Fall 0 + 1 + 2 Vergleichsoperationen.
-\end{itemize}
-
-\textbf{Aufgaben:}
-
-\begin{itemize}
-	\item Rechnen Sie den besten und schlimmsten Fall für die vierte und fünfte Karte durch. Den durchschnittlichen Fall und weitere Varianten lassen Sie vorerst außen vor. Diese haben wir nicht besprochen, auch wenn es sinnvolle Anwendungsgebiete dafür gibt.
-	\item Formulieren Sie das Ergebnis als Summenformel.
-	\item Formulieren Sie das Ergebnis jetzt für n Karten. (Und wenn Sie jetzt nicht an einen Beweis per Induktion denken, dann haben Sie zu wenig Zeit für Mathematik 1 investiert.)
-	\item Prüfen Sie nun, in welcher der folgenden Größenordnungen Ihr Ergebnis am ehesten liegt:
-	\begin{itemize}
-		\item Eine konkrete ganze Zahl
-		\item Die Variable n 
-		\item \(log_2\) n (in der Informatik meist als log n abgekürzt)
-		\item n \(log_2\) n (in der Informatik dementsprechend meist als n log n abgekürzt)
-		\item \(n^2\)
-		\item \(n^3\)
-		\item \(2^n\) 
-		\item \(n^n\)
-	\end{itemize}
-\end{itemize}
-
-Wenn Sie die vierte Aufgabe erfolgreich abgeschlossen haben, dann haben Sie eine Analyse der \textbf{Laufzeitkomplexität}\index{Komplexität!Laufzeit} durchgeführt.\\
-
-\textbf{Wichtig:}\\
-
-Für große Datenmengen ist es weniger wichtig, ob ein Algorithmus nun eine Komplexität von O(2 \(n^2\)) oder O(3 \(n^2\)) hat. Viel wichtiger ist die Antwort auf die Frage, ob sie bei \(n^2\) oder \(n^3\) oder doch bei n \(log\) n liegt. Deshalb musste Sie im vierten Aufgabenteil entscheiden, in welchem Bereich Ihr Ergebnis liegt. Wir reden deshalb auch von \textbf{Komplexitätsklassen}\index{Komplexitätsklassen}, bzw. von Algorithmen einer Komplexitätsklasse. Diese mögen sich dann im Detail unterscheiden, aber wir suchen weniger nach den Verbesserungen im Detail, als vielmehr nach der Antwort auf die Frage, ob ein Algorithmus für praktische Probleme nutzbar ist. Genau das ist der Grund, warum Bereichen wie \glqq{}Algorithmen und Datenstrukturen\grqq{} zur Praktischen Informatik zählen: Wir suchen hier nach Lösungen für die Praxis, auch wenn die Mittel eher theoretisch wirken.\\
-
-Diese Klassen unterscheiden sich allerdings von denen, die Sie in Veranstaltungen der theoretischen Informatik kennen lernen werden: In der theoretischen Informatik beschäftigen wir uns vorrangig mit Fragen wie derjenigen, ob ein bestimmte Klasse von Problemen überhaupt lösbar ist. Es geht dort also nicht um die praktische Relevanz einzelner Algorithmen, sondern um Grundlagenforschung. 
-
-\section{Die Landau- bzw. O-Notation}\index{Komplexität!O-Notation}\index{O-Notation}
-
-Für den schlimmsten Fall nutzen wir die sogenannte O-Notation, die Teil der sogenannten Landau-Notation ist. Ausgesprochen wird es als Groß-O Notation ausgesprochen, also nicht als Null-Notation. Sie können sich das so merken, dass das O für obere Grenze steht. Angenommen, Sie haben jetzt berechnet, dass die Laufzeitkomplexität im schlimmsten Fall \(2^n\) beträgt, dann würden Sie das in der O-Notation als \(O(2^n)\) notieren. Wobei die Laufzeitkomplexität für insertion sort NICHT \(O(2^n)\) ist.\\
-
-Ähnlich wie der dekadische Logarithmus ein Maßstab ist, mit dem wir Größenordnungen in der Natur beschreiben können, ist die Landau-Notation ein Maßstab, um die Größenordnung der Schwierigkeit einer Aufgabe bzw. eines Lösungsansatzes zu beschreiben. Anschaulich ließe sich diese Notation wie folgt zusammen fassen:
-
-\begin{itemize}
-	\item Eine konstante Zahl drückt aus, dass es sich um eine einfache Aufgabe handelt.
-	\item Ein Ausdruck, in dem die Schwierigkeit durch den Logarithmus einer Variablen ausgedrückt wird ist in aller Regel gut lösbar.
-	\item Eine Variable (erster Potenz) drückt aus, dass die Aufgabe zwar umfangreich, aber in aller Regel zu bewältigen ist.
-	\item Exponentielle Ausdrücke sind dagegen in aller Regel sehr anspruchsvoll oder sogar generell nicht zu bewältigen. In letzterem Fall spricht man auch von einem nicht-lösbaren Problem.
-\end{itemize}
-
-In der Praktischen Informatik vergleichen wir, welcher Algorithmus bzw. welche Algorithmen am besten geeignet sind, um eine Aufgabe zu lösen. Wenn wir die Landau-Notation auf die Laufzeit eines Algorithmus übertragen, dann ließen sich die verschiedenen Klassen wie folgt übersetzen:
-
-\begin{itemize}
-	\item Ein Algorithmus, dessen Laufzeit nach O-Notation mit einer konstanten Zahl angegeben werden kann, wird immer nach der (nahezu) gleichen Zeit fertig sein, egal wie viele Daten er verarbeiten muss. Er ist also in zeitlicher Hinsicht äußerst effizient.
-	\item Ein Algorithmus, dessen Laufzeit nach O-Notation \(log_2 n\) oder \(n\) oder \(n \cdot log_2 n\) beträgt, ist immer noch recht effizient. Tatsächlich gibt es viele häufig zu lösende Aufgaben, bei der eine höhere Effizienz als \(n \cdot log_2 n\) nicht erreicht werden kann.
-	
-	Die Beweisverfahren, mit denen gezeigt wird, ob eine höhere Effizienz für eine bestimmte Aufgabe überhaupt möglich ist werden in Veranstaltungen der Theoretischen Informatik behandelt.
-	\item Sobald wir es dagegen mit exponentiellen Ausdrücken in O-Notation zu tun bekommen, haben wir es mit Algorithmen zu tun, die in der Praxis nur in wenigen Fällen anwendbar sind. Hier wird zwischen Algorithmen unterschieden, die in O-Notation als polynomieller\footnote{Zur Erinnerung: Polynomieller Ausdruck: Ein Ausdruck, der sich als \(\sum_{i = 0}^{n} a_i \cdot x^i\) angeben lässt, also als \(a_0 + a_1 \cdot x + a_2 \cdot x^2 + ... + a_n \cdot x^n\)} oder nicht-polynomieller Ausdruck angegeben werden. 
-	
-	Diese werden verkürzt als Algorithmen der Klassen \textbf{P} (kurz für \glqq{}in polynomieller Zeit lösbar\grqq{}) und \textbf{NP} (kurz für \glqq{}nicht in polynomieller Zeit lösbar\grqq{}) bezeichnet. Sie werden später (vorrangig in den Veranstaltungen der Theoretischen Informatik) auch Formulierungen wie \glqq{}Das Problem ist \textbf{NP-hart}\grqq{}\index{NP-hart}\index{Algorithmus!NP-hart} lesen. Diese Formulierung besagt, dass die Aufgabe grundsätzlich nicht in polynomieller Zeit lösbar ist. Das bedeutet nichts anderes, als dass es (bis auf wenige Spezialfälle) unmöglich ist, ein Programm zu verfassen, dass diese Aufgabe mit einem Computer lösen kann. 
-\end{itemize}
-
-
-\subsection{Der Bezug zur Realität}
-
-Um es in Worten auszudrücken: Ein Algorithmus mit \(O(2^n)\) benötigt also \(2^n\) Operationen, um n Daten zu bearbeiten. Hier steht bearbeiten, denn die gleiche Art der Laufzeitanalyse können wir für jeden Algorithmus verwenden, der Datenmengen bearbeitet, egal ob er sie nun sortiert oder etwas anderes mit jedem einzelnen Datum macht.\\
-
-Schauen wir uns das mal im Detail an: Ein Algorithmus mit \(O(2^n)\) benötigt also im schlimmsten Fall rund \(10^{33}\) Operationen, um 100 Daten zu sortieren. Nehmen wir an, wir können für unsere Aufgabe einen Prozessor mit einer Geschwindigkeit von 4 GHz nutzen, also einen Prozessor, der \(4 \cdot 10^9\) Operationen pro Sekunde ausführen kann. Dann würde dieser Prozessor immer noch mehr als \(10^{23}\) Sekunden für die Lösung dieses Problems benötigen.\\
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Angenommen, Sie hätten einen solchen Algorithmus programmiert. Berechnen Sie die Dauer, die dieser auf dem genannten Prozessor braucht, um seine Aufgabe abzuschließen. (Gemeint ist, dass Sie die Dauer in eine Form umrechnen sollen, die für Sie aussagekräftig ist... Schließlich ist die Angabe in Sekunden bei dieser Größenordnung für uns als Menschen eher schlecht einzuordnen.) 
-	
-	Haben Sie eine realistische Chance, das er diese Aufgabe vor Ihrem Eintritt in die Rente abgeschlossen hat?
-\end{itemize}
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Berechnen Sie jetzt diese Aufgabe für einen Algorithmus durch, der die Aufgabe in O(n) lösen kann.
-\end{itemize}
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Ergänzen Sie die folgende Aufstellung, um Zeiträume in Größenordnungen von Sekunden einzuordnen. Suchen Sie nach weiteren Größenordnungen für Zeiträume, die für Computer oder Menschen oder Tiere oder Unternehmen oder beliebige andere Dinge relevant sind.
-	
-	Beispiele:
-	
-	\begin{itemize}
-		\item \(10^{-10}\) bis \(10^{-9}\) Sekunden:
-		
-		 Ausführungszeit für eine Operation auf Prozessoren, die im GHz-Bereich arbeiten.
-		\item \(10^0\) Sekunden: 
-		
-		Gewöhnliche Reaktionszeit eines Menschen.
-		\item \(10^1\) bis \(10^2\) Sekunden:
-		
-		 Reaktionszeit eines angetrunkenen oder unter Drogen stehenden Menschen.
-		\item \(10^{17}\) Sekunden: 
-		
-		Ungefähre Dauer der bisherigen Existenz dieses Universums.
-	\end{itemize}
-\end{itemize}
-
-\textbf{Aufgabe:}\\
-
-\begin{itemize}
-	\item Nehmen Sie nun die Tabelle, die Sie gerade erstellt haben und kategorisieren Sie die verschiedenen Einträge wie folgt: (Tragen Sie aber jeweils die Dauer in Sekunden mit ein.)
-	
-	\begin{itemize}
-		\item \textbf{Kategorie 1:} Zu schnell für das menschliche Auge.
-		\item \textbf{Kategorie k:} Auf die schnelle zu erledigen.
-		\item \textbf{Kategorie log n:} In der Zwischenzeit könnten wir uns einen Kaffe holen.
-		\item \textbf{Kategorie n:} Lass uns doch in der Zwischenzeit mal Essen gehen; in der Kantine gibts heute Burger.
-		\item \textbf{Kategorie n log n:} Das könnte heute vielleicht noch klappen. Eventuell dauerts aber auch bis Ende nächster Woche.
-		\item \textbf{Kategorie }\(n^2\): Ich bin nicht sicher, ob das noch vor Weihnachten nächsten Jahres klappt.
-		\item \textbf{Kategorie }\(2^n\): Wir sollten lieber nicht nach Los Angeles fliegen. Ich habe gehört, dass die da irgendwann ein Erdbeben erwarten.
-		\item \textbf{Kategorie }\(n^n\): Also neulich ja, da habe ich was über parallele Universen gehört. Lass doch mal eine Forschungsreise in eines davon machen.
-	\end{itemize}
-\end{itemize}
-
-Diese Aufgaben sollten vorrangig dazu dienen, dass Sie ein Gefühl für die verschiedenen Klassen der O-Notation bekommen.\\
-
-\textbf{Fazit und Ergänzung:}\\
-
-Sie sollten jetzt verstanden haben, dass die O-Notation ein extrem wertvolles Mittel bei der Entwicklung von Software ist.\\
-
-In Büchern, in denen die Komplexitätsanalyse von Algorithmen behandelt wird, wird ein Thema in aller Regel außen vor gelassen, das in der Praxis aber  relevant werden kann: Ausführung von Algorithmen auf Parallelprozessoren. Wir werden uns in diesem Kurs auch nicht umfangreich mit diesem Thema beschäftigen, aber beim nächsten Algorithmus werden Sie lernen, dass die O-Notation nichts darüber aussagt, ob ein Algorithmus auf einem Rechner mit mehreren Tausend Kernen noch die gleiche absolute Rechenzeit benötigt wie auf einem Rechner mit nur einem Kern.\\
-
-Allerdings gibt es dafür einen guten Grund: Selbst wenn wir ein System mit mehreren Millionen Kernen zur Verfügung haben und wir einen Algorithmus nutzen, der diese Vielzahl an Kernen vollständig ausnutzt, selbst dann wird ein Algorithmus mit O(\(n^n\)) niemals 100 Daten innerhalb Ihrer Lebensdauer abarbeiten.
-
-\subsection{Programmierung eines Insertion Sort}
-
-Da Sie im ersten Semester die Programmierung von Java kennen gelernt haben, werden die Quellcodes in diesem Buch ebenfalls in Java angegeben.\\
-
-Wie Sie hier sehen, sind für jeden einzelnen Austausch zweier Elemente mehrere Operationen nötig. Diese Details vernachlässigen wir bei der O-Notation, weil dieser Mehrbedarf für alle Sortieralgorithmen gilt. Wenn Sie später die verschiedenen Algorithmen miteinander vergleichen werden Sie genau das leicht nachvollziehen können.
-
-\begin{verbatim}
-// Das zu sortierende Array ist: int[] values
-
-void insertionSort()
-{
-for (int i = 0; i < values.length; i++)
-{
-for (int j = values.length - i; j < values.length; j++)
-{
-if (values[i] > values[i+1])
-{
-switchValues(i,j);
-} // fi (values[i] > values[i+1])
-} // rof (int j = values.length - i; j < values.length; j++)
-} // rof (int i = 0; i < values.length; i++)
-} // insertionSort()
-
-void switchValues(int i, int j){
-int x = values[i];
-values[i] = values[i+1];
-values[i+1] = x;
-}
-\end{verbatim}
-
-\textbf{Zur Erinnerung: }\\
-
-Wenn wir eine Highscore-Liste sortieren wollen, in die alle Spieler eines online Games eingetragen sind, dann reden wir nicht über 100 sondern eher über mehr als 100.000 Einträge. Hier sind also Laufzeiten von O(\(2^n\)) in jedem Fall vollkommen inakzeptabel. Und selbst eine Laufzeit von O(n) wäre schlecht. Doch bevor wir zu Algorithmen mit einer Laufzeit von kleiner als O(n) kommen, schauen wir uns noch einen \textbf{einfachen Sortieralgorithmus}\index{Algorithmus!Einfacher Alg.} an:
-
-\subsection{Komplexität des Speicherbedarfs von Insertion Sort}
-
-Wie eingangs erläutert, kann auch der Speicherbedarf eines Algorithmus ein wichtiges Kriterium sein. Schauen wir uns also die Implementierung von Insertion Sort an, um etwas über den Speicherbedarf zu sagen. Wir haben hier leider keine explizite Notation wie die O-Notation für die Laufzeitkomplexität, aber das Prinzip ist dasselbe:\\
-
-Zunächst haben wir das Array mit den gespeicherten Werten. Wenn wir wieder n als Variable für die Anzahl Elemente wählen und x als Variable für den Speicherbedarf in Byte, dann sind wir bei \(x \cdot n\) Byte als Speicherbedarf.\\
-
-Im besten Fall, also dann, wenn das Array bereits sortiert ist, ist das unser Speicherbedarf. Dann haben wir also keinen zusätzlichen Speicherbedarf durchs Sortieren.\\
-
-Schauen wir uns also die Situation an, wenn sortiert werden muss. In diesem Fall wird zusätzlich Speicher für ein Element benötigt, weil dieses ja beim Vertauschen zwischengespeichert werden muss. Werfen Sie ggf. einen Blick in die Methode switchValues(), um das nachzuvollziehen. Damit haben wir \(x \cdot n + x\) Byte oder \(x \cdot (n + 1)\) als Komplexität des Speicherbedarfs im schlimmsten Fall.\\
-
-In anderen Worten: Nur wenn die zu sortierenden Daten bereits dazu führen, dass der Speicher unseres Rechners vollständig gefüllt ist, nur dann ist die Sortierung mit Insertion Sort wegen des Speicherbedarfs nicht mehr möglich. Im Gegensatz zur Laufzeitkomplexität ist die Speicherkomplexität also proportional zur Menge der zu verarbeitenden Daten.
-
-\section{Bubble Sort}
-
-Von nun an werden wir nicht mehr über Karten, sondern über Elemente einer Datenstruktur reden.\\
-
-Bubble Sort ähnelt Insertion Sort, aber die Reihenfolge der verglichenen Elemente ist anders:
-
-\begin{itemize}
-	\item Wir vergleichen paarweise Elemente:
-	
-	Das erste mit dem zweiten,\\
-	das dritte mit dem vierten,\\
-	das fünfte mit dem sechsten usw.\\
-	und vertauschen jeweils, wenn nötig.
-	
-	\item Dann vergleichen wir wieder paarweise, aber dieses Mal:
-	
-	Das zweite mit dem dritten,\\
-	das vierte mit dem fünften,\\
-	das sechste mit dem siebten usw.\\
-	und vertauschen auch hier wieder, wenn nötig.
-	
-	\item Und so lange wir bei einem der beiden Durchläufe auch nur ein Element vertauscht haben, fangen wir anschließend wieder von vorne an.
-\end{itemize}
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Berechnen Sie wie bei Insertion Sort die Laufzeitkomplexität von Bubble Sort.
-\end{itemize}
-
-Wenn Sie den Ablauf von Bubble Sort nachvollzogen haben, dann ist Ihnen wahrscheinlich intuitiv klar geworden, dass dieser eine ähnlich schlechte Laufzeit wie Insertion Sort haben muss. Und tatsächlich gehören beide bezüglich der Laufzeitkomplexität in eine Klasse.\\
-
-Auch wenn Sie jetzt noch keinen effizienten Algorithmus in diesem Kurs kennen gelernt haben, sollte Ihnen eines klar geworden sein: Die Methoden, die wir in alltäglichen Problemen nutzen, um effizient eine Aufgabe zu lösen (z.B. die Verteilung von Aufgaben bei der Organisation einer Feier) sind für Aufgaben, für die wir Computer nutzen können meist mangelhaft bis ungenügend geeignet: Sie benötigen schlicht zu viel Zeit für die Massen an Daten, die damit verarbeitet werden müssen.\\
-
-Wenn wir also gute Software entwickeln wollen, dann brauchen wir neue Konzepte und Methoden. Und der Bereich der \textbf{Praktischen Informatik} bietet mit \glqq{}Algorithmen und Datenstrukturen\grqq{} einen passenden Einstieg an.
-
-\subsection{Noch mehr Bezug zur Realität}
-
-Wenn Sie diesen Kurs erfolgreich abgeschlossen haben, dann werden Sie dementsprechend verstehen, warum es nicht genügt, eine Programmiersprache gut zu verstehen, um auch gute Software zu entwickeln.\\
-
-Gleichzeitig ist dieser Kurs lediglich ein Einstieg in diesen Bereich. Hier setzen wir fast durchgehend voraus, dass die n Elemente, die unser Algorithmus bearbeiten soll sich während des Ablaufs nicht ändern. In der Praxis ist das aber leider nur selten der Fall. Deshalb kann dieser Kurs nur ein Einstieg in dieses wichtige Gebiet sein.
-
-\subsection{Sortieren mit Parallelprozessoren}
-
-Wenn Sie lesen, dass ein Computer vier Kerne hat und das jeder dieser Kerne mit 4 GHz arbeitet, dann könnten Sie auf die Idee kommen, dass der Computer effektiv mit 16 GHz (also viermal so schnell) arbeiten kann. Sie würden sich vielleicht noch denken, dass da ein wenige Verwaltungsaufwand abgezogen werden müsste. Doch selbst dann könnten Sie zumindest denken, dass solch ein Computer doch im Regelfall praktisch jedes Programm deutlich schneller ablaufen lassen müsste als ein Prozessor mit nur einem Kern.\\
-
-Leider liegen Sie damit falsch: Wenn die ProgrammiererInnen eines Programms dieses Programm nicht explizit für Parallelprozessoren erweitert haben, dann läuft es selbst auf einem Computer mit 50.000 Kernen noch genauso langsam/schnell wie auf einem ansonsten baugleichen Computer mit nur einem Kern.\\
-
-Nehmen wir einen Vergleich: Stellen Sie sich vor, Sie haben in Ihrer Garage zwanzig Autos, die baugleich sind. Können Sie deshalb zwanzig Mal so schnell zum Supermarkt fahren, als wenn Sie nur einen davon hätten? Natürlich nicht. Aber wenn Sie 19 Freunde hätten, die alle genauso schnell wie Sie einkaufen können und Sie jedem von Ihnen einen Wagen geben würden, dann könnten Sie in der gleichen Zeit zwanzig mal so viele Einkäufe erledigen, als wenn Sie nur einen Wagen hätten.\\
-
-Wie kommen wir jetzt von diesem Vergleich zu Programmen und parallelen Prozessoren? Ganz einfach: Ein Programm muss in unabhängige Teile zerlegbar sein, damit wir es auf mehreren Kernen eines Computers ablaufen lassen können. Und in unserem Beispiel gibt es eine Sache, die wir in unabhängige Teile zerlegen können: Die zu beschaffenden Einkäufe.\\
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Begründen Sie, warum Bubble Sort auf Parallelprozessoren schneller laufen kann als Insertion Sort.
-	\item Rechnen Sie die folgende Aufgabe (a) für einen 10-Kern-Prozessor, (b) einen 50-Kern-Prozessor und (c) einen 100-Kernprozessor durch:
-	
-	Berechnen Sie die Dauer, die ein Bubble Sort Algorithmus auf dem genannten Prozessor (4 GHz-Takt) braucht, um seine Aufgabe (Sortieren von 100 Elementen) abzuschließen. Haben Sie eine realistische Chance, das er diese Aufgabe vor Ihrem Eintritt in die Rente abgeschlossen hat? (Schlagen Sie ggf. bei den Aufgaben zu Insertion Sort nach; dort stehen schon einige Teilberechnungen.)
-	
-	\item Warum macht es bei diesem Beispiel keinen Unterschied, ob der Prozessor 50 oder 100 Kerne hat?
-	\item Warum macht es bei diesem Beispiel keinen Unterschied, ob der Prozessor einen 10-Kern-Prozessor, einen 11-Kern-Prozessor oder einen 12-Kern-Prozessor hat?
-\end{itemize}
-
-\section{Programmierung von Bubble Sort}
-
-Wie schon beim Insertion Sort sind für jeden einzelnen Austausch zweier Elemente mehrere Operationen nötig. Wie gesagt vernachlässigen wir diese Details bei der O-Notation, weil dieser Mehrbedarf für alle Sortieralgorithmen gilt. Vergleichen Sie das Java-Fragment für Insertion Sort mit diesem, um zu verstehen, warum das so ist.
-
-\begin{verbatim}
-// Das zu sortierende Array ist: int[] values
-
-void bubbleSort(){
-do // while (elementSwitched);
-{
-
-for (int i = 0; i < values.length - 1; i+=2)
-{
-if (i == 0)
-{
-elementSwitched=false;
-}
-if (values[i] > values[i+1])
-{
-elementSwitched = true;
-switchElements(i,j);
-} // fi (values[i] > values[i+1])
-} // rof (int i = 0; i < values.length - 1; i+=2)
-
-for (int i = 1; i < values.length - 1; i+=2)
-{
-if (values[i] > values[i+1])
-{
-elementSwitched = true;
-switchElements(i,j);
-} // fi (values[i] > values[i+1])
-} // rof (int i = 1; i < values.length - 1; i+=2)
-} while (elementSwitched);
-} // bubbleSort()
-
-void switchElements(int i, int j)
-{
-int x = values[i];
-values[i] = values[i+1];
-values[i+1] = x;
-}
-\end{verbatim}
-
-\textbf{Aufgabe:}
-
-\begin{itemize}
-	\item Nehmen Sie sich bitte ausreichend Zeit, um die Umsetzung von Insertion Sort und Bubble Sort in Java zu vergleichen.
-	\item Berechnen Sie dazu als erstes die Laufzeitkomplexität der beiden anhand des Quellcodes.
-	\item Erklären Sie ebenfalls schriftlich, wo die beiden Quellcodes sich unterscheiden und wo sie sich gleichen.
-	\item Formulieren Sie aus, was letztlich dazu führt, dass beide eine Laufzeitkomplexität von O(\(n^2\)) haben.
-\end{itemize}
-
-\section{Zusammenfassung zu einfachen Algorithmen}
-
-Sie haben jetzt zwei Algorithmen kennen gelernt, die zwar unterschiedlich ablaufen, aber in der Praxis sind beide meist nicht sinnvoll einsetzbar.\\
-
-Sie wissen jetzt, dass es ein Wertungskriterium gibt, um Algorithmen zu vergleichen, eben die O-Notation.\\
-
-Sie sind im Stande, Algorithmen anhand der O-Notation zu vergleichen.\\
-
-Sie wissen aber auch, dass Sie mithilfe der O-Notation nur einen Aussage über den relativen Zeitbedarf verschiedener Algorithmen treffen können.\\
-
-Ihnen ist insbesondere bewusst, dass die O-Notation nichts darüber aussagt, wie groß der Speicherbedarf eines Algorithmus ausfällt.\\
-
-Langfristig werden Sie erkennen, dass wir bei den beiden Komplexitäten (Laufzeit versus Speicherbedarf) ein Dilemma vorfinden, dass eine gewisse Analogie zur Heisenbergschen Unschärferelation aufweist: So wie wir im Bereich der Elementarteilchen uns entscheiden müssen, ob wir die Position oder die Geschwindigkeit eines Elementarteilchens mit (nahezu) beliebiger Präzision feststellen wollen, müssen wir uns bei Algorithmen und Datenstrukturen entscheiden, ob wir eine hohe Effizienz beim Speicherbedarf oder beim Speicherbedarf erreichen wollen. Beides zusammen geht nicht.
-
-\chapter{Laufzeit-effiziente Algorithmen}
-
-Das letzte Kapitel diente vorrangig dazu, Ihnen zu zeigen, dass der naheliegende Weg, um Daten zu verarbeiten oftmals ein desaströser Weg ist. Dennoch sind solchen einfachen Sortieralgorithmen durchaus ein sinnvolles Mittel, wenn Sie wissen, dass Sie sie in einem Programm nur für das Sortieren sehr kleiner Mengen (z.B. fünf Elemente) nutzen werden.\\
-
-Schauen wir uns nun zwei Algorithmen an, die bezüglich der Laufzeit in den meisten Fällen wesentlich effizienter als Insertion Sort und Bubble Sort sind. Aber genau wie bei Insertion Sort und Bubble Sort gilt auch hier, dass diese Sortieralgorithmen für Arrays definiert sind.\\
-
-Die beiden folgenden Algorithmen werden meist in der Gruppe der \textbf{Devide and Conquer Algorithmen}\index{Algorithmen!Devide and Conquer} zusammen gefasst, da mit dieser Bezeichnung ein wesentlicher Charakter dieser Algorithmen zusammen gefasst wird. 
-
-\section{Merge Sort}\index{Algorithmen!Merge Sort}\index{Merge Sort}
-
-In einem Zwischenschritt geht Merge Sort genauso vor wie Bubble Sort. Ansonsten haben die beiden aber kaum etwas gemein: Nach einigen vorbereitenden Schritten werden auch bei Merge Sort Elemente paarweise verglichen und sortiert. Aber im Gegensatz zu Bubble Sort passiert das für jedes Element bei Merge Sort so nur ein einziges Mal.
