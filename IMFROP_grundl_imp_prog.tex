@@ -498,7 +498,7 @@ Oben haben Sie einfach Programmbeispiele abgetippt. Dabei haben Sie am Anfang di
 
 \subsubsection{Literale in Java}
 
-Zunächst ist der Java Compiler im Stande alle UTF-16 Zeichen zu interpretieren. Das bedeutet, dass wir ein Java-Programm theoretisch als eine Folge von Unicodes in der Form /u0000 bis /uFFFF programmieren könnten.\\
+Zunächst ist der Java Compiler im Stande alle UTF-16 Zeichen zu interpretieren. Das bedeutet, dass wir ein Java-Programm theoretisch als eine Folge von Unicodes in der Form \verb|/u0000| bis \verb|/uFFFF| programmieren könnten.\\
 
 
 
@@ -516,19 +516,20 @@ Kontrolle\\
 
 Deklarierung und Initialisierung von char-Variablen:\\
 
+\verb|char einBuchstabe = `a`;|\\
 
-char einBuchstabe = `a`;
+\textbf{Wichtig:}\\
 
-Wichtig: Im Gegensatz zu Strings, die wir uns erst im Rahmen der Datenstrukturen ansehen werden beginnen und enden char-Variablen mit einem einfachen Anführungszeichen.\\
+Im Gegensatz zu Strings, die wir uns erst im Rahmen der Datenstrukturen ansehen werden beginnen und enden char-Variablen mit einem einfachen Anführungszeichen.\\
 
 
 \subsection{Datentypen für Wahrheitswerte}
 
 Richtig gelesen: Es gibt einen Datentyp für Variablen, die nur unterscheiden, ob etwas wahr oder falsch ist. Solche Variablen nennt man auch boolesche Variablen. Den meisten Programmierern ist gar nicht klar, wie oft Sie mit diesen Variablen arbeiten, weil sie meist durch eine Operation erzeugt werden, deren Ergebnis sofort und danach nie wieder genutzt wird. Und in diesem Fall brauchen Sie keine Variable dieses Datentyps deklarieren.\\
 
-Da das komplizierter klingt, als es ist, hier ein Beispiel: Sie können innerhalb eines Programms einfache wenn-dann-Abfragen wie die folgende programmieren: Wenn es kälter als 12 Grad ist, zieh dir einen Pullover an, sonst lass das. Hierzu wird ein Vergleich einprogrammiert, bei dem eine Variable mit dem Wert 12 vergleichen wird. Das Ergebnis ist eine boolesche Variable. Wenn Sie aber wie in diesem Beispiel direkt die Auswirkung programmieren (… dann zieh dir einen/keinen Pullover an), dann brauchen Sie das Ergebnis der Vergleichsoperation keiner expliziten Variablen zuordnen.\\
+Da das komplizierter klingt, als es ist, hier ein Beispiel: Sie können innerhalb eines Programms einfache wenn-dann-Abfragen wie die folgende programmieren: Wenn es kälter als 12 Grad ist, zieh dir einen Pullover an, sonst lass das. Hierzu wird ein Vergleich einprogrammiert, bei dem eine Variable mit dem Wert 12 vergleichen wird. Das Ergebnis ist eine boolesche Variable. Wenn Sie aber wie in diesem Beispiel direkt die Auswirkung programmieren (... dann zieh dir einen/keinen Pullover an), dann brauchen Sie das Ergebnis der Vergleichsoperation keiner expliziten Variablen zuordnen.\\
 
-Boolesche Variablen können Sie übrigens nur dann deklarieren, wenn sie die Headerdatei stdbool.h am Programmanfang includen. Der Datentyp lautet dann bool.\\
+Boolesche Variablen können Sie übrigens nur dann deklarieren, wenn sie die Headerdatei \verb|stdbool.h| am Programmanfang includen. Der Datentyp lautet dann \verb|bool|.\\
 
 \subsection{Datentypen für Fließkommazahlen}
 
@@ -536,8 +537,10 @@ Zur Erinnerung: Nutzen Sie wann immer möglich ganzzahlige Datentypen, wenn Sie 
 
 In diesem Bereich gibt es lediglich drei Datentypen, wobei zwei davon wieder identische Zahlenbereiche abbilden. Schlagen Sie diese Zahlenbereiche bei Bedarf nach.\\
 
-•	float hat 32 Bit Länge
-•	double und long double haben 64 Bit Länge\\
+\begin{itemize}
+	\item \verb|float| hat 32 Bit Länge
+	\item \verb|double| und \verb|long double| haben 64 Bit Länge
+\end{itemize}
 
 \subsection{Datentypen für aufzählbare Elemente}
 
@@ -545,13 +548,13 @@ Diese Datentypen sind recht spannend, weil sie es Ihnen ermöglichen, mit wenig 
 
 Nehmen wir an, Sie haben eine Liste von Farben (wie auch immer Sie diese programmieren können). Und Sie möchten jetzt die Möglichkeit haben, dass eine Variable nur Einträge aus dieser Liste als Wert beinhalten kann. In diesem Fall lautet der Datentyp:\\
 
-•	enum\\
+\verb|enum|\\
 
 \subsection{Datentypen für Pointer}
 
 Pointer sind Datentypen, die nicht etwa den Inhalt einer Speicheradresse im Sinne von Zahlen, Buchstaben oder ähnlichem interpretieren, was in einer Codierungstabelle definiert wird, sondern die den Inhalt einer Speicheradresse als Speicheradresse verstehen.\\
 
-Wenn Sie also einen Pointer haben, unter dessen Adresse der Wert 0x30 gespeichert ist, dann wird dieser Wert als die Adresse 0x30 „interpretiert“. Im Grunde sind Pointer (und die zugehörige Speicherarithmetik) also eine Möglichkeit, all die Speicherzugriffe zu realisieren, die wir sonst nur bei Assembler durchführen könnten. Mit Pointern können wir beispielsweise all die Datenstrukturen realisieren, die C selbst nicht mitbringt.\\
+Wenn Sie also einen Pointer haben, unter dessen Adresse der Wert 0x30 gespeichert ist, dann wird dieser Wert als die Adresse 0x30 \glqq{}interpretiert\grqq{}. Im Grunde sind Pointer (und die zugehörige Speicherarithmetik) also eine Möglichkeit, all die Speicherzugriffe zu realisieren, die wir sonst nur bei Assembler durchführen könnten. Mit Pointern können wir beispielsweise all die Datenstrukturen realisieren, die C selbst nicht mitbringt.\\
 
 Allerdings werden wir uns im Rahmen dieser Veranstaltung nicht mit Pointern beschäftigen; wenn Sie mit C oder C++ nach diesem Kurs weiter arbeiten wollen, müssen Sie das noch nachholen. Bei Java dagegen gibt es keine Pointer, weil dort der direkte Zugriff auf den Speicher ausgeschlossen ist.
 
@@ -573,27 +576,27 @@ Allerdings werden wir uns im Rahmen dieser Veranstaltung nicht mit Pointern besc
 
 
 
-Wichtig:\\
-
+\textbf{Wichtig:}\\
 
 Alle Hinweise, die sich in diesem Abschnitt auf die Nutzung von Windows beziehen, gelten so für Windows 7. Bitte prüfen Sie ggf. selbständig, wie Sie unter 8 oder 10 vorgehen müssen. Allerdings sollten die Befehle in der Konsole auch dort bis auf die Verzeichnisstruktur von Windows vollständig identisch sein.\\
 
-
 Das folgende ist für Windows-User, alle anderen nutzen bitte die entsprechenden Befehle und Programme ihres Betriebssystems. Um mit dem Programmieren zu beginnen, öffnen Sie bitte die sogenannte Eingabeaufforderung. (Bei anderen Betriebssystemen Console, Bash o.ä. genannt.)\\
-
 
 Wenn bei den folgenden Aufgaben (Verzeichnis erstellen/ins Verzeichnis wechseln) Fehler passieren, dann haben Sie entweder keine ausreichenden Rechte, um diese Aufgabe an dem Rechner durchzuführen an dem Sie gerade sitzen oder Sie haben sich schlicht vertippt.\\
 
+Mit dem Befehl \verb|mkdir C:/a_prog| erstellen Sie bitte in der Eingabeaufforderung ein Verzeichnis. (Sie können es auch anders nennen, aber wenn Sie es so benennen, wird es am Anfang Ihrer Verzeichnisübersicht auftauchen.)\\
 
-Mit dem Befehl mkdir C:/a\_prog erstellen Sie bitte in der Eingabeaufforderung ein Verzeichnis. (Sie können es auch anders nennen, aber wenn Sie es so benennen, wird es am Anfang Ihrer Verzeichnisübersicht auftauchen.)\\
+Es ist möglich, dass hier eine Fehlermeldung erscheint, die besagt, dass Sie nicht das Recht haben, an diesem Ort ein Verzeichnis anzulegen. In dem Fall nutzen Sie bitte ein Unterverzeichnis, auf das Sie Schreibrechte haben. Nehmen wir als Beispiel das Nutzerverezichnis, das allen Nutzern unter Windows grundsätzlich freisteht. Angenommen, Sie haben sich als User \emph{Horst} eingeloggt, dann heißt dieses Verzeichnis \verb|C:\Users\Horst| und dementsprechend hieße der Befehl, um hier ein neues Verzeichnis mit dem Bezeichner \verb|a_prog| anzulegen \verb|mkdir C:\Users\Horst\a_prog| (Hinweis: Den Punkt am Satzende lasse ich in Fällen wie diesem weg, damit Sie nicht versehentlich ein Verzeichnis mit dem Bezeichner \verb|a_prog.| anlegen. Das ist zwar nicht im Sinne der Rechtschreibung, verhindert aber unnötige Programmierfehler.)
 
-Wechseln Sie jetzt mit dem Befehl cd C:/a\_prog in dieses neue Verzeichnis. \\
+Wechseln Sie jetzt mit dem Befehl \verb|cd C:/a_prog| in dieses neue Verzeichnis oder mit \verb|mkdir C:\Users\Horst\a_prog| bzw. dem entsprechend angepassten Pfad, wenn Sie das Verzeichnis nicht unter \verb|cd C:/a_prog| anlegen konnten.\\
 
+\textbf{Wichtig:}\\
 
-Starten Sie jetzt den Editor, den Sie im Bereich „Alle Programme“ unter Zubehör finden. Alternativ können Sie auch gerne einen einfachen Editor wie Notepad++ nutzen, der so wenige Komfortfunktionen bietet, dass er Einsteiger unterstützt anstatt Sie (wie die meisten IDEs) zu verwirren.\\
+Wenn Sie das Verzeichnis nicht auf dem Laufwerk C angelegt haben, dann müssen Sie vor Aufruf des Verzeichnisses mit \verb|cd| zunächst auf das Laufwerk wechseln. Der Wechseln in ein Verzeichnis auf einem anderen Laufwerk ist nämlich (und hier möchte ich den EntwicklerInnen bei Microsoft gerne mal eine Standpauke für schwachsinnige Entscheidungen halten...) NICHT mit dem Befehl \verb|cd| möglich. Um  beispielsweise aus dem Verzeichnis \verb|cd C:/a_prog| in das Verzeichnis \verb|F:\lustigeProgramme| zu wechseln müssen Sie zuerst per \verb|F:| auf das Laufwerk F wechseln, bevor Sie mittels \verb|cd lustigeProgramme| oder \verb|cd F:\lustigeProgramme| in das gewünschte Verzeichnis wechseln können.\\
 
+Starten Sie jetzt den Editor, den Sie im Bereich \verb|Alle Programme| unter \verb|Zubehör| finden. Alternativ können Sie auch gerne einen einfachen Editor wie Notepad++ nutzen, der so wenige Komfortfunktionen bietet, dass er Einsteiger unterstützt anstatt Sie (wie die meisten IDEs) zu verwirren.\\
 
-Hier ein kurzer C-Quellcode, den Sie bitte mittels des Editors im oben genannten Verzeichnis abspeichern. Nennen Sie das Programm beim Speichern am besten antwort42.c (wichtig ist nur, dass die Dateiendung .c ist) Dieser Code hat noch nichts mit der Programmierung des ARM-Prozessors zu tun, Sie können ihn also auf jedem Rechner programmieren und ausführen, der einen C-Compiler installiert hat.\\
+Hier ein kurzer C-Quellcode, den Sie bitte mittels des Editors im oben genannten Verzeichnis abspeichern. Nennen Sie das Programm beim Speichern am besten \verb|antwort42.c| (wichtig ist nur, dass die Dateiendung \verb|.c| ist) Dieser Code hat nichts mit der Programmierung des ARM-Prozessors zu tun, Sie können ihn also auf jedem Rechner programmieren und ausführen, der einen C-Compiler installiert hat.\\
 
 \begin{verbatim}
 \#include <stdio.h>
@@ -604,89 +607,119 @@ main()
 \}
 \end{verbatim}
 
-C-Programm, das die Zeile „Die Antwort lautet: 42“ (ohne Anführungszeichen) auf der Konsole ausgibt.\\
+C-Programm, das die Zeile \glqq{}Die Antwort lautet: 42\grqq{} (ohne Anführungszeichen) auf der Konsole ausgibt.\\
 
-Wichtig: Wenn Sie unbedingt mit einer IDE beginnen wollen, dann wird dieser Code wahrscheinlich nicht genügen und Sie werden zunächst z.B. ein Projekt erstellen u.ä. Da es hier jedoch mehr als genug Fehlerquellen gibt, aus denen ein Programm nicht läuft, rate ich Ihnen an dieser Stelle von der Nutzung einer IDE ab. (Diejenigen, die eine IDE nutzen werden einige zusätzliche Aufgaben in diesem Text finden. Diese Aufgaben dienen dazu, dass Sie die IDE tatsächlich nutzen und sich langfristig einen professionellen Stil angewöhnen.)\\
+\textbf{Wichtig:}\\
+
+Wenn Sie unbedingt mit einer IDE beginnen wollen, dann wird dieser Code wahrscheinlich nicht genügen und Sie werden zunächst z.B. ein Projekt erstellen u.ä. Da es hier jedoch mehr als genug Fehlerquellen gibt, aus denen ein Programm nicht läuft, rate ich Ihnen an dieser Stelle von der Nutzung einer IDE ab. (Diejenigen, die eine IDE nutzen werden einige zusätzliche Aufgaben in diesem Text finden. Diese Aufgaben dienen dazu, dass Sie die IDE tatsächlich nutzen und sich langfristig einen professionellen Stil angewöhnen.)\\
 
 Wenn Sie das ignorieren, sollten Sie eine erweiterte Fassung des Quellcodes verwenden wie diejenige, die Sie im Abschnitt zur Deklaration und Initialisierung von Variablen (folgt weiter unten) finden können.
 
 \section{Inhalt eines einfachen C-Programms}
 
-Unser C-Programm besteht aus drei Teilen: \\
+Unser C-Programm besteht aus drei Teilen:
 
-•	Zunächst wird eine sogenannte Headerdatei eingefügt. Was das im Detail bedeutet und wie es den Kompilierungsprozess beeinflusst, ist für das Verständnis des Programms nicht wichtig. Wie schon in den einleitenden Kapiteln erläutert nutzen wir bei der Entwicklung von Programmen in aller Regel Teile, die von anderen Entwicklern programmiert wurden. Und Header-Dateien sind ein Beispiel für solchen wiederverwendeten Code.\\
+\begin{itemize}
+	\item Zunächst wird eine sogenannte Headerdatei eingefügt. Was das im Detail bedeutet und wie es den Kompilierungsprozess beeinflusst, ist für das Verständnis des Programms nicht wichtig. Wie schon in den einleitenden Kapiteln erläutert nutzen wir bei der Entwicklung von Programmen in aller Regel Teile, die von anderen Entwicklern programmiert wurden. Und Header-Dateien sind ein Beispiel für solchen wiederverwendeten Code.\\
+	
+	Ein Hinweis bezüglich des Namens: \verb|stdio|\index{C!stdio}\index{stdio} steht schlicht für \emph{standard input out}. Damit ist klar, was für Aufgaben diese Headerdatei in unser Programm einführt: Sie ermöglicht es uns unter anderem, Ausgaben auf dem Bildschirm zu erzeugen und Eingaben von der Tastatur anzunehmen.\\
+	
+	\textbf{Hinweis für die Programmierung in Java:}\\
+	
+	Wenn Sie in Java so etwas wie \verb|System.out.println()|\index{System.out.println()}\index{Java!System.out.println()} verwenden, dann greifen Sie auf ähnliche Programme zu, wie in C, wenn Sie \verb|stdout| includen. Wenn Sie in Java die sogenannte \verb|Scanner|-Klasse nutzen, dann verwenden Sie etwas ähnliches wie das, was Sie bei C mittels \verb|stdin| includen. Hier werden Sie später feststellen, dass sich beide Sprachen in den Details deutlich unterscheiden, aber für den Moment genügt es, wenn Sie verstehen, dass hier eine gewisse Analogie vorliegt, und dass wir lediglich unterschiedliche Bezeichner für ähnliche Funktionalitäten verwenden. In Java verwenden Sie allerdings NICHT die Bezeichnungen \verb|stdout| und \verb|stdin|, denn das sind Bezeichnungen für Bibliotheken, die in C verwendet werden. Aber wie gesagt entspricht das was Sie in Java mit \verb|System.in| und \verb|System.out| benutzen inhaltlich weitgehende \verb|stdin| und \verb|stdout| in C und C++. \verb|stdio| kombiniert dann schlicht \verb|stdin| und \verb|stdout|, sodass Sie nur eine include-Anweisung am Anfang Ihres C bzw. C++ Programms eintragen müssen. Ein System.io gibt es in Java leider nicht; dort müssen Sie stets explizit zwischen \verb|System.in| und \verb|System.out| unterscheiden.
+	
+	\item Dann folgt die Funktion \verb|main()|. Was Funktionen einer (imperativen) Programmiersprache sind, folgt im Abschnitt \emph{Operationen und Funktionen}. Für den Moment sollten Sie sich lediglich merken, dass bei C, C++ und Java der Anfang eines Programms in der \verb|main()|-Funktion steht. Bei diesen Sprachen ist es für den ordnungsgemäßen Programmablauf irrelevant, wo \verb|main()| im Quelltext steht. Es empfiehlt sich hier, im Team abzusprechen, wo diese Funktion stehen soll, damit alle sie im Bedarfsfall so schnell wie möglich finden. Ohne Absprache sollten Sie sie wann immer möglich schlicht als letzten Teil in den Quellcode einfügen.
+	
+	\item Nach \verb|main()| folgen drei Zeilen, wobei die erste und letzte schlicht eine öffnende und schließende Klammer enthält. Diese beiden geschweiften Klammern besagen schlicht, dass alles, was sich zwischen Ihnen befindet Teil der \verb|main()| ist. So wie eine Variable in der Mathematik als Stellvertreter für einen Wert verwendet werden kann, kann ein Funktionsname (wie hier main) für einen Reihe von Befehlen verwendet werden. In anderen Programmiersprachen wird diese sogenante \textbf{Rumpf}\index{Rumpf} der Funktion teilweise anders hervorgehoben.\\
+	
+	In Python beispielsweise gibt es gar keine Zeichen, mit denen der Rumpf hervorgehoben wird. Dort wird ein Rumpf dadurch hervorgehoben, dass jede Zeile eingerückt wird. Das erleichtert es zwar, Teile eines Programms aus einem Rumpf zu verschieben (oder in ihn hinein), aber es erleichtert auch die Fehlerwahrscheinlichkeit, da es ja kein explizites Zeichen für den Anfang und das Ende eines Rumpfes gibt. Sie werden in dieser Hinsicht immer wieder auf Personen treffen, die eine der beiden Varianten bevorzugen. Und genau das ist letztlich das Hauptproblem: Ein subjektives besser oder schlechter einer der beiden Varianten gibt es nicht; Sie müssen letztlich mit beiden (und ggf. noch anderen) Varianten zurecht kommen.
+	
+	\item Damit bleibt nur noch die Frage, was denn diese Zeile tut, die mit \verb|printf| beginnt. Das wird Teil mehrerer Aufgaben, die Sie demnächst lösen. Für den Moment sollen Sie lediglich wissen, dass \verb|printf()| eine Funktion ist, die den Teil, der in den Klammern folgt als Text auf der sogenannte Konsole ausgibt und die (im Gegensatz zur Funktion \verb|print()|) auch Formatierungen des Textes verarbeiten kann.
+\end{itemize}
 
-Ein Hinweis bezüglich des Namens: stdio steht schlicht für standard input out. Damit ist klar, was für Aufgaben diese Headerdatei in unser Programm einführt: Sie ermöglicht es uns unter anderem, Ausgaben auf dem Bildschirm zu erzeugen und Eingaben von der Tastatur anzunehmen.\\
+\textbf{Kontrolle:}\\
 
-(Hinweis für die Programmierung in Java: Wenn Sie in Java so etwas wie System.out.println() verwenden, dann greifen Sie auf stdout zu. Wenn Sie in Java die sogenannte Scanner-Klasse nutzen, dann verwenden Sie meist stdin. Dabei werden Sie in Java nicht die Bezeichnungen stdout und stdin verwenden, aber das was Sie benutzen ist genau das gleiche. Und stdio kombiniert schlicht stdin und stdout.)\\
-
-•	Dann folgt die Funktion main(). Was Funktionen einer (imperativen) Programmiersprache sind, folgt im Abschnitt Operationen und Funktionen. Für den Moment sollten Sie sich lediglich merken, dass bei C, C++ und Java der Anfang eines Programms in der main()-Funktion steht.\\
-
-•	Nach main() folgen drei Zeilen, wobei die erste und letzte schlicht eine öffnende und schließende Klammer enthält. Diese beiden Klammern besagen schlicht, dass alles, was sich zwischen Ihnen befindet Teil der main() ist. So wie eine Variable in der Mathematik als Stellvertreter für einen Wert verwendet werden kann, kann ein Funktionsname (wie hier main) für einen Reihe von Befehlen verwendet werden.\\
-
-•	Damit bleibt nur noch die Frage, was denn diese Zeile tut, die mit printf beginnt. Das wird Teil mehrerer Aufgaben, die Sie demnächst lösen.\\
-
-Kontrolle\\
-
-Für diesen und einige der nachfolgenden Abschnitte gibt es keine explizite Kontrolle. Prüfen Sie bitte selbständig, ob Sie die Inhalte verstanden und umgesetzt haben. Beachten Sie bitte dabei, dass dieser Kurs für Einsteiger ohne Vorkenntnisse in der Programmierung erstellt wurde; Fortgeschrittene mögen bitte dennoch diese Abschnitte lesen, um festzustellen, wo ihre Erfahrungen von dem Abweichen, was hier beschrieben ist. Überlegen Sie dann bitte genau, worin diese Abweichung besteht, also ob es eine Vereinfachung für Einsteiger ist oder ob Sie sich unter einem Konzept tatsächlich etwas anderes vorstellen als das, was hier beschrieben ist. Beides ist selbstverständlich möglich.
+Für diesen und einige der nachfolgenden Abschnitte gibt es keine explizite Kontrolle. Prüfen Sie bitte selbständig, ob Sie die Inhalte verstanden und umgesetzt haben. Beachten Sie bitte dabei, dass dieser Kurs für Einsteiger ohne Vorkenntnisse in der Programmierung erstellt wurde; Fortgeschrittene mögen bitte dennoch diese Abschnitte lesen, um festzustellen, wo ihre Erfahrungen von dem abweichen, was hier beschrieben ist. Überlegen Sie dann bitte genau, worin diese Abweichung besteht, also ob es eine Vereinfachung für Einsteiger ist oder ob Sie sich unter einem Konzept tatsächlich etwas anderes vorstellen als das, was hier beschrieben ist. Beides ist selbstverständlich möglich.
 
 \subsection{Ihr erstes C-Programm: Vom Quellcode zum Program Image}
 
-Geben Sie jetzt in der Eingabeaufforderung den Befehl dir (bei anderen Betriebssystemen ls) ein, um zu sehen, welche Dateien sich in diesem Verzeichnis befinden. Sie sollten jetzt eine kurze Tabelle sehen, bei der unter anderem der Dateiname antwort42.c aufgeführt ist. Ist das nicht der Fall, dann haben Sie entweder den Quellcode gar nicht oder an einem anderen Ort abgespeichert.\\
+Geben Sie jetzt in der Eingabeaufforderung den Befehl \verb|dir| (bei anderen Betriebssystemen \verb|ls|) ein, um zu sehen, welche Dateien sich in diesem Verzeichnis befinden. Sie sollten jetzt eine kurze Tabelle sehen, bei der unter anderem der Dateiname \verb|antwort42.c| aufgeführt ist. Ist das nicht der Fall, dann haben Sie entweder den Quellcode gar nicht oder an einem anderen Ort abgespeichert.\\
 
-Wie Sie wissen haben Sie damit Quellcode erzeugt, der noch nichts tut. Wechseln Sie jetzt bitte in die Eingabeaufforderung und geben Sie dort den Befehl gcc antwort42.c ein, um den Quellcode zu kompilieren.\\
+Wie Sie wissen haben Sie damit Quellcode erzeugt, der noch nichts tut. Wechseln Sie jetzt bitte in die Eingabeaufforderung und geben Sie dort den Befehl \verb|gcc antwort42.c| ein, um den Quellcode zu kompilieren.\\
 
-Geben Sie nun nochmal dir (bzw. bei Linux ls) in der Eingabeaufforderung ein. Wie Sie sehen, befindet sich jetzt eine zweite Datei im Verzeichnis mit dem Namen a.exe . Links neben den Dateinamen befindet sich jeweils eine Zahl, die angibt, wie viele Byte jede Datei belegt.\\
+Geben Sie nun nochmal \verb|dir| (bzw. bei Linux/MacOS \verb|ls|) in der Eingabeaufforderung ein. Wie Sie sehen, befindet sich jetzt eine zweite Datei im Verzeichnis mit dem Namen \verb|a.exe| Links neben den Dateinamen befindet sich jeweils eine Zahl, die angibt, wie viele Byte jede Datei belegt.\\
 
-Kontrolle\\
+\textbf{Kontrolle:}\\
 
 Warum hat unser Quellcode nur einen Umfang von 60 Byte, aber das Program Image hat mehr als 60.000 Byte? Woher kommt all dieser zusätzliche Inhalt?
 
 \subsection{Über die Nutzung des gcc Compilers}
 
-Wenn Sie nun den Buchstaben a eingeben und Enter drücken, passiert folgendes: Das Programm gibt den Satz Die Antwort lautet: 42 aus.\\
+Wenn Sie nun den Buchstaben \verb|a| eingeben und Enter drücken, passiert folgendes: Das Programm gibt den Satz \verb|Die Antwort lautet: 42| aus.\\
 
-Frage: Warum heißt die Datei nicht antwort42.exe?\\
+\textbf{Aufgabe:}\\
 
-Die Antwort ist wieder einmal ganz simpel: Weil wir dem Compiler nicht gesagt haben, dass das kompilierte Programm unter dem Namen antwort42.exe gespeichert werden soll.\\
+Warum heißt die Datei nicht \verb|antwort42.exe|?\\
 
-Frage: Was müssen wir tun, um einen Namen für die Ausgabedatei zu vergeben?\\
+Die Antwort ist wieder einmal ganz simpel:\\
 
-Wie so oft beim Verwenden von Programmen, die andere erstellt haben, müssen Sie jetzt suchen. GCC ist der Compiler, den wir verwenden und wenn Sie kein Linux-Nutzer sind, dann müssen Sie im Netz nach GCC, besser noch GCC HELP suchen. Ohne Englisch wird’s jetzt schwer, aber das ist in der Informatik immer so, also entweder lernen Sie die Sprache spätestens jetzt oder Sie werden dauerhaft massiv benachteiligt sein. Konkret suchen Sie nach so etwas wie einem gcc manual bzw. den gcc command options.\\
+Weil wir dem Compiler nicht gesagt haben, dass das kompilierte Programm unter dem Namen antwort42.exe gespeichert werden soll.\\
 
-Kontrolle\\
+\textbf{Aufgabe:}\\
 
-(1)	Finden sie heraus, wie Sie den gcc dazu bringen können, Ihre Datei unter dem Namen antwort42.exe zu speichern. (Nein, es reicht nicht aus, wenn Sie die Datei einfach selbst umbenennen, nachdem sie vom gcc kompiliert wurde.)\\
+Was müssen wir tun, um einen Namen für die Ausgabedatei zu vergeben?\\
 
-(2)	Warum sollte der Dateiname nicht antwort 42.exe (also mit einer Leerstelle zwischen antwort und 42) heißen?\\
+Wie so oft beim Verwenden von Programmen, die andere erstellt haben, müssen Sie jetzt suchen. GCC ist der Compiler, den wir verwenden und wenn Sie kein Linux-Nutzer sind, dann müssen Sie im Netz nach GCC, besser noch GCC HELP suchen. Ohne Englisch wird’s jetzt schwer, aber das ist in der Informatik immer so, also entweder lernen Sie die Sprache spätestens jetzt oder Sie werden dauerhaft massiv benachteiligt sein. Konkret suchen Sie nach so etwas wie einem \emph{gcc manual} bzw. den \emph{gcc command options}.\\
 
-(3)	Angenommen Sie wollen dennoch einen solchen Dateinamen erhalten. Was müssen Sie tun, um das zu realisieren?\\
+\textbf{Kontrolle:}
+
+\begin{enumerate}
+	\item Finden sie heraus, wie Sie den gcc dazu bringen können, Ihre Datei unter dem Namen antwort42.exe zu speichern. (Nein, es reicht nicht aus, wenn Sie die Datei einfach selbst umbenennen, nachdem sie von gcc kompiliert wurde.)
+	
+	\item Warum sollte der Dateiname nicht antwort 42.exe (also mit einer Leerstelle zwischen antwort und 42) heißen?
+	
+	\item Angenommen Sie wollen dennoch einen solchen Dateinamen erhalten. Was müssen Sie tun, um das zu realisieren?
+\end{enumerate}
+
+Diese Aufgaben können sehr schwer erscheinen, wenn Sie Computer oder Smartphones bislang lediglich mit Maus und Tastatur oder über einen Touchscreen verwendet haben, aber es geht hier um grundlegende Kompetenzen, die selbst Einsteiger in die Programmierung benötigen.\\
+
+Außerdem werden Sie hier mit einem Grundproblem konfrontiert, dass Ihren beruflichen Alltag dauerhaft bestimmen wird: In aller Regel finden Sie bei der Netzsuche keine Antworten auf Ihre Fragen, außer wenn Sie direkt in Foren danach fragen.\\
+
+Der Einstieg in alle Arbeiten mit Computern besteht darin, dass Sie wesentlich mehr lernen müssen, als für eine konkrete Aufgabe nötig ist, denn die gleichen Grundlagen spielen bei den unterschiedlichsten Aufgaben eine Rolle.
 
 \subsection{Variablen}
 
 Was die Register für die maschinennahe Programmierung sind, sind die Variablen für die imperative Programmierung. Deshalb beginnen wir die Einführung in die imperative Programmierung mit der Einführung von Variablen.\\
 
-Wichtig:\\
+\textbf{Wichtig:}\\
 
 Wie schon bei der Einführung in die Programmierung in PHP ist es wichtig, dass Sie an dieser Stelle verstehen, dass Variablen nur eine Möglichkeit sind, um Daten im Rahmen einer Programmiersprache zu verwalten. Die Programmierung mit Hilfe von Variablen ist dabei ein zentrales Kennzeichen aller imperativen Programmiersprachen, doch wie gesagt gibt es noch wesentlich mehr Paradigmen als nur das imperative.\\
 
-Das folgende gilt so nur für kompilierte Sprachen (also u.a. für C, C++ und Java). Bei interpretierten Sprachen gelten zwar zum Teil dieselben Grundlagen, aber wie schon in den einführenden Kapiteln beschrieben legen wir dort den Datentyp einer Variablen nicht durch einen „Befehl“ fest, sondern der Interpreter der Sprache legt selbständig einen Datentyp fest bzw. ändert diesen dynamisch und wir können ihn im Regelfall nicht einsehen.\\
+Das folgende gilt so nur für kompilierte Sprachen (also u.a. für C, C++ und Java). Bei interpretierten Sprachen gelten zwar zum Teil dieselben Grundlagen, aber wie schon in den einführenden Kapiteln beschrieben legen wir dort den Datentyp einer Variablen nicht durch einen \glqq{}Befehl\grqq{} fest, sondern der Interpreter der Sprache legt selbständig einen Datentyp fest bzw. ändert diesen dynamisch und wir können ihn im Regelfall nicht einsehen.\\
 
-Eine Variable ist schlicht ein Bezeichner, über den wir auf einen Wert bzw. ein Zeichen verweisen können. Im Gegensatz zu einem Register haben wir hier aber große Freiheiten, wenn es darum geht, wie eine Variable bezeichnet werden soll. Wenn Sie also beispielsweise eine Variable einrichten wollen, um eine zurückgelegte Strecke zu speichern, dann können Sie diese Variable zurueckgelegteStrecke nennen und brauchen nicht auf kryptische Bezeichnungen wie R12 zurück zu greifen, so wie das bei der Nutzung der Register war. Es gibt zwar gewisse Einschränkungen, welche Zeichen Sie benutzen dürfen, aber so lange Sie nur Buchstaben verwenden, die auch im englischen Alphabet vorkommen, sollten Sie kein Problem haben. Bis auf das erste Zeichen können Sie auch Zahlen und bestimmte Sonderzeichen verwenden.\\
+Eine \textbf{Variable}\index{Variable} ist schlicht ein Bezeichner, über den wir auf einen Wert bzw. ein Zeichen verweisen können. Im Gegensatz zu einem \textbf{Register}\index{Register} haben wir hier aber große Freiheiten, wenn es darum geht, wie eine Variable bezeichnet werden soll. Wenn Sie also beispielsweise eine Variable einrichten wollen, um eine zurückgelegte Strecke zu speichern, dann können Sie diese Variable \emph{zurueckgelegteStrecke} nennen und brauchen nicht auf kryptische Bezeichnungen wie \emph{R12} zurück zu greifen, so wie das bei der Nutzung der Register war. Es gibt zwar gewisse Einschränkungen, welche Zeichen Sie benutzen dürfen, aber so lange Sie nur Buchstaben verwenden, die auch im englischen Alphabet vorkommen, sollten Sie kein Problem haben. Bis auf das erste Zeichen können Sie auch Zahlen und bestimmte Sonderzeichen verwenden.\\
 
-Das Arbeiten mit Variablen ist vor allem deshalb ein mächtiges Werkzeug, weil wir hier so tun können, als wenn der Computer doch mehr könnte als nur Zahlen aus dem Speicher zu laden, sie zu addieren und sie wieder im Speicher abzulegen. Diese Arbeitsschritte brauchen wir dann nicht mehr zu programmieren; sie werden quasi von der Programmiersprache (genauer gesagt von der Laufzeitumgebung oder dem Interpreter der Programmiersprache) erledigt.\\
+Generell gilt, dass die meisten Sprachen unterschiedliche Zeichen für die Bezeichnung von Variablen zulassen. Hier gilt, dass Sie für jede Sprache individuell lernen müssen, welche Zeichen das sind. Teilweise wird zusätzlich zwischen unterschiedlichen Variablen unterschieden, für die dann wiederum unterschiedliche Zeichen an unterschiedlichen Stellen zugelassen sind. Dafür gibt es keine logische Erklärung, anhand Sie sich die Systematik bei einer Sprache herleiten können; hier hilft einzig und alleine auswendig lernen. Und wie so oft haben Sie auch hier wieder verschiedene Personen, die sich aufgrund dessen was sie gewohnt sind darauf versteifen, dass Ihr favorisiertes System das beste und alles andere Humbug sein...\\
 
-Wie Sie jetzt wissen speichern Sie streng genommen keinen Wert in einer Variablen, sondern der Wert wird immer noch unter einer Speicheradresse abgelegt. Dennoch sprechen wir bei imperativen Sprachen davon, dass wir einer Variablen einen Wert zuordnen, dass wir unter einer Variablen einen Wert speichern, oder dass wir den Wert einer Variablen ändern. Die dem zugrundeliegenden Operationen, die wir in der maschinennahen Programmierung noch selbst programmieren mussten, sind jetzt irrelevant geworden.\\
+Das Arbeiten mit Variablen ist vor allem deshalb ein mächtiges Werkzeug, weil wir hier so tun können, als wenn der Computer doch mehr könnte als nur Zahlen aus dem Speicher zu laden, sie zu addieren und sie wieder im Speicher abzulegen. Diese Arbeitsschritte brauchen wir in imperativen Sprachen (im Gegensatz zur maschinennahen Programmierung) nicht mehr zu programmieren; sie werden quasi von der Programmiersprache (genauer gesagt von der Laufzeitumgebung oder dem Interpreter der Programmiersprache) erledigt.\\
 
-Diejenigen von Ihnen, die bereits in einer imperativen Sprache programmiert haben werden jetzt einwenden, dass Sie einer Variablen nicht nur einzelne Zahlen und Zeichen zuweisen können. Das ist streng genommen falsch. Was Sie meinen ist, dass wir einem Bezeichner oder einem Namen z.B. bei einer Funktion mehr als nur einzelne Zahlen oder Zeichen zuordnen können. Ein String beispielsweise ist aber bereits eine Datenstruktur und keine einfache Variable mehr. Doch bevor wir uns um diese Fälle kümmern können, müssen wir zunächst klären, was eine Datenstruktur ist, die Sie allerdings bitte nicht mit Datentypen verwechseln, die Sie zuvor kennen lernen.\\
+Wie Sie aus dem Kapitel über maschinennahe Programmierung wissen, speichern Sie streng genommen keinen Wert in einer Variablen, sondern der Wert wird unter einer Speicheradresse abgelegt. Dennoch sprechen wir bei imperativen Sprachen davon, dass wir einer Variablen einen Wert zuordnen, dass wir unter einer Variablen einen Wert speichern, oder dass wir den Wert einer Variablen ändern. (Alle drei Varianten sind Synonyme, die also effektiv das gleiche bedeuten.) Die Operationen, die dem zugrundeliegenden und die wir in der maschinennahen Programmierung noch selbst programmieren mussten, sind jetzt für die Programmierung irrelevant geworden.\\
 
-Kontrolle\\
+Diejenigen von Ihnen, die bereits in einer imperativen Sprache programmiert haben werden jetzt einwenden, dass Sie einer Variablen nicht nur einzelne Zahlen und Zeichen zuweisen können. Das ist streng genommen falsch und hier sollten Sie sauberer differenzieren, um gute Software zu entwickeln:\\
 
-Variablen sind wie Register, nur mit dem Unterschied, dass Sie praktisch keine Beschränkung in der Anzahl Variablen haben, die Sie verwenden wollen. Außerdem steht es Ihnen weitgehend frei, Variablen so zu nennen, wie Sie das wollen. An dieser Stelle wurde der Begriff der Variablen sehr strikt definiert und beispielsweise nicht als Bezeichner von Datenstrukturen verwendet.\\
+Was Sie meinen ist, dass wir einem Bezeichner oder einem Namen z.B. bei einer Funktion mehr als nur einzelne Zahlen oder Zeichen zuordnen können. Ein String beispielsweise ist aber bereits eine Datenstruktur und keine einfache Variable mehr, auch wenn beides umgangssprachlich als Variable bezeichnet wird. Doch bevor wir uns um diese Fälle kümmern können, müssen wir zunächst klären, was eine Datenstruktur ist, die Sie allerdings bitte nicht mit Datentypen verwechseln, die Sie zuvor kennen lernen.\\
 
-Wichtig\\
+\textbf{Kontrolle:}\\
 
-Das ist nicht allgemeingültig, sondern es geht hier darum, dass Sie eine genaues Verständnis dafür bekommen, was eine Variable tatsächlich ist. Leider wird der Begriff für viele Dinge verwendet, selbst wenn diese Nutzung so nur für einzelne Programmiersprachen gilt. Wenn Sie dann eine andere Programmiersprache lernen, kommen Sie in Situationen, in denen Sie zum einen Variablen für bestimmte Dinge nicht nutzen können, bei denen Sie daran gewöhnt sind und zum anderen können Sie sie dann für etwas nutzen, was Ihnen vollkommen absurd vorkommt. Wenn Sie dagegen die strikte Definition des Begriffs Variable nutzen, den ich hier vorgestellt habe, wird Ihnen das deutlich seltener passieren.\\
+\begin{itemize}
+	\item Variablen sind wie Register, nur mit dem Unterschied, dass Sie praktisch keine Beschränkung in der Anzahl Variablen haben, die Sie verwenden wollen. 
+	\item Außerdem steht es Ihnen weitgehend frei, Variablen so zu nennen, wie Sie das wollen. 
+	\item An dieser Stelle wurde der Begriff der Variablen sehr strikt definiert und beispielsweise nicht als Bezeichner von Datenstrukturen verwendet. Das widerspricht der umgangssprachlichen Verwendung des Begriffs Variable, ist aber wichtig, damit wir Klarheit darüber haben, worüber wir gerade reden.
+\end{itemize}
+
+\textbf{Wichtige Wiederholung:}\\
+
+Diese Definition des Begriffs Variable ist also nicht üblich, sondern es geht hier darum, dass Sie eine genaues Verständnis dafür bekommen, was eine Variable tatsächlich ist. Leider wird der Begriff für viele Dinge verwendet, selbst wenn diese Nutzung so nur für einzelne Programmiersprachen gilt. Wenn Sie dann eine andere Programmiersprache lernen, kommen Sie in Situationen, in denen Sie zum einen Variablen für bestimmte Dinge nicht nutzen können, bei denen Sie daran gewöhnt sind und zum anderen können Sie sie dann für etwas nutzen, was Ihnen vollkommen absurd vorkommt. Wenn Sie dagegen die strikte Definition des Begriffs Variable nutzen, den ich hier vorgestellt habe, wird Ihnen das deutlich seltener passieren.
 
 \subsection{Statisch versus nicht-statisch}
 
@@ -694,80 +727,115 @@ In den einleitenden Kapiteln haben Sie ja bereits den Unterschied zwischen dynam
 
 Dieser Unterschied zieht sich also quer durch die Programmierung und Sie werden dementsprechend immer wieder mit Sprachen zu tun haben, in denen Sie etwas programmieren, das entweder während des gesamten Programmablaufs gleichbleibt oder sich verändert bzw. sich verändern kann.\\
 
-Leider gibt es hier jedoch keine einheitliche Nomenklatur. Das bedeutet, dass Sie nicht einfach im Handbuch zur Sprache nachschlagen können, welche Teile der Sprache nun statisch und welche dynamisch sind, bzw. wie Sie das jeweils festlegen können. \\
+Leider gibt es hier jedoch keine einheitliche Nomenklatur. Das bedeutet, dass Sie nicht einfach im Handbuch zur Sprache nachschlagen können, welche Teile der Sprache nun statisch und welche dynamisch sind, bzw. wie Sie das jeweils festlegen können. Hier vertreten die meisten EntwicklerInnen einer Sprache den Ansatz, dass das doch gefälligst klar zu sein hat, und dass die Einsteiger gefälligst besser aufpassen und weniger rumheulen sollen.\\
 
-Bei Variablen ist es beispielsweise so, dass manchmal von konstanten Variablen und manchmal von statischen Variablen die Rede ist. Die Bezeichnung Konstante wie Sie sie aus der Mathematik kennen ist hier nicht zutreffend.\\
+Bei Variablen ist es beispielsweise so, dass manchmal von konstanten Variablen und manchmal von statischen Variablen die Rede ist. Die Bezeichnung Konstante wie Sie sie aus der Mathematik kennen ist hier nicht zutreffend. Denn wie Sie wissen werden Werte im Speicher eines Computers gespeichert und der ist grundsätzlich dynamisch. Wenn wir in einer Programmiersprache von konstanten Variablen reden, dann meinen wir damit Variablen, bei denen die Laufzeitumgebung es als Fehler meldet, wenn wir versuchen, den Wert im Laufe des Programms zu ändern. Bestimmte Angriffe basieren auch genau auf der Tatsache, dass es keine Konstanten in Programmiersprachen geben kann, da der gespeicherte Wert selbst ja grundsätzlich änderbar ist. Hier sind wir an einer der Stellen, an denen Sie dann und nur dann folgen können, wenn Sie die Inhalte des Kapitels zur maschinennahen Programmierung verstanden haben.\\
 
-Erinnern Sie sich in diesem Bezug bitte daran, dass alles, was im Speicher eines Computers steht letztlich ein veränderlicher Wert ist: Es sind alles Daten, die jederzeit überschrieben werden können. Und der Quellcode, den Sie erstellen nutzt ja nur all das, was in einer Sprache bereits fest einprogrammiert ist. Ob diese Sprache (was bei C an vielen Stellen der Fall ist), dann einmalige Definitionen dauerhaft behält also statisch ist oder es zulässt, dass diese im Verlauf eines Programms beliebig geändert werden also dynamisch ist, hängt eben von der Sprache selbst ab und nicht davon, was Sie erwarten.\\
+\textbf{Wichtige Wiederholung:}\\
 
-Kontrolle\\
+Erinnern Sie sich in diesem Bezug bitte daran, dass alles, was im Speicher eines Computers steht letztlich ein veränderlicher Wert ist: Es sind alles Daten, die jederzeit überschrieben werden können. Und der Quellcode, den Sie erstellen nutzt ja nur all das, was in einer Sprache bereits fest einprogrammiert ist. Ob diese Sprache (was bei C an vielen Stellen der Fall ist), dann einmalige Definitionen dauerhaft behält also statisch ist oder es zulässt, dass diese im Verlauf eines Programms beliebig geändert werden also dynamisch ist, hängt eben von der Sprache selbst ab und nicht davon, was Sie erwarten. Insbesondere müssen Sie ein deutlich tiefgreifenderes Verständnis von der Architektur von Computern haben, um sicher stellen zu können, dass Angreifer es schwer haben, Ihre Software zu manipulieren.\\
 
-Während Sie bei der maschinennahen Programmierung lediglich Werte in Register laden, dort verändern und dann im Speicher ablegen konnten, müssen Sie bei allen Elementen einer höheren Programmiersprache lernen, ob diese während des Programmablaufs geändert werden können oder nicht. Der Unterschied wird mit unterschiedlichen Begriffen bezeichnet.\\
+\textbf{Kontrolle:}\\
 
-Synonym für statisch wird konstant verwendet.\\
-
-Synonym für dynamisch wird nicht-statisch, variabel, veränderlich und eine Reihe weiterer Begriff verwendet. \\
-
-Verwechseln Sie bitte nicht eine Variable als Bezeichner für einen Speicherbereich, worüber wir hier reden, mit einer Variablen als dem eigentlichen und/oder veränderlichen Wert. Der Begriff der Variable, den ich hier vorstelle beinhaltet sowohl einen Bezeichner als auch einen Datentyp als auch einen Wert, der an einer Speicherstelle gespeichert ist.
-
+\begin{itemize}
+	\item Während Sie bei der maschinennahen Programmierung lediglich Werte in Register laden, dort verändern und dann im Speicher ablegen konnten, müssen Sie bei allen Elementen einer höheren Programmiersprache lernen und/oder festlegen, ob diese während des Programmablaufs geändert werden können oder nicht. Der Unterschied wird mit unterschiedlichen Begriffen bezeichnet.
+	
+	\item Der Begriff statisch wird synonym für konstant verwendet, auch wenn Computer streng genommen keine Konstanten beherrschen.
+	
+	\item Dynamisch wird als Synonym für nicht-statisch, variabel, veränderlich und eine Reihe weiterer Begriff verwendet.
+	
+	\item Verwechseln Sie bitte nicht eine Variable als Bezeichner für einen Speicherbereich, worüber wir hier reden, mit einer Variablen als dem eigentlichen und/oder veränderlichen Wert. Der Begriff der Variable, den ich hier vorstelle beinhaltet sowohl einen Bezeichner als auch einen Datentyp als auch einen Wert, der an einer Speicherstelle gespeichert ist.
+\end{itemize}
 
 \section{Deklaration, Initialisierung und der Scope}
 
+Zunächst zu den Begriffen:
 
+\begin{itemize}
+	\item \textbf{Daklaration einer Variable}\index{Deklaration!Variable}:\\
+	
+	Bei der Deklaration einer Variablen legen wir fest, dass ein bestimmter Bezeichner als \glqq{}Name\grqq{} einer Variable dienen soll.\\
+	
+	In statisch typisierten Sprachen müssen wir bei der Deklaration der Variablen zusätzlich den Datentyp festlegen.\\
+	
+	Das sähe dann in Java z.B. so aus: \verb|int x;| ist die Deklaration einer Variablen vom Typ \verb|int| mit dem Bezeichner \verb|x| .
+		
+	In dynamisch typisierten Sprachen ist es üblich, dass es keine Deklaration sondern einzig eine Initialisierung (siehe unten) von Variablen gibt, die dann implizit die Deklaration enthält. Das ist auch logisch, da hier die Programmiersprache den Datentyp der Variablen selbst festlegt. Eine Programmzeile \verb|x;| zur Deklaration würde den Code beispielsweise weitgehend sinnfrei um eine Zeile erweitern.\\
+	
+	\item \textbf{Initialisierung einer Variablen}\index{Initialisierung!Variable}:\\
+	
+	Als Initialisierung einer Variable bezeichnen wir die Operation, mit der erstmalig einer Variablen ein Wert zugeordnet wird.\\
+	
+	Hier könnten Sie nun auf die Idee kommen, dass der Begriff unsinnig ist, da die eigentliche Operation ja genau dasselbe wie eine Wertzuweisung ist, die Sie ohnehin im Laufe eines Programms häufig durchführen. Da es allerdings wichtig ist, dass die erste Operation nach der Deklaration/Erzeugung einer Variablen eine Wertzuweisung ist, ist diese Differenzierung zumindest grundsätzlich sinnvoll.
+\end{itemize}
 
+\textbf{Wichtig:}\\
 
-Wichtig: Wenn Sie eine Variable deklarieren, wird sie bei den meisten Programmiersprachen mit einem Standardwert initialisiert. Wenn Sie eine Sprache regelmäßig nutzen, sollten Sie diesen Standardwert kennen.\\
+Wenn Sie eine Variable deklarieren, also eine Zeile Programmieren, bei der ein Bezeichner für eine Variable erzeugt wird, dann wird sie bei den meisten Programmiersprachen mit einem Standardwert initialisiert. Wenn Sie eine Sprache regelmäßig nutzen, sollten Sie diesen Standardwert kennen. Es gibt aber auch Sprachen, bei denen Sie eine Variable zuerst deklarieren und dann in einer eigenstndigen Operation initialisieren müssen, bevor Sie sie weiter verwenden dürfen.
 
 Beispiele für die Deklaration:\\
 
-Die folgende Zeile deklariert eine Variable mit dem Bezeichner eineZahl als Variable vom Typ ganzzahlig mit 32 Bit. Der Bezeichner „eineZahl“ darf in diesem Programm vorher noch nicht aufgetaucht sein.\\
+Die folgende Zeile deklariert eine Variable mit dem Bezeichner eineZahl als Variable vom Typ ganzzahlig mit 32 Bit. Der Bezeichner \glqq{}eineZahl\grqq{} darf in diesem Programm vorher noch nicht aufgetaucht sein.\\
 
-int eineZahl;\\
+\verb|int eineZahl;|\\
 
-Die folgenden zwei Zeilen sollen nur deutlich machen, dass eine Deklaration nichts ist, worüber Sie groß nachdenken müssten:\\
+Die folgenden zwei Zeilen sollen nur deutlich machen, dass eine Deklaration nichts ist, worüber Sie groß nachdenken müssten, dass es schlicht ein Begriff für etwas ganz alltägliches in der Programmierung ist. Sie werden allerdings feststellen, dass es noch wesentlich mehr Dinge als Variablen gibt, die initialisiert werden können. Und da wirds spannend.
 
+\begin{verbatim}
 char grosserBuchstabe;
-enum Farben;\\
+enum Farben;
+\end{verbatim}
 
-Noch ein abschließender Hinweis: Das Semikolon zeigt dem Compiler an, dass hier eine Programmzeile zu Ende ist. Sie könnten also theoretisch auch diese Zeile nutzen, um alle drei Variablen zu deklarieren:\\
+Noch ein abschließender Hinweis: Das Semikolon zeigt dem Compiler in Sprachen wie C, C++ und Java an, dass hier eine Programmzeile zu Ende ist. Sie könnten also theoretisch auch diese Zeile nutzen, um alle drei Variablen zu deklarieren:\\
 
-float pi; short bully; pointers zeiger;\\
+\verb|float pi; short bully; pointers zeiger;|\\
 
 Nur ist das eben schlecht lesbar. So programmieren nur Leute, die wollen, dass niemand Ihren Quellcode lesen kann (was aber nicht funktioniert) oder die nicht wissen, was sie tun.\\
 
-Beispiele für die Initialisierung / Zuordnung eines Wertes:\\
+\textbf{Beispiele für die Initialisierung / Zuordnung eines Wertes}:\\
 
-Das folgende können Sie nur tun, wenn Sie die jeweiligen Variablen bereits initialisiert haben. Hier wird einer Variablen ein Wert zugeordnet:\\
+Das folgende können Sie nur tun, wenn Sie die jeweiligen Variablen bereits initialisiert haben (oder Sie in einer dynamisch typisierten Sprache programmieren). Hier wird einer Variablen ein Wert zugeordnet:\\
 
-eineZahl = 42;\\
+\verb|eineZahl = 42;|\\
 
-Der Variablen eineZahl wird hier also der Wert 42 zugeordnet. Oben hatten wir eineZahl als int deklariert. Und da 42 eine ganze Zahl und innerhalb des Wertebereichs von int ist, können wir das tun.\\
+Der Variablen \verb|eineZahl| wird hier also der Wert \verb|42| zugeordnet. Oben hatten wir \verb|eineZahl| als \verb|int| deklariert. Und da \verb|42| eine ganze Zahl und innerhalb des Wertebereichs von \verb|int| ist, können wir das tun.\\
 
 Ist eine Variable erst einmal deklariert, können Sie ihr so oft neue Werte zuordnen, wie Sie wollen. Einsteigern fällt der Umgang mit Variablen deshalb manchmal etwas schwer, aber machen Sie sich da keine Gedanken, das wird Ihnen innerhalb kurzer Zeit in Fleisch und Blut übergehen; Sie müssen nur das tun, was fürs Lernen einer Programmiersprache das wichtigste ist: Programmieren, Programmieren und nochmal Programmieren.\\
 
 Sie können bei C und vielen anderen Programmiersprachen auch eine Variable deklarieren und initialisieren. Das sähe dann so aus:\\
 
-int nochEineZahl = 937;\\
+\verb|int nochEineZahl = 937;|\\
 
 In den Fällen, in denen Sie darauf angewiesen sind, mit Fließkommazahlen zu arbeiten, müssen Sie beachten, dass hier die anglo-amerikanische Notation für die Dezimaltrennung gilt. Umgangssprachlich ausgedrückt: Wo Sie bei Zahlen ein Komma verwenden, müssen Sie einen Punkt setzen! Hier das entsprechende Beispiel:\\
 
-pi = 3.1415;\\
+\verb|pi = 3.1415;|\\
+
+Gleichzeitig haben wir hier einen Fall, in dem Sie bei statisch typisierten Sprachen sehr genau aufpassen müssen: Da der Datentyp des Wertes, den wir \verb|pi| zugeordnet haben eine Fließkommazahl ist, muss \verb|pi| in einer statisch typisierten Sprache einen Datentyp für eine Fließkommazahl haben. Sonst erfolgt eine Fehlermeldung oder wir bekommen einen logischen Fehler im Programmablauf.\\
+
+Dazu ein \textbf{Beispiel}:\\
+
+Angenommen wir haben eine int-Variable mit dem Bezeichner \emph{zahl}, der wir den Wert 3 zuweisen und die wir dann durch 4 dividieren. Wenn wir mit einer statisch typisierten Sprache arbeiten, die hier keinen Fehler ausgibt, dann wird \emph{zahl} jetzt entweder den Wert 0 oder 1 haben. Multiplizieren wir anschließend \emph{zahl} wieder mit 4, dann hat \emph{zahl} also entweder den Wert 0 oder den Wert 4. Das ist einer der Nachteile aller statisch typisierten imperativen Programmiersprachen. Damit umgehen zu können ist eine der wichtigen Fähigkeiten von ProgrammierInnen und InformatikerInnen.
 
 \subsubsection{Der Scope und das Ende von Variablen}
 
-Wie Sie jetzt wissen, erzeugen Sie Variablen entweder durch eine Operation oder durch eine Deklaration. Und irgendwo müssen all die Variablen im Rechner verwaltet werden, damit sie nicht einfach überschrieben werden. Das ist Ihnen wahrscheinlich gar nicht klar: Sie wissen, dass Sie Variablen erzeugen, ihnen Werte zuordnen und diese ändern können. Aber über die Verwaltung des Speichers haben wir gar nicht gesprochen, denn das macht ja „die Programmiersprache“.\\
+Wie Sie jetzt wissen, erzeugen Sie Variablen entweder durch eine Zuweisungsoperation oder durch eine Deklaration. Und irgendwo müssen all die Variablen im Rechner verwaltet werden, damit sie nicht einfach überschrieben werden. Das ist Ihnen wahrscheinlich gar nicht klar: Sie wissen, dass Sie Variablen erzeugen, ihnen Werte zuordnen und diese ändern können. Aber über die Verwaltung des Speichers haben wir gar nicht gesprochen, denn das macht ja die Laufzeitumgebung oder der Interpreter der Programmiersprache.\\
 
-Folgendes Beispiel soll Ihnen das Problem vor Augen führen, das Ihnen bislang entgangen ist: Stellen Sie sich vor, Sie würden ein Programm verfassen. Alle Variablen, die dieses Programm erzeugt würden im Speicher erhalten bleiben. Zusätzlich arbeiten ja noch viele andere kleine und große Programme (als Teil des Betriebssystems) im Rechner, die auch massenhaft Variablen erzeugen. Und nehmen wir an, all diese Variablen würden ebenfalls im Speicher verbleiben. Was würde dann wohl innerhalb kürzester Zeit passieren?\\
+Folgendes Beispiel soll Ihnen das Problem vor Augen führen, das Ihnen bislang entgangen ist: Stellen Sie sich vor, Sie würden ein Programm verfassen. Alle Variablen, die dieses Programm erzeugt würden im Speicher erhalten bleiben. Zusätzlich arbeiten ja noch viele andere kleine und große Programme (z.B. als Teil des Betriebssystems) im Rechner, die auch massenhaft Variablen erzeugen. Und nehmen wir an, all diese Variablen würden ebenfalls im Speicher verbleiben, ohne dass es einen Mechanismus gäbe, der sie wieder \glqq{}löscht\grqq{}. Was würde dann wohl innerhalb kürzester Zeit passieren?\\
 
-…\\
+...\\
 
 Genau! Der Speicher wäre irgendwann voll und der Rechner würde gar nichts mehr tun oder damit beginnen, bereits durch alte Variablen belegten Speicher mit neuen Werten von anderen Variablen zu füllen. Kurz gesagt: Chaos.\\
 
-Ein Teil der Lösung, um solches Chaos zu vermeiden nennt sich Garbage Collector, aber damit haben Sie bei der Programmierung nichts zu tun, denn es ist ein Teil der Laufzeitumgebung, der kontinuierlich prüft, welche Speicherbereiche von keinem Teil des Programms mehr genutzt werden. Diese Speicherbereiche gibt er dann wieder frei, sodass sie für andere Aufgaben verwendet werden können. Ein anderer Teil wird als Scope oder Rahmen bezeichnet und gehört zu den Dingen, die Sie fest einprogrammieren. Der Scope ist jeweils ein Bereich, in dem Bezeichner von Variablen gültig sind. Das selbe gilt für die Bezeichner von anderen Dingen wie Funktionen, über die wir noch nicht gesprochen haben.\\
+Ein Teil der Lösung, um solches Chaos zu vermeiden nennt sich \textbf{Garbage Collector}\index{Garbage Collector}. Damit haben Sie bei der Erstellung von Quellcode nichts zu tun, denn es ist ein Teil der Laufzeitumgebung, der kontinuierlich prüft, welche Speicherbereiche von keinem Teil des Programms mehr genutzt werden. 
+Diese Speicherbereiche gibt er dann wieder frei, sodass sie für andere Aufgaben verwendet werden können.\\
 
-Bei C wird der Scope durch geschweifte Klammern abgegrenzt.\\
+Ein anderer Teil wird als \textbf{Scope}\index{Scope} oder Gültigkeitsbereich bzw. -dauer einer Variablen bezeichnet und gehört zu den Dingen, die Sie fest einprogrammieren. Der Scope ist jeweils ein Bereich, in dem Bezeichner von Variablen gültig sind. Das selbe gilt für die Bezeichner von anderen Dingen wie Funktionen, über die wir noch nicht gesprochen haben.\\
 
-Beispiel:\\
+Bei C wird der Scope zum einen durch geschweifte Klammern festgelegt: Eine Variable existiert immer innerhalb des Rumpfes, in dem Sie deklariert wurde. Wenn Sie also mehrere Rümpfe innerhalb eines Programms haben (und das ist bei praktisch allen imperativen Programmen der Fall), dann können Sie innerhalb jedes dieser Rümpfe Variablen mit Bezeichnern nutzen, die genauso bezeichnet werden wie andere Variablen in anderen Rümpfen.\\
+
+Sind Sie von dieser Formulierung verwirrt? Gut! Denn nur weil das erlaubt ist, ist es noch lange keine gute Technik. Mit wenigen Ausnahmen sollten Sie deshalb darauf achten, innerhalb eines Programms jede Variable mit einem individuellen Bezeichner zu versehen, damit durchgehend eindeutig geklärt ist, welche Variable wo verwendet wird.
+
+\textbf{Beispiel für den Scope von Variablen}:\\
 
 Innerhalb eines C Programms sehen Sie folgende Zeilen:\\
 
@@ -787,15 +855,39 @@ float addiere(float a, float b)
 }
 \end{verbatim}
 
-Sie wissen jetzt zwar nicht, was Sie mit der Zeile float addiere(float a, float b) anfangen sollen, aber das spielt hier keine Rolle. Denn hier reden wir nur über den Scope und für den spielt das keine Rolle.\\
+Sie wissen jetzt zwar nicht, was Sie mit der Zeile \verb|float addiere(float a, float b)| anfangen sollen (es handelt sich dabei um eine Funktion), aber das spielt hier keine Rolle. Denn hier reden wir nur über den Scope und für den spielt das keine Rolle.\\
 
-Da Sie jetzt wissen, was der Scope ist, wissen Sie auch, dass in diesem Programmfragment zweimal eine Variable vom Typ int deklariert wird, die mit dem Bezeichner zahl1 angesprochen wird. Sie wissen jetzt auch, dass beide Variablen nichts miteinander gemein haben, weil Sie jeweils in unterschiedlichen Scopes enthalten sind.\\
+Da Sie jetzt wissen, was der Scope ist, wissen Sie auch, dass in diesem Programmfragment eine Variable vom Typ \verb|int| und eine Varibale vom Typ \verb|float| deklariert wird, die beide mit dem Bezeichner \verb|zahl1| angesprochen werden. Sie wissen jetzt auch, dass beide Variablen nichts miteinander gemein haben, weil Sie jeweils in unterschiedlichen Rümpfen enthalten sind, weswegen sich Ihr Gültigkeitsbereich (Scope) nicht überschneidet.\\
 
-Nun lassen sich geschweifte Klammern jeweils beliebig verschachteln und wie immer gilt, dass bei jeder Programmiersprache individuell geregelt ist, ob eine Variable in den inneren Rümpfen eines Scope verwendet werden kann oder nicht.\\
+Nun lassen sich geschweifte Klammern jeweils beliebig verschachteln und wie immer gilt, dass bei jeder Programmiersprache individuell geregelt ist, ob eine Variable in den inneren Rümpfen eines Scope verwendet werden kann oder nicht. Zur Verdeutlichung wieder ein Beispiel:\\
 
-Es ist ein guter Programmierstil jeweils am Anfang eines Rumpfes die Deklaration aller (nicht-anonynmen) Variablen durchzuführen, die innerhalb dieses Rumpfes verwendet werden, da man so doppelte Verwendungen ausschließt. \\
+\begin{verbatim}
+int main(void)
+{
+int zahl1 = 1;
+int zahl2 = 2;
 
-Kontrolle\\
+for (int i = 0; i < zahl2; i++){
+zahl1 = zahl1 + i;
+}
+return zahl1;
+}
+\end{verbatim}
+
+In den meisten imperativen Programmiersprachen beinhaltet der Scope von zahl1 zwar auch den Rumpf der hinter dem Teil mit for steht, aber ob das bei einer Sprache ist, mit der Sie programmieren müssen Sie wie so vieles auswendig lernen. Es gibt evtl. auch Sprachen mit der Möglichkeit, dass Sie innerhalb des for-Rumpfes eine Variable mit dem Bezeichner zahl1 deklarieren, die nicht mit der Variable zahl1 außerhalb des for-Rumpfes übereinstimmt. Auch hier gilt wieder, dass Sie für jede Sprache genau lernen müssen, wie der Scope von Variablen definiert ist!\\
+
+Es ist ein guter Programmierstil jeweils am Anfang eines Rumpfes die Deklaration aller (nicht-anonynmen) Variablen durchzuführen, die innerhalb dieses Rumpfes verwendet werden, da man so doppelte Verwendungen ausschließt. Gerade in der Teamarbeit empfiehlt es sich generell, anonyme Variablen zu vermeiden, auch wenn dadurch der Code etwas aufgebläht werden kann.\\
+
+Im Gegensatz dazu deklarieren Eigenbrödler Variablen erst an der Stelle, an der Ihnen einfällt, dass Sie eine Variable brauchen. Wenn für diese Variablen dann auch noch x, y oder ähnlich nichts-sagende Bezeichner verwendet werden, dann ist garantiert, dass das Programm irgendwann ganz schlimme und erst nach sehr langwieriger Suche aufzufindende Fehler beinhalten wird.\\
+
+Allerdings gibt es zwei Fälle, in denen solch ein Stil gewählt werden MUSS!
+
+\begin{itemize}
+	\item Immer dann, wenn Sie Systeme mit stark begrenztem Speicher verwenden, sind Sie gezwungen, so wenig Speicher wie möglich zu verwenden. Das ist zum Beispiel bei der Programmierung von kleinen Steuereinheiten der Fall.
+	\item In der \textbf{funktionalen Programmierung}\index{Programmierung!funktional} gehen wir den umgekehrten Weg: Eine zentrale Anforderung der funktionalen Programmierung ist die Maximierung der Effizienz.
+\end{itemize}
+
+\textbf{Kontrolle}\\
 
 So wie Sie bei der maschinennahen Programmierung mit Zahlen arbeiten, die in sogenannten Registern verarbeitet werden, arbeiten Sie bei der imperativen Programmierung mit sogenannten Variablen, die Sie deklarieren und initialisieren müssen.\\
 
@@ -910,7 +1002,7 @@ Um also von der Menge BROT zur algebraischen Struktur BROT zu kommen, müssen wi
 
 Und hier nehmen wir den klassischen Wortwitz: Kann man Brot einfrieren? Na sicher kann man, Mann, Frau, Zombie, Echse, Spock oder wer auch immer das tun. Also haben wir unsere erste Operation: Einfrieren. Wobei so etwas eine 1-stellige Operation ist, was recht langweilig ist. (Die Stelligkeit einer Operation besagt etwas darüber, wie viele Elemente wir benötigen, um die Operation durchzuführen.)\\
 
-Wie gesagt: Es ist nicht wichtig, ob diese Operation Sinn macht; wichtig ist ausschließlich, dass sie auf jedem Element der Menge (hier der Menge BROT) definiert ist. Die Aussage „Die Operation X ist definiert für Y.“ bedeutet hier nichts anderes, als dass es möglich ist, die Operation X mit dem Element Y durchzuführen. Wenn Y eine Menge ist, dann bedeutet diese Aussage, dass die Operation X ausnahmslos auf jedem Element der Menge Y ausgeführt werden kann. Sonst wäre nämlich unsere Kombination aus Menge und Operationen keine algebraische Struktur mehr.\\
+Wie gesagt: Es ist nicht wichtig, ob diese Operation Sinn macht; wichtig ist ausschließlich, dass sie auf jedem Element der Menge (hier der Menge BROT) definiert ist. Die Aussage \glqq{}Die Operation X ist definiert für Y.\grqq{} bedeutet hier nichts anderes, als dass es möglich ist, die Operation X mit dem Element Y durchzuführen. Wenn Y eine Menge ist, dann bedeutet diese Aussage, dass die Operation X ausnahmslos auf jedem Element der Menge Y ausgeführt werden kann. Sonst wäre nämlich unsere Kombination aus Menge und Operationen keine algebraische Struktur mehr.\\
 
 Wenn Sie wie bei der Definition der Menge BROT jetzt die auf dieser Menge definierten Operationen notieren und beides gemeinsam aufschreiben, dann haben Sie schon die Algebra BROT definiert. Das folgende wäre also eine mögliche Definition der Algebra BROT, wobei hier P die Struktur bzw. das Modell ist und F die Operationen zusammenfassen:\\
 
@@ -981,7 +1073,7 @@ In C gilt, dass Funktionen statisch sind.\\
 
 Wichtig: Auch wenn der Rumpf einer Variablen ein eigenständiger Scope ist, sollten Sie Variablenbezeichnungen, die Sie außerhalb einer Funktion eingeführt haben nicht innerhalb der Funktion verwenden, selbst wenn Sie mit einer Sprache arbeiten, die Ihnen das ermöglicht. Die Lesbarkeit und damit die Möglichkeit Ihr Programm später zu verbessern wird dadurch deutlich verschlechtert.\\
 
-Es gibt noch Sonderformen von Funktionen: Funktionen benötigen nicht unbedingt Argumente, um ihre Aufgabe zu erfüllen. Und es ist möglich Funktionen zu programmieren, die keinen Rückgabewert erzeugen. Für die drei Varianten gibt es keine eigenständigen Bezeichnungen, wir sprechen unabhängig von der Variante grundsätzlich nur von einer „Funktion“. Und schließlich ist es noch möglich, Funktionen zu programmieren, die weder Argumente noch einen Rückgabewert haben. Am einfachsten ist das nachvollziehbar, wenn Sie an die main() denken. Aber andere Fälle sind ebenfalls denkbar. Im Alltag werden Sie hier beim Programmieren auch gar nicht differenzieren und wie alle Programmierer immer „nur“ von einer Funktion reden.\\
+Es gibt noch Sonderformen von Funktionen: Funktionen benötigen nicht unbedingt Argumente, um ihre Aufgabe zu erfüllen. Und es ist möglich Funktionen zu programmieren, die keinen Rückgabewert erzeugen. Für die drei Varianten gibt es keine eigenständigen Bezeichnungen, wir sprechen unabhängig von der Variante grundsätzlich nur von einer \glqq{}Funktion\grqq{}. Und schließlich ist es noch möglich, Funktionen zu programmieren, die weder Argumente noch einen Rückgabewert haben. Am einfachsten ist das nachvollziehbar, wenn Sie an die main() denken. Aber andere Fälle sind ebenfalls denkbar. Im Alltag werden Sie hier beim Programmieren auch gar nicht differenzieren und wie alle Programmierer immer \glqq{}nur\grqq{} von einer Funktion reden.\\
 
 Sehen wir uns die drei ersten Fälle im Detail anhand von Beispielen an:
 Variante a) Sie möchten eine Funktion haben, die Ihnen den größten gemeinsamen Teiler zweier Zahlen ausgibt. Ohne auf die Programmierung der Funktion einzugehen, können wir also sagen, dass wir eine Funktion haben, die zwei Argumente benötigt und einen Rückgabewert hat. Alle müssen vom Datentyp her ganzzahlig sein. In allgemeiner Form könnten Sie das dann so deklarieren:
@@ -997,11 +1089,11 @@ Die Deklaration da oben ist wie folgt zu lesen:\\
 •	Das erste int gibt den Datentyp des Rückgabewerts an. Wir können hier problemlos int nehmen, wenn dieser Datentyp für die Argumente ausreicht, denn der ggT zweier Zahlen kann ja nie größer sein, als die Zahlen selbst. In Sprachen wie C kann eine Funktion nur genau einen Rückgabewert haben. Allerdings sind Sie hier nicht auf Variablen beschränkt, sondern können durchaus Datenstrukturen zurückgeben lassen. (Keine Sorge, Datenstrukturen haben wir noch nicht behandelt, aber sie folgen in Kürze.)
 •	Dann folgt die Bezeichnung  bzw. der Name der Funktion. Hier haben wir die Abkürzung ggT für größter gemeinsamer Teiler gewählt. Aber die Bezeichnung steht uns frei. Wir hätten diese Funktion auch funktionAlpha927 nennen können; für die Programmiersprache macht das keinen Unterschied.
 •	Nach dem Funktionsnamen folgt stets ein Klammernpaar, in dem die zu übergebenden Argumente jeweils mit dem benötigten Datentyp stehen. Wichtig: Diese Bezeichnungen sollten im Programm noch nicht verwendet worden sein. Denn sonst kann es passieren, dass die Funktion falsche Ergebnisse liefert.
-•	Abschließend folgt der Rumpf der Funktion. In diesem stehen mehrere Programmzeilen, von denen die letzte mit dem „Befehl“ return beginnt. Hinter dem return muss eine Variable stehen, deren Datentyp derselbe ist, wie derjenige, den Sie für den Rückgabewert der Funktion definiert haben. Wie gewohnt gilt hier: Ob die Funktion das tut, was Sie wollen, hängt davon ab, ob Sie sie so programmiert haben oder nicht. Wenn Sie also den Funktionsrumpf so gefüllt haben, dass die Funktion etwas ganz anderes zurückgibt, dann beklagen Sie sich nicht, sondern konzentrieren Sie sich, um Ihre Denkfehler zu finden. Und hier auch ein ganz wichtiger Praxistipp: Wenn Sie schon seit Stunden programmieren, bewirkt eine Pause oft wahre Wunder. Oft hilft auch der Blick eines Nachbarn weiter.\\
+•	Abschließend folgt der Rumpf der Funktion. In diesem stehen mehrere Programmzeilen, von denen die letzte mit dem \glqq{}Befehl\grqq{} return beginnt. Hinter dem return muss eine Variable stehen, deren Datentyp derselbe ist, wie derjenige, den Sie für den Rückgabewert der Funktion definiert haben. Wie gewohnt gilt hier: Ob die Funktion das tut, was Sie wollen, hängt davon ab, ob Sie sie so programmiert haben oder nicht. Wenn Sie also den Funktionsrumpf so gefüllt haben, dass die Funktion etwas ganz anderes zurückgibt, dann beklagen Sie sich nicht, sondern konzentrieren Sie sich, um Ihre Denkfehler zu finden. Und hier auch ein ganz wichtiger Praxistipp: Wenn Sie schon seit Stunden programmieren, bewirkt eine Pause oft wahre Wunder. Oft hilft auch der Blick eines Nachbarn weiter.\\
 
 Variante b) Die Funktion benötigt keinen Eingabewert. Hier ist das Klammernpaar hinter dem Funktionsnamen schlicht leer. Der Rest ist wie gehabt. Sie fragen sich, was solche eine Funktion soll? Nehmen wir an, Sie möchten eine Funktion haben, die Ihnen einen bestimmten Satz an Informationen über den Status Ihres Programms gibt. Dann brauchen Sie der Funktion beim Aufruf nicht mitzuteilen, welche Speicherstellen oder Variableninhalte Sie erhalten wollen, da es immer dieselben sind.\\
 
-Variante c) Die Funktion hat keinen Rückgabewert. Dann dürfen Sie jedoch nicht einfach mit dem Namen der Funktion beginnen, sondern Sie benutzen den „Datentyp“ void. Eine solche Funktion haben Sie schon kennen gelernt: printf() benötigt zwar immer ein Argument, aber da dieses Argument dann auf dem Bildschirm ausgegeben werden soll und Sie keine Variablen ändern wollen, macht hier ein Rückgabewert nur selten Sinn.\\
+Variante c) Die Funktion hat keinen Rückgabewert. Dann dürfen Sie jedoch nicht einfach mit dem Namen der Funktion beginnen, sondern Sie benutzen den \glqq{}Datentyp\grqq{} void. Eine solche Funktion haben Sie schon kennen gelernt: printf() benötigt zwar immer ein Argument, aber da dieses Argument dann auf dem Bildschirm ausgegeben werden soll und Sie keine Variablen ändern wollen, macht hier ein Rückgabewert nur selten Sinn.\\
 
 Kontrolle\\
 
@@ -1085,7 +1177,7 @@ Im Falle unserer wenn-dann-Kontrollstruktur können wir jetzt zum Beispiel unter
 \begin{verbatim}
 if ( a < b ) then { sortiere(a, b); }
 else if (a > b) then { sortiere(b,a); }
-else { printf(„Beide sind gleich.“); }
+else { printf(\glqq{}Beide sind gleich.\grqq{}); }
 \end{verbatim}
 
 Aufgabe:\\
@@ -1094,11 +1186,11 @@ Aufgabe:\\
 
 \begin{verbatim}
 if ( a < b ) then { sortiere(a, b); }
-else if (a == b) then { printf(„Beide sind gleich.“); }
+else if (a == b) then { printf(\glqq{}Beide sind gleich.\grqq{}); }
 else { sortiere(b,a); }
 \end{verbatim}
 
-(2)	Prüfen Sie mit einem C-Programm, ob (``Eins“ = = „Eins“) wahr ist. (Tipp: Sie können eine boolesche Variable nicht über printf() ausgeben lassen.\\
+(2)	Prüfen Sie mit einem C-Programm, ob (``Eins\grqq{} = = \glqq{}Eins\grqq{}) wahr ist. (Tipp: Sie können eine boolesche Variable nicht über printf() ausgeben lassen.\\
 
 (3)	Begründen Sie, warum ein solcher Vergleich bei manchen Sprachen wahr (true) und bei manchen Sprachen falsch (false) ist.\\
 
@@ -1124,7 +1216,7 @@ Wann immer Sie bei einem Programm den Ablauf vom Zustand einzelner Variablen abh
 
 Fragen Sie einhundert Studierende der Informatik, wo Sie zum ersten Mal Probleme beim Programmieren hatten und die Antwort wird lauten: Rekursionen. \\
 
-Dabei sind Rekursionen eine unglaublich einfache Kontrollstruktur; Sie müssen nur (wie jeder ernstzunehmende Informatiker) wirklich verstanden haben, was eine Funktion ist. Das Wort Rekursion bedeutet übersetzt so viel wie „etwas, das immer wieder passiert“. Sie haben vielleicht schon von Schleifen gehört: Schleifen sind etwas, das Rekursionen ähnelt, aber im Gegensatz zu Rekursionen können Sie Schleifen nicht für jedes Problem nutzen, bei dem irgendein Programmteil sehr oft wiederholt werden soll. Für Schleifen gibt es den Fachbegriff der Iteration.
+Dabei sind Rekursionen eine unglaublich einfache Kontrollstruktur; Sie müssen nur (wie jeder ernstzunehmende Informatiker) wirklich verstanden haben, was eine Funktion ist. Das Wort Rekursion bedeutet übersetzt so viel wie \glqq{}etwas, das immer wieder passiert\grqq{}. Sie haben vielleicht schon von Schleifen gehört: Schleifen sind etwas, das Rekursionen ähnelt, aber im Gegensatz zu Rekursionen können Sie Schleifen nicht für jedes Problem nutzen, bei dem irgendein Programmteil sehr oft wiederholt werden soll. Für Schleifen gibt es den Fachbegriff der Iteration.
 
 \subsection{Rekursionen im Seminarraum}
 
@@ -1224,7 +1316,7 @@ Die aktuell aufgerufene Funktion zaehler(int a) (intern also zaehler4(100)) gibt
 
 Kontrolle\\
 
-Überlegen Sie, was diese Rekursion ausgibt, wenn Sie „fertig“ ist. Das ist irgendwie nicht das, was wir uns vorgestellt haben, schließlich sollte sie doch bis 100 zählen. Da sollte Sie dann doch auch 100 ausgeben. \\
+Überlegen Sie, was diese Rekursion ausgibt, wenn Sie \glqq{}fertig\grqq{} ist. Das ist irgendwie nicht das, was wir uns vorgestellt haben, schließlich sollte sie doch bis 100 zählen. Da sollte Sie dann doch auch 100 ausgeben. \\
 
 Lösen Sie deshalb zur Kontrolle das folgende Problem: Wie müssen Sie den Code anpassen, damit die Rekursion tatsächlich den Wert 100 ausgibt. \\
 
@@ -1313,7 +1405,7 @@ Aufgabe:\\
 
 Programmieren Sie ein solches char-Array, dass den Satz hello, world enthält und geben Sie den Inhalt des char-Array auf dem Bildschirm aus.\\
 
-Statische Strings können Sie realisieren, indem Sie wie beim Quellcode am Anfang des Kapitels einen beliebigen Text zwischen doppelten Anführungszeichen setzen. („Die Antwort lautet: 42“)\\
+Statische Strings können Sie realisieren, indem Sie wie beim Quellcode am Anfang des Kapitels einen beliebigen Text zwischen doppelten Anführungszeichen setzen. (\glqq{}Die Antwort lautet: 42\grqq{})\\
 
 Kontrolle\\
 

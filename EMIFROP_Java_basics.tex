@@ -1,0 +1,170 @@
+\chapter{Java 8 Basics}
+
+Mit dem Begriff Basics werden häufig einfache Grundlagen oder Einsteigerwissen bezeichnet. Hier bauen wir also die Grundlagen aus, die Sie durch das Kapitel über imperative Programmierung und objektorientierte Softwareentwiclung bereits erlernt haben.\\
+
+Im Klartext: Das was jetzt kommt mag vielleicht in einzelnen anderen Sprachen ebenfalls vorkommen, aber eben längst nicht in den meisten anderen imperativen klassenbasiert objektorientierten Sprachen.\\
+
+In diesen Basics werden wir uns auf den Kern der Programmierung kümmern, die Frage, wie wir Algorithmen in Quellcode umwandln. Wir werden uns dagegen nicht mit Themen beschäftigen wie der Programmierung einer grafischen Nutzeroberfläche, also den sogenannten \glqq{}Fenstern\grqq{}, der Datenübertragung über Netze, Zugriff auf Dateien (wobei diese beiden Punkte nahezu identische Programmiertechniken verwenden) und andere Aufgaben für die eine Middleware wie Java prädestiniert ist. Der Grund ist schlicht der, dass wir erstmal sinnvoll imperativ programmieren müssen, bevor wir die implementierten Algorithmen so verpacken, dass sie Daten mit anderen Rechnern austauschen oder komfortabel von Menschen bedient werden können. Eingaben und Ausgaben per Tastatur werden aber Teil der Basics werden, wir verzichten hier also nicht vollständig auf Interaktion, sondern fangen direkt damit an.
+
+\section{Eingaben und Ausgaben}
+
+Java-Programme setzen sich aus Teilen zusammen, die als Klassen bezeichnet werden. Mit einer Klasse ist noch kein Objekt im Sinne der objektorientierten Softwareentwicklung gemeint. Vielmehr ist eine solche Klasse ein Programmteil, der als Vorlage für beliebig viele Objekte im Sinne der objektorientierten Softwareentwicklung verwender werden können. Jede Klasse eines Pakets hat einen Bezeichner.
+
+\subsection{Erzeugen eines Objekts}
+
+Bei der Programmierung erzeugen wir diese Objekte fast genau so, wie wir das in der imperativen Programmierung in statisch typisierten Sprachen mit Variablen getan haben:
+
+\begin{verbatim}
+Klassenbezeichner objektbezeichner 
+= new Klassenbezeichner();
+\end{verbatim}
+
+Schauen wir uns jeden Teil dieser Zeile an:
+
+\begin{itemize}
+	\item \textbf{Klassenbezeichner} 
+	
+	ist der Bezeichner der Klasse. Stellen Sie sich das ruhig wie den Datentyp einer Variablen vor. Im Detail ist es zwar wesentlich mehr, aber für die Programmierung eines neuen Objekts genügt das.
+	\item \textbf{objektbezeichner} 
+	
+	ist dann der Bezeichner für das Objekt. Sie wundern sich, warum hier zumindest scheinbar die gleichen Regeln gelten wie bei Bezeichnern von Variablen? Dann denken Sie nochmal daran zurück, was Sie über Variablen gelernt haben: Es sind Bezeichner, die auf einen Bereich im Speicher des Computers verweisen, dessen Inhalt sich ändern darf. Und Objekte sind zwar deutlich umfangreicher als einzelne Variablen, aber aus der Perspektive von Java-Entwicklern sind Sie einfach nur die nächste komfortable Zusammenfassung von virtuellen Objekten, nachdem wir einzelne Variablen in einer Datenstruktur zusammengefasst haben.
+	\item \textbf{=} 
+	
+	kennen Sie bereits: Es ist der altbekannte Zuweisungsoperator.
+	\item \textbf{new} 
+	
+	ist tatsächlich etwas neues, das wir bislang noch nicht besprochen haben. Es ist eine Operation, die der \glqq{}Programmiersprache\grqq{} anzeigt, dass es sich bei dem zugeordneten Wert nicht um eine Variable oder eine Datenstruktur, sodnern um ein Objekt handelt. Das mag etwas ungewohnt sein, da wir in der imperativen Programmierung einfach Werte eingegeben und einer Variablen zugeordnet haben, aber wenn Sie erst einige Klassen erzeugt haben, werden Sie gar nicht mehr darüber nachdenken.
+	
+	\item \textbf{Klassenbezeichner()}
+	
+	Auf den ersten Blick sieht das wie eine Funktion aus, denn es endet ja mit einem Klammernpaar. Und vollkommen richtig: Das ist eine Funktion, allerdings eine ganz spezielle, die für die klassenbasierte Objektorientierung in Java eine Rolle spielt. Es ist der sogenannte \textbf{Konstruktor}\index{Konstruktor}.
+	
+	Der Unterschied zu den Funktionen, die Sie bislang kennen besteht darin, dass der Konstruktur keine Variable oder Datenstruktur zurückgibt, sondern ein Objekt.
+	
+	Der Konstruktor hat dabei immer den selben Bezeichner wie die Klasse, von der er ein Objekt erzeugt (Fachterminus \textbf{instanziert}\index{instanziert}).
+	
+	Um Konstruktoren eindeutig von anderen Funktionen zu unterscheiden beginnen sie in Java mit einem Großbuchstaben.
+	
+	Für den Moment gehen wir hier noch nicht in die Details, sondern Sie sollten sich lediglich merken, dass bis auf zwei Ausnahmen alle Klassen einen Konstruktor enthalten müssen. Denn im Konstruktor programmieren wir, wie ein Objekt einer Klasse erzeugt wird.
+	
+	\item \textbf{;}
+	
+	Das Semikolon zeigt das Ende einer Programmzeile an.
+\end{itemize}
+
+\subsection{Benutzen von Objekten innerhalb eines Java-Programms}
+
+\textbf{Variante a: Objekte analog zu Variablen verwenden}\\
+
+Wie Sie oben gelernt haben können wir ein Objekt in Java ähnlich einer Variablen oder Datenstruktur nutzen, nachdem wir es einem Bezeichner zugeordnet haben. Sie können hier ebenfalls Arrays und andere Datenstrukturen vom Typ einer Klasse erzeugen und brauchen in dieser Hinsicht nichts neues zu lernen.\\
+
+\textbf{Variante b: Objekte der Programmiersprache nutzen}\\
+
+Es gibt aber auch Objekte, die bereits Teil der Programmiersprache sind. Manche können wir ohne weitere Vorbereitung verwenden, andere müssen wir zuerst über die \textbf{import}-Anweisung in unser Programm integrieren. Zur import-Anweisung später mehr.\\
+
+Manche dieser Objekte beginnen wie Klassennamen mit einem Großbuchstaben, manche mit einem Kleinbuchstaben. Da die Erklärung dazu verwirrend ist, wenn Sie sich noch nicht umfassend mit dem Konzept der Vererbung bei objektorientierter Softwareentwicklung beschäftigt haben, lasse ich sie an dieser Stelle außen vor. Sie können aus genau diesem Grund den folgenden Programmcode noch nicht vollständig verstehen, obwohl es sich um das übliche Einstiegbeispiel in Programmiersprachen handelt.
+
+\subsection{Hello, world.}
+
+\begin{verbatim}
+public class HelloWorld{
+    public static void main(String[] args){
+        System.out.println("Hello, world!");
+    }
+}
+\end{verbatim}
+
+Wie immer reden wir hier zunächst nicht von einem Programm, sondern von einer Klasse. Sie haben oben gelesen, dass es zwei Arten von Klassen gibt, die keinen Konstruktor benötigen. Und hier haben Sie es genau mit solch einem Fall zu tun. Der Grund ist recht einfach: Unser Programm soll einzig und alleine die Zeile \emph{Hello, world!} auf der Konsole ausgeben. Wir brauchen nicht nur keine beliebige Anzahl Objekte, damit unser Programm funktioniert, sondern vielmehr ist das Objekt-Konzept hier vollkommen überflüssig. Und netterweise nötigt Java uns nicht dazu, trotzdem einen Konstruktor zu programmieren.\\
+
+Streng genommen wird im Hintergrund dennoch ein \glqq{}Standard-\grqq{}Konstruktor von Java erzeugt, aber das kann uns an dieser Stelle egal sein...\\
+
+Schauen wir uns nun den Code im Detail an:
+
+\begin{itemize}
+	\item \verb|public class HelloWorld{|
+	
+	
+	\begin{itemize}
+		\item \textbf{public}
+		
+		Wenn Sie sich an die Erklärungen zu virtuellen Objekten erinnern, dann erinnern Sie sich an die \textbf{Zugriffsberechtigung}. Damit ist der Teil eines virtuellen Objekts gemeint, der definiert, wer bzw. welche Programmteile Zugriff auf das Objekt haben. In Java gibt es vier unterschiedliche \textbf{Zugriffsmodifikatoren}\index{Zugriffsmodifikator}, wobei einer keinen Bezeichner hat. public ist einer dieser Modifikatoren und er gewährt quasi freien Zugriff für alle. (Das ist natürlich wieder nicht vollkommen richtig; die Details schauen wir uns an, wenn wir uns mit den Zugriffsmodifikatoren beschäftigen.)
+		
+		\item \textbf{class}
+		
+		Dieses Schlüsselwort gibt schlicht an, dass nun eine Klasse definiert wird. Es wird Ihnen einige Zeit lang unsinnig vorkommen, dass wir eine Klasse mit diesem Schlüsselwort markieren müssen, weil wir in Java keine Funktionen oder Variablen außerhalb von Klassen definieren bzw. nutzen dürfen. Das umso mehr, weil Sie anfangs ausschließlich Klassen programmieren, in denen Variablen und Methoden (so nennen wir Funktionen in objektorientierten Sprachen) vorkommen. Aber das wird sich später ändern: Dann werden Sie parallel zu Methoden auch Klassen innerhalb von Klassen definieren. Also ist es essentiell, dass es dieses Schlüsselwort gibt, und dass wir es immer benutzen, wenn wir eine Klasse programmieren.
+		
+		\item \textbf{HelloWorld}
+		
+		Das ist der Bezeichner unserer Klasse. In Java ist es eine Konvention, dass jede Klasse in einer eigenen Datei gespeichert werden muss, die als Dateibezeichner Klassenbezeichner.java hat. Unsere Klasse HelloWorld muss also in einer Datei mit dem Bezeichner HelloWorld.java gespeichert werden.
+		
+		\item \verb|{|
+		
+		Das ist in Java das Symbol, mit dem wir den Anfang eines Rumpfes hervorheben. Alles, was nun folgt (bis zum entsprechenden \verb|}|) ist also Teil unserer Klasse HelloWorld.
+	\end{itemize}
+	
+	\item \textbf{public static void main(String[] args)}
+	
+	\begin{itemize}
+		\item \textbf{public}
+		
+		kennen Sie jetzt schon. Da es in diesem Fall vor einer Methode steht, bedeutet das, dass alle anderen Klassen diese Methode benutzen dürfen. Richtig verstanden: Durch einen passenden Zugriffsmodifikator können wir unterbinden, dass andere Objekte auf einzelne Methoden unseres Objekts bzw. unserer Klasse zugreifen können.
+		
+		\item \textbf{static}
+		
+		Das ist wieder etwas neues, aber im Grunde nicht weiter kompliziert. Damit zeigen wir nämlich an, dass etwas nicht geändert werden darf. Der Unterschied gegenüber statischen Variablen (also Konstanten) hat etwas mit dem Konzept der Vererbung in objektorientierter Softwareentwicklung zu tun: Hier können nämlich Teile eines Programms (also Klassen) den Inhalt anderer Teile des Programms (also anderer Klassen) übernehmen und beliebig abändern. Wenn dagegen in der Klasse ein solcher Teil als static definiert wurde, aus der ein Teil übernommen wird, dann darf er nicht mehr geändert werden.
+		
+		\item \textbf{void}
+		
+		Damit wird definiert, dass diese Methode keinen Rückgabewert hat.
+		
+		\item \textbf{main()}
+		
+		Das kennen Sie schon aus der imperativen Programmierung. Es gibt nur einen kleinen aber sehr wichtigen Teil, auf den wir eingehen müssen: Wenn Sie ein Java-Programm \glqq{}starten\grqq{}, dann \glqq{}starten\grqq{} Sie streng genommen nicht das Programm als ganzes, sondern Sie rufen die main()-Methode einer Klasse dieses Programms auf.
+		
+		Und wenn Sie dabei Argumente übergeben wollen, so wie Sie das bei einem anderen Funktionsaufruf tun würden, dann tun Sie das, indem Sie nach dem Namen der Klasse nach dem \glqq{}Startbefehl\grqq{} schlicht die Argumente durch Leerstellen getrennt eingeben. Dazu folgt im Anschluss ein Beispiel. Schauen wir uns vorher den Rest unseres kleinen Beispiels an.
+		
+		\item \verb|{|
+		
+		Wie gewohnt beginnt damit der Rumpf der Methode.
+	\end{itemize}
+	
+	\item \textbf{System.out.println("Hello, world!");}
+	
+	Hier sind wir an genau der Stelle, von der ich vorhin sprach: Um diese Zeile wirklich zu verstehen brauchen Sie ein fortgeschrittenes Verständnis für die Umsetzung des Konzepts der Vererbung in objektorientierter Softwareentwicklung. Außerdem müssten Sie etwas darüber wissen, wie Java als Middleware den Zugriff auf die Konsole, auf Dateien und andere Bereiche außerhalb des Programms ermöglicht. Das zu erklären wäre aber an dieser Stelle bei weitem zu umfangreich und würde eher zu Verwirrung führen.
+	
+	Sie kennen einerseits Methoden (Funktionen in objektorientierter Softwareentwicklung) und andererseits kennen Sie Konstruktoren. Dann kennen Sie Klassen und Objekte. Von daher muss diese Zeile Sie verwirren: Da ist die Java-Klasse \emph{System}, die offensichtlich aus der Klassenbibliothek stammt mit einem Punkt mit einem Objekt namens \emph{out} verknüpft, das dann wieder über einen Punkt mit der Funktion \emph{println()} verknüpft ist.
+	
+	Wie gesagt erfordert es einiges an Hintergrundwissen, um das tatsächlich zu verstehen. Merken Sie sich deshalb bitte für den Moment folgende zwei Dinge:
+	
+	(1) Wenn Sie eine Textausgabe auf der Konsole erzeugen wollen, dann genügt dafür leider nicht mehr ein einfaches print() oder printf(), wie Sie das z.B. aus C kennen, sondern Sie müssen dieses komplette System.out.println() verwenden. System.out.print() funktionert ebenfalls. Der Unterschied besteht darin, dass System.out.println() einen Zeilenumschub erzeugt.
+	
+	(2) Nein, es ist nicht leicht, ohne entsprechendes Hintergrundwissen zu verstehen, was da passiert. Wenn wir uns mit dem Zugriff auf Dateien im Rechner oder auf Webpages beschäftigen nutzen wir genau die gleichen Grundlagen, die bei System.out.println() wichtig sind. Und der Grund aus dem viele Studierende an diesen fortgeschrittenen Themen scheitern ist die schlichte Tatsache, dass sie denken, System.out.println() \glqq{}gibt doch bloß eine Zeile Text aus... Was soll daran schwer sein?\grqq{} Wenn wir dann später zu den genannten Themen kommen und sie hören, dass dort die gleichen \glqq{}Dinge\grqq{} passieren wie bei der Textausgabe, schalten sie ab, weil sie denken, dass das ja ganz simpel sein müsse. Aber das ist es definitiv nicht.
+\end{itemize}
+
+\textbf{Zusammenfassung}
+
+Um in Java auch nur eine einfache Textzeile auszugeben müssen wir eine Vielzahl an Details programmieren, die nur wegen der klassenbasierten objektorientieren Natur von Java nötig sind.\\
+
+Setzen Sie sich mit den oben genannten Dingen intensiv auseinander, denn die sind bei der Java-Programmierung Ihr täglich Brot. Und ich meine wirklich jedes einzelne Detail.
+
+\subsection{Hello, (Name des Benutzers)}
+
+Kommen wir nun zu einer Variante von Hello, world! bei der jeder Nutzer individuell angesprochen werden kann:
+
+\begin{verbatim}
+public class HelloWorld{
+    public static void main(String[] args){
+        System.out.println("Hello, " + args[0] + ".");
+    }
+}
+\end{verbatim}
+
+Mit dem, was Sie bislang gelernt haben sollten Sie vollständig im Stande sein, die Änderungen zu verstehen. Wenn Sie diese Datei unter der Bezeichnung HelloWorld.java gespeichert haben, sie anschließend auf der Konsole mit \textbf{javac HelloWorld} kompilieren und dann per \textbf{java HelloWorld Horst} starten, dann wird der Rechner Sie mit einem freundlichen \textbf{Hello, Horst.} begrüßen.\\
+
+\textbf{Aufgaben}:
+
+\begin{itemize}
+	\item Ändern Sie das Programm so ab, dass es nach einander mehrere Nutzer begrüßen kann, auch wenn die Anzahl Nutzer im Vorfeld nicht feststeht. Sie sollen hier also eine Schleife programmieren, die über die Länge des Arrays \emph{args} läuft.
+	
+	Hinweis: Die Länge eines Array erhalten Sie per arrayBezeichner.length Im Falle von args also per \emph{args.length} Ähnlich wie bei System.out.println() können Sie mit dem aktuellen Wissen noch nicht verstehen, was genau diese Verknüpfung .length bedewirkt.)
+\end{itemize}
